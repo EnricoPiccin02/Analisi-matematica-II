@@ -1,0 +1,10 @@
+\babel@toc {italian}{}\relax 
+\babel@toc {italian}{}\relax 
+\babel@toc {italian}{}\relax 
+\contentsline {section}{\numberline {1}Introduzione}{2}{}%
+\contentsline {section}{\numberline {2}Serie numerica}{2}{}%
+\contentsline {subsection}{\numberline {2.1}Convergenza, divergenza e indeterminatezza di una serie}{2}{}%
+\contentsline {subsubsection}{\numberline {2.1.1}Convergenza di una serie}{3}{}%
+\contentsline {subsubsection}{\numberline {2.1.2}Divergenza di una serie}{3}{}%
+\contentsline {subsubsection}{\numberline {2.1.3}Indeterminatezza di una serie}{4}{}%
+\contentsline {subsection}{\numberline {2.2}Serie geometrica}{5}{}%

@@ -1,0 +1,329 @@
+\documentclass[a4paper]{extarticle}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\selectlanguage{italian}
+\usepackage[table]{xcolor}
+\usepackage{xcolor}
+\usepackage{circuitikz}
+\usetikzlibrary{positioning, circuits.logic.US}
+\usetikzlibrary{shapes.geometric, arrows}
+\usetikzlibrary {shapes.gates.logic.US, shapes.gates.logic.IEC, calc}
+\tikzset {branch/.style={fill, shape = circle, minimum size = 3pt, inner sep = 0pt}}
+\usetikzlibrary{matrix,calc}
+\usepackage{multirow}
+\usepackage{float}
+\usepackage{geometry}
+\usepackage{tabularx}
+\usepackage{pgf-pie}
+\usepackage{tikz}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{color, soul}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{subfig}
+\graphicspath{ {./img/} }
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{corollary}{Corollario}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+
+% Specifiche
+\geometry{
+ a4paper,
+ top=20mm,
+ left=30mm,
+ right=30mm,
+ bottom=30mm
+}
+
+\nocite{}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LO]{\nouppercase{\leftmark}}
+\fancyfoot[CE, CO]{\thepage}
+\addtolength{\headheight}{1em}
+\addtolength{\footskip}{-0.5em}
+
+\newcommand{\quotes}[1]{``#1''}
+\renewcommand\tabularxcolumn[1]{>{\vspace{\fill}}m{#1}<{\vspace{\fill}}}
+\renewcommand\arraystretch{}
+\newcolumntype{P}{>{\centering\arraybackslash}X}
+
+\title{\textbf{Università di Trieste\\ \vspace{1em}
+Laurea in ingegneria elettronica e informatica}}
+\author{Enrico Piccin - Corso di Analisi matematica II - Prof. Franco Obersnel}
+\date{Anno Accademico 2022/2023 - 3 Ottobre 2022}
+
+\begin{document}
+
+\vspace{-10mm}
+\maketitle
+
+\tableofcontents
+\newpage
+\noindent
+\begin{center}
+    3 Ottobre 2022
+\end{center}
+
+\vspace{1em}
+\noindent
+\section{Introduzione}
+Considerando un foglio di carta, dividendolo in due metà esatte, si ottiene $\frac{1}{2}$ del profilo quadrato di partenza. Considerando una delle due metà, e suddividendola ancora in due, si ottiene $\frac{1}{4}$ del profilo quadrato di partenza.
+Ripetendo questo procedimento, si otterranno le seguenti frazioni del profilo quadrato originario: $\frac{1}{8}, \frac{1}{16}, \frac{1}{32}, \frac{1}{64}, ...$. Sommando tutte le frazioni di profilo quadrato, alla fine si otterrà il profilo quadrato di partenza, ossia la frazione $1$.
+Ecco quindi che, contrariamente a quanto voleva sostenere \textbf{Parmenide}, \textbf{Zenone} scoprì che
+\[\boxed{\frac{1}{2}+\frac{1}{4}+\frac{1}{8}+\frac{1}{16}+\frac{1}{32}+\frac{1}{64}+...=1 \rightarrow \sum_{n=1}^{+\infty} \left(\frac{1}{2}\right)^n=1}\]
+Ciò non risulta essere banale: una somma di \textbf{infinite quantità positive} produce una quantità finita. Quello che si è ottenuto è una \textbf{serie (numerica) geometrica di ragione $\frac{1}{2}$}.
+
+\vspace{1em}
+\section{Serie numerica}
+Di seguito si espone la definizione di \textbf{serie numerica}:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{SERIE NUMERICA}}\\
+    \parbox{\linewidth}{Data una successione $(a_n)_n$ con valori nel campo complesso $a_n \in \mathbb{C}$. Si consideri una nuova successione $(s_n)_n$ definita \textbf{per ricorrenza} come segue
+    \[s_{n+1}=s_n+a_{n+1} \hspace{1em} \text{ posto } \hspace{1em} s_0=a_0\]
+    Ciò significa che
+    \begin{itemize}
+        \item $s_0 = a_0$
+        \item $s_1 = a_0 + a_1$
+        \item $s_2 = a_0 + a_1 + a_2$
+        \item e via di seguito...
+    \end{itemize}
+    La serie $a_0+a_1+a_2+...$ è la \textbf{coppia ordinata} delle due successioni, come mostrato di seguito
+    \[\left((a_n)_n, (s_n)_n\right)\]
+    ove la successione $(a_n)_n$ prende il nome \textbf{successioni dei termini generali}, mentre la successione $(s_n)_n$ si chiama successione delle \textbf{ridotte} o delle \textbf{somme parziali} della serie. \vspace{3mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{2em}
+\noindent
+\textbf{Esempio}: Posto $a_1=\frac{1}{2}$ e il termine generale $a_n=\left(\frac{1}{2}\right)^n$, la ridotta sarà
+\[s_n=\frac{1}{2}+\frac{1}{4}+\frac{1}{8}+...+\frac{1}{2^n}\]
+osservando bene di partire da $n=1$ e non da $0$.
+
+\vspace{1em}
+\noindent
+\subsection{Convergenza, divergenza e indeterminatezza di una serie}
+Data una serie, ossia data una coppia di successioni, è possibile ora andare a studiare il comportamento della successione delle ridotte.
+
+\vspace{1em}
+\noindent
+\subsubsection{Convergenza di una serie}
+Di seguito si espone la definizione di \textbf{convergenza di una serie}:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{CONVERGENZA DI UNA SERIE}}\\
+    \parbox{\linewidth}{Se la successione delle ridotte di una serie è convergente, si dice che la serie è convergente e il limite della successione delle ridotte prende il nome di \textbf{somma della serie}.\\
+    In altre parole, se \textbf{esiste finito} il
+    \[\lim_{n \to +\infty} s_n = s \in \mathbb{C}\]
+    allora la serie si dice \textbf{convergente} e il limite $s$ si dice \textbf{somma della serie} e si scrive
+    \[\sum_{n=0}^{+\infty} a_n = s\]
+    \textbf{Attenzione}: Molto spesso si utilizza la notazione sopra esposta per indicare sia la serie stessa, sia la sua somma, per cui può essere fuorviante. Lo si può capire dal contesto: una serie potrebbe non essere convergente, e quindi non avere una somma.\vspace{3mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{2em}
+\noindent
+\textbf{Esempio}: Se si considera $a_n=1, \forall n$, per cui
+\[1+1+1+... = \sum_{n=0}^{n} 1\]
+allora la somma parziale è $s_n=n+1$, ovvero una successione divergente a $+\infty$:
+\[\lim_{n \to +\infty} s_n = +\infty\]
+Ciò significa che la serie non converge, ma è \textbf{divergente}, per cui non ha nemmeno una somma.
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Si osservi che la divergenza a $+\infty$ di una serie ha significato solamente quando i termini generali sono sul campo reale: se una serie ha termine generico nel campo complesso, non può essere divergente a $+\infty$, in quanto non esiste un limite infinito nel campo complesso (a meno che non si consideri il modulo).
+
+\vspace{1em}
+\noindent
+\subsubsection{Divergenza di una serie}
+Di seguito si espone la definizione di \textbf{divergenza di una serie}:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{DIVERGENZA DI UNA SERIE}}\\
+    \parbox{\linewidth}{Se la successione delle ridotte di una serie (a termine generale reale) è divergente, si dice che la serie è divergente; in questo caso, la serie non presenta una somma.\\
+    In altre parole, se data $a_n \in \mathbb{R}, \forall n$, e posto
+    \[\lim_{n \to +\infty} s_n = +\infty \text{ o } - \infty\]
+    la serie si dice \textbf{divergente}.\vspace{3mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{2em}
+\noindent
+\textbf{Esempio}: Se $a_n = a \in \mathbb{R}$ \textbf{costante}, allora la serie con termine generale $a_n$
+\[a_0+a_1+a_2+...\]
+è necessariamente 
+\begin{itemize}
+    \item divergente a $+\infty$ se $a > 0$
+    \item divergente a $-\infty$ se $a < 0$
+    \item convergente, con somma $0$, se $a = 0$
+\end{itemize}
+\textbf{Attenzione}: se $a \neq 0$, ma $a \in \mathbb{C} - \mathbb{R}$, si dice semplicemente che la serie \textbf{non converge} (non ha senso parlare di divergenza).
+
+
+\vspace{1em}
+\noindent
+\subsubsection{Indeterminatezza di una serie}
+Di seguito si espone la definizione di \textbf{serie indeterminata}:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{SERIE INDETERMINATA}}\\
+    \parbox{\linewidth}{Una serie si dice \textbf{indeterminata} se non converge e non diverge.\vspace{3mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{2em}
+\noindent
+\textbf{Esempio 1}: Per quello che si è visto, una serie a termine generale costante, complesso e non reale, è indeterminata.
+
+\vspace{1em}
+\noindent
+\textbf{Esempio 2}: Un esempio di serie a termini reali, ma indeterminata, è la \textbf{serie di Grandi}, definita così:
+\[\sum_{n=0}^{+\infty} (-1)^n\]
+per cui $s_0=(-1)^0=1$ e $s_1=a_0+a_1=1+(-1)^1=0$. Pertanto si ha che
+\begin{itemize}
+    \item $s_n=1$ se $n$ è pari
+    \item $s_n=0$ se $n$ è dispari
+\end{itemize}
+Per cui si ha che
+\[\lim_{n \to +\infty} s_0 = ? \text{ non esiste}\]
+E per dimostrare che non esiste, si può semplicemente dimostrare che due sotto-successioni della successione delle somme parziali convergono a limiti diversi (ossia la sotto-successioni degli indici pari e quella dei dispari); infatti:
+\begin{itemize}
+    \item $\displaystyle{\lim_{k \to +\infty} s_{2k} = 1}$
+    \item $\displaystyle{\lim_{k \to +\infty} s_{2k+1} = 0}$
+\end{itemize}
+per cui sono state ottenute due sotto-successioni che presentano limite differente: per il teorema dell'unicità del limite e il teorema del limite delle sotto-successioni di una successione, si conclude che la successione delle somme parziali è indeterminata.
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: La serie di Grandi è una serie che può essere usata per dimostrare l'esistenza di Dio, in quanto commutando fra di loro i differenti termini può essere fatta convergere a qualsiasi (o quasi) numero finito.\\
+Se, infatti, si considerano le somme
+\begin{itemize}
+    \item $(1-1)+(1-1)+(1-1)+...=0$
+    \item $1+(-1+1)+(-1+1)+...=1$
+    \item $(1+1)+(-1+1)+(-1+1)=2$
+\end{itemize}
+si ottengono serie che convergono a qualunque valore (tranne uno). In generale, infatti, se una serie è indeterminata, si possono commutare gli addendi della stessa e ottenere la convergenza a qualunque numero.
+
+\vspace{1em}
+\noindent
+\subsection{Serie geometrica}
+Si è osservato che
+\[\sum_{n=1}^{+\infty} \left(\frac{1}{2}\right)^n=1\]
+per cui è ovvio che partendo con $n=0$, si ottiene
+\[\sum_{n=0}^{+\infty} \left(\frac{1}{2}\right)^n=2\]
+Più in generale, si fornisce di seguito la definizione di \textbf{serie geometrica}: 
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{SERIE GEOMETRICA}}\\
+    \parbox{\linewidth}{Si dice \textbf{serie geometrica} di ragione $z \in \mathbb{C}$ la serie del tipo
+    \[1+z+z^2+z^3+... \rightarrow \sum_{n=0}^{+\infty} z^n\]
+    che, tuttavia, palesa un problema di fondo: se si sceglie $z=0$, naturalmente si incorre nell'ambiguità
+    \[0^0 + 0^1 + ...\]
+    ma $0^0$ è una scrittura che non ha significato. Tuttavia, in questo particolare caso, si considera $0^0=1$, in modo tale da essere coerenti con la scrittura $1+z+z^2+z^3+...$ impiegata in precedenza.\vspace{3mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Data la serie seguente
+\[\sum_{n=0}^{+\infty} z^n\]
+per cui la ridotta è
+\[s_n=1+z+z^2+...+z^n\]
+che può anche essere riscritto come
+\[s_n=1+z+z^2+...+z^n=1+z \cdot \left(1+z+...+z^{n-1}\right)\]
+dove $1+z+...+z^{n-1}=s_{n-1}$. Da cui si evince che, sommando e sottraendo per la medesima quantità $z^n$, si ottiene
+\[s_n = 1+z \cdot \left(\underbrace{1+z+...+z^{n-1}+z^n}_{s_n} - z^n\right)\]
+che diviene, quindi:
+\[s_n = 1 + z \cdot s_n - z^{n+1} \hspace{1em} \rightarrow \hspace{1em} s_n - z \cdot s_n = 1 - z^{n+1} \hspace{1em} \rightarrow \hspace{1em} s_n \cdot (1-z) = 1 - z^{n+1} \hspace{1em} \rightarrow \hspace{1em} s_n = \frac{1-z^{n+1}}{1-z}\]
+posto $z \neq 1$ (ma il caso $z=1$ è facilmente risolubile, per quanto osservato nel caso di una serie a termine generale costante).\\
+Di seguito si espone, quindi, il comportamento della serie geometrica a seconda della sua ragione $z$:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{COMPORTAMENTO DELLA SERIE GEOMETRICA}}\\
+    \parbox{\linewidth}{Per quanto osservato in precedenza, si ha che:
+    \[\sum_{n=0}^{+\infty} z^n = \lim_{n \to +\infty} s_n = \lim_{n \to + \infty} \frac{1-z^{n+1}}{1-z}\]
+    posto $z \neq 1$, che diviene
+    \begin{itemize}
+        \item $\displaystyle{\frac{1}{1-z}}$ se $\vert z \vert < 1$.
+        \item non converge se $\vert z \vert > 1$, tuttavia, si può dire che
+        \begin{itemize}
+            \item se $z \in \mathbb{R}$ e $z \geq 1$, diverge a $+\infty$
+            \item se $z \in \mathbb{C}$ e $\vert z \vert \geq 1$ (ovvero può essere anche un numero negativo), posto $z \notin \left]1,+\infty \right[$ (ossia diverso dal caso precedente), nel caso di $n$ pari si sommano quantità positive, nel caso di $n$ dispari si sommano quantità negative, per cui la serie oscilla e quindi è indeterminata.
+        \end{itemize}
+    \end{itemize}
+    \vspace{1mm}}\\
+    \hline
+\end{tabularx}
+
+
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Si osservi che la serie geometrica è l'unica per cui si riesce a calcolare la somma, in quanto è l'unica di cui è possibile esprimere la ridotta in modo generale.\\
+Altrimenti, gestire le ridotte diviene molto complesso.
+
+\vspace{1em}
+\noindent
+\textbf{Esempio}: Si consideri la seguente serie
+\[\sum_{n=2}^{+\infty} \cos^{n}(1)\]
+che è una serie geometrica di ragione $\cos(1)$, ove $\left \vert \cos(1) \right \vert < 1$, per cui converge. La somma di tale serie, quindi, è facilmente determinabile secondo quanto visto in precedenza, tenendo conto che $n$ parte da 2, per cui bisogna sottrarre $\cos^0(1)=1$ e $\cos^1(1)=\cos(1)$. Da ciò si evince che la serie converge a 
+\[\frac{1}{1 - \cos(1)} - 1 - \cos(1) = \frac{1 - 1 + \cos(1) - \cos(1) + \cos^2(1)}{1 - \cos(1)} = \frac{\cos^2(1)}{1 - \cos(1)}\]
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: La somma della serie geometrica di ragione $z \in \mathbb{C}$ è indeterminata se $\vert z \vert > 1$, per quanto già visto.\\
+Inoltre si ha che la serie
+\[\sum_{n=1}^{+\infty} \left(\frac{2i + x}{4}\right)^n\]
+è convergente se
+\[\left \vert \frac{2i + x}{4}\right \vert < 1\]
+ma ricordando come si calcola il modulo di un numero complesso si ottiene
+\[\left \vert 2i + x \right \vert = \sqrt{4+x^2}\]
+e quindi 
+\[\sqrt{4+x^2} < 4 \hspace{1em} \rightarrow \hspace{1em} 4 + x^2 < 16 \hspace{1em} \rightarrow \hspace{1em} x^2 < 12 \hspace{1em} \rightarrow \hspace{1em} \vert x \vert < \sqrt{12} \hspace{1em} \rightarrow \hspace{1em} \vert x \vert < 2 \sqrt{3}\]
+E poi, ovviamente, la serie di Grandi è il tipico esempio di serie indeterminata, per cui la sua somma non può essere definita.
+\end{document}
