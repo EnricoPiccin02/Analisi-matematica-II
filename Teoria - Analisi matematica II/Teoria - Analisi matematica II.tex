@@ -49,6 +49,7 @@
 \renewcommand\tabularxcolumn[1]{>{\vspace{\fill}}m{#1}<{\vspace{\fill}}}
 \renewcommand\arraystretch{}
 \newcolumntype{P}{>{\centering\arraybackslash}X}
+\newcommand*\dif{\mathop{}\!\mathrm{d}}
 
 \title{\textbf{Università di Trieste\\ \vspace{1em}
 Laurea in ingegneria elettronica e informatica}}
@@ -300,9 +301,7 @@ Di seguito si espone, quindi, il comportamento della serie geometrica a seconda 
     \hline
 \end{tabularx}
 
-
-
-\vspace{1em}
+\vspace{2em}
 \noindent
 \textbf{Osservazione}: Si osservi che la serie geometrica è l'unica per cui si riesce a calcolare la somma, in quanto è l'unica di cui è possibile esprimere la ridotta in modo generale.\\
 Altrimenti, gestire le ridotte diviene molto complesso.
@@ -377,157 +376,221 @@ Di seguito si espone il fondamentale \textbf{teorema del confronto per le serie}
 
 \vspace{1em}
 \noindent
-\textbf{Osservazione}: Si osservi il caso particolare per cui $a_n=0, \forall n$ (ossia serie a termini positivi, cioè una serie per cui tutti i termini della successione dei termini generale sono positivi) oppure quelle per cui $c_n=0, \forall n$ (ossia serie a termini negativi, vale a dire serie per cui tutti i termini della successione dei termini generali sono negativi).\\
-In questi casi, infatti, è sufficiente considerare un limitazione superiore (o inferiore, rispettivamente) per concludere la convergenza.\\
+\textbf{Osservazione}: Si osservi il caso particolare per cui $a_n=0, \forall n$ (ossia il caso in cui la serie con termine generale $b_n$ è a termini positivi, cioè una serie per cui tutti i termini della successione dei termini generali sono positivi), allora è sufficiente che la serie con termine generale $c_n$ converga per concludere la convergenza.\\
+Similmente, se $c_n=0, \forall n$ (ossia la serie con termine generale $b_n$ è a termini negativi, vale a dire una serie per cui tutti i termini della successione dei termini generali sono negativi), è sufficiente che la serie con termine generale $a_n$ converga per concludere la convergenza.\\
+In questi casi, infatti, è sufficiente considerare un limitazione superiore (o inferiore, rispettivamente) per concludere la convergenza.
 
 \vspace{1em}
 \noindent
-\textbf{Dimostrazione - IMPORTANTE}: Si dimostri che il carattere di una serie non dipende da quello che accade su un numero finito di termini.
+\textbf{Osservazione}: È facile capire che \textbf{il carattere di una serie non dipende da quello che accade su un numero finito di termini}, in quanto
+\[\sum_{n=k}^{+\infty} a_n \hspace{1em} \text{ e } \hspace{1em} \sum_{n=0}^{+\infty} a_n\]
+differiscono solamente per $k$ termini, ove $k$ è una \textbf{costante}.
 
 \vspace{1em}
 \noindent
 \textbf{Esempio}: Si consideri la serie
 \[\sum_{n=0}^{+\infty} \frac{1}{2^n} e^{100-n^2}\]
-Essendo essa a termini positivi e maggiorata da
-\[\sum_{n=0}^{+\infty} \frac{1}{2^n} e^{100}\]
-per il teorema del confronto.
-
-\vspace{1em}
-\noindent
-\textbf{Osservazione}: Si osservi che il termine generale $a_n < \frac{1}{2^n}$ quando ... continua ...
+Si può facilmente capire che
+\[e^{100-n^2} \leq 1 \hspace{1em} \text{ se } \hspace{1em} n \geq 10\]
+per cui
+\[\frac{1}{2^n} e^{100-n^2} \leq \frac{1}{2^n}  \hspace{1em} \text{ se } \hspace{1em} n \geq 10\]
+Pertanto, essendo essa a termini positivi e maggiorata definitivamente, la serie di partenza converge per il teorema del confronto. Tuttavia, la stima seguente
+\[\sum_{n=0}^{+\infty} \frac{1}{2^n} e^{100-n^2} \leq 2\]
+ove $2$ è la somma della serie geometrica, è vera solamente definitivamente, per $n \geq 10$. Per avere una stima della somma più accurata, naturalmente, è possibile considerare quello che accade per i primi $9$ termini, per cui:
+\[\sum_{n=0}^{+\infty} \frac{1}{2^n} e^{100-n^2} < a_0+a_1+\dots+a_9+2\]
+dove $a_0+a_1+\dots+a_9$ sono i primi $9$ termini della serie stessa. Ma per migliorare la stima è possibile anche considerare i primi $9$ termini della serie geometrica, da cui
+\[\sum_{n=0}^{+\infty} \frac{1}{2^n} e^{100-n^2} < a_0+a_1+\dots+a_9+\left(2-1-\frac{1}{2}-\dots-\frac{1}{2^9}\right)\]
 
 \vspace{1em}
 \noindent
 \textbf{Esempio}: Si consideri la serie seguente:
-\[\sum_{n=1}^{+\infty} \cos \left(\frac{1}{n}\right) = + \infty\]
-in quanto
+\[\sum_{n=1}^{+\infty} \cos \left(\frac{1}{n}\right)\]
+Essa naturalmente diverge, in quanto il limite per $n \to +\infty$ del suo termine generale è
 \[\lim_{n \to +\infty} \cos \left(\frac{1}{n}\right)=1\]
-ossia, per $n$ molto grande, nella serie si somma sempre $1$, per cui diverge.
+ossia, per $n$ molto grande, nella serie si somma sempre $1$, per cui diverge. Infatti, affinché una serie converga, il suo termine generale deve essere infinitesimo.
 
 \vspace{1em}
 \noindent
 \begin{theorem} \textbf{Condizione necessaria per la convergenza}\\
-    Sia $\sum_{n=0}^{+\infty} a_n$ una serie convergente, allora
+    Sia
+    \[\sum_{n=0}^{+\infty} a_n\]
+    una serie \textbf{convergente} (in generale a termini complessi), allora
     \[\lim_{n \to \infty} a_n=0\]
+    ossia la successione dei termini generali è \textbf{infinitesima}.
 \end{theorem}
 
-\vspace{1em}
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
 \noindent
-\textbf{Dimostrazione}: Sia $s_{n+1} = s_n + a_{n+1}$, tale per cui
-\[a_{n+1} = s_{n+1} - s_n\]
-Siccome la serie è convergente per ipotesi ($s_{n+1}$ e $s_n$ convergono allo stesso limite):
+\normalfont \normalsize
+\textsc{Dimostrazione}: Si consideri la ridotta di indice $n+1$, ossia
+\[s_{n+1} = s_n + a_{n+1} \hspace{1em} \text{ tale per cui } \hspace{1em} a_{n+1} = s_{n+1} - s_n\]
+Siccome la serie è convergente per ipotesi ($s_{n+1}$ e $s_n$ convergono allo stesso limite), per la linearità del limite, il limite della differenza è uguale alla differenza dei limiti, per cui:
 \[\lim_{n \to +\infty} a_{n+1} = s_{n+1} - s_n = 0\]
 
 \vspace{1em}
 \noindent
-\textbf{Osservazione}: Si osservi che esistono delle serie
+\textbf{Osservazione}: Si osservi che la condizione per la convergenza esposta in precedenza è necessaria, ma non sufficiente. Infatti, esistono delle serie
 \[\sum a_n\]
 non convergenti, dove il
 \[\lim_{n \to +\infty} a_n = 0\]
-per questo si parla di condizione necessaria, e non sufficiente. Infatti è importante definire con quale velocità il termine generale vada a $0$: se è troppo lenta, nonostante sia infinitesima, la serie associata convergerà.
+per questo si parla di condizione necessaria, e non sufficiente. Infatti è importante definire con quale velocità la successione dei termini generali vada a $0$: se è troppo lenta, nonostante sia infinitesima, la serie associata divergerà.
 
 \vspace{1em}
 \noindent
 \subsection{Serie armonica}
 Si consideri la serie seguente
 \[\sum_{n=1}^{+\infty} \frac{1}{n}\]
-che prende il nome di \textbf{serie armonica}. Per studiarne il comportamento, è sufficiente capire che \textbf{ogni serie può essere considerata come un integrale generalizzato}. Infatti, per definizione di integrale generalizzato:
-\[\int_a^{+\infty} f(x) dx = \lim_{b \to +\infty} \int_a^b f(x) dx\]
-allora se si considera la serie $a_1+a_2+a_3$, si definisce una funzione
-\[f : [1,+\infty[ \longmapsto \mathbb{R}\]
-nel modo seguente: essendo una successione una funzione (definita sui numeri naturali), si possono interpolare i valori di una successione tramite delle costanti, come nel seguito:
+che prende il nome di \textbf{serie armonica}. Per studiarne il comportamento, è sufficiente capire che \textbf{ogni serie può essere considerata come un integrale generalizzato}. Infatti, per definizione di integrale generalizzato di una funzione definita su una semiretta reale localmente integrabile:
+\[\int_a^{+\infty} f(x) \dif x = \lim_{b \to +\infty} \int_a^b f(x) \dif x\]
+allora se si considera la serie $a_1+a_2+a_3+\dots+a_n$, si definisce una funzione $f$ dipendente dalla serie stessa:
+\[f : [1,+\infty[ \hspace{0.5em} \longmapsto \mathbb{R}\]
+nel modo seguente: essendo una successione una funzione (definita sui numeri naturali), la funzione $f$ deve interpolare i valori della successione dei termini generali, assumendo il valore costante $a_n$ quando $x \in [n,n+1[$, come nel seguito:
 \[f(x)=a_n \hspace{1em} \text{ se } \hspace{1em} x \in [n,n+1[, \hspace{1em} \forall n \geq 1\]
-
-\vspace{1em}
-\noindent
-\textbf{Osservazione}: Naturalmente si ha che
-\[\int_{n}^{n+1} f(x) \cdot dx = a_n \cdot (n+1-n) = a_n\]
+ottenendo una funzione che rappresenta la successione degli $a_n$ sotto forma di funzione.\\
+Se $f$ è la successione degli $a_n$, la serie con termine generale $a_n$ non è altro che l'integrale generalizzato di tale funzione. Infatti, si ha che
+\[\int_{n}^{n+1} f(x) \dif x = a_n \cdot (n+1-n) = a_n\]
 per cui è ovvio che
-\[s_n=a_1+a_2+...+a_n=\int_1^{n+1} f(x) \cdot dx\]
-Se $f$ è integrabile, allora
-\[\int_1^{+\infty} f(x) \cdot dx = \lim_{b \to +\infty} \int_1^b f(x) \cdot dx\]
-per cui, per il teorema del limite delle successioni, ogni successione che tende a $+\infty$ avrà lo stesso limite della funzione $f$, ossia
-\[\lim_{n \to +\infty} s_n = \lim_{n \to +\infty} f(x) ...continua...\]
+\[s_n=a_1+a_2+\dots+a_n=\int_1^{n+1} f(x) \dif x\]
+Se la funzione $f$ è integrabile (ossia esiste il limite dell'integrale di cui sopra), allora
+\[\int_1^{+\infty} f(x) \dif x = \lim_{b \to +\infty} \int_1^b f(x) \dif x\]
+e per quanto appena osservato,
+\[s_n=a_1+a_2+\dots+a_n=\int_1^{n+1} f(x) \dif x \hspace{1em} \text{ allora } \hspace{1em} \lim_{n \to +\infty} s_n = \lim_{n \to +\infty} \int_1^{n+1} f(x) \dif x\]
+per cui, per il teorema del limite delle successioni, ogni successione in cui $n$ tende a $+\infty$, avrà lo stesso limite della funzione $f$, ossia
+\[\lim_{n \to +\infty} s_n = \lim_{n \to +\infty} \int_1^{n+1} f(x) \dif x = \int_1^{+\infty} f(x) \dif x\]
+Pertanto, se la funzione $f$ così definita è integrabile e l'integrale ha un valore finito, allora la serie è convergente e la somma della serie è il valore di tale integrale.
 
 \vspace{1em}
 \noindent
 \textbf{Osservazione}: Si osservi che se la serie converge, per cui
-\[\lim_{n \to +\infty} \int_1^{n+1} f(x) \cdot dx = \lim_{n \to +\infty} = s\]
-è anche vero che $f$ è integrabile, in quanto, posto $[b]=n$, essendo $b < n+1$,
-\[\int_1^b f(x) \cdot dx = \int_1^n f(x) cdot dx + \int_n^b f(x) dx\]
-Allora, giacché
-\[\int_n^b f(x) \cdot dx = a_n \cdot (b-n) \leq a_n\]
-in quanto $b<n+1$ e $[b]=n$. Ma siccome la serie converge, allora il limite del termine generale è $0$, quindi
-\[\int_1^b f(x) \cdot dx = \int_1^n f(x) cdot dx\]
+\[\lim_{n \to +\infty} \int_1^{n+1} f(x) \dif x = s\]
+è anche vero che $f$ è integrabile, ovvero
+\[\int_1^{+\infty} f(x) \dif x = s\]
+Ciò è vero in quanto la serie converge, e per la condizione necessaria vista in precedenza,
+\[\lim_{n \to +\infty} a_n = 0\]
+Pertanto, studiando l'integrale
+\[\int_1^b f(x) \dif x\]
+presa la parte intera di $b$, ossia $[b]=n$, essendo $b < n+1$ (in quanto la sua parte intera è $n$), si evince che 
+\[\int_1^b f(x) \dif x = \int_1^n f(x) \dif x + \int_n^b f(x) \dif x\]
+Dovendo studiare il limite per $b \to + \infty$ di tale integrale, è molto utile scomporlo in questo modo. Così facendo, siccome la serie converge, si ha che
+\[\lim_{n \to +\infty} \int_1^n f(x) \dif x = s\]
+mentre
+\[\left \vert \int_n^b f(x) \dif x \right \vert = \left \vert a_n \cdot (b-n) \right \vert \leq \left \vert a_n \right \vert\]
+in quanto $b<n+1$, per cui $b-n<1$, essendo $[b]=n$. Ma siccome la serie converge, allora il limite del termine generale è $0$, quindi
+\[\lim_{n \to +\infty} \int_n^b f(x) \dif x \leq \lim_{n \to +\infty} a_n = 0\]
+per cui, per la linearità del limite, si ha
+\[\lim_{n \to +\infty} \int_1^b f(x) \dif x = \lim_{n \to +\infty} \int_1^n f(x) \dif x + \lim_{n \to +\infty} \int_n^b f(x) \dif x = s+0=s\]
 come esposto da teorema seguente:
 
-\vspace{1em}
+\vspace{2em}
 \noindent
 \begin{theorem}
-    Sia $a_1+a_2+...$ una serie e sia $f$ la funzione precedentemente descritta, allora $f$ è integrabile in senso generalizzato su $[1,+\infty[$ se e solo se la serie converge... continua...
+    Sia $a_1+a_2+\dots+a_n$ una serie e sia $f$ la funzione associata definita come
+    \[f(x)=a_n \hspace{1em} \text{ se } \hspace{1em} x \in [n,n+1[, \hspace{1em} \forall n \geq 1\]
+    allora $f$ è integrabile in senso generalizzato sull'intervallo $[1,+\infty[$ \textbf{se e solo} se la serie converge. In questo caso si ha che la somma della serie è uguale al valore dell'integrale generalizzato, per cui
+    \[\sum_{n=1}^{+\infty} a_n = \int_1^{+\infty} f(x) \dif x\]
 \end{theorem}
 
 \vspace{1em}
 \noindent
-\textbf{Osservazione}: Se si considera la funzione
+\textbf{Osservazione}: Tale risultato è fondamentale per studiare il carattere della serie armonica. Infatti, se si considera la funzione
 \[g(x)=\frac{1}{x}\]
-allora, sapendo che
-\[g(x) \leq f(x), \forall x \in [1,+\infty[\]
-in quanto $f$ è la funzione a tratti precedentemente definita. Per cui, siccome $g(x)$ non è integrabile, non lo è nemmeno la $f$ (per il teorema del confronto degli integrali generalizzati), pertanto la serie
+essa non è integrabile in senso generalizzato sull'intervallo $[1,+\infty[$. Allora, presa $f(x)$ la funzione definita a tratti rispetto alla serie armonica, è facle capire che
+\[g(x) \leq f(x), \hspace{1em} \forall x \in [1,+\infty[\]
+Dal momento che $g(x)$ non è integrabile, non lo è nemmeno la $f$ (per il teorema del confronto degli integrali generalizzati).\\
+Ma siccome, per il teorema precedentemente esposto, è noto che una serie converge se e solo se la funzione $f$ ad essa associata converge, si capisce immediatamente che la serie
 \[\sum_{n=1}^{+\infty} \frac{1}{n}\]
-per il teorema precedentemente esposto, non converge.
+non converge. Essendo una serie a termini positivi, per l'aut-aut si vedrà immediatamente che, non convergendo, dovrà necessariamente essere divergente a $+\infty$.
 
 \vspace{1em}
 \noindent
 \subsubsection{Serie armonica generalizzata}
 È noto che la serie armonica non converge. Non sorprende, però, sapere che tale serie è divergente a $+\infty$, ovvero
-\[\sum{n=1}^{+\infty} \frac{1}{n} = + \infty\]
-Pertanto, se si considera
-\[\sum{n=1}^{+\infty} \frac{1}{\sqrt{n}}\]
-essa è necessariamente
+\[\sum_{n=1}^{+\infty} \frac{1}{n} = + \infty\]
+come conseguenza diretta dell'aut-aut. Pertanto, se si considera
+\[\sum_{n=1}^{+\infty} \frac{1}{\sqrt{n}}\]
+è evidente capire che
 \[\frac{1}{\sqrt{n}} \geq \frac{1}{n}, \hspace{1em} \forall n \geq 1\]
 per cui, per il teorema del confronto, diverge a $+\infty$. Ciò risulta vero per ogni
-\[\frac{1}{n^\alpha} \geq \frac{1}{n}, \forall n \geq 1 \hspace{1em} \text{ se } 0 < \alpha \leq 1\]
-In generale, tuttavia, sappiamo
-\[\int_1^{+\infty} \frac{1}{x^\alpha} \cdot dx = \left[\frac{1}{-\alpha+1} \cdot x^{-\alpha+1}\right]_1^{+\infty} = \frac{1}{\alpha-1}\]
-Tuttavia, impiegando la funzione definita in precedenza (da $n$ a $n+1$), siccome sarà maggiore di $g(x)=\frac{1}{x^2}$, non è possibile stabilire se essa sia integrabile o meno.\\
+\[\frac{1}{n^\alpha} \geq \frac{1}{n},\hspace{1em} \forall n \geq 1 \hspace{1em} \text{ se } 0 < \alpha \leq 1\]
+Nel caso $\alpha > 1$, invece, è possibile studiare l'integrale generalizzato associato, da cui:
+\[\int_1^{+\infty} \frac{1}{x^\alpha} \dif x = \left[\frac{1}{-\alpha+1} \cdot x^{-\alpha+1}\right]_1^{+\infty} = \frac{1}{\alpha-1}\]
+Tuttavia, ciò non risulta essere sufficiente per dimostrare che la serie converge. Infatti, in questo caso, si è studiato l'integrale generalizzato di una funzione $g(x)$, ben diversa dalla funzione $f$ definita a tratti in precedenza.\\
+Se ora si impiegasse la funzione $f$ definita in precedenza (da $n$ a $n+1$), siccome essa sarà inevitabilmente maggiore della funzione $g$ (di cui è nota l'integrabilità), ovvero $f(x) \geq g(x)$, non è possibile stabilire se essa sia integrabile o meno tramite il criterio del confronto per l'integrale generalizzato.\\
 Per tale ragione si definisce
 \[h(x)=a_n \hspace{1em} \text{ se } \hspace{1em} x \in ]n-1,n]\]
-allora
-\[\int_{n-1}^n h(x) \cdot dx = a_n\]
+tale per cui $h(x) \leq g(x), \hspace{0.5em} \forall n \geq 1$. Allora è noto che
+\[\int_{n-1}^n h(x) \dif x = a_n\]
 Da ciò segue che
-\[\int_1^{+\infty}=a_2+a_3+...+=\sum_{n=2}^{+\infty} a_n\]
-Pertanto, siccome
-\[\sum_{n=2}^{+\infty} \frac{1}{n^2} = \int_1^{+\infty} h(x) \cdot dx \leq \int_1^{+\infty} \frac{1}{x^2} \cdot dx = 1\]
-ciò permette di concludere che la serie armonica generalizzata
-\[\sum_{n=1}^{+\infty} \frac{1}{n^\alpha} \frac{1}{n^\alpha}\]
-con $\alpha>0$ è divergente a $+\infty$ se $\alpha \in ]0,1]$, è convergente se $\alpha>1$ con somma
-\[s \leq 1 + \frac{1}{\alpha - 1} = \frac{\alpha}{\alpha-1}\]
-dal momento che l'integrale
-\[\int_1^{+\infty} h(x) \cdot dx = \sum_{n=2}^{+\infty} \frac{1}{n^\alpha} \hspace{1em} \text{ ovvero } \hspace{1em} \sum_{n=1}^{+\infty}  \cdot dx = 1 +\]
+\[\int_1^{+\infty} h(x) \dif x=a_2+a_3+\dots=\sum_{n=2}^{+\infty} a_n\]
+che parte da $n=2$, per come è stata definita $h(x)$. Pertanto, si ha che
+\[\int_1^{+\infty} h(x) \dif x \leq \int_1^{+\infty} \frac{1}{x^\alpha} \dif x = \frac{1}{\alpha-1}\]
+e quindi, per il teorema del confronto dell'integrale generalizzato, la funzione $h$ è integrabile. Inoltre, per il teorema precedentemente esposto, siccome la funzione $h$ associata alla serie è integrabile, la serie armonica generalizza converge; non solo, la somma della serie è
+\[\sum_{n=1}^{+\infty} \frac{1}{n^\alpha} \leq \frac{1}{\alpha-1}+1\]
 
+% Tabella per le definizione di concetti, etc...
 \vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{COMPORTAMENTO DELLA SERIE ARMONICA GENERALIZZATA}}\\
+    \parbox{\linewidth}{La serie armonica generalizzata
+    \[\sum_{n=1}^{+\infty} \frac{1}{n^\alpha}\]
+    con $\alpha>$ è
+    \begin{itemize}
+        \item divergente a $+\infty$ se $\alpha \in ]0,1]$
+        \item convergente se $\alpha>1$ con somma
+        \[s \leq 1 + \frac{1}{\alpha - 1} = \frac{\alpha}{\alpha-1}\]
+        dal momento che l'integrale
+        \[\int_1^{+\infty} h(x) \dif x = \sum_{n=2}^{+\infty} \frac{1}{n^\alpha} \hspace{1em} \text{ in particolare } \hspace{1em} \int_1^{+\infty} \frac{1}{x^\alpha} = \frac{1}{\alpha-1} \geq \sum_{n=2}^{+\infty} \frac{1}{n^\alpha}\]
+        e siccome parte da $n=2$, è necessario aggiungere $1$, da cui la disuguaglianza esposta.
+    \end{itemize}
+    \vspace{1mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{2em}
 \noindent
 \textbf{Esercizio 1}: Si consideri la serie
 \[\sum_{n=2}^{+\infty} \frac{1}{\log(n)}\]
 che, ovviamente, diverge in quanto
-\[\frac{1}{\log(n)} \geq \frac{1}{n}\]
-e siccome $\frac{1}{n}$ diverge, per il teorema del confronto, diverge anche $\frac{1}{\log(n)}$.
+\[\frac{1}{\log(n)} \geq \frac{1}{n}, \hspace{1em} \forall n \geq e\]
+e siccome $\dfrac{1}{n}$ diverge, per il teorema del confronto, diverge anche $\dfrac{1}{\log(n)}$.
 
-\vspace{1em}
+\vspace{2em}
 \noindent
 \textbf{Esercizio 2}: Si consideri la serie
 \[\sum_{n=1}^{+\infty} \frac{1}{n \cdot (\log(n))^\alpha}\]
 Per capire se essa diverga o meno, si considera l'integrale
-\[\]
-... continua ...
+\[\int_1^{+\infty} \frac{1}{n \cdot (\log(n))^\alpha} \dif x = \lim_{b \to +\infty} \int_1^b \frac{1}{n \cdot (\log(n))^\alpha} \dif x = \lim_{b \to +\infty} \left[\frac{1}{-\alpha+1} \log^{-\alpha+1}(x)\right]_1^b\]
+in cui
+\begin{itemize}
+    \item se $\alpha > 1$, allora la funzione non è integrabile in senso generalizzato;
+    \item se $\alpha = 1$, l'integrale è nullo e la funzione è integrabile in senso generalizzato.
+\end{itemize}
+
+\vspace{2em}
+\noindent
+\textbf{Esercizio 3}: Si consideri la serie
+\[\sum_{n=2}^{+\infty} \frac{\arctan(n^2)}{n \cdot \sqrt{n}}\]
+È ovvio che il numeratore è limitato, in quanto
+\[\arctan(n^2) \leq \frac{\pi}{2}, \hspace{1em} \forall n\]
+e quindi si evince che
+\[\left \vert \frac{\arctan(n^2)}{n \cdot \sqrt{n}} \right \vert \leq \frac{\pi}{2} \frac{1}{n \cdot \sqrt{n}}\]
+ove
+\[\sum_{n=2}^{+\infty}  \frac{1}{n \cdot \sqrt{n}}\]
+è una serie armonica generalizzata di ragione $\dfrac{3}{2} > 1$ che converge. Per il criterio del confronto per le serie, anche la serie di partenza converge.
 
 \vspace{1em}
 \noindent
 \subsection{Serie a termini (reali) positivi}
-Si consideri $a_n \geq 0, \forall n$ (anche se sarebbe sufficiente \textbf{definitivamente}, ossia da un certo $n$ in poi), per il \textbf{teorema dell'Aut-Aut}, o converge, o diverge.\\
-Ciò spiega perché la serie armonica diverga a $+\infty$, in quanto si è dimostrato che non converge.\\
-Il teorema dell'Aut-Aut si aggiunge al teorema del confronto
+Si consideri una serie a termini (reali) positivi, tale che $a_n \geq 0, \forall n$ (anche se sarebbe sufficiente \textbf{definitivamente}, ossia da un certo $n$ in poi).\\
+Allora, per il \textbf{teorema dell'Aut-Aut}, tale serie o converge, o diverge, ma non può essere indeterminata.\\
+Ciò spiega perché la serie armonica diverga a $+\infty$, in quanto si è dimostrato che non converge ed è una serie a termini (reali) positivi; naturalmente, il teorema dell'Aut-Aut si aggiunge al teorema del confronto.\\
+Un altro importante criterio è l'ordine di infinitesimo che, tuttavia, non risulta efficace quando si considerano serie il cui termine generale presenta un ordine infrareale, ossia maggiore di $\alpha$, ma più piccolo di $\alpha+\epsilon, \hspace{0.5em} \forall \epsilon > 0$.
 
 \newpage
 \noindent
@@ -635,7 +698,7 @@ Tuttavia, sapere che $\text{ord } a_n > 1$ non fornisce informazioni
 \textbf{Esercizio 3}: La serie
 \[\sum \log \left(1-\frac{1}{n}\right)\]
 non converge. La serie è a termini negativi, tuttavia si può fare
-\[-\lim_{n \to +\infty} -\frac{\log \left(1-\frac{1}{n}}{\frac{1}{n}}=1\]
+\[-\lim_{n \to +\infty} -\frac{\log \left(1-\frac{1}{n}\right)}{\frac{1}{n}}=1\]
 per cui $\text{ord } a_n = 1$.
 
 \vspace{1em}
@@ -655,9 +718,735 @@ per $n > e^3$, ma l'importante è che accada definitivamente, per cui la serie c
 \vspace{1em}
 \noindent
 \textbf{Esercizio 6}: La serie
-\[\sum \frac{2^n}{(\log(n))^n} = \sum \left(\frac{2}{\log(n)}\right)^n\]
+\[\sum \]
+
+\vspace{1em}
+\noindent
+\subsection{Criterio del rapporto}
+Presa una serie a termini positivi, ma non nulli (in quanto bisogna dividere per il termine $a_n$), per cui $a_n>0$, come la seguente
+\[\sum_{n=0}^{+\infty} a_n\]
+tale per cui
+\[\exists \lim_{n \to +\infty} \frac{a_{n+1}}{a_n} = k\]
+Allora
+\begin{itemize}
+    \item se $k < 1$ la serie converge
+    \item se $k = 1$ la serie diverge
+    \item se $k > 1$ non è possibile dire nulla in merito al carattere della serie
+\end{itemize}
+
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione 1}: Si consideri 
+\[\lim_{n \to +\infty} \frac{a_{n+1}}{a_n}=k\]
+con $k<1$. Allora, per la definizione di limite
+\[\exists \epsilon > 0, \exists n_\epsilon \in \mathbb{N} \vert \forall n > n_\epsilon, k - \epsilon < \frac{a_{n+1}}{a_n} < k+\epsilon\]
+preso un $\epsilon$ sufficientemente piccolo
+\[\frac{a_{n+1}}{a_n} < k+\epsilon < 1 \hspace{1em} \rightarrow \hspace{1em} a_{n+1} < (k+\epsilon) \cdot a_n\]
+E avendo supposto $a_n>0$, è ovvio che
+\[0 < a_n < \dots\]
+senza perdita di generalità (in quanto si richiederebbe $\forall n > n_\epsilon$), è possibile supporre che
+\[a_{n+1} < (k+\epsilon) \cdot a_n, \forall n\]
+per cui, si ha che
+\[a_n < (k+\epsilon)^n \cdot a_0\]
+e, quindi, essendo $a_0$ costante, per il teorema del confronto, la serie
+\[\sum_{n=1}^{+\infty}\]
+converge.
+
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione 2}: Si consideri 
+\[\lim_{n \to +\infty} \frac{a_{n+1}}{a_n}=k\]
+con $k>1$. ... continua ... Allora, per la definizione di limite
+\[\exists \epsilon > 0, \exists n_\epsilon \in \mathbb{N} \vert \forall n > n_\epsilon, k - \epsilon < \frac{a_{n+1}}{a_n} < k+\epsilon\]
+preso un $\epsilon$ sufficientemente piccolo
+\[\frac{a_{n+1}}{a_n} < k+\epsilon < 1 \hspace{1em} \rightarrow \hspace{1em} a_{n+1} < (k+\epsilon) \cdot a_n\]
+E avendo supposto $a_n>0$, è ovvio che
+\[0 < a_n < \dots\]
+senza perdita di generalità (in quanto si richiederebbe $\forall n > n_\epsilon$), è possibile supporre che
+\[a_{n+1} < (k+\epsilon) \cdot a_n, \forall n\]
+per cui, si ha che
+\[a_n < (k+\epsilon)^n \cdot a_0\]
+e, quindi, essendo $a_0$ costante, per il teorema del confronto, la serie
+\[\sum_{n=1}^{+\infty}\]
+converge.
+
+\vspace{1em}
+\noindent
+\textbf{Esempio}: Si consideri la serie
+\[\sum_{n=1}^{+\infty} \frac{n^n}{(n!)^2}\]
+Allora, applicando il teorema del rapporto
+\[\frac{a_{n+1}}{a_n} = \frac{\frac{(n+1)^{n+1}}{[(n+1)!]^2}}{\frac{n^n}{(n!)^2}}\]
+Che può essere riscritto come
+\[\lim_{n \to +\infty} (n+1) \cdot \left(\frac{n+1}{n}\right)^n \cdot \frac{(n!)^2}{(n+1)^2 \cdot (n!)^2} = 0\]
+e siccome $0<1$, la serie converge. Non solo, siccome la serie converge, la successione delle somme parziali è infinitesima.
+
+\vspace{1em}
+\noindent
+\subsection{Criterio della radice $n$-esima}
+Sia una serie a termini positivi, con $a_n \geq 0, \forall n$ (anche se sarebbe sufficiente richiederlo definitivamente). Supposto che esiste
+\[\lim_{n \to +\infty} \left(\sqrt[n]{a_n}\right)=l\]
+Allora si considerano le seguenti casistiche
+\begin{itemize}
+    \item se $l>1$ la serie diverge
+    \item se $l<1$ la serie converge
+    \item se $l=1$ non si può dire nulla sul carattere della serie
+\end{itemize}
+
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione 1}: Si consideri il caso in cui 
+\[\lim_{n \to +\infty} \left(\sqrt[n]{a_n}\right)=l\]
+com $l>1$, per la definizione di limite
+\[\forall \epsilon > 0, \exists n_\epsilon \in \mathbb{N} \vert \forall n > n_\epsilon, \left \vert \sqrt[n]{a_n} - l \right \vert < \epsilon\]
+da cui $\sqrt[n]{a_n} > l - \epsilon$, per cui posto $\epsilon = 1$ si ha che, definitivamente $a_n>1$ e quindi la serie non può convergere.
+
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione 2}: Si consideri il caso in cui 
+\[\lim_{n \to +\infty} \left(\sqrt[n]{a_n}\right)=l\]
+com $l<1$, per la definizione di limite
+\[\forall \epsilon > 0, \exists n_\epsilon \in \mathbb{N} \vert \forall n > n_\epsilon, \left \vert \sqrt[n]{a_n} - l \right \vert < \epsilon\]
+e, prendendo $0 < \epsilon < 1-l$, si evince che
+\[\sqrt[n]{a_n} < l+\epsilon < 1 \hspace{1em} \rightarrow \hspace{1em} a_n < (l+\epsilon)^n\]
+e siccome si è preso $\vert q \vert < 1$, per confronto con la serie converge.
+
+\vspace{1em}
+\noindent
+\textbf{Esempio}: Si consideri la serie seguente
+\[\sum_{n=1}^{+\infty} \frac{1}{n^2}\]
+applicando il criterio del rapporto si ha
+\[\lim_{n \to +\infty} \frac{n^2}{(n+1)^2} = 1\]
+per cui per tale criterio non è possibile dire nulla, ma è noto che la serie converge.\\
+Analogamente si ha che il carattere della serie
+\[\sum_{n=1}^{+\infty} \frac{1}{n}\]
+non può essere determinato con il criterio del rapporto, in quanto
+\[\lim_{n \to +\infty} \frac{n}{n+1} = 1\]
+ma è noto che tale serie diverge.
+
+\vspace{1em}
+\noindent
+\subsection{Serie a termini qualsiasi}
+Se si considera una serie a termine generale qualsiasi
+\[\sum a_n, \hspace{1em} \text{ con } \hspace{1em} a_n \in \mathbb{C}\]
+non è possibile dire molto sul suo carattere. Tuttavia, ad essa è possibile associare la serie
+\[\sum \vert a_n \vert\]
+che è una serie a termine generale positivo. Da ciò segue anche la definizione di \textbf{serie assolutamente convergente}:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{SERIE ASSOLUTAMENTE CONVERGENTE}}\\
+    \parbox{\linewidth}{Una serie
+    \[\sum a_n\]
+    si dice \textbf{assolutamente convergente}, se è convergente la serie
+    \[\sum \vert a_n \vert\]
+    \vspace{-1mm}}\\
+    \hline
+\end{tabularx}
+
+\begin{theorem}
+    Una serie assolutamente convergente è convergente.
+\end{theorem}
+
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Si consideri il caso in cui $a_n \in \mathbb{R}$, allora, per definizione di parte positiva e parte negativa si ha
+\[a_n^+ = \left\{\begin{array}{lll}
+    a_n & \text{se} & a_n \geq 0\\
+    0   & \text{se} & a_n < 0\\
+\end{array}
+\right.\]
+\[a_n^- = \left\{\begin{array}{lll}
+    -a_n & \text{se} & a_n < 0\\
+    0    & \text{se} & a_n \geq 0\\
+\end{array}
+\right.\]
+ma ciò significa che $a_n=a_n^+-a_n^-$, mentre $\vert a_n \vert a_n^+ + a_n^-$, ma è ance vero che
+\[0 \leq a_n^+ \leq \vert a_n \vert\]
+\[0 \leq a_n^- \leq \vert a_n \vert\]
+
+\vspace{1em}
+\noindent
+Se si considera un numero complesso 
+Ma ciò significa
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Tuttavia, non è vero il viceversa, come nel caso della \textbf{serie di Leibniz}... continua ...
+
+\vspace{1em}
+\noindent
+\subsection{Limiti di successioni in $\mathbb{C}$}
+Sia $(z_n)_n$ una successione in $\mathbb{C}$, con $\gamma \in \mathbb{C}$, si dirà che
+\[\lim_{n \to +\infty} z_n = \gamma\]
+se
+\[\forall \epsilon > 0, \exists n_\epsilon \in \mathbb{N} \vert \forall n \geq n_\epsilon, \vert z_n - \gamma \vert < \epsilon\]
+in cui è da intendersi $\vert \dots \vert$ come modulo di un numero complesso. Un numero complesso può essere descritto come $z=x+iy$, con $z,y \in \mathbb{R}$: esiste una relazione tra la successione di un numero complesso e la successione della sua parte reale e immaginaria, esposta dal seguente teorema:
+
+\begin{theorem}
+    La successione $(z_n)_n$, posto $z_n=x_n+i \cdot y_n$ converge a $\gamma = \alpha + i \beta$ \textbf{se e solo se}
+    \[\lim_{n \to +\infty} x_n = \alpha \hspace{1em} \text{ e } \hspace{1em} \lim_{n \to + \infty} y_n = \beta\]
+\end{theorem}
+
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione 1}: Dalla definizione di modulo, si ha che
+\[\vert x_n - \gamma \vert = \sqrt{(x_n-\alpha)^2+(y_n-\beta)^2}\]
+Da ciò appare evidente che
+\[\vert x_n - \alpha \vert \leq \vert z_n - \gamma \vert\]
+\[\vert y_n - \beta  \vert \leq \vert z_n - \gamma \vert\]
+
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione 2}: ... continua ... Dalla definizione di modulo, si ha che
+\[\vert x_n - \gamma \vert = \sqrt{(x_n-\alpha)^2+(y_n-\beta)^2}\]
+Da ciò appare evidente che
+\[\vert x_n - \alpha \vert \leq \vert z_n - \gamma \vert\]
+\[\vert y_n - \beta  \vert \leq \vert z_n - \gamma \vert\]
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Dal momento che le serie sono particolari successioni, tali risultati si applicano in modo identico. Per cui una serie a termini complessi
+\[\sum_{n=0}^{+\infty} z_n\]
+converge \textbf{se e solo se} convergono le serie
+\[\sum_{n=0}^{+\infty} \text{Re}(z_n) \hspace{1em} \text{e} \hspace{1em} \sum_{n=0}^{+\infty} \text{Im}(z_n)\]
+e si ha
+\[\sum_{n=0}^{+\infty} z_n = \sum_{n=0}^{+\infty} \text{Re}(z_n) + i \sum_{n=0}^{+\infty} \text{Im}(z_n)\]
+
+\newpage
+\begin{center}
+    10 Ottobre 2022
+\end{center}
+Le serie numeriche sono delle coppie di successioni: una è la successione dei termini generali, l'altra è la successione delle somme parziali.\\
+Se una successione è convergente, allora il suo termine generale è infinitesimo. Una serie può essere sempre pensata come un integrale generalizzato.\\
+Le serie a termini (reali) positivi sono le serie più facili da studiare, in forza del teorema dell'aut-aut.\\
+Il criterio di convergenza più importante è il criterio dell'ordine di infinitesimo, a cui si aggiunge il criterio del rapporto e il criterio della radice $n$-esima.\\
+Tuttavia, se una serie non è a termini (reali) positivi, si può associare ad essa la serie dei suoi moduli, che è a termini positivi, quindi più facile da studiare. Una serie si dice assolutamente convergente se la serie dei suoi moduli è convergente.\\
+Serie non assolutamente convergenti vengono chiamate serie \textbf{semplicemente convergenti}.
+
+\vspace{1em}
+\subsection{Serie semplicemente convergenti}
+
+\vspace{1em}
+\noindent
+\subsubsection{Criterio di Leibniz per le serie a termini alterni}
+Si consideri $(a_n)_n$ una successione a termini reali, con $a_n \in \mathbb{R}$, tale che
+\begin{itemize}
+    \item $a_n > 0, \hspace{0.5em} \forall n \in \mathbb{N}$
+    \item $a_{n+1} \leq a_n, \hspace{0.5em} \forall n \in \mathbb{N}$
+    \item il termine $a_n$ deve essere infinitesimo:
+    \[\lim_{n \to +\infty} a_n = 0\]
+\end{itemize}
+Allora la serie costruita come
+\[\sum_{n=0}^{+\infty} (-1)^n \cdot a_n\]
+converge.
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Si consideri la ridotta $n$-esima $s_n$. Posto $k \in \mathbb{N}$ tale per cui $k \geq 0$, allora studiando la sottosuccessione dei termini pari e quella dei termini dispari, si ha
+\begin{enumerate}
+    \item $s_{2k+2} = s_{2k} - a_{2k+1} + a_{2k+2} = s_{2k} - (a_{2k+1}-a_{2k+2}) \leq s_{2k}$
+    essendo, per ipotesi, $a_{n+1} \leq a_n$, e quindi si ha che $a_{2k+1}-a_{2k+2} \geq 0$.\\
+    Per tale ragione, tale sottosuccessione è \textbf{monotona decrescente}.
+
+    \item $s_{2k+3} = s_{2k+1} + a_{2k+2} - a_{2k+3} = s_{2k+1} + (a_{2k+2}-a_{2k+3}) \geq s_{2k+1}$
+    essendo, per ipotesi, $a_{n+1} \leq a_n$, e quindi si ha che $a_{2k+2}-a_{2k+3} \geq 0$.\\
+    Per tale ragione, tale sottosuccessione è \textbf{monotona crescente}.
+\end{enumerate}
+È noto, per ipotesi, che
+\[s_{2k+1} - s_{2k} = (-1)^{2k+1} \cdot a_{2k+1} = -a_{2k+1} \leq 0 \hspace{1em} \text{ e quindi } s_{2k+1} \leq s_{2k}, \hspace{1em} \forall k \geq 0\]
+ciò significa che, per ogni $n$, la ridotta pari è maggiore della ridotta dispari, rimbalzando progressivamente attorno al limite delle due sottosuccessioni.\\
+Dalle disuguaglianze di cui sopra si ha che
+\begin{align}
+    s_{2k} \geq s_{2k+1} \geq s_1 = a_0-a_1 & \forall k > 0\\
+    s_{2k+1} \leq s_{2k} \leq s_2 = a_0-a_1+a_2 & \forall k > 0
+\end{align}
+Essendo le due sottosuccessioni, decrescente e crescente, rispettivamente limitata dal basso e dall'alto, esiste per entrambe un limite finito:
+\[\lim_{k \to +\infty} s_{2k} = \beta \hspace{1em} \text{e} \hspace{1em} \lim_{k \to + \infty} s_{sk+1} = \alpha\]
+e, per il teorema del confronto dei limiti, si ha che $\alpha \leq \beta$.\\
+Essendo il termine $a_n$ infinitesimo, si ha che
+\[0 = \lim_{n \to +\infty} a_n = \lim_{k \to +\infty} a_{2k+1} = \lim_{k \to +\infty} s_{2k} - s_{sk+1} = \alpha - \beta = 0\]
+Dal momento che le sottosuccessioni sono complementari, la serie di partenza converge.
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Inoltre, detta $s$ la somma della serie, si ha che
+\[\forall n \hspace{1em} \left \vert s_n-s \right \vert \leq a_{n+1}\]
+secondo la cosiddetta \textbf{formula di approssimazione}. Tale formula funziona in quanto
+\begin{itemize}
+    \item se $n$ è dispari
+    \[s-s_{2k+1} \leq s_{2k+2} - s_{sk+1} = a_{2k+1} + a_{2k+1} - s_{2k+1} = a_{2k+2} = a_{(2k+1)+1}= a_{n+1}\]
+    
+    \item se $n$ è pari
+    \[s_{2k}-s \leq s_{2k} - s_{2k+1} = a_{2k+1} = a_{n+1}\]
+\end{itemize}
+
+\vspace{1em}
+\noindent
+\textbf{Esempio}: Si consideri la serie di Leibniz:
+\[\sum_{n=1}^{+\infty} (-1)^n \frac{1}{n} = s\]
+Allora, per conoscere la somma della serie con un errore di $\dfrac{1}{10}$, è sufficiente  considerare
+\[s_9 = -1 + \frac{1}{2} - \frac{1}{3} + \dots - \frac{1}{9}\]
+
+\vspace{1em}
+\noindent
+\textbf{Esercizio 1}: Si consideri la serie seguente
+\[\sum_{n=1}^{+\infty} (-1)^n \cdot \frac{\log_{10}(n)}{n}\]
+Si controlli se sono verificate le condizioni seguenti
+\begin{itemize}
+    \item Si ha che
+    \[\frac{\log_{10}(n)}{n} > 0 \hspace{1em} \forall n \geq 2\]
+
+    \item Si ha che
+    \[\lim_{n \to +\infty} a_n = \lim_{n \to +\infty} \frac{\log_{10}(n)}{n} = 0\]
+
+    \item La successione
+    \[\frac{\log_{10}(n)}{n}\]
+    è decrescente?
+\end{itemize}
+Per verificare l'ultimo punto, si considera la funzione
+\[f(x) = \frac{\log_{10}(x)}{x}\]
+e se ne calcola la derivata, da cui
+\[f'(x) = \frac{\frac{1}{x \cdot \log(10)} \cdot x - \log_{10}(x) \cdot 1}{x^2}\]
+Se ne studia il segno, che dipende solamente dal numeratore, da cui
+\[\frac{1}{x \cdot \log(10)} \cdot x - \log_{10}(x) \cdot 1 > 0 \hspace{1em} \rightarrow \hspace{1em} \log_{10}(x) < \frac{1}{\log(10)} \hspace{1em} \rightarrow \hspace{1em} x < 10^{\log(10)}\]
+Per cui per $x > 10^{\log(10)}$, la funzione è decrescente. Per tale ragione, la serie
+\[\sum_{n=3}^{+\infty} \frac{\log_{10}(n)}{n}\]
+converge ad $s$. Tuttavia, non è possibile applicare la formula di approssimazione, in quanto le condizioni di Leibniz non sono soddisfatte per tutti gli $n$.
+
+\vspace{1em}
+\noindent
+\textbf{Esercizio 2}: Si consideri la serie seguente
+\[\sum_{n=0}^{+\infty} \frac{\sin \left(\frac{\pi}{3} \cdot (1+3n)\right)}{1+3n}\]
+che, in prima approssimazione, sembra non essere assolutamente convergente, in quanto il suo comportamento asintotico risulta essere simile a quello della serie armonica.\\
+Per verificare se essa sia convergente semplicemente, si verifica se essa soddisfa le tre condizioni di Leibniz; riscrivendo il termine generale si ha
+\[\sin \left(\frac{\pi}{3} + 3 n\right) = -\sin\left(\frac{\pi}{3}\right) = (-1)^n \cdot \frac{\sqrt{3}}{2}\]
+Ecco, quindi, che la serie può essere riscritta come
+\[\sum_{n=0}^{+\infty} (-1)^n \cdot \underbrace{\frac{\frac{\sqrt{3}}{2}}{1+3n}}_{a_n}\]
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Si presti particolare attenzione che, in questo ultimo caso, è stato fondamentale riscrivere il termine generale, mettendo in evidenza il fattore $(-1)^n$, in quanto per verificare le $3$ ipotesi del criterio di Leibniz, bisogna studiare il termine
+\[\frac{\frac{\sqrt{3}}{2}}{1+3n}\]
+che risulta essere
+\begin{enumerate}
+    \item a termini positivi
+    \item infinitesimo
+    \item decrescente
+\end{enumerate}
+Se ne evince che la serie di partenza è convergente per Leibniz.
+
+\vspace{1em}
+\noindent
+\textbf{Esercizio}: Si consideri la seguente serie, posto $\alpha \in \mathbb{R}$
+\[\sum_{n=1}^{+\infty} \frac{\alpha^n + (-5)^n}{2^n} \cdot \sin \left(\pi + \frac{1}{n}\right)\]
+Il seno può essere riscritto come
+\[\sin \left(\pi + \frac{1}{n}\right) = - \sin \left(\frac{1}{n}\right)\]
+Pertanto si ottiene
+\[\sum_{n=1}^{+\infty} - \frac{\alpha^n+(-5)^n}{5^n} \cdot \sin \left(\frac{1}{n}\right)\]
+Tuttavia, si può osservare immediatamente che se $\left \vert \alpha \right \vert > 5$, la serie non converge in quanto il termine generale non è infinitesimo. Se $\alpha=-5$, si ottiene il termine generale
+\[- \frac{2 \cdot (-1)^n \cdot 5^n}{5^n} \cdot \sin \left(\frac{1}{n}\right) = -2 \cdot (-1)^n \cdot \sin \left(\frac{1}{n} \right)\]
+in cui il termine
+\[\sin \left(\frac{1}{n} \right)\]
+soddisfa le $3$ condizioni di Leibniz, quindi la serie di partenza converge.\\
+Nel caso in cui $\alpha=5$, si ottiene
+\[- \frac{5^n + (-1)^n \cdot 5^n}{5^n} \cdot \sin\]
+... continua ...
+
+\vspace{1em}
+\noindent
+Nel caso in cui $\vert \alpha \vert < 5$, spezzando la frazione si ottiene
+\[\left(\frac{\alpha}{5}\right)^n \cdot \left(-\sin \left( \frac{1}{n}\right)\right) + (-1)^n \cdot \sin \left(\frac{1}{n}\right)\]
+in cui la prima converge, se confrontata con la geometrica, e anche la seconda converge per Leibniz.
+
+\vspace{1em}
+\noindent
+\subsection{Successione di Couchy}
+Di seguito si espone la definizione di \textbf{successione di Couchy}:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{SUCCESSIONE DI COUCHY}}\\
+    \parbox{\linewidth}{Sia $(z_n)_n$ una successione in $\mathbb{C}$, si dirà che $(z_n)_n$ è una successione di Couchy se
+    \[\forall \epsilon > 0, \exists n_\epsilon \in \mathbb{N \hspace{0.5em}} \vert \hspace{0.5em} \forall n \geq n_\epsilon, \forall p \in \mathbb{N} \rightarrow \left \vert z_{n+p} - z_n \right \vert < \epsilon\]
+    \vspace{-3mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione}: Si osservi che se esiste finito
+\[\lim_{n \to +\infty} z_n = l\]
+allora la successione è di Couchy.
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Fissato $\epsilon > 0, \exists n \epsilon \in \mathbb{N}$ tale che $\forall n \geq n_\epsilon$, si ha che
+\[\left \vert z_n - l \right \vert < \frac{\epsilon}{2}\]
+Allora, $\forall n \geq n_\epsilon$, $\forall p \in \mathbb{N}$, si ottiene
+\[\left \vert z_{n+p} - z_n \right \vert \leq \left \vert z_{n+p} - l\right \vert + \left \vert l - z_n\right \vert < \epsilon\]
+
+\vspace{1em}
+\noindent
+\begin{theorem}
+    Ogni successione di Couchy in $\mathbb{C}$ (o in $\mathbb{R}$) è convergente.
+\end{theorem}
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione}: Per le serie $(s_n)_n$, si ha che
+\[\left \vert \sum_{k=0}^{n+p} a_k - \sum_{k=0}^n a_k \right \vert < \epsilon \hspace{1em} \rightarrow \hspace{1em} \left \vert \sum_{k=n+1}^{n+p} a_k \right \vert\]
+
+\vspace{1em}
+\noindent
+\subsection{Criterio di Cauchy per la convergenza di una serie}
+Una serie
+\[\sum a_n\]
+converge \textbf{se e solo se} $\forall \epsilon > 0, \exists n_\epsilon \in \mathbb{N}$ tale che $\forall n \geq n_\epsilon$ e $\forall p \in \mathbb{N}$ vale
+\[\left \vert \sum_{k=n+1}^{n+p} a_k \right \vert < \epsilon\]
+
+\newpage
+\section{Successioni e serie di funzioni}
+Di seguito si introduce l'importante tema delle successioni e delle serie di funzioni, in cui.
+
+\vspace{1em}
+\subsection{Successioni di funzioni}
+Se, per esempio, si introduce una successione di funzioni come la seguente
+\[f_n(x) = x^n\]
+si ottiene
+\begin{enumerate}
+    \item $f_0(x)=1$
+    \item $f_1(x)=x$
+    \item $f_2(x)=x^2$
+    \item $f_3(x)=x^3$
+\end{enumerate}
+o ancora, nel caso di
+\[f_n(x) = \cos(xn)\]
+si ottiene
+\begin{enumerate}
+    \item $f_0(x)=\cos(0)=1$
+    \item $f_1(x)=\cos(x)$
+    \item $f_2(x)=\cos(2x)$
+    \item $f_3(x)=\cos(3x)$
+\end{enumerate}
+
+\vspace{1em}
+\noindent
+\subsubsection{Limite di una successione di funzioni}
+Sia $f_n : E \longmapsto \mathbb{R}(\mathbb{C})$ e $f : E \longmapsto \mathbb{R}$. Si dice che la successione $\left(f_n\right)_n$ converge puntualmente a $f$ se, $\forall x \in E$
+\[\lim_{n \to +\infty} f_n(x) = f(x)\]
+
+\vspace{1em}
+\noindent
+\textbf{Esempio 1}: Si consideri la successione di funzioni
+\[f_n(x) = \cos(nx)\]
+allora tale successione ammette limite $0$ se $x=0$, non esiste altrimenti.
+
+\vspace{1em}
+\noindent
+\textbf{Esempio 2}: Si consideri la successione di funzioni
+\[f_n(x) = \frac{1}{x^2+n}\]
+tale per cui, $\forall x \in \mathbb{R}$
+\[\lim_{n \to +\infty} \frac{1}{x^2+n} = 0\]
+
+\vspace{1em}
+\noindent
+\textbf{Esempio 3}: Si consideri la successione di funzioni
+\[f_n(x) = \frac{n x}{nx^2 + 1}\]
+allora si ha che
+\[\lim_{n \to +\infty} f_n(x) = \left\{
+    \rowcolors{1}{white}{white}
+    \setlength{\tabcolsep}{4pt}
+    \renewcommand{\arraystretch}{1.2}
+    \begin{array}{lll}
+        0           & \text{se} & x = 0\\
+        \dfrac{1}{x} & \text{se} & x \neq 0
+    \end{array}
+\right.\]
+
+\newpage
+\noindent
+\begin{center}
+    11 Ottobre 2022
+\end{center}
+Il criterio di Leibniz è un criterio fondamentale per capire la convergenza semplice di una serie a termini alternativamente positivi e negativi. Dopodiché sono state introdotte le successioni Cauchy e il criterio di Cauchy consente di capire se esiste un limite, senza conoscere il valore del limite, che risulta fondamentale, anche per le dimostrazioni del seguito:
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione 1}: Si consideri la serie
+\[\sum_{n=1}^{+\infty} a_n\]
+allora si dirà che la serie converge assolutamente se vale la serie dei moduli è convergente, ossia la serie
+\[\sum_{n=1}^{+\infty} \left \vert a_n \right \vert\]
+è convergente.\\
+Se una serie
+\[\sum_{n=1}^{+\infty} a_n\]
+converge assolutamente, allora la serie dei moduli
+\[\sum_{n=1}^{+\infty} \left \vert a_n \right \vert\]
+è di Cauchy, ossia, secondo la definizione del criterio Cauchy, si ha che
+\[\forall \epsilon > 0, \exists n_\epsilon \in \mathbb{N} \vert \forall n \geq n_\epsilon, \forall p \in \mathbb{N} \hspace{1em} \text{ si ha } \left \vert \sum_{k=n+1}^{n+p} \left \vert a_k \right \vert \right \vert= \sum_{k=n+1}^{n+p} \left \vert a_k \right \vert < \epsilon\]
+Per dimostrare che la serie dei moduli è di Cauchy, si sfrutta la disuguaglianza triangolare (ossia il modulo della somma è minore della somma dei moduli), per cui
+\[\left \vert \sum_{k=n+1}^{n+p} a_k \right \vert \leq \sum_{k=n+1}^{n+p} \vert a_k \vert \leq ... continua ...\]
+
+\vspace{1em}
+\noindent
+Si dimostri, tramite il criterio di Cauchy, che la serie armonica è divergente a $+\infty$.
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione 2}: Considerando la ridotta $n$-esima della serie armonica, si ha
+\[s_n = \sum_{k=1}^{n} \frac{1}{k}\]
+che, per come è stata costruita, è positiva e crescente, per cui, per il teorema di esistenza del limite delle successioni monotone, si può affermare che
+\[\exists \lim_{n \to + \infty} s_n\] 
+finito o infinito. Si procede, ora, per assurdo, dimostrando che
+\[\forall \epsilon > 0, \exists n_\epsilon \in \mathbb{N} : \forall n \geq n_\epsilon \text{ e } \forall p \in \mathbb{N}, \sum_{k=n+1}^{n+p} a_k < \epsilon\]
+Allora, posto $n \geq n_\epsilon$, si ha
+\[\sum_{k=n+1}^{n+p} a_k = \frac{1}{n+1} + \frac{1}{n+2} + \dots + \frac{1}{n+p} < \epsilon\]
+siccome il numero di addendi sommati è pari a $p$, in quanto $(n+p)-(n+1)+1=p$. Fissato $p=n$, si ha che
+\[\underbrace{\frac{1}{n+1}}_{>\frac{1}{2n}} + \underbrace{\frac{1}{n+2}}_{>\frac{1}{2n}} + \dots + \frac{1}{2n} < \epsilon\]
+ma essendo $n$ addendi, si ottiene che
+\[\frac{1}{2n} \cdot n = \frac{1}{2} < \epsilon\]
+Ma se si sceglie arbitrariamente $\epsilon>0$, come $\epsilon=\frac{1}{10}$, si incorre in un assurdo.
+
+\vspace{1em}
+\noindent
+Si consideri la successione di funzioni
+\[f_n : [0,1[ \hspace{1em} \text{ definita come } f_n(x) = x^n\]
+Allora $\forall x \in [0,1[$, si ha che
+\[\lim_{n \to +\infty} x^n = 0\]
+e, per la definizione di limite, si ha
+\[\forall \epsilon > 0, \exists n_\epsilon \in \mathbb{N} : \forall n \geq n_\epsilon, \vert x^n \vert < \epsilon\]
+Per determinare $n_\epsilon$ tale per cui $\forall n \geq n_\epsilon, \vert x^n \vert < \epsilon$, posto $\epsilon=e^{-10}$, si ha
+\[x^n < \epsilon \rightarrow e^{n \cdot \log(x)} < \epsilon \rightarrow e^{n \cdot \log(x)} < e^{\log(\epsilon)}\]
+Siccome $\log(x) < 0$, si ottiene
+\[n > \frac{\log(\epsilon)}{\log(x)}\]
+È facile capire che
+\[\lim_{x \to 1^-} \frac{\log(\epsilon)}{\log(x)} = +\infty\]
+ovvero, $n$ dipende fortemente da $x$: più $x$ tende a $1$ da sinistra, più $n$ deve essere grande al fine di soddisfare il limite di partenza:
+\[\lim_{n \to +\infty} x^n = 0\]
+Questo perché $0$ è limite puntuale e non uniforme per la successione $f_n$.
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{LIMITE UNIFORME}}\\
+    \parbox{\linewidth}{Sia $(f_n)_n$ una successione di funzioni $f$, con
+    \[f_n : E \longmapsto \mathbb{R}\]
+    Si dirà che $f$ è limite uniforme della successione
+    \[\lim_{n \to +\infty} f_n = f\]
+    uniforme se
+    \[\forall \epsilon > 0, \exists n_\epsilon \in \mathbb{N} \text{ tale che } \forall n \geq n_\epsilon, \forall x \in E, \left \vert f_n(x) - f(x)\right \vert < \epsilon\]
+    \vspace{-1mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Nel caso di \textbf{limite puntuale}, invece, si ha che
+\[\bf{\forall x \in E}, \forall \epsilon > 0, \exists n_{\epsilon, x} \in \mathbb{N} \text{ tale che } \forall n \geq n_\epsilon, \left \vert f_n(x) - f(x) \right \vert < \epsilon\]
+in cui è fondamentale capire la forte dipendenza da $x$ in questo caso, cosa che invece non accade nel caso di un limite uniforme, in cui $n_\epsilon$ si mantiene costante indipendentemente dalla scelta di $x$.
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Data la successione di funzioni
+\[f_n(x) = \frac{1}{n+x^2}\]
+posto $x=0$, il valore massimo è $\frac{1}{n}$, per cui la successione converge uniformemente. Ciò significa che, fissato $\epsilon$, il grafico di tutte le funzioni in dipendenza da $n$ sono tutte contenute al di sotto del grafico.
+
+\vspace{1em}
+\noindent
+\textbf{Esercizio 1}: Si consideri la successione di funzioni:
+\[f_n(x) = \frac{n}{x^2+n}\]
+allora
+\[\lim_{n \to +\infty} f_n(x) = 1\]
+Naturalmente si ha convergenza puntuale, ma non uniforme. Infatti, se fosse uniforme, fissato $\epsilon=\dfrac{1}{100}$ dovrebbe esistere $n_epsilon \in \mathbb{N}$ tale che $\forall n \geq n_\epsilon, \forall x \in \mathbb{R}$
+\[\left \vert \frac{n}{x^2+n} - 1\right \vert < \frac{1}{100}\]
+Per dimostrare che ciò non è possibile $\forall x \in \mathbb{R}$, si sviluppa, ottenendo
+\[\left \vert \frac{n-x^2-n}{x^2+n} \right \vert = \frac{x^2}{x^2 + n}\]
+basta scegliere $x=\sqrt{n}$, per cui
+\[\frac{n}{n+n}=\frac{1}{2} < \frac{1}{100}\]
+che, ovviamente è falso.
+
+\vspace{1em}
+\noindent
+\textbf{Esercizio 2}: Si consideri la successione di funzioni
+\[f_n(x) = \frac{nx}{nx^2+1}\]
+allora
+\[\lim_{n \to +\infty} f_n(x) = \frac{1}{x}\]
+che è una convergenza puntuale, ma non uniforme, in quanto, fissato $\epsilon=\dfrac{1}{100}$ dovrebbe esistere $n_epsilon \in \mathbb{N}$ tale che $\forall n \geq n_\epsilon, \forall x \in \mathbb{R}$
+\[\left \vert \frac{nx}{nx^2+1} - \frac{1}{x}\right \vert < \frac{1}{100}\]
+e sviluppando si ottiene
+\[\frac{1}{x \cdot (nx^2+1)} < \frac{1}{100}\]
+in cui basta scegliere $x=\dfrac{1}{\sqrt{n}}$, ottenendo
+\[\frac{\sqrt{n}}{2} < \frac{1}{100}\]
+che, ovviamente, non è vero $\forall n \in \mathbb{N}$.
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Si osservi che se il limite di una successione di funzioni è discontinuo, allora la successione non converge uniformemente.
+
+\vspace{1em}
+\noindent
+\subsection{Teorema di inversione di due limiti}
+Si consideri il seguente \textbf{teorema di inversione di due limiti}:
+
+\begin{theorem}
+    Sia $f(n)_n$ una successione di funzioni
+    \[f_n : E \longmapsto \mathbb{R}\]
+    tale che $(f_n)_n$ \textbf{converge uniformemente} a
+    \[f : E \longmapsto \mathbb{R}\]
+    con $x_0$ punto di accumulazione per $E, \forall n$, tale per cui
+    \[\exists \lim_{x \to x_0} f_n(x) = l_n\]
+    Allora
+    \[\exists \lim_{n \to +\infty} l_n = 0, \hspace{1em} \exists \lim_{x \to x_0} f(x) \hspace{1em} \exists \lim_{x \to x_0} f(x) = l\]
+    si può affermare che
+    \[\lim_{n \to +\infty} \left(\lim_{x \to x_0} f_n(x)\right) = \lim_{x \to x_0} \left(\lim_{n \to +\infty} f_n(x)\right)\]
+\end{theorem}
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Si osservi che quanto esposto in precedenza vale solamente per successioni di funzioni con convergenza uniforme, non puntuale. Infatti
+\[\lim_{n \to +\infty} \left(\lim_{x \to 1} x^n\right) = 1 \neq 0 = \lim_{x \to 1} \left(\lim_{n \to +\infty} f_n(x)\right)\]
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione 1}: Per la dimostrazione si considera il criterio di Cauchy, fondamentale per dimostrare l'esistenza del limite
+\[\lim_{n \to +\infty} l_n\]
+senza conoscerlo. Bisogna dimostrare che la successione $(l_n)_n$ è di Cuachy, ossia che $\forall \epsilon > 0$, $\exists n_\epsilon \in \mathbb{N}$ tale che $\forall n \geq n_\epsilon$ e $\forall p \in \mathbb{N}$
+\[\left \vert l_{n+p} - l_n \right \vert < \epsilon\]
+In particolare, $\forall x \in E$ si può affermare che
+\[\left \vert l_{n+p} - l_n\right \vert = \left \vert l_{n+p} - l_n - f_{n+1}(x) + f_{n+p}(x) - f_(n+1)(x) - f_{n+p}(x)\right \vert\]
+Sfruttando la disuguaglianza triangolare, si ha che
+\[\left \vert l_{n+p} - l_n - f_{n+1}(x) + f_{n+p}(x) - f_(n+1)(x) - f_{n+p}(x)\right \vert \leq \left \vert l_{n+p} - f_{n+p}(x)\right \vert + \left \vert f_{n+1}(x) - f_n(x) \right \vert + \left \vert f_n(z) - l_n\right \vert\]
+Siccome $(f_n)_n$ è uniformemente convergente, quindi è una successione di Cauchy. Ciò significa che
+\[\exists n_\epsilon \in \mathbb{N} \vert \forall n \geq n_\epsilon, \forall p \in \mathbb{N} \text{ e } \bf{\forall x \in E} \rightarrow \left \vert f_{n+1}(x) - f_n(x)\right \vert < \frac{\epsilon}{3}\]
+Fissato $\hat n \geq n_\epsilon$ e un qualsiasi $q \in \mathbb{N}$, è noto che
+\[\lim_{x \to x_0} f_{\hat n}(x) = l_{\hat n} \text{ e } \lim_{x \to x_0} f_{\hat n + p}(x) = l_{\hat n + p}\]
+Allora, dalla definizione di limite si ha che
+\[\exists \delta_{\hat n + p} > 0, \delta_{\hat n} > 0 \vert \forall x \in E, x \neq x_0, \left \vert x - x_0 \right \vert < \delta_{\hat n + p} \text{ e } \forall x \in E, x \neq x_0, \vert x - x_0 \vert < \delta_{\hat n} \hspace{1em} \text{ si ha } \left \vert f_{\hat n}(x) - l_{\hat n} \right \vert < \frac{\epsilon}{3} \hspace{1em} \text{e} \hspace{1em} \left \vert f_{\hat n + p}(x) - l_{\hat n + p}\right \vert < \frac{\epsilon}{3}\]
+Ma ciò consente di affermare che, preso il $\delta$ più piccolo di entrambi $\delta_{\hat n + p}$ e $\delta_{\hat n}$:
+\[\left \vert l_{\hat n + \hat p} - l_{\hat n} \right \vert \leq \left \vert l_{\hat n + \hat p} - f_{\hat n + \hat p}\right \vert + \left \vert f_{\hat n + \hat p}(x) - f_{\hat n}(x)\right \vert + \left \vert f_{\hat n}(x) - l_{\hat n}\right \vert < \epsilon\]
+Ciò, quindi, consente di affermare che
+\[\exists \lim_{n \to +\infty} l_n = l \rightarrow \left \vert l_{n+p} - l_n \right \vert < \epsilon\]
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione 2}: Ripetendo la dimostrazione per
+\[\lim_{x \to x_0} f(x) = l\]
+si ha che
+\[\left \vert f(x) - l \right \vert \leq \left \vert f(x) - l + l_n + f_n(x) - f_n(x) \right \vert \leq \left \vert - \left(f_n(n) - f(x) \right) \right \vert + \left \vert f_n(x) - l_n \right \vert + \left \vert l_n - l \right \vert < \epsilon\]
+Infatti, è noto che
+\[\lim_{n \to +\infty} l_n = l\]
+Pertanto esiste $n^1_\epsilon$ tale che $\forall n \geq n^1_\epsilon$ si ha
+\[\left \vert l_n - l \right \vert < \frac{1}{3} \epsilon\]
+Inoltre, poiché
+\[\lim_{n \to +\infty} f_n = f\]
+uniforme, esiste $n^2_\epsilon \in \mathbb{N}$ tale che $\forall n \geq n^2_\epsilon$, si ha
+\[\left \vert f_n(x) - f(x) \right \vert < \frac{\epsilon}{3}, \hspace{1em} \forall x \in E\]
+Fissato, quindi, $\hat n \geq \max \{n^1_\epsilon,n^2_\epsilon\}$. Per questo $\hat n$, siccome
+\[\lim_{x \to x_0} f_{\hat n}(x) = l_{\hat n}\]
+si ha che $\exists \delta_\epsilon > 0$ tale che $\forall x \in E, x \neq x_0, \left \vert x - x_0 \right \vert < \delta_\epsilon$
+\[\left \vert f_{\hat n}(x) - l_{\hat n} \right \vert < \frac{\epsilon}{3}\]
 
 
+\vspace{1em}
+\noindent
+\textbf{Ricapitolando}: Bisogna dimostrare che
+\[\left \vert f(x) - l \right \vert \leq \left \vert f(x) - f_n(x) \right \vert\]
+... continua ...
+
+\vspace{1em}
+\begin{corollary}
+    Si osservi che se
+    \[f_n : E \longmapsto \mathbb{R}\]
+    è continua $\forall n$ e 
+    \[\lim_{n\to +\infty} f_n = f\]
+    uniforme. Allora $f$ è continua.
+\end{corollary}
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Ciò è immediatamente evidente in quanto
+\[\lim_{x \to x_0} f(x) = \lim_{x \to x_0} \left(\lim_{n \to +\infty} f_n(x)\right) = \lim_{n \to +\infty} \left(\lim_{x \to x_0} f_n(x)\right) = \lim_{n \to +\infty} f_n(x_0) = f(x_0)\]
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Si osservi che
+\[\lim_{n \to +\infty} f_n(x) = f(x)\]
+uniforme, lo è anche puntuale.
+
+\vspace{1em}
+\noindent
+\subsection{Teorema di integrabilità}
+Sia $I \subseteq \mathbb{R}$ un \textbf{intervallo compatto} (ovvero con misura finita) e sia 
+\[f_n : I \longmapsto \mathbb{R}\]
+integrabile $\forall n$; sia, inoltre
+\[\lim_{n \to +\infty} f_n = f\]
+uniforme, con
+\[f : I \longmapsto \mathbb{R}\]
+allora $f$ è integrabile e si ha che
+\[\int_I \lim_{n \to +\infty} f_n(x) \dif x = \lim_{n \to +\infty} \int_I f_n(x) \dif x\]
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Parlando di integrale di Riemann, si dimostra che
+\[\left \vert \int_I f_n(x) \dif x - \int_I f(x) \dif x \right \vert \leq \int_I \left \vert f_n(x) - f(x) \right \vert \dif x < \epsilon \cdot m(I)\]
+in quanto $\left \vert f_n(x) - f(x) \right \vert < \epsilon, \forall x$ se $n \geq n_epsilon$ per la convergenza uniforme.
+
+\vspace{1em}
+\noindent
+\textbf{Dimostrazione}: Si consideri la seguente successione di funzioni
+\[f_n : [0,1] \longmapsto \mathbb{R}\]
+in cui
+\[f_n(x) = \left\{
+    \begin{array}{lll}
+        0 & \text{ se } & x \in \{0\} \cup \left]\frac{1}{n+1},1\right]\\
+        n & \text{ se } & x \in \left]0,\frac{1}{n}\right]
+    \end{array}
+\right.\]
+in cui appare evidente come
+\[\int_[0,1] f(x) \dif x = 1, \forall n\]
+e, ovviamente,
+\[\lim_{n \to +\infty} \int_{[0,1]} f_n(x) = 1\]
+mentre
+\[\int_{[0,1]} \left(\lim_{n \to +\infty} f_n(x) \right) \dif x = \int_{[0,1]} 0 \dif x = 0\]
 
 
 \end{document}
