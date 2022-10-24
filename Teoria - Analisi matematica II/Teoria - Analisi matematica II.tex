@@ -598,106 +598,129 @@ Un altro importante criterio è l'ordine di infinitesimo che, tuttavia, non risu
     7 Ottobre 2022
 \end{center}
 \noindent
-Dopo aver analizzato la condizione necessaria per la convergenza, è stato anche considerato il fatto che una serie può essere sempre considerata come un integrale generalizzato. Un esempio fondamentale di serie di confronto è anche la serie armonica.\\
-Di seguito si espongono alcuni teoremi fondamentali per la convergenza/divergenza di una serie.
+Dopo aver analizzato la condizione necessaria per la convergenza, è stato anche considerato il fatto che una serie può essere sempre considerata come un integrale generalizzato. Un esempio fondamentale di serie che può essere considerata come termine di confronto è anche la serie armonica.\\
+Di seguito, inoltre, si espongono alcuni teoremi fondamentali per decretare la convergenza/divergenza di una serie, specialmente se le serie sono a \textbf{termini (reali) positivi}.
 
 \vspace{1em}
 \noindent
 \subsection{Teorema dell'Aut-Aut per le serie a termini (reali) positivi}
 Si supponga che la serie
 \[a_1+a_2+\dots+a_n+\dots=\sum_{n=1}^{+\infty} a_n\]
-abbia termini positivi ($a_n > 0)$ o al più non negativi ($a_n \geq 0$). Allora essa converge o diverge. In altre parole, una serie a termini non negativi non può essere indeterminata.
+abbia termini positivi ($a_n > 0)$ o al più non negativi ($a_n \geq 0$), questo, in generale, $\forall n$, ma è sufficiente richiedere che valga definitivamente. Allora essa converge o diverge; in altre parole, una serie a termini non negativi non può essere indeterminata.
 
 \vspace{2em}
 \noindent
 \normalfont \normalsize
-\textsc{Dimostrazione}: Supposto $a_n \geq 0, \forall n$ (anche se sarebbe sufficiente richiedere definitivamente), la successione delle ridotte è \textbf{crescente (anche in senso debole)}, tale per cui
+\textsc{Dimostrazione}: Supposto $a_n \geq 0, \forall n$ (anche se sarebbe sufficiente richiederlo definitivamente), la successione delle ridotte è \textbf{monotona crescente (anche in senso debole)}, ovverosia
 \[s_{n+1}=s_n+a_{n+1} \geq s_n\]
 Per il \textbf{teorema di esistenza del limite delle successioni monotone}, la successione delle ridotte ammette limite, ed esso è
 \[\lim_{n \to +\infty} s_n = \text{ sup } \{s_n : n \in \mathbb{N}^+\}\]
 Pertanto
 \begin{itemize}
-    \item se la successione delle ridotte è superiormente limitata, ovvero $\text{sup } \{s_n\} \in \mathbb{R}$, la serie è ovviamente convergente.
-    \item se la successione delle ridotte è superiormente illimitata, per cui $\text{sup } \{s_n\} = +\infty$, la serie diverge a $+\infty$.
+    \item se la successione delle ridotte $(s_n)_n$ è superiormente limitata, ovvero $\text{sup } \{s_n\} \in \mathbb{R}$, la serie è ovviamente convergente.
+    \item se la successione delle ridotte $(s_n)_n$ è superiormente illimitata, per cui $\text{sup } \{s_n\} = +\infty$, la serie diverge a $+\infty$.
 \end{itemize}
 In ogni caso, però, \textbf{la serie non può essere indeterminata}.
 
 \vspace{1em}
 \noindent
-\textbf{Osservazione}: Naturalmente la stessa cosa vale anche per successioni a termini negativi. L'importante è che sia verificata la condizione $a_n \geq 0$ oppure $a_n \leq 0$ infinitesimo.
+\textbf{Osservazione 1}: Naturalmente la stessa cosa vale anche per successioni a termini negativi. L'importante è che sia verificata la condizione $a_n \geq 0$ oppure $a_n \leq 0$ definitivamente.
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione 2}: Il criterio dell'aut-aut è molto potente, in quanto, data una serie è a termini positivi, come la serie armonica
+\[\sum_{n=1}^{+\infty} \frac{1}{n}\]
+dimostrato che essa non converge, è immediato evincere che essa diverge per l'aut-aut.
 
 \vspace{1em}
 \noindent
 \subsection{Criterio dell'ordine di infinitesimo per le serie a termini positivi}
-Il teorema dell'Aut-Aut permette di dimostrare anche un altro importante criterio:
+Il teorema dell'Aut-Aut permette di dimostrare anche un altro importante criterio, il \textbf{criterio dell'ordine di infinitesimo per le serie a termini positivi}, che permette di desumere il carattere di una serie in modo molto veloce:
 
 \begin{theorem}\textbf{Criterio dell'ordine di infinitesimo per le serie a termini positivi}\\
     Sia
     \[\sum_{n=0}^{+\infty} a_n\]
-    una serie a termini positivi con termine generale infinitesimo
+    una serie a termini positivi ($a_n \geq 0, \forall n$) con termine generale infinitesimo, ovverosia
     \[\lim_{n \to +\infty} a_n = 0\]
     allora
     \begin{itemize}
-        \item se esiste $\alpha > 1 \vert \text{ ord } a_n \geq \alpha$, la serie converge
-        \item se esiste $\alpha > 1 \vert \text{ ord } a_n \leq 1$, la serie diverge
+        \item se esiste $\alpha \in \mathbb{R}, \alpha > 1$ tale che \textbf{ord} $a_n \geq \alpha$, la serie converge;
+        \item se \textbf{ord} $a_n \leq 1$, la serie diverge.
     \end{itemize}
 \end{theorem}
 
 \vspace{2em}
 \noindent
 \normalfont \normalsize
-\textsc{Dimostrazione}: Supposto che la successione $a_n$ abbia come ordine di infinitesimo $\alpha$, con $\alpha > 1$, ossia
-\[\lim \left \vert \frac{a_n}{\frac{1}{n^\alpha}}\right \vert = l \hspace{1em} \text{ posto } \hspace{1em} l \neq 0\]
+\textsc{Dimostrazione 1}: Supposto che il termine generale $a_n$ abbia come ordine di infinitesimo $\alpha$, con $\alpha > 1$, ossia
+\[\lim_{n \to + \infty} \left \vert a_n \cdot n^\alpha \right \vert = l \hspace{1em} \text{ posto } \hspace{1em} l \in \mathbb{R} - \{0\}\]
 allora, per definizione stessa di limite,
-\[\forall \epsilon > 0, \exists n_\epsilon \in \mathbb{N} \vert \forall n > n_\epsilon \text{ si ha} n^\alpha < l + \epsilon\]
-Per comodità, si sceglie $\epsilon = 1$, da cui
-\[n^\alpha a_n < l+1\]
+\[\forall \epsilon > 0, \exists n_\epsilon \in \mathbb{N} \hspace{0.5em} \text{ tale che } \hspace{0.5em} \forall n > n_\epsilon \hspace{0.5em} \text{ si ha che } \hspace{0.5em} \left \vert a_n \cdot n^\alpha - l\right \vert < \epsilon\]
+Scritta in modo esplicito la disuguaglianza, è facile capire
+\[l-\epsilon < a_n \cdot n^\alpha < l+\epsilon\]
+Per comodità, si sceglie $\epsilon = 1$, da cui, per la definizione di limite, si perviene a
+\[a_n \cdot n^\alpha< l+1\]
 Ciò consente di affermare che $\forall n > n_\epsilon$ si ha che
 \[0 \leq a_n \leq (l+1) \cdot \frac{1}{n^\alpha}\]
-In questo modo si sta confrontando il termine generale $a_n$ con il termine generale della serie armonica generalizzata. Per il teorema del confronto, siccome definitivamente
+In questo modo si sta confrontando il termine generale $a_n$ con il termine generale della serie armonica generalizzata. Per il criterio del confronto, siccome definitivamente (ossia $\forall n > n_\epsilon$)
 \[a_n \leq (l+1) \cdot \frac{1}{n^\alpha}\]
-e la serie armonica converge, in quanto $\alpha > 1$ ... continua ...
+e la serie armonica generalizzata converge, in quanto la ragione $\alpha > 1$. Allora, per il criterio del confronto, la serie con termine generale $a_n$
+\[\sum_{n=1}^{+\infty} a_n\]
+converge.
 
-\vspace{1em}
+\vspace{2em}
 \noindent
-Supposto, ora, $\text{ord } a_n \leq 1$, si dimostri che la serie
+\normalfont \normalsize
+\textsc{Dimostrazione 2}: Si supponga, ora che ord $a_n \leq 1$, si dimostri che la serie
 \[\sum_{n=1}^{+\infty}a_n\]
-diverge.\\
-Il fatto che $\text{ord } a_n \leq 1$, significa che
-\[\lim_{n \to +\infty} \frac{a_n}{\frac{1}{n}} = l\]
-per cui se $l \in \mathbb{R} - \{0\}$ significa che $\text{ord } a_n = 1$, se $l = +\infty$, $\text{ord } a_n < 1$.\\
-Nell'ipotesi che $l \in \mathbb{R} - \{0\}$, ovvero
-\[\lim_{n \to +\infty} n \cdot a_n = l \in \mathbb{R} - \{0\}\] allora, per la definizione stessa di limite
-\[\forall \epsilon > 0, \exists n_\epsilon \in \mathbb{N} \vert \forall n > n_\epsilon : \left \vert a_n-l \right \vert < \epsilon\]
-Scelto, per comodità, $\epsilon=\frac{l}{2}$, e quindi ... continua ...
-\[\]
+diverge. Il fatto che ord $a_n \leq 1$, significa che
+\[\lim_{n \to +\infty} \left \vert a_n \cdot n \right \vert = l\]
+per cui se $l \in \mathbb{R} - \{0\}$ significa che ord $a_n = 1$, se $l = +\infty$, allora ord $a_n < 1$. Nell'ipotesi in cui $l \in \mathbb{R} - \{0\}$, ovvero
+\[\lim_{n \to +\infty} n \cdot a_n = l \hspace{1em} \text{con} \hspace{1em} l \in \mathbb{R} - \{0\}\]
+per la definizione stessa di limite, si può affermare che
+\[\forall \epsilon > 0, \exists n_\epsilon \in \mathbb{N} \hspace{0.5em} \text{ tale che } \hspace{0.5em} \forall n \geq n_\epsilon \hspace{0.5em} \text{ si ha che } \hspace{0.5em} \left \vert a_n \cdot n-l \right \vert < \epsilon\]
+Scelto, per comodità, $\epsilon=\frac{l}{2}$, si ha in particolare che, definitivamente 
+\[l-\frac{l}{2} < a_n \cdot n < l+\frac{l}{2}\]
+Ma quindi si è ottenuto che definitivamente (ossia $\forall n > n_\epsilon$)
+\[\frac{l}{2} \cdot \frac{1}{n} < a_n\]
+e la serie armonica diverge. Allora, per il criterio del confronto, la serie con termine generale $a_n$
+\[\sum_{n=1}^{+\infty} a_n\]
+diverge.
 
-\vspace{1em}
+\vspace{2em}
 \noindent
 \textbf{Osservazione}: In particolare, se $\exists \alpha \in \mathbb{R}, \alpha>1$, e si ha
 \begin{itemize}
-    \item $\text{ord } a_n > \alpha$, la serie converge
-    \item $\text{ord } a_n \leq 1$, la serie diverge
+    \item $\text{ord } a_n \geq \alpha$, la serie converge;
+    \item $\text{ord } a_n \leq 1$, la serie diverge.
 \end{itemize}
-Tuttavia, sapere che $\text{ord } a_n > 1$ non fornisce informazioni
+Tuttavia, è fondamentale capire che dire che $\text{ord } a_n \geq \alpha$ è differente dal dire che $\text{ord } a_n > 1$. Infatti, quest'ultima informazione non è sufficiente ad affermare la convergenza, in quanto è possibile considerare anche ordini infrareali che non sono inclusi nelle casistiche di tale teorema. Infatti, per quanto riguarda la serie
+\[\sum \frac{1}{n \log(n)}\]
+presenta un termine generale di ord $a_n > 1$; tuttavia, è anche vero che $a_n < 1 + \epsilon, \forall \epsilon > 0$: pertanto, non esistendo un numero reale maggiore di $1$ e più piccolo di tutti i numeri reali più piccoli di $1$, non è possibile attribuire un ordine reale a tale termine generale. Tuttavia, se tale serie diverge (calcolabile tramite l'integrale generalizzato), la serie 
+\[\sum \frac{1}{n \log^2(n)}\]
+pur avendo ordine infrareale, esattamente come la serie precedente, converge (sempre tramite l'integrale).
 
 \vspace{1em}
 \noindent
 \textbf{Esercizio 1}: La serie
 \[\sum \frac{5n + \cos(n)}{3 + 2n^3}\]
-è ovviamente convergente, in quanto $\text{ord } a_n = 2 > 1$.
+è ovviamente convergente, in quanto $\text{ord } a_n = 2 > 1$. In realtà bisogna stare attenti al fatto che $\cos(n)$ non è sempre positivo, però è ovvio che
+\[\left \vert \frac{5n + \cos(n)}{3 + 2n^3} \right \vert < \frac{5n + 1}{3 + 2n^3}\]
+e siccome
+\[\lim_{n \to +\infty} \frac{5n + 1}{3 + 2n^3} \cdot n^2 = \lim_{n \to +\infty} \dfrac{n^3 \cdot \left(5 + \dfrac{1}{n} \right)}{n^3 \cdot \left(2 + \dfrac{3}{n^3} \right)} = \frac{5}{2} \in \mathbb{R} - \{0\}\]
+per confronto con una serie convergente, la serie di partenza converge.
 
 \vspace{1em}
 \noindent
 \textbf{Esercizio 2}: La serie
 \[\sum \frac{2\sqrt{n}}{n^2+n+1}\]
-è ovviamente convergente, in quanto $\text{ord } a_n = \frac{3}{2} > 1$.
+è a termini positivi e ovviamente convergente, in quanto $\text{ord } a_n = \dfrac{3}{2} > 1$.
 
 \vspace{1em}
 \noindent
 \textbf{Esercizio 3}: La serie
 \[\sum \log \left(1-\frac{1}{n}\right)\]
-non converge. La serie è a termini negativi, tuttavia si può fare
+non converge. Attenzione, però, che la serie è a termini negativi, tuttavia si può fare
 \[-\lim_{n \to +\infty} -\frac{\log \left(1-\frac{1}{n}\right)}{\frac{1}{n}}=1\]
 per cui $\text{ord } a_n = 1$.
 
@@ -718,20 +741,31 @@ per $n > e^3$, ma l'importante è che accada definitivamente, per cui la serie c
 \vspace{1em}
 \noindent
 \textbf{Esercizio 6}: La serie
-\[\sum \]
+\[\sum \frac{\sqrt{n} + 1}{n \cdot \left(n-10\pi\right)}\]
+non è una serie a termini positivi, in generale, ma lo è quando $n - 10\pi>0 \rightarrow n > 10 \pi$, ossia definitivamente. Posta tale condizione, la serie è ovviamente convergente, in quanto $\text{ord } a_n = \dfrac{3}{2} > 1$.
 
 \vspace{1em}
 \noindent
+\textbf{Esercizio 7}: La serie
+\[\sum \frac{n^n}{(n!)^2}\]
+è difficile da studiare, in quanto analizzare la differenza di velocità con cui le due successioni tendono all'infinito non è banale. Tuttavia, sfruttando il criterio del rapporto, si può osservare che
+\[\lim_{n \to +\infty} \dfrac{\dfrac{(n+1)^{n+1}}{\left[(n+1)!\right]^2}}{\dfrac{n^n}{(n!)^2}} = \lim_{n \to +\infty} \dfrac{(n+1)^{n+1}}{\left[(n+1)!\right]^2} \cdot \dfrac{(n!)^2}{n^n} = \lim_{n \to +\infty} \dfrac{(n+1) \cdot (n+1)^{n}}{(n+1)^2 \cdot (n!)^2} \cdot \dfrac{(n!)^2}{n^n}\]
+Semplificando ulteriormente si arriva alla forma finale
+\[\lim_{n \to +\infty} \frac{1}{n+1} \cdot \left(1+\frac{1}{n}\right)^n = 0\]
+ed essendo $0 < 1$ la serie converge. Convergendo la serie, è anche immediato evincere che il termine generale sia infinitesimo.
+
+\newpage
+\noindent
 \subsection{Criterio del rapporto}
-Presa una serie a termini positivi, ma non nulli (in quanto bisogna dividere per il termine $a_n$), per cui $a_n>0$, come la seguente
+Presa una serie a termini positivi, ma non nulli (in quanto bisogna dividere per il termine $a_n$), per cui $a_n>0, \forall n$ (anche se sarebbe sufficiente definitivamente), come la seguente
 \[\sum_{n=0}^{+\infty} a_n\]
 tale per cui
 \[\exists \lim_{n \to +\infty} \frac{a_{n+1}}{a_n} = k\]
 Allora
 \begin{itemize}
     \item se $k < 1$ la serie converge
-    \item se $k = 1$ la serie diverge
-    \item se $k > 1$ non è possibile dire nulla in merito al carattere della serie
+    \item se $k > 1$ la serie diverge
+    \item se $k = 1$ non è possibile dire nulla in merito al carattere della serie
 \end{itemize}
 
 \vspace{2em}
@@ -740,52 +774,55 @@ Allora
 \textsc{Dimostrazione 1}: Si consideri 
 \[\lim_{n \to +\infty} \frac{a_{n+1}}{a_n}=k\]
 con $k<1$. Allora, per la definizione di limite
-\[\exists \epsilon > 0, \exists n_\epsilon \in \mathbb{N} \vert \forall n > n_\epsilon, k - \epsilon < \frac{a_{n+1}}{a_n} < k+\epsilon\]
-preso un $\epsilon$ sufficientemente piccolo
+\[\exists \epsilon > 0, \exists n_\epsilon \in \mathbb{N} \hspace{0.5em} \text{tale che} \hspace{0.5em} \forall n \geq n_\epsilon, \hspace{0.5em} \text{si ha che} \hspace{0.5em} k - \epsilon < \frac{a_{n+1}}{a_n} < k+\epsilon\]
+Allora, preso un $\epsilon$ sufficientemente piccolo tale che $k+\epsilon<1$ (in altre parole, si sceglie $0 < \epsilon < 1-k$, essendo $k<1$ per ipotesi), si ottiene
 \[\frac{a_{n+1}}{a_n} < k+\epsilon < 1 \hspace{1em} \rightarrow \hspace{1em} a_{n+1} < (k+\epsilon) \cdot a_n\]
-E avendo supposto $a_n>0$, è ovvio che
-\[0 < a_n < \dots\]
-senza perdita di generalità (in quanto si richiederebbe $\forall n > n_\epsilon$), è possibile supporre che
-\[a_{n+1} < (k+\epsilon) \cdot a_n, \forall n\]
-per cui, si ha che
+E avendo supposto $a_n>0$, si ottiene la catena di disuguaglianze seguente
+\[0 < a_n < a_{n-1} \cdot (k+\epsilon) <  a_{n-2} \cdot (k+\epsilon)^2 < \dots\]
+Senza perdita di generalità (in quanto si richiederebbe $\forall n \geq n_\epsilon$), è possibile supporre che
+\[a_{n+1} < (k+\epsilon) \cdot a_n\]
+vale $\forall n$. Per induzione, si ottiene che
+\begin{align*}
+    &a_1 < (k+\epsilon) \cdot a_0\\
+    &a_2 < (k+\epsilon) \cdot a_1 < (k+\epsilon)^2 \cdot a_0\\
+    &\dots\\
+    &a_n < (k+\epsilon)^n \cdot a_0
+\end{align*}
+per cui
 \[a_n < (k+\epsilon)^n \cdot a_0\]
-e, quindi, essendo $a_0$ costante, per il teorema del confronto, la serie
-\[\sum_{n=1}^{+\infty}\]
+e, quindi, essendo $a_0$ costante e $(k+\epsilon)^n$ il termine generale della serie geometrica di ragione $k+\epsilon$, con $\left \vert k+\epsilon \right \vert < 1$ per costruzione, si può concludere, per il teorema del confronto, che la serie
+\[\sum_{n=1}^{+\infty} a_n\]
 converge.
 
-\vspace{2em}
+\newpage
 \noindent
 \normalfont \normalsize
 \textsc{Dimostrazione 2}: Si consideri 
 \[\lim_{n \to +\infty} \frac{a_{n+1}}{a_n}=k\]
-con $k>1$. ... continua ... Allora, per la definizione di limite
-\[\exists \epsilon > 0, \exists n_\epsilon \in \mathbb{N} \vert \forall n > n_\epsilon, k - \epsilon < \frac{a_{n+1}}{a_n} < k+\epsilon\]
-preso un $\epsilon$ sufficientemente piccolo
-\[\frac{a_{n+1}}{a_n} < k+\epsilon < 1 \hspace{1em} \rightarrow \hspace{1em} a_{n+1} < (k+\epsilon) \cdot a_n\]
-E avendo supposto $a_n>0$, è ovvio che
-\[0 < a_n < \dots\]
-senza perdita di generalità (in quanto si richiederebbe $\forall n > n_\epsilon$), è possibile supporre che
-\[a_{n+1} < (k+\epsilon) \cdot a_n, \forall n\]
-per cui, si ha che
-\[a_n < (k+\epsilon)^n \cdot a_0\]
-e, quindi, essendo $a_0$ costante, per il teorema del confronto, la serie
-\[\sum_{n=1}^{+\infty}\]
-converge.
+con $k>1$. Allora, per la definizione di limite
+\[\exists \epsilon > 0, \exists n_\epsilon \in \mathbb{N} \hspace{0.5em} \text{tale che} \hspace{0.5em} \forall n \geq n_\epsilon, \hspace{0.5em} \text{si ha che} \hspace{0.5em} k - \epsilon < \frac{a_{n+1}}{a_n} < k+\epsilon\]
+Allora, preso un $\epsilon$ sufficientemente piccolo tale che $k-\epsilon>1$ (in altre parole, si sceglie $0 < \epsilon < k-1$, essendo $k>1$ per ipotesi), si ottiene
+\[1 < k-\epsilon < \frac{a_{n+1}}{a_n} \hspace{1em} \rightarrow \hspace{1em} a_{n+1} > a_n\]
+Ciò significa che la successione $(a_n)_n$ è definitivamente strettamente crescente. Pertanto, la successione $a_n$ \textbf{non può essere infinitesima}, essendo positiva crescente, pertanto la serie
+\[\sum_{n=1}^{+\infty} a_n\]
+diverge, per l'aut-aut.
 
-\vspace{1em}
+\vspace{2em}
 \noindent
 \textbf{Esempio}: Si consideri la serie
 \[\sum_{n=1}^{+\infty} \frac{n^n}{(n!)^2}\]
-Allora, applicando il teorema del rapporto
-\[\frac{a_{n+1}}{a_n} = \frac{\frac{(n+1)^{n+1}}{[(n+1)!]^2}}{\frac{n^n}{(n!)^2}}\]
-Che può essere riscritto come
-\[\lim_{n \to +\infty} (n+1) \cdot \left(\frac{n+1}{n}\right)^n \cdot \frac{(n!)^2}{(n+1)^2 \cdot (n!)^2} = 0\]
-e siccome $0<1$, la serie converge. Non solo, siccome la serie converge, la successione delle somme parziali è infinitesima.
+Allora, applicando il teorema del rapporto, si ottiene 
+\[\lim_{n \to +\infty} \dfrac{\dfrac{(n+1)^{n+1}}{\left[(n+1)!\right]^2}}{\dfrac{n^n}{(n!)^2}} = \lim_{n \to +\infty} \dfrac{(n+1)^{n+1}}{\left[(n+1)!\right]^2} \cdot \dfrac{(n!)^2}{n^n} = \lim_{n \to +\infty} \dfrac{(n+1) \cdot (n+1)^{n}}{(n+1)^2 \cdot (n!)^2} \cdot \dfrac{(n!)^2}{n^n}\]
+Semplificando ulteriormente si arriva alla forma finale
+\[\lim_{n \to +\infty} \frac{1}{n+1} \cdot \left(1+\frac{1}{n}\right)^n = 0\]
+ed essendo $0 < 1$ la serie converge. Convergendo la serie, è anche immediato evincere che il termine generale sia infinitesimo.
 
-\vspace{1em}
+\vspace{2em}
 \noindent
 \subsection{Criterio della radice $n$-esima}
-Sia una serie a termini positivi, con $a_n \geq 0, \forall n$ (anche se sarebbe sufficiente richiederlo definitivamente). Supposto che esiste
+Sia data una serie a termini positivi, con $a_n \geq 0, \forall n$ (anche se sarebbe sufficiente richiederlo definitivamente), come la seguente
+\[\sum_{n=1}^{+\infty} a_n\]
+Supposto che esista
 \[\lim_{n \to +\infty} \left(\sqrt[n]{a_n}\right)=l\]
 Allora si considerano le seguenti casistiche
 \begin{itemize}
@@ -800,32 +837,46 @@ Allora si considerano le seguenti casistiche
 \textsc{Dimostrazione 1}: Si consideri il caso in cui 
 \[\lim_{n \to +\infty} \left(\sqrt[n]{a_n}\right)=l\]
 com $l>1$, per la definizione di limite
-\[\forall \epsilon > 0, \exists n_\epsilon \in \mathbb{N} \vert \forall n > n_\epsilon, \left \vert \sqrt[n]{a_n} - l \right \vert < \epsilon\]
-da cui $\sqrt[n]{a_n} > l - \epsilon$, per cui posto $\epsilon = 1$ si ha che, definitivamente $a_n>1$ e quindi la serie non può convergere.
+\[\forall \epsilon > 0, \exists n_\epsilon \in \mathbb{N} \hspace{0.5em} \text{tale che} \hspace{0.5em} \forall n > n_\epsilon, \hspace{0.5em} \text{si ha che} \hspace{0.5em} \left \vert \sqrt[n]{a_n} - l \right \vert < \epsilon\]
+Per cui, per $n \geq n_\epsilon$ si ha che
+\[l-\epsilon<\sqrt[n]{a_n}<l+\epsilon\]
+Pertanto, essendo $l>1$ per ipotesi, si sceglie $\epsilon$ sufficientemente piccolo tale che $\epsilon<l-1$, per cui $l-\epsilon>1$. Ciò significa che 
+\[\sqrt[n]{a_n}>l-\epsilon>1\]
+Definitivamente, quindi, $a_n>1$ (cioè non è infinitesimo), pertanto la serie non può convergere. Essendo una serie a termini positivi, per l'aut-aut, diverge.
 
 \vspace{2em}
 \noindent
 \normalfont \normalsize
 \textsc{Dimostrazione 2}: Si consideri il caso in cui 
 \[\lim_{n \to +\infty} \left(\sqrt[n]{a_n}\right)=l\]
-com $l<1$, per la definizione di limite
-\[\forall \epsilon > 0, \exists n_\epsilon \in \mathbb{N} \vert \forall n > n_\epsilon, \left \vert \sqrt[n]{a_n} - l \right \vert < \epsilon\]
-e, prendendo $0 < \epsilon < 1-l$, si evince che
+con $l<1$. Allora, per la definizione di limite
+\[\forall \epsilon > 0, \exists n_\epsilon \in \mathbb{N} \hspace{0.5em} \text{tale che} \hspace{0.5em} \forall n > n_\epsilon, \hspace{0.5em} \text{si ha che} \hspace{0.5em} \left \vert \sqrt[n]{a_n} - l \right \vert < \epsilon\]
+Per cui, per $n \geq n_\epsilon$ si ha che
+\[l-\epsilon<\sqrt[n]{a_n}<l+\epsilon\]
+Pertanto, essendo $l<1$ per ipotesi, si considera $\epsilon$ sufficientemente piccolo tale che $0 < \epsilon < 1-l$, ossia $l+\epsilon<1$. Ciò permette di concludere che
 \[\sqrt[n]{a_n} < l+\epsilon < 1 \hspace{1em} \rightarrow \hspace{1em} a_n < (l+\epsilon)^n\]
-e siccome si è preso $\vert q \vert < 1$, per confronto con la serie converge.
+e siccome si è preso $\vert l+\epsilon \vert < 1$, per confronto con la serie geometrica, la serie di partenza converge.
 
-\vspace{1em}
+\vspace{2em}
 \noindent
-\textbf{Esempio}: Si consideri la serie seguente
+\textbf{Osservazione 1}: Si consideri la serie armonica generalizzata con $\alpha=2$:
 \[\sum_{n=1}^{+\infty} \frac{1}{n^2}\]
-applicando il criterio del rapporto si ha
-\[\lim_{n \to +\infty} \frac{n^2}{(n+1)^2} = 1\]
+Per studiarne il carattere, si applica il criterio del rapporto e si ottiene:
+\[\lim_{n \to +\infty} \frac{a_{n+1}}{a_n} = \lim_{n \to +\infty} \dfrac{\dfrac{1}{(n+1)^2}}{\dfrac{1}{n^2}} = \lim_{n \to +\infty} \frac{n^2}{(n+1)^2} = 1\]
 per cui per tale criterio non è possibile dire nulla, ma è noto che la serie converge.\\
 Analogamente si ha che il carattere della serie
 \[\sum_{n=1}^{+\infty} \frac{1}{n}\]
 non può essere determinato con il criterio del rapporto, in quanto
-\[\lim_{n \to +\infty} \frac{n}{n+1} = 1\]
-ma è noto che tale serie diverge.
+\[\lim_{n \to +\infty} \frac{a_{n+1}}{a_n} = \lim_{n \to +\infty} \dfrac{\dfrac{1}{n+1}}{\dfrac{1}{n}} = \lim_{n \to +\infty} \frac{n}{n+1} = 1\]
+ma è noto che tale serie diverge. Per cui il criterio del rapporto, quando si ottiene $k=1$ non fornisce alcuna informazione in merito al carattere della serie studiata.
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione 2}: Si consideri la serie armonica:
+\[\sum_{n=1}^{+\infty} \frac{1}{n}\]
+Allora, applicando il criterio della radice $n$-esima, si calcola il limite seguente
+\[\lim_{n \to +\infty} \sqrt[n]{\frac{1}{n}} = \lim_{n \to +\infty} \left(\frac{1}{n}\right)^{\frac{1}{n}} = \lim_{n \to +\infty} e^{\frac{1}{n} \cdot \log \left(\frac{1}{n}\right)} = \lim_{n \to +\infty} e^{-\frac{\log \left(n\right)}{n}} = 1\]
+Similmente accadrebbe con la serie armonica generalizzata di ragione $\alpha=2$.
 
 \vspace{1em}
 \noindent
@@ -834,7 +885,11 @@ Se si considera una serie a termine generale qualsiasi
 \[\sum a_n, \hspace{1em} \text{ con } \hspace{1em} a_n \in \mathbb{C}\]
 non è possibile dire molto sul suo carattere. Tuttavia, ad essa è possibile associare la serie
 \[\sum \vert a_n \vert\]
-che è una serie a termine generale positivo. Da ciò segue anche la definizione di \textbf{serie assolutamente convergente}:
+che è una serie a termine generale positivo, a cui è possibile applicare i criteri noti.
+
+\vspace{1em}
+\subsubsection{Serie assolutamente convergente}
+Di seguito viene esposta la definizione di \textbf{serie assolutamente convergente}:
 
 % Tabella per le definizione di concetti, etc...
 \vspace{1em}
@@ -847,236 +902,84 @@ che è una serie a termine generale positivo. Da ciò segue anche la definizione
     {\textbf{SERIE ASSOLUTAMENTE CONVERGENTE}}\\
     \parbox{\linewidth}{Una serie
     \[\sum a_n\]
-    si dice \textbf{assolutamente convergente}, se è convergente la serie
+    si dice \textbf{assolutamente convergente}, se è convergente la serie dei suoi moduli seguente
     \[\sum \vert a_n \vert\]
     \vspace{-1mm}}\\
     \hline
 \end{tabularx}
 
+\vspace{2em}
+\noindent
 \begin{theorem}
-    Una serie assolutamente convergente è convergente.
+    Una serie assolutamente convergente è convergente. Tuttavia, non è vero il viceversa.
 \end{theorem}
 
 \vspace{2em}
 \noindent
 \normalfont \normalsize
-\textsc{Dimostrazione}: Si consideri il caso in cui $a_n \in \mathbb{R}$, allora, per definizione di parte positiva e parte negativa si ha
-\[a_n^+ = \left\{\begin{array}{lll}
+\textsc{Dimostrazione 1}: Si consideri il caso in cui $a_n \in \mathbb{R}$, allora, per definizione di parte positiva e parte negativa si ha, rispettivamente:
+\begin{align*}
+    &a_n^+ = \left\{
+\rowcolors{1}{white}{white}    
+\begin{array}{lll}
     a_n & \text{se} & a_n \geq 0\\
     0   & \text{se} & a_n < 0\\
 \end{array}
-\right.\]
-\[a_n^- = \left\{\begin{array}{lll}
+\right.\\
+&a_n^- = \left\{
+\rowcolors{1}{white}{white}     
+\begin{array}{lll}
     -a_n & \text{se} & a_n < 0\\
     0    & \text{se} & a_n \geq 0\\
 \end{array}
-\right.\]
-ma ciò significa che $a_n=a_n^+-a_n^-$, mentre $\vert a_n \vert a_n^+ + a_n^-$, ma è ance vero che
+\right.
+\end{align*}
+ma ciò significa che la parte positiva e negativa di un reale è sempre $\geq 0$. Pertanto si può affermare che
+\[a_n=a_n^+-a_n^- \hspace{1em} \text{e} \hspace{1em} \vert a_n \vert = a_n^++a_n^-\]
+Quindi, in particolare, si ha che
 \[0 \leq a_n^+ \leq \vert a_n \vert\]
 \[0 \leq a_n^- \leq \vert a_n \vert\]
-
-\vspace{1em}
-\noindent
-Se si considera un numero complesso 
-Ma ciò significa
-
-\vspace{1em}
-\noindent
-\textbf{Osservazione}: Tuttavia, non è vero il viceversa, come nel caso della \textbf{serie di Leibniz}... continua ...
-
-\vspace{1em}
-\noindent
-\subsection{Limiti di successioni in $\mathbb{C}$}
-Sia $(z_n)_n$ una successione in $\mathbb{C}$, con $\gamma \in \mathbb{C}$, si dirà che
-\[\lim_{n \to +\infty} z_n = \gamma\]
-se
-\[\forall \epsilon > 0, \exists n_\epsilon \in \mathbb{N} \vert \forall n \geq n_\epsilon, \vert z_n - \gamma \vert < \epsilon\]
-in cui è da intendersi $\vert \dots \vert$ come modulo di un numero complesso. Un numero complesso può essere descritto come $z=x+iy$, con $z,y \in \mathbb{R}$: esiste una relazione tra la successione di un numero complesso e la successione della sua parte reale e immaginaria, esposta dal seguente teorema:
-
-\begin{theorem}
-    La successione $(z_n)_n$, posto $z_n=x_n+i \cdot y_n$ converge a $\gamma = \alpha + i \beta$ \textbf{se e solo se}
-    \[\lim_{n \to +\infty} x_n = \alpha \hspace{1em} \text{ e } \hspace{1em} \lim_{n \to + \infty} y_n = \beta\]
-\end{theorem}
+Per il criterio del confronto, quindi, se la serie dei valori assoluti 
+\[\sum \left \vert a_n \right \vert\]
+è convergente, anche le serie di parte positiva e parte negativa
+\[\sum a_n^+ \hspace{1em} \text{e} \hspace{1em} \sum a_n^-\]
+convergono. Pertanto la serie di partenza
+\[\sum a_n^+-a_n^- = \sum a_n\]
+è convergente.
 
 \vspace{2em}
 \noindent
 \normalfont \normalsize
-\textsc{Dimostrazione 1}: Dalla definizione di modulo, si ha che
-\[\vert x_n - \gamma \vert = \sqrt{(x_n-\alpha)^2+(y_n-\beta)^2}\]
-Da ciò appare evidente che
-\[\vert x_n - \alpha \vert \leq \vert z_n - \gamma \vert\]
-\[\vert y_n - \beta  \vert \leq \vert z_n - \gamma \vert\]
-
-\vspace{2em}
-\noindent
-\normalfont \normalsize
-\textsc{Dimostrazione 2}: ... continua ... Dalla definizione di modulo, si ha che
-\[\vert x_n - \gamma \vert = \sqrt{(x_n-\alpha)^2+(y_n-\beta)^2}\]
-Da ciò appare evidente che
-\[\vert x_n - \alpha \vert \leq \vert z_n - \gamma \vert\]
-\[\vert y_n - \beta  \vert \leq \vert z_n - \gamma \vert\]
-
-\vspace{1em}
-\noindent
-\textbf{Osservazione}: Dal momento che le serie sono particolari successioni, tali risultati si applicano in modo identico. Per cui una serie a termini complessi
-\[\sum_{n=0}^{+\infty} z_n\]
-converge \textbf{se e solo se} convergono le serie
-\[\sum_{n=0}^{+\infty} \text{Re}(z_n) \hspace{1em} \text{e} \hspace{1em} \sum_{n=0}^{+\infty} \text{Im}(z_n)\]
-e si ha
-\[\sum_{n=0}^{+\infty} z_n = \sum_{n=0}^{+\infty} \text{Re}(z_n) + i \sum_{n=0}^{+\infty} \text{Im}(z_n)\]
-
-\newpage
-\begin{center}
-    10 Ottobre 2022
-\end{center}
-Le serie numeriche sono delle coppie di successioni: una è la successione dei termini generali, l'altra è la successione delle somme parziali.\\
-Se una successione è convergente, allora il suo termine generale è infinitesimo. Una serie può essere sempre pensata come un integrale generalizzato.\\
-Le serie a termini (reali) positivi sono le serie più facili da studiare, in forza del teorema dell'aut-aut.\\
-Il criterio di convergenza più importante è il criterio dell'ordine di infinitesimo, a cui si aggiunge il criterio del rapporto e il criterio della radice $n$-esima.\\
-Tuttavia, se una serie non è a termini (reali) positivi, si può associare ad essa la serie dei suoi moduli, che è a termini positivi, quindi più facile da studiare. Una serie si dice assolutamente convergente se la serie dei suoi moduli è convergente.\\
-Serie non assolutamente convergenti vengono chiamate serie \textbf{semplicemente convergenti}.
-
-\vspace{1em}
-\subsection{Serie semplicemente convergenti}
-
-\vspace{1em}
-\noindent
-\subsubsection{Criterio di Leibniz per le serie a termini alterni}
-Si consideri $(a_n)_n$ una successione a termini reali, con $a_n \in \mathbb{R}$, tale che
+\textsc{Dimostrazione 2}: Si consideri il caso in cui $z_n \in \mathbb{C}$ e si supponga che 
+\[\sum \left \vert z_n \right \vert\]
+sia convergente. Allora, posto
+\[z_n = x_n + i \cdot y_n\]
+e, per definizione di modulo di un numero complesso, si ha
+\[\left \vert z_n \right \vert = \sqrt{x_n^2+y_n^2}\]
+è immediato evincere che
 \begin{itemize}
-    \item $a_n > 0, \hspace{0.5em} \forall n \in \mathbb{N}$
-    \item $a_{n+1} \leq a_n, \hspace{0.5em} \forall n \in \mathbb{N}$
-    \item il termine $a_n$ deve essere infinitesimo:
-    \[\lim_{n \to +\infty} a_n = 0\]
+    \item $\vert x_n \vert \leq \vert z_n \vert$
+    \item $\vert y_n \vert \leq \vert z_n \vert$
 \end{itemize}
-Allora la serie costruita come
-\[\sum_{n=0}^{+\infty} (-1)^n \cdot a_n\]
+in cui $\vert x_n \vert$ e $\vert y_n \vert$ sono valori assoluti, mentre $\vert z_n \vert$ è un modulo. Per le disuguaglianze di cui sopra, si evince che le serie
+\[\sum \vert x_n \vert \hspace{1em} \text{e} \hspace{1em} \sum \vert y_n \vert\]
+convergono. Ma ciò significa che la serie con termine generale $x_n$ converge assolutamente, così come quella con termine generale $y_n$.\\
+Siccome $x_n$ rappresenta la parte reale di $z_n$ e $y_n$ rappresenta la parte immaginaria di $z_n$, per il teorema successivamente esposto sulla convergenza di una serie di numeri complessi, si conclude che la serie
+\[\sum z_n\]
 converge.
 
-% Formattazione per la dimostrazione, etc.
 \vspace{2em}
 \noindent
-\normalfont \normalsize
-\textsc{Dimostrazione}: Si consideri la ridotta $n$-esima $s_n$. Posto $k \in \mathbb{N}$ tale per cui $k \geq 0$, allora studiando la sottosuccessione dei termini pari e quella dei termini dispari, si ha
-\begin{enumerate}
-    \item $s_{2k+2} = s_{2k} - a_{2k+1} + a_{2k+2} = s_{2k} - (a_{2k+1}-a_{2k+2}) \leq s_{2k}$
-    essendo, per ipotesi, $a_{n+1} \leq a_n$, e quindi si ha che $a_{2k+1}-a_{2k+2} \geq 0$.\\
-    Per tale ragione, tale sottosuccessione è \textbf{monotona decrescente}.
-
-    \item $s_{2k+3} = s_{2k+1} + a_{2k+2} - a_{2k+3} = s_{2k+1} + (a_{2k+2}-a_{2k+3}) \geq s_{2k+1}$
-    essendo, per ipotesi, $a_{n+1} \leq a_n$, e quindi si ha che $a_{2k+2}-a_{2k+3} \geq 0$.\\
-    Per tale ragione, tale sottosuccessione è \textbf{monotona crescente}.
-\end{enumerate}
-È noto, per ipotesi, che
-\[s_{2k+1} - s_{2k} = (-1)^{2k+1} \cdot a_{2k+1} = -a_{2k+1} \leq 0 \hspace{1em} \text{ e quindi } s_{2k+1} \leq s_{2k}, \hspace{1em} \forall k \geq 0\]
-ciò significa che, per ogni $n$, la ridotta pari è maggiore della ridotta dispari, rimbalzando progressivamente attorno al limite delle due sottosuccessioni.\\
-Dalle disuguaglianze di cui sopra si ha che
-\begin{align}
-    s_{2k} \geq s_{2k+1} \geq s_1 = a_0-a_1 & \forall k > 0\\
-    s_{2k+1} \leq s_{2k} \leq s_2 = a_0-a_1+a_2 & \forall k > 0
-\end{align}
-Essendo le due sottosuccessioni, decrescente e crescente, rispettivamente limitata dal basso e dall'alto, esiste per entrambe un limite finito:
-\[\lim_{k \to +\infty} s_{2k} = \beta \hspace{1em} \text{e} \hspace{1em} \lim_{k \to + \infty} s_{sk+1} = \alpha\]
-e, per il teorema del confronto dei limiti, si ha che $\alpha \leq \beta$.\\
-Essendo il termine $a_n$ infinitesimo, si ha che
-\[0 = \lim_{n \to +\infty} a_n = \lim_{k \to +\infty} a_{2k+1} = \lim_{k \to +\infty} s_{2k} - s_{sk+1} = \alpha - \beta = 0\]
-Dal momento che le sottosuccessioni sono complementari, la serie di partenza converge.
+\textbf{Osservazione}: Tuttavia, non è vero il viceversa: una serie convergente non è detto sia assolutamente convergente.\\
+Si consideri, a tal proposito, la \textbf{serie di Leibniz} seguente:
+\[\sum_{n=1}^{+\infty} (-1)^n \cdot \frac{1}{n}\]
+che, per il criterio di Leibniz, risulta convergente. Tuttavia, la corrispondente serie dei moduli
+\[\sum_{n=1}^{+\infty} \left \vert (-1)^n \cdot \frac{1}{n} \right \vert = \sum_{n=1}^{+\infty} \frac{1}{n}\]
+non è convergente, in quanto è la serie armonica. Questo è il tipico esempio di una serie convergente, ma non assolutamente convergente.
 
 \vspace{1em}
-\noindent
-\textbf{Osservazione}: Inoltre, detta $s$ la somma della serie, si ha che
-\[\forall n \hspace{1em} \left \vert s_n-s \right \vert \leq a_{n+1}\]
-secondo la cosiddetta \textbf{formula di approssimazione}. Tale formula funziona in quanto
-\begin{itemize}
-    \item se $n$ è dispari
-    \[s-s_{2k+1} \leq s_{2k+2} - s_{sk+1} = a_{2k+1} + a_{2k+1} - s_{2k+1} = a_{2k+2} = a_{(2k+1)+1}= a_{n+1}\]
-    
-    \item se $n$ è pari
-    \[s_{2k}-s \leq s_{2k} - s_{2k+1} = a_{2k+1} = a_{n+1}\]
-\end{itemize}
-
-\vspace{1em}
-\noindent
-\textbf{Esempio}: Si consideri la serie di Leibniz:
-\[\sum_{n=1}^{+\infty} (-1)^n \frac{1}{n} = s\]
-Allora, per conoscere la somma della serie con un errore di $\dfrac{1}{10}$, è sufficiente  considerare
-\[s_9 = -1 + \frac{1}{2} - \frac{1}{3} + \dots - \frac{1}{9}\]
-
-\vspace{1em}
-\noindent
-\textbf{Esercizio 1}: Si consideri la serie seguente
-\[\sum_{n=1}^{+\infty} (-1)^n \cdot \frac{\log_{10}(n)}{n}\]
-Si controlli se sono verificate le condizioni seguenti
-\begin{itemize}
-    \item Si ha che
-    \[\frac{\log_{10}(n)}{n} > 0 \hspace{1em} \forall n \geq 2\]
-
-    \item Si ha che
-    \[\lim_{n \to +\infty} a_n = \lim_{n \to +\infty} \frac{\log_{10}(n)}{n} = 0\]
-
-    \item La successione
-    \[\frac{\log_{10}(n)}{n}\]
-    è decrescente?
-\end{itemize}
-Per verificare l'ultimo punto, si considera la funzione
-\[f(x) = \frac{\log_{10}(x)}{x}\]
-e se ne calcola la derivata, da cui
-\[f'(x) = \frac{\frac{1}{x \cdot \log(10)} \cdot x - \log_{10}(x) \cdot 1}{x^2}\]
-Se ne studia il segno, che dipende solamente dal numeratore, da cui
-\[\frac{1}{x \cdot \log(10)} \cdot x - \log_{10}(x) \cdot 1 > 0 \hspace{1em} \rightarrow \hspace{1em} \log_{10}(x) < \frac{1}{\log(10)} \hspace{1em} \rightarrow \hspace{1em} x < 10^{\log(10)}\]
-Per cui per $x > 10^{\log(10)}$, la funzione è decrescente. Per tale ragione, la serie
-\[\sum_{n=3}^{+\infty} \frac{\log_{10}(n)}{n}\]
-converge ad $s$. Tuttavia, non è possibile applicare la formula di approssimazione, in quanto le condizioni di Leibniz non sono soddisfatte per tutti gli $n$.
-
-\vspace{1em}
-\noindent
-\textbf{Esercizio 2}: Si consideri la serie seguente
-\[\sum_{n=0}^{+\infty} \frac{\sin \left(\frac{\pi}{3} \cdot (1+3n)\right)}{1+3n}\]
-che, in prima approssimazione, sembra non essere assolutamente convergente, in quanto il suo comportamento asintotico risulta essere simile a quello della serie armonica.\\
-Per verificare se essa sia convergente semplicemente, si verifica se essa soddisfa le tre condizioni di Leibniz; riscrivendo il termine generale si ha
-\[\sin \left(\frac{\pi}{3} + 3 n\right) = -\sin\left(\frac{\pi}{3}\right) = (-1)^n \cdot \frac{\sqrt{3}}{2}\]
-Ecco, quindi, che la serie può essere riscritta come
-\[\sum_{n=0}^{+\infty} (-1)^n \cdot \underbrace{\frac{\frac{\sqrt{3}}{2}}{1+3n}}_{a_n}\]
-
-\vspace{1em}
-\noindent
-\textbf{Osservazione}: Si presti particolare attenzione che, in questo ultimo caso, è stato fondamentale riscrivere il termine generale, mettendo in evidenza il fattore $(-1)^n$, in quanto per verificare le $3$ ipotesi del criterio di Leibniz, bisogna studiare il termine
-\[\frac{\frac{\sqrt{3}}{2}}{1+3n}\]
-che risulta essere
-\begin{enumerate}
-    \item a termini positivi
-    \item infinitesimo
-    \item decrescente
-\end{enumerate}
-Se ne evince che la serie di partenza è convergente per Leibniz.
-
-\vspace{1em}
-\noindent
-\textbf{Esercizio}: Si consideri la seguente serie, posto $\alpha \in \mathbb{R}$
-\[\sum_{n=1}^{+\infty} \frac{\alpha^n + (-5)^n}{2^n} \cdot \sin \left(\pi + \frac{1}{n}\right)\]
-Il seno può essere riscritto come
-\[\sin \left(\pi + \frac{1}{n}\right) = - \sin \left(\frac{1}{n}\right)\]
-Pertanto si ottiene
-\[\sum_{n=1}^{+\infty} - \frac{\alpha^n+(-5)^n}{5^n} \cdot \sin \left(\frac{1}{n}\right)\]
-Tuttavia, si può osservare immediatamente che se $\left \vert \alpha \right \vert > 5$, la serie non converge in quanto il termine generale non è infinitesimo. Se $\alpha=-5$, si ottiene il termine generale
-\[- \frac{2 \cdot (-1)^n \cdot 5^n}{5^n} \cdot \sin \left(\frac{1}{n}\right) = -2 \cdot (-1)^n \cdot \sin \left(\frac{1}{n} \right)\]
-in cui il termine
-\[\sin \left(\frac{1}{n} \right)\]
-soddisfa le $3$ condizioni di Leibniz, quindi la serie di partenza converge.\\
-Nel caso in cui $\alpha=5$, si ottiene
-\[- \frac{5^n + (-1)^n \cdot 5^n}{5^n} \cdot \sin\]
-... continua ...
-
-\vspace{1em}
-\noindent
-Nel caso in cui $\vert \alpha \vert < 5$, spezzando la frazione si ottiene
-\[\left(\frac{\alpha}{5}\right)^n \cdot \left(-\sin \left( \frac{1}{n}\right)\right) + (-1)^n \cdot \sin \left(\frac{1}{n}\right)\]
-in cui la prima converge, se confrontata con la geometrica, e anche la seconda converge per Leibniz.
-
-\vspace{1em}
-\noindent
-\subsection{Successione di Couchy}
-Di seguito si espone la definizione di \textbf{successione di Couchy}:
+\subsubsection{Serie semplicemente convergente}
+Di seguito viene esposta la definizione di \textbf{serie semplicemente convergente}:
 
 % Tabella per le definizione di concetti, etc...
 \vspace{1em}
@@ -1086,77 +989,507 @@ Di seguito si espone la definizione di \textbf{successione di Couchy}:
 \noindent
 \begin{tabularx}{\textwidth}{@{}|P|@{}}
     \hline
-    {\textbf{SUCCESSIONE DI COUCHY}}\\
-    \parbox{\linewidth}{Sia $(z_n)_n$ una successione in $\mathbb{C}$, si dirà che $(z_n)_n$ è una successione di Couchy se
-    \[\forall \epsilon > 0, \exists n_\epsilon \in \mathbb{N \hspace{0.5em}} \vert \hspace{0.5em} \forall n \geq n_\epsilon, \forall p \in \mathbb{N} \rightarrow \left \vert z_{n+p} - z_n \right \vert < \epsilon\]
-    \vspace{-3mm}}\\
+    {\textbf{SERIE SEMPLICEMENTE CONVERGENTE}}\\
+    \parbox{\linewidth}{Una serie convergente, ma non assolutamente convergente, si dice \textbf{semplicemente convergente}.\vspace{3mm}}\\
     \hline
 \end{tabularx}
 
 \vspace{2em}
 \noindent
-\textbf{Osservazione}: Si osservi che se esiste finito
-\[\lim_{n \to +\infty} z_n = l\]
-allora la successione è di Couchy.
+\subsection{Limiti di successioni in $\mathbb{C}$}
+Sia $(z_n)_n$ una successione in $\mathbb{C}$, con $\gamma \in \mathbb{C}$. Allora si dirà che
+\[\lim_{n \to +\infty} z_n = \gamma\]
+se
+\[\forall \epsilon > 0, \exists n_\epsilon \in \mathbb{N} \hspace{0.5em} \text{tale che} \hspace{0.5em} \forall n \geq n_\epsilon \hspace{0.5em} \text{si ha che} \hspace{0.5em} \vert z_n - \gamma \vert < \epsilon\]
+in cui è da intendersi $\vert \dots \vert$ come modulo di un numero complesso che è da intendersi come \quotes{distanza dall'origine}; preso un numero complesso $z_0$, si ha che
+\[\mathcal{B}(z_0,r) = \{z \in \mathbb{C} : \left \vert z  - z_0 \right \vert < r\}\]
+
+\vspace{1em}
+\noindent
+\subsubsection{Convergenza di Re e Im}
+Com'è noto, un numero complesso può essere descritto in forma cartesiana come $z=x+i \cdot y$, con $z,y \in \mathbb{R}$: esiste una relazione tra la successione di un numero complesso e la successione della sua parte reale e immaginaria, esposta dal seguente teorema:
+
+\vspace{1em}
+\begin{theorem}
+    La successione $(z_n)_n$, posto $z_n=x_n+i \cdot y_n$, converge a $\gamma = \alpha + i \cdot \beta$ \textbf{se e solo se}
+    \[\lim_{n \to +\infty} x_n = \alpha \hspace{1em} \text{ e } \hspace{1em} \lim_{n \to + \infty} y_n = \beta\]
+\end{theorem}
+
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione 1}: Dato $z_n=x_n+i \cdot y_n$ e $\gamma = \alpha + i \cdot \beta$, è evidente come
+\[z_n-\gamma = x_n+i \cdot y_n - (\alpha + i \cdot \beta) = x_n-\alpha + i \cdot (y_n-\beta)\]
+Dalla definizione di modulo, si ha, quindi, che
+\[\vert z_n - \gamma \vert = \sqrt{(x_n-\alpha)^2+(y_n-\beta)^2}\]
+Da ciò appare evidente che
+\[\vert x_n - \alpha \vert \leq \vert z_n - \gamma \vert\]
+\[\vert y_n - \beta  \vert \leq \vert z_n - \gamma \vert\]
+Pertanto, siccome per ipotesi si ha che 
+\[\lim_{n \to +\infty} z_n = \gamma\]
+ovvero
+\[\forall \epsilon > 0, \exists n_\epsilon \in \mathbb{N} \hspace{0.5em} \text{tale che} \hspace{0.5em} \forall n \geq n_\epsilon \hspace{0.5em} \text{si ha che} \hspace{0.5em} \vert z_n - \gamma \vert < \epsilon\]
+è immediato capire che definitivamente, per $n \geq n_\epsilon$, anche
+\[\vert x_n - \alpha \vert \leq \vert z_n - \gamma \vert < \epsilon\]
+\[\vert y_n - \beta  \vert \leq \vert z_n - \gamma \vert < \epsilon\]
+
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione 2}: Sia, per ipotesi, che
+\[\lim_{n \to +\infty} x_n = \alpha \hspace{1em} \text{ e } \hspace{1em} \lim_{n \to + \infty} y_n = \beta\]
+per cui
+\[\forall \epsilon_1 > 0, \exists n_{\epsilon_1} \in \mathbb{N} \hspace{0.5em} \text{tale che} \hspace{0.5em} \forall n \geq n_{\epsilon_1} \hspace{0.5em} \text{si ha che} \hspace{0.5em} \vert x_n - \alpha \vert < \epsilon_1\]
+e, analogamente
+\[\forall \epsilon_2 > 0, \exists n_{\epsilon_2} \in \mathbb{N} \hspace{0.5em} \text{tale che} \hspace{0.5em} \forall n \geq n_{\epsilon_2} \hspace{0.5em} \text{si ha che} \hspace{0.5em} \vert y_n - \beta \vert < \epsilon_2\]
+Pertanto, posto $n_\epsilon = \max \{n_{\epsilon_1},n_{\epsilon_2}\}$ e $\epsilon = \min \{\epsilon_1,\epsilon_2\}$ si ha che, definitivamente, per $n \geq n_\epsilon$
+\[\vert x_n - \alpha \vert < \epsilon\]
+\[\vert y_n - \beta  \vert < \epsilon\]
+Ma dal momento che
+\[\vert z_n - \gamma \vert = \sqrt{(x_n-\alpha)^2+(y_n-\beta)^2} < \sqrt{(\epsilon)^2+(\epsilon)^2} = \sqrt{2} \epsilon^2\]
+che, chiaramente, può essere resa piccola quanto si vuole.
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Dal momento che le serie sono particolari successioni, i risultati visti per le successioni si applicano in modo identico anche alle serie: una serie a termini complessi
+\[\sum_{n=0}^{+\infty} z_n\]
+converge \textbf{se e solo se} convergono le serie
+\[\sum_{n=0}^{+\infty} \text{Re}(z_n) \hspace{1em} \text{e} \hspace{1em} \sum_{n=0}^{+\infty} \text{Im}(z_n)\]
+e si ha che la somma della serie $z_n$ è data dalla somma delle somme della parte reale e immaginaria, come esposto di seguito:
+\[\sum_{n=0}^{+\infty} z_n = \sum_{n=0}^{+\infty} \text{Re}(z_n) + i \cdot \sum_{n=0}^{+\infty} \text{Im}(z_n)\]
+
+\vspace{1em}
+\noindent
+\textbf{Esercizio 1}: Si consideri la seguente serie
+\[\sum \left(2 i^n-\frac{3 i}{5^n}\right)\]
+Allora, ovviamente, il termine generale non è infinitesimo, per cui la serie non converge.
+
+\vspace{1em}
+\noindent
+\textbf{Esercizio 2}: Si consideri la seguente serie
+\[\sum \left(\frac{\sin(n)}{n^2 \cdot i} + \frac{n}{\sin(n)+3n^3}\right)\]
+Dal momento che si ha che
+\[\frac{1}{i}=-i\]
+è facile capire che la serie di partenza diviene
+\[\sum \left(-\frac{\sin(n)}{n^2}\cdot i + \frac{n}{\sin(n)+3n^3}\right)\]
+Allora il termine generale è infinitesimo e, in particolare, si osserva che
+\[\left \vert \frac{\sin(n)}{n^2} \right \vert \leq \frac{1}{n^2}\]
+e siccome la serie armonica generalizzata di ragione $2$ converge, per il criterio del confronto, converge assolutamente anche la parte immaginaria della serie di partenza e, quindi, anche la parte immaginaria stessa.\\
+Similmente è possibile affermare che
+\[\frac{n}{\sin(n)+3n^3}\]
+è infinitesima di ord $2 \geq \alpha > 1$, per cui è convergente per il criterio dell'ordine di infinitesimo.
+
+\vspace{1em}
+\noindent
+\textbf{Esercizio 3}: Si consideri la seguente serie
+\[\sum \frac{3n+i}{n^3+n\cdot i}\]
+Un modo immediato per semplificare l'espressione del termine generale è moltiplicare e dividere per il coniugato del denominatore, da cui
+\[\frac{3n+i}{n^3+n\cdot i} \cdot \frac{n^3 - n \cdot i}{n^3 - n \cdot i} = \frac{3n^4 + n}{n^6+n^2} + \frac{n^3 - 3n^2}{n^6+n^2} \cdot i\]
+In questo modo è facile capire che tanto la parte immaginaria, quanto la parte reale del termine generale di partenza sono infinitesime, la prima di ord $2$, la seconda di ord $3$. Per il criterio dell'ordine di infinitesimo, convergono.\\
+Un altro modo per studiare tale successione è quello di considerare il modulo del termine generale. Pertanto:
+\[\left \vert \frac{3n+i}{n^3+n\cdot i} \right \vert = \frac{ \vert 3n+i \vert}{\vert n^3+n\cdot i \vert} = \frac{\sqrt{9n^2 + 1}}{\sqrt{n^6 +n^2}} = \dfrac{\left \vert n \right \vert \cdot \sqrt{9 + \dfrac{1}{n^2}}}{\vert n^3 \vert \cdot \sqrt{1 + \dfrac{1}{n^4}}}\]
+Ancora una volta, il termine generale è infinitesimo di ord $2$, per cui la serie converge assolutamente e quindi è convergente.
+
+\newpage
+\begin{center}
+    10 Ottobre 2022
+\end{center}
+Le serie numeriche sono delle coppie di successioni: una è la successione dei termini generali, l'altra è la successione delle somme parziali.\\
+Se una successione è convergente, allora il suo termine generale è infinitesimo. Una serie può essere sempre pensata come un integrale generalizzato.\\
+Le serie a termini (reali) positivi sono le serie più facili da studiare, in forza del teorema dell'aut-aut che afferma che una serie di questo tipo o converge o diverge.\\
+Il criterio di convergenza più importante è il criterio dell'ordine di infinitesimo, a cui si aggiunge il criterio del rapporto e il criterio della radice $n$-esima.\\
+Tuttavia, se una serie non è a termini (reali) positivi, si può associare ad essa la serie dei suoi moduli, che è a termini positivi, quindi più facile da studiare: una serie si dice assolutamente convergente se la serie dei suoi moduli è convergente; in particolare, una serie assolutamente convergente è anche convergente, ma non è vero il viceversa.
+
+\vspace{1em}
+\subsection{Serie semplicemente convergenti}
+Serie non assolutamente convergenti vengono chiamate serie \textbf{semplicemente convergenti} e sono le più difficili da studiare. Di seguito vengono esposti alcuni criteri che possono essere impiegati per studiare la convergenza semplice di tali serie.
+
+\vspace{1em}
+\noindent
+\subsubsection{Criterio di Leibniz per le serie a termini alterni}
+Di seguito si espone il \textbf{criterio di Leibniz per le serie a termini alterni}:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{CRITERIO DI LEIBNIZ PER LE SERIE A TERMINI ALTERNI}}\\
+    \parbox{\linewidth}{Si consideri $(a_n)_n$ una successione a termini reali, con $a_n \in \mathbb{R}$, tale che
+    \begin{itemize}
+        \item $a_n > 0, \hspace{0.5em} \forall n \in \mathbb{N}$
+        \item $a_{n+1} \leq a_n, \hspace{0.5em} \forall n \in \mathbb{N}$
+        \item il termine $a_n$ deve essere infinitesimo:
+        \[\lim_{n \to +\infty} a_n = 0\]
+    \end{itemize}
+    Allora la serie costruita come
+    \[\sum_{n=0}^{+\infty} (-1)^n \cdot a_n\]
+    converge. Inoltre, detta $s$ la somma della serie, si ha che
+    \[\forall n \hspace{1em} \left \vert s_n-s \right \vert \leq a_{n+1}\]
+    secondo la cosiddetta \textbf{formula di approssimazione}.\vspace{3mm}}\\
+    \hline
+\end{tabularx}
 
 % Formattazione per la dimostrazione, etc.
 \vspace{2em}
 \noindent
 \normalfont \normalsize
-\textsc{Dimostrazione}: Fissato $\epsilon > 0, \exists n \epsilon \in \mathbb{N}$ tale che $\forall n \geq n_\epsilon$, si ha che
+\textsc{Dimostrazione 1}: Si consideri la ridotta $n$-esima $s_n$. Posto $k \in \mathbb{N}$ tale per cui $k \geq 0$, allora studiando la sottosuccessione dei termini pari e quella dei termini dispari, si ha
+\begin{enumerate}
+    \item Per i termini pari
+    \[s_{2k+2} = s_{2k} - a_{2k+1} + a_{2k+2} = s_{2k} - \underbrace{(a_{2k+1}-a_{2k+2})}_{\geq 0} \leq s_{2k}\]
+    Infatti, per ipotesi, $a_{n+1} \leq a_n$, e quindi si ha che $a_{2k+1}-a_{2k+2} \geq 0$.\\
+    Per tale ragione, tale sottosuccessione è \textbf{monotona decrescente}.
+
+    \item Per i termini dispari
+    \[s_{2k+3} = s_{2k+1} + a_{2k+2} - a_{2k+3} = s_{2k+1} + \underbrace{(a_{2k+2}-a_{2k+3})}_{\geq 0} \geq s_{2k+1}\]
+    Infatti, per ipotesi, $a_{n+1} \leq a_n$, e quindi si ha che $a_{2k+2}-a_{2k+3} \geq 0$.\\
+    Per tale ragione, tale sottosuccessione è \textbf{monotona crescente}.
+\end{enumerate}
+È noto, per ipotesi, che
+\[s_{2k+1} - s_{2k} = (-1)^{2k+1} \cdot a_{2k+1} = -a_{2k+1} \leq 0 \hspace{1em} \text{ e quindi } \hspace{1em} s_{2k+1} \leq s_{2k}, \hspace{1em} \forall k \geq 0\]
+ciò significa che, per ogni $n$, la ridotta pari è maggiore della ridotta dispari (ma la prima è decrescente, la seconda è crescente), rimbalzando progressivamente attorno al limite delle due sottosuccessioni:
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw[->,ultra thick] (-5,0)--(5,0) node[right]{};
+        \draw[->,ultra thick,red] (-4,-1.5)--(-1,-1.5) node[below]{dispari};
+        \draw[->,ultra thick,blue] (4,-1.5)--(1,-1.5) node[below]{pari};
+        
+        \draw[thick] (-4,0.25)--(-4,-0.25) node[right]{};
+        \draw[] (-4,-0.5) node[circle, below]{$0$};
+
+        \draw[thick,red] (-3,0.25)--(-3,-0.25) node[right]{};
+        \draw[] (-3,-0.5) node[circle, below]{\textcolor{red}{$s_1$}};
+
+        \draw[thick,red] (-2,0.25)--(-2,-0.25) node[right]{};
+        \draw[] (-2,-0.5) node[circle, below]{\textcolor{red}{$s_3$}};
+
+        \draw[thick,red] (-1,0.25)--(-1,-0.25) node[right]{};
+        \draw[] (-1,-0.5) node[circle, below]{\textcolor{red}{$s_5$}};
+
+        \draw[thick,blue] (2,0.25)--(2,-0.25) node[right]{};
+        \draw[] (2,-0.5) node[circle, below]{\textcolor{blue}{$s_4$}};
+
+        \draw[thick,blue] (3,0.25)--(3,-0.25) node[right]{};
+        \draw[] (3,-0.5) node[circle, below]{\textcolor{blue}{$s_2$}};
+
+        \draw[thick,blue] (4,0.25)--(4,-0.25) node[right]{};
+        \draw[] (4,-0.5) node[circle, below]{\textcolor{blue}{$s_0$}};
+
+        \draw[thick,orange] (0,0.25)--(0,-0.25) node[right]{};
+        \draw[] (0,-0.5) node[circle, below]{\textcolor{orange}{$s$}};
+        \end{tikzpicture}
+\end{figure}
+
+\vspace{1em}
+\noindent
+Dalle disuguaglianze di cui sopra si ha che
+\begin{align*}
+    s_{2k} \geq s_{2k+1} \geq s_1 = a_0-a_1 & \hspace{1em}\forall k > 0\\
+    s_{2k+1} \leq s_{2k} \leq s_2 = a_0-a_1+a_2 & \hspace{1em} \forall k > 0
+\end{align*}
+ovverosia la \textbf{sottosuccessione degli indici pari}, \textbf{decrescente}, è \textbf{limitata dal basso}; similmente, la \textbf{sottosuccessione degli indici dispari}, \textbf{crescente}, è \textbf{limitata dall'alto}. Ciò permette di affermare che \textbf{esiste} per entrambe un \textbf{limite finito}:
+\[\lim_{k \to +\infty} s_{2k} = \beta \hspace{1em} \text{e} \hspace{1em} \lim_{k \to + \infty} s_{sk+1} = \alpha\]
+e, per il \textbf{teorema del confronto dei limiti}, si ha che $\alpha \leq \beta$.\\
+Essendo il termine $a_n$ infinitesimo, si ha che
+\[0 = \lim_{n \to +\infty} a_n = \lim_{k \to +\infty} a_{2k+1} = \lim_{k \to +\infty} s_{2k} - s_{sk+1} = \alpha - \beta = 0\]
+Dal momento che le \textbf{sottosuccessioni sono complementari}, la serie di partenza converge.
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione 2}: La formula di approssimazione del criterio di Leibniz
+\[\forall n \hspace{1em} \left \vert s_n-s \right \vert \leq a_{n+1}\]
+funziona in quanto
+\begin{itemize}
+    \item se $n$ è dispari ($n=2k+1$)
+    \[\left \vert s_{2k+1} - s \right \vert = s-s_{2k+1}\]
+    in quanto la successione dei dispari è crescente e sempre minore di quella dei pari, per cui $s \geq s_{2k+1}$. Allora si ha che
+    \[s-s_{2k+1}\leq s_{2k+2} - s_{2k+1}\]
+    in quanto $s \leq s_{2k+2}$. Ma siccome $s_{2k+2}=s_{2k+1}+a_{2k+2}$ è facile capire che
+    \[s_{2k+2} - s_{2k+1} = a_{2k+2} = a_{(2k+1)+1}= a_{n+1}\]
+    
+    \item se $n$ è pari ($n=2k$)
+    \[\left \vert s_{2k} - s \right \vert = s_{2k+1}-s\]
+    in quanto la successione dei pari è decrescente e sempre maggiore di quella dei dispari, per cui $s_{2k} \geq s$. Allora si ha che
+    \[s_{2k}-s\leq s_{2k} - s_{2k+1}\]
+    in quanto $s \geq s_{2k+1}$. Ma siccome $s_{2k+1}=s_{2k}-a_{2k+1}$ è facile capire che
+    \[s_{2k} - s_{2k+1} = a_{2k+1} = a_{n+1}\]
+\end{itemize}
+
+\vspace{2em}
+\noindent
+\textbf{Esempio}: Si consideri la serie di Leibniz:
+\[\sum_{n=1}^{+\infty} (-1)^n \frac{1}{n} = s\]
+Allora tale serie converge per il criterio di Leibniz, essendo $a_n$ positivo, decrescente e infinitesimo. Dalla formula di approssimazione si ha che
+\[\left \vert s_n - s \right \vert < \frac{1}{n+1}\]
+Allora, per conoscere la somma della serie con un errore di $\dfrac{1}{10}$, è sufficiente considerare
+\[s_9 = -1 + \frac{1}{2} - \frac{1}{3} + \dots - \frac{1}{9}\]
+
+\vspace{1em}
+\noindent
+\textbf{Esercizio 1}: Si consideri la serie seguente
+\[\sum_{n=1}^{+\infty} (-1)^n \cdot \frac{\log_{10}(n)}{n}\]
+Si controlli se sono verificate le condizioni di Leibniz seguenti:
+\begin{itemize}
+    \item Il termine $a_n$ non è strettamente maggiore di zero per ogni $n$. Tuttavia è vero che
+    \[\frac{\log_{10}(n)}{n} > 0 \hspace{1em} \forall n \geq 2\]
+    che è sufficiente, in quanto basta che sia verificata la condizione definitivamente.
+
+    \item Si ha che
+    \[\lim_{n \to +\infty} a_n = \lim_{n \to +\infty} \frac{\log_{10}(n)}{n} = 0\]
+    per cui il termine $a_n$ è infinitesimo.
+
+    \item La successione
+    \[\frac{\log_{10}(n)}{n}\]
+    è decrescente $\forall n$? Basterebbe verificare che lo sia definitivamente.
+\end{itemize}
+Per verificare l'ultimo punto, si considera la funzione
+\[f(x) = \frac{\log_{10}(x)}{x}\]
+e se ne calcola la derivata (cosa che non è possibile fare con una successione), da cui
+\[f'(x) = \dfrac{\dfrac{1}{x \cdot \log(10)} \cdot x - \log_{10}(x) \cdot 1}{x^2}\]
+Se ne studia il segno, che dipende solamente dal numeratore, da cui
+\[\frac{1}{x \cdot \log(10)} \cdot x - \log_{10}(x) \cdot 1 > 0 \hspace{1em} \rightarrow \hspace{1em} \log_{10}(x) < \frac{1}{\log(10)} \hspace{1em} \rightarrow \hspace{1em} x < 10^{\frac{1}{\log(10)}}\]
+Per cui per $x > 10^{\frac{1}{\log(10)}}$, la funzione è decrescente. Essendo soddisfatte tutte e tre le condizioni del criterio di Leibniz, la serie
+\[\sum_{n=3}^{+\infty} \frac{\log_{10}(n)}{n}\]
+converge ad $s$.
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Si osservi che nell'esempio precedente, non è possibile applicare la formula di approssimazione del criterio di Leibniz, in quanto le condizioni di Leibniz non sono soddisfatte per tutti gli $n$ (infatti i primi termine della serie potrebbero andare ad alterare il valore della somma finale). Se la serie partisse da $n=n_\epsilon$ con $n_\epsilon>10^{\frac{1}{\log(10)}}$, allora si potrebbe applicare la stima dell'errore di Leibniz.
+
+\vspace{2em}
+\noindent
+\textbf{Esercizio 2}: Si consideri la serie seguente
+\[\sum_{n=0}^{+\infty} \dfrac{\sin \left(\dfrac{\pi}{3} \cdot (1+3n)\right)}{1+3n}\]
+che, in prima approssimazione, sembra non essere assolutamente convergente, in quanto il suo comportamento asintotico risulta essere simile a quello della serie armonica.\\
+Per verificare se essa sia convergente semplicemente, si verifica se essa soddisfa le tre condizioni di Leibniz; riscrivendo il numeratore del termine generale si ha
+\[\sin \left(\dfrac{\pi}{3} \cdot (1+3n)\right) = \sin \left(\frac{\pi}{3} + \pi n\right) = (-1)^n \cdot \sin\left(\frac{\pi}{3}\right) = (-1)^n \cdot \frac{\sqrt{3}}{2}\]
+Ecco, quindi, che la serie può essere riscritta come
+\[\sum_{n=0}^{+\infty} (-1)^n \cdot \underbrace{\dfrac{\dfrac{\sqrt{3}}{2}}{1+3n}}_{a_n}\]
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Si presti particolare attenzione che, in questo ultimo caso, è stato fondamentale riscrivere il termine generale, mettendo in evidenza il fattore $(-1)^n$, in quanto per verificare le $3$ ipotesi del criterio di Leibniz, bisogna studiare il termine
+\[\dfrac{\dfrac{\sqrt{3}}{2}}{1+3n}\]
+che risulta essere
+\begin{enumerate}
+    \item a termini positivi
+    \item infinitesimo
+    \item decrescente
+\end{enumerate}
+Se ne evince che la serie di partenza è convergente per il criterio di Leibniz.
+
+\newpage
+\noindent
+\textbf{Esercizio}: Si consideri la seguente serie, posto $\alpha \in \mathbb{R}$:
+\[\sum_{n=1}^{+\infty} \frac{\alpha^n + (-5)^n}{5^n} \cdot \sin \left(\pi + \frac{1}{n}\right)\]
+Analizzando il termine generale, è immediato osservare che in esso può essere eseguita la semplificazione seguente:
+\[\sin \left(\pi + \frac{1}{n}\right) = - \sin \left(\frac{1}{n}\right)\]
+Pertanto si ottiene
+\[\sum_{n=1}^{+\infty} - \frac{\alpha^n+(-5)^n}{5^n} \cdot \sin \left(\frac{1}{n}\right)\]
+Tuttavia, si può osservare immediatamente che se $\left \vert \alpha \right \vert > 5$, la serie non converge, in quanto il termine generale non è infinitesimo.\\
+Se $\alpha=-5$, si ottiene il termine generale
+\[- \frac{2 \cdot (-1)^n \cdot 5^n}{5^n} \cdot \sin \left(\frac{1}{n}\right) = -2 \cdot (-1)^n \cdot \sin \left(\frac{1}{n} \right)\]
+in cui il termine
+\[a_n = \sin \left(\frac{1}{n} \right)\]
+soddisfa le $3$ condizioni del criterio di Leibniz, in quanto sempre positivo, infinitesimo e decrescente, quindi la serie di partenza converge.\\
+Nel caso in cui $\alpha=5$, si ottiene il termine generale
+\[- \frac{5^n + (-1)^n \cdot 5^n}{5^n} \cdot \sin \left(\frac{1}{n}\right) = - \left( \sin \left(\frac{1}{n}\right) (-1)^n \cdot \sin \left(\frac{1}{n}\right)\right)\]
+È immediato evincere che il secondo addendo converge per il criterio di Leibniz per quanto già osservato; tuttavia, il primo addendo non converge, in quanto infinitesimo di ordine $1$. Ciò porta a formulare le considerazioni seguenti:
+\begin{itemize}
+    \item se una serie presenta un termine generale che può essere scritto come somma di più termini e ciascuno di tali addendi, preso singolarmente, porta alla convergenza del proprio \quotes{pezzo} di serie, allora anche la serie di partenza converge.
+    \item se una serie presenta un termine generale che può essere scritto come somma di più termini, ma alcuni convergono e altri non convergono (ma divergono tutti a $+\infty$ o $-\infty$) allora la serie di partenza non può convergere. Questo perché se essa convergesse, la somma dei termini divergenti potrebbe essere ottenuta come differenza tra la somma finita delle serie principale e dei \quotes{pezzi} convergenti, che è assurdo.
+\end{itemize}
+Nel caso in cui $\vert \alpha \vert < 5$, spezzando il termine generale si ottiene
+\[\left(\frac{\alpha}{5}\right)^n \cdot \left(-\sin \left( \frac{1}{n}\right)\right) + (-1)^n \cdot \sin \left(\frac{1}{n}\right)\]
+in cui il primo addendo porta alla convergenza della serie corrispondente, in base al confronto con la geometrica, in quanto:
+\[\left \vert \left(\frac{\alpha}{5}\right)^n \cdot \left(-\sin \left( \frac{1}{n}\right)\right) \right \vert \leq \left( \frac{\alpha}{5}\right)^n \hspace{1em} \text{siccome} \hspace{1em} \left \vert \frac{\alpha}{5} \right \vert < 1 \hspace{1em} \text{converge assolutamente e quindi semplicemente.}\]
+Convergendo anche il secondo addendo per il criterio di Leibniz, si evince che la serie di partenza converge (semplicemente, e non assolutamente, in quanto solo uno dei due termini converge assolutamente).
+
+\newpage
+\noindent
+\subsection{Successione di Cauchy}
+Di seguito si espone la definizione di \textbf{successione di Cauchy}:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{SUCCESSIONE DI CAUCHY}}\\
+    \parbox{\linewidth}{Sia $(z_n)_n$ una successione in $\mathbb{C}$; si dirà che $(z_n)_n$ è una successione di Cauchy (o soddisfa il criterio di Cauchy) se
+    \[\forall \epsilon > 0, \exists n_\epsilon \in \mathbb{N} \hspace{0.5em} \text{tale che} \hspace{0.5em} \forall n \geq n_\epsilon, \forall p \in \mathbb{N} \rightarrow \left \vert z_{n+p} - z_n \right \vert < \epsilon\]
+    in cui è da intendersi $\vert \cdot \vert$ come modulo, essendo in $\mathbb{C}$. Tale definizione rassomiglia quella di limite, ma il vantaggio è che non c'è il limite.
+    \vspace{3mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{2em}
+\noindent
+\begin{theorem} 
+    Se esiste finito
+    \[\lim_{n \to +\infty} z_n = l\]
+    allora la successione è di Cauchy.
+\end{theorem}
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Se esiste finito
+\[\lim_{n \to +\infty} z_n = l\]
+allora, per la definizione di limite, fissato $\epsilon > 0, \exists n \epsilon \in \mathbb{N}$ tale che $\forall n \geq n_\epsilon$, si ha che
 \[\left \vert z_n - l \right \vert < \frac{\epsilon}{2}\]
 Allora, $\forall n \geq n_\epsilon$, $\forall p \in \mathbb{N}$, si ottiene
-\[\left \vert z_{n+p} - z_n \right \vert \leq \left \vert z_{n+p} - l\right \vert + \left \vert l - z_n\right \vert < \epsilon\]
+\[\left \vert z_{n+p} - z_n \right \vert \leq \underbrace{\left \vert z_{n+p} - l\right \vert}_{< \frac{\epsilon}{2}} + \underbrace{\left \vert l - z_n\right \vert}_{< \frac{\epsilon}{2}} < \epsilon\]
+
+\vspace{1em}
+\noindent
+\subsubsection{Teorema di completezza dello spazio $\mathbb{C}$ (o $\mathbb{R}$)}
+Si espone di seguito il \textbf{teorema di completezza dello spazio $\mathbb{C}$ (o $\mathbb{R}$)}:
 
 \vspace{1em}
 \noindent
 \begin{theorem}
-    Ogni successione di Couchy in $\mathbb{C}$ (o in $\mathbb{R}$) è convergente.
+    Ogni successione di Cauchy in $\mathbb{C}$ (o in $\mathbb{R}$) è convergente.
 \end{theorem}
-
-\vspace{2em}
-\noindent
-\textbf{Osservazione}: Per le serie $(s_n)_n$, si ha che
-\[\left \vert \sum_{k=0}^{n+p} a_k - \sum_{k=0}^n a_k \right \vert < \epsilon \hspace{1em} \rightarrow \hspace{1em} \left \vert \sum_{k=n+1}^{n+p} a_k \right \vert\]
 
 \vspace{1em}
 \noindent
-\subsection{Criterio di Cauchy per la convergenza di una serie}
-Una serie
-\[\sum a_n\]
-converge \textbf{se e solo se} $\forall \epsilon > 0, \exists n_\epsilon \in \mathbb{N}$ tale che $\forall n \geq n_\epsilon$ e $\forall p \in \mathbb{N}$ vale
-\[\left \vert \sum_{k=n+1}^{n+p} a_k \right \vert < \epsilon\]
+\textbf{Osservazione 1}: Si osservi che la convenienza nel dimostrare che una successione è di Cauchy in luogo del fatto che sia convergente è che non si richiede, nel primo caso, di conoscere quale sia il limite.\\
+Tale teorema, però, non vale in $\mathbb{Q}$ in quanto una successione di razionali che tende ad un razionale è ovviamente di Cauchy, in quanto lo è in $\mathbb{R}$, ma non è convergente, in quanto tende ad un irrazionale.
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione 2}: Tale teorema si applica anche alle serie. Per esse, infatti, dire che la successione delle ridotte $(s_n)_n$ è di Cauchy significa che
+\[\forall \epsilon > 0, \exists n_\epsilon \in \mathbb{N} \hspace{0.5em} \text{tale che} \hspace{0.5em} \forall n \geq n_\epsilon, \forall p \in \mathbb{N} \rightarrow \left \vert s_{n+p} - s_n \right \vert < \epsilon\]
+ma esplicitando i termini $s_{n+p}$ e $s_n$ si ottiene:
+\[\left \vert \sum_{k=0}^{n+p} a_k - \sum_{k=0}^n a_k \right \vert < \epsilon \hspace{1em} \rightarrow \hspace{1em} \left \vert \sum_{k=n+1}^{n+p} a_k \right \vert < \epsilon\]
+in cui per le serie a termini positivi, può essere rimosso il modulo.
+
+\newpage
+\noindent
+\subsubsection{Criterio di Cauchy per la convergenza di una serie}
+Di seguito si espone il \textbf{criterio di Cauchy per la convergenza di una serie}:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{CRITERIO DI CAUCHY PER LA CONVERGENZA DELLE SERIE}}\\
+    \parbox{\linewidth}{Una serie
+    \[\sum a_n\]
+    converge \textbf{se e solo se} $\forall \epsilon > 0, \exists n_\epsilon \in \mathbb{N}$ tale che $\forall n \geq n_\epsilon$ e $\forall p \in \mathbb{N}$ vale
+    \[\left \vert \sum_{k=n+1}^{n+p} a_k \right \vert < \epsilon\]
+    \vspace{-1mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{1em}
+\noindent
+\subsubsection{Applicazioni del criterio di Cauchy}
+\textbf{Concetto 1}: Si applichi il criterio di Cauchy per dimostrare che se una serie è assolutamente convergente, allora lo è anche semplicemente:
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione 1}: Si consideri la serie
+\[\sum_{n=1}^{+\infty} a_n\]
+allora si dirà che la serie converge assolutamente se la serie dei moduli è convergente, ossia la serie
+\[\sum_{n=1}^{+\infty} \left \vert a_n \right \vert\]
+è convergente.\\
+Se una serie
+\[\sum_{n=1}^{+\infty} a_n\]
+converge assolutamente, allora la serie dei moduli
+\[\sum_{n=1}^{+\infty} \left \vert a_n \right \vert\]
+è di Cauchy (per il teorema esposto in precedenza), ossia, secondo la definizione del criterio Cauchy, si ha che
+\[\forall \epsilon > 0, \exists n_\epsilon \in \mathbb{N} \hspace{1em} \text{tale che} \hspace{1em} \forall n \geq n_\epsilon, \forall p \in \mathbb{N} \hspace{1em} \text{ si ha che } \hspace{1em} \left \vert \sum_{k=n+1}^{n+p} \left \vert a_k \right \vert \right \vert= \sum_{k=n+1}^{n+p} \left \vert a_k \right \vert < \epsilon\]
+Per dimostrare che anche la serie di partenza (priva del modulo) è di Cauchy, in quanto è noto che una serie è convergente se e solo se è di Cauchy, si sfrutta la disuguaglianza triangolare (ossia il modulo della somma è minore della somma dei moduli), per cui
+\[\left \vert \sum_{k=n+1}^{n+p} a_k \right \vert \leq \sum_{k=n+1}^{n+p} \vert a_k \vert < \epsilon\]
+e quindi, essendo la serie degli $a_k$ di Cauchy, è convergente.
+
+\newpage
+\noindent
+\textbf{Concetto 2}: Si dimostri, tramite il criterio di Cauchy, che la serie armonica è divergente a $+\infty$.
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione 2}: Considerando la ridotta $n$-esima della serie armonica, si ha
+\[s_n = \sum_{k=1}^{n} \frac{1}{k}\]
+che, per come è stata costruita, è positiva e crescente, per cui, per il \textbf{teorema di esistenza del limite delle successioni monotone}, si può affermare che
+\[\exists \lim_{n \to + \infty} s_n\] 
+finito o infinito (che è praticamente l'aut-aut, essendo una serie a termini positivi). Supponendo, ora, per assurdo, che la serie armonica sia convergente, si dimostri che la serie non può essere di Cauchy, ovvero che sia verificata
+\[\forall \epsilon > 0, \exists n_\epsilon \in \mathbb{N} \hspace{1em} \text{tale che} \hspace{1em} \forall n \geq n_\epsilon, \forall p \in \mathbb{N} \hspace{1em} \text{si ha che} \hspace{1em} \sum_{k=n+1}^{n+p} \frac{1}{k} < \epsilon\]
+Allora, posto $n \geq n_\epsilon$ e $p$ qualsiasi, si ha, per la disuguaglianza appena esposta che
+\[\sum_{k=n+1}^{n+p} \frac{1}{k} = \underbrace{\frac{1}{n+1} + \frac{1}{n+2} + \dots + \frac{1}{n+p}}_{p\text{ elementi}} < \epsilon\]
+in cui è facile capire che il numero di addendi sommati è pari a $p$, in quanto $(n+p)-(n+1)+1=p$. Dal momento che la definizione di Cauchy richiede qualsiasi valore di $p$ naturale, sia fissato $p=n$, per cui
+\[\frac{1}{n+p}=\frac{1}{2n} \hspace{1em} \rightarrow \hspace{1em} \epsilon > \underbrace{\frac{1}{n+1}}_{>\frac{1}{2n}} + \underbrace{\frac{1}{n+2}}_{>\frac{1}{2n}} + \dots + \frac{1}{2n} > \underbrace{\frac{1}{2n}+\frac{1}{2n}+\dots+\frac{1}{2n}}_{n\text{ elementi}}\]
+ma essendo $n$ addendi, si ottiene che
+\[\frac{1}{2n} \cdot n = \frac{1}{2} < \epsilon\]
+Ma siccome tale ragionamento vale qualunque sia $\epsilon$, se si fosse fissato, all'inizio della dimostrazione, $\epsilon>0$, come $\epsilon=\frac{1}{10}$, sarebbe stato ottenuto l'assurdo cercato.
 
 \newpage
 \section{Successioni e serie di funzioni}
-Di seguito si introduce l'importante tema delle successioni e delle serie di funzioni, in cui.
+Di seguito si introduce l'importante tema delle successioni e delle serie di funzioni, in cui a ogni indice $n$ naturale viene associata una funzione.
 
 \vspace{1em}
 \subsection{Successioni di funzioni}
 Se, per esempio, si introduce una successione di funzioni come la seguente
 \[f_n(x) = x^n\]
+si ottiene, per diversi $n$, che
+\begin{align*}
+    &f_0(x)=1&&f_1(x)=x&&f_2(x)=x^2&&f_3(x)=x^3&&\text{etc\dots}
+\end{align*}
+o ancora, nel caso della successione di funzioni
+\[f_n(x) = \cos(nx)\]
 si ottiene
-\begin{enumerate}
-    \item $f_0(x)=1$
-    \item $f_1(x)=x$
-    \item $f_2(x)=x^2$
-    \item $f_3(x)=x^3$
-\end{enumerate}
-o ancora, nel caso di
-\[f_n(x) = \cos(xn)\]
+\begin{align*}
+    &f_0(x)=\cos(0)=1&&f_1(x)=\cos(x)&&f_2(x)=\cos(2x)&&f_3(x)=\cos(3x)&&\text{etc\dots}
+\end{align*}
+o ancora, nel caso della successione di funzioni
+\[f_n(x) = \frac{1}{x^2+n}\]
 si ottiene
-\begin{enumerate}
-    \item $f_0(x)=\cos(0)=1$
-    \item $f_1(x)=\cos(x)$
-    \item $f_2(x)=\cos(2x)$
-    \item $f_3(x)=\cos(3x)$
-\end{enumerate}
+\begin{align*}
+    &f_0(x)=\frac{1}{x^2}&&f_1(x)=\frac{1}{x^2+1}&&f_2(x)=\frac{1}{x^2+2}&&f_3(x)=\frac{1}{x^2+3}&&\text{etc\dots}
+\end{align*}
 
 \vspace{1em}
 \noindent
-\subsubsection{Limite di una successione di funzioni}
-Sia $f_n : E \longmapsto \mathbb{R}(\mathbb{C})$ e $f : E \longmapsto \mathbb{R}$. Si dice che la successione $\left(f_n\right)_n$ converge puntualmente a $f$ se, $\forall x \in E$
-\[\lim_{n \to +\infty} f_n(x) = f(x)\]
+\subsubsection{Limite puntuale di una successione di funzioni}
+Di seguito si espone la definizione di \textbf{limite puntuale di una successione di funzioni}:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{LIMITE PUNTUALE DI UNA SUCCESSIONE DI FUNZIONI}}\\
+    \parbox{\linewidth}{Siano
+    \[f_n : E \longmapsto \mathbb{R} \hspace{1em} \text{e} \hspace{1em} f : E \longmapsto \mathbb{R}\]
+    Si dice che la successione $\left(f_n\right)_n$ \textbf{converge puntualmente} a $f$ se, $\forall x \in E$
+    \[\lim_{n \to +\infty} f_n(x) = f(x)\] \vspace{-1mm}}\\
+    \hline
+\end{tabularx}
 
 \vspace{1em}
 \noindent
@@ -1174,6 +1507,21 @@ tale per cui, $\forall x \in \mathbb{R}$
 \vspace{1em}
 \noindent
 \textbf{Esempio 3}: Si consideri la successione di funzioni
+\[f_n : [0,1] \longmapsto \mathbb{R} \hspace{1em} \text{ con } \hspace{1em} f_n(x)=x^n\]
+allora
+\[\lim_{n \to +\infty} f_n(x) = \left\{
+    \rowcolors{1}{white}{white}
+    \setlength{\tabcolsep}{4pt}
+    \renewcommand{\arraystretch}{1.2}
+    \begin{array}{lll}
+        0 & \text{se} & x \in [0,1[\\
+        1 & \text{se} & x = 1
+    \end{array}
+\right.\]
+
+\vspace{1em}
+\noindent
+\textbf{Esempio 4}: Si consideri la successione di funzioni
 \[f_n(x) = \frac{n x}{nx^2 + 1}\]
 allora si ha che
 \[\lim_{n \to +\infty} f_n(x) = \left\{
@@ -1191,65 +1539,31 @@ allora si ha che
 \begin{center}
     11 Ottobre 2022
 \end{center}
-Il criterio di Leibniz è un criterio fondamentale per capire la convergenza semplice di una serie a termini alternativamente positivi e negativi. Dopodiché sono state introdotte le successioni Cauchy e il criterio di Cauchy consente di capire se esiste un limite, senza conoscere il valore del limite, che risulta fondamentale, anche per le dimostrazioni del seguito:
-
-% Formattazione per la dimostrazione, etc.
-\vspace{2em}
-\noindent
-\normalfont \normalsize
-\textsc{Dimostrazione 1}: Si consideri la serie
-\[\sum_{n=1}^{+\infty} a_n\]
-allora si dirà che la serie converge assolutamente se vale la serie dei moduli è convergente, ossia la serie
-\[\sum_{n=1}^{+\infty} \left \vert a_n \right \vert\]
-è convergente.\\
-Se una serie
-\[\sum_{n=1}^{+\infty} a_n\]
-converge assolutamente, allora la serie dei moduli
-\[\sum_{n=1}^{+\infty} \left \vert a_n \right \vert\]
-è di Cauchy, ossia, secondo la definizione del criterio Cauchy, si ha che
-\[\forall \epsilon > 0, \exists n_\epsilon \in \mathbb{N} \vert \forall n \geq n_\epsilon, \forall p \in \mathbb{N} \hspace{1em} \text{ si ha } \left \vert \sum_{k=n+1}^{n+p} \left \vert a_k \right \vert \right \vert= \sum_{k=n+1}^{n+p} \left \vert a_k \right \vert < \epsilon\]
-Per dimostrare che la serie dei moduli è di Cauchy, si sfrutta la disuguaglianza triangolare (ossia il modulo della somma è minore della somma dei moduli), per cui
-\[\left \vert \sum_{k=n+1}^{n+p} a_k \right \vert \leq \sum_{k=n+1}^{n+p} \vert a_k \vert \leq ... continua ...\]
+Il criterio di Leibniz è un criterio fondamentale per capire la convergenza semplice di una serie a termini alternativamente positivi e negativi. Dopodiché sono state introdotte le successioni di Cauchy e il criterio di Cauchy associato, il quale consente di capire se esiste un limite, senza conoscere il valore del limite, il che risulta fondamentale per decretare la convergenza di una serie.
 
 \vspace{1em}
 \noindent
-Si dimostri, tramite il criterio di Cauchy, che la serie armonica è divergente a $+\infty$.
-
-% Formattazione per la dimostrazione, etc.
-\vspace{2em}
-\noindent
-\normalfont \normalsize
-\textsc{Dimostrazione 2}: Considerando la ridotta $n$-esima della serie armonica, si ha
-\[s_n = \sum_{k=1}^{n} \frac{1}{k}\]
-che, per come è stata costruita, è positiva e crescente, per cui, per il teorema di esistenza del limite delle successioni monotone, si può affermare che
-\[\exists \lim_{n \to + \infty} s_n\] 
-finito o infinito. Si procede, ora, per assurdo, dimostrando che
-\[\forall \epsilon > 0, \exists n_\epsilon \in \mathbb{N} : \forall n \geq n_\epsilon \text{ e } \forall p \in \mathbb{N}, \sum_{k=n+1}^{n+p} a_k < \epsilon\]
-Allora, posto $n \geq n_\epsilon$, si ha
-\[\sum_{k=n+1}^{n+p} a_k = \frac{1}{n+1} + \frac{1}{n+2} + \dots + \frac{1}{n+p} < \epsilon\]
-siccome il numero di addendi sommati è pari a $p$, in quanto $(n+p)-(n+1)+1=p$. Fissato $p=n$, si ha che
-\[\underbrace{\frac{1}{n+1}}_{>\frac{1}{2n}} + \underbrace{\frac{1}{n+2}}_{>\frac{1}{2n}} + \dots + \frac{1}{2n} < \epsilon\]
-ma essendo $n$ addendi, si ottiene che
-\[\frac{1}{2n} \cdot n = \frac{1}{2} < \epsilon\]
-Ma se si sceglie arbitrariamente $\epsilon>0$, come $\epsilon=\frac{1}{10}$, si incorre in un assurdo.
-
-\vspace{1em}
-\noindent
+\subsubsection{Limite uniforme di una successione di funzioni}
 Si consideri la successione di funzioni
 \[f_n : [0,1[ \hspace{1em} \text{ definita come } f_n(x) = x^n\]
 Allora $\forall x \in [0,1[$, si ha che
 \[\lim_{n \to +\infty} x^n = 0\]
 e, per la definizione di limite, si ha
-\[\forall \epsilon > 0, \exists n_\epsilon \in \mathbb{N} : \forall n \geq n_\epsilon, \vert x^n \vert < \epsilon\]
-Per determinare $n_\epsilon$ tale per cui $\forall n \geq n_\epsilon, \vert x^n \vert < \epsilon$, posto $\epsilon=e^{-10}$, si ha
-\[x^n < \epsilon \rightarrow e^{n \cdot \log(x)} < \epsilon \rightarrow e^{n \cdot \log(x)} < e^{\log(\epsilon)}\]
-Siccome $\log(x) < 0$, si ottiene
+\[\forall \epsilon > 0, \exists n_\epsilon \in \mathbb{N} \hspace{1em} \text{tale che} \hspace{1em} \forall n \geq n_\epsilon \hspace{1em} \text{si ha che} \hspace{1em} \vert x^n \vert < \epsilon\]
+Per determinare $n_\epsilon$ tale per cui $\forall n \geq n_\epsilon, \vert x^n \vert < \epsilon$, si osserva che
+\[x^n < \epsilon \hspace{1em} \rightarrow \hspace{1em} e^{n \cdot \log(x)} < e^{\log(\epsilon)} \hspace{1em} \rightarrow \hspace{1em}n \cdot \log(x) < \log(\epsilon)\]
+Ma essendo $\log(x) < 0$ in quanto $x \in [0,1[$, quando si divide per $\log(x)$ negativo, cambia il segno della disuguaglianza. Allora sarà sufficiente considerare $n$ che soddisfa la proprietà
 \[n > \frac{\log(\epsilon)}{\log(x)}\]
-È facile capire che
+Fissato $\epsilon=e^{-10}$ e $x=\frac{1}{2}$, allora l'$n_\epsilon$ cercato è
+\[n_\epsilon = \frac{\log(e^{-10})}{\log \left(\dfrac{1}{2}\right)}= \frac{10}{\log(2)} \cong 33\]
+Per cui sarà necessario considerare una potenza $n>33$ al fine di vedere soddisfatta la proprietà
+\[\frac{1}{2}^n < e^{-10}\]
+In particolare si ha che
 \[\lim_{x \to 1^-} \frac{\log(\epsilon)}{\log(x)} = +\infty\]
-ovvero, $n$ dipende fortemente da $x$: più $x$ tende a $1$ da sinistra, più $n$ deve essere grande al fine di soddisfare il limite di partenza:
+che significa che più ci si avvicina con $x$ a $1$, maggiore dovrà essere considerata la potenza di $n$ per vedere soddisfatta la disuguaglianza del limite.\\
+In altre parole, \textbf{$n$ dipende fortemente da $x$}: più $x$ tende a $1$ da sinistra, più $n$ deve essere grande al fine di soddisfare il limite di partenza:
 \[\lim_{n \to +\infty} x^n = 0\]
-Questo perché $0$ è limite puntuale e non uniforme per la successione $f_n$.
+Questo perché $0$ è limite puntuale e non uniforme per la successione $f_n$. Ciò porta alla definizione di \textbf{limite uniforme per una successione di funzioni}:
 
 % Tabella per le definizione di concetti, etc...
 \vspace{1em}
@@ -1260,27 +1574,29 @@ Questo perché $0$ è limite puntuale e non uniforme per la successione $f_n$.
 \begin{tabularx}{\textwidth}{@{}|P|@{}}
     \hline
     {\textbf{LIMITE UNIFORME}}\\
-    \parbox{\linewidth}{Sia $(f_n)_n$ una successione di funzioni $f$, con
-    \[f_n : E \longmapsto \mathbb{R}\]
-    Si dirà che $f$ è limite uniforme della successione
+    \parbox{\linewidth}{Sia $(f_n)_n$ una successione di funzioni, con
+    \[f_n : E \longmapsto \mathbb{R} \hspace{1em} \text{e} \hspace{1em} f : E \longmapsto \mathbb{R}\]
+    Si dirà che $f$ è limite uniforme della successione $(f_n)_n$, e si scriverà
     \[\lim_{n \to +\infty} f_n = f\]
-    uniforme se
-    \[\forall \epsilon > 0, \exists n_\epsilon \in \mathbb{N} \text{ tale che } \forall n \geq n_\epsilon, \forall x \in E, \left \vert f_n(x) - f(x)\right \vert < \epsilon\]
+    \textbf{uniforme}, se
+    \[\forall \epsilon > 0, \exists n_\epsilon \in \mathbb{N} \hspace{1em} \text{ tale che } \hspace{1em} \forall n \geq n_\epsilon, \boxed{\bf{\forall x \in E}} \hspace{1em} \text{ si ha che } \hspace{1em} \left \vert f_n(x) - f(x)\right \vert < \epsilon\]
     \vspace{-1mm}}\\
     \hline
 \end{tabularx}
 
-\vspace{1em}
+\vspace{2em}
 \noindent
 \textbf{Osservazione}: Nel caso di \textbf{limite puntuale}, invece, si ha che
-\[\bf{\forall x \in E}, \forall \epsilon > 0, \exists n_{\epsilon, x} \in \mathbb{N} \text{ tale che } \forall n \geq n_\epsilon, \left \vert f_n(x) - f(x) \right \vert < \epsilon\]
-in cui è fondamentale capire la forte dipendenza da $x$ in questo caso, cosa che invece non accade nel caso di un limite uniforme, in cui $n_\epsilon$ si mantiene costante indipendentemente dalla scelta di $x$.
+\[\boxed{\bf{\forall x \in E}}, \forall \epsilon > 0, \exists n_{\epsilon, x} \in \mathbb{N} \text{ tale che } \forall n \geq n_{\epsilon, x}, \left \vert f_n(x) - f(x) \right \vert < \epsilon\]
+ovvero il $\forall x$ è posto all'inizio della definizione. Ciò implica la forte dipendenza da $x$ (per questo si scrive $n_{\epsilon, x}$) nel caso di limite puntuale, cosa che invece non accade nel caso di un limite uniforme, in cui $n_\epsilon$ si mantiene costante e lo stesso, indipendentemente dalla scelta di $x$.
 
 \vspace{1em}
 \noindent
-\textbf{Osservazione}: Data la successione di funzioni
-\[f_n(x) = \frac{1}{n+x^2}\]
-posto $x=0$, il valore massimo è $\frac{1}{n}$, per cui la successione converge uniformemente. Ciò significa che, fissato $\epsilon$, il grafico di tutte le funzioni in dipendenza da $n$ sono tutte contenute al di sotto del grafico.
+\textbf{Osservazione}: Sia data la successione di funzioni seguente
+\[f_n(x) = \dfrac{1}{n+x^2}\]
+È facile capire che posto $x=0$ si ottiene il valore massimo della successione, ovvero $\dfrac{1}{n}$. Ciò significa che, per $n$ sufficientemente grande, tutto il grafico della funzione è interamente contenuto nella fascia $<\dfrac{1}{n}$: pertanto la successione converge uniformemente, in quanto
+\[\left \vert f_n(x) - 0 \right \vert \leq \dfrac{1}{n} < \epsilon\]
+Ciò significa che, fissato $\epsilon$, basterà scegliere $n>\dfrac{1}{\epsilon}$ e il grafico di tutte le funzioni in dipendenza da $n$ sarà contenuto all'interno di una fascia di ampiezza $2\epsilon$ (a causa della presenza del valore assoluto) da avvolgere intorno al limite, dovendo essere $l-\epsilon<f_n(x)<l+\epsilon$.
 
 \vspace{1em}
 \noindent
@@ -1288,13 +1604,12 @@ posto $x=0$, il valore massimo è $\frac{1}{n}$, per cui la successione converge
 \[f_n(x) = \frac{n}{x^2+n}\]
 allora
 \[\lim_{n \to +\infty} f_n(x) = 1\]
-Naturalmente si ha convergenza puntuale, ma non uniforme. Infatti, se fosse uniforme, fissato $\epsilon=\dfrac{1}{100}$ dovrebbe esistere $n_epsilon \in \mathbb{N}$ tale che $\forall n \geq n_\epsilon, \forall x \in \mathbb{R}$
+Naturalmente si ha convergenza puntuale, ma non uniforme. Infatti, se fosse uniforme, fissato $\epsilon=\dfrac{1}{100}$ dovrebbe esistere $n_\epsilon \in \mathbb{N}$ tale che $\forall n \geq n_\epsilon, \forall x \in \mathbb{R}$
 \[\left \vert \frac{n}{x^2+n} - 1\right \vert < \frac{1}{100}\]
 Per dimostrare che ciò non è possibile $\forall x \in \mathbb{R}$, si sviluppa, ottenendo
 \[\left \vert \frac{n-x^2-n}{x^2+n} \right \vert = \frac{x^2}{x^2 + n}\]
-basta scegliere $x=\sqrt{n}$, per cui
+allora basta scegliere $x=\sqrt{n}$, per ottenere l'assurdo
 \[\frac{n}{n+n}=\frac{1}{2} < \frac{1}{100}\]
-che, ovviamente è falso.
 
 \vspace{1em}
 \noindent
@@ -1302,40 +1617,51 @@ che, ovviamente è falso.
 \[f_n(x) = \frac{nx}{nx^2+1}\]
 allora
 \[\lim_{n \to +\infty} f_n(x) = \frac{1}{x}\]
-che è una convergenza puntuale, ma non uniforme, in quanto, fissato $\epsilon=\dfrac{1}{100}$ dovrebbe esistere $n_epsilon \in \mathbb{N}$ tale che $\forall n \geq n_\epsilon, \forall x \in \mathbb{R}$
+che è una convergenza puntuale, ma non uniforme, in quanto, fissato $\epsilon=\dfrac{1}{100}$ dovrebbe esistere $n_\epsilon \in \mathbb{N}$ tale che $\forall n \geq n_\epsilon, \forall x \in \mathbb{R}$
 \[\left \vert \frac{nx}{nx^2+1} - \frac{1}{x}\right \vert < \frac{1}{100}\]
 e sviluppando si ottiene
 \[\frac{1}{x \cdot (nx^2+1)} < \frac{1}{100}\]
-in cui basta scegliere $x=\dfrac{1}{\sqrt{n}}$, ottenendo
+Ora, al fine di contraddire tale disuguaglianza, è fondamentale scegliere un $x$ piccolo al fine di ottenere una quantità molto grande che ovviamente non può essere maggiorata da $\epsilon$. Allora basta scegliere $x=\dfrac{1}{\sqrt{n}}$, ottenendo
 \[\frac{\sqrt{n}}{2} < \frac{1}{100}\]
 che, ovviamente, non è vero $\forall n \in \mathbb{N}$.
 
 \vspace{1em}
 \noindent
-\textbf{Osservazione}: Si osservi che se il limite di una successione di funzioni è discontinuo, allora la successione non converge uniformemente.
+\textbf{Osservazione}: Si osservi che se il limite di una successione di funzioni non è continuo (come nel caso del limite $\dfrac{1}{x}$), allora la successione di funzioni non converge uniformemente. Tuttavia, se il limite è continuo, come nel caso di una costante, allora non si può dire nulla sulla tipologia di convergenza della successione di funzioni.
 
 \vspace{1em}
 \noindent
 \subsection{Teorema di inversione di due limiti}
 Si consideri il seguente \textbf{teorema di inversione di due limiti}:
 
-\begin{theorem}
-    Sia $f(n)_n$ una successione di funzioni
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{TEOREMA DI INVERSIONE DI DUE LIMITI}}\\
+    \parbox{\linewidth}{Sia $f(n)_n$ una successione di funzioni
     \[f_n : E \longmapsto \mathbb{R}\]
     tale che $(f_n)_n$ \textbf{converge uniformemente} a
     \[f : E \longmapsto \mathbb{R}\]
-    con $x_0$ punto di accumulazione per $E, \forall n$, tale per cui
+    con $x_0$ punto di accumulazione per $E$. Si supponga, inoltre, che $\forall n$ esista
     \[\exists \lim_{x \to x_0} f_n(x) = l_n\]
     Allora
-    \[\exists \lim_{n \to +\infty} l_n = 0, \hspace{1em} \exists \lim_{x \to x_0} f(x) \hspace{1em} \exists \lim_{x \to x_0} f(x) = l\]
-    si può affermare che
-    \[\lim_{n \to +\infty} \left(\lim_{x \to x_0} f_n(x)\right) = \lim_{x \to x_0} \left(\lim_{n \to +\infty} f_n(x)\right)\]
-\end{theorem}
+    \[\exists \lim_{n \to +\infty} l_n = l \hspace{1em} \text{e} \hspace{1em} \exists \lim_{x \to x_0} f(x) = l\]
+    pertanto si può affermare che
+    \[\lim_{n \to +\infty} \left(\lim_{x \to x_0} f_n(x)\right) = \lim_{x \to x_0} \left(\lim_{n \to +\infty} f_n(x)\right)\] \vspace{-1mm}}\\
+    \hline
+\end{tabularx}
 
-\vspace{1em}
+\vspace{2em}
 \noindent
-\textbf{Osservazione}: Si osservi che quanto esposto in precedenza vale solamente per successioni di funzioni con convergenza uniforme, non puntuale. Infatti
-\[\lim_{n \to +\infty} \left(\lim_{x \to 1} x^n\right) = 1 \neq 0 = \lim_{x \to 1} \left(\lim_{n \to +\infty} f_n(x)\right)\]
+\textbf{Osservazione}: Si osservi che il teorema appena esposto vale solamente per successioni di funzioni con convergenza uniforme, non puntuale. Infatti, date
+\[f_n : [0,1] \longmapsto \mathbb{R} \hspace{1em} \text{e} \hspace{1em} f : [0,1] \longmapsto \mathbb{R}\]
+con $f_n=x^n$, si ottiene l'inesattezza seguente
+\[\lim_{n \to +\infty} \left(\lim_{x \to 1} x^n\right) = 1 \neq 0 = \lim_{x \to 1} \left(\lim_{n \to +\infty} x^n\right)\]
 
 % Formattazione per la dimostrazione, etc.
 \vspace{2em}
@@ -1343,14 +1669,22 @@ Si consideri il seguente \textbf{teorema di inversione di due limiti}:
 \normalfont \normalsize
 \textsc{Dimostrazione 1}: Per la dimostrazione si considera il criterio di Cauchy, fondamentale per dimostrare l'esistenza del limite
 \[\lim_{n \to +\infty} l_n\]
-senza conoscerlo. Bisogna dimostrare che la successione $(l_n)_n$ è di Cuachy, ossia che $\forall \epsilon > 0$, $\exists n_\epsilon \in \mathbb{N}$ tale che $\forall n \geq n_\epsilon$ e $\forall p \in \mathbb{N}$
-\[\left \vert l_{n+p} - l_n \right \vert < \epsilon\]
-In particolare, $\forall x \in E$ si può affermare che
-\[\left \vert l_{n+p} - l_n\right \vert = \left \vert l_{n+p} - l_n - f_{n+1}(x) + f_{n+p}(x) - f_(n+1)(x) - f_{n+p}(x)\right \vert\]
-Sfruttando la disuguaglianza triangolare, si ha che
-\[\left \vert l_{n+p} - l_n - f_{n+1}(x) + f_{n+p}(x) - f_(n+1)(x) - f_{n+p}(x)\right \vert \leq \left \vert l_{n+p} - f_{n+p}(x)\right \vert + \left \vert f_{n+1}(x) - f_n(x) \right \vert + \left \vert f_n(z) - l_n\right \vert\]
-Siccome $(f_n)_n$ è uniformemente convergente, quindi è una successione di Cauchy. Ciò significa che
-\[\exists n_\epsilon \in \mathbb{N} \vert \forall n \geq n_\epsilon, \forall p \in \mathbb{N} \text{ e } \bf{\forall x \in E} \rightarrow \left \vert f_{n+1}(x) - f_n(x)\right \vert < \frac{\epsilon}{3}\]
+senza conoscerlo. Bisogna, dunque, dimostrare che la successione $(l_n)_n$ è di Cauchy, ossia che
+\[\forall \epsilon > 0, \exists n_\epsilon \in \mathbb{N} \hspace{1em} \text{tale che} \hspace{1em} \forall n \geq n_\epsilon, \forall p \in \mathbb{N} \hspace{1em} \text{si ha che} \hspace{1em} \left \vert l_{n+p} - l_n \right \vert < \epsilon\]
+In particolare, $\forall x \in E$, il valore assoluto di cui sopra può essere riscritto aggiungendo e sottraendo le quantità $f_{n+p}(x)$ e $f_n(x)$ come segue:
+\[\left \vert l_{n+p} - l_n\right \vert = \left \vert l_{n+p} - l_n - f_{n+p}(x) + f_{n+p}(x) - f_n(x) + f_n(x)\right \vert\]
+Sfruttando la disuguaglianza triangolare, si può maggiorare tale valore assoluto come
+\[\leq \left \vert l_{n+p} - f_{n+p}(x)\right \vert + \left \vert f_{n+p}(x) - f_n(x) \right \vert + \left \vert f_n(x) - l_n\right \vert\]
+Ora bisogna dimostrare che ogni singolo addendo è $< \dfrac{\epsilon}{3}$. Si procede per osservazioni successive:
+\begin{enumerate}
+    \item Siccome $(f_n)_n$ è uniformemente convergente, in particolare è una successione di Cauchy. Ciò significa che
+    \[\exists n_\epsilon \in \mathbb{N} \hspace{1em} \text{tale che} \hspace{1em} \forall n \geq n_\epsilon, \forall p \in \mathbb{N} \text{ e } \boxed{\bf{\forall x \in E}} \hspace{1em} \text{si ha che} \hspace{1em} \left \vert f_{n+p}(x) - f_n(x)\right \vert < \frac{\epsilon}{3}\]
+    in cui è fondamentale osservare che ciò vale $\forall x \in E$, in cui l'$n_\epsilon$ considerato dipende solamente da $n$ e non da $x$.
+
+    \item a
+\end{enumerate}
+
+
 Fissato $\hat n \geq n_\epsilon$ e un qualsiasi $q \in \mathbb{N}$, è noto che
 \[\lim_{x \to x_0} f_{\hat n}(x) = l_{\hat n} \text{ e } \lim_{x \to x_0} f_{\hat n + p}(x) = l_{\hat n + p}\]
 Allora, dalla definizione di limite si ha che
@@ -1448,5 +1782,2241 @@ e, ovviamente,
 mentre
 \[\int_{[0,1]} \left(\lim_{n \to +\infty} f_n(x) \right) \dif x = \int_{[0,1]} 0 \dif x = 0\]
 
+\newpage
+\noindent
+\begin{center}
+    12 Ottobre 2022
+\end{center}
+È molto importante tenere in considerazione la differenza di definizione di convergenza puntuale e uniforme di una successione di funzioni. Infatti
+\begin{itemize}
+    \item se $f_n \to f$ puntualmente. Allora, $\forall x, \forall \epsilon > 0, \exists n_{\epsilon,x} \in \mathbb{N}$ tale per cui $\forall n \geq n_{\epsilon,x}$ si ottiene
+    \[\left \vert f_n(x) - f(x) \right \vert < \epsilon\]
 
+    \item se $f_n \to f$ uniformemente. Allora $\forall \epsilon > 0, \exists n_\epsilon \in \mathbb{N}$ tale per cui $\forall n \geq n_\epsilon, \forall x$, si ottiene
+    \[\left \vert f_n(x) - f(x) \right \vert < \epsilon\]
+\end{itemize}
+In cui è fondamentale capire la differenza di collocamento di $\forall x$: se posto all'inizio, l'$n_\epsilon$ dipende anche da $x$, se posto alla fine no.\\
+Non solo, ma è noto che l'uniforme convergenza implica la puntuale convergenza. Non solo, ma se una successione di funzioni continue converge uniformemente ad una funzione $f$, allora essa è continua.
+
+\vspace{1em}
+\subsection{Teorema sulla derivata del limite}
+Di seguito si espone l'enunciato del \textbf{teorema sulla derivata del limite}:
+
+\begin{theorem}
+    Siano $f_n : E \to \mathbb{R}$ derivabile, posto $C^1$, ossia continua con derivata continua. Sia
+    \[\lim_{n \to +\infty} f_n(x) = f(x)\]
+    \textbf{puntuale} e sia
+    \[\lim_{n \to +\infty} f'_n = g\]
+    Allora $f$ è derivabile e $f'=g$
+\end{theorem}
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Sia $x_0 \in E$ e sia $E$ un intervallo (o un unione finita di intervalli). Dal teorema fondamentale del calcolo si ha che
+\[f_n(x) = f_n(x_0) + \int_{x_0}^x f'_{x_0}(t) \dif t\]
+Ma allora si può scrivere
+\[f(x) = f_{x_0} + \int_{x_0}^x g(t) \dif t\]
+ma $g$ è continua perché limite uniforme di una funzione continua, per il teorema fondamentale del calcolo.
+
+\vspace{1em}
+\noindent
+\textbf{Esempio}: Si consideri la successione di funzioni
+\[f_n(x) = \sqrt{x^2 + \frac{1}{n}}\]
+allora è evidente che
+\[\lim_{n \to +\infty} f_n = \vert x \vert\]
+ed è una convergenza uniforme, in quanto
+\[\left \vert \sqrt{x^2 + \frac{1}{n}} - \vert x \vert \right \vert = \dfrac{x^2 + \dfrac{1}{n} - x^2}{\sqrt{x^2} + \dfrac{1}{n} + \vert x \vert}\]
+Allora se si sceglie $x=\dfrac{1}{\sqrt{n}}$ si ottiene
+\[\dfrac{\dfrac{1}{n}}{\dfrac{1}{\sqrt{n}}} = \frac{\sqrt{n}}{n}\]
+che ovviamente può essere reso piccolo quanto si vuole, da cui la convergenza uniforme.\\
+Tuttavia, si ha che
+\[f'_n(x) = \dfrac{x}{\sqrt{x^2 + \dfrac{1}{n}}}\]
+mentre il limite non è derivabile.
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: L'ipotesi del teorema richiede che
+\[f_n(x) \to f(x)\]
+puntualmente. Tuttavia, il teorema permette di affermare che
+\[f_n'(x) \to f'(x)\]
+uniformemente. Allora si può concludere che la successione converge a $f$ uniformemente? No, e il controesempio è
+\[f_n(x) = \frac{n}{n+x^2}\]
+la quale è una successione che converge puntualmente a $1$, ossia
+\[\lim_{n \to +\infty} f_n(x) = 1\]
+ma non in modo uniforme. Tuttavia, si ha che
+\[f'_n(x) = \frac{-2nx}{(n+x^2)^2}\]
+in cui si ha che
+\[\lim_{n \to +infty} f'_n = 0\]
+uniformemente. Per dimostrarlo si ottiene che
+\[\left \vert f'_n(x) - 0 \right \vert = \frac{2nx}{(n+x^2)^2} = g_n(x)\]
+Per trovare una maggiorazione di $g_n(x)$, si considera il massimo della funzione, tramite la derivata della $g_n$ stessa, ovvero
+\[g'_n(x) = \frac{2n \cdot (n+x^2)^2 - 4n x \cdot (n+x^2) \cdot 2x}{(n+x^2)^3} = \frac{n-3x^2}{(n+x^2)^3}\]
+È facile capire che per
+\[x^2=\frac{n}{3} \hspace{1em} \rightarrow \hspace{1em} g'_n(x) = 0\]
+Essendo la $g_n$ una funzione dispari, $x=\sqrt{\frac{n}{3}}$ è un punto di massimo per la funzione $f'_n$. Da ciò si evince che
+... continua ...\\
+Ciò dimostra che una successione di funzioni può presentare una convergenza puntuale, mentre la sua derivata presenta una convergenza puntuale.
+
+\vspace{1em}
+\noindent
+\subsection{Serie di funzioni}
+Si consideri la serie di funzioni seguente
+\[\sum_{n=0}^{+\infty} f_n(x)\]
+e sia
+\[s_n(x) = \sum_{k=0}^n f_k(x) \hspace{1em} \text{se} \hspace{1em} s_n(x) \to s(x)\]
+in cui $s(x)$ si dice somma della serie (che, ovviamente, è una funzione). Dal momento che una successione di funzioni può convergere in modo puntuale, oppure uniforme.
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione 1}: Sia
+\[\sum_{n=0}^{+\infty} f_n(x) = s(x)\]
+una serie convergente in modo uniforme. Naturalmente, per la condizione necessaria della convergenza, si sa che
+\[\lim_{n \to +\infty} f_n(x) = 0\]
+ed è una convergenza uniforme, in quanto è ovvio che
+\[f_n(x) = s_n(x) - s_{n-1}(x)\]
+e siccome entrambe le somme parziali convergono a $s(x)$ in modo uniforme, allora anche $f(x)$ converge a $0$ uniformemente.
+
+\vspace{1em}
+\noindent
+\textbf{Esempio}: Si consideri la seguente serie
+\[\sum_{n=0}^{+\infty} x^n = \frac{1}{1-x}\]
+in quanto si è richiesto che $\vert x \vert < 1$. Tuttavia, tale convergenza non è uniforme in quanto, ovviamente
+\[\lim_{n \to +\infty} x^n = 0\]
+in modo puntuale.
+
+\vspace{1em}
+\subsubsection{Criterio di convergenza uniforme di una serie di funzioni - M-test di Weierstrass}
+Di seguito si espone il fondamentale criterio per la convergenza uniforme di uan serie di funzioni:
+
+\begin{theorem}
+    Sia $f_n : A \subseteq \mathbb{C} \longmapsto \mathbb{C}$ ed esista una successione numerica $(a_n)_n$, tale per cui $s_n \in \mathbb{R}$, con $a_n \geq 0, \forall n$ (anche se sarebbe sufficiente richiederlo definitivamente) tale per cui
+    \begin{enumerate}
+        \item $\forall n \in \mathbb{N} \hspace{1em} \vert f_n(z) \vert \leq a_n, \forall z \subset A$
+        \item $\displaystyle{\sum_{n=0}^{+\infty} a_n}$ è convergente
+    \end{enumerate}
+    allora la serie $\displaystyle{\sum_{n=0}^{+\infty} f_n}$ converge assolutamente e uniformemente.
+\end{theorem}
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Usando il criterio di Cauchy, si ha che $\forall \epsilon > 0, \exists n_\epsilon$ tale che $\forall n \geq n_\epsilon$ e $\forall p \in \mathbb{N}$
+\[\left \vert \sum_{k=n+1}^{n+p} f_k(z) \right \vert < \epsilon\]
+Ciò è vero, infatti
+\[\left \vert \sum_{k=}\right \vert\]
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Data una serie di funzioni
+\[\sum_{n=0}^{+\infty} f_n(x)\]
+\begin{itemize}
+    \item per provare la convergenza uniforme
+    \begin{itemize}
+        \item si adotta il \textbf{test di Weierstrass}
+        \item si adotta la definizione, cercando la maggiorazione con qualcosa
+        \item si impiega il criterio di Cauchy
+    \end{itemize}
+    \item per provare la non convergenza uniforme
+    \begin{itemize}
+        \item si verifica se $f_n(x)$ converge a $0$ in modo uniforme.
+        \item si usa la definizione per assurdo, scegliendo oculatamente $x$ in funzione di $n$
+        \item si impiega il criterio di Cauchy, scrivendo
+        \[\left \vert \sum_{k=n}^{n+p} f_n(x) \right \vert < \frac{1}{1000}\]
+        scegliendo opportunamente $p$ e $x$
+    \end{itemize}
+\end{itemize}
+
+\vspace{1em}
+\noindent
+\textbf{Esercizio 1}: La serie
+\[\sum_{n=0}^{+\infty} x^n\]
+è uniformemente convergente sull'intervallo $\left] - \frac{1}{2}, \frac{1}{2}\right[$. Infatti, è sufficiente considerare il test di Weierstrass e osservare che
+\[\left \vert x^n \right \vert \leq \left(\frac{1}{2}\right)^n\]
+
+\vspace{1em}
+\noindent
+\textbf{Esercizio 2}: La serie
+\[\sum_{n=0}^{+\infty} \frac{\sin(nx)}{2^n}\]
+è uniformemente convergente, in quanto, per il test di Weierstrass, in quanto
+\[\left \vert \frac{\sin(nx)}{x} \right \vert < \left(\frac{1}{3}\right)^n\]
+per cui è uniformemente convergente.
+
+\vspace{1em}
+\noindent
+\textbf{Esercizio 3}: La serie
+\[\sum_{n=1}^{+\infty} \frac{\sqrt{1-x^{2n}}}{3^n}\]
+è sufficiente applicare il test di Weierstrass e osservare che
+\[\frac{\sqrt{1-x^{2n}}}{3^n} < \frac{1}{3}^n\]
+per cui è convergente.
+
+
+\vspace{1em}
+\noindent
+\textbf{Esercizio 4}: Si consideri la serie seguente
+\[\sum_{n=1}^{+\infty} (-1)^n \frac{\arctan(nx)}{n}\]
+Studiandola per $x>0$, si evince che la serie diventa di Leibniz. Il termine generale soddisfa le condizioni di Leibniz, ma per quanto riguarda la stima dell'errore si osserva
+\[s_n(x)-s(x) \leq a_n \hspace{1em} \rightarrow \hspace{1em} \left \vert \right \vert\]
+
+\vspace{1em}
+\noindent
+\textbf{Esercizio 5}: Si consideri la serie seguente
+\[\sum_{n=1}^{+\infty} \frac{x}{x^2+n^2}\]
+Allora si può verificare che il termine generale converge uniformemente a $0$. Per farlo si studia la successione di funzioni
+\[f_n = \frac{x}{n^2+x^2}\]
+e se ne calcola la derivata, ossia
+\[f'_n(x) = \frac{n^2 + x^2 - 2x^2}{(n^2+x^2)^2}\]
+e si evince facilmente che tale derivata si annulla in $\vert x \vert = n$, per cui $x_0=n$ è punto di massimo. Allora posto $x=n$ si ottiene che
+\[\frac{n}{n^+n^2} = \frac{1}{2n} < \epsilon, \forall \epsilon\]
+Quindi il termine generale è infinitesimo uniformemente. La serie converge sicuramente puntualmente, in quanto
+\[\left \vert \frac{x}{n^2+x^2} \right \vert \leq \left \vert x \right \vert \frac{1}{n}\]
+ma tale maggiorazione dipende da $x$. Se la serie convergesse uniformemente, dovrebbe essere vero che $\forall \epsilon > 0$, $\exists n_\epsilon \in \mathbb{N}$ tale che $\forall n \geq n_\epsilon$, $\forall p \in \mathbb{N}$
+\[\left \vert \sum_{k=n}^{n+p} f_n(x) \right \vert < \epsilon, \hspace{0.5em} \forall x\]
+Se fosse vero, ponendo $\epsilon=\frac{1}{1000}$, fissato $n \geq n_\epsilon$, ponendo $p=n$
+\[\frac{1}{1000} > \sum_{k=n}^{2n} \frac{x}{n^2+x^2} = \frac{x}{n^2+x^2}+\frac{x}{(n+1)^2+x^2}+\frac{x}{(n+2)^2+x^2}+\dots+\frac{x}{(2n)^2+x^2} \geq \frac{n^2}{(2n)^2 + n^2} = \frac{n^2}{5n^2} = \frac{1}{5}\]
+che, ovviamente, è assurdo.
+
+\newpage
+\noindent
+\begin{center}
+    14 Ottobre 2022
+\end{center}
+Uno dei test più importanti da adottare per dimostrare che una serie di funzioni è convergente uniformemente (e, quindi, assolutamente) è il test di Weierstrass. Se ciò non funziona, si può provare con il criterio di Cauchy.\\
+Similmente, per dimostrare che una serie non è uniformemente convergente si prova a vedere se il termine generale non è infinitesimo.\\
+Se lo è, la dimostrazione diviene più complessa ed è necessario, a questo stadio utilizzare ancora Cauchy.\\
+Le serie di funzioni sono fondamentali per costruire funzioni più complesse. Infatti, dato uno spazio vettoriale come $\mathbb{R}^n$, è possibile costruire ogni elemento dello spazio come combinazione lineare dei vettori della base.\\
+Si consideri, per esempio, la somma parziale seguente:
+\[\sum_{k=0}^{n} \alpha_k \cdot \cos(kx)\]
+in cui
+\[\alpha_k = \frac{1}{(2n+1)^2}\]
+Il grafico di tale somma parziale è un triangolo non derivabile in $x=0$. Per ottenere un triangolo perfetto si deve fare tendere $n \to +\infty$.\\
+Si può considerare, in generale, l'insieme
+\[\Phi_n = \{\phi_n : n \in \mathbb{N}\}\]
+in cui $\phi_n$ è una generica successione di funzioni. In generale, pertanto, dato $I \subseteq \mathbb{C} \longmapsto \mathbb{C}$
+si dice che ... continua ... se esiste una successione di funzioni $(\alpha_n)_n$ in $\mathbb{C}$ tale che
+\[\phi(x) = \sum_{n=0}^{+\infty} \alpha_n \cdot \phi_n(x)\]
+
+\vspace{1em}
+\noindent
+Ciò, naturalmente, a livello generale. Invece si ha che, ... continua ..., si dice sviluppabile in serie di centro $z_0$, se esiste una successione di funzioni $(\alpha_n)_n$ in $\mathbb{C}$ tale che
+\[\phi(x) = \alpha_0 + \sum_{n=1}^{+\infty} \alpha_n \cdot (z-z_0)^n = \sum_{n=0}^{+\infty} \alpha_n \cdot (z-z_0)^n\]
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Si consideri, a tal proposito, la serie seguente
+\[\sum_{n=0}^{+\infty} \alpha_n \cdot \frac{1}{z^n} = \frac{1}{1-z}\]
+con $\alpha_n=1, \forall n$. Allora si ha che tale ... continua ...
+
+\vspace{1em}
+\noindent
+\textbf{Esempio}: Si consideri, in $\mathbb{R}$, la serie di potenze
+\[\sum_{n=1}^{+\infty} \frac{1}{n} x^n\]
+deve essere definita sull'insieme di convergenza $[-1,1[$, in quanto per $x=1$ è la serie armonica, mentre per $x=-1$ è una serie di Leibniz e quindi converge.
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Si chiama insieme di convergenza l'insieme in cui la serie converge.
+
+\vspace{1em}
+\noindent
+\textbf{Esempio}: Si consideri la serie
+\[\sum_{n=1}^{+\infty} n^n \cdot x^n\]
+È chiaro che la serie non è convergente. L'unica possibilità è che $x=0$. In particolare, quindi, l'insieme di convergenza è $E=\{0\}$. È un intervallo, ma è degenere.
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Si osservi che la serie di partenza
+\[\alpha_0 + \sum_{n=1}^{+\infty} \alpha_n \cdot (z-z_0)^n\]
+è sempre definita in $z=z_0$ e il valore di convergenza è $\alpha_0$.
+
+\vspace{1em}
+\noindent
+\textbf{Esempio}: Una serie che presenta come insieme di convergenza tutto $\mathbb{R}$ è, proprio
+\[\sum_{n=0}^{+\infty} \frac{1}{n^n} \cdot x^n\]
+
+\vspace{1em}
+\subsection{Teorema di proprietà dell'insieme di convergenza delle serie}
+Si consideri la serie di potenze di seguente
+\[\sum_{n=0}^{+\infty} \alpha_n \cdot (z-z_0)^n\]
+\begin{enumerate}
+    \item Si supponga che $\exists z_1 \in \mathbb{C}$, tale che
+    \[\sum_{n=0}^{+\infty} \alpha_n \cdot (z_1-z_0)^n\]
+    converge, allora
+    \[\forall z \in \mathbb{C} \hspace{1em} \text{se} \hspace{1em} \left \vert z - z_0 \right \vert < \left \vert z_1 - z_0 \right \vert\]
+    si ha che la serie di potenze di partenza converge assolutamente al numero $z$.
+
+    \item Su ogni palla chiusa compatta $\overline{\mathcal{B}(z_0,r)} \subset \mathcal{B}(z_0,\left \vert z_1-z_0 \right \vert)$ la convergenza è uniforme. Nella palla aperta, invece, si ha convergenza puntuale.
+\end{enumerate}
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione 1}: Per ipotesi è noto che
+\[\sum_{k=0}^{+\infty} \alpha_n \cdot (z_1-z_0)^n\]
+è convergente. Per la condizione necessaria per la convergenza di una serie, la successione dei termini generale è infinitesima, ossia
+\[\lim_{n \to +\infty} \alpha_n \cdot (z_1-z_0)^n = 0\]
+Siccome la successione 
+\[\left(\alpha_n \cdot (z_1 - z_0)^n \right)_n\]
+ammette limite, essa è limitata, ovverosia
+\[\forall N \in \mathbb{R}, \exists M \in \mathbb{R} \text{ tale che } \forall n > M, \left \vert \alpha_n \cdot (z_1-z_0)^n \right \vert < N \]
+Ma è possibile affermare che 
+\[\left \vert \alpha_n \cdot (z_1-z_0)^n \right \vert = \vert \alpha_n \vert \cdot \vert z-z_0 \vert^n < N\]
+Ma siccome ... continua...\\
+Ciò significa che
+\[\sum_{n=0}^{+\infty} N \cdot \left \vert \frac{z-z_0}{z_1-z_0} \right \vert^n\]
+è convertente, in quanto la serie geometrica è convertente. Per il criterio del confronto, la serie
+\[\sum_{n=0}^{+\infty} \alpha_n \cdot (z-z_0)^n\]
+converge assolutamente.
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione 2}: Si consideri la palla $\overline{\mathcal{B}(z_0,r)} \subset \mathcal{B}(z_0, \vert z_1-z_0 \vert)$.\\
+Allora si ha che
+\[\forall z \in \overline{\mathcal{B}(z_0,r)}  \rightarrow \left \vert z - z_0 \right \vert \leq r < \left \vert z_1 -z_0 \right \vert \rightarrow \left \vert \frac{\left \vert z - z_0 \right \vert}{\left \vert z_1 - z_0 \right \vert} \right \vert \leq \frac{r}{\left \vert z_1 - z_0 \right \vert} < 1\]
+in cui è fondamentale osservare come
+\[\frac{r}{\left \vert z_1 - z_0 \right \vert}\]
+non dipende più da $z$. È noto che
+\[\left \vert \alpha_n \cdot (z-z_0)^n \right \vert \leq M \cdot \left \vert \frac{z-z_0}{z_1-z_0}\right \vert^n \leq M \cdot \left \vert \frac{r}{z_1 - z_0} \right \vert ^n\]
+Se si pone
+\[K = \left \vert \frac{r}{z_1-z_0} \right \vert\]
+si ottiene che
+\[\left \vert \alpha_n \cdot (z-z_0)^n \right \vert \leq M \cdot \left \vert \frac{z-z_0}{z_1-z_0} \right \vert \leq M \cdot K^n\]
+Se ora si considera la successione $(b_n)_n$ dove $b_n=M K^n$ si è già dimostrato che ... continua .. 
+
+\vspace{1em}
+\noindent
+\subsection{Raggio di convergenza}
+Si consideri la definizione di \textbf{raggio di convergenza} seguente:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{RAGGIO DI CONVERGENZA}}\\
+    \parbox{\linewidth}{Sia $a_0 + \sum_{n=1}^{+\infty} a_n \cdot (z-z_0)^n$ una serie di potenze. Sia $E$ l'insieme di convergenza della serie. Se $E = \{z_0\}$ si pone $\rho=0$; se $E = \mathbb{C}$ si pone $\rho = +\infty$, altrimenti si pone
+    \[\rho = \sup \{\left \vert z-z_0 \right \vert \in \mathbb{R} : z \in E\}\]
+    allora $\rho$ si dice \textbf{raggio di convergenza}.\vspace{3mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{1em}
+\subsubsection{Proprietà caratteristiche del raggio di convergenza}
+Si espongono di seguito le proprietà caratteristiche del raggio di convergenza.
+
+
+Sia $a_0 + \sum_{n=1}^{+\infty} a_n \cdot (z-z_0)^n$, con $E$ insieme di convergenza, posto $E \neq \{z_0\}$ e $E \neq \mathbb{C}$. Allora $\rho \in \mathbb{R}^+$ è il raggio di convergenza della serie \textbf{se e solo se}
+\begin{enumerate}
+    \item $\forall z \in \mathbb{C}$, se $\left \vert z-z_0 \right \vert < \rho$, allora $z \in E$
+    \item $\forall z \in \mathbb{C}$, se $\left \vert z-z_0 \right \vert > \rho$, allora $z \notin E$
+\end{enumerate}
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione 1}: Sia $r$ il raggio di convergenza, ossia
+\[r = \sup \{\left \vert z - z_0 \right \vert : z \in E\}\]
+per cui vale la $2$ proprietà: infatti, se $\left \vert z - z_0 \right \vert > M$ allora $x \notin E$.\\
+Non solo, ma vale anche la $1$ proprietà: infatti, sia $\left \vert z - z_0 \right \vert < M$, allora esiste $z_1 \in E$ tale che
+\[\left \vert z - z_0 \right \vert < \left \vert z_1 - z_0 \right \vert < \dots\]
+per il teorema precedentemente esposto e, quindi, $z \in E$.
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione 2}: Sia $\rho$ che verifica la $1$ e la $2$ proprietà. Allora sicuramente $\rho$ è un maggiore $\{\left \vert z - z_0 \right \vert : z \in E\}$.\\
+Per dimostrare che è il minimo fra i maggioranti, si ponga $\rho_1 < p$, per cui esiste $z_1$ tale che
+\[\rho_1 < \left \vert z_1 - z_0 \right \vert < \rho\]
+tale per cui $z_1 \in E$. Quindi $\rho_1$ non è un maggiorante di $\{\left \vert z - z_0 \right \vert : z \in E\}$. Tale considerazione significa che
+\[\rho = \sup \{\left \vert z - z_0 \right \vert \text{ tale che } z \in E\}\]
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Si osservi che se $E$ è un insieme di convergenza e si pone
+\[I = \left ] x_0 - \rho, x_0 + \rho \right[\]
+come intervallo di convergenza. Allora, in generale è vero che
+\[I \subseteq E \subseteq \overline{I}\]
+dove $\overline{I}$ è la chiusura di $I$. Ciò perché sul bordo dell'intervallo di convergenza non è sempre garantita la convergenza.
+
+\vspace{1em}
+\subsection{Proprietà delle serie di potenze}
+Sia $f : I \longmapsto \mathbb{R}$ in cui $I$ è l'intervallo di convergenza, tale che
+\[I = \left]x_0-\rho,x_0+\rho\right[ \hspace{1em} \text{oppure} \hspace{1em} I = \mathbb{R}\] 
+escludendo il caso in cui $\rho=0$. Posto
+\[f(x) = a_0 + \sum_{n=1}^{+\infty} a_n \cdot (x-x_0)^n\]
+ovverosia
+\[f(x) = a_0 + a_1 (x-x_0) + a_2 (x-x_0)^2 + \dots\]
+si ha che
+\begin{enumerate}
+    \item $\forall x \in I$ si ha che
+    \[\int_{x_0}^x f(t) \dif t = \sum_{n=0}^{+\infty} \frac{a_n}{n+1} \cdot (x-x_0)^{n+1}\]
+    
+    \item Posto $f \in C^{\infty}(I)$ per cui, in particolare, $f$ è continua. Allora si ha che
+    \begin{itemize}
+        \item $f'(x) = a_1 + \sum_{n=2}^{+\inf} n a_n (x-x_0)^{n-1} $
+        \item $f''(x) = 2a_2 + \sum_{n=3}^{+\inf} n (n-1) a_n (x-x_0)^{n-2} $
+        \item $\dots$
+        \item $f^{(k)} = k! a_k + \sum_{n=k+1}^{+\infty} n (n-1) \dots (n-k+1) a_n (a-x_0)^{n-k}$
+    \end{itemize}
+\end{enumerate}
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione 1}: Sia $x \in I$, si consideri $[a,b] \subset I$ tale che $x,x_0 \in [a,b]$. La serie
+\[a_0+ \sum a_n (x-x_0)^n\]
+converge uniformemente su $[a,b]$, ovvero
+\[s_n(x) \to s(x)\]
+uniformemente. Ma allora, per il teorema sull'integrale del limite uniforme si ha che $s(x)$ è integrabile e, in particolare,
+\[\int_{x_0}^x s(t) dt = \lim_{n \to +\infty} \int_{x_0}^x s_n(t) \dif t\]
+ma quindi
+\[\int_{x_0}^x f(t) \dif t = \lim_{n \to +\infty} \int_{x_0}^x \left(a_0 + \sum_{k=1}^n a_k \cdot (x-x_0)^k\right) \dif t\]
+ovvero
+\[\lim_{n \to +\infty} \left[a_0 \cdot (x-x_0) + \sum_{k=1}^n a_k \cdot \frac{1}{k+1} (x-x_0)^{k+1}\right]\]
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: La continuità di $f$ è immediata con ragionamento analogo. Tuttavia, è fondamentale capire che bisogna ragionare sui compatti contenuti nell'intervallo di convergenza. Ciò non garantisce che la funzione sia continua sul bordo, anche se questo risulta comunque vero per il \textbf{lemma di Abel}.
+
+\vspace{1em}
+\subsection{Derivabilità}
+Si consideri la ridotta $s_n$
+\[s_n(x) = a_0 + \sum_{k=1}^n a_k \cdot (x-x_0)^k\]
+che è la ridotta di una serie di potenze
+\[a_1 + \sum_{k=2}^{+\infty} k a_k (x-x_0)^{k-1}\]
+Tuttavia, non è possibile affermare a priori che
+$s'_n(x) = a_1 + \sum_{k=2}^n k a_k (x-x_0^{k-1})$
+in quanto non è detto che ... continua ...\\
+Quindi, detto $I'$ l'intervallo di convergenza della serie
+\[a_1 + \sum_{k=2}^{+\infty} k a_k (x-x_0)^{k-1}\]
+si ha che in ogni compatto $[a,b] \subset I' \cap I$ (in cui è fondamentale chiedere $I' \cap I$ in quanto devono essere finite entrambe le serie), la serie delle derivate è la derivata della serie. Per concludere la dimostrazione, si deve provare che $I'=I$, ossia che $\rho'=\rho$, ossia i due raggi di convergenza coincidono.
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione 1}: Siano
+\begin{itemize}
+    \item $\rho$ il raggio di convergenza della serie $f(x)$
+    \item $\rho'$ il raggio di convergenza della serie delle derivate
+    \[a_1 + \sum_{n=2}^{+\infty} a_n n (x-x_0)^{n-1}\]
+\end{itemize}
+Si provi che $\rho=\rho'$. Sia $x$ tale che $\left \vert x - x_0 \right \vert < \rho$ e si provi che
+\[\sum_{n=2}^{+\infty} a_n n (x-x_0)^{n-1}\]
+converge. Se ciò è vero, converge anche la serie di partenza ... continua ...
+
+\vspace{1em}
+\noindent
+Si osserva, allora, che
+\[\sum_{n=2}^{+\infty} a_n (x-x_0)^n = (x-x_0) \sum_{n=2}^{+\infty} a_n (x-x_0)^{n-1}\]
+Sia $\left \vert x - x_0 \right \vert < \rho$. Esiste, allora, $x_1$ tale che
+\[\left \vert x - x_0 \right \vert < \left \vert x_1 - x_0 \right \vert < \rho\]
+Allora la serie
+\[\sum_{n=2}^{+\infty} \left \vert a_n \cdot (x_1 - x_0)^{n-1} \right \vert\]
+converge. Quindi la successione $\left \vert a_n \cdot (x-x_0)^n \right \vert$ è limitata, per cui $\exists M$ tale che
+\[\left \vert a_n \cdot (x_1-x_0)^n \right \vert < M, \forall n\]
+Pertanto
+\[\left \vert n a_n (x-x_0)^{n-1} \right \vert = \left \vert a_n \cdot (x_n-x_0)^n \right \vert \cdot n \cdot \left \vert \frac{x-x_0}{x_1-x_0} \right \vert < M \cdot n \cdot K^{n-1}\]
+posto
+\[K=\left \vert \frac{x-x_0}{x_1-x_0} \right \vert < 1\]
+È facile capire che la serie
+\[\sum_{n \cdot K^{n-1}}\]
+converge, per il criterio del rapporto
+\[\frac{(n+1) \cdot K^n}{n \cdot K^{n-1}} \rightarrow K < 1\]
+per cui, per il criterio del confronto, la serie
+\[\sum n \cdot a_n \cdot (x-x_0)^{n-1}\]
+converge.\\
+Quindi, dove converge la serie di partenza, anche la serie delle derivate è convergente.
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione 2}: Siano, allora, $\left \vert x - x_0 \right \vert > \rho$. La serie
+\[\sum \left \vert a_n \cdot (x-x_0)^{n-1}\right \vert\]
+non converge. Ma allora è facile osservare che
+\[\left \vert n a_n (x-x_0)^{n-1} \right \vert \geq \left \vert a_n \cdot (x-x_0)^{n-1} \right \vert\]
+quindi la serie
+\[\sum \left \vert n a_n (x-x_0)^{n-1} \right \vert\]
+non converge.
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione 1}: Si conclude, quindi, che
+\[\frac{\dif}{\dif x} \left(a_0 + \sum_{n=1}^{+\infty} a_n \cdot (x-x_0)^n\right) = a_1 + \sum_{n=2}^{+\infty} n a_n (x-x_0)^{n-1}\]
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione 2}: Si consideri la funzione seguente
+\[f(x) = a_0 + \sum_{n=1}^{+\infty} a_n \cdot (x-x_0)^n\]
+allora
+\begin{itemize}
+    \item $f(x_0) = a_0$
+    \item $f'(x_0) = a_1$
+    \item $f''(x_0)  = 2a_2$
+    \item $\dots$
+    \item $f^{(k)}(x_0) = k! \cdot a_k $
+\end{itemize}
+Più in generale, si ottiene che
+\[f'(x_0) = a_1 + \sum_{n=2}^{+\infty} n a_n (x-x_0)^{n-1}\]
+per cui
+\[f(x) = f(x_0) + \sum_{n=1}^{+\infty} \frac{f^{(n)}(x_0)}{n!} (x-x_0)^n\]
+che prende il nome di serie di Taylor.
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Se la $f$ è sviluppabile in serie di potenze, allora
+\[f(x) = \lim_{n \to +\infty} P_n(x)\]
+in ui $P_n(x)$ è il polinomio di taylor di grado $n$:
+\[\P_n(x) = f(x) = f(x_0) + \sum_{k=1}^n \frac{f^{(n)}(x_0)}{n!} (x-x_0)^n\]
+cioè
+\[\lim_{n \to +\infty} \left(f(x) - P_n(x)\right) = 0\]
+in cui $E_n(x) = f(x-P_n(x))$.
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Si osservi che si dice che una funzione è analitica una funzione sviluppabile in serie di potenze, con $f : I \longmapsto \mathbb{R}$. Si osservi che se $f$ è analitica, allora $f$ è $C^\infty$.\\
+Tuttavia, in $\mathbb{R}$, se una funzione è $C^\infty$, non è analitica. Un esempio chiave è la funzione seguente:
+\[f(x) = \left\{
+    \begin{array}{lll}
+        0 & \text{se} & x=0\\
+        e^{-\frac{1}{x^2}} & \text{se} & x \neq 0
+    \end{array}
+\right.\]
+Calcolandone la derivata si ottiene
+\[f'(x) = \left\{
+    \begin{array}{lll}
+        0 & \text{se} & x=0\\
+        e^{-\frac{1}{x^2}} \cdot (2x^{-3}) & \text{se} & x \neq 0
+    \end{array}
+\right.\]
+Tuttavia la serie di Taylor di $f$ è
+\[f(0) + \sum_{n=1}^[+\infty] \frac{f^{(n)(0)}}{n!} x^n = 0\]
+e quindi non coincide con la funzione stessa, ovvero
+\[f(x) = \sum_{n=1}^{+\infty} \frac{f^{(n)(0)}}{n!} x^n\]
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Si osservi che un modo per decretare l'analiticità di una funzione è calcolare
+\[\lim_{n \to +\infty} f(x) - P_n(x) = \lim_{n \to +\infty} E_n(x) = 0\]
+Per descrivere il resto della formula di Taylor si può utilizzare il resto nella formula di Lagrange:
+\[E_n(x) = \frac{f^{(n+1)}(\xi)}{(n+1)!} \cdot (x-x_0)^{n+1}\]
+con $\left \vert \xi - x_0 \right \vert < \left \vert x - x_0 \right \vert$
+
+\vspace{1em}
+\noindent
+\subsection{Primo criterio di sviluppabilità}
+Sia $f \in C^\infty(I)$ ed esista $M \in \mathbb{R}$ tale che $\left \vert f^{(n)}(x) \right \vert \leq M^n, \forall n \in I$
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: È sufficiente dimostrare che
+\[\left \vert E_n(x) \right \vert = \left \vert \frac{f^{(n+1)(\xi)}}{(n+1)!} (x-x_0)^{n+1} \right \vert \leq \frac{M^{n+1}}{(n+1)!} \cdot \left \vert x - x_0 \right \vert^{n+1}\]
+... continua ...
+
+\vspace{1em}
+\noindent
+\textbf{Esempio}: Si consideri la funzione $\cos(x)$, allora la serie di Taylor corrispondente è
+\[\cos(x) = \sum_{n=0}^{+\infty} (-1)^n \cdot \frac{x^{2n}}{(2n)!}\]
+e analogamente per il $\sin(x)$ si ottiene
+\[\sin(x) = \sum_{n=0}^{+\infty} (-1)^n \cdot \frac{x^{2n+1}}{(2n+1)!}\]
+Per verificare, tuttavia, che tali funzioni sono sviluppabili come serie di potenze, è sufficiente dimostrare che
+\[... continua ...\]
+
+\vspace{1em}
+\noindent
+\textbf{Esempio}: Si consideri la serie di Taylor di $e^x$ seguente
+\[e^x=1+\sum_{n=1}^{+\infty} \frac{x^n}{n!}\]
+Tuttavia, in questo caso, non è vero che
+\[\left \vert e^x \right \vert M^n, \hspace{1em} \forall n, \forall x\]
+Tuttavia, è possibile restringere $e^x$ nell'intervallo $[-b,b]$ in cui
+\[\left \vert f^(n)(x) \right \vert = e^x \leq e^b \leq (e^b)^n = M^n\]
+e preso tale intervallo arbitrariamente grande, è possibile considerare tutto $R$, per cui è sviluppabile come serie di potenze.
+
+\newpage
+\begin{center}
+    17 Ottobre 2022
+\end{center}
+Ovviamente, non è vero che ogni funzione può essere sviluppata come serie di potenze. Infatti, non è sufficiente che una funzione sia $C^{+\infty}$; una funzione sviluppabile come serie di potenze presenta un intervallo di convergenza che è sempre un intervallo. Tuttavia, è fondamentale tenere in considerazione anche il controllo sulla derivata.
+
+\vspace{1em}
+\noindent
+\textbf{Esempio 1}: Naturalmente, data la funzione $e^{-x}$, essa può essere sviluppata come
+\[e^{-x} = \sum_{n=0}^{+\infty} \frac{(-1)^n}{n!} x^n\]
+Se, ovviamente, si considera il seno iperbolico e il coseno iperbolico, il loro sviluppo è una combinazione lineare di $e^x$ e $e^-x$.
+
+\vspace{1em}
+\noindent
+\textbf{Esempio 2}: Se si considera la funzione $\log(1+n)$, si può considerare la sua derivata prima
+\[\frac{1}{1+n}\]
+in modo tale da ottenere lo sviluppo della serie armonica. Da ciò si evince che
+\[\sum_{n=0}^{+\infty} \int_0^x 1 + \frac{1}{1+t} \dif t = \sum_{n=0}^{+\infty} (-1)^n \cdot \frac{1}{1+n} \cdot x^{n+1}\]
+ottenendo il suo sviluppo, che può essere scritto in forma analoga
+\[\sum_{n=1}^{+\infty} (-1)^{n+1} \frac{1}{n} x^n\]
+Analogamente per $\log(1-x)$ si ottiene
+\[\log(1-x) = \sum_{n=1}^{+\infty} (-1)^{n+1} \frac{1}{n} (-1)^n x^n\]
+rispettando sempre la condizione $\left \vert x \right \vert < 1$.
+
+\vspace{1em}
+\noindent
+\textbf{Esempio 3}: Si consideri il caso seguente
+
+Allora la risoluzione prevede di considerare con il criterio del rapporto e calcolare il limite seguente
+\[\lim_{n \to +\infty} \]
+Il criterio del rapporto afferma che 
+...continua...
+
+\vspace{1em}
+\noindent
+\textbf{Esempio 4}: Si consideri la serie seguente
+\[\sum_{n=0}^{+\infty} \frac{n}{n-1}\]
+Dal momento che
+\[\frac{1}{1-x} = 1 + \sum_{n=1}^{+\infty} x^n\]
+allora, derivando tale funzione si ottiene
+\[D \left(\frac{1}{1-x}\right) = \frac{1}{(1-x)^2} \sum_{n=1}^{+\infty} n \cdot x^{n-1}\]
+si può moltiplicare per la medesima quantità, ottenendo
+\[\frac{x}{(1-x)^2} = \sum_{n=1}^{+\infty} n x^n\]
+
+\vspace{1em}
+\noindent
+\textbf{Esempio 5}: Si calcoli la somma delle seguente serie
+\[\sum_{n=1}^{+\infty} \frac{n^2}{2^n}\]
+allora, sfruttando la teoria della serie di potenze, si può considerare la serie
+\[\sum_{n=1}^{+\infty} n^2 x^n\]
+in cui basta imporre $x=\frac{1}{2}$ e si calcola la somma. In precedenza si era ottenuto che
+\[\sum_{n=1}^{+\infty} n x^n = \frac{x}{(1-x)^2}\]
+Per ottenere, però, $n^2$ si ottiene che
+\[D \left(\frac{x}{(1-x)^2}\right) = \sum_{n=1}^{+\infty} n^2 x^{n-1}\]
+per cui, per ottenere $n$ come esponente, si moltiplica per $x$, da cui
+\[x \cdot D \left(\frac{x}{(1-x)^2}\right) = \sum_{n=1}^{+\infty} n^2 x^n\]
+ponendo $x=\frac{1}{2}$ si ottiene come somma $6$.
+
+\vspace{1em}
+\subsubsection{Serie binomiale}
+Posto $\alpha \in \mathbb{R}$ si ottiene che
+\[(1+x)^\alpha = \sum_{n=0}^{+\infty} \binom{\alpha}{n} \cdot x^n\]
+in cui
+\[\binom{\alpha}{n} = \frac{\alpha \cdot (\alpha-1) \cdot (\alpha-n+1)}{n!}\]
+Tale risultato è tale, in quanto
+\begin{align}
+    & f'(x) = \alpha \cdot (1+x)^{\alpha-1}\\
+    & \dots
+\end{align}
+Tale serie risulta importante in quanto è possibile assegnare ad $\alpha$ un qualsiasi valore reale. Ovviamente, se $\alpha = m \in \mathbb{N}$ si ottiene il binomio di Newton, da cui
+\[\binom{m}{n} = \frac{m \cdot (m-1) \cdot (m-k+1)}{n!}\]
+in cui se $m=n$ si ottiene come risultato $1$, da cui
+\[(1+x)^m = \sum_{n=0}^m \binom{m}{n} x^n\]
+Se, invece, si pone $\alpha=\frac{1}{2}$ si ottiene lo sviluppo in serie della radice di $1+x$, ovvero
+\[\sqrt{1+x}=\sum_[n=0]^{+\infty} \binom{\dfrac{1}{2}}{n} x^n\]
+e per $\alpha=-\frac{1}{2}$ si ottiene
+\[\frac{1}{\sqrt{1+x}} = \sum_{n=0}^{+\infty} \binom{-\dfrac{1}{2}}{n} x^n\]
+Considerando $x^2$ al posto di $x$ si ottiene la derivata dell'$\arcsin(x)$
+\[\frac{1}{\sqrt{1-x^2}} = \sum_{n=0}^{+\infty} \binom{-\dfrac{1}{2}}{n} (-1)^n x^{2n}\]
+Per ricostruire l'$\arcsin(x)$ è sufficiente calcolare
+\[\arcsin(x)=\int_0^x \frac{1}{\sqrt{1-t^2}} \dif t = \int_0^x \left[ \sum_{n=0}^{+\infty} \binom{-\dfrac{1}{2}}{m} (-1)^n t^{2n}\right] \dif t = \sum_{n=0}^{+\infty} \binom{-\dfrac{1}{2}}{n} (-1)^n \cdot \frac{1}{2n+1}\]
+... continua ...
+
+\vspace{1em}
+\noindent
+\subsection{Funzioni in $\mathbb{C}$}
+Si consideri l'esponenziale sul campo complesso, come mostrato di seguito:
+\[e^z \hspace{1em} \text{con} \hspace{1em} z \in \mathbb{C}\]
+per cui, se $z=x+i \cdot y$, per la \textbf{formula di Eulero} si ottiene
+\[e^{x+\cdot y} = e^x \cdot \left(\cos(x) + i \cdot \sin(y)\right)\]
+Tuttavia, per definire l'esponenziale nel campo complesso, si ha che
+\[e^z = \sum_{n=0}^{+\infty} \frac{z^n}{n!}\]
+Per il criterio del rapporto si ha che
+\[\left \vert \frac{z^{n+1}}{(n+1)!} \right \vert \cdot \left \vert \frac{n!}{z^n} \right \vert = \vert z \vert \cdot \frac{1}{n+1}\]
+che converge a $0$ per ogni $z$.
+
+\vspace{1em}
+\noindent
+\textbf{Esempio 1}: La definizione del $\sin(z)$ in campo complesso è la seguente
+\[\sin(z) = \sum_{n=0}^{+\infty} (-1)^n \cdot \frac{z^{2n+1}}{(2n+1)!}\]
+
+\vspace{1em}
+\noindent
+\textbf{Esempio 2}: Per dimostrare la formula di Eulero, si considera lo sviluppo seguente
+\[e^{i \cdot y} = \sum_{n=0}^{+\infty} \frac{1}{n!} \cdot (i \cdot y)^n\]
+in cui è evidente capire come, dal momento che
+\[i^n = \left\{
+    \begin{array}{lll}
+        1 & \text{se} & n=4k\\
+        i & \text{se} & n=4k+1\\
+        -1 & \text{se} & n=4k+2\\
+        -1 & \text{se} & n=4k+3\\
+    \end{array}
+\right.\]
+è possibile spezzare la sommatoria di cui sopra in $4$ sommatorie a seconda del valore di $i^n$, ottenendo
+\[\sum_{n=4k}^{+\infty} \frac{1}{(4k)!} \cdot y^{4k} + \sum_{n=4k+1}^{+\infty} \frac{1}{(4k+1)!} \cdot i \cdot y^{4k+1} + \sum_{n=4k+2}^{+\infty} \frac{1}{(4k+2)!} \cdot -y^{4k+2} + \sum_{n=4k+3}^{+\infty} \frac{1}{(4k+3)!} \cdot -i \cdot y^{4k}\]
+Allora posto $n=2m$, per il primo addendo si ottiene
+\[\sum_{m=0}^{+\infty} (-1)^m \frac{1}{(2m)!} \cdot y^{2m}\]
+per il secondo addendo si ottiene
+\[i \cdot \sum_{m=0}^{+\infty} (-1)^m \frac{1}{(2m+1)!} \cdot y^{2m+1}\]
+per il terzo addendo si ottiene
+\[\sum_{m=0}^{+\infty} (-1)^{m+1} \frac{1}{(2m+2)!} \cdot y^{2m+2}\]
+e infine, per il quarto addendo si ottiene
+\[-i \cdot \sum_{m=0}^{+\infty} (-1)^m \frac{1}{(2m+3)!} \cdot y^{2m+3}\]
+
+\newpage
+\section{Topologia di $\mathbb{R}^n$}
+Il campo $\mathbb{R}^n$, con $n>1$, non eredita la relazione d'ordine del campo $\mathbb{R}$. In particolare, però, $\mathbb{R}^n$ è uno spazio
+\begin{itemize}
+    \item vettoriale
+    \item metrico (ovvero vi si può operare ad una certa distanza)
+\end{itemize}
+Per esempio, un vettore $x \in \mathbb{R}^n$ è sempre un \textbf{vettore colonna} della forma
+\[
+    \left(
+        \begin{array}{c}
+            x_1\\
+            x_2\\
+            \dots\\
+            x_n
+        \end{array}
+    \right)
+    \in \mathbb{R}^n
+\]
+e si considererà una matrice di riga nella forma
+\[
+    \left(
+        \begin{array}{c}
+            x_1\\
+            x_2\\
+            \dots\\
+            x_n
+        \end{array}
+    \right)
+    = \left(x_1, x_2, \dots, x_n\right){^T}
+\]
+Per le proprietà che lo caratterizzano, $\mathbb{R}^n$ è uno \textbf{spazio di Hilbert}.
+
+\vspace{1em}
+\subsection{Prodotto scalare}
+Sia $X$ uno spazio vettoriale; allora un prodotto scalare in $X$ è una funzione bilineare
+\[\left< \cdot, \cdot \right> : X \times X \longmapsto \mathbb{R}\]
+che presenta le seguenti proprietà
+\begin{itemize}
+    \item La simmetria: $\left<x,y\right>=\left<y,x\right>$
+    \item La positività e non generalità: $\left<x,x\right>\geq 0, \forall x \in X$ e, in particolare,
+    \[\left<x,x\right>=0 \hspace{1em} \textbf{se e solo se} \hspace{1em} x=0\]
+    \item La bilinearità: $\left<\alpha x, y \right> = \left< x, \alpha y \right>\alpha \cdot \left<x,y\right>, \forall \alpha \in \mathbb{R}$, posto $x, y \in X$
+    \item $\left<x+y,z\right>=\left<x,z\right>+\left<y,z\right>$
+\end{itemize}
+In particolare, in $\mathbb{R}^n$, si definisce il prodotto scalare come un banale prodotto righe per colonne, ovvero
+\[\left<x,y\right> = x{^T} \cdot y = \left(x_1,x_2,\dots,x_n\right) \cdot \left(
+    \begin{array}{c}
+        y_1\\
+        y_2\\
+        \dots\\
+        y_n
+    \end{array}
+\right) = \sum_{k=1}^n x_k \cdot y_k\]
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Un prodotto scalare non definito su $\mathbb{R}^n$, ma definito sullo spazio vettoriale
+\[C^0 \left(\left[a,b\right]\right) = \{\phi : [a,b] \longmapsto \mathbb{R}, \text{ continua}\}\]
+allora
+\[\int_a^b \phi(x) \cdot \psi(x) \dif x\]
+
+\vspace{1em}
+\subsubsection{Norma di un vettore}
+Sia $X$ uno spazio vettoriale su cui è definito un prodotto scalare. Allora si definisce norma di un vettore $x \in X$ come
+\[\left \vert \left \vert x \right \vert \right \vert = \sqrt{\left<x,x\right>}\]
+La norma gode delle seguenti proprietà
+\begin{itemize}
+    \item $\left \vert \left \vert x \right \vert \right \vert \geq 0, \hspace{1em} \forall x \in X$ e, in particolare, $\left \vert \left \vert x \right \vert \right \vert = 0$ \textbf{se e solo se} $x=0$
+    \item $\left \vert \left \vert \alpha x \right \vert \right \vert = \left \vert \alpha \right \vert \cdot \left \vert \left \vert x \right \vert \right \vert$ con $\alpha \in \mathbb{R}$ e $x \in X$
+    \item $\left \vert \left \vert x+y \right \vert \right \vert \leq \left \vert \left \vert x \right \vert \right \vert + \left \vert \left \vert y \right \vert \right \vert$ chiamata disuguaglianza triangolare.
+\end{itemize}
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione 1}: Tale dimostrazione è immediata dalla definizione di norma
+\[\left \vert \left \vert x \right \vert \right \vert = \sqrt{\left<x,x\right>}\]
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione 2}: Dalla definizione di norma si ha che
+\[\sqrt{\left<\alpha x,\alpha x\right>} = \sqrt{\alpha \left<x,\alpha x\right>} = \sqrt{\alpha^2 \left<x,x\right>} = \left \vert \alpha \right \vert \sqrt{\left<x,x\right>} = \left \vert \alpha \right \vert \cdot \left \vert \left \vert x \right \vert \right \vert\]
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione 3}: La disuguaglianza triangolare si può dimostrare dalla definizione di norma, ovvero
+\[\sqrt{\left<x+y,x+y\right>}  =\]
+...continua...
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Si osservi che se $X$ è no spazio vettoriale dotato di una norma $\left \vert \left \vert \cdot \right \vert \right \vert$, si può definire la distanza come
+\[d(x,y) = \left \vert \left \vert x-y \right \vert \right \vert\]
+che consente di parlare di intorni, intervalli aperti e chiusi e, di conseguenza, anche di limiti.
+
+\vspace{1em}
+\subsubsection{Disuguaglianza di Bumcokowski-Cauchy-Schwarz}
+Sia $X$ uno spazio vettoriale con prodotto scalare, allora $\forall x,y \in X$. Allora si ha che
+\[\left \vert \left<x,y\right> \right \vert \leq \left \vert \left \vert x \right \vert \right \vert \cdot \left \vert \left \vert y \right \vert \right \vert\]
+Inoltre, vale l'uguaglianza \textbf{se e solo se} $x$ e $y$ sono \textbf{linearmente dipendenti}.
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Si dimostri che $\forall x, y \in X$ si ha che
+\[\left \vert \left<x,y\right> \right \vert \leq \left \vert \left \vert x \right \vert \right \vert^2 \cdot \left \vert \left \vert y \right \vert \right \vert^2\]
+Si distinguono i casi seguenti
+\begin{itemize}
+    \item Nel caso in cui $y=0$, si ha che
+    \[\left<x,y\right>=0, \forall x, \left \vert \left \vert y \right \vert \right \vert = 0\]
+    \item Nel caso in cui $y \neq 0$ e $x \neq 0$, si introduce, $\forall t \in \mathbb{R}$, il polinomio seguente
+    \[0 \leq \left \vert \left \vert x + ty \right \vert \right \vert^2 = \left \vert \left \vert x \right \vert \right \vert^2 + 2t \cdot \left<x,y\right> + t^2 \cdot \left \vert \left \vert y \right \vert \right \vert^2\]
+    Considerando tale polinomio in funzione di $t$, si osserva che $f(t) \geq 0, \forall t$ \textbf{se e solo se} $\Delta \leq 0$.
+    Ma siccome il $\Delta$ del polinomio si ottiene come
+    \[4 \cdot \left(\left<x,y\right>\right)^2 - 4 \cdot \left \vert \left \vert x \right \vert \right \vert^2 \cdot \left \vert \left \vert y \right \vert \right \vert^2\]
+    si deve dimostrare che
+    \[4 \cdot \left(\left<x,y\right>\right)^2 - 4 \cdot \left \vert \left \vert x \right \vert \right \vert^2 \cdot \left \vert \left \vert y \right \vert \right \vert^2 \leq 0\]
+    che può essere riscritto come
+    \[\left(\left<x,y\right>\right)^2 \leq \left \vert \left \vert x \right \vert \right \vert^2 \cdot \left \vert \left \vert y \right \vert \right \vert^2\]
+    che è una disuguaglianza sempre verificata.
+\end{itemize}
+Per dimostrare che la disuguaglianza di Bumcokowski-Cauchy-Schwarz vale \textbf{se e solo se} i vettori considerati sono linearmente dipendenti. Dire che sono linearmente dipendenti significa che $\exists \tilde{t} \in \mathbb{R}$ tale che $f(\tilde{t})=0$, ovvero che
+\[\left \vert \left \vert x+ \tilde{t}y \right \vert \right \vert^2 = 0\]
+Ma ciò è vero solamente quando $x+ \tilde{t}y$ per la definizione di norma, ovvero $x=\tilde{t}y$, che significa che i vettori $x$ e $y$ sono linearmente dipendenti
+
+\newpage
+\begin{center}
+    18 Ottobre 2022
+\end{center}
+Lo spazio $\mathbb{R}^n$ è uno spazio vettoriale, in cui i suoi elementi sono delle matrici colonna, non proprio dei vettori.\\
+$\mathbb{R}^n$ è uno spazio di Hilbert, in cui è possibile definire un \textbf{prodotto scalare} come segue
+\[X \text{ spazio vettoriale con } \left<\cdot,\cdot\right> : X \times X \longmapsto \mathbb{R}\]
+Se in uno spazio vettoriale viene definito un prodotto scalare, automaticamente viene definita una \textbf{norma indotta}
+\[\left \vert \left \vert \cdot \right \vert \right \vert : X \longmapsto \mathbb{R}\]
+definita come
+\[\left \vert \left \vert x \right \vert \right \vert = \sqrt{\left<x,x\right>}\]
+Tuttavia, esistono anche spazi vettoriali su cui è definita una norma, senza che vi sia definito uno spazio vettoriale, come quella esposta di seguito, definita come \textbf{norma $\bf{1}$}: 
+\begin{itemize}
+    \item $\left \vert \left \vert x \right \vert \right \vert_1 = \vert x_1 \vert + \vert x_2 \vert + \dots + \vert x_n \vert$, posto
+    \[x=(x_1,x_2,\dots,x_n){^T}\]
+    \item Nel caso di una norma indotta si ha che, $\left \vert \left \vert \alpha \cdot x \right \vert \right \vert = \vert \alpha \vert \cdot \left \vert \left \vert x \right \vert \right \vert$.\\
+    Nel caso di un vettore, si ha la corrispondenza
+    \[\left \vert \left \vert \alpha \cdot (x_1,x_2,\dots,x_n){^T} \right \vert \right \vert_1 = \left \vert \left \vert (\alpha \cdot x_1, \alpha \cdot x_2, \dots, \alpha \cdot x_n){^T} \right \vert \right \vert_1 = \vert \alpha \cdot x_1 \vert + \vert \alpha \cdot x_2 \vert + \dots + \vert \alpha \cdot x_n \vert = \vert \alpha \vert \cdot \left \vert \left \vert x \right \vert \right \vert_2\]
+    \item La disuguaglianza triangola...
+\end{itemize}
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: L'unica norma che risulta essere indotta da un prodotto scalare è la norma $2$
+
+\vspace{1em}
+\noindent
+Ciò che risulta essere fondamentale è lo spazio di funzioni del tipo
+\[X = C \left([a,b]\right)\]
+in cui viene considerato il prodotto scalare
+\[\left<\phi,\psi\right> = \int_{[a,b]} \phi(t) \cdot \psi(t)\]
+
+\vspace{1em}
+\noindent
+\subsection{Distanza (metrica)}
+Di seguito si espone la definizione di \textbf{distanza (metrica)}:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{DISTANZA (METRICA)}}\\
+    \parbox{\linewidth}{Dato $X$ un \textbf{insieme vuoto}, si chiama \textbf{distanza (metrica)} su $X$ una funzione $d$ definita come
+    \[d : X \times X \longmapsto \mathbb{R}\]
+    che soddisfa le proprietà seguenti:
+    \begin{itemize}
+        \item $d(x,y) \geq 0, \hspace{0.5em} \forall x, y \in \mathbb{R}$.\\
+        Inoltre si ha che
+        \[d(x,x) = 0 \hspace{0.5em} \textbf{se e solo se} \hspace{0.5em} x=y\]
+        \item la proprietà simmetrica $d(x,y)=d(y,x)$, che non è sempre verificata per distanze semi-metriche
+        \item la disuguaglianza triangolare $d(x,z) \leq d(x,y) + d(y,z)$
+    \end{itemize}
+    \vspace{3mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{2em}
+\noindent
+\textbf{Osservazioni}: Si osservi che un prodotto scalare induce una norma, una norma induce una distanza e una distanza induce una topologia.
+
+\vspace{1em}
+\noindent
+\subsection{Spazio metrico}
+Di seguito si espone la definizione di \textbf{spazio metrico}
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{SPAZIO METRICO}}\\
+    \parbox{\linewidth}{Si dice spazio metrico un insieme in cui è definita una distanza. \vspace{3mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{2em}
+\noindent
+\textbf{Esempio 1}: Si consideri uno spazio $X$ (non necessariamente uno spazio vettoriale). È sempre possibile definire la \textbf{distanza banale} seguente:
+\[
+    d(x,y) = \left\{
+        \begin{array}{lll}
+            0 & \text{se} & x=y\\
+            1 & \text{se} & x \neq y\\
+        \end{array}
+    \right.
+\]
+
+\vspace{1em}
+\noindent
+\textbf{Esempio 2}: Si consideri uno spazio $X=\mathbb{R}^n$, allora si definisce distanza euclidea come:
+
+\vspace{1em}
+\noindent
+\textbf{Esempio 3}: Si consideri uno spazio $X=C([0,2 \pi])$, allora si definisce la distanza come
+\[\d(\phi,\psi) = \vert \vert \phi-\psi \vert \vert_2 = \sqrt{\int_0^{2\pi} (\phi(t) - \psi(t)^2)}\]
+Allora si ha che
+\[d(\sin(t),\cos(t)) = \sqrt{2\pi}\]
+
+\vspace{1em}
+\subsection{Vettori ortogonali}
+Due vettori $x,y$ si dicono ortogonali se
+\[\left<x,y\right>=0\]
+Nello spazio dell'esempio precedente, $\sin(t)$ e $\cos(t)$ sono ortogonali, in quanto
+\[\int_0^{2\pi} \sin(t) \cot(t) = 0\]
+
+\vspace{1em}
+\subsection{Palla-aperta}
+Sia $X,d$ uno spazio metrico. Si chiama palla-aperta di centro $x_0 \in X$ e raggio $r \in \mathbb{R}^+$ l'insieme così definita
+\[\mathcal{B}(x_0,r) = \{x \in X : d(x,x) < r\}\]
+mentre si chiama palla chiusa
+\[\mathcal{B}_\text{chiusa}(x_0,r) = \{x \in X : d(x,x) \leq r\}\]
+
+\vspace{1em}
+\noindent
+\textbf{Esempio 1}: Si consideri uno spazio vettoriale $\mathbb{R}^2$ con la norma $\vert \vert \cdot \vert \vert_2$ in cui si ha che
+\[d \left((x_1,x_2),(0,0)\right) = \vert x_1 \vert \vert x_2 \vert\]
+Allora la palla $\mathcal{B}(0,1)$ è un quadrato ruotato con i vertici sugli assi.
+
+\vspace{1em}
+\noindent
+\textbf{Esempio 2}: Se si considera, invece, la norma indotta
+\[\vert \vert x \vert \vert_\infty = \max\{\vert x_1 \vert, \vert x_2 \vert\}\]
+è esattamente un quadrato di lato $1+1$ 
+
+\vspace{1em}
+\subsection{Intorno}
+Di seguito si espone la definizione di \textbf{intorno}:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{INTORNO}}\\
+    \parbox{\linewidth}{Sia $X,d$ uno spazio metrico, con $x_0 \in X$. Si dice intorno di $x_0$ qualunque insieme $U \subseteq X$ tale che esiste $r>0$ affinché
+    \[\mathcal{B}(x_0,r) \subseteq U\]
+    \vspace{3mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{1em}
+\subsection{Proprietà di un intorno}
+Sia $\mathcal{N}_x$ una famiglia di intorni di $x$, allora
+\begin{enumerate}
+    \item sia $U \in \mathcal{N}_x$, allora $x \in U$
+    \item siano $U,V \in \mathcal{N}_x$, allora $U \cap V \in \mathcal{N}_x$
+    \item Siano $U \in \mathcal{N}_x$ e $V \subseteq X$. Se $U \subset V$, allora $V \in \mathcal{N}_x$
+    \item Proprietà di separazione di Hausdorff: siano $x \neq y$; allora esiste $U \in \mathcal{N}_x$ e $V \in \mathcal{N}_y$ tale che $U \cap V = \varnothing$.
+\end{enumerate}
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione 1}: Dal momento che $U \in \mathcal{N}_x$, allora $\exists \mathcal{B}(x,t) \subset U$, per cui ovviamente $x \in U$
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione 2}: Dal momento che $U \in \mathcal{N}_x$, allora $\exists \mathcal{B}(x,r_1) \subset U$.\\
+Dal momento che $V \in \mathcal{N}_x$, allora $\exists \mathcal{B}(x,r_2) \subset V$.\\
+Si considera il minimo raggio tra $r_1$ e $r_2$, ovvero $r=\min\{r_1,r_2\}$. Allora, ovviamente, si ha che
+\[\mathcal{B}(x,r) \subset U \cap V\]
+e, ovviamente, ciò significa che $U \cap V \in \mathcal{N}_x$ per definizione di intorno.
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione 3}: Sia $U \in \mathcal{N}_x$, allora $\exists \mathcal{B}(x,r) \subset U$; ma siccome $U \subset V$ quindi $\mathcal{B}(x,r) \subset V$ e ciò significa che $V \in \mathcal{N}_x$.
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione 4}: Si considerino $x$ e $y$ due numeri reali disgiunti. Allora, per la proprietà della distanza, si ha che la loro distanza è strettamente positiva
+\[r = d(x,y) > 0\]
+Al fine di avere due palle disgiunte, si considerano due raggi minori della metà della distanza tra $x$ e $y$; per esempio
+\[r_1=\frac{r}{4} \hspace{1em} \text{e} \hspace{1em} r_2=\frac{r}{4}\]
+Ciò comporta che
+\[\mathcal{B}(x,r_1) \cap \mathcal{B}(y,r_2) = \varnothing\]
+Si proceda per assurdo, considerando $p \in \mathcal{B}(x,r_1) \cap \mathcal{B}(y,r_2)$.\\
+Allora si ha che
+\[r=d(x,y) \leq d(x,p) - d(p,y) < 2 \cdot \frac{r}{4}\]
+che è assurdo.
+
+\vspace{1em}
+\noindent
+\subsection{Punto interno ad un insieme}
+Si fornisce di seguito la definizione di \textbf{punto interno ad un insieme}:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{PUNTO INTERNO AD UN INSIEME}}\\
+    \parbox{\linewidth}{Un punto $x$ si dice \textbf{punto interno} di un insieme $U$ se $U$ è un intorno di $x$, ovvero esiste $\mathcal{B}(x,r) \subseteq U$. \vspace{3mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Si osservi che chiedere che un punto sia interno ad un insieme è più forte che chiedere che il punto appartenga ad un insieme. Infatti, se $U = [a,b]$, allora $a \in U$, ma $a$ non è interno ad $U$.\\
+Un insieme $A \subseteq X$ è \textbf{aperto} se per ogni $x \in A$, $x$ è interno ad $A$
+
+\vspace{1em}
+\noindent
+\subsection{Punto isolato}
+Si fornisce di seguito la definizione di \textbf{punto isolato}:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{PUNTO ISOLATO}}\\
+    \parbox{\linewidth}{Un punto $x \in X$ si dice isolato in $E \subseteq X$ se $x \in E$ ed esiste $\mathcal{B}(x,r)$ tale che $\mathcal{B}(x,r) \cap E = \{x\}$. \vspace{3mm}}\\
+    \hline
+\end{tabularx}
+
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{PUNTO DI ACCUMULAZIONE}}\\
+    \parbox{\linewidth}{Sia $E \subseteq X$. Un punto $x \in X$ si dice \textbf{punto di accumulazione} di $E$ se per ogni intorno $U$ di $x$ esiste $y \in U \cap E$, $y \neq x$. \vspace{3mm}}\\
+    \hline
+\end{tabularx}
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{CHIUSURA DI UN INSIEME}}\\
+    \parbox{\linewidth}{Sia $E \subseteq X$, si chiama chiusura di $E$ l'insieme
+    \[\overline{E} = E \cup \{\text{punto di accumulazione di } E\}\]
+    \vspace{-2mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione}: Sia $X$ un insieme, allora $X$ e $\varnothing$ sono sia aperti che chiusi. Tuttavia, in $\mathbb{R}$, per esempio, esistono insiemi che non sono né aperti né chiusi, come $]a,b]$.
+
+\vspace{1em}
+\noindent
+\textbf{Esercizio}: Si consideri la serie seguente
+\[\sum_{n=0}^{+\infty} \frac{2n+i}{3^n-n \cdot i}\]
+Tale serie può essere studiata andando a calcolare la corrispondente serie dei moduli, ottenendo
+\[\left \vert \frac{2n+i}{3^n-n \cdot i} \right \vert = \frac{\vert 2n+i \vert}{\vert 3^n-n \cdot i \vert} = \frac{\sqrt{4n^2+1}}{\sqrt{9^n+n^2}}\]
+Appare immediatamente evidente che tale termine abbia ordine di infinitesimo soprareale, per cui è necessariamente convergente.\\
+Oppure può essere considerato anche il criterio del rapporto, per cui
+%\[\dfrac{\dfrac{\sqrt{4(n+1)^2+1}}{\sqrt{9^(n+1)+(n+1)^2}}}{}\] 
+
+\vspace{1em}
+\noindent
+\subsection{Corrispondenza tra palla aperta e insieme aperto}
+Una palla aperta è un insieme aperto.
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Si consideri uno spazio metrico generale $X,d$. Sia, allora, una palla aperta $\mathcal{B}(x_0,r)$ di centro $x_0$ e raggio $r \in \mathbb{R}^+$.\\
+Si vuole dimostrare che che $\forall x_1 \in \mathcal{B}(x_0,r) \hspace{1em} \exists \mathcal{B}_1(x_1,\rho) \subseteq \mathcal{B}(x_0,r)$.\\
+Dal momento che $r-d(x_1,x_0) > 0$, si definisce $\rho > 0$ che presenta la seguente proprietà $\rho < r - d(x_1,x_2)$. Si verifichi, ora, che $\mathcal{B}_1 \subseteq \mathcal{B}$, ovvero dato $x \in \mathcal{B}$ deve essere che $x \in \mathcal{B}$.\\
+Per quanto assunto in precedenza, si ha che $d(x,x_1) < \rho < r-d(x_1,x_0)$. Allora si ha che
+\[d(x,x_0) \leq d(x,x_1) + d(x_1,x_0) < r - d(x_1,x_0)+d(x_1,x_0) = r\]
+
+\vspace{1em}
+\subsection{Caratterizzazione di un insieme chiuso}
+$E \subseteq X$ è un insieme chiuso \textbf{se e solo se}l'insieme complementare $X-E$ è aperto in $X$.
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione 1}: Sia $E$ un insieme chiuso e si consideri $x_0 \in X-E$. Ovviamente $x_0 \notin E$, per cui non può essere un punto di accumulazione per $E$, in quanto esso è un insieme chiuso e, quindi, contiene tutti i suoi punti di accumulazione.\\
+Se $x_0$ fosse un punto di accumulazione, per definizione, $\forall U$ intorno di $x_0$, dovrebbe $\exists y \neq x_0$ tale che $y \in U \cap E$.\\
+Pertanto, non essendo $x_0$ punto di accumulazione per $E$, significa che $\exists \mathcal{B}(x_0,\epsilon)$, con $\epsilon>0$ tale che $\mathcal{B} \subset X - E$.
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione 2}: Sia $X - E$ un insieme aperto, si dimostri che $E$ è chiuso.\\
+Siccome $X-E$ è aperto, si ha che
+\[\forall x_1 \in X - E, \hspace{0.5em} \exists \mathcal{B}(x,\epsilon) \text{ con } \epsilon>0 \text{ tale che } \mathcal{B} \subset X - E\]
+Siccome $\mathcal{B} \cap E = \varnothing$, $x$ non è punto di accumulazione per $E$ e, siccome ciò significa che $E$ contiene tutti i suoi punti di accumulazione, $E$ è chiuso.
+
+\vspace{2em}
+\noindent
+\textbf{Esercizio}: Si provi che ogni insieme del tipo $]a,b[ \times ]c,d[$ con $a<b$ è aperto in $\mathbb{R}^n$.\\
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Si consideri $A=]a,b[$ e $B=]c,d[$, per cui
+\[C=A \times B = \{(x,y) \in \mathbb{R}^2 \text{ tale che } x \in A, y \in B\}\]
+Si vuole dimostrare che $\forall (x,y) \in C, \exists r > 0$ tale che
+\[\mathcal{B} \left((x,y), r\right) \subset C\]
+Allora si considera un punto d coordinate $(x,y)$, con $a<x<b$ e $c<y<d$, allora si può prendere $r_1>0$ e $r_2>0$ tale che
+\[a < x-r_1 < x < x+r_1 < b \hspace{1em} \text{e} \hspace{1em} c < y-r_2 < y < y+r_2 < d\]
+Si considera, poi $r = \min(r_1,r_2)$, affinché si possa costruire un quadrato di lato $l=2r$.\\
+... continua ...
+
+\vspace{1em}
+\noindent
+\subsection{Punto di frontiera}
+Si espone di seguito la definizione di \textbf{punto di frontiera}:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{PUNTO DI FRONTIERA}}\\
+    \parbox{\linewidth}{Sia $E \subseteq X$; allora, preso $x \in X$, si dice punto di frontiera di $E$ se per ogni intorno $U$ di $x$ esiste
+    \[y_1 \in U \cap E \hspace{1em} \text{e} \hspace{1em} y_2 \in U - E\]
+    \vspace{-1mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{1em}
+\noindent
+\subsection{Frontiera di un insieme}
+Si espone di seguito la definizione di \textbf{frontiera di un insieme}:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{FRONTIERA DI UN INSIEME}}\\
+    \parbox{\linewidth}{Si chiama frontiera di $E$ l'insieme dei punti di frontiera di $E$.
+    \vspace{3mm}}\\
+    \hline
+\end{tabularx}
+
+
+\vspace{1em}
+\noindent
+\subsection{Insieme denso}
+Si espone di seguito la definizione di \textbf{insieme denso}:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{INSIEME DENSO}}\\
+    \parbox{\linewidth}{
+    \vspace{-1mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{1em}
+\noindent
+\subsection{Insieme limitato}
+Si espone di seguito la definizione di \textbf{insieme limitato}:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{INSIEME LIMITATO}}\\
+    \parbox{\linewidth}{Sia $E \subseteq X$. Allora $E$ si dice \textbf{limitato} se esiste $\mathcal{B}(x_0,r) \subseteq X$ tale che $E \subseteq \mathcal{B}(x_0,r)$.
+    \vspace{3mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{1em}
+\noindent
+\subsection{Diametro di un insieme}
+Si espone di seguito la definizione di \textbf{diametro di un insieme}:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{DIAMETRO DI UN INSIEME}}\\
+    \parbox{\linewidth}{Sia $E \subseteq X$. Allora si chiama diametro di $E$
+    \[\text{dim } E = \sup \{d(x,y), x,y \in E\}\]
+    \vspace{-1mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione}: Un insieme $E$ è limitato \textbf{se e solo se} dim $E$ è finito.
+
+\newpage
+\begin{center}
+    19 Ottobre 2022
+\end{center}
+Dopo aver introdotto la topologia in $\mathbb{R}^n$, sono stati introdotti dei concetti che sono validi per qualsiasi spazio metrico, quali il concetto di \textbf{palla} e di \textbf{intorno} che consente di introdurre la definizione di limite, in qualsiasi spazio vettoriale.
+
+\vspace{1em}
+\noindent
+\subsection{Proprietà di insiemi aperti e chiusi}
+Si espongono di seguito le proprietà di insiemi aperti e chiusi:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{PROPRIETÀ DI INSIEMI APERTI E CHIUSI}}\\
+    \parbox{\linewidth}{Gli insiemi aperti e chiusi soddisfano le proprietà seguenti:
+    \begin{enumerate}
+        \item L'unione di insiemi aperti è aperta
+        \item L'intersezione di insiemi aperti è aperta
+        \item L'unione di insiemi chiusi è chiusa
+        \item L'intersezione di insiemi chiusi è chiusa
+    \end{enumerate}
+    \vspace{1mm}}\\
+    \hline
+\end{tabularx}
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione 1}: Sia
+\[A=\bigcup_{i \in I} A_i\]
+con $I$ insiemi di indici arbitrari tale che $A$ è aperto. Allora si osserva che
+\[\forall x \in A, \exists i \in I \text{ tale che } x \in A_i\]
+quindi
+\[\exists r > 0 \text{ tale che } \mathcal{B}(x,r) \subset A_i \subset A\]
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione 2}: Sia
+\[A=A_1 \cap A_2\]
+con $A_1$ e $A_2$ aperti. Allora $\forall x \in A$ si ha che $x \in A_1$ e $x \in A_2$.\\
+Visto che $x \in A_1$
+\[\exists r_1 > 0 \text{ tale che } \mathcal{B}(x,r_1) \subset A_1\]
+Similmente, visto che $x \in A_2$
+\[\exists r_2 > 0 \text{ tale che } \mathcal{B}(x,r_2) \subset A_2\]
+Sarà ora sufficiente considerare $r=\min\{r_1,r_2\}$ per evincere che
+\[\mathcal{B}(x,r) \subset A\]
+per cui $A$ è aperto.
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Nel caso di un numero infinito di insiemi, non può essere utilizzata tale dimostrazione, in quanto non è detto che esista il minimo dei raggi.
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione 3}: Sia
+\[C = \bigcap_{i \in I} C_i\]
+con $C_i$ aperto. Allora è ovvio che
+\[X-C=\bigcup_{i \in I} X - C_i\]
+che è ovviamente chiuso.
+... continua ...
+
+\vspace{2em}
+\noindent
+\textbf{Esercizio 1}: Si dimostri che esiste l'intersezione di aperti che non è aperto. È infatti possibile considerare
+\[\left(\mathcal{B} \left(x,\frac{1}{n}\right)\right)_n\]
+che corrisponde a
+\[\bigcap_{n \in \mathcal{N}} \mathcal{B} \left(x,\frac{1}{n}\right) = \{x\}\]
+
+\vspace{2em}
+\noindent
+\textbf{Esercizio 2}: È noto che $\mathbb{Q}$ è denso in $\mathbb{R}$, in quanto $\overline{\mathbb{Q}}$. Si deve provare che
+\[\overline{\mathbb{Q} \times \mathbb{Q}} = \mathbb{R} \times \mathbb{R}\]
+ovvero che ogni insieme aperto di $\mathbb{R}^2$ contiene un punto $\left(p,q\right){^T}$ con $p,q \in \mathbb{Q}$
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Sia dato un insieme $A$ è aperto. Allora si ha che
+\[\forall (x,y){^T} \in A, \exists r > 0 \text{ tale che } \mathcal{B}((x,y){^T}, r) \subset A\]
+per definizione stessa di aperto. Si consideri allora il quadrato inscritto nella palla presa in considerazione, i cui vertici sono $a$ e $b$, con $a < b$ e $c$ e $d$, con $c < d$. Ma per il teorema di densità di $\mathbb{Q}$ in $\mathbb{R}$ è noto che $\exists q \in ]a,b[ \cap \mathbb{Q}$ e, similmente, $\exists p \in ]c,d[ \cap \mathbb{Q}$.\\
+Ciò dimostra che se un insieme $D$ è denso in $\mathbb{R}$, ovvero $\overline{D} = \mathbb{R}$, allora anche il prodotto cartesiano $D \times D$ è denso in $\mathbb{R} \times \mathbb{R}$, ovvero $\overline{D} \times \overline{D} = \mathbb{R} \times \mathbb{R}$.
+
+\vspace{1em}
+\subsection{Geometria di $\mathbb{R}^n$}
+Si considerino di seguito alcune osservazioni in merito alla geometria in $\mathbb{R}^n$.
+
+\vspace{1em}
+\subsubsection{Retta nel piano $\mathbb{R}^2$}
+È noto che una forma per rappresentare una retta in $\mathbb{R}^2$ è la seguente
+\[ax+by+c=0\]
+Tuttavia, in forma generale si ottiene che
+\[a \cdot (x-x_0) + b \cdot (y-y_0) = 0\]
+che può essere interpretata come
+\[\left<\left(a,b\right){^T},\left(x-x_0,y-y_0\right){^T}\right> = 0\]
+che equivale ad affermare che
+\[\left(a,b\right){^T} \perp \left(x-x_0,y-y_0\right){^T}\]
+
+\vspace{1em}
+\noindent
+\textbf{Esempio}: Si consideri un campo scalare del tipo
+\[F(x,y) \leq a \cdot (x-x_0) + b \cdot (y-y_0)\]
+allora una retta è l'insieme degli zeri di tali campo scalare, ovvero
+\[Z_r = \{(x,y){^T} \in \mathbb{R}^2 \text{ tale che } F(x,y) = 0\}\]
+In generale, tuttavia, l'insieme degli zeri di un campo scalare è una curva. Infatti, dato un campo scalare
+\[F : A \subseteq \mathbb{R}^2 \longmapsto \mathbb{R}\]
+in cui l'insieme degli zeri sono 
+\[Z_r = \{(x,y){^T} \in \mathbb{R}^2 \text{ tale che } F(x,y) = 0\}\]
+e se
+\[F(x,y) = x^2+y^2-1\]
+allora l'insieme degli $0$ è una circonferenza. Se il campo scalare è da $\mathbb{R}^3$ in $\mathbb{R}$ e si considera
+\[F(x,y,z) = x^2+y^2+z^2+1\]
+allora questo è l'insieme vuoto $\varnothing$.
+
+\vspace{1em}
+\noindent
+Data una retta in forma esplicita:
+\[ax + by + c = 0\]
+se si chiede $b \neq 0$ si può ottenere
+\[y=-\frac{a}{b} x - \frac{c}{b}\]
+che rappresenta una funzione
+\[f : \mathbb{R} \longmapsto \mathbb{R}\]
+in cui l'insieme delle soluzioni è il grafico della funzione $f$:
+\[\mathcal{G}_f = \{(x,f(x)){^T} : x \in \mathbb{R}\}\]
+
+\vspace{1em}
+\noindent
+Se si considera, ora, un campo scalare su $\mathbb{R}^3$, quale è il seguente
+\[F(x,y,z) = ax+by+cz+d\]
+in cui l'insieme delle soluzioni è
+\[Z_F = \{(x,y,z){^T} \in \mathbb{R}^3 : F(x,y,z) = 0\}\]
+per cui se $c \neq 0$ si può considerare
+\[f : \mathbb{R}^2 \longmapsto \mathbb{R}\]
+definita come
+\[f(x,y)=-\frac{a}{c} x - \frac{b}{c} y - \frac{d}{c}\]
+che, ovviamente, è un piano 
+... continua ...
+
+\vspace{1em}
+\noindent
+\subsection{Curva piana}
+Per quanto esposto in precedenza, è possibile considerare una curva piana
+\begin{itemize}
+    \item come insieme degli zeri di un campo scalare da $\mathbb{R}^2$ in $\mathbb{R}$, della forma
+    \[F : A \subseteq \mathbb{R}^2 \longmapsto \mathbb{R}\]
+    \item come grafico di una funzione
+    \[f : E \subseteq \mathbb{R} \longmapsto \mathbb{R}\]
+    \item in forma parametrica, della forma
+    \[\gamma : I \subseteq \mathbb{R} \longmapsto \mathbb{R}^2\]
+\end{itemize}
+L'ultima modalità permette di fornire la definizione di \textbf{curva}:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{CURVA}}\\
+    \parbox{\linewidth}{Si chiama \textbf{curva in $\bf{\mathbb{R}^n}$} una \textbf{funzione continua}
+    \[\gamma : I \subseteq \mathbb{R} \longmapsto \mathbb{R}^n\]
+    con $I$ un intervallo. \vspace{3mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{2em}
+\noindent
+\textbf{Esempio}: La classica curva
+\[\gamma : [0,2\pi] \longmapsto \mathbb{R}^2\]
+con
+\[\gamma(t) = \left(\cos(t),\sin(t)\right){^T}\]
+è la circonferenza.
+
+\vspace{1em}
+\noindent
+\subsubsection{Sostegno di una curva}
+L'insieme $\gamma(I) \subset \mathbb{R}^n$ si dice sostegno della curva, ovvero l'insieme immagine.
+
+\vspace{1em}
+\noindent
+\textbf{Esempio}: La curva seguente
+\[\gamma : [0,4\pi] \longmapsto \mathbb{R}^3\]
+definita come
+\[\gamma(t) = \left(\cos(t),\sin(t),t\right){^T}\]
+è un'elica.
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Si osservi che curve diverse possono presentare il medesimo sostegno. Per esempio
+\[f : \mathbb{R} - \{0\} \longmapsto \mathbb{R}^3 \hspace{1em} \text{ con } \hspace{1em} f(t)=\left(\frac{1}{t^2},1\right){^T}\]
+e
+\[g : \mathbb{R} \longmapsto \mathbb{R}^3 \hspace{1em} \text{ con } \hspace{1em} g(t)=\left(e^t,1\right){^T}\]
+presentano il medesimo sostegno.
+
+\vspace{1em}
+\noindent
+\subsection{Superficie parametrica in $\mathbb{R}^3$}
+Per quanto esposto in precedenza, è possibile considerare una superficie piana
+\begin{itemize}
+    \item come insieme degli zeri di un campo scalare da $\mathbb{R}^3$ in $\mathbb{R}$, della forma
+    \[F : A \subseteq \mathbb{R}^3 \longmapsto \mathbb{R}\]
+    \item come grafico di una funzione
+    \[f : E \subseteq \mathbb{R}^2 \longmapsto \mathbb{R}\]
+    \item in forma parametrica, della forma
+    \[\gamma : I \subseteq \mathbb{R} \longmapsto \mathbb{R}^3\]
+\end{itemize}
+L'ultima modalità permette di fornire la definizione di \textbf{superficie parametrica}:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{CURVA}}\\
+    \parbox{\linewidth}{Si chiama \textbf{superficie parametrica in $\bf{\mathbb{R}^3}$} una \textbf{funzione}
+    \[\gamma : \Omega \subseteq \mathbb{R}^2 \longmapsto \mathbb{R}^3\]
+    con
+    \[\gamma(s,t) = \left(x(s,t),y(s,t),z(s,t)\right){^T}\]
+    in cui il sostegno della superficie è l'insieme immagine $\gamma(\Omega) \subset \mathbb{R}^3$ \vspace{3mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{2em}
+\noindent
+\subsubsection{Retta in $\mathbb{R}^2$ in forma parametrica}
+Una retta in $\mathbb{R}^2$ viene parametrizzata tramite la seguente funzione $\gamma$:
+\[\gamma : I \subseteq \mathbb{R} \longmapsto \mathbb{R}^2 \hspace{1em} \text{con} \hspace{1em} y(t) (x_0,y_0){^T} + t \cdot (a,b){^T}\]
+
+\vspace{1em}
+\noindent
+\textbf{Esempio}: Si determini la retta passante per i punti $(0,2){^T}$ e $(1,0){^T}$. Un modo per determinarne l'equazione è quello di considerare il sistema di equazioni:
+\[\left\{
+    \rowcolors{1}{white}{white}
+    \begin{array}{l}
+        a \cdot (x-0) + b \cdot (y-2) = 0 \rightarrow ax + by = 2b\\
+        a \cdot (x-1) + b \cdot (y-0) = 0 \rightarrow ax + by = a\\
+    \end{array}
+\right.\]
+per cui è immediato capire che $a=2b$, per cui l'equazione cercata è
+\[2bx + by = 2b \rightarrow 2x + y = 2\]
+Un altro metodo prevederebbe di considerare la funzione
+\[y=f(x)=mx+q\]
+ottenendo le due equazioni seguenti:
+\[\left\{
+    \rowcolors{1}{white}{white}
+    \begin{array}{l}
+        0=m \cdot 1 + q\\
+        2=m \cdot 0 + q
+    \end{array}
+\right.\]
+per cui è immediato evincere che $q=2$ e $m=-2$. Pertanto si ottiene ancora l'equazione
+\[y=-2x+2\]
+Se, invece, si volesse impiegare la forma parametrica, si potrebbe considerare il coefficiente angolare
+\[\vec v = P_2-P_1=(1,-2){^T}\]
+per cui si ottiene 
+\[\gamma(t) = (0,2){^T} + t \cdot (1,-2){^T} = (t,2-2t)^{T}\]
+considerando il primo punto. Altrimenti si sarebbe potuto considerare il secondo punto, ottenendo:
+\[\gamma(t) = (1,0){^T} + t \cdot (1,-2){^T} = (t+1,-2t)^{T}\]
+
+\vspace{2em}
+\noindent
+\subsubsection{Piano in $\mathbb{R}^3$ in forma parametrica}
+Un piano in $\mathbb{R}^3$ può essere descritto come
+\[\gamma(s,t) = (x_0,y_0,z_0){^T} + s \cdot (a_1,a_2,a_3){^T} + t \cdot (b_1,b_2,b_3){^t}\]
+
+\vspace{1em}
+\noindent
+\textbf{Esempio}: Dati i seguenti punti
+\[(1,0,0){^T} \hspace{1em} (0,2,0){^T} \hspace{1em} (0,0,3){^T}\]
+Al fine di scrivere la giacitura del piano, si considerano due coppie di vettori linearmente indipendenti e si ottiene
+\[a=P_2-P_1=(-1,2,0){^T} \hspace{1em} \text{e} \hspace{1em} b=P_3-P_1=(-1,0,3){^T}\]
+per cui l'equazione parametric del piano cercata è
+\[\gamma(s,t)=(1,0,0){^T} + s \cdot (-1,2,0){^T} + t \cdot (-1,0,3){^T}\]
+
+\vspace{1em}
+\noindent
+\subsubsection{Sfera}
+Si consideri una sfera in $\mathbb{R}^3$, come quella considerata:
+\[x^2+y^2+z^2=1\]
+allora tale sfera non può essere rappresentata come grafico da $\mathbb{R}^2$ in $\mathbb{R}$, in quanto non è un grafico. Al limite si può considerare come l'unione di due grafici, quali
+\[f_1=-\sqrt{1-x^2-y^2} \hspace{1em} \text{e} \hspace{1em} f_2=\sqrt{1-x^2-y^2}\]
+per descrivere, invece, la sfera tramite equazioni parametriche, ossia con una funzione
+\[\gamma : A \subseteq \mathbb{R}^2 \longmapsto \mathbb{R}^3 \hspace{1em} \text{con} \hspace{1em} \gamma=\gamma(\phi,\theta)\]
+ottenendo
+\begin{itemize}
+    \item $x(\phi,\theta)=\sin(\phi) \cdot \cos(\theta)$
+    \item $y(\phi,\theta)=\sin(\phi) \cdot \sin(\theta)$
+    \item $z(\phi,\theta)=\cos(\theta)$
+\end{itemize}
+
+\newpage
+\noindent
+\begin{center}
+    21 Ottobre 2022
+\end{center}
+
+\vspace{1em}
+\noindent
+\textbf{Esercizio 1}: Si consideri la serie seguente
+\[\sum_{n=1}^{+\infty} (-1)^n \cdot \log \left(1+\frac{1}{n}+\frac{1}{\sqrt{n}}\right)\]
+Allora per il criterio di Leibniz si ha che
+\begin{itemize}
+    \item il termine $a_n$ è sempre positivo, ovvero $a_n>0$
+    \item il termine $a_n$ è infinitesimo
+    \item il termine $a_n$ è anche decrescente, in quanto composta di una funzione crescente con una decrescente.
+\end{itemize}
+
+\vspace{1em}
+\noindent
+\textbf{Esercizio 2}: Si consideri la serie seguente
+\[\sum_{n=0}^{+\infty} \frac{i^n \cdot \left(\sqrt{n} - \sqrt{n-1}\right) + i^{2n} \cdot \sqrt{n+1}}{n}\]
+Allora è possibile spezzare la serie, ottenendo
+\[\sum_{n=0}^{+\infty} \frac{i^n \cdot \left(\sqrt{n} - \sqrt{n-1}\right)}{n} + (-1)^n \cdot \frac{\sqrt{n+1}}{n}\]
+in cui è immediato evincere che
+\[\sum_{n=1}^{+\infty} (-1)^n \cdot \frac{\sqrt{n+1}}{n}\]
+è ovviamente convergente per Leibniz (ma non è assolutamente convergente).\\
+Il primo termine, invece, può essere scomposto come segue:
+\[\frac{\left(\sqrt{n} - \sqrt{n-1}\right)}{n} \cdot \frac{\sqrt{n} + \sqrt{n-1}}{\sqrt{n} + \sqrt{n-1}}\]
+pertanto si ottiene che
+\[\dfrac{1}{n \cdot \sqrt{n} \cdot \left(1+\sqrt{1-\dfrac{1}{n}} \right)}\]
+che è un infinitesimo di ord $\dfrac{3}{2}>1$. Ciò implica il fatto che
+\[\left \vert \frac{i^n \cdot \left(\sqrt{n} - \sqrt{n-1}\right)}{n} \right \vert =  \frac{\left(\sqrt{n} - \sqrt{n-1}\right)}{n}\]
+che è assolutamente convergente, quindi è convergente. Se ne conclude che la funzione di partenza è convergente semplicemente, ma non assolutamente.
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Si osservi che una retta può essere interpretata come
+\begin{itemize}
+    \item insieme degli zeri di un campo scalare da $\\mathbb{R}^2$ a $\mathbb{R}$
+    \item grafico di una funzione
+    \item curva parametrica
+\end{itemize}
+In generale, se si considera una funzione
+\[f : \mathbb{R}^n \longmapsto \mathbb{R}^m\]
+si possono distinguere due casistiche
+\begin{itemize}
+    \item se $m=1$ allora $f$ è un campo scalare della forma
+    \[f \left((x_1,\dots,x_n){^T}\right) = f(x_1,\dots,x_n)\]
+    
+    \item se $n=1$ e $m\geq 2$, allora $f$ è una curva
+    \item se $n\geq 21$ e $m\geq 2$, allora $f$ viene definita \textbf{campo vettoriale}. In particolare, se $n=2$ e $m=3$, $f$ è una superficie. Se si considera
+    \[f(x_1,\dots,x_n) = \left(f_1(x_1,\dots,x_n),\dots,f_m(x_1,\dots,x_n) \right){^T}\]
+    che sono proprio le componenti del campo vettoriale.
+\end{itemize}
+
+\vspace{1em}
+\noindent
+\textbf{Esempio}: Si consideri la funzione
+\[f(x,y,z) = \left(\frac{\sin(x,z)}{x-y}, \log(x+z)\right){^T}\]
+Allora il dominio di tale funzione deve essere l'intersezione del dominio di tutte e due le funzioni, ovvero
+\[
+    \left\{
+    \rowcolors{1}{white}{white}
+    \begin{array}{l}
+        x-y \neq 0\\
+        x+z > 0
+    \end{array}
+    \right.
+\]
+
+\vspace{1em}
+\noindent
+\subsection{Rappresentazione grafica in $\mathbb{R}^n$}
+Si considerino i seguenti esempi di rappresentazione grafica di alcune curve nello spazio:
+\begin{itemize}
+    \item sia data la funzione $f=2x^2+y^2$, allora il suo grafico viene definito come
+    \[\mathcal{G}_f = \{(x,y,f(x,y)){^T} : (x,y) \in \mathbb{R}^2\}\]
+    che, per essere rappresentato può essere scomposto nelle sue proiezioni $xy$, $yz$ e $xy$.
+    \begin{itemize}
+        \item Sul piano $xz$ la funzione da considerare è $z=2x^2$, che è una parabola più ripida del normale;
+        \item Sul piano $yz$ la funzione da considerare è $z=y^2$, che è una parabola normale;
+        \item Sul piano $xy$ la funzione da considerare è $0=2x^2+y^2$, che è solamente il punto $(0,0){^T}$.
+    \end{itemize}
+
+    \item sia data la funzione $f=\dfrac{1}{x+y}$, allora il suo dominio non è più tutto $\mathbb{R}^2$, ma è l'insieme dei punti per cui $x \neq y$. Il grafico della funzione è
+    \[\mathcal{G}_f = \{(x,y,f(x,y)){^T} : x \neq y\}\]
+    Esso, per essere rappresentato può essere scomposto nelle sue proiezioni $xy$, $yz$ e $xy$.
+    \begin{itemize}
+        \item Sul piano $xz$ la funzione da considerare è $z=\dfrac{1}{x}$, che è un'iperbole;
+        \item Sul piano $yz$ la funzione da considerare è $z=\dfrac{1}{y}$, che è un'iperbole.
+        \item Sul piano $xy$ la funzione da considerare è $0=\dfrac{1}{x+y}$, che si ha solamente quando $x$ o $y$ sono infiniti.
+    \end{itemize}
+\end{itemize}
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Si osservi che in tutti i casi precedenti, risulta molto difficile capire la rappresentazione grafica delle funzioni. Se, però, si considerasse come funzione $h(x,y)$ la quota sul livello del mare di un monte, si possono impiegare le \textbf{curve di livello}, chiamate anche \textbf{isoipse}.
+
+\vspace{1em}
+\noindent
+\subsection{Insieme di livello}
+Di seguito si fornisce la definizione di \textbf{insieme di livello}:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{INSIEME DI LIVELLO}}\\
+    \parbox{\linewidth}{Sia $f : E \subseteq \mathbb{R}^n \longmapsto \mathbb{R}$ e sia $\alpha \in \mathbb{R}$. Si chiama, allora, \textbf{insieme di livello} $\alpha$ di $f$ l'insieme
+    \[\boxed{L_\alpha = \{x \in E : f(x)=\alpha\}}\]
+    ovvero l'insieme degli zeri del campo scalare $Z_{f-\alpha}$.
+    \begin{itemize}
+        \item Con $n=2$, l'insieme $L_\alpha$ è una curva (appunto, la curva di livello)
+        \item Con $n=3$, l'insieme $L_\alpha$ è una superficie.
+    \end{itemize}
+    \vspace{1mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{2em}
+\noindent
+\textbf{Esempio 1}: Nel primo esempio, posto
+\[f(x,y)=2x^2+y^2\]
+allora l'insieme di livello è
+\[L_\alpha = \{(x,y) \in \mathbb{R}^2 : 2x^2+y^2=\alpha\}\]
+che può essere riscritto come
+\[\frac{x^2}{\left(\sqrt{\frac{\alpha}{2}} \right)^2} + \frac{y^2}{(\sqrt{\alpha})^2}=1\]
+che permette di capire come
+\[a=\sqrt{\frac{\alpha}{2}} \hspace{1em} \text{e} \hspace{1em} b=\sqrt{\alpha}\]
+che permette di capire come il semiasse orizzontale è minore di quello verticale.
+
+\vspace{2em}
+\noindent
+\textbf{Esempio 2}: Nel secondo esempio, posto
+\[f(x,y)=\frac{1}{x+y}\]
+naturalmente si ha sempre $x \neq y$ come campo di esistenza. L'insieme di livello, invece, è
+\[L_\alpha = \{(x,y) \in \mathbb{R}^2 : \frac{1}{x+y}=\alpha\}\]
+In cui è immediato evincere che
+\begin{itemize}
+    \item se $\alpha$ diviene $>>1$, allora la retta sul piano $xy$ che si ottiene è sempre più distante dall'origine.
+    \item se $\alpha$ diviene $<<1$, allora la retta sul piano $xy$ che si ottiene è sempre più vicina all'origine.
+    \item se $\alpha<0$, allora si ottiene la medesima rappresentazione dei primi due punti, ma simmetrica rispetto all'asse $y=-x$ 
+\end{itemize}
+
+\newpage
+\section{Funzioni tra spazi metrici}
+Si consideri una funzione
+\[f : E \subseteq X_1 \longmapsto X_2\]
+avente delle metriche $(X_1,d_1)$ e $(X_2,d_2)$.
+
+\vspace{1em}
+\noindent
+\subsection{Limite di una funzione}
+Di seguito si espone la definizione di \textbf{limite di una funzione}:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{LIMITE DI UNA FUNZIONE}}\\
+    \parbox{\linewidth}{Siano $(X_1,d_1)$ e $(X_2,d_2)$ due spazi metrici; si consideri
+    \[f : E \subseteq X_1 \longmapsto X_2\]
+    Sia $x_1 \in X_1$ un punto di accumulazione per $E$, con $l \in X_2$. Allora si dira che
+    \[\lim_{x \to x_1} f(x) = l\]
+    se
+    \[\forall \epsilon>0, \exists \delta>0 \text{ tale che } \forall x \in E, x \neq x_1, d_1(x,x_1) < \delta \text{ si ha che } d_2(f(x),l) < \epsilon\]
+    \vspace{-1mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione 1}: In particolare, sulla base della definizione di limite di cui sopra, $f$ è \textbf{continua} in $X_1$ se
+\[\lim_{x \to x_1} f(x) = f(x_1)\]
+ma solamente se $x_1 \in E$ e $x_1$ è punto di accumulazione. In generale, infatti, $x_1$ può anche essere un punto isolato, per cui la definizione generale richiederebbe che
+\[\forall \epsilon>0, \exists \delta>0 \text{ tale che } \forall x \in E, d_1(x,x_1) < \delta \text{ si ha che } d_2(f(x),l) < \epsilon\]
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione 2}: In particolare, sulla base della definizione di limite di cui sopra, $f$ è \textbf{uniformemente continua} in $X_1$ se
+\[\forall \epsilon>0, \exists \delta>0 \text{ tale che } \forall x_1,y_1 \in X_1, d_1(x_1,y_1) < \delta \text{ si ha che } d_2(f(x_1),f(x_2)) < \epsilon\]
+
+\vspace{1em}
+\noindent
+\subsection{Continuità della norma}
+Di seguito si espone il teorema sulla \textbf{contonuità della norma}:
+
+\begin{theorem}
+    Sia $(X,d)$ uno spazio metrico con $d$ indotta da una norma $\left \vert \left \vert \cdot \right \vert \right \vert$. Allora la funzione
+    \[f : X \longmapsto \mathbb{R}\]
+    definita da $f(x) = \left \vert \left \vert x \right \vert \right \vert$ è continua.
+\end{theorem}
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Si provi che
+\[\forall \epsilon > 0, \exists \delta > 0 \text{ tale che } \left \vert \left \vert x-x_0 \right \vert \right \vert < \delta \text{ allora } \left \vert f(x)-f(x_0)\right \vert < \epsilon\]
+ovvero che
+\[\left \vert \left \vert \left \vert x \right \vert \right \vert - \left \vert \left \vert x_0 \right \vert \right \vert \right \vert\]
+Ciò è evidente in quanto
+\begin{itemize}
+    \item $\left \vert \left \vert x \right \vert \right \vert = \left \vert \left \vert x-x_0+x_0 \right \vert \right \vert \leq \left \vert \left \vert x-x_0 \right \vert \right \vert + \left \vert \left \vert x_0 \right \vert \right \vert$
+    \item $\left \vert \left \vert x_0 \right \vert \right \vert = \left \vert \left \vert x_0-x+x \right \vert \right \vert \leq \left \vert \left \vert x_0-x \right \vert \right \vert + \left \vert \left \vert x \right \vert \right \vert$
+\end{itemize}
+Ma ciò implica quanto si voleva dimostrare.
+
+\vspace{1em}
+\noindent
+\subsection{Limite delle componenti}
+Di seguito si espone il teorema sul \textbf{limite delle componenti}:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{LIMITE DELLE COMPONENTI}}\\
+    \parbox{\linewidth}{Sia $(X_1,d_1)$ uno spazio metrico, con
+    \[f=(f_1,\dots,f_m){^T} : E \subseteq X_1 \longmapsto \mathbb{R}^m\]
+    con $x_1 \in X_1$ punto di accumulazione per $E$ e
+    \[l = (l_1,\dots,l_m){^T} \in \mathbb{R}^m\]
+    Si ha, allora, che
+    \[\lim_{x \to x_0} f(x) = l\]
+    \textbf{se e solo se}
+    \[\lim_{x \to x_k} f_k(x) = l_k \hspace{1em} \text{per ogni } k =1,2,\dots,m\]
+     \vspace{-1mm}}\\
+    \hline
+\end{tabularx}
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione 1}: Si operi con $m=2$. Si supponga, per ipotesi che
+\[\lim_{x \to x_k} f_k(x) = l_k \hspace{1em} \text{per ogni } k =1,2,\dots,m\]
+e si dimostri che
+\[\lim_{x \to x_0} f(x) = l\]
+Allora, per definizione dei due limiti seguenti
+\[\lim_{x \to x_0} f_1(x) = l_1 \hspace{1em} \text{e} \hspace{1em} \lim_{x \to x_0} f_2(x) = l_2\]
+è noto che
+\begin{align*}
+    &\forall \epsilon>0, \exists \delta_1 > 0, x \neq x_0, d_1(x,x_0) < \delta_1 \text{ si ha che } \left \vert f(x) - l_1 \right \vert < \epsilon
+    &\forall \epsilon>0, \exists \delta_2 > 0, x \neq x_0, d_2(x,x_0) < \delta_2 \text{ si ha che } \left \vert f(x) - l_2 \right \vert < \epsilon
+\end{align*}
+Allora si ha che, preso $\delta = \min\{\delta_1,\delta_2\}$ (che è un passo fondamentale, in quanto non sarebbe vera per $m$ infinito), si ha che
+\[\left \vert \left \vert \cdot \right \vert \right \vert\]
+... continua ...
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione 2}: Si operi con $m=2$. Si supponga, per ipotesi che
+\[\lim_{x \to x_0} f(x) = l \hspace{1em} \text{ovvero} \hspace{1em} \left \vert \left \vert (f_1,f_2){^T}(x) - (l_1,l_2){^T} \right \vert \right \vert < \epsilon\]
+allora si ha che
+... continua ...
+
+\vspace{1em}
+\noindent
+\subsection{Successione in $\mathbb{R}^n$}
+Di seguito si espone la definizione di \textbf{uccessione in $\mathbb{R}^n$}:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{SUCCESSIONE}}\\
+    \parbox{\linewidth}{Una successione $(x_n)_n$ in uno spazio metrico $(X,d)$ è una funzione
+    \[f : E \subseteq \mathbb{N} \longmapsto X\]
+    con $E$ infinito.
+    \vspace{3mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione}: Il limite di una successione
+\[\lim_{n \to +\infty} x_n = l\]
+con 
+
+\vspace{2em}
+\noindent
+\subsection{Caratterizzazione del limite di una funzione usando le successioni}
+Si espone di seguito il \textbf{teorema di caratterizzazione del limite di una funzione usando le successioni}:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{CARATTERIZZAZIONE DEL LIMITE DI UNA FUNZIONE USANDO LE SUCCESSIONI}}\\
+    \parbox{\linewidth}{Siano $(X_1,d_1)$ e $(X_2,d_2)$ due spazi metrici; si consideri
+    \[f : E \subseteq X_1 \longmapsto X_2\]
+    Sia $\alpha \in X_1$ un punto di accumulazione per $E$, con $l \in X_2$. Si ha, allora, che
+    \[\lim_{x \to \alpha} f(x) = l\]
+    \textbf{se e solo se, per ogni successione} $(x_n)_n$ in $X_1$ tale che
+    \[\lim_{n \to +\infty} x_n = \alpha\]
+    si ha che
+    \[\lim_{n \to +\infty} f(x_n) = l\]
+    \vspace{-1mm}}\\
+    \hline
+\end{tabularx}
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione 1}: Si supponga che
+\[\lim_{x \to \alpha} f(x) = l\]
+Si consideri, allora, una successione $(x_n)_n$ una successione tale per cui
+\[\lim_{n \to +\infty} x_n = \alpha\]
+e si dimostri che 
+\[\lim_{n \to +\infty} f(x_n) = l\]
+Fissato $\epsilon>0$, allora per la definizione di limite di cui sopra, si ha che
+\[\exists \delta > 0 \text{ tale che } \forall x \in E, x \neq \alpha, d_1(x,x_0) < \delta \text{ tale che } d_2(f(x),l) < \epsilon\]
+Dal momento che, per ipotesi, si ha che
+\[\lim_{n \to +\infty} x_n = \alpha\]
+per definizione di limite
+\[\exists n_\epsilon \in \mathbb{N} \text{ tale che } \forall n \geq n_\epsilon \text{ si ha che } d_1(x_n,\alpha) < \delta\]
+e, di conseguenza,
+\[d_2(f(x),l) < \epsilon\]
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione 2}: Si supponga, per ipotesi, che per ogni successione $(x_n)_n$ in $X_1$ tale che
+\[\lim_{n \to +\infty} x_n = \alpha\]
+si ha che
+\[\lim_{n \to +\infty} f(x_n) = l\]
+e si dimostri che
+\[\lim_{x \to \alpha} f(x) = l\]
+Dalla definizione dell'ultimo limite si ha che
+\[\forall \epsilon > 0, \exists \delta > 0 \text{ tale che } \forall x \in E, x \neq \alpha, d_1(x,\alpha)<\delta, d_2(f(x),l) < \epsilon\]
+Si proceda per assurdo, e si neghi tale affermazione
+\[\exists \epsilon > 0, \forall \delta = \frac{1}{n} > 0, \exists x_n \in E, x_n \neq \alpha, \text{ tale che } d_1(x,\alpha)<\delta=\frac{1}{n} \text{ ma } d_2(f(x),l) \geq \epsilon\]
+in cui si è assunto che $\delta=\frac{1}{n}$, per comodità. Ciò consente di generare, implicitamente, una successione che permetterà di ottenere l'assurdo. Infatti, avendo ottenuto che
+\[d_1(x,\alpha)<\delta=\frac{1}{n} \hspace{1em} \text{ è immediato evincere che } \hspace{1em} \lim_{n \to +\infty} x_n = \alpha\]
+Ma siccome per ipotesi è noto che ogni successione $(x_n)_n$ in $X_1$ tale che
+\[\lim_{n \to +\infty} x_n = \alpha\]
+si ha che
+\[\lim_{n \to +\infty} f(x_n) = l\]
+Pertanto si conclude l'assurdo, perché si era assunto che 
+\[d_2(f(x),l) \geq \epsilon\]
+
+\vspace{1em}
+\noindent
+\textbf{Esercizio}: Si consideri lo spazio delle funzioni continue su $[0,1]$ a valori reali: $X=C^0([0,1])$.\\
+Per ogni $n \in \mathbb{N}^+$ si consideri la funzione $\phi_n \in X$ definita da
+\[
+    \phi_n(t) = \rowcolors{1}{white}{white}    
+    \begin{array}{lll}
+        1-nt & \text{se} & t \in \left[0,\dfrac{1}{n}\right] \geq 0\\
+        0   & \text{se} & t \in \left[\dfrac{1}{n},1\right] \geq 0\\
+    \end{array}
+\]
+Si discuta l'eventuale convergenza della successione $(\phi_n)_n$ nello spazio metrico $(X,d_1)$ e nello spazio metrico $(X,d_\infty)$, dove $d_1$ è la metrica indotta dalla norma $\left \vert \left \vert \cdot \right \vert \right \vert_1$ e $d_\infty$ è la metrica indotta dalla norma $\left \vert \left \vert \cdot \right \vert \right \vert_\infty$.\\
+Essendo la norma $1$ seguente $\left \vert \left \vert \cdot \right \vert \right \vert_1$ denotata con
+\[\left \vert \left \vert \phi \right \vert \right \vert_1 = \int_0^1 \left \vert \phi(t) \right \vert \dif t\]
+Dalla rappresentazione grafica è facile intuire che il limite di tale successione sia $0$, ovvero
+\[\forall \epsilon > 0, \exists n_\epsilon, \forall n \geq n_\epsilon, \int_0^1 \left \vert \phi(t) \right \vert \dif t < \epsilon\]
+ma siccome la funzione $\phi(t)$ è nulla da $\dfrac{1}{n}$ a $1$, basta considerare
+\[\int_0^1 \left \vert \phi(t) \right \vert \dif t = \int_0^\frac{1}{n} \left \vert \phi(t) \right \vert \dif t + 0 = \left[t-\frac{1}{2}nt^2\right]_0^\frac{1}{n} = \frac{1}{n} - \frac{1}{2n} = \frac{1}{2n} < \epsilon\]
+... continua ...
+
+\vspace{2em}
+\noindent
+\textbf{Esercizio}: Si consideri la funzione
+\[f : C([0,1]) \longmapsto \mathbb{R}\]
+con norma infinito. Si provi che la funzione
+\[f : X \longmapsto \mathbb{R}\]
+definita da
+\[f(\phi) = \int_0^1 \phi(t) \dif t\]
+
+\vspace{1em}
+\noindent
+Si dimostri la continuità in $\phi_0$, ovvero
+\[\forall \epsilon > 0, \exists \delta > 0 \text{ tale che } \forall \phi \text{ con } \left \vert \left \vert \phi-\phi_0 \right \vert \right \vert_\infty < \delta, \left \vert f(\phi) - f(\phi_0) \right \vert < \epsilon\]
+Ma in particolare, per la definizione stessa della $f$ si ha che
+\[\left \vert \int_0^1 \phi(t) \dif t - \int_0^1 \phi_0(t) \dif t\right \vert = \left \vert \int_0^1 (\phi(t) - \phi_0(t)) \dif t \right \vert\]
+ma siccome
+\[\left \vert \phi(t) - \phi_0(t) \right \vert \leq \left \vert \left \vert \phi(t) - \phi_0(t) \right \vert \right \vert_{\infty}\]
+in quanto, per definizione $\left \vert \left \vert \phi(t) - \phi_0(t) \right \vert \right \vert_{\infty} = \sup\{\left \vert \phi-\phi_0 \right \vert\}$
+si conclude che 
+\[\left \vert \int_0^1 \phi(t) \dif t - \int_0^1 \phi_0(t) \dif t\right \vert \leq \left \vert \left \vert \phi(t) - \phi_0(t) \right \vert \right \vert_{\infty} \cdot \int_0^1 \dif t = \delta < \epsilon\]
+
+\newpage
+\noindent
+\begin{center}
+    21 Ottobre 2022
+\end{center}
+\textbf{Esercizio}: Si considerino i due spazi metrici $X_1 = C^{-1}([0,1])$ e $X_2 = C^0([0,1])$ in cui si definisce in ambo i spazi la norma $\vert \vert \cdot \vert \vert_{\infty}$. Si considera, allora, la funzione
+\[f : X_1 \longmapsto X_2 \hspace{1em} \text{e} \hspace{1em} f(\phi) = \phi'\]
+Si vuole dimostrare che la funzione $f$ considerata non è continua. È noto che una funzione continua se
+\[\lim_{\phi \to \phi_0} f(\phi) = f(\phi_0)\]
+Per il teorema di caratterizzazione del limite di una funzione tramite le successioni, si ha che
+\[f \text{ è in continua in } \alpha \textbf{ se e solo se } \forall (f_n)_n \in X_1, \text{ con } \lim_{n \to +\infty} \alpha_n = \alpha \text{ si ha che } \lim_{n \to +\infty} f(\alpha_n) = f(\alpha)\]
+Se si considera la funzione
+\[\phi_n=\frac{1}{n} \cdot \sin(n x) \text{ tale che } \lim_{n \to + \infty} \phi_n = 0\]
+e, ovviamente, si ha che
+\[f(\phi_n)=\cos(n x)\]
+Tuttavia è ovvio che
+\[\lim_{n \to +\infty} f(\phi_n) = \lim_{n \to +\infty} \cos(nx) = \nexists\]
+che permette di concludere che tale funzione, con tale norma, non è continua.
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: L'ultima considerazione è evidente, in quanto la norma non è concorde con la tipologia di funzione e con gli spazi metrici analizzati. La norma ...
+
+\vspace{1em}
+\noindent
+\textbf{Esempio}: Si considerino gli spazi metrici $X=C([0,1])$ con $\vert \vert \cdot \vert \vert_1$ e $Y=C([0,1])$ con $\vert \vert \cdot \vert \vert_{\infty}$.\\
+Per verificare se la funzione $f : X \longmapsto Y$, con $f(\phi)=\phi$ è continua, è facile capire se si considera una successione che vale praticamente sempre $0$ e vale $1$ in un solo punto, allora per la norma infinito il valore è $1$, mentre per la norma $1$ il valore dell'integrale è $0$, per cui non può essere continua.\\
+Nel caso, invece, della funzione inversa $f^{-1} : Y \longmapsto x$, con $f(\phi)=\phi$ è continua, in quanto data ...continua..
+
+\vspace{1em}
+\noindent
+\subsection{Teorema sui limiti e sulle funzioni continue}
+Di seguito si espongono alcuni fondamentali teoremi sui limiti e sulle funzioni continue.
+
+\vspace{1em}
+\noindent
+\subsubsection{Teorema di unicità del limite}
+Per la dimostrazione si impiega il principio di separazione di Hausdorff.
+
+\vspace{1em}
+\noindent
+\subsubsection{Teorema sul limite delle restrizioni}
+È noto che data una funzione
+\[f : E \subseteq X \longmapsto X\]
+in cui
+\[\lim_{x \to x_0} f(x) = l\]
+allora, posto $F \subseteq E$ una restrizione di $E$, con $x_0$ punto di accumulazione per $F$. Allora anche
+\[\lim_{x \to x_0} f\vert_F(x)=l\]
+
+\vspace{2em}
+\noindent
+\textbf{Esercizio}: Si consideri il limite seguente
+\[\lim_{(x,y){^T} \to (0,0){^T}} \frac{x \cdot y}{x^2 + y^2}\]
+Allora per risolvere tale limite, si può considerare come restrizione l'asse $x$, ponendo
+\[F = \{(x,y){^T}, y=0\} - \{0,0\}\]
+Allora se esiste il limite di partenza, esso deve essere uguale a
+\[\lim_{(x,y){^T} \to (0,0){^T}, y=0} \frac{x \cdot 0}{x^2 + 0^2} = 0\]
+Anche la restrizione sull'asse $y$ avrebbe fornito il medesimo risultato. Tuttavia, se si considera la restrizione sulla bisettrice si ottiene:
+\[\lim_{(x,y){^T} \to (0,0){^T}, x=y} \frac{x^2}{2x^2} = \frac{1}{2}\]
+per cui si sono trovate due restrizioni in cui il limite non coincide: il limite di partenza non esiste.
+
+\vspace{1em}
+\noindent
+\subsubsection{Teorema sul limite della funzione composta}
+Si considerino due funzioni
+\[f : E \subseteq X_1 \longmapsto X_2 \hspace{1em} \text{e} \hspace{1em} g : F \subseteq X_2 \longmapsto X_3\]
+Posto $\alpha$ punto di accumulazione per $E$, tale per cui
+\[\lim_{x \to \alpha} f(x) = \beta\]
+e sia $\beta$ punto di accumulazione per $F$. Allora se
+\[\lim_{y \to \beta} g(y) = \beta\]
+si evince che
+\[\lim_{x \to \alpha} g(f(x)) = \gamma\]
+ammesso che \textbf{esista un intorno } $U$ \textbf{ di } $\alpha$ \textbf{ tale che } $\forall x \in U, x \neq \alpha, f(x) \neq \beta$
+
+\vspace{1em}
+\noindent
+\subsubsection{Teorema sul limite della combinazione lineare di funzioni}
+Se $X$ è uno spazio metrico, con $Y$ \textbf{spazio vettoriale} con una norma $\vert \vert \cdot \vert \vert$ e la distanza indotta
+\[d(y_1,y_2) = \left \vert \left \vert y_1-y_2 \right \vert \right \vert\]
+si ha che
+\[\lim_{x \to x_0} f(x) = l_1 \hspace{1em} \text{e} \hspace{1em} \lim_{x \to x_0} g(x) = l_1\]
+posto $\alpha, \beta \in \mathbb{R}$ si ha che
+\[\lim_{x \to x_0} \left(\alpha \cdot f + \beta \cdot g\right)(x) = \alpha \cdot l_1 + \beta \cdot l_2\]
+Inoltre, se $Y=\mathbb{R}$, o uno spazio metrico su cui è definito un prodotto, si può anche affermare che
+\[\lim_{x \to x_0} (f \cdot g)(x) = l_1 \cdot l_2\]
+Ha anche significato affermare, in $\mathbb{R}$, che
+\[\lim_{x \to x_0} f(x) = \pm \infty\]
+che significa ...continua...
+
+\vspace{1em}
+\noindent
+\textbf{Esercizio 1}: Si calcoli il seguente limite:
+\[\lim_{(x,y){^T} \to (0,0){^T}} \left(\frac{\sin(xy)}{y}, \frac{3x^3y-xy^2+1}{xy+2x-y-2}\right){^T}\]
+Siccome si tratta di un campo vettoriale, bisogna suddividere lo stesso nelle sue due componenti, andando a studiare separatamente i due limite. Se ciascuno esiste, il limite del campo vettoriale sarà il vettore con componenti il limite delle componenti.\\
+Pertanto si andranno a studiare
+\[\lim_{(x,y){^T} \to (0,0){^T}} \frac{\sin(xy)}{y} \hspace{1em} \text{e} \hspace{1em} \lim_{(x,y){^T} \to (0,0){^T}} \frac{3x^3y-xy^2+1}{xy+2x-y-2}\]
+È immediato evincere che il secondo limite sia, ovviamente
+\[\lim_{(x,y){^T} \to (0,0){^T}} \frac{3x^3y-xy^2+1}{xy+2x-y-2}=-\frac{1}{2}\]
+Per quanto riguarda il primo limite, si devono considerare delle restrizioni opportune, per esempio
+\begin{itemize}
+    \item Considerando la restrizione all'asse $x$ si ottiene
+    \[\lim_{(x,y){^T} \to (0,0){^T}, x=0} \frac{\sin(xy)}{y} = 0\]
+    \item Considerando la restrizione sulla bisettrice si ottiene
+    \[\lim_{(x,y){^T} \to (0,0){^T}, x=y} \frac{\sin(xy)}{y} = 0\]
+\end{itemize}
+Ciò suggerisce che il limite possa esistere; basterà andare a stimare che
+\[\left \vert \frac{\sin(xy)}{y} \right \vert < \epsilon\]
+ma è immediato osservare che 
+\[\left \vert \frac{\sin(xy)}{y} \right \vert = \left \vert \frac{\sin(xy)}{xy} \right \vert \cdot \vert x \vert \leq \vert x \vert\]
+e siccome $\vert x \vert \to 0$, si evince che tale funzione è proprio nullo. Pertanto il limite del campo è il campo con componenti il limite del componenti:
+\[\lim_{(x,y){^T} \to (0,0){^T}} \left(\frac{\sin(xy)}{y}, \frac{3x^3y-xy^2+1}{xy+2x-y-2}\right){^T} = \left(0,-\frac{1}{2}\right){^T}\]
+
+\vspace{1em}
+\noindent
+\textbf{Esercizio 2}: Si consideri il seguente limite:
+\[\lim_{(x,y){^T} \to (0,0){^T}} \frac{x^2y}{x^4+y^2}\]
+Se esiste il limite, esso deve essere $0$, in quanto basta lavorare sugli assi e si ottiene $0$. Anche se si lavora sulla bisettrice si ottiene $0$.\\
+Tuttavia, se si considera la parabola $y=x^2$, è facile capire che
+\[\lim_{(x,y){^T} \to (0,0){^T},y=x^2} \frac{x^4}{2x^4}=\frac{1}{2}\]
+per cui si evince che tale limite non esiste.
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Si osservi che negli spazi $X=C([0,1])$ con norma $\vert \vert \cdot \vert \vert_\infty$ si lavora con successioni di funzioni $\phi_n$ che convergono ad una funzione $\phi$ con distanza indotta dalla norma infinito. Allora la convergenza per tali successioni viene definita come
+\[\forall \epsilon > 0, \exists n_\epsilon \in \mathbb{N} \text{ tale che } \forall n \in n_\epsilon, \underset{x \in [0,1]}{\max} \left \vert \phi_n(x) - phi(x) \right \vert < \epsilon\]
+mentre la convergenza uniforme richiede che
+\[\forall \epsilon > 0, \exists n_\epsilon \in \mathbb{N} \text{ tale che } \forall n \geq n_\epsilon, \forall x \in [0,1] \text{ si ha che } \left \vert \phi_n(x) - \phi(x) \right \vert < \epsilon\]
+che sono la stessa cosa, in quanto si sta lavorando con uno spazio topologico $C([0,1])$ di funzioni continue, per cui esiste sempre il massimo.
+
+\vspace{1em}
+\noindent
+\subsection{Trasformazioni coordinate}
+Si consideri la funzione
+\[f : \mathbb{R}^2 \longmapsto \mathbb{R}^2 \hspace{1em} \text{e} \hspace{1em} f^{-1} : \mathbb{R}^2 \longmapsto \mathbb{R}^2\]
+in cui se si considerano $x$ e $y$ coordinate nel dominio di $f$ e $u$ e $v$ coordinate nel codominio di $f$. Allora se la mappatura è la seguente:
+\[
+    \left\{
+    \begin{array}{l}
+        u=x-y\\
+        v=x+y
+    \end{array}  
+    \right.
+    \rightarrow
+    \left\{
+    \begin{array}{l}
+        x=\dfrac{1}{2} (u-v)\\
+        y=\dfrac{1}{2} (u+v)\\
+    \end{array}  
+    \right.
+\]
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Nel caso di coordinate polari del tipo ...continua...
+\[
+    \left\{
+    \begin{array}{l}
+        u=x-y\\
+        v=x+y
+    \end{array}  
+    \right.
+\]
+... continua ...\\
+Allora si può considerare
+\[f : ]0,+\infty[ \times [0,2\pi[ \longmapsto \mathbb{R}^2 - \{(0,0){^T}\}\]
+in cui si pone
+\[(\rho,\theta){^T} \longmapsto (x,y){^T}\]
+con la mappatura 
+\[
+    \left\{
+    \begin{array}{l}
+        x=\rho \cdot \cos(\theta)\\
+        y=\rho \cdot \sin(\theta)\\
+    \end{array}  
+    \right.
+\]
+Essendo un campo vettoriale, si considerano le componenti una ad una. Per verificare se $f$ è continua si studiano le componenti, che ovviamente sono il prodotto di due funzioni continue che, quindi, è continua.\\
+Studiando la funzione inversa $f^{-1}$ definita come
+\[f^{-1}(x,y) = (\rho,\theta){^T}\]
+allora si ha che
+\begin{itemize}
+    \item $\rho=\sqrt{x^2+y^2}$
+    \item $\theta$ è l'angolo tale che
+    \[x=\rho \cos(\theta) \hspace{1em} \text{e} \hspace{1em} y=\rho \sin(\theta)\]
+\end{itemize}
+Pertanto non esiste una formula generale per esprimere l'angolo $\theta$. La funzione inversa non è continua, in quanto considerando il punto sulla circonferenza goniometrica, continua...
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione 1}: Lavorare con le coordinate polari non è semplice, in quanto non si ha un omeomorfismo per la descrizione delle coordinate nei due sistemi. L'omeomorfismo si ha quando si esclude la semiretta dei reali positivi e, quindi, si considera la funzione
+\[f : \mathbb{R}^2 - \{(x,y){^T} \in \mathbb{R}^2 : x \geq 0\} \longmapsto ]0,+\infty[ \times ]0,2\pi[\]
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione 2}: È possibile anche considerare delle coordinate ellittiche centrate in $(x_0,y_0){^T}$, ovvero un sistema come quello seguente
+\[
+\left\{
+    \begin{array}{l}
+        x=x_0 + a \cdot \rho \cdot \cos(\theta)\\
+        y=y_0 + b \cdot \rho \cdot \sin(\theta)\\
+    \end{array}  
+    \right.
+\]
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione 3}: È possibile anche considerare delle coordinate ellissoidali, andando a considerare un sistema seguente
+\[
+\left\{
+    \begin{array}{l}
+        x=x_0 + a \cdot \rho \cdot \cos(\theta) \cdot \cos(\phi)\\
+        y=y_0 + b \cdot \rho \cdot \sin(\theta) \cdot \sin(\phi)\\
+        z=z_0 + c \cdot \rho \cdot \cos(\theta)
+    \end{array}  
+    \right.
+\]
+
+\vspace{1em}
+\noindent
+\subsection{Intervallo e insieme compatto}
+Di seguito si espongono le definizioni generalizzate agli spazi metrici di intervallo e di insieme compatto.
+
+\vspace{1em}
+\noindent
+\subsubsection{Insieme compatto}
+Di seguito si espone la definizione di \textbf{insieme compatto} in uno spazio metrico:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{INSIEME COMPATTO}}\\
+    \parbox{\linewidth}{Sia $X$ uno spazio metrico. Allora un insieme $K \subseteq X$ si dice compatto (per successioni) se per ogni successioni $(x_n)_n$ con $x_n \in K, \forall n$, esiste una sottosuccessione $(x_{n_k})_k$ convergente, ossia
+    \[\lim_{k \to +\infty} x_{n_k} = l \in K\] \vspace{3mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{1em}
+\noindent
+\begin{theorem}
+    Se $K$ è compatto, allora è chiuso e limitato.
+\end{theorem}
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione 1}: Si dimostri che se $K$ è compatto, allora è chiuso, ovvero contiene tutti i suoi punti di accumulazione. Sia, allora, $\alpha$ un punto di accumulazione per $K$, allora si considera, $\forall n$, la palla
+\[B \left(\alpha, \frac{1}{n}\right)\]
+Si supponga esista $x_n \neq \alpha$, con $x_n \in K \cap B \left(\alpha, \dfrac{1}{n}\right)$. Ovviamente, per costruzione si ha che
+\[\lim_{n \to +\infty} x_n = \alpha\]
+Poiché $K$ è compatto, esiste una sottosuccessione $(x_{n_k})_k$ tale che
+\[\lim_{k \to +\infty} x_{n_k} = l \in K\]
+ma $l=\alpha$ e, quindi, $\alpha \in K$, per cui $K$ è chiuso.
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione 2}: Si dimostri che se $K$ è compatto, allora è limitato. Sia, allora, per assurdo $K$ non limitato. Si fissi $x_0 \in X$ tale per cui $\forall n$ esiste $x_n \in K$ con $x_n \notin B \left(x_0,n\right)$.\\
+Ma siccome $K$ è compatto per ipotesi, esiste una sottosuccessione $(x_{n_k})_k$ tale per cui
+\[\lim_{k \to +\infty} x_{n_k} = l \in K\]
+ma tale successione non può convergere (ovvero non può essere che $d(x_{n_k},l)<\epsilon$), in quanto
+\[d(x_{n_k},l) \geq d(x_{n_k},x_0) - d(x_0,l) \geq n_k - M\]
+essendo $d(x_0,l)=M$ costante. Ma siccome $n_k \to +\infty$ per cui non si può avere convergenza.
 \end{document}
