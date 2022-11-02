@@ -1681,106 +1681,152 @@ Ora bisogna dimostrare che ogni singolo addendo è $< \dfrac{\epsilon}{3}$. Si p
     \[\exists n_\epsilon \in \mathbb{N} \hspace{1em} \text{tale che} \hspace{1em} \forall n \geq n_\epsilon, \forall p \in \mathbb{N} \text{ e } \boxed{\bf{\forall x \in E}} \hspace{1em} \text{si ha che} \hspace{1em} \left \vert f_{n+p}(x) - f_n(x)\right \vert < \frac{\epsilon}{3}\]
     in cui è fondamentale osservare che ciò vale $\forall x \in E$, in cui l'$n_\epsilon$ considerato dipende solamente da $n$ e non da $x$.
 
-    \item a
+    \item Fissato un qualsiasi $\hat n \geq n_\epsilon$ e un qualsiasi $\hat p \in \mathbb{N}$, è noto per ipotesi che 
+    \[\lim_{x \to x_0} f_{\hat n}(x) = l_{\hat n} \hspace{1em} \text{ e } \hspace{1em} \lim_{x \to x_0} f_{\hat n + \hat p}(x) = l_{\hat n + \hat p}\]
+    Allora, dalla definizione di limite si ha che
+    \begin{align*}
+        &\exists \delta_{\hat n+\hat p} > 0 \hspace{1em} &\text{tale che} \hspace{1em} &\forall x \in E, x \neq x_0, \left \vert x - x_0 \right \vert < \delta_{\hat n + \hat p} \hspace{1em} &\text{ si ha che } \hspace{1em} &\left \vert f_{\hat n + \hat p}(x) - l_{\hat n + \hat p}\right \vert < \frac{\epsilon}{3}\\
+        &\exists \delta_{\hat n} > 0 \hspace{1em} &\text{tale che} \hspace{1em} &\forall x \in E, x \neq x_0, \vert x - x_0 \vert < \delta_{\hat n} \hspace{1em} &\text{ si ha che } \hspace{1em} &\left \vert f_{\hat n}(x) - l_{\hat n} \right \vert < \frac{\epsilon}{3}
+    \end{align*}
+    Ma ciò consente di affermare che, preso il $\delta$ più piccolo di entrambi, ovvero $\delta < \min\left\{\delta_{\hat n + \hat p}, \delta_{\hat n}\right\}$, valgono ambedue le affermazioni precedenti, ovverosia
+    \[\left \vert l_{\hat n + \hat p} - l_{\hat n} \right \vert \leq \left \vert l_{\hat n + \hat p} - f_{\hat n + \hat p}(x)\right \vert + \left \vert f_{\hat n + \hat p}(x) - f_{\hat n}(x)\right \vert + \left \vert f_{\hat n}(x) - l_{\hat n}\right \vert < \frac{\epsilon}{3}+\frac{\epsilon}{3}+\frac{\epsilon}{3} < \epsilon\]
 \end{enumerate}
-
-
-Fissato $\hat n \geq n_\epsilon$ e un qualsiasi $q \in \mathbb{N}$, è noto che
-\[\lim_{x \to x_0} f_{\hat n}(x) = l_{\hat n} \text{ e } \lim_{x \to x_0} f_{\hat n + p}(x) = l_{\hat n + p}\]
-Allora, dalla definizione di limite si ha che
-\[\exists \delta_{\hat n + p} > 0, \delta_{\hat n} > 0 \vert \forall x \in E, x \neq x_0, \left \vert x - x_0 \right \vert < \delta_{\hat n + p} \text{ e } \forall x \in E, x \neq x_0, \vert x - x_0 \vert < \delta_{\hat n} \hspace{1em} \text{ si ha } \left \vert f_{\hat n}(x) - l_{\hat n} \right \vert < \frac{\epsilon}{3} \hspace{1em} \text{e} \hspace{1em} \left \vert f_{\hat n + p}(x) - l_{\hat n + p}\right \vert < \frac{\epsilon}{3}\]
-Ma ciò consente di affermare che, preso il $\delta$ più piccolo di entrambi $\delta_{\hat n + p}$ e $\delta_{\hat n}$:
-\[\left \vert l_{\hat n + \hat p} - l_{\hat n} \right \vert \leq \left \vert l_{\hat n + \hat p} - f_{\hat n + \hat p}\right \vert + \left \vert f_{\hat n + \hat p}(x) - f_{\hat n}(x)\right \vert + \left \vert f_{\hat n}(x) - l_{\hat n}\right \vert < \epsilon\]
+È fondamentale capire, tuttavia, che i valori $\hat n$ e $\hat n + \hat p$ sono fissati e non vengono più modificati nel corso della dimostrazione, ma sono sempre $\hat n$ e $\hat n + \hat p$ che soddisfano la condizione iniziale $n \geq n_\epsilon$; questo è fondamentale perché il $\delta$ impiegato alla fine è il minimo tra due valori che dipende fortemente dagli indici: se si volesse generalizzare la dimostrazione per tutti gli $n$ non è detto che esista il minimo degli opportuni $\delta_n$.\\
 Ciò, quindi, consente di affermare che
 \[\exists \lim_{n \to +\infty} l_n = l \rightarrow \left \vert l_{n+p} - l_n \right \vert < \epsilon\]
+come richiesto dal criterio di Cauchy.
 
 % Formattazione per la dimostrazione, etc.
-\vspace{2em}
+\newpage
 \noindent
 \normalfont \normalsize
-\textsc{Dimostrazione 2}: Ripetendo la dimostrazione per
+\textsc{Dimostrazione 2}: Ripetendo la dimostrazione appena eseguita, si dimostri il limite seguente
 \[\lim_{x \to x_0} f(x) = l\]
-si ha che
-\[\left \vert f(x) - l \right \vert \leq \left \vert f(x) - l + l_n + f_n(x) - f_n(x) \right \vert \leq \left \vert - \left(f_n(n) - f(x) \right) \right \vert + \left \vert f_n(x) - l_n \right \vert + \left \vert l_n - l \right \vert < \epsilon\]
-Infatti, è noto che
-\[\lim_{n \to +\infty} l_n = l\]
-Pertanto esiste $n^1_\epsilon$ tale che $\forall n \geq n^1_\epsilon$ si ha
-\[\left \vert l_n - l \right \vert < \frac{1}{3} \epsilon\]
-Inoltre, poiché
-\[\lim_{n \to +\infty} f_n = f\]
-uniforme, esiste $n^2_\epsilon \in \mathbb{N}$ tale che $\forall n \geq n^2_\epsilon$, si ha
-\[\left \vert f_n(x) - f(x) \right \vert < \frac{\epsilon}{3}, \hspace{1em} \forall x \in E\]
-Fissato, quindi, $\hat n \geq \max \{n^1_\epsilon,n^2_\epsilon\}$. Per questo $\hat n$, siccome
-\[\lim_{x \to x_0} f_{\hat n}(x) = l_{\hat n}\]
-si ha che $\exists \delta_\epsilon > 0$ tale che $\forall x \in E, x \neq x_0, \left \vert x - x_0 \right \vert < \delta_\epsilon$
-\[\left \vert f_{\hat n}(x) - l_{\hat n} \right \vert < \frac{\epsilon}{3}\]
+ovverosia
+\[\forall \epsilon>0,\exists \delta > 0 \hspace{1em} \text{tale che} \hspace{1em} \forall x \in E, x \neq x_0, \left \vert x - x_0 \right \vert < \delta \hspace{1em} \text{ si ha che } \hspace{1em} \left \vert f(x) - l \right \vert < \epsilon\]
+Sommando e sottraendo i termini $l_n$ e $f_n(x)$ e sfruttando la disuguaglianza triangolare, si ha che
+\[\left \vert f(x) - l \right \vert \leq \left \vert f(x) - l + l_n - l_n + f_n(x) - f_n(x) \right \vert \leq \left \vert - \left(f_n(x) - f(x)\right) \right \vert + \left \vert f_n(x) - l_n \right \vert + \left \vert l_n - l \right \vert < \epsilon\]
+Per dimostrare che ciascuno degli addendi, di fatto, è minore di $\dfrac{\epsilon}{3}$ si formulano le seguenti osservazioni:
+\begin{enumerate}
+    \item In particolare è noto che
+    \[\lim_{n \to +\infty} l_n = l\]
+    per cui, fissato $\dfrac{\epsilon}{3}$ è noto che esiste $n^1_\epsilon$ tale che $\forall n \geq n^1_\epsilon$ si ha
+    \[\left \vert l_n - l \right \vert < \frac{\epsilon}{3}\]
 
+    \item Inoltre, poiché
+    \[\lim_{n \to +\infty} f_n = f\]
+    uniforme, esiste $n^2_\epsilon \in \mathbb{N}$ tale che $\forall n \geq n^2_\epsilon$, si ha
+    \[\left \vert f_n(x) - f(x) \right \vert < \frac{\epsilon}{3}, \hspace{1em} \forall x \in E\]
 
-\vspace{1em}
+    \item Fissato, quindi, $\hat n \geq \max \{n^1_\epsilon,n^2_\epsilon\}$. Per questo $\hat n$ fissato, siccome
+    \[\lim_{x \to x_0} f_{\hat n}(x) = l_{\hat n}\]
+    si ha che
+    \[\exists \delta_{\hat n} > 0 \hspace{1em} \text{tale che} \hspace{1em}\forall x \in E, x \neq x_0, \left \vert x - x_0 \right \vert < \delta_{\hat n} \hspace{1em} \text{si ha che} \hspace{1em} \left \vert f_{\hat n}(x) - l_{\hat n} \right \vert < \frac{\epsilon}{3}\]
+    ma ciò vale solo per questo $\hat n$ fissato. Ovviamente, $\delta_{\hat n}$ dipende da $\hat n$, il quale, a sua volta, dipende da $n^1_\epsilon$ e $n^2_\epsilon$, per cui, in definitiva, dipende da $\epsilon$.
+\end{enumerate}
+
+\vspace{2em}
 \noindent
-\textbf{Ricapitolando}: Bisogna dimostrare che
-\[\left \vert f(x) - l \right \vert \leq \left \vert f(x) - f_n(x) \right \vert\]
-... continua ...
+\textbf{Ricapitolando}: Bisogna dimostrare il limite di cui sopra esiste, ovvero che se $\left \vert x - x_0 \right \vert < \delta$ si ha che
+\[\left \vert f(x) - l \right \vert < \epsilon\]
+Per fare ciò si maggiore l'ultima disuguaglianza, ottenendo
+\[\left \vert f(x) - l \right \vert \leq \left \vert f(x) - f_n(x) \right \vert + \left \vert f_n(x) - l_n \right \vert + \left \vert l_n - l \right \vert\]
+In particolare
+\begin{itemize}
+    \item $\left \vert f(x) - f_n(x) \right \vert < \dfrac{\epsilon}{3}$, se $n \geq n_1$, per la convergenza uniforme della $f$;
+    \item $\left \vert l_n - l \right \vert < \dfrac{\epsilon}{3}$, se $n \geq n_2$, per il limite noto per ipotesi.
+    \item Preso $n \geq \max\{n_1,n_2\}$, tale per cui ambedue le disuguaglianze di cui sopra sono verificate. Fissato tale $n$, dal momento che è noto per ipotesi che
+    \[\exists \lim_{x \to x_0} f_n(x) = l_n\]
+    si ha che $\exists \delta > 0$ tale che
+    \[0 < \left \vert x - x_0 \right \vert < \delta \hspace{1em} \rightarrow \hspace{1em} \left \vert f_n(x) - l_n \right \vert < \dfrac{\epsilon}{3}\]
+\end{itemize}
 
 \vspace{1em}
 \begin{corollary}
     Si osservi che se
     \[f_n : E \longmapsto \mathbb{R}\]
-    è continua $\forall n$ e 
+    è \textbf{continua} $\forall n$ e 
     \[\lim_{n\to +\infty} f_n = f\]
-    uniforme. Allora $f$ è continua.
+    \textbf{uniforme}. Allora $f$ è \textbf{continua}.
 \end{corollary}
 
 % Formattazione per la dimostrazione, etc.
 \vspace{2em}
 \noindent
 \normalfont \normalsize
-\textsc{Dimostrazione}: Ciò è immediatamente evidente in quanto
-\[\lim_{x \to x_0} f(x) = \lim_{x \to x_0} \left(\lim_{n \to +\infty} f_n(x)\right) = \lim_{n \to +\infty} \left(\lim_{x \to x_0} f_n(x)\right) = \lim_{n \to +\infty} f_n(x_0) = f(x_0)\]
+\textsc{Dimostrazione}: Naturalmente preso un punto isolato non ha senso parlare di limite, e la funzione è automaticamente continua. Pertanto, preso $x_0$ punto di accumulazione per $E$, è immediatamente evidente osservare che
+\[\lim_{x \to x_0} f(x) = \lim_{x \to x_0} \left(\lim_{n \to +\infty} f_n(x)\right)\]
+ovviamente è ora possibile applicare il teorema di inversione dei limiti essendo la convergenza di $f_n$ uniforme, per cui
+\[\lim_{x \to x_0} \left(\lim_{n \to +\infty} f_n(x)\right) = \lim_{n \to +\infty} \left(\lim_{x \to x_0} f_n(x)\right)\]
+ma essendo $f_n$ continua $\forall n$ è immediato evincere che
+\[\lim_{x \to x_0} \left(\lim_{n \to +\infty} f_n(x)\right)= \lim_{n \to +\infty} f_n(x_0) = f(x_0)\]
+in cui si è potuto affermare che
+\[\lim_{n \to +\infty} f_n(x_0) = f(x_0)\]
+in quanto la convergenza uniforme implica la convergenza puntuale.
 
-\vspace{1em}
+\vspace{2em}
 \noindent
 \textbf{Osservazione}: Si osservi che
 \[\lim_{n \to +\infty} f_n(x) = f(x)\]
-uniforme, lo è anche puntuale.
+uniforme, lo è anche puntuale, ma non viceversa. Infatti richiedere la convergenza uniforme è molto di più che richiedere la convergenza puntuale, in quanto nel primo caso $n_\epsilon$ non dipende da $x$, mentre nel secondo sì. Per cui è immediato evincere che la prima implica la seconda.
 
-\vspace{1em}
-\noindent
-\subsection{Teorema di integrabilità}
-Sia $I \subseteq \mathbb{R}$ un \textbf{intervallo compatto} (ovvero con misura finita) e sia 
-\[f_n : I \longmapsto \mathbb{R}\]
-integrabile $\forall n$; sia, inoltre
-\[\lim_{n \to +\infty} f_n = f\]
-uniforme, con
-\[f : I \longmapsto \mathbb{R}\]
-allora $f$ è integrabile e si ha che
-\[\int_I \lim_{n \to +\infty} f_n(x) \dif x = \lim_{n \to +\infty} \int_I f_n(x) \dif x\]
-
-% Formattazione per la dimostrazione, etc.
 \vspace{2em}
 \noindent
-\normalfont \normalsize
-\textsc{Dimostrazione}: Parlando di integrale di Riemann, si dimostra che
-\[\left \vert \int_I f_n(x) \dif x - \int_I f(x) \dif x \right \vert \leq \int_I \left \vert f_n(x) - f(x) \right \vert \dif x < \epsilon \cdot m(I)\]
-in quanto $\left \vert f_n(x) - f(x) \right \vert < \epsilon, \forall x$ se $n \geq n_epsilon$ per la convergenza uniforme.
+\subsection{Teorema di integrabilità}
+Si espone di seguito il \textbf{teorema di integrabilità}:
 
+% Tabella per le definizione di concetti, etc...
 \vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
 \noindent
-\textbf{Dimostrazione}: Si consideri la seguente successione di funzioni
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{TEOREMA DI INTEGRABILITÀ}}\\
+    \parbox{\linewidth}{
+        Sia $I \subseteq \mathbb{R}$ un \textbf{intervallo compatto} (ovvero limitato, con misura finita, denotata con $m(I)$) e sia 
+        \[f_n : I \longmapsto \mathbb{R}\]
+        \textbf{integrabile}, $\forall n$; sia, inoltre
+        \[\lim_{n \to +\infty} f_n = f\]
+        \textbf{uniforme}, con
+        \[f : I \longmapsto \mathbb{R}\]
+        allora $f$ è \textbf{integrabile} e si ha che
+        \[\int_I \lim_{n \to +\infty} f_n(x) \dif x = \lim_{n \to +\infty} \int_I f_n(x) \dif x\]
+        \vspace{-1mm}}\\
+    \hline
+\end{tabularx}
+
+
+% Formattazione per la dimostrazione, etc.
+\newpage
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: La parte complicata della dimostrazione è verificare l'integrabilità della $f$. Tale parte viene tralasciata, preferendo concentrarsi sul verificare la correttezza della formula. Parlando di integrale di Riemann, è noto che il valore assoluto dell'integrale è minore o uguale dell'integrale del valore assoluto; ciò permette di affermare che, sfruttando la linearità dell'integrale:
+\[\left \vert \int_I f_n(x) \dif x - \int_I f(x) \dif x \right \vert \leq \int_I \left \vert f_n(x) - f(x) \right \vert \dif x < \epsilon \cdot m(I)\]
+in quanto $\left \vert f_n(x) - f(x) \right \vert < \epsilon, \forall x$ se $n \geq n_\epsilon$ per la convergenza uniforme della $f_n$.
+
+\vspace{2em}
+\noindent
+\textbf{Esempio}: Si consideri la seguente successione di funzioni
 \[f_n : [0,1] \longmapsto \mathbb{R}\]
 in cui
 \[f_n(x) = \left\{
+    \rowcolors{1}{white}{white}
     \begin{array}{lll}
-        0 & \text{ se } & x \in \{0\} \cup \left]\frac{1}{n+1},1\right]\\
-        n & \text{ se } & x \in \left]0,\frac{1}{n}\right]
+        0 & \text{ se } & x \in \{0\} \cup \left]\dfrac{1}{n},1\right]\\
+        n & \text{ se } & x \in \left]0,\dfrac{1}{n}\right]
     \end{array}
 \right.\]
 in cui appare evidente come
-\[\int_[0,1] f(x) \dif x = 1, \forall n\]
+\[\int_{[0,1]} f_n(x) \dif x = 1, \forall n\]
 e, ovviamente,
 \[\lim_{n \to +\infty} \int_{[0,1]} f_n(x) = 1\]
 mentre
 \[\int_{[0,1]} \left(\lim_{n \to +\infty} f_n(x) \right) \dif x = \int_{[0,1]} 0 \dif x = 0\]
+per cui la formula vista in precedenza non vale essendo la convergenza puntuale. Ovvero
+\[\lim_{n \to +\infty} f_n(x) = 0, \hspace{1em} \forall x\]
+puntualmente.
 
 \newpage
 \noindent
@@ -1789,84 +1835,112 @@ mentre
 \end{center}
 È molto importante tenere in considerazione la differenza di definizione di convergenza puntuale e uniforme di una successione di funzioni. Infatti
 \begin{itemize}
-    \item se $f_n \to f$ puntualmente. Allora, $\forall x, \forall \epsilon > 0, \exists n_{\epsilon,x} \in \mathbb{N}$ tale per cui $\forall n \geq n_{\epsilon,x}$ si ottiene
-    \[\left \vert f_n(x) - f(x) \right \vert < \epsilon\]
+    \item se $f_n \to f$ \textbf{puntualmente}, allora
+    \[\forall x, \forall \epsilon > 0, \exists n_{\epsilon,x} \in \mathbb{N} \hspace{1em} \text{tale per cui} \hspace{1em} \forall n \geq n_{\epsilon,x} \hspace{1em}\text{ si ottiene } \hspace{1em} \left \vert f_n(x) - f(x) \right \vert < \epsilon\]
 
-    \item se $f_n \to f$ uniformemente. Allora $\forall \epsilon > 0, \exists n_\epsilon \in \mathbb{N}$ tale per cui $\forall n \geq n_\epsilon, \forall x$, si ottiene
-    \[\left \vert f_n(x) - f(x) \right \vert < \epsilon\]
+    \item se $f_n \to f$ \textbf{uniformemente}, allora
+    \[\forall \epsilon > 0, \exists n_\epsilon \in \mathbb{N} \hspace{1em} \text{tale per cui} \hspace{1em} \forall n \geq n_\epsilon, \forall x \hspace{1em} \text{ si ottiene } \hspace{1em} \left \vert f_n(x) - f(x) \right \vert < \epsilon\]
 \end{itemize}
-In cui è fondamentale capire la differenza di collocamento di $\forall x$: se posto all'inizio, l'$n_\epsilon$ dipende anche da $x$, se posto alla fine no.\\
-Non solo, ma è noto che l'uniforme convergenza implica la puntuale convergenza. Non solo, ma se una successione di funzioni continue converge uniformemente ad una funzione $f$, allora essa è continua.
+In cui è fondamentale capire la differenza di collocamento di $\forall x$: se posto all'inizio, come nel caso della convergenza puntuale, l'$n_\epsilon$ dipende anche da $x$; se posto alla fine, come nel caso della convergenza uniforme, non si ha tale dipendenza, per cui $n_\epsilon$ è il medesimo $\forall x$.\\
+Non solo, ma è noto che l'uniforme convergenza di una successione di funzioni implica la puntuale convergenza. Inoltre, se una successione di funzioni continue $\forall n$ converge uniformemente ad una funzione $f$, allora essa è continua. Se le funzioni $f_n$ sono integrabili $\forall n$, allora il limite uniforme $f$ è anch'esso integrabile (è facile che capire, però, che se le funzioni $f_n$ sono continue $\forall n$, allora sono integrabili, per cui anche il limite uniforme $f$ è continuo e quindi integrabile, ma in generale non è detto che le $f_n$ siano continue).
 
 \vspace{1em}
 \subsection{Teorema sulla derivata del limite}
-Di seguito si espone l'enunciato del \textbf{teorema sulla derivata del limite}:
+Di seguito si espone l'enunciato del \textbf{teorema sulla derivata del limite}, in cui si puntualizza come \textbf{non sia vero} che il limite uniforme di una successione di funzioni derivabile sia derivabile. Tuttavia si ha che
 
-\begin{theorem}
-    Siano $f_n : E \to \mathbb{R}$ derivabile, posto $C^1$, ossia continua con derivata continua. Sia
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{TEOREMA SULLA DERIVATA DEL LIMITE}}\\
+    \parbox{\linewidth}{Siano $f_n : E \to \mathbb{R}$ derivabili con derivata continua, ossia $f_n \in C^1(E)$. Sia
     \[\lim_{n \to +\infty} f_n(x) = f(x)\]
-    \textbf{puntuale} e sia
+    \textbf{puntuale} (non è neanche sufficiente che la convergenza sia puntuale in ogni punto, ma basterebbe un punto solo). Sia, invece,
     \[\lim_{n \to +\infty} f'_n = g\]
-    Allora $f$ è derivabile e $f'=g$
-\end{theorem}
+    \textbf{uniforme} (ossia si richiede il limite uniforme sulla successione delle derivate, e non della funzione $f_n$). Se valgono tali condizioni, allora $f$ è derivabile e $f'=g$.\vspace{3mm}}\\
+    \hline
+\end{tabularx}
 
 % Formattazione per la dimostrazione, etc.
 \vspace{2em}
 \noindent
 \normalfont \normalsize
-\textsc{Dimostrazione}: Sia $x_0 \in E$ e sia $E$ un intervallo (o un unione finita di intervalli). Dal teorema fondamentale del calcolo si ha che
-\[f_n(x) = f_n(x_0) + \int_{x_0}^x f'_{x_0}(t) \dif t\]
-Ma allora si può scrivere
+\textsc{Dimostrazione}: Sia $x_0 \in E$ e sia $E$ un intervallo (o un'unione finita di intervalli). Dal teorema fondamentale del calcolo si ha che
+\[f_n(x) = f_n(x_0) + \int_{x_0}^x f'_{n}(t) \dif t\]
+Da notare che è stato possibile considerare $f'_{n}(t)$ come funzione integranda, in quanto per ipotesi $f_n(x) \in C^1(E)$, per cui presenta una derivata continua e quindi integrabile.\\
+Si consideri, ora il limite puntuale della successione $f_n$, per $n \to +\infty$. Dal momento che $f'_n(x)$ è una successione di funzioni integrabile, in quanto continua, e convergente uniformemente a $g$, si può sfruttare il teorema di integrabilità, per cui il limite per $n \to +\infty$ dell'integrale è l'integrale del limite, ovvero
 \[f(x) = f_{x_0} + \int_{x_0}^x g(t) \dif t\]
-ma $g$ è continua perché limite uniforme di una funzione continua, per il teorema fondamentale del calcolo.
+ma $g$ è continua perché limite uniforme di una successione di funzioni continue, per cui la funzione
+\[f(x) = f_{x_0} + \int_{x_0}^x g(t) \dif t\]
+è derivabile per il teorema fondamentale del calcolo e la sua derivata è
+\[f'(x) = g(x)\]
 
-\vspace{1em}
+\vspace{2em}
 \noindent
-\textbf{Esempio}: Si consideri la successione di funzioni
+\textbf{Esempio}: Si consideri la successione di funzioni seguente
 \[f_n(x) = \sqrt{x^2 + \frac{1}{n}}\]
-allora è evidente che
+allora è evidente che tale successione converge uniformemente a
 \[\lim_{n \to +\infty} f_n = \vert x \vert\]
-ed è una convergenza uniforme, in quanto
-\[\left \vert \sqrt{x^2 + \frac{1}{n}} - \vert x \vert \right \vert = \dfrac{x^2 + \dfrac{1}{n} - x^2}{\sqrt{x^2} + \dfrac{1}{n} + \vert x \vert}\]
-Allora se si sceglie $x=\dfrac{1}{\sqrt{n}}$ si ottiene
-\[\dfrac{\dfrac{1}{n}}{\dfrac{1}{\sqrt{n}}} = \frac{\sqrt{n}}{n}\]
-che ovviamente può essere reso piccolo quanto si vuole, da cui la convergenza uniforme.\\
-Tuttavia, si ha che
+È immediato evincere che si tratti di una convergenza uniforme, in quanto
+\[\left \vert \sqrt{x^2 + \frac{1}{n}} - \vert x \vert \right \vert = \left(\sqrt{x^2 + \frac{1}{n}} - \vert x \vert \right)\cdot \dfrac{\sqrt{x^2 + \dfrac{1}{n}}+ \vert x \vert }{\sqrt{x^2 + \dfrac{1}{n}} + \vert x \vert} = \dfrac{x^2 + \dfrac{1}{n} - x^2}{\sqrt{x^2 + \dfrac{1}{n}} + \vert x \vert}\]
+Tramite una banale maggiorazione, riducendo il denominatore, si ottiene che
+\[\dfrac{x^2 + \dfrac{1}{n} - x^2}{\sqrt{x^2 + \dfrac{1}{n}} + \vert x \vert} < \dfrac{x^2 + \dfrac{1}{n} - x^2}{\dfrac{1}{\sqrt{n}}} = \dfrac{1}{\sqrt{n}}\]
+che ovviamente può essere reso piccolo quanto si vuole $\left(\text{basta scegliere }n>\dfrac{1}{\epsilon^2}\right)$, indipendentemente da $x$, da cui la convergenza uniforme.\\
+Non solo, ma si ha che $f_n$ è derivabile $\forall n$ e, in particolare,
 \[f'_n(x) = \dfrac{x}{\sqrt{x^2 + \dfrac{1}{n}}}\]
-mentre il limite non è derivabile.
+Tuttavia, il limite uniforme $f=\vert x\vert$ non è derivabile.
 
-\vspace{1em}
+\vspace{2em}
 \noindent
-\textbf{Osservazione}: L'ipotesi del teorema richiede che
+\textbf{Osservazione}: L'ipotesi del teorema sulla derivata richiede che
 \[f_n(x) \to f(x)\]
-puntualmente. Tuttavia, il teorema permette di affermare che
+puntualmente. Tuttavia, si richiede che la successione delle derivate converga uniformemente a $g$. Ha senso chiedersi se, a posteriori, effettivamente, la successione di funzioni di partenza converga anch'essa uniformemente a $f$. In altre parole, il teorema potrebbe suggerire che, siccome
 \[f_n'(x) \to f'(x)\]
-uniformemente. Allora si può concludere che la successione converge a $f$ uniformemente? No, e il controesempio è
+uniformemente, allora anche la successione di funzioni di partenza converge a $f$ uniformemente. Tuttavia, ciò è falso, e il controesempio è
 \[f_n(x) = \frac{n}{n+x^2}\]
 la quale è una successione che converge puntualmente a $1$, ossia
 \[\lim_{n \to +\infty} f_n(x) = 1\]
-ma non in modo uniforme. Tuttavia, si ha che
+ma non in modo uniforme (in quanto per $n$ piccolo fissato, se $x \to +\infty$ la funzione tende a $0$, per cui il suo grafico non può essere contenuto nella fascia $1-\epsilon,1+\epsilon$, $\forall \epsilon$). Tuttavia, si ha che
 \[f'_n(x) = \frac{-2nx}{(n+x^2)^2}\]
-in cui si ha che
-\[\lim_{n \to +infty} f'_n = 0\]
+in cui si ha che la successione delle derivate $f'_n$ converge
+\[\lim_{n \to +\infty} f'_n = 0\]
 uniformemente. Per dimostrarlo si ottiene che
 \[\left \vert f'_n(x) - 0 \right \vert = \frac{2nx}{(n+x^2)^2} = g_n(x)\]
-Per trovare una maggiorazione di $g_n(x)$, si considera il massimo della funzione, tramite la derivata della $g_n$ stessa, ovvero
-\[g'_n(x) = \frac{2n \cdot (n+x^2)^2 - 4n x \cdot (n+x^2) \cdot 2x}{(n+x^2)^3} = \frac{n-3x^2}{(n+x^2)^3}\]
+Per trovare una maggiorazione di $g_n(x)$, non si può fissare $x=\sqrt{n}$, in quanto questo legherebbe la dimostrazione all'$x$ scelto. Pertanto, si considera il massimo della funzione, tramite la derivata della $g_n$ stessa, ovvero
+\[g'_n(x) = \frac{2n \cdot (n+x^2)^2 - 4n x \cdot (n+x^2) \cdot 2x}{(n+x^2)^3} = \frac{2n \cdot (n-3x^2)}{(n+x^2)^4}\]
 È facile capire che per
 \[x^2=\frac{n}{3} \hspace{1em} \rightarrow \hspace{1em} g'_n(x) = 0\]
-Essendo la $g_n$ una funzione dispari, $x=\sqrt{\frac{n}{3}}$ è un punto di massimo per la funzione $f'_n$. Da ciò si evince che
-... continua ...\\
-Ciò dimostra che una successione di funzioni può presentare una convergenza puntuale, mentre la sua derivata presenta una convergenza puntuale.
+Essendo la $g_n$ una funzione dispari, in cui $g_n(0)=0$ e per $n \to +\infty$ $g_n(x) \to 0$, esiste certamente un massimo: il punto di estremo relativo è $x=\sqrt{\dfrac{n}{3}}$, che è proprio è un punto di massimo per la funzione $f'_n$. Per ottenere il massimo cercato, si calcola
+\[\left \vert g_n \left(\sqrt{\dfrac{n}{3}}\right) \right \vert = \left \vert f'_n \left(\sqrt{\dfrac{n}{3}}\right) \right \vert = K \cdot \dfrac{1}{\sqrt{n}}\]
+per cui si è ottenuto che la la $\vert f'_n(x) - 0 \vert$ può essere maggiorata da una quantità che dipende solamente da $n$, ovvero
+\[\left \vert f'_n(x) - 0 \right \vert = \frac{2nx}{(n+x^2)^2} = g_n(x) < K \cdot \dfrac{1}{\sqrt{n}} < \epsilon\]
+Ciò dimostra che una successione di funzioni può presentare una convergenza puntuale, ma non uniforme, mentre la successione delle sue derivata presenta una convergenza uniforme.
 
 \vspace{1em}
 \noindent
 \subsection{Serie di funzioni}
-Si consideri la serie di funzioni seguente
-\[\sum_{n=0}^{+\infty} f_n(x)\]
-e sia
-\[s_n(x) = \sum_{k=0}^n f_k(x) \hspace{1em} \text{se} \hspace{1em} s_n(x) \to s(x)\]
-in cui $s(x)$ si dice somma della serie (che, ovviamente, è una funzione). Dal momento che una successione di funzioni può convergere in modo puntuale, oppure uniforme.
+Di seguito si espone la definizione di \textbf{serie di funzioni}:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{SERIE DI FUNZIONI}}\\
+    \parbox{\linewidth}{Data una successione di funzioni $(f_n)_n$ con valori nel campo reale $f_n : E \longmapsto \mathbb{R}$. Si chiama serie di funzioni l'oggetto matematico seguente
+    \[\sum_{n=0}^{+\infty} f_n(x)\]
+    in cui la somma parziale $s_n(x)$ è una funzione ed è definita come
+    \[s_n(x) = \sum_{k=0}^n f_k(x)\]
+    per cui serie di funzioni si dirà convergente alla somma $s(x)$, che è sempre una funzione, se la successione delle somme parziali $s_n(x)$ converge a lla funzione $s(x)$, ossia $s_n(x) \to s(x)$; dal momento che la successione di somme parziali può convergere alla funzione $s(x)$ in modo uniforme o solo puntuale, si parlerà di \textbf{limite uniforme} o \textbf{puntuale} della serie.\vspace{3mm}}\\
+    \hline
+\end{tabularx}
 
 \vspace{1em}
 \noindent
@@ -1874,11 +1948,12 @@ in cui $s(x)$ si dice somma della serie (che, ovviamente, è una funzione). Dal 
 \[\sum_{n=0}^{+\infty} f_n(x) = s(x)\]
 una serie convergente in modo uniforme. Naturalmente, per la condizione necessaria della convergenza, si sa che
 \[\lim_{n \to +\infty} f_n(x) = 0\]
-ed è una convergenza uniforme, in quanto è ovvio che
+ovverosia la successione dei termini generali è infinitesima. Siccome serie di partenza converge uniformemente a $s(x)$, è immediato anche evincere che la successione dei termini generali converge a $0$ uniformemente, in quanto è ovvio che
 \[f_n(x) = s_n(x) - s_{n-1}(x)\]
-e siccome entrambe le somme parziali convergono a $s(x)$ in modo uniforme, allora anche $f(x)$ converge a $0$ uniformemente.
+e siccome entrambe le somme parziali convergono a $s(x)$ in modo uniforme (per ipotesi), allora anche $f_(x)$ converge a $0$ uniformemente, in quanto differenza di funzioni uniformemente convergenti è anch'essa uniformemente convergente.\\
+Pertanto, se la successione dei termini generali, non converge a $0$ in modo uniforme, automaticamente la serie di partenza non può essere uniformemente convergente. Tuttavia, se la successione converge a $0$ in modo uniforme, ciò non è sufficiente ad affermare che la convergenza della serie di partenza sia anch'essa uniforme.
 
-\vspace{1em}
+\vspace{2em}
 \noindent
 \textbf{Esempio}: Si consideri la seguente serie
 \[\sum_{n=0}^{+\infty} x^n = \frac{1}{1-x}\]
@@ -1887,143 +1962,281 @@ in quanto si è richiesto che $\vert x \vert < 1$. Tuttavia, tale convergenza no
 in modo puntuale.
 
 \vspace{1em}
-\subsubsection{Criterio di convergenza uniforme di una serie di funzioni - M-test di Weierstrass}
-Di seguito si espone il fondamentale criterio per la convergenza uniforme di uan serie di funzioni:
+\subsection{Criterio di convergenza uniforme per serie di funzioni - M-test di Weierstrass}
+Di seguito si espone il fondamentale \textbf{criterio per la convergenza uniforme di una serie di funzioni}, noto come \textbf{M-test di Weierstrass}:
 
-\begin{theorem}
-    Sia $f_n : A \subseteq \mathbb{C} \longmapsto \mathbb{C}$ ed esista una successione numerica $(a_n)_n$, tale per cui $s_n \in \mathbb{R}$, con $a_n \geq 0, \forall n$ (anche se sarebbe sufficiente richiederlo definitivamente) tale per cui
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{M-TEST DI WEIERSTRASS}}\\
+    \parbox{\linewidth}{Sia data
+    \[f_n : A \subseteq \mathbb{C} \longmapsto \mathbb{C}\]
+    ed esista una successione numerica $(a_n)_n$, tale per cui $a_n \in \mathbb{R}$, con $a_n \geq 0, \forall n$ tale per cui
     \begin{enumerate}
-        \item $\forall n \in \mathbb{N} \hspace{1em} \vert f_n(z) \vert \leq a_n, \forall z \subset A$
+        \item $\forall n \in \mathbb{N}$, anche se sarebbe sufficiente richiederlo definitivamente, si ha che
+        \[\vert f_n(z) \vert \leq a_n \hspace{1em} \forall z \in A\]
         \item $\displaystyle{\sum_{n=0}^{+\infty} a_n}$ è convergente
     \end{enumerate}
-    allora la serie $\displaystyle{\sum_{n=0}^{+\infty} f_n}$ converge assolutamente e uniformemente.
-\end{theorem}
+    allora la serie
+    \[\sum_{n=0}^{+\infty} f_n\]
+    converge assolutamente (in quanto si lavora sui moduli) e uniformemente.\vspace{3mm}}\\
+    \hline
+\end{tabularx}
 
 % Formattazione per la dimostrazione, etc.
-\vspace{2em}
+\newpage
 \noindent
 \normalfont \normalsize
-\textsc{Dimostrazione}: Usando il criterio di Cauchy, si ha che $\forall \epsilon > 0, \exists n_\epsilon$ tale che $\forall n \geq n_\epsilon$ e $\forall p \in \mathbb{N}$
-\[\left \vert \sum_{k=n+1}^{n+p} f_k(z) \right \vert < \epsilon\]
-Ciò è vero, infatti
-\[\left \vert \sum_{k=}\right \vert\]
+\textsc{Dimostrazione}: Usando il criterio di Cauchy, si dimostri che
+\[\forall \epsilon > 0, \exists n_\epsilon \hspace{1em} \text{tale che} \hspace{1em} \forall n \geq n_\epsilon \hspace{1em} \text{e} \hspace{1em} \forall p \in \mathbb{N} \hspace{1em} \text{si ha che} \hspace{1em} \left \vert \sum_{k=n+1}^{n+p} f_k(z) \right \vert < \epsilon\]
+Ciò è vero, in quanto
+\[\left \vert \sum_{k=n+1}^{n+p} f_k(z) \right \vert \leq \sum_{k=n+1}^{n+p} \left \vert f_k(z) \right \vert \leq \sum_{k=n+1}^{n+p} f_k(z) a_n < \epsilon\]
+in quanto la serie
+\[\displaystyle{\sum_{n=0}^{+\infty} a_n}\]
+è convergente per ipotesi, quindi è di Cauchy, per cui è $< \epsilon$.
 
-\vspace{1em}
+\vspace{2em}
 \noindent
-\textbf{Osservazione}: Data una serie di funzioni
-\[\sum_{n=0}^{+\infty} f_n(x)\]
-\begin{itemize}
-    \item per provare la convergenza uniforme
-    \begin{itemize}
-        \item si adotta il \textbf{test di Weierstrass}
-        \item si adotta la definizione, cercando la maggiorazione con qualcosa
-        \item si impiega il criterio di Cauchy
-    \end{itemize}
-    \item per provare la non convergenza uniforme
-    \begin{itemize}
-        \item si verifica se $f_n(x)$ converge a $0$ in modo uniforme.
-        \item si usa la definizione per assurdo, scegliendo oculatamente $x$ in funzione di $n$
-        \item si impiega il criterio di Cauchy, scrivendo
-        \[\left \vert \sum_{k=n}^{n+p} f_n(x) \right \vert < \frac{1}{1000}\]
-        scegliendo opportunamente $p$ e $x$
-    \end{itemize}
-\end{itemize}
+\textbf{Osservazione}: Si consideri il seguente \textit{vademecum} per la determinazione della convergenza uniforme di una serie di funzioni:
 
+% Tabella per le definizione di concetti, etc...
 \vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{VADEMECUM PER LA CONVERGENZA UNIFORME DI UNA SERIE}}\\
+    \parbox{\linewidth}{Data una serie di funzioni
+    \[\sum_{n=0}^{+\infty} f_n(x)\]
+    per provare la \textbf{convergenza uniforme}
+        \begin{itemize}
+            \item si adotta il \textbf{test di Weierstrass};
+            \item si adotta la definizione, cercando la maggiorazione con qualcosa;
+            \item si impiega il criterio di Cauchy;
+        \end{itemize}
+    per provare la \textbf{non convergenza uniforme}
+        \begin{itemize}
+            \item si verifica se $f_n(x)$ converge a $0$ in modo uniforme, perché se non converge uniformemente, automaticamente la serie non converge uniformemente;
+            \item si usa la definizione per assurdo, scegliendo oculatamente $x$ in funzione di $n$;
+            \item si impiega il criterio di Cauchy, scrivendo
+            \[\left \vert \sum_{k=n}^{n+p} f_n(x) \right \vert < \frac{1}{1000}\]
+            scegliendo opportunamente $p$ e $x$.
+        \end{itemize}
+    \vspace{1mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{2Em}
 \noindent
 \textbf{Esercizio 1}: La serie
 \[\sum_{n=0}^{+\infty} x^n\]
-è uniformemente convergente sull'intervallo $\left] - \frac{1}{2}, \frac{1}{2}\right[$. Infatti, è sufficiente considerare il test di Weierstrass e osservare che
+è uniformemente convergente sull'intervallo $\left] - \dfrac{1}{2}, \dfrac{1}{2}\right[$. Infatti, è sufficiente considerare il test di Weierstrass e osservare che
 \[\left \vert x^n \right \vert \leq \left(\frac{1}{2}\right)^n\]
 
 \vspace{1em}
 \noindent
 \textbf{Esercizio 2}: La serie
 \[\sum_{n=0}^{+\infty} \frac{\sin(nx)}{2^n}\]
-è uniformemente convergente, in quanto, per il test di Weierstrass, in quanto
-\[\left \vert \frac{\sin(nx)}{x} \right \vert < \left(\frac{1}{3}\right)^n\]
+è uniformemente convergente su $\mathbb{R}$, in quanto, per il test di Weierstrass, si ha che
+\[\left \vert \frac{\sin(nx)}{2^n} \right \vert \leq \left(\frac{1}{2}\right)^n\]
 per cui è uniformemente convergente.
 
 \vspace{1em}
 \noindent
 \textbf{Esercizio 3}: La serie
 \[\sum_{n=1}^{+\infty} \frac{\sqrt{1-x^{2n}}}{3^n}\]
-è sufficiente applicare il test di Weierstrass e osservare che
-\[\frac{\sqrt{1-x^{2n}}}{3^n} < \frac{1}{3}^n\]
-per cui è convergente.
-
+è uniformemente convergente sull'intervallo $[-1,1]$. Infatti, è sufficiente applicare il test di Weierstrass e osservare che
+\[\frac{\sqrt{1-x^{2n}}}{3^n} < \left(\frac{1}{3}\right)^n\]
+per cui la serie di partenza converge uniformemente sull'intervallo $[-1,1]$.
 
 \vspace{1em}
 \noindent
 \textbf{Esercizio 4}: Si consideri la serie seguente
 \[\sum_{n=1}^{+\infty} (-1)^n \frac{\arctan(nx)}{n}\]
-Studiandola per $x>0$, si evince che la serie diventa di Leibniz. Il termine generale soddisfa le condizioni di Leibniz, ma per quanto riguarda la stima dell'errore si osserva
-\[s_n(x)-s(x) \leq a_n \hspace{1em} \rightarrow \hspace{1em} \left \vert \right \vert\]
+Si capisce immediatamente che il comportamento della serie dei moduli è identico a quello della serie armonica, che diverge. Tuttavia, la serie presenta un segno alternato, il che implica la possibilità di una convergenza semplice, come nel caso della serie di Leibniz. Ovviamente, se una serie di funzioni non converge assolutamente, non può funzionare il test di Weierstrass.\\
+Studiandola per $x>0$ (ma essendo dispari, per $x<0$ la cosa è analoga), si evince che la serie diventa di tipo Leibniz. Il termine generale soddisfa le condizioni di Leibniz, infatti
+\begin{itemize}
+    \item il termine $a_n$ è positivo, ovvero
+    \[\frac{\arctan(nx)}{n} > 0, \hspace{1em} \forall n\]
+    \item il termine $a_n$ è infinitesima, in quanto
+    \[\lim_{{n \to +\infty}} \frac{\arctan(nx)}{n} = 0\]
+    \item il termine $a_n$ è decrescente, in quanto
+    \[\dfrac{\dif}{\dif n} \frac{\arctan(nx)}{n} = \dfrac{\dfrac{nx}{1+(nx)^2} - \arctan(nx)}{n^2}\]
+    che quindi permette di ottenere
+    \[\arctan(nx) > \dfrac{nx}{1+(nx)^2}\]
+    per cui per $n$ sufficientemente grande tale disuguaglianza è verificata.
+\end{itemize}
+ciò permette di affermare che la serie di partenza converge semplicemente e, quindi, puntualmente. Tuttavia Leibniz permette anche di stimare la somma, tramite la formula seguente
+\[s_n(x)-s(x) \leq a_n\]
+ma se si sostituisce ad $a_n$ il termine $n$-esimo e si esegue una banale maggiorazione, si ottiene
+\[s_n(x)-s(x) \leq a_n = \frac{\arctan(nx)}{n} \leq \dfrac{\pi}{2} \cdot \dfrac{1}{n}\]
+e siccome
+\[\dfrac{\pi}{2} \cdot \dfrac{1}{n}\]
+tende a $0$ uniformemente, in quanto non compare più $x$, si conclude che anche la serie di partenza deve convergere uniformemente.
 
-\vspace{1em}
+\vspace{2em}
+\noindent
+\textbf{Osservazione}: Pertanto, se si ha una serie di funzioni di tipo Leibniz che soddisfa il criterio di Leibniz, si ha che la serie converge semplicemente e anche puntualmente. Se, però, tramite la stima della somma, si riesce a maggiorare il termine generale $a_n$ con qualcosa che non dipende da $x$, ma che è infinitesimo, si ottiene la convergenza uniforme cercata.
+
+\vspace{2em}
 \noindent
 \textbf{Esercizio 5}: Si consideri la serie seguente
 \[\sum_{n=1}^{+\infty} \frac{x}{x^2+n^2}\]
-Allora si può verificare che il termine generale converge uniformemente a $0$. Per farlo si studia la successione di funzioni
+e si dimostri che tale serie non può convergere uniformemente su $\mathbb{R}$. Dapprincipio, si può verificare che il termine generale converge uniformemente a $0$. Per farlo si studia la successione di funzioni
 \[f_n = \frac{x}{n^2+x^2}\]
 e se ne calcola la derivata, ossia
 \[f'_n(x) = \frac{n^2 + x^2 - 2x^2}{(n^2+x^2)^2}\]
-e si evince facilmente che tale derivata si annulla in $\vert x \vert = n$, per cui $x_0=n$ è punto di massimo. Allora posto $x=n$ si ottiene che
-\[\frac{n}{n^+n^2} = \frac{1}{2n} < \epsilon, \forall \epsilon\]
-Quindi il termine generale è infinitesimo uniformemente. La serie converge sicuramente puntualmente, in quanto
+e si evince facilmente che tale derivata si annulla in $\vert x \vert = n$, per cui $x_0=n$ è punto di massimo. Quindi il massimo della funzione è $f_n$ calcolato in $x=n$, da cui
+\[f_n(n)=\frac{n}{n^2+n^2} = \frac{1}{2n} < \epsilon \hspace{1em} \forall \epsilon\]
+Quindi il termine generale è infinitesimo uniformemente. Tuttavia, il fatto che la successione dei termini generali converga uniformemente a $0$ non significa che la serie converga uniformemente. Evidentemente, la serie converge puntualmente, in quanto
 \[\left \vert \frac{x}{n^2+x^2} \right \vert \leq \left \vert x \right \vert \frac{1}{n}\]
-ma tale maggiorazione dipende da $x$. Se la serie convergesse uniformemente, dovrebbe essere vero che $\forall \epsilon > 0$, $\exists n_\epsilon \in \mathbb{N}$ tale che $\forall n \geq n_\epsilon$, $\forall p \in \mathbb{N}$
-\[\left \vert \sum_{k=n}^{n+p} f_n(x) \right \vert < \epsilon, \hspace{0.5em} \forall x\]
-Se fosse vero, ponendo $\epsilon=\frac{1}{1000}$, fissato $n \geq n_\epsilon$, ponendo $p=n$
-\[\frac{1}{1000} > \sum_{k=n}^{2n} \frac{x}{n^2+x^2} = \frac{x}{n^2+x^2}+\frac{x}{(n+1)^2+x^2}+\frac{x}{(n+2)^2+x^2}+\dots+\frac{x}{(2n)^2+x^2} \geq \frac{n^2}{(2n)^2 + n^2} = \frac{n^2}{5n^2} = \frac{1}{5}\]
-che, ovviamente, è assurdo.
+ma tale maggiorazione dipende da $x$. Se la serie convergesse uniformemente, infatti, dovrebbe essere vero che
+\[\forall \epsilon > 0, \exists n_\epsilon \in \mathbb{N} \hspace{1em} \text{tale che} \hspace{1em} \forall n \geq n_\epsilon \hspace{1em} \text{e} \hspace{1em} \forall p \in \mathbb{N} \hspace{1em} \text{si ha che} \hspace{1em} \left \vert \sum_{k=n}^{n+p} f_n(x) \right \vert < \epsilon \hspace{1em} \forall x\]
+Se fosse vero, ponendo $\epsilon=\dfrac{1}{1000}$, fissano $n \geq n_\epsilon$ e ponendo $p=n$ si dovrebbe avere che
+\[\frac{1}{1000} > \sum_{k=n}^{2n} \frac{x}{n^2+x^2} = \frac{x}{n^2+x^2}+\frac{x}{(n+1)^2+x^2}+\frac{x}{(n+2)^2+x^2}+\dots+\frac{x}{(2n)^2+x^2}\]
+Ma ovviamente, avendo $p=n$ termini a somma, per ottenere una minorazione, si somma $p=n$ volte il termine più piccolo, ossia l'ultimo, per cui
+\[\frac{x}{n^2+x^2}+\frac{x}{(n+1)^2+x^2}+\frac{x}{(n+2)^2+x^2}+\dots+\frac{x}{(2n)^2+x^2} \geq n \cdot \dfrac{x}{(2n)^2+x^2}\]
+Non solo, se la convergenza fosse uniforme, tale disuguaglianza dovrebbe essere verificata $\forall x$, per cui anche da $x=n$, ma ciò porta al seguente risultato
+\[n \cdot \dfrac{x}{(2n)^2+x^2} = \frac{n^2}{(2n)^2 + n^2} = \frac{n^2}{5n^2} = \frac{1}{5}\]
+ma ovviamente tale quantità non è minore dell'$\epsilon$ scelto in partenza, per cui si è ottenuto l'assurdo cercato.
 
 \newpage
 \noindent
 \begin{center}
     14 Ottobre 2022
 \end{center}
-Uno dei test più importanti da adottare per dimostrare che una serie di funzioni è convergente uniformemente (e, quindi, assolutamente) è il test di Weierstrass. Se ciò non funziona, si può provare con il criterio di Cauchy.\\
-Similmente, per dimostrare che una serie non è uniformemente convergente si prova a vedere se il termine generale non è infinitesimo.\\
-Se lo è, la dimostrazione diviene più complessa ed è necessario, a questo stadio utilizzare ancora Cauchy.\\
-Le serie di funzioni sono fondamentali per costruire funzioni più complesse. Infatti, dato uno spazio vettoriale come $\mathbb{R}^n$, è possibile costruire ogni elemento dello spazio come combinazione lineare dei vettori della base.\\
-Si consideri, per esempio, la somma parziale seguente:
+Uno dei test più importanti da adottare per dimostrare che una serie di funzioni è convergente uniformemente (e, quindi, assolutamente) è l'\textbf{M-Test di Weierstrass}. Se ciò non funziona, al fine di dimostrare l'uniforme convergenza, si può provare con il criterio di Cauchy. In alternativa si cerca di avere una stima del valore assoluto della differenza $\left \vert f_n - f \right \vert$, tramite la determinazione del massimo oppure con la stima della somma di Leibniz.\\
+Similmente, per dimostrare che una serie non è uniformemente convergente si prova a vedere se il termine generale è infinitesimo in modo non uniforme: se così è, la serie di partenza non può convergere uniformemente.\\
+Se lo è, la dimostrazione diviene più complessa ed è necessario, a questo stadio, utilizzare ancora Cauchy, andando a dimostrare che non può essere
+\[\left \vert \sum_{k=n+1}^{n+p} f_k \right \vert < \epsilon\]
+ma scegliendo oculatamente il valore di $p$ e di $x$ in funzione di $n$ opportunamente.
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Le serie di funzioni sono fondamentali per costruire funzioni più complesse. Infatti, dato uno spazio vettoriale come $\mathbb{R}^n$, è possibile costruire ogni elemento dello spazio come combinazione lineare dei vettori della base. Ciò che è di interesse sono spazi vettoriali di dimensione infinita, i cui elementi sono funzioni, come $C^k(I)$, ossia lo spazio di funzioni derivabili con derivata $k$-esima continua.\\
+Si consideri, per esempio, lo spazio vettoriale $C([-\pi,\pi])$ delle funzioni continue sull'intervallo $[-\pi,\pi]$. Allora, tale spazio presenta una dimensione infinita e determinarne una base non è semplice. Pertanto, se si considera
+\[X = \{f \in C([-\pi,\pi]), \hspace{0.5em} \text{con} \hspace{0.5em} f \hspace{0.5em} \text{pari}\}\]
+come spazio vettoriale. Un esempio di funzione che appartiene a tale spazio è la funzione $\cos(x)$, ma anche $\cos(kx)$, o ancora $\alpha_k \cdot \cos(k x)$. Allora, se si considera la combinazione lineare seguente, del tutto identica ad una somma, parziale
 \[\sum_{k=0}^{n} \alpha_k \cdot \cos(kx)\]
 in cui
-\[\alpha_k = \frac{1}{(2n+1)^2}\]
-Il grafico di tale somma parziale è un triangolo non derivabile in $x=0$. Per ottenere un triangolo perfetto si deve fare tendere $n \to +\infty$.\\
-Si può considerare, in generale, l'insieme
-\[\Phi_n = \{\phi_n : n \in \mathbb{N}\}\]
-in cui $\phi_n$ è una generica successione di funzioni. In generale, pertanto, dato $I \subseteq \mathbb{C} \longmapsto \mathbb{C}$
-si dice che ... continua ... se esiste una successione di funzioni $(\alpha_n)_n$ in $\mathbb{C}$ tale che
-\[\phi(x) = \sum_{n=0}^{+\infty} \alpha_n \cdot \phi_n(x)\]
+\[\alpha_k = \frac{1}{(2n+1)^2} \hspace{1em} \text{e} \hspace{1em} k=2n+1\]
+si ottiene una funzione che presenta come grafico un triangolo isoscele, tanto meglio approssimato quanto più il numero delle ripetizioni $n$ diventa grande. Tuttavia, il grafico di tale somma parziale è un triangolo non derivabile in $x=0$; per ottenere un triangolo perfetto (derivabile in $x=0$) si deve fare tendere $n \to +\infty$, ovverosia si deve considerare una serie.
+
+\newpage
+\subsection{Funzione sviluppabile in serie}
+Di seguito si esprime il concetto di \textbf{funzione sviluppabile in serie}:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{FUNZIONE SVILUPPABILE IN SERIE}}\\
+    \parbox{\linewidth}{Preso in considerazione, in generale, l'insieme
+    \[\Phi_n = \{\phi_n : n \in \mathbb{N}\}\]
+    in cui $(\phi_n)_n$ è una generica successione di funzioni, con
+    \[\phi_n : E \subset \mathbb{C} \longmapsto \mathbb{C}\]
+    Allora, data una funzione
+    \[\phi : E \subset \mathbb{C} \longmapsto \mathbb{C}\]
+    si dice che essa è sviluppabile in serie di elementi di $\Phi$ se esiste una successione di funzioni $(\alpha_n)_n$ in $\mathbb{C}$ tale che
+    \[\phi(x) = \sum_{n=0}^{+\infty} \alpha_n \cdot \phi_n(x)\]
+    \vspace{-1mm}}\\
+    \hline
+\end{tabularx}
 
 \vspace{1em}
 \noindent
-Ciò, naturalmente, a livello generale. Invece si ha che, ... continua ..., si dice sviluppabile in serie di centro $z_0$, se esiste una successione di funzioni $(\alpha_n)_n$ in $\mathbb{C}$ tale che
-\[\phi(x) = \alpha_0 + \sum_{n=1}^{+\infty} \alpha_n \cdot (z-z_0)^n = \sum_{n=0}^{+\infty} \alpha_n \cdot (z-z_0)^n\]
+\subsubsection{Funzione sviluppabile in serie di potenze}
+La definizione di cui sopra, naturalmente, viene fornita a livello generale, ma ciò che è di interesse è considerare $\Phi$ come un insieme di potenze.
 
+% Tabella per le definizione di concetti, etc...
 \vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
 \noindent
-\textbf{Osservazione}: Si consideri, a tal proposito, la serie seguente
-\[\sum_{n=0}^{+\infty} \alpha_n \cdot \frac{1}{z^n} = \frac{1}{1-z}\]
-con $\alpha_n=1, \forall n$. Allora si ha che tale ... continua ...
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{FUNZIONE SVILUPPABILE IN SERIE DI POTENZE}}\\
+    \parbox{\linewidth}{Dato $z_0 \in \mathbb{C}$ e
+    \[\Phi = \left\{1,(z-z_0)^n,\hspace{0.5em}\text{con}\hspace{0.5em}n\in \mathbb{N}^+\right\}\]
+    Allora, data una funzione
+    \[\phi : E \subset \mathbb{C} \longmapsto \mathbb{C}\]
+    si dice sviluppabile in serie di potenze di centro $z_0$, se esiste una successione di funzioni $(\alpha_n)_n$ in $\mathbb{C}$ tale che
+    \[\phi(x) = \alpha_0 + \sum_{n=1}^{+\infty} \alpha_n \cdot (z-z_0)^n = \sum_{n=0}^{+\infty} \alpha_n \cdot (z-z_0)^n\]
+    in cui la prima forma è preferibile in quanto quando $z=z_0$ e $n=0$ si incorre nell'indeterminatezza della notazione $0^0$.
+    \vspace{3mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{2em}
+\noindent
+\textbf{Esempio}: Posto $z_0=0$ e $\alpha_n=1, \hspace{0.5em} \forall n$, si consideri la funzione seguente
+\[f=1+\sum_{n=1}^{+\infty} z^n\]
+Allora appare evidente che la funzione espressa in questo modo, con $\vert z \vert < 1$ è proprio la somma della serie geometria di ragione $z$, per cui
+\[f=1+\sum_{n=1}^{+\infty} \alpha_n \cdot z^n = \frac{1}{1-z}\]
+ovviamente, quindi, la funzione $f$ è definita solamente quando $\vert z \vert < 1$.\\
+Pertanto, la funzione $\dfrac{1}{1-z}$ è sviluppabile in serie di potenze con centro $z_0=0$ solamente nella palla
+\[\mathcal{B}(0,1) = \{z \in \mathbb{C} : \vert z \vert < 1\}\]
+ossia l'intervallo $]-1,1[$ in $\mathbb{R}$.
 
 \vspace{1em}
 \noindent
 \textbf{Esempio}: Si consideri, in $\mathbb{R}$, la serie di potenze
 \[\sum_{n=1}^{+\infty} \frac{1}{n} x^n\]
-deve essere definita sull'insieme di convergenza $[-1,1[$, in quanto per $x=1$ è la serie armonica, mentre per $x=-1$ è una serie di Leibniz e quindi converge.
+deve essere definita sull'insieme di convergenza $[-1,1[$, chiusa a sinistra, ma aperto a destra, in quanto per $x=1$ è la serie armonica, mentre per $x=-1$ è la serie di Leibniz e quindi converge.
 
 \vspace{1em}
 \noindent
-\textbf{Osservazione}: Si chiama insieme di convergenza l'insieme in cui la serie converge.
+\textbf{Esempio}: Si consideri, in $\mathbb{R}$, la serie di potenze
+\[\sum_{n=1}^{+\infty} (-1)^n \frac{1}{n} x^n\]
+deve essere definita sull'insieme di convergenza $]-1,1]$, aperto a sinistra, ma chiuso a destra, in quanto per $x=1$ è la serie di Leibniz, mentre per $x=-1$ è la serie armonica.
+
+\vspace{1em}
+\noindent
+\subsection{Insieme di convergenza}
+Di seguito si fornisce la definizione di \textbf{insieme di convergenza}:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{INSIEME DI CONVERGENZA}}\\
+    \parbox{\linewidth}{Si chiama insieme di convergenzadi una serie l'insieme dei punti dove la serie converge.\vspace{3mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{1em}
+\noindent
+\textbf{Esempio}: Si consideri, in $\mathbb{R}$, la serie di potenze
+\[\sum_{n=1}^{+\infty} \frac{1}{n^2} x^n\]
+deve essere definita sull'insieme di convergenza $[-1,1]$, chiuso sia a sinistra che a destra, in quanto la serie armonica generalizzata di ragione $2$ è convergente.
 
 \vspace{1em}
 \noindent
 \textbf{Esempio}: Si consideri la serie
 \[\sum_{n=1}^{+\infty} n^n \cdot x^n\]
-È chiaro che la serie non è convergente. L'unica possibilità è che $x=0$. In particolare, quindi, l'insieme di convergenza è $E=\{0\}$. È un intervallo, ma è degenere.
+È chiaro che la serie non è convergente; l'unica possibilità è che $x=0$, per cui l'insieme di convergenza è $E=\{0\}$, ossia un intervallo, anche se degenere.
+
+\vspace{1em}
+\noindent
+\textbf{Esempio}: Si consideri la serie
+\[\sum_{n=1}^{+\infty} \dfrac{1}{n^n} \cdot x^n\]
+È chiaro che la serie è sempre convergente; pertanto l'insieme di convergenza è $E=\mathbb{R}$.
 
 \vspace{1em}
 \noindent
@@ -2032,63 +2245,80 @@ deve essere definita sull'insieme di convergenza $[-1,1[$, in quanto per $x=1$ �
 è sempre definita in $z=z_0$ e il valore di convergenza è $\alpha_0$.
 
 \vspace{1em}
-\noindent
-\textbf{Esempio}: Una serie che presenta come insieme di convergenza tutto $\mathbb{R}$ è, proprio
-\[\sum_{n=0}^{+\infty} \frac{1}{n^n} \cdot x^n\]
+\subsection{Teorema di proprietà dell'insieme di convergenza di una serie di potenze}
+Negli esempi di cui sopra, \textbf{l'insieme di convergenza} che si andava determinando era \textbf{sempre un intervallo}, in quanto si lavorava in $\mathbb{R}$. Invece, in $\mathbb{C}$, l'insieme di convergenza è sempre un disco. In ogni caso si parla sempre di una palla di centro $z_0$.\\
+Di seguito si espone il \textbf{teorema di proprietà dell'insieme di convergenza di una serie di potenze}:
 
+% Tabella per le definizione di concetti, etc...
 \vspace{1em}
-\subsection{Teorema di proprietà dell'insieme di convergenza delle serie}
-Si consideri la serie di potenze di seguente
-\[\sum_{n=0}^{+\infty} \alpha_n \cdot (z-z_0)^n\]
-\begin{enumerate}
-    \item Si supponga che $\exists z_1 \in \mathbb{C}$, tale che
-    \[\sum_{n=0}^{+\infty} \alpha_n \cdot (z_1-z_0)^n\]
-    converge, allora
-    \[\forall z \in \mathbb{C} \hspace{1em} \text{se} \hspace{1em} \left \vert z - z_0 \right \vert < \left \vert z_1 - z_0 \right \vert\]
-    si ha che la serie di potenze di partenza converge assolutamente al numero $z$.
-
-    \item Su ogni palla chiusa compatta $\overline{\mathcal{B}(z_0,r)} \subset \mathcal{B}(z_0,\left \vert z_1-z_0 \right \vert)$ la convergenza è uniforme. Nella palla aperta, invece, si ha convergenza puntuale.
-\end{enumerate}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{TEOREMA DI PROPRIETÀ DELL'INSIEME DI CONVERGENZA DI UNA SERIE DI POTENZE}}\\
+    \parbox{\linewidth}{Si consideri la serie di potenze seguente
+    \[\sum_{n=0}^{+\infty} a_n \cdot (z-z_0)^n\]
+    \begin{enumerate}
+        \item Si supponga che $\exists z_1 \in \mathbb{C}$, tale che
+        \[\sum_{n=0}^{+\infty} a_n \cdot (z_1-z_0)^n\]
+        converge, allora $\forall z \in \mathbb{C}$, se si verifica che $\left \vert z - z_0 \right \vert < \left \vert z_1 - z_0 \right \vert$, allora la serie di potenze di partenza converge assolutamente al numero $z$, ovvero
+        \[\sum_{n=0}^{+\infty} \left \vert a_n \cdot (z-z_0)^n \right \vert\]
+        converge.
+    
+        \item Su ogni palla chiusa compatta $\overline{\mathcal{B}(z_0,r)} \subset \mathcal{B}(z_0,\left \vert z_1-z_0 \right \vert)$ la convergenza è uniforme. Nella palla aperta, invece, si ha convergenza puntuale.
+    \end{enumerate}
+    \vspace{1mm}}\\
+    \hline
+\end{tabularx}
 
 % Formattazione per la dimostrazione, etc.
 \vspace{2em}
 \noindent
 \normalfont \normalsize
 \textsc{Dimostrazione 1}: Per ipotesi è noto che
-\[\sum_{k=0}^{+\infty} \alpha_n \cdot (z_1-z_0)^n\]
+\[\sum_{n=0}^{+\infty} a_n \cdot (z_1-z_0)^n\]
 è convergente. Per la condizione necessaria per la convergenza di una serie, la successione dei termini generale è infinitesima, ossia
-\[\lim_{n \to +\infty} \alpha_n \cdot (z_1-z_0)^n = 0\]
-Siccome la successione 
-\[\left(\alpha_n \cdot (z_1 - z_0)^n \right)_n\]
+\[\lim_{n \to +\infty} a_n \cdot (z_1-z_0)^n = 0\]
+Pertanto, siccome la successione 
+\[\left(a_n \cdot (z_1 - z_0)^n \right)_n\]
 ammette limite, essa è limitata, ovverosia
-\[\forall N \in \mathbb{R}, \exists M \in \mathbb{R} \text{ tale che } \forall n > M, \left \vert \alpha_n \cdot (z_1-z_0)^n \right \vert < N \]
-Ma è possibile affermare che 
-\[\left \vert \alpha_n \cdot (z_1-z_0)^n \right \vert = \vert \alpha_n \vert \cdot \vert z-z_0 \vert^n < N\]
-Ma siccome ... continua...\\
-Ciò significa che
-\[\sum_{n=0}^{+\infty} N \cdot \left \vert \frac{z-z_0}{z_1-z_0} \right \vert^n\]
-è convertente, in quanto la serie geometrica è convertente. Per il criterio del confronto, la serie
-\[\sum_{n=0}^{+\infty} \alpha_n \cdot (z-z_0)^n\]
-converge assolutamente.
+\[\exists M \in \mathbb{R} \hspace{1em} \text{ tale che } \hspace{1em} \forall n \in \mathbb{N} \hspace{1em} \text{ si ha che } \hspace{1em} \left \vert a_n \cdot (z_1-z_0)^n \right \vert \leq M\]
+Considerando, ora, la successione di interesse, ovverosia $(a_n \cdot (z_1-z_0)^n)_n$, moltiplicando e dividendo per la medesima quantità $\vert z_1-z_0 \vert^n$ si ottiene che
+\[\left \vert a_n \cdot (z-z_0)^n \right \vert = \vert a_n \vert \cdot \vert z-z_0 \vert^n = \vert a_n \vert \cdot \vert z_1-z_0 \vert^n \cdot \dfrac{\vert z-z_0 \vert^n}{\vert z_1-z_0 \vert^n} \leq M \cdot \left \vert \dfrac{z-z_0}{z_1-z_0} \right \vert^n\]
+Ma siccome è noto per ipotesi che $\left \vert z-z_0 \right \vert < \left \vert z_1-z_0 \right \vert$, allora la serie
+\[\sum_{n=0}^{+\infty} M \cdot \left \vert \dfrac{z-z_0}{z_1-z_0} \right \vert^n\]
+converge in quanto serie geometrica con ragione $k<1$. Per il criterio del confronto, convergerà assolutamente anche la serie di interesse
+\[\sum_{n=0}^{+\infty} a_n \cdot (z-z_0)^n\]
+pertanto l'insieme di convergenza è sempre un disco in $\mathbb{C}$, o un intervallo in $\mathbb{R}$.
 
 % Formattazione per la dimostrazione, etc.
 \vspace{2em}
 \noindent
 \normalfont \normalsize
-\textsc{Dimostrazione 2}: Si consideri la palla $\overline{\mathcal{B}(z_0,r)} \subset \mathcal{B}(z_0, \vert z_1-z_0 \vert)$.\\
-Allora si ha che
-\[\forall z \in \overline{\mathcal{B}(z_0,r)}  \rightarrow \left \vert z - z_0 \right \vert \leq r < \left \vert z_1 -z_0 \right \vert \rightarrow \left \vert \frac{\left \vert z - z_0 \right \vert}{\left \vert z_1 - z_0 \right \vert} \right \vert \leq \frac{r}{\left \vert z_1 - z_0 \right \vert} < 1\]
+\textsc{Dimostrazione 2}: Si consideri la palla chiusa e limitata $\overline{\mathcal{B}(z_0,r)} \subset \mathcal{B}(z_0, \vert z_1-z_0 \vert)$.\\
+Allora
+\[\forall z \in \overline{\mathcal{B}(z_0,r)} \hspace{1em} \text{si ha che} \hspace{1em} \left \vert z - z_0 \right \vert \leq r < \left \vert z_1 -z_0 \right \vert\]
+Dividendo la disuguaglianza di cui sopra per $\left \vert z_1 - z_0 \right \vert$ si ottiene che
+\[\forall z \in \overline{\mathcal{B}(z_0,r)} \hspace{1em} \text{si ha che} \hspace{1em} \left \vert \frac{\left \vert z - z_0 \right \vert}{\left \vert z_1 - z_0 \right \vert} \right \vert \leq \frac{r}{\left \vert z_1 - z_0 \right \vert} < 1\]
 in cui è fondamentale osservare come
 \[\frac{r}{\left \vert z_1 - z_0 \right \vert}\]
-non dipende più da $z$. È noto che
-\[\left \vert \alpha_n \cdot (z-z_0)^n \right \vert \leq M \cdot \left \vert \frac{z-z_0}{z_1-z_0}\right \vert^n \leq M \cdot \left \vert \frac{r}{z_1 - z_0} \right \vert ^n\]
+non dipende più da $z$. Per quanto già esposto nella dimostrazione precedente, vale la seguente catena di disuguaglianze
+\[\left \vert a_n \cdot (z-z_0)^n \right \vert \leq M \cdot \left \vert \frac{z-z_0}{z_1-z_0}\right \vert^n \leq M \cdot \left \vert \frac{r}{z_1 - z_0} \right \vert ^n\]
 Se si pone
-\[K = \left \vert \frac{r}{z_1-z_0} \right \vert\]
+\[K = \left \vert \frac{r}{z_1-z_0} \right \vert < 1\]
 si ottiene che
-\[\left \vert \alpha_n \cdot (z-z_0)^n \right \vert \leq M \cdot \left \vert \frac{z-z_0}{z_1-z_0} \right \vert \leq M \cdot K^n\]
-Se ora si considera la successione $(b_n)_n$ dove $b_n=M K^n$ si è già dimostrato che ... continua .. 
+\[\left \vert a_n \cdot (z-z_0)^n \right \vert \leq M \cdot \left \vert \frac{z-z_0}{z_1-z_0} \right \vert \leq M \cdot K^n\]
+Se ora si considera la successione $(b_n)_n$ dove $b_n=M K^n$, si è già dimostrato in precedenza che
+\[\left \vert a_n \cdot (z-z_0)^n \right \vert \leq b_n \hspace{1em} \forall z \in \mathbb{C} \hspace{1em} \text{e} \hspace{1em} \forall n \in \mathbb{N}\]
+Data, quindi, la serie numerica seguente
+\[\sum_{n=0}^{+\infty} M K^n\]
+convergente in quanto serie geometrica di ragione $K<1$, ne segue, per l'M-Test di Weierstrass che la serie
+\[\sum_{n=0}^{+\infty} a_n \cdot (z-z_0)^n\]
+converge uniformemente.
 
-\vspace{1em}
+\newpage
 \noindent
 \subsection{Raggio di convergenza}
 Si consideri la definizione di \textbf{raggio di convergenza} seguente:
@@ -2102,22 +2332,38 @@ Si consideri la definizione di \textbf{raggio di convergenza} seguente:
 \begin{tabularx}{\textwidth}{@{}|P|@{}}
     \hline
     {\textbf{RAGGIO DI CONVERGENZA}}\\
-    \parbox{\linewidth}{Sia $a_0 + \sum_{n=1}^{+\infty} a_n \cdot (z-z_0)^n$ una serie di potenze. Sia $E$ l'insieme di convergenza della serie. Se $E = \{z_0\}$ si pone $\rho=0$; se $E = \mathbb{C}$ si pone $\rho = +\infty$, altrimenti si pone
+    \parbox{\linewidth}{Sia 
+    \[a_0 + \sum_{n=1}^{+\infty} a_n \cdot (z-z_0)^n\]
+    una serie di potenze. Sia $E$ l'insieme di convergenza della serie. Se $E = \{z_0\}$ si pone $\rho=0$; se $E = \mathbb{C}$ si pone $\rho = +\infty$; altrimenti si pone
     \[\rho = \sup \{\left \vert z-z_0 \right \vert \in \mathbb{R} : z \in E\}\]
-    allora $\rho$ si dice \textbf{raggio di convergenza}.\vspace{3mm}}\\
+    in cui $\rho$ si dice \textbf{raggio di convergenza}.\vspace{3mm}}\\
     \hline
 \end{tabularx}
 
 \vspace{1em}
 \subsubsection{Proprietà caratteristiche del raggio di convergenza}
-Si espongono di seguito le proprietà caratteristiche del raggio di convergenza.
+Si espongono di seguito le \textbf{proprietà caratteristiche del raggio di convergenza}:
 
-
-Sia $a_0 + \sum_{n=1}^{+\infty} a_n \cdot (z-z_0)^n$, con $E$ insieme di convergenza, posto $E \neq \{z_0\}$ e $E \neq \mathbb{C}$. Allora $\rho \in \mathbb{R}^+$ è il raggio di convergenza della serie \textbf{se e solo se}
-\begin{enumerate}
-    \item $\forall z \in \mathbb{C}$, se $\left \vert z-z_0 \right \vert < \rho$, allora $z \in E$
-    \item $\forall z \in \mathbb{C}$, se $\left \vert z-z_0 \right \vert > \rho$, allora $z \notin E$
-\end{enumerate}
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{RAGGIO DI CONVERGENZA}}\\
+    \parbox{\linewidth}{Sia 
+    \[a_0 + \sum_{n=1}^{+\infty} a_n \cdot (z-z_0)^n\]
+    una serie di potenze. Sia $E$ l'insieme di convergenza della serie, posto $E \neq \{z_0\}$ e $E \neq \mathbb{C}$.\\
+    Allora $\rho \in \mathbb{R}^+$ è il raggio di convergenza della serie \textbf{se e solo se}
+    \begin{enumerate}
+        \item $\forall z \in \mathbb{C}$, se $\left \vert z-z_0 \right \vert < \rho$, allora $z \in E$, ossia la serie converge in $z$;
+        \item $\forall z \in \mathbb{C}$, se $\left \vert z-z_0 \right \vert > \rho$, allora $z \notin E$, ossia la serie non converge.
+    \end{enumerate}
+    \vspace{3mm}}\\
+    \hline
+\end{tabularx}
 
 % Formattazione per la dimostrazione, etc.
 \vspace{2em}
@@ -2125,140 +2371,178 @@ Sia $a_0 + \sum_{n=1}^{+\infty} a_n \cdot (z-z_0)^n$, con $E$ insieme di converg
 \normalfont \normalsize
 \textsc{Dimostrazione 1}: Sia $r$ il raggio di convergenza, ossia
 \[r = \sup \{\left \vert z - z_0 \right \vert : z \in E\}\]
-per cui vale la $2$ proprietà: infatti, se $\left \vert z - z_0 \right \vert > M$ allora $x \notin E$.\\
-Non solo, ma vale anche la $1$ proprietà: infatti, sia $\left \vert z - z_0 \right \vert < M$, allora esiste $z_1 \in E$ tale che
-\[\left \vert z - z_0 \right \vert < \left \vert z_1 - z_0 \right \vert < \dots\]
-per il teorema precedentemente esposto e, quindi, $z \in E$.
+per cui vale la $2$ proprietà; infatti, se $\left \vert z - z_0 \right \vert > r$ allora $z \notin E$: se $r$ è l'estremo superiore di tutte le distanze per cui si ha convergenza, presa una distanza maggiore di $r$ non si può avere convergenza.\\
+Non solo, ma vale anche la $1$ proprietà: infatti, sia $\left \vert z - z_0 \right \vert < r$, allora esiste $z_1 \in E$ tale che
+\[\left \vert z - z_0 \right \vert < \left \vert z_1 - z_0 \right \vert < r\]
+essendo $r$ l'estremo superiore. Ma allora, per il teorema di proprietà dell'insieme di convergenza precedentemente esposto si ha che la serie converge in $z$ e, quindi, $z \in E$.
 
 % Formattazione per la dimostrazione, etc.
 \vspace{2em}
 \noindent
 \normalfont \normalsize
-\textsc{Dimostrazione 2}: Sia $\rho$ che verifica la $1$ e la $2$ proprietà. Allora sicuramente $\rho$ è un maggiore $\{\left \vert z - z_0 \right \vert : z \in E\}$.\\
+\textsc{Dimostrazione 2}: Sia $\rho$ che verifica le proprietà $1$ e la proprietà $2$.\\
+Allora la prima proprietà assicura che $\rho$ sia un maggiorante dell'insieme
+\[\{\left \vert z - z_0 \right \vert : z \in E\}\]
 Per dimostrare che è il minimo fra i maggioranti, si ponga $\rho_1 < p$, per cui esiste $z_1$ tale che
 \[\rho_1 < \left \vert z_1 - z_0 \right \vert < \rho\]
-tale per cui $z_1 \in E$. Quindi $\rho_1$ non è un maggiorante di $\{\left \vert z - z_0 \right \vert : z \in E\}$. Tale considerazione significa che
-\[\rho = \sup \{\left \vert z - z_0 \right \vert \text{ tale che } z \in E\}\]
+tale per cui $z_1 \in E$, in quanto $\left \vert z_1 - z_0 \right \vert < \rho$. Quindi $\rho_1$ non può essere un maggiorante di $\{\left \vert z - z_0 \right \vert : z \in E\}$, in quanto $\left \vert z_1 - z_0 \right \vert$ è maggiore di $\rho_1$. Tale considerazione significa che
+\[\rho = \sup \{\left \vert z - z_0 \right \vert : z \in E\}\]
 
 \vspace{1em}
 \noindent
-\textbf{Osservazione}: Si osservi che se $E$ è un insieme di convergenza e si pone
+\textbf{Osservazione}: Lavorando in $\mathbb{R}$, si osservi che se $E$ è un insieme di convergenza e si pone
 \[I = \left ] x_0 - \rho, x_0 + \rho \right[\]
-come intervallo di convergenza. Allora, in generale è vero che
+come \textbf{intervallo di convergenza}. Allora, in generale è vero che
 \[I \subseteq E \subseteq \overline{I}\]
-dove $\overline{I}$ è la chiusura di $I$. Ciò perché sul bordo dell'intervallo di convergenza non è sempre garantita la convergenza.
+dove $\overline{I}$ è la chiusura di $I$. Ciò perché sul bordo dell'intervallo di convergenza non è sempre garantita la convergenza. Per esempio, se $E=]-1,1]$, allora $I=]-1,1[$, mentre $\overline{I}=[-1,1]$, per cui è immediata la disuguaglianza insiemistica di cui sopra.
 
 \vspace{1em}
 \subsection{Proprietà delle serie di potenze}
-Sia $f : I \longmapsto \mathbb{R}$ in cui $I$ è l'intervallo di convergenza, tale che
-\[I = \left]x_0-\rho,x_0+\rho\right[ \hspace{1em} \text{oppure} \hspace{1em} I = \mathbb{R}\] 
-escludendo il caso in cui $\rho=0$. Posto
-\[f(x) = a_0 + \sum_{n=1}^{+\infty} a_n \cdot (x-x_0)^n\]
-ovverosia
-\[f(x) = a_0 + a_1 (x-x_0) + a_2 (x-x_0)^2 + \dots\]
-si ha che
-\begin{enumerate}
-    \item $\forall x \in I$ si ha che
-    \[\int_{x_0}^x f(t) \dif t = \sum_{n=0}^{+\infty} \frac{a_n}{n+1} \cdot (x-x_0)^{n+1}\]
-    
-    \item Posto $f \in C^{\infty}(I)$ per cui, in particolare, $f$ è continua. Allora si ha che
-    \begin{itemize}
-        \item $f'(x) = a_1 + \sum_{n=2}^{+\inf} n a_n (x-x_0)^{n-1} $
-        \item $f''(x) = 2a_2 + \sum_{n=3}^{+\inf} n (n-1) a_n (x-x_0)^{n-2} $
-        \item $\dots$
-        \item $f^{(k)} = k! a_k + \sum_{n=k+1}^{+\infty} n (n-1) \dots (n-k+1) a_n (a-x_0)^{n-k}$
-    \end{itemize}
-\end{enumerate}
+Di seguito si espongono le \textbf{proprietà delle serie di potenze}:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{PROPRIETÀ DELLE SERIE DI POTENZE}}\\
+    \parbox{\linewidth}{Sia $f : I \longmapsto \mathbb{R}$ in cui $I$ è l'intervallo di convergenza, tale che
+    \[I = \left]x_0-\rho,x_0+\rho\right[ \hspace{1em} \text{oppure} \hspace{1em} I = \mathbb{R}\] 
+    escludendo il caso in cui $\rho=0$. Posto
+    \[f(x) = a_0 + \sum_{n=1}^{+\infty} a_n \cdot (x-x_0)^n\]
+    ovverosia
+    \[f(x) = a_0 + a_1 (x-x_0) + a_2 (x-x_0)^2 + \dots\]
+    si ha che
+    \begin{enumerate}
+        \item $\forall x \in I$ si ha che
+        \[\int_{x_0}^x f(t) \dif t = \sum_{n=0}^{+\infty} \frac{a_n}{n+1} \cdot (x-x_0)^{n+1}\]
+        
+        \item Posto $f \in C^{\infty}(I)$, ossia è derivabile infinite volte e, in particolare, $f$ è continua, allora si ha che
+        \begin{itemize}
+            \item $\displaystyle{f'(x) = a_1 + \sum_{n=2}^{+\infty} n \cdot a_n (x-x_0)^{n-1}}$
+            \item $\displaystyle{f''(x) = 2a_2 + \sum_{n=3}^{+\infty} n (n-1) \cdot a_n (x-x_0)^{n-2}}$
+            \item $\dots$
+            \item $\displaystyle{f^{(k)}(x) = k! \cdot a_k + \sum_{n=k+1}^{+\infty} n (n-1) \dots (n-k+1) \cdot a_n (x-x_0)^{n-k}}$
+        \end{itemize}
+    \end{enumerate}
+    \vspace{1mm}}\\
+    \hline
+\end{tabularx}
 
 % Formattazione per la dimostrazione, etc.
 \vspace{2em}
 \noindent
 \normalfont \normalsize
-\textsc{Dimostrazione 1}: Sia $x \in I$, si consideri $[a,b] \subset I$ tale che $x,x_0 \in [a,b]$. La serie
+\textsc{Dimostrazione}: La dimostrazione sfrutta il fatto che si ha convergenza uniforme non su $I$, ma sugli intervalli compatti contenuti nell'intervallo $I$, come esposto dal teorema sulle proprietà dell'insieme di convergenza.\\
+Sia, allora, $x \in I$ e si consideri $[a,b] \subset I$ tale che $x,x_0 \in [a,b]$: ciò si può sempre fare perché $x \in I$ che è un intervallo aperto, della forma $I = \left]x_0-\rho,x_0+\rho\right[$, per cui non è mai un estremo. Allora, per il teorema sulle proprietà dell'insieme di convergenza, si ha che la serie
 \[a_0+ \sum a_n (x-x_0)^n\]
 converge uniformemente su $[a,b]$, ovvero
 \[s_n(x) \to s(x)\]
-uniformemente. Ma allora, per il teorema sull'integrale del limite uniforme si ha che $s(x)$ è integrabile e, in particolare,
-\[\int_{x_0}^x s(t) dt = \lim_{n \to +\infty} \int_{x_0}^x s_n(t) \dif t\]
-ma quindi
+uniformemente. Ma allora, per il teorema sull'integrale del limite uniforme di una successione, si ha che $s(x)$ è integrabile e, in particolare,
+\[\int_{x_0}^x s(t) \dif t = \lim_{n \to +\infty} \int_{x_0}^x s_n(t) \dif t\]
+ma quindi, siccome la somma della serie di potenze è proprio la funzione $f$ cercata, è immediato evincere che
 \[\int_{x_0}^x f(t) \dif t = \lim_{n \to +\infty} \int_{x_0}^x \left(a_0 + \sum_{k=1}^n a_k \cdot (x-x_0)^k\right) \dif t\]
 ovvero
 \[\lim_{n \to +\infty} \left[a_0 \cdot (x-x_0) + \sum_{k=1}^n a_k \cdot \frac{1}{k+1} (x-x_0)^{k+1}\right]\]
+ma tale limite è proprio
+\[\sum_{n=0}^{+\infty} \dfrac{a_n}{n+1} \cdot (x-x_0)^{n+1}\]
 
 \vspace{1em}
 \noindent
-\textbf{Osservazione}: La continuità di $f$ è immediata con ragionamento analogo. Tuttavia, è fondamentale capire che bisogna ragionare sui compatti contenuti nell'intervallo di convergenza. Ciò non garantisce che la funzione sia continua sul bordo, anche se questo risulta comunque vero per il \textbf{lemma di Abel}.
+\textbf{Osservazione}: La continuità di $f$ è immediata con un ragionamento analogo: lavorando sempre sui compatti contenuti in $I$, la convergenza uniforme implica la continuità del limite.\\
+Pertanto, è fondamentale capire che bisogna ragionare sui compatti contenuti nell'intervallo di convergenza. Ciò, però, non garantisce che la funzione sia continua sul bordo, anche se questo risulta comunque vero per il \textbf{lemma di Abel}.
 
 \vspace{1em}
-\subsection{Derivabilità}
+\subsection{Derivabilità delle serie di potenze}
 Si consideri la ridotta $s_n$
 \[s_n(x) = a_0 + \sum_{k=1}^n a_k \cdot (x-x_0)^k\]
-che è la ridotta di una serie di potenze
-\[a_1 + \sum_{k=2}^{+\infty} k a_k (x-x_0)^{k-1}\]
-Tuttavia, non è possibile affermare a priori che
-$s'_n(x) = a_1 + \sum_{k=2}^n k a_k (x-x_0^{k-1})$
-in quanto non è detto che ... continua ...\\
-Quindi, detto $I'$ l'intervallo di convergenza della serie
-\[a_1 + \sum_{k=2}^{+\infty} k a_k (x-x_0)^{k-1}\]
-si ha che in ogni compatto $[a,b] \subset I' \cap I$ (in cui è fondamentale chiedere $I' \cap I$ in quanto devono essere finite entrambe le serie), la serie delle derivate è la derivata della serie. Per concludere la dimostrazione, si deve provare che $I'=I$, ossia che $\rho'=\rho$, ossia i due raggi di convergenza coincidono.
+che è la ridotta di una serie di potenze. Calcolandone la derivata si ottiene
+\[s_n'(x) = a_1 + \sum_{k=2}^{n} k \cdot a_k \cdot (x-x_0)^{k-1}\]
+in questo modo si ottiene una nuova serie di potenze, nella forma
+\[a_1 + \sum_{k=2}^{+\infty} k \cdot a_k \cdot (x-x_0)^{k-1}\]
+Tuttavia, non è possibile affermare a priori che $s'_n(x)$ è la derivata di $s_n$. Nonostante ciò, il teorema sulla derivata del limite dice che se la successione delle derivate è convergente in modo uniforme a una funzione, allora tale funzione è la derivata della funzione a cui converge puntualmente la funzione di partenza.\\
+È noto, però, che la successioni delle derivate è anch'essa una serie di potenze, che è noto convergere uniformemente su ogni sotto-intervallo compatto del suo intervallo di convergenza che, a priori, potrebbe essere diverso dall'intervallo di convergenza della serie originaria.
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{DERIVABILITÀ DELLE SERIE DI POTENZE}}\\
+    \parbox{\linewidth}{Quindi, detto $I'$ l'intervallo di convergenza della serie
+    \[a_1 + \sum_{k=2}^{+\infty} k \cdot a_k \cdot (x-x_0)^{k-1}\]
+    si ha che in ogni compatto $[a,b] \subset I' \cap I$ (in cui è fondamentale chiedere $I' \cap I$ in quanto devono essere definite entrambe le serie), la serie delle derivate è la derivata della serie.\vspace{3mm}}\\
+    \hline
+\end{tabularx}
 
 % Formattazione per la dimostrazione, etc.
 \vspace{2em}
 \noindent
 \normalfont \normalsize
-\textsc{Dimostrazione 1}: Siano
+\textsc{Dimostrazione}: Per concludere la dimostrazione, si deve provare che $I'=I$, ossia che $\rho'=\rho$, ossia i due raggi di convergenza coincidono.\\
+Siano, allora
 \begin{itemize}
     \item $\rho$ il raggio di convergenza della serie $f(x)$
     \item $\rho'$ il raggio di convergenza della serie delle derivate
-    \[a_1 + \sum_{n=2}^{+\infty} a_n n (x-x_0)^{n-1}\]
+    \[a_1 + \sum_{n=2}^{+\infty} a_n \cdot n \cdot (x-x_0)^{n-1}\]
 \end{itemize}
-Si provi che $\rho=\rho'$. Sia $x$ tale che $\left \vert x - x_0 \right \vert < \rho$ e si provi che
-\[\sum_{n=2}^{+\infty} a_n n (x-x_0)^{n-1}\]
-converge. Se ciò è vero, converge anche la serie di partenza ... continua ...
-
-\vspace{1em}
-\noindent
-Si osserva, allora, che
+Si provi che $\rho=\rho'$. Sia $x$ tale che $\left \vert x - x_0 \right \vert < \rho$ e si provi che la serie delle derivate
+\[\sum_{n=2}^{+\infty} a_n \cdot n \cdot (x-x_0)^{n-1}\]
+converge. Se si riesce a dimostrare ciò, significa che se la serie di partenza converge (in quanto $\left \vert x - x_0 \right \vert < \rho$) allora converge anche la serie delle derivate.\\
+Se, invece, si sceglie $x$ tale che $\left \vert x - x_0 \right \vert > \rho$ e si prova che la serie delle derivate
+\[\sum_{n=2}^{+\infty} a_n \cdot n \cdot (x-x_0)^{n-1}\]
+non converge si ha concluso, in quanto, per le proprietà caratteristiche del raggio di convergenza, $\rho$ che soddisfa le duw condizioni precedenti deve essere uguale a $\rho'$, in quanto raggio di convergenza anche della serie delle derivate.\\
+Volendo confrontare la serie di partenza con la serie delle derivate, si osserva dapprincipio che
 \[\sum_{n=2}^{+\infty} a_n (x-x_0)^n = (x-x_0) \sum_{n=2}^{+\infty} a_n (x-x_0)^{n-1}\]
-Sia $\left \vert x - x_0 \right \vert < \rho$. Esiste, allora, $x_1$ tale che
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione 1}: Sia $\left \vert x - x_0 \right \vert < \rho$. Esiste, allora, $x_1$ tale che
 \[\left \vert x - x_0 \right \vert < \left \vert x_1 - x_0 \right \vert < \rho\]
 Allora la serie
 \[\sum_{n=2}^{+\infty} \left \vert a_n \cdot (x_1 - x_0)^{n-1} \right \vert\]
-converge. Quindi la successione $\left \vert a_n \cdot (x-x_0)^n \right \vert$ è limitata, per cui $\exists M$ tale che
+converge, in quanto $x_1$ sta dentro all'intervallo di convergenza della serie di partenza (che sarebbe quella con $x-x_0$ portato fuori dalla sommatoria, ma essendo costante si trascura). Quindi la successione $\left \vert a_n \cdot (x-x_0)^n \right \vert$ è limitata, per cui $\exists M$ tale che
 \[\left \vert a_n \cdot (x_1-x_0)^n \right \vert < M, \forall n\]
-Pertanto
-\[\left \vert n a_n (x-x_0)^{n-1} \right \vert = \left \vert a_n \cdot (x_n-x_0)^n \right \vert \cdot n \cdot \left \vert \frac{x-x_0}{x_1-x_0} \right \vert < M \cdot n \cdot K^{n-1}\]
+Pertanto, preso ora il termine generale della serie delle derivate $\left \vert n \cdot a_n \cdot (x-x_0)^{n-1} \right \vert$, moltiplicando e dividendo per $\vert x_1-x_0 \vert^n$, si ottiene 
+\[\left \vert n \cdot a_n \cdot (x-x_0)^{n-1} \right \vert = \left \vert a_n \cdot (x_1-x_0)^n \right \vert \cdot n \cdot \left \vert \frac{x-x_0}{x_1-x_0} \right \vert^{n-1} < M \cdot n \cdot K^{n-1}\]
 posto
 \[K=\left \vert \frac{x-x_0}{x_1-x_0} \right \vert < 1\]
-È facile capire che la serie
-\[\sum_{n \cdot K^{n-1}}\]
+che è minore di $1$ in quanto si è scelto $\left \vert x - x_0 \right \vert < \left \vert x_1 - x_0 \right \vert < \rho$. È facile capire, ora, che la serie
+\[\sum{n \cdot K^{n-1}}\]
 converge, per il criterio del rapporto
 \[\frac{(n+1) \cdot K^n}{n \cdot K^{n-1}} \rightarrow K < 1\]
 per cui, per il criterio del confronto, la serie
 \[\sum n \cdot a_n \cdot (x-x_0)^{n-1}\]
-converge.\\
-Quindi, dove converge la serie di partenza, anche la serie delle derivate è convergente.
+converge. Quindi, dove converge la serie di partenza, anche la serie delle derivate è convergente.
 
 % Formattazione per la dimostrazione, etc.
 \vspace{2em}
 \noindent
 \normalfont \normalsize
-\textsc{Dimostrazione 2}: Siano, allora, $\left \vert x - x_0 \right \vert > \rho$. La serie
+\textsc{Dimostrazione 2}: Sia, allora, $x$ tale che $\left \vert x - x_0 \right \vert > \rho$. Ciò significa che la serie
 \[\sum \left \vert a_n \cdot (x-x_0)^{n-1}\right \vert\]
 non converge. Ma allora è facile osservare che
-\[\left \vert n a_n (x-x_0)^{n-1} \right \vert \geq \left \vert a_n \cdot (x-x_0)^{n-1} \right \vert\]
-quindi la serie
-\[\sum \left \vert n a_n (x-x_0)^{n-1} \right \vert\]
-non converge.
+\[\left \vert n \cdot a_n \cdot (x-x_0)^{n-1} \right \vert \geq \left \vert a_n \cdot (x-x_0)^{n-1} \right \vert\]
+quindi la serie delle derivate
+\[\sum \left \vert n \cdot a_n \cdot (x-x_0)^{n-1} \right \vert\]
+non converge per il criterio del confronto.
 
-\vspace{1em}
+\vspace{2em}
 \noindent
 \textbf{Osservazione 1}: Si conclude, quindi, che
-\[\frac{\dif}{\dif x} \left(a_0 + \sum_{n=1}^{+\infty} a_n \cdot (x-x_0)^n\right) = a_1 + \sum_{n=2}^{+\infty} n a_n (x-x_0)^{n-1}\]
+\[\frac{\dif}{\dif x} \left(a_0 + \sum_{n=1}^{+\infty} a_n \cdot (x-x_0)^n\right) = a_1 + \sum_{n=2}^{+\infty} n \cdot a_n \cdot (x-x_0)^{n-1}\]
 
 \vspace{1em}
 \noindent
-\textbf{Osservazione 2}: Si consideri la funzione seguente
+\textbf{Osservazione 2}: Si consideri la funzione seguente, sviluppata in serie di potenze
 \[f(x) = a_0 + \sum_{n=1}^{+\infty} a_n \cdot (x-x_0)^n\]
 allora
 \begin{itemize}
@@ -2268,27 +2552,30 @@ allora
     \item $\dots$
     \item $f^{(k)}(x_0) = k! \cdot a_k $
 \end{itemize}
-Più in generale, si ottiene che
-\[f'(x_0) = a_1 + \sum_{n=2}^{+\infty} n a_n (x-x_0)^{n-1}\]
-per cui
-\[f(x) = f(x_0) + \sum_{n=1}^{+\infty} \frac{f^{(n)}(x_0)}{n!} (x-x_0)^n\]
-che prende il nome di serie di Taylor.
+Pertanto sono stati ottenuti tutti i coefficienti delle derivate di ogni ordine, per cui
+\[a_n =\frac{f^{(n)}(x_0)}{n!}\]
+Ciò permette di riscrivere la serie di potenze di partenza come segue
+\[f(x) = a_0+\sum_{n=1}^{+\infty} a_n \cdot (x-x_0)^n = f(x_0) + \sum_{n=1}^{+\infty} \frac{f^{(n)}(x_0)}{n!} (x-x_0)^n\]
+che prende il nome di \textbf{serie di Taylor}.
 
-\vspace{1em}
+\newpage
 \noindent
-\textbf{Osservazione}: Se la $f$ è sviluppabile in serie di potenze, allora
+\textbf{Osservazione 3}: Se la $f$ è sviluppabile in serie di potenze, allora
 \[f(x) = \lim_{n \to +\infty} P_n(x)\]
-in ui $P_n(x)$ è il polinomio di taylor di grado $n$:
-\[\P_n(x) = f(x) = f(x_0) + \sum_{k=1}^n \frac{f^{(n)}(x_0)}{n!} (x-x_0)^n\]
+in ui $P_n(x)$ è il polinomio di Taylor di grado $n$ di centro $x_0$:
+\[P_n(x) = f(x_0) + \sum_{k=1}^n \frac{f^{(k)}(x_0)}{k!} (x-x_0)^k\]
 cioè
 \[\lim_{n \to +\infty} \left(f(x) - P_n(x)\right) = 0\]
-in cui $E_n(x) = f(x-P_n(x))$.
+in cui $E_n(x) = f(x)-P_n(x)$ è proprio l'errore di approssimazione. Pertanto, una funzione è sviluppabile in serie di potenze \textbf{se e solo se}
+\[\lim_{n \to +\infty} \left(f(x) - P_n(x)\right) = 0\]
 
-\vspace{1em}
+\vspace{2em}
 \noindent
-\textbf{Osservazione}: Si osservi che si dice che una funzione è analitica una funzione sviluppabile in serie di potenze, con $f : I \longmapsto \mathbb{R}$. Si osservi che se $f$ è analitica, allora $f$ è $C^\infty$.\\
-Tuttavia, in $\mathbb{R}$, se una funzione è $C^\infty$, non è analitica. Un esempio chiave è la funzione seguente:
+\textbf{Osservazione 4}: Una funzione si dice \textbf{analitica} se tale funzione è sviluppabile in serie di potenze, con
+\[f : I \longmapsto \mathbb{R}\]
+Naturalmente, se $f$ è analitica, allora $f$ è $C^\infty(I)$, ovvero deve essere derivabile infinite volte sull'intervallo. Tuttavia, in $\mathbb{R}$, se una funzione è $C^\infty$, non è detto che sia analitica (mentre nel campo $\mathbb{C}$ ciò è vero). Un esempio chiave è la funzione seguente:
 \[f(x) = \left\{
+    \rowcolors{1}{white}{white}
     \begin{array}{lll}
         0 & \text{se} & x=0\\
         e^{-\frac{1}{x^2}} & \text{se} & x \neq 0
@@ -2296,15 +2583,17 @@ Tuttavia, in $\mathbb{R}$, se una funzione è $C^\infty$, non è analitica. Un e
 \right.\]
 Calcolandone la derivata si ottiene
 \[f'(x) = \left\{
+    \rowcolors{1}{white}{white}
     \begin{array}{lll}
         0 & \text{se} & x=0\\
         e^{-\frac{1}{x^2}} \cdot (2x^{-3}) & \text{se} & x \neq 0
     \end{array}
 \right.\]
-Tuttavia la serie di Taylor di $f$ è
-\[f(0) + \sum_{n=1}^[+\infty] \frac{f^{(n)(0)}}{n!} x^n = 0\]
+che permette di evincere che la funzione è $C^\infty$, ovvero tutte le derivate esistono e sono $0$, cioè $f^{(k)}(0)=0$. Tuttavia la serie di Taylor di $f$ è
+\[f(0) + \sum_{n=1}^{+\infty} \frac{f^{(n)}(0)}{n!} x^n = 0\]
 e quindi non coincide con la funzione stessa, ovvero
-\[f(x) = \sum_{n=1}^{+\infty} \frac{f^{(n)(0)}}{n!} x^n\]
+\[f(x) \neq \sum_{n=1}^{+\infty} \frac{f^{(n)}(0)}{n!} x^n\]
+Questo è un esempio in cui la serie di Taylor esiste, ma la funzione non è sviluppabile in serie di Taylor, in quanto essa non coincide con la funzione stessa. Pertanto $f$ non è analitica.
 
 \vspace{1em}
 \noindent
@@ -2312,19 +2601,39 @@ e quindi non coincide con la funzione stessa, ovvero
 \[\lim_{n \to +\infty} f(x) - P_n(x) = \lim_{n \to +\infty} E_n(x) = 0\]
 Per descrivere il resto della formula di Taylor si può utilizzare il resto nella formula di Lagrange:
 \[E_n(x) = \frac{f^{(n+1)}(\xi)}{(n+1)!} \cdot (x-x_0)^{n+1}\]
-con $\left \vert \xi - x_0 \right \vert < \left \vert x - x_0 \right \vert$
+con $\left \vert \xi - x_0 \right \vert < \left \vert x - x_0 \right \vert$.
 
 \vspace{1em}
 \noindent
 \subsection{Primo criterio di sviluppabilità}
-Sia $f \in C^\infty(I)$ ed esista $M \in \mathbb{R}$ tale che $\left \vert f^{(n)}(x) \right \vert \leq M^n, \forall n \in I$
+Di seguito si espone il \textbf{primo criterio di sviluppabilità} di una funzione in serie di potenze (\textbf{un'altro criterio è negli esercizi}):
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{PRIMO CRITERIO DI SVILUPPABILITÀ}}\\
+    \parbox{\linewidth}{Sia $f \in C^\infty(I)$ ed esista $M \in \mathbb{R}$ tale che $\left \vert f^{(n)}(x) \right \vert \leq M^n$, $\forall n \in \mathbb{N}$ e $\forall x \in I$. Allora $f$ è analitica, ossia sviluppabile in serie di potenze.\vspace{3mm}}\\
+    \hline
+\end{tabularx}
+
 % Formattazione per la dimostrazione, etc.
 \vspace{2em}
 \noindent
 \normalfont \normalsize
-\textsc{Dimostrazione}: È sufficiente dimostrare che
-\[\left \vert E_n(x) \right \vert = \left \vert \frac{f^{(n+1)(\xi)}}{(n+1)!} (x-x_0)^{n+1} \right \vert \leq \frac{M^{n+1}}{(n+1)!} \cdot \left \vert x - x_0 \right \vert^{n+1}\]
-... continua ...
+\textsc{Dimostrazione}: È sufficiente dimostrare che il resto nella forma di Lagrange tende a $0$. Pertanto si ha che, fissato $x \in I$
+\[\left \vert E_n(x) \right \vert = \left \vert \frac{f^{(n+1)(\xi)}}{(n+1)!} (x-x_0)^{n+1} \right \vert \leq \frac{M^{n+1}}{(n+1)!} \cdot \left \vert x - x_0 \right \vert^{n+1} = \dfrac{K^{n+1}}{(n+1)!}\]
+in cui si è posto
+\[K = M \cdot \left \vert x-x_0 \right \vert\]
+È facile capire che
+\[\lim_{n \to +\infty} \dfrac{K^n}{n!} = 0\]
+in quanto è sufficiente considerare tale rapporto come termine generale di una serie convergente, usando il criterio del rapporto:
+\[\lim_{n \to +\infty} \dfrac{K^{n+1}}{(n+1)!} \cdot \dfrac{n!}{K^n} = \lim_{n \to +\infty} \dfrac{K \cdot K^{n}}{(n+1) \cdot n!} \cdot \dfrac{n!}{K^n} = \lim_{n\to +\infty} \dfrac{K}{n+1} = 0\]
+essendo $K$ costante. Convergendo la serie, la successione dei termini generali è infinitesima.
 
 \vspace{1em}
 \noindent
@@ -2333,50 +2642,71 @@ Sia $f \in C^\infty(I)$ ed esista $M \in \mathbb{R}$ tale che $\left \vert f^{(n
 e analogamente per il $\sin(x)$ si ottiene
 \[\sin(x) = \sum_{n=0}^{+\infty} (-1)^n \cdot \frac{x^{2n+1}}{(2n+1)!}\]
 Per verificare, tuttavia, che tali funzioni sono sviluppabili come serie di potenze, è sufficiente dimostrare che
-\[... continua ...\]
+\[\vert f^{(n)}(x) \vert \leq M^n\]
+con $f=\cos(x)$ e $f=\sin(x)$. Ma è chiaro che seno e coseno sono funzioni limitate, posto $M=1$.
 
 \vspace{1em}
 \noindent
 \textbf{Esempio}: Si consideri la serie di Taylor di $e^x$ seguente
 \[e^x=1+\sum_{n=1}^{+\infty} \frac{x^n}{n!}\]
 Tuttavia, in questo caso, non è vero che
-\[\left \vert e^x \right \vert M^n, \hspace{1em} \forall n, \forall x\]
+\[\left \vert e^x \right \vert \leq M^n, \hspace{1em} \forall n \hspace{1em} \text{e} \hspace{1em} \forall x\]
 Tuttavia, è possibile restringere $e^x$ nell'intervallo $[-b,b]$ in cui
-\[\left \vert f^(n)(x) \right \vert = e^x \leq e^b \leq (e^b)^n = M^n\]
-e preso tale intervallo arbitrariamente grande, è possibile considerare tutto $R$, per cui è sviluppabile come serie di potenze.
+\[\left \vert f^{(n)}(x) \right \vert = e^x \leq e^b \leq (e^b)^n = M^n\]
+e preso tale intervallo arbitrariamente grande, è possibile considerare tutto $\mathbb{R}$, per cui $e^x$ è analitica, ossia sviluppabile come serie di potenze.
 
 \newpage
 \begin{center}
     17 Ottobre 2022
 \end{center}
-Ovviamente, non è vero che ogni funzione può essere sviluppata come serie di potenze. Infatti, non è sufficiente che una funzione sia $C^{+\infty}$; una funzione sviluppabile come serie di potenze presenta un intervallo di convergenza che è sempre un intervallo. Tuttavia, è fondamentale tenere in considerazione anche il controllo sulla derivata.
+Ovviamente, non è vero che ogni funzione può essere sviluppata come serie di potenze. In particolare, non è sufficiente che una funzione sia $C^{\infty}$ (tuttavia ogni funzione sviluppabile come serie di potenze è $C^\infty$); una funzione sviluppabile come serie di potenze presenta un insieme di convergenza che è sempre un intervallo in $\mathbb{R}$ (o un disco in $\mathbb{C}$). Il primo criterio fondamentale da tenere in considerazione si basa sul controllo della derivata della funzione tramite una potenza $M^n$.
 
 \vspace{1em}
 \noindent
-\textbf{Esempio 1}: Naturalmente, data la funzione $e^{-x}$, essa può essere sviluppata come
-\[e^{-x} = \sum_{n=0}^{+\infty} \frac{(-1)^n}{n!} x^n\]
-Se, ovviamente, si considera il seno iperbolico e il coseno iperbolico, il loro sviluppo è una combinazione lineare di $e^x$ e $e^-x$.
+\textbf{Esempio 1}: Per quanto già esposto, è noto che la funzione $e^x$ è sviluppabile in serie di potenze come segue
+\[e^x=\sum_{n=0}^{+\infty} \dfrac{x^n}{n!}\]
+Similmente, la funzione $e^{-x}$ può essere sviluppata come segue
+\[e^{-x} = \sum_{n=0}^{+\infty} \dfrac{(-x)^n}{n!} = \sum_{n=0}^{+\infty} \frac{(-1)^n}{n!} x^n\]
+Se, ovviamente, si considera il seno iperbolico e il coseno iperbolico, ossia delle combinazioni lineari di $e^x$ e $e^-x$, è facile capire che essi sono sviluppabili come serie di potenze.
+\[\sinh(x) = \dfrac{e^x-e^{-x}}{2} \hspace{1em} \text{e} \hspace{1em} \cosh(x) = \dfrac{e^x+e^{-x}}{2}\]
 
 \vspace{1em}
 \noindent
-\textbf{Esempio 2}: Se si considera la funzione $\log(1+n)$, si può considerare la sua derivata prima
-\[\frac{1}{1+n}\]
-in modo tale da ottenere lo sviluppo della serie armonica. Da ciò si evince che
-\[\sum_{n=0}^{+\infty} \int_0^x 1 + \frac{1}{1+t} \dif t = \sum_{n=0}^{+\infty} (-1)^n \cdot \frac{1}{1+n} \cdot x^{n+1}\]
-ottenendo il suo sviluppo, che può essere scritto in forma analoga
-\[\sum_{n=1}^{+\infty} (-1)^{n+1} \frac{1}{n} x^n\]
+\textbf{Esempio 2}: Se si considera la funzione $f(x)=\log(1+x)$, si può considerare la sua derivata prima
+\[f'(x)=\frac{1}{1+x}\]
+Tale derivata può essere riscritta in modo furbo in modo tale da ottenere la somma della serie geometrica (nell'ipotesi in cui $\vert x \vert < 1$):
+\[f'(x)=\frac{1}{1-(-x)}\]
+Da ciò si evince che
+\[f'(x)=\frac{1}{1-(-x)}=\sum_{n=0}^{+\infty} (-x)^n=\sum_{n=0}^{+\infty} (-1)^n \cdot x^n\]
+In questo modo si è ottenuto lo sviluppo come serie di potenze della derivata della funzione di partenza. Basterà, ora, integrare per ottenere lo sviluppo funzione di partenza
+\[\int_0^x f'(t) \dif t = \int_0^x \sum_{n=0}^{+\infty} (-1)^n \cdot t^n \dif t\]
+per le proprietà delle serie di potenze è possibile portare l'integrale all'interno della somma, ottenendo
+\[\int_0^x \sum_{n=0}^{+\infty} (-1)^n \cdot t^n \dif t = \sum_{n=0}^{+\infty} (-1)^n \cdot \int_0^x t^n \dif t = \sum_{n=0}^{+\infty} (-1)^n \cdot \frac{1}{n+1} \cdot x^{n+1}\]
+ottenendo così lo sviluppo di $\log(1+x)$, che è valido solamente quando $\vert x \vert < 1$, per cui l'insieme di convergenza della serie di potenze è proprio $E=]-1,1[$. Ovviamente, lo sviluppo appena ottenuto può essere scritto in forma analoga come segue:
+\[\log(1+x)=\sum_{n=0}^{+\infty} (-1)^n \cdot \frac{1}{n+1} \cdot x^{n+1}=\sum_{n=1}^{+\infty} (-1)^{n+1} \frac{1}{n} x^n\]
 Analogamente per $\log(1-x)$ si ottiene
-\[\log(1-x) = \sum_{n=1}^{+\infty} (-1)^{n+1} \frac{1}{n} (-1)^n x^n\]
+\[\log(1-x) = \sum_{n=1}^{+\infty} (-1)^{n+1} \frac{1}{n} (-1)^n x^n = - \sum_{n=1}^{+\infty} \dfrac{1}{n} x^n\]
 rispettando sempre la condizione $\left \vert x \right \vert < 1$.
 
-\vspace{1em}
+\vspace{2em}
 \noindent
-\textbf{Esempio 3}: Si consideri il caso seguente
+\textbf{Esempio 3}: Si consideri il caso seguente, molto importante per le applicazione pratiche. Sia data la serie seguente:
+\[\sum_{n=1}^{+\infty} n x^n\]
+Per calcolare il raggio di convergenza di tale serie è molto utile impiegare il criterio del rapporto. Pertanto si scrive
+\[\lim_{n \to +\infty} \dfrac{\left \vert f_{n+1}(x) \right \vert}{\left \vert f_n(x) \right \vert} = \lim_{n \to +\infty} \dfrac{\left \vert (n+1) x^{n+1} \right \vert}{\left \vert n x^n \right \vert} = \vert x \vert\]
+Per il criterio del rapporto, tale limite deve essere minore di $1$ al fine di avere convergenza; se è maggiore a $1$ diverge. Ma in questo modo si è implicitamente descritta la caratterizzazione del raggio di convergenza. Pertanto l'insieme di convergenza cercato è $\vert x \vert <1$. Fondamentale considerare il \textbf{valore assoluto}.
 
-Allora la risoluzione prevede di considerare con il criterio del rapporto e calcolare il limite seguente
-\[\lim_{n \to +\infty} \]
-Il criterio del rapporto afferma che 
-...continua...
+\vspace{2em}
+\noindent
+\textbf{Esempio 4}: Si consideri un altro esempio simile al precedente. Sia data la serie seguente:
+\[\sum_{n=1}^{+\infty} 2^{n} \cdot \dfrac{(x-1)^{2n}}{n^3}\]
+Ancora una volta, per determinare l'insieme di convergenza, si impiega il criterio del rapporto, ottenendo
+\[\lim_{n \to +\infty} \dfrac{\left \vert f_{n+1}(x) \right \vert}{\left \vert f_n(x) \right \vert} = \lim_{n \to +\infty} 2^{n+1} \cdot \left \vert \dfrac{(x-1)^{2n+2}}{(n+1)^3} \right \vert \cdot \left \vert \dfrac{n^3}{(x-1)^{2n}} \right \vert \cdot \dfrac{1}{2^n} = 2 \cdot (x-1)^2\]
+Per il criterio del rapporto, tale limite deve essere minore di $1$ al fine di avere convergenza; se è maggiore a $1$ diverge. Ma in questo modo si è implicitamente descritta la caratterizzazione del raggio di convergenza. Pertanto l'insieme di convergenza cercato è
+\[(x-1)^2 < \dfrac{1}{2} \hspace{1em} \rightarrow \hspace{1em} \vert x-1 \vert < \sqrt{\dfrac{1}{2}}\]
+L'intervallo di convergenza è, dunque
+\[I=\left]1-\dfrac{1}{\sqrt{2}},1+\dfrac{1}{\sqrt{2}}\right[\]
+e bisogna, ovviamente, controllare singolarmente ogni estremo per verificare la convergenza o meno (si vede facilmente che l'insieme di convergenza è l'intervallo chiuso).
 
 \vspace{1em}
 \noindent
@@ -3617,7 +3947,7 @@ allora si ha che
 \vspace{1em}
 \noindent
 \subsection{Successione in $\mathbb{R}^n$}
-Di seguito si espone la definizione di \textbf{uccessione in $\mathbb{R}^n$}:
+Di seguito si espone la definizione di \textbf{successione in $\mathbb{R}^n$}:
 
 % Tabella per le definizione di concetti, etc...
 \vspace{1em}
@@ -4019,4 +4349,1412 @@ Ma siccome $K$ è compatto per ipotesi, esiste una sottosuccessione $(x_{n_k})_k
 ma tale successione non può convergere (ovvero non può essere che $d(x_{n_k},l)<\epsilon$), in quanto
 \[d(x_{n_k},l) \geq d(x_{n_k},x_0) - d(x_0,l) \geq n_k - M\]
 essendo $d(x_0,l)=M$ costante. Ma siccome $n_k \to +\infty$ per cui non si può avere convergenza.
+
+\newpage
+\noindent
+\begin{center}
+    25 Ottobre 2022
+\end{center}
+Le coordinate sferiche esposte in precedenza sono
+\begin{align*}
+    &x=\rho \sin(\phi) \cdot \cos(\theta)\\
+    &y=\rho \sin(\phi) \cdot \sin(\theta)\\
+    &z=\rho \cos(\phi)
+\end{align*}
+Negli spazi metrici viene privilegiata la definizione per gli insiemi compatti del teorema di Bolzano-Weierstrass, andando a considerare un insieme compatto per successioni, tale per cui un insieme è compatto se ogni successione in esso definita presenta una sottosuccessione convergente in tale insieme.\\
+Ogni insieme compatto è chiuso e limitato. Tuttavia, non è vero il contrario. 
+
+\vspace{1em}
+\noindent
+\textbf{Esempio 1}: Se, infatti, si considera lo spazio metrico $\mathbb{Q}$ e vi si considera l'insieme
+\[[0,\pi[ \cap \mathbb{Q} = C\]
+in cui $C$ è chiuso e limitato in $\mathbb{Q}$ non è compatto.
+
+\vspace{1em}
+\noindent
+\textbf{Esempio 2}: Ancora, se si considera lo spazio metrico
+\[C([0,1]), \vert \vert \cdot \vert \vert_{\infty}\]
+allora data la palla chiusa
+\[\overline{B(0,1)} = \{\phi \in [0,1] \longmapsto \mathbb{R} \hspace{1em} \text{tale che} \hspace{1em} \phi \text{ è continua e } \max \left \vert \phi(x) \right \vert \leq 1\}\]
+allora tale insieme è chiuso e limitato. Tuttavia, non è compatto. Per dimostrarlo, è sufficiente considerare una successione che non ha sottosuccessioni convergenti.\\
+Pertanto, se si considerano per $n \neq m$ le due successioni
+\[\forall x, \hspace{1em} \phi_n(x) \neq 0 \hspace{1em} \text{si ha che} \hspace{1em} \phi_m(x) = 0\]
+per cui è evidente che, $\forall x \in [0,1]$ si ha
+\[\max \left \vert \phi_n(x) - \phi_m(x)\right \vert = 1, \hspace{1em} \forall n \neq m\]
+che non è altro che
+\[\left \vert \left \vert \phi_n - \phi_m \right \vert \right \vert_\infty\]
+per cui non esistono sotto-successioni convergenti. Infatti, si supponga esista una sottosuccessione $\phi_{n_k}$ convergente; allora, fissato $\epsilon$ piccolo con $\epsilon=\dfrac{1}{100}$ deve esistere $n_\epsilon \in \mathbb{N}$ tale che
+\[\forall n \geq n_\epsilon \hspace{1em} \text{e} \hspace{1em} \forall p \in \mathbb{N} \hspace{1em} \text{si ha che} \hspace{1em} \left \vert \left \vert \phi_{n+p} - \phi_n \right \vert \right \vert < \frac{1}{100}\]
+ma ciò è impossibile, in quanto $\left \vert \left \vert \phi_{n+p} - \phi_n \right \vert \right \vert=1$ se $p \neq 0$.
+
+\vspace{1em}
+\noindent
+\subsection{Teorema di caratterizzazione dei compatti in $\mathbb{R}^n$}
+Se $K \subseteq \mathbb{R}^n$ è chiuso e limitato, allora $K$ è compatto (ma ciò vale solamente in $\mathbb{R}^n$).
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Sia $K \subset \mathbb{R}^2$ chiuso e limitato. Sia $\left((x_n,y_n){^T}\right)_n$ una successione in K. Si considera, in $\mathbb{R}$ la successione $(x_n)_n$, ossia la proiezione sull'asse $x$ della successione di partenza. Si osservi che tale successione è limitata in $\mathbb{R}$, in quanto
+\[\left \vert x \right \vert \leq \left \vert \left \vert (x_0,y_0){^T} \right \vert \right \vert < M\]
+essendo $K$ limitato. Per il Teorema di Bolzano-Weierstrass, esiste una sottosuccessione $(x_{n_k})_k$ convergente ad $\alpha \in \mathbb{R}$.\\
+Ora è fondamentale considerare la sottosuccessione $(y_{n_k})_k$ che è ovviamente una sottosuccessione limitata, quindi esiste una sotto-sottosuccessione $(y_{n_{k_j}})_j$ convergente a $\beta \in \mathbb{R}$. Se, ora, si considera la sotto-sottosuccessione $(x_{n_{k_j}})_j$, è anch'essa convergente a $\alpha \in \mathbb{R}$, in quanto sottosuccessione di una successione convergente. Allora la sottosuccessione della successione di partenza
+\[\left((x_{n_{k_k}}, y_{n_{k_j}}){^T}\right)_j\]
+converge a $(\alpha,\beta){^T}$. Si noti, ovviamente, che $(\alpha,\beta){^T} \in K$ perché $K$ è chiuso e i limiti delle successioni sono punti di accumulazione per l'insieme $K$.
+
+\vspace{1em}
+\noindent
+\subsection{Teorema di compattezza}
+Sia $f : X \longmapsto Y$, con $X$ e $Y$ due spazi metrici e $f$ \textbf{continua}. Sia $K \subseteq X$ \textbf{compatto}, allora $f(K)$ è compatto.
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Sia $(y_n)_n$ una successione, con $y_n \subset f(K)$. Allora, per definizione di insieme immagine, si ha che
+\[\forall n, \exists x_n \in K \hspace{1em} \text{tale che} \hspace{1em} y_n=f(x_n)\]
+La successione $(x_n)_n$ ha una sottosuccessione convergente $(x_{n_k})_k$ per il teorema di Bolzano-Weierstrass, ovvero
+\[\lim_{k \to +\infty} x_{n_k} = \alpha \in K\]
+Per la continuità di $f$ si ha che
+\[\lim_{k \to +\infty} f(x_{n_k}) = f(\alpha)\]
+
+\vspace{1em}
+\noindent
+\subsubsection{Teorema di Weierstrass}
+Sia $f : X \longmapsto \mathbb{R}$ con $K \subseteq X$ compatto, e $f$ continua. Allora esistono
+\[\underset{k}{\min} f \hspace{1em} \text{e} \hspace{1em} \underset{k}{\max} f\]
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Per il teorema di compattezza $f(K) \subset \mathbb{R}$ è compatto. Quindi esiste il massimo e il minimo.
+
+\vspace{1em}
+\noindent
+\subsection{Teorema di Heine-Cantor sulla continuità uniforme}
+Sia $f : K \subseteq X \longmapsto Y$ con $f$ continua e $K$ compatto. Allora $f$ è uniformemente continua.
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Affermare che $f$ è uniformemente continua significa che
+\[\forall \epsilon > 0, \exists \delta > 0 \hspace{1em} \text{tale che} \hspace{1em} \forall x_1,x_2 \in K \hspace{1em} \text{con} \hspace{1em} d_x(x_1,x_2) < \delta \hspace{1em} \text{allora} \hspace{1em} d_y(f(x_1),f(x_2)) < \epsilon\]
+Per assurdo, si supponga che la funzione $f$ non sia uniformemente continua, ovvero
+\[\exists \epsilon > 0 \hspace{1em} \text{tale che} \hspace{1em} \forall \delta = \frac{1}{n} \hspace{1em} \exists x^1_n,x^2_n \in K \hspace{1em} \text{con} \hspace{1em} d(x^1_n,x^2_n) < \frac{1}{n} \hspace{1em} \text{e} \hspace{1em} d_y(f(x^1_n),f(x^2_n)) \geq \epsilon\]
+Avendo, ora, a disposizione due successioni $x^1_n$ e $x^2_n$ si può affermare, essendo $K$ compatto, che $(x^1_n)_n$ ha una sottosuccessione $(x^1_{n_k})_{k}$ convergente, ovvero
+\[\lim_{k \to +\infty} x_{n_{k}} = \alpha \in K\]
+Si considera, ora, la sottosuccessione $(x^2_{n_k})_k$, allora essa ha una sottosuccessione $(x^2_{n_{k_j}})_j$ convergente a $\beta$. Si noti che, ovviamente $\alpha = \beta$ poiché
+\[d_x(x^1_{n_{k_k}},x^2_{n_{k_j}}) < \frac{1}{n_{k_j}} \to 0\]
+Non solo, ma essendo $f$ continua, lo è in particolare in $\alpha$, quindi
+\[\exists \delta > 0 \hspace{1em} \text{tale che} \hspace{1em} \forall x \in K, x \neq \alpha, d_x(x,\alpha) < \delta \hspace{1em} \text{allora} \hspace{1em} d_y(f(x_1),f(x_2)) < \frac{\epsilon}{100}\]
+si ha allora che
+\[\epsilon \leq d_y(f(x^1_{n_{k_j}})) + d_y\]
+... continua ...
+
+\vspace{1em}
+\noindent
+\subsection{Insieme connesso per archi}
+Si fornisce di seguito la definizione di insieme connesso per archi:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{INSIEME CONNESSO PER ARCHI}}\\
+    \parbox{\linewidth}{Sia $X$ uno spazio metrico. Allora $E \subset X$ si dice connesso per archi se per ogni $x_0,x_1 \in E$ esiste una curva continua
+    \[\boxed{\gamma : [0,1] \longmapsto E}\]
+    in cui è fondamentale che abbia valori in $E$, tale che
+    \[\gamma(0)=x_0 \hspace{1em} \text{e} \hspace{1em} \gamma(1)=x_1\]
+    \vspace{3mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{1em}
+\noindent
+\subsubsection{Teorema di connessione}
+Sia una funzione $f : X \longmapsto Y$ una funzione definita tra $X$ e $Y$ due spazi metrici. Sia $E \subseteq X$ un insieme connesso (per archi), con $f$ continua. Allora $f(E)$ è connesso (per archi)
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Siano $y_0,y_1 \in f(E)$. Allora, per definizione di insieme immagine, si ha che
+\[\exists x_0,x_1 \in E \hspace{1em} \text{tali che} \hspace{1em} f(x_0) = y_0 \hspace{1em} \text{e} \hspace{1em} f(x_1)=y_1\]
+Ma siccome $E$ è connesso per ipotesi, si può affermare che
+\[\exists \gamma : [0,1] \longmapsto E \hspace{1em} \text{continua con} \hspace{1em} \gamma(0)=x_0 \hspace{1em} \text{e} \hspace{1em} \gamma(1) =x_1\]
+Allora la funzione composta
+\[f \circ \gamma : [0,1] \longmapsto f(E)\]
+è una curva continua con
+\[f(\gamma(0)) = y_0 \hspace{1em} \text{e} \hspace{1em} f(\gamma(1)) = y_1\]
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione 1}: Un insieme connesso che non è connesso per archi (ma non può essere il viceversa) è il cosiddetto tendine, in cui si considera la successione $\dfrac{1}{n}$ e degli intervalli di ampiezza unitaria, in cui, in $0$ si considera solamente un punto.\\ Allora tale insieme non è connesso per archi, ma è connesso, in quanto la seconda è una definizione più debole della prima.
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione 2}: Si osservi che $E \subseteq \mathbb{R}$ è connesso \textbf{se e solo se} $E$ è un intervallo (o un intervallo degenere, approssimabile ad un punto, del tipo $[a,a]$).
+
+\vspace{1em}
+\noindent
+\subsubsection{Teorema di esistenza degli zeri}
+Sia $f : E \subseteq X \longmapsto \mathbb{R}$ con $f$ continua ed $E$ connesso. Allora, se esistono $x_1,x_2 \in E$ tali che
+\[f(x_1) < 0 < f(x_1)\]
+esiste $x_0 \in E$ tale che $f(x_0)=0$.
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Siccome $f(E)$ è un intervallo che contiene punti negativi e positivi.
+
+\newpage
+\noindent
+\section{Calcolo differenziale}
+La pendenza di un grafico, per esempio, di una funzione $f : \mathbb{R}^2 \longmapsto \mathbb{R}$ dipende dalla direzione dello spostamento.
+
+\vspace{1em}
+\noindent
+\subsection{Derivata direzionale}
+Di seguito si espone la definizione di \textbf{derivata direzionale}:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{DERIVATA DIREZIONALE}}\\
+    \parbox{\linewidth}{Sia data la funzione
+    \[f : A \subseteq \mathbb{R}^n \longmapsto \mathbb{R}^m\]
+    Sia $x_0 \in A$ e sia $v \in \mathbb{R}^n$ un versore (ossia un vettore di $\vert \vert v \vert \vert = 1$).\\
+    Si consideri la \textbf{funzione composta}
+    \[f \circ \gamma : I \subseteq \mathbb{R} \longmapsto \mathbb{R}\]
+    con $I$ un intervallo del tipo $]-\delta,+\delta[$ tale che $\forall t \in I, \gamma(t) \in A$.\\
+    Allora si chiama \textbf{derivata direzionale} di $f$ in $x_0$ relativa alla direzione $v$, se esiste, la derivata in $t=0$ della funzione composta $f \circ g$, e si scriverà
+    \[\frac{\partial f}{\partial v} (x_0) = \frac{d}{dt} (f \circ \gamma)(t) \vert_{t=0} = \lim_{t \to 0} \frac{f(\gamma(t)) - f(\gamma(t))}{t} = \lim_{t \to 0} \frac{f(x_0+tv) - f(x_0)}{t}\]
+    \vspace{3mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{2em}
+\noindent
+\textbf{Esempio}: Si consideri la funzione
+\[f(x,y)=xy+2x\]
+e sia dato il punto $x_0=(1,0){^T}$ e la direzione $\displaystyle{v=\frac{1}{\sqrt{2}} \cdot (1,1){^T}}$. Allora la derivata in direzione $v$ di $f$ diviene
+\[\frac{\partial f}{\partial v}(1,0) = \lim_{t \to 0} \frac{f\left(1+t \frac{1}{\sqrt[]{2}},t\frac{1}{\sqrt{2}}\right) - f(1,0)}{t}\]
+che può essere scritto come
+\[\lim_{t \to 0} \dfrac{(1+\frac{t}{\sqrt{2}}) \cdot \frac{t}{\sqrt{2}} + 2 \cdot \left(1+\frac{t}{\sqrt{2}} - 2\right)}{t} = \lim_{t \to 0} \dfrac{\frac{t}{\sqrt{2}} + \frac{t^2}{2} + 2 + 2 \frac{t}{\sqrt{2} - 2}}{t} = \frac{3}{\sqrt{2}}\]
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: È chiaro che è possibile prendere in considerazione $v=e_k$ con $e_k$ versore di base della forma
+\[e_k=(0,\dots,0,1,0,\dots,0){^T}\]
+con $1$ solo nella posizione $k$-esima. Allora la parametrizzazione in funzione di $t$ rispetto a tale direzione è
+\[\gamma(t)=(x_1^0,x_2^0,\dots,x_k^0,\dots,x_n^0){^T} + t \cdot (0,0,\dots,1,\dots,0){^T} = (x_1^0,\dots,x_{k-1}^0,t,x_{k+1}^0,dots,x_n^0){^T}\]
+ciò permette, quindi, di definire la derivata direzionale come
+\[\frac{\partial f}{\partial e_k}(x_0) = \lim_{t \to 0} \frac{f(x_0^0,\dots,x_k^0+t,)}{t}\]
+... continua ...\\
+Quindi, per calcolare le derivate di $f$ nella direzione $e_k$ si procede a \quotes{congelare} tutte le variabili diverse da $x_k$ e si considera la funzione nella sola variabile $x_k$.
+
+\vspace{1em}
+\noindent
+\subsection{Derivata parziale}
+Di seguito si espone la definizione di \textbf{derivata parziale}:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{DERIVATA PARZIALE}}\\
+    \parbox{\linewidth}{La derivata particolare rispetto alla direzione dell'asse $k$-esimo
+    \[\frac{\partial f}{\partial e_k}(x_0)\]
+    si indica con
+    \[\frac{\partial f}{\partial x_k}(x_0)\]
+    e si dice \textbf{derivata parziale} $k$-esima di $f$. Talvolta si indicano come
+    \[\frac{\partial f}{\partial e_k} (x_0) = \frac{\partial f}{\partial x_k} (x_0) = D_{x_k} f(x_0) = f_{x_k}(x_0)\]
+    \vspace{3mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{2em}
+\noindent
+\textbf{Esempio}: Si consideri la funzione $f:E \subseteq \mathbb{R}^3\longmapsto \mathbb{R}$ definita come
+\[f(x,y,z) = \frac{\log(x+3z)}{y}\]
+allora si ha che
+\begin{align*}
+    &\frac{\partial f}{\partial x} = \frac{1}{y} \cdot \frac{1}{x+3z}\\
+    &\frac{\partial f}{\partial y} = -\frac{1}{y^2} \cdot \log(x+3z)\\
+    &\frac{\partial f}{\partial z} = \frac{1}{y} \cdot \frac{3}{x+3z}\\
+\end{align*}
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Se si considera una funzione generale
+\[f : \mathbb{R}^n \longmapsto \mathbb{R}^m\]
+con
+\[f=(f_1,\dots,f_m){^T}\]
+allora si ha che
+\[\frac{\partial f}{\partial v} = \left(\frac{\partial f_1}{\partial v}, \dots, \frac{\partial f_m}{\partial v}\right){^T}\]
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Si consideri la funzione
+\[f:\mathbb{R}^2 \longmapsto \mathbb{R}\]
+definita come segue
+\[f(x,y) = \left\{
+    \begin{array}{lll}
+        1 & \text{se} & xy=0\\
+        0 & \text{se} & xy \neq 0\\
+    \end{array}
+    \right.    
+\]
+È facile capire che
+\[\frac{\partial f}{\partial x}(0,0)=0 \hspace{1em} \text{e} \hspace{1em} \frac{\partial f}{\partial y}(0,0)=0\]
+Tuttavia si ha che, posto $v=\dfrac{1}{\sqrt{2}} (1,1){^T}$
+\[\frac{\partial f}{\partial v} = \nexists\]
+per cui il fatto che esistano le derivate parziali non implica che esistano le derivate direzionali.
+
+\vspace{1em}
+\noindent
+\textbf{Esempio}: Si consideri la funzione
+\[f:\mathbb{R}^2 \longmapsto \mathbb{R}\]
+definita come segue
+\[f(x,y) = \left\{
+    \rowcolors{1}{white}{white}
+    \begin{array}{lll}
+        \dfrac{x^2y}{x^4+y^2} & \text{se} & (x,y){^T}\neq(0,0){^T}\\
+        0 & \text{se} & (x,y){^T}=(0,0){^T}\\
+    \end{array}
+    \right.    
+\]
+Allora appare evidente come
+\[\frac{\partial f}{\partial x}(0,0) = 0 \hspace{1em} \text{e} \hspace{1em} \frac{\partial f}{\partial y}(0,0) = 0\]
+così come se si considera la direzione $v=\frac{1}{\sqrt{2}}(1,1){^T}$ si ha che
+\[\frac{\partial f}{\partial v}(0,0) = \lim_{t \to 0} \frac{f\left(\dfrac{t}{\sqrt{2}},\dfrac{t}{\sqrt{2}}\right) - f(0,0)}{t} = \dfrac{\dfrac{t^3}{2\cdot\sqrt{2}} \cdot \dfrac{4}{t^4+2t^2}}{t} = \lim_{t \to 0} \frac{2}{\sqrt{2}} \cdot \frac{1}{t^2 + 2} = \frac{1}{\sqrt{2}}\]
+per cui esistono le derivate parziale ed esiste la derivata direzionale lungo la bisettrice. Considerazione una qualunque altra direzione della forma $y=mx$, con $v=(a,b){^T}$, si ottiene
+\[\frac{\partial f}{\partial v}(0,0) = \lim_{t \to 0} \frac{f(at,bt)-f(0,0)}{t} = \lim_{t \to 0} \dfrac{\dfrac{a^2bt^3}{a^4t^4+b^2t^2}-0}{t}=\lim_{t \to 0} \frac{a^2bt^2}{a^4t^4+b^2t^2} = \lim_{t \to 0} \frac{a^2b}{a^4t^2+b^2} = \frac{a^2}{b}\]
+che, implica che la derivata direzionale in $(0,0){^T}$ esiste in qualunque direzione, ma la funzione non è continua in $0$, in quanto basta considerare la sua restrizione in $y=x^2$, per cui si ottiene 
+\[f=\frac{x^2 \cdot x^2}{x^4 + x^4} = \frac{1}{2}\]
+
+\newpage
+\noindent
+\begin{center}
+    26 Ottobre 2022
+\end{center}
+Si riprenda in considerazione la funzione
+\[f:\mathbb{R}^2 \longmapsto \mathbb{R}\]
+definita come segue
+\[f(x,y) = \left\{
+    \rowcolors{1}{white}{white}
+    \begin{array}{lll}
+        \dfrac{x^2y}{x^4+y^2} & \text{se} & (x,y){^T}\neq(0,0){^T}\\
+        0 & \text{se} & (x,y){^T}=(0,0){^T}\\
+    \end{array}
+    \right.    
+\]
+Per quanto già visto in precedenza, tale funzione presenta derivate parziali e derivate direzionali in ogni direzione, ma tale funzione non è continua.\\
+Con derivata direzionale si intende il calcolo della derivata della restrizione di una funzione in una specifica direzione descritta da un versore. Le derivate parziali sono delle particolari derivate direzionali, in cui la funzione viene ristretta su ogni specifico asse.\\
+Se si vuole estendere il concetto di derivabilità allo spazio $\mathbb{R}^n$, non è sufficiente richiedere che esista la derivata in ogni direzione. È necessario richiedere che la funzione sia \textbf{differenziabile}.
+
+\vspace{1em}
+\noindent
+\subsection{Funzione differenziabile}
+Si espone di seguito la definizione di \textbf{funzione differenziabile}:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{FUNZIONE DIFFERENZIABILE}}\\
+    \parbox{\linewidth}{Sia data una funzione
+    \[f : A \subseteq \mathbb{R}^n \longmapsto \mathbb{R}^m\]
+    con $x_0 \in A$. Allora $f$ si dice \textbf{differenziabile} in $x_0$ se esiste un'\textbf{applicazione lineare} (ovvero un approssimante lineare)
+    \[L \in \mathcal{L}(\mathbb{R}^n, \mathbb{R}^m)\]
+    appartenente all'insieme delle applicazioni lineare da $\mathbb{R}^n$ in $\mathbb{R}^m$ tale che
+    \[\lim_{x \to x_0} \dfrac{f(x) - f(x) - L(x-x_0)}{x-x_0}=O_v\]
+    e, in particolare, si ha
+    \[\widetilde{f}(x) : f(x-x_0)\]
+    si dice approssimante lineare di $f$ in $x_0$.
+    \vspace{3mm}}\\
+    \hline
+\end{tabularx}
+
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione}: Si osservi che $L$ se esiste è unica, per cui si indica con $\dif f(x)$ e si dice il differenziale di $f$ in $x_0$, con
+\[\boxed{\dif f(x) : \mathbb{R}^n \longmapsto \mathbb{R}^m}\]
+Si applica, quindi, la \textbf{formula di Taylor} del primo ordine: se $f$ è differenziabile in $x_0$ può essere scritta come
+\[f(x) = f(x_0) + \dif f(x) \cdot (x-x_0) + o(x-x_0)\]
+con
+\[\lim_{x \to +\infty} \frac{o(x-x_0)}{x-x_0}=0\]
+ovvero è un infinitesimo di ordine maggiore di $1$.\\
+Non solo, data $\dif f(x)$ un'applicazione lineare, è possibile associarvi una matrice che rappresenta $\dif f(x)$ chiamata matrice Jacobiana che rappresenta $\dif f(x)$ in funzione della base canonica, ovvero
+\[J f(x) = \left(df(x)(x-e_1),\dif f(x) (x-e_2), ..., \dif f(x) (x-e_n)\right) \in N \times N\]
+
+\vspace{2em}
+\noindent
+\subsubsection{Teorema di continuità della funzione differenziabile}
+Sia $f$ differenziabile in $x_0$, allora $f$ è continua in $x_0$.
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Sia dato il differenziale di $f(x)$, ovvero
+\[f(x)-f(x_0) = \dif f(x)(x-x_0)+o(x-x_0)\]
+
+\vspace{2em}
+\noindent
+\subsubsection{Teorema di esistenza della derivata direzionale}
+Sia $f$ differenziabile in $x_0$, allora $\forall v$ versore
+\[\exists \frac{\partial f}{\partial v}(x)\]
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Secondo la definizione di derivata direzionale, si ha che
+\[\lim_{t \to 0} \frac{f(x_0+tv) - f(x_0)}{t} = \lim_{t \to 0} \left[ \frac{\dif f(x) \cdot (x-x_0)}{t} - \frac{o(t v)}{tv} - \frac{tv}{t}\right]\]
+ma essendo $\dif f(x)$ un'applicazione lineare, si può chiaramente osservare che
+\[\lim_{t \to 0} t \cdot \frac{\dif f(x)(v)}{t} = \dif f(x)\]
+
+\vspace{1em}
+\noindent
+In particolare
+\[\frac{\partial f}{\partial x}(x_0) = \dif f(x) (x_0)\]
+e, quindi, la matrice Jacobiana raccoglie tutte le derivate della funzione.
+
+\vspace{1em}
+\noindent
+\textbf{Esempio}: Si consideri la funzione
+\[f : A \subseteq \mathbb{R^2} \longmapsto \mathbb{R}^3\]
+data come segue
+\[f(x,y,z)=\left[\sin(xy),x \log(y),\frac{x}{y}\right]{^T}\]
+si ottengono le derivate parziali seguenti
+\begin{align*}
+    &\frac{\partial f}{\partial x} = \left(y\cos(xy),\log(y),\frac{1}{y}\right){^T}\\
+    &\frac{\partial f}{\partial y} = \left(x\cos(xy),\frac{x}{y},-\frac{x}{y^2}\right){^T}\\
+\end{align*}
+È possibile, quindi, costruire anche la matrice di Jacobi corrispondente:
+\[J(f(x,y)) = \left(
+    \rowcolors{1}{white}{white}
+    \begin{array}{cc}
+        y \sin(xy) & x \cos(xy)\\
+    \end{array}
+\right)\]
+
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione 1}: Si osservi il caso particolare in $n=1$ e $m>1$, data una curva $\gamma(t)$ si ha che
+\[\dif \gamma(t) : \mathbb{R} \longmapsto \mathbb{R}^2\]
+allora si ha che il differenziale è proprio la derivata
+\[\gamma'(t) = \left(x'(t),y'(t)\right){^T}\]
+Per esempio, se si considera
+\[\gamma(t)=(\cos(t),\sin(t)){^T} \hspace{1em} \text{con} \hspace{1em} t \in [0,2\pi]\]
+allora il vettore tangente è
+\[\gamma'(t)=\left(-\sin(t),\cos(t)\right){^T}\]
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione 2}: Si osservi il caso particolare in cui $n>1$ e $m=1$, con una funzione
+\[f : A \subseteq \mathbb{R}^n \rightarrow \mathbb{R}^m\]
+in cui l'applicazione lineare si ha
+\[\dif f(x) : \mathbb{R}^n \longmapsto \mathbb{R}\]
+per cui si ottiene
+\[\dif f(x) = \left(\frac{\partial f}{\partial x_1}(x), \frac{\partial f}{\partial x_2}(x), \dots, \frac{\partial f}{x_n}(x) \right)\]
+ovverosia è una matrice di riga con il valore della derivata parziale della $f$ come elementi di colonna.\\
+Allora il prodotto scalare seguente
+\[\left<
+    \left(
+        \rowcolors{1}{white}{white}
+        \begin{array}{c}
+            \frac{\partial f}{\partial x_0}(x)\\
+            \vdots\\
+            \frac{\partial f}{\partial x_n}(x)
+        \end{array}
+    \right), v
+\right>\]
+si dice \textbf{gradiente} di $f$ in $x_0$ il vettore
+\[\nabla f(x_0) = \mathcal{J}f(x_0){^T}\]
+
+\vspace{2em}
+\noindent
+\subsubsection{Interpretazione geometrica con $n=2$ e $m=1$}
+Il grafico dell'approssimante lineare, in una dimensione, era, ovviamente la retta tangente. Nel caso in cui $n=2$ e $m=1$, si ottiene che l'approssimante lineare
+\[z=f(x_0,y_0) + \dif \widetilde{f}_{[x_0,y_0]}(x-x_0,y-y_0)\]
+rappresenta il piano tangente al grafico della funzione $f$ nel punto $\left(x_0,y_0,f(x_0,y_0)\right){^T}$.\\
+Altrimenti si sarebbe potuto anche scrivere
+\[f(x,y) = \left<\nabla f(x,y), (x-x_0,y-y_0)\right>\]
+
+\vspace{1em}
+\noindent
+\textbf{Esempio}: Si consideri la funzione
+\[f(x,y)=x \log(y)\]
+e si calcoli l'equazione del piano tangente al punto $(2,e){^T}$. Ovviamente si ha che
+\[\nabla f(x,y) = \left(\log(y),\frac{x}{y}\right) \hspace{1em} \rightarrow \hspace{1em} \nabla f(2,1) = \left(1,\frac{2}{e}\right)\]
+Allora si ha che l'equazione è
+... continua ...
+
+\vspace{1em}
+\noindent
+\subsection{Teorema sulla differenziabilità della combinazione lineare}
+Siano date
+\[f,g : A \subseteq \mathbb{R}^n \longmapsto \mathbb{R}^m\]
+differenziabili in $x_0 \in A$. Siano $\alpha, \beta \in \mathbb{R}$, allora $\alpha f + \beta g$ è differenziabile e si ha che
+\[\dif \left(\alpha f + \beta g\right)(x_0) = \alpha \cdot \dif f(x_0) + \beta \cdot g(x_0)\]
+
+\vspace{1em}
+\noindent
+\subsection{Teorema sulla differenziabilità del prodotto}
+Siano date
+\[f,g : A \subseteq \mathbb{R}^n \longmapsto \mathbb{R}\]
+differenziabili in $x_0$, allora il prodotto $f \cdot g$ è differenziabile e si ha che $\forall v \in \mathbb{R}^n$
+\[\dif (f \cdot g)\]
+... continua ...
+
+\vspace{1em}
+\noindent
+\subsection{Teorema sulla differenziabilità della composta}
+Siano date
+\[f : A \subseteq \mathbb{R}^n \longmapsto \mathbb{R}^k \hspace{1em} \text{e} \hspace{1em} g : B \subseteq \mathbb{R}^k \longmapsto \mathbb{R}^m\]
+con $f(A) \in B$. Sia $f$ differenziabile in $x_0 \in \mathbb{R}$ e $f(x_0)=y_0 \in \mathbb{R}$ con $g$ differenziabile in $y_0$.\\
+Allora la funzione composta
+\[g \circ f : A \subseteq \mathbb{R}^n \longmapsto \mathbb{R}^m\]
+è differenziabile e si ha che
+\[\dif(g \circ f)(x_0) = \dif g(f(x_0)) \circ \dif(f(x_0))\]
+ovvero una composizione tra applicazioni lineari. Essendo la matrice della composta il prodotto righe per colonne tra matrici, si ha che
+\[\mathcal{J}(g \circ f)(x_0) = \mathcal{J}g(f(x_0)) \cdot \mathcal{J}f(x_0)\]
+In generale, infatti, si applica la seguente \textbf{regola della catena}:
+\[\frac{\partial (g \circ f)_i}{\partial x_j} = \sum_{k=1}^K \frac{\partial g(f(x))_i}{\partial y_k} \cdot \frac{\partial f(x)_k}{\partial x_j}\]
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Si vuole dimostrare che
+\[g(f(x))-g(f(x_0))\]
+per la differenziabilità della funzione $g$ si ha che
+\[g(x) - g(x_0) = \dif g(x)(x-x_0) + o(x-x_0)\]
+che, applicato alla funzione $f$, permette di ottenere
+\[g(f(x)) - g(f(x_0)) = \dif g(f(x))(f(x)-f(x_0)) + o(f(x)-f(x_0))\]
+similmente, per la differenziabilità della $f$ si evince che
+\[f(x) - f(x_0) = \dif f(x)(x-x_0) + o(x-x_0)\]
+ma ciò permette di affermare che
+\[g(f(x)) - g(f(x_0)) = \dif g(f(x))(\dif f(x) (x-x_0))) + + o(f(x)-f(x_0))\]
+La dimostrazione è conclusa se si dimostra che il secondo elemento è un o-piccolo, per cui si evince che
+\[\lim_{x\ to x_0} \frac{\dif g(f(x))(f(x)-f(x_0))}{\vert \vert x-x_0 \vert \vert} + \frac{o \left(f(x)-f(x_0)\right)}{\vert \vert x-x_0 \vert \vert}\]
+ma è ovvio che il primo termine tenda a $0$, per definizione di o-piccolo. Per quanto riguarda il secondo termine si ottiene che, moltiplicando e dividendo per la medesima quantità:
+\[\frac{o \left(f(x)-f(x_0)\right)}{\vert \vert f(x) - f(x_0) \vert \vert} \cdot \frac{\vert \vert f(x) - f(x_0) \vert \vert}{\vert \vert x - x_0 \vert \vert}\]
+il primo termine è infinitesimo. Per il secondo termine, si sfrutta ancora la definizione di differenziabilità, si ottiene che
+\[\frac{\vert \vert f(x) - f(x_0) \vert \vert}{\vert \vert x - x_0 \vert \vert} = \frac{\vert \vert \dif f(x)(x-x_0) + o(x-x_0)}{\vert \vert x-x_0\vert \vert}\]
+e scomponendo tale termine si ottiene
+\[\left \vert \left \vert \frac{\dif f(x)(x-x_0)}{\vert \vert x-x_0\vert\vert} + \frac{o(x-x_0)}{\vert \vert x-x_0 \vert \vert}\right \vert \right \vert\]
+in cui il secondo termine è ovviamente infinitesimo. Tuttavia, il primo termine si può scrivere come ...continua...
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione}: Si consideri la curva seguente
+\[\gamma : I \subseteq \mathbb{R} \longmapsto \mathbb{R}^N\]
+e il campo scalare seguente
+\[f : \mathbb{R}^n \longmapsto \mathbb{R}\]
+allora la composizione
+\[\left(f \circ \gamma\right) : I \subseteq I \longmapsto \mathbb{R}\]
+Allora si ha che il differenziale della composta è
+\[\dif f(x) \circ \dif \gamma(x) = \left<\nabla f(x), \gamma'(x)\right>\]
+
+\vspace{2em}
+\noindent
+Si supponga di considerare una curva piana rappresentabile come insieme degli zeri di un campo scalare
+\[Z_f = \{(x,y){^T} \in \mathbb{R}^2 : f(x,y) = 0\}\]
+e anche in forma parametrica come segue
+\[\gamma : I \longmapsto \mathbb{R}^2 \hspace{1em} \text{e} \hspace{1em} \gamma(t) = (x(t),y(t)){^T}\]
+È immediato evincere che
+\[f \circ \gamma : I \longmapsto \mathbb{R} \hspace{1em} \text{con} \hspace{1em} f(\gamma(t)) = 0, \forall t\]
+ma anche
+
+
+\newpage
+\noindent
+\begin{center}
+    28 Ottobre 2022
+\end{center}
+
+\vspace{1em}
+\noindent
+\textbf{Esercizio 1}: Si consideri la funzione seguente
+\[f(x,y) = \dfrac{xy^2}{x^4+y^2}\]
+e si calcoli il limite seguente
+\[\lim_{(x,y){^T} \to (0,0){^T}} f(x,y)\]
+Naturalmente, se il limite esiste è $0$, in quanto considerando la restrizione della funzione rispetto all'asse $x$ e all'asse $y$ la funzione vale $0$.\\
+Considerando la restrizione della funzione ad una retta generica $y=mx$, si sta considerando la composta
+\[h(x)=f(x,mx)=\frac{xm^2x^2}{x^4+m^2x^2}\]
+per cui se $x \to 0$, allora la restrizione è nulla.\\
+Allora si può pensare che la funzione ammetta limite. Per dimostrarlo, si ha che ... continua ...
+
+\vspace{1em}
+\noindent
+\textbf{Esercizio 2}: Si consideri la funzione $f(x)=\arctan(x)$ e si consideri lo sviluppo in serie di tale funzione. Si può facilmente dimostrare che la funzione è sviluppabile in serie di Taylor.\\
+Per poter scrivere la serie di Taylor si possono scrivere le derivate successive della $f$.\\
+Tuttavia, è molto più semplice considerare la derivata della funzione:
+\[f'(x)=\frac{1}{1+x^2}=\frac{1}{1-(-x^2)}\]
+ma siccome è noto che la serie geometrica
+\[\frac{1}{1-y}=\sum_{n=0}^{+\infty} y^n\]
+con $\left \vert y \right \vert < 1$, è facile capire che
+\[t'(t)=\sum_{n=0}^{+\infty}(-1)^n t^{2n}\]
+e quindi per le proprietà degli integrali applicate alle serie
+\[f(x)=\int_0^x f'(t) \dif t = \sum_{n=0}^{+\infty} (-1)^n \frac{1}{2n+1} x^{2n+1}\]
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione 1}: Data una funzione
+\[f : A \subseteq \mathbb{R}^2 \longmapsto \mathbb{R}\]
+allora l'insieme delle curve di livello è
+\[L_\alpha = \{(x,y){^T} \in A : f(x,y)=\alpha\}\]
+per cui, se la funzione è
+\[f(x,y) = 4x^2+y^2\]
+presa l'equazione per determinare l'insieme delle curve di livello, si ottiene come
+\[4x^2+y^2=\alpha \hspace{1em} \text{ è un ellisse, di equazione } \hspace{1em} \dfrac{x^2}{\left(\dfrac{\sqrt{\alpha}}{2}\right)^2} + \dfrac{y^2}{\left(\sqrt{2}\right)^2} = 1\]
+allora è possibile esprimere tale funzione come una curva parametrica, del tipo
+\[\gamma : I \rightarrow \mathbb{R}^2\]
+... continua ...
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione 2}: Se si consideri una funzione, invece, che va da $\mathbb{R}^3$ in $\mathbb{R}$, come la seguente
+\[f : A \subseteq \mathbb{R}^3 \longmapsto \mathbb{R}\]
+allora l'insieme delle curve di livello è
+\[L_\alpha = \{(x,y,z){^T} \in A : f(x,y,z)=\alpha\}\]
+ora è possibile esprimere tale funzione come superficie, non più curva, parametrica
+\[\sigma : I \times J \longmapsto \mathbb{R}^3\]
+della forma
+\[\sigma(s,t) = \left(x(s,t),y(s,t),z(s,t)\right){^T}\]
+allora, supponendo che il sostegno $\Sigma$ di $\sigma$ coincida con $L_\alpha$. Se $f(x,y,z)$ è una sfera, per cui
+\[f(x,y,z)=x^2+y^2+z^2\]
+allora la $\sigma$ diviene
+\[\sigma(s,y)= \left(\sin(s)\cos(t),\sin(s)\sin(t),\cos(s)\right)\]
+Allora, per determinare il piano tangente alla sfera, si vanno a considerare i vettori tangenti fissando prima $s$ e poi $t$: se i vettori ottenuti sono linearmente indipendenti, essi generano il piano tangente cercato.
+Allora, se si fissa $s$ e si muove $t$, il vettore tangente alla curva $\sigma(\overline{s},t)$ è
+\[\frac{\partial \sigma}{\partial t} (\overline{s}, t)\]
+e, similmente, se si fissa $t$ e si muove $s$, il vettore tangente alla curva $\sigma(s,\overline{t})$ è
+\[\frac{\partial \sigma}{\partial s}(s,\overline{t})\]
+Pertanto, nel punto $(x_0,y_0,z_0){^T} = \sigma(s_0,t_0)$ il piano tangente è il piano generato dai vettori
+\[\frac{\partial \sigma}{\partial s}(s_0,t_0) \hspace{1em} \text{e} \hspace{1em} \frac{\partial \sigma}{\partial t} (s_0,t_0)\]
+È facile capire, ora, che se si considera il prodotto vettoriale fra tali vettori, si ottiene un vettore a essi ortogonale, che consente di andare a scrivere le equazioni cartesiane della funzione di partenza.\\
+Si osservi che per quanto visto
+\[f\left(x(s,t),y(s,t),z(s,t)\right)=\alpha, \hspace{1em} \forall s, t\]
+in quanto coincide con l'insieme delle curve di livello.\\
+Ciò significa che
+\[(f \circ \sigma)(s,t) = \alpha \hspace{1em} \text{costante}\]
+per cui è evidente che il gradiente
+\[\nabla(f \circ \sigma) = (0,0){^T}\]
+ma per definizione di gradiente si ha che
+\[\nabla(f \circ \sigma) = \left(\frac{\partial}{\partial s}(f \circ \sigma)(s,t), \frac{\partial }{\partial t}(f \circ \sigma)(s,t)\right){^T}\]
+Ma è evidente che
+\[\frac{\partial}{\partial s}(f \circ \sigma)(s,t) = 0\]
+per cui
+\[\left<\nabla f(\sigma,t), \frac{\partial}{\partial s} \sigma(s,t)\right> = 0\]
+e si ha anche che
+\[\frac{\partial}{\partial t}(f \circ \sigma)(s,t) = 0\]
+per cui
+\[\left<\nabla f(\sigma,t), \frac{\partial}{\partial t} \sigma(s,t)\right> = 0\]
+Quindi si ha che $\nabla f(\sigma(s,t))$ è ortogonale al piano generato dai vettori
+\[\frac{\partial \sigma}{\partial s}(s,t) \hspace{1em} \text{e} \hspace{1em} \frac{\partial \sigma}{\partial t} (s,t)\]
+Quindi $\nabla f(x,y,z)$ è ortogonale alla superficie di livello $L_\alpha$ nel punto $(x,y,z){^T}$.
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione}: Si osservi che in un grafico di isoipse, dove le righe sono più fitte vi è maggiore pendenza e un percorso deve essere sempre ortogonale alle linee di livello
+
+\vspace{1em}
+\noindent
+\subsection{Seconda proprietà geometrica del gradiente}
+Sia $f : A \subseteq \mathbb{R}^n \longmapsto \mathbb{R}$ differenziabile in $x_0 \in A$ e sia $\nabla f(x_0)$ il suo gradiente. Allora $\nabla f(x_0)$ indica la direzione di massimo incremento di $f$ nel punto e il suo modulo individua tale massima variazione. Cioè per ogni direzione $v$ si ha
+\[\left \vert \frac{\partial f}{\partial v}(z_0) \right \vert \leq \left \vert \left \vert \nabla f(x_0) \right \vert \right \vert\]
+e vale l'uguaglianza \textbf{se e solo se} $v$ è la direzione di $\nabla f(x_0)$.
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Applicando la disuguaglianza di Cauchy-Schwarz
+\[\left \vert \frac{\partial}{\partial v} f(x) \right \vert = \left \vert \left<\nabla f(x), v \right> \right \vert \leq \vert \vert \nabla f(x) \vert \vert \cdot \underbrace{\vert \vert v \vert \vert}_{=1} = \vert \vert \nabla f(x) \vert \vert\]
+Per determinare la direzione del gradiente di $f$, si considera il versore corrispondente
+\[v=\frac{\nabla f(x)}{\vert \vert \nabla f(x) \vert \vert}\]
+nell'ipotesi in cui $\vert \vert \nabla f(x) \vert \vert \neq 0$. Ma in particolare si ha che
+\[\frac{\nabla}{\nabla v} f(x) = \left<\nabla f(x), \frac{\nabla f(x)}{\vert \vert \nabla f(x) \vert \vert}\right>\]
+ma cià equivale a dire
+\[\frac{1}{\vert \vert \nabla f(x) \vert \vert} \cdot \vert \vert \nabla f(x) \vert \vert^2 = \vert \vert \nabla f(x) \vert \vert\]
+
+\vspace{2em}
+\noindent
+\textbf{Esercizio 1}: Si provi che è differenziabile in $(0,0){^T}$ la funzione
+\[
+    f(x,y)=\left\{
+        \rowcolors{1}{white}{white}    
+        \begin{array}{lll}
+            \dfrac{x^2y^2}{\sqrt{x^2+y^2}} & \text{se} & (x,y){^t} \neq (0,0){^T}\\
+            0   & \text{se} & (x,y){^t} = (0,0){^T}\\
+        \end{array}
+    \right\}
+\]
+Per la definizione di differenziabilità, la funzione data è differenziabile in $(0,0)^T$ se esiste un'applicazione lineare $L$
+\[L : \mathbb{R}^2 \longmapsto \mathbb{R}\]
+tale per cui
+\[\lim_{(x,y){^T} \to (0,0){^T}} \dfrac{f(x,y) - f(0,0) - L(x,y)}{\vert \vert (x,y){^T} \vert \vert} = 0\]
+Ma se la funzione è differenziabile, si ha che $L=\dif f(0,0)$, ovvero l'applicazione lineare cercata è il gradiente della funzione, per cui si può scrivere
+\[L(x,y) = \left<\nabla f(0,0), (x,y){^T} \right>\]
+pertanto bisogna dimostrare che
+\[\lim_{(x,y){^T} \to (0,0){^T}} \dfrac{f(x,y) - f(0,0) - \left<\nabla f(0,0), (x,y){^T} \right>}{\vert \vert (x,y){^T} \vert \vert} = 0\]
+ma è noto che $f(0,0)=0$ e
+\begin{itemize}
+    \item $\dfrac{\partial f}{\partial x} (0,0) = \lim_{t \to 0} \dfrac{f(x+t,0) - f(0,0)}{t} = 0$
+    \item \item $\dfrac{\partial f}{\partial y} (0,0) = \lim_{t \to 0} \dfrac{f(0,y+t) - f(0,0)}{t} = 0$
+\end{itemize}
+Per cui appare evidente come
+\[\left<\nabla f(0,0), (x,y){^T} \right> = \left<, (x,y){^T} \right> = 0\]
+Bisogna, quindi, dimostrare che
+\[\lim_{(x,y){^T} \to (0,0){^T}} \dfrac{f(x,y)}{\vert \vert (x,y){^T} \vert \vert} = 0 \hspace{1em} \rightarrow \hspace{1em} \dfrac{x^2y^2}{x^2+y^2} \cdot \dfrac{1}{\sqrt{x^2+y^2}}\]
+... continua ...
+
+\vspace{2em}
+\noindent
+\textbf{Esercizio 2}: Sia data una funzione differenziabile $f : A \subseteq \mathbb{R}^2 \longmapsto \mathbb{R}$. Si conoscono le derivate direzionali della $f$ nel punto $(x_0,y_0)^T$ lungo due direzioni (non parallele) $u=(a,b){^T}$ e $v=(c,d){^T}$:
+\[\frac{\partial f}{\partial u} (x_0,y_0)=p \hspace{1em} \text{e} \hspace{1em} \frac{\partial f}{\partial v} (x_0,y_0)=q\]
+e si determini il gradiente della funzione $f$ nel punto $\partial f(x_0,y_0)$. In particolare, si ha che
+\[\nabla f(x_0,y_0) = (\alpha, \beta){^T}\]
+e si devono determinare $\alpha$ e $\beta$. È noto, per definizione, che
+\begin{itemize}
+    \item $p=\left<\nabla f(x,y), u\right>= \left<(\alpha,\beta){^T}, (a,b){^T}\right> = \alpha a + \beta b$
+    \item $q=\left<\nabla f(x,y), v\right>= \left<(\alpha,\beta){^T}, (c,d){^T}\right> = \alpha c + \beta d$
+\end{itemize}
+per cui si ottiene che
+\[
+    \left\{
+        \rowcolors{1}{white}{white}    
+        \begin{array}{l}
+            p=\alpha a + \beta b\\
+            q=\alpha c + \beta d
+        \end{array}
+    \right.
+\]
+per cui è immediato evincere come
+\[\alpha=\frac{dp-bq}{ad-bc} \hspace{1em} \text{e} \hspace{1em} \beta=\frac{aq-pc}{ad-bc}\]
+
+\vspace{2em}
+\noindent
+\textbf{Esercizio 3}: Calcolare in $(0,0){^T}$ le derivate direzionali rispetto a $v=\dfrac{1}{\sqrt{2} (1,1){^T}}$ della funzione
+\[
+    f(x,y) =
+    \left\{
+        \rowcolors{1}{white}{white}    
+        \begin{array}{lll}
+            \dfrac{x^2y}{x^2+y^4} & \text{se} & (x,y){^t} \neq (0,0){^T}\\
+            0 & \text{se} & (x,y){^t} = (0,0){^T}\\
+        \end{array}
+    \right.
+\]
+Allora appare evidente che
+\begin{itemize}
+    \item $\dfrac{\partial f}{\partial x}(0,0) = \lim_{x \to 0} \dfrac{f(x,0) - f(0,0)}{x} = 0$
+    \item $\dfrac{\partial f}{\partial y}(0,0) = \lim_{y \to 0} \dfrac{f(0,y) - f(0,0)}{y} = 0$
+    \item $\dfrac{\partial f}{\partial v}(0,0) = \lim_{t \to 0} \dfrac{f \left(\dfrac{t}{\sqrt{2},dfrac{t}{\sqrt{2}}}\right) - f(0,0)}{t} = \lim_{t \to 0} \dfrac{\dfrac{t^3}{2 \cdot \sqrt{2}}}{t} \cdot \left(\dfrac{t^2}{2}+\frac{t^4}{4}\right) = \dfrac{1}{\sqrt{2}}$
+\end{itemize}
+per cui la formula non vale perché in $0 \neq \dfrac{1}{\sqrt{2}}$, per cui la funzione non è differenziabile.
+
+\vspace{2em}
+\noindent
+\textbf{Esercizio 4}: Sia $\phi : \mathbb{R} \longmapsto \mathbb{R}$ una qualsiasi funzione derivabile. Si verifichi che la funzione
+\[u(x,t)=\phi \binom{y}{x}\]
+è soluzione dell'equazione differenziale alle derivate parziali
+\[x \dfrac{\partial u}{\partial x} + y \dfrac{\partial u}{\partial y} = 0\]
+Per definizione della funzione $u(x,t)$, si ha che
+\begin{itemize}
+    \item $\dfrac{\partial}{\partial x} u(x,t) = \dfrac{\partial}{\partial x} \left[\phi \displaystyle{\binom{y}{x}}\right] = \phi' \displaystyle{\binom{y}{x}} \cdot \dfrac{\partial g}{\partial x} = \phi' \displaystyle{\binom{y}{x}} \cdot \left(-\dfrac{y}{x^2}\right)$
+    \item $\dfrac{\partial}{\partial y} u(x,t) = \dfrac{\partial}{\partial y} \left[\phi \left(\dfrac{y}{x}\right)\right] = \phi' \left(\dfrac{y}{x}\right) \cdot \dfrac{\partial g}{\partial y} = \phi' \left(\dfrac{y}{x}\right) \cdot \left(\dfrac{1}{x}\right)$
+\end{itemize}
+per cui si ottiene che
+\[x \dfrac{\partial u}{\partial x} + y \dfrac{\partial u}{\partial y} = x \phi' \left(\dfrac{y}{x}\right) \cdot \left(-\dfrac{y}{x^2}\right) + y \phi' \left(\dfrac{y}{x}\right) \cdot \left(\dfrac{1}{x}\right) = 0\]
+
+\vspace{1em}
+\noindent
+\subsection{Teorema del valor medio per campi scalari}
+Si espone di seguito il \textbf{teorema del valor medio per campi scalari}:
+
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{TEOREMA DEL VALOR MEDIO PER CAMPI SCALARI}}\\
+    \parbox{\linewidth}{Sia $A \subseteq \mathbb{R}^n$ un insieme convesso. Sia $f : A \longmapsto \mathbb{R}$ una funzione differenziabile. Allora, per ogni coppia di punti $P,Q \in A$, esiste un punto $\xi$ appartenente al segmento di estremi $P$ e $Q$, ossia tale che
+    \[\exists \gamma : [0,1] \longmapsto \mathbb{R}^n \hspace{1em} \text{tale che} \hspace{1em} \phi(t) =P + t \cdot (Q-P)\]
+    tale che
+    \[f(Q)-f(P) = \left(\nabla f(\epsilon),Q-P\right)\]
+    \vspace{-1mm}}\\
+    \hline
+\end{tabularx}
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Sia
+\[(f \circ g) (t) : [0,1] \longmapsto \mathbb{R}\]
+tale per cui
+\[\gamma'(t) = Q-P\]
+allora, per il teorema di Lagrange
+\[\exists \eta \in ]0,1[ \hspace{1em} \text{tale che} \hspace{1em} (1-0) \cdot (f \circ g)'(\eta) = (f \circ g)(1) - \]
+... continua ...
+
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Si osservi che tale teorema non risulta valido per i campi vettoriali, ma solo per il campi scalari.\\
+Infatti, data una funzione
+\[f : \mathbb{R}^n \longmapsto \mathbb{R}^m\]
+non esiste un punto $\xi \in \overline{PQ}$ tale per cui
+\[f(Q)-f(P)= \mathcal{J} f(\xi) (Q-P)\]
+Per verificarlo, si consideri la funzione
+\[f : [0,2\pi] \longmapsto \mathbb{R}^2\]
+con
+\[f(t)=(\cos(t),\sin(t)){^T}\]
+in cui $P=0$ e $Q=2\pi$. Allora
+\[f(2\pi)-f(0) = (1,0){^T} - {1,0}{^T} = (0,0){^T}\]
+ma è impossibile, in quanto
+\[(0,0)^{t} \neq (-\sin(t),\cos(t)){^T} - 2\pi\]
+
+\vspace{1em}
+\noindent
+\subsection{Teorema del differenziale totale}
+Si espone di seguito il teorema del differenziale totale:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{TEOREMA DEL DIFFERENZIALE TOTALE}}\\
+    \parbox{\linewidth}{Sia $f : A \subseteq \mathbb{R}^n \longmapsto \mathbb{R}^m$ ed esista
+    \[\forall k \in \{1,\dots,n\}\]
+    e $\forall x \in A$ esiste
+    \[\dfrac{\partial f}{\partial x_k}(x)\]
+    e siano funzioni continue in $x_0 \in A$. Allora $f$ è differenziabile in $x_0$.
+    \vspace{3mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione}: Si dirà che $f$ è di classe $C^1$, ossia $f \in C^1(A,\mathbb{R}^m)$ se esistono e sono continue in $A$ tutte le derivate parziali $\dfrac{\partial f}{\partial x_k}$. Pertanto, se $f$ è $C^1$, allora $f$ è differenziabile.
+
+\newpage
+\noindent
+\begin{center}
+    31 Ottobre 2022
+\end{center}
+Di seguito si espone la dimostrazione del \textbf{teorema della differenziabilità totale}, ossia un criterio per stabilire quando una funzione è differenziabile, tramite la continuità delle derivate parziali.
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione}: Esistono funzioni differenziabili con derivate direzionali (e quindi anche parziali) non continue. Per dimostrarlo, è sufficiente considerare una funzione continua con derivata non continua, come la seguente:
+\[
+    f(x)=\left\{
+        \rowcolors{1}{white}{white}    
+        \begin{array}{lll}
+            x^2 \cdot \sin \left(\dfrac{1}{x}\right) & \text{se} & x \neq 0\\
+            0   & \text{se} & x = 0\\
+        \end{array}
+    \right.
+\]
+in cui è evidente che
+\[
+    f'(x)=\left\{
+        \rowcolors{1}{white}{white}    
+        \begin{array}{lll}
+            2x \cdot \sin \left(\dfrac{1}{x}\right) - \cos\left(\dfrac{1}{x}\right) & \text{se} & x \neq 0\\
+            0   & \text{se} & x = 0\\
+        \end{array}
+    \right.
+\]
+Sia $f : A \subseteq \mathbb{R}^n \longmapsto \mathbb{R}^m$ ed esistano e siano continue in $x_0 \in A$ le derivate parziali di $f$, allora $f$ è differenziabile.
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Sia, per ipotesi, che $n=2$ e $m=3$. Per definizione di differenziabilità, si ha che
+\[f(x,y)-f(x_0,y_0)=f(x,y)-f(x,y_0)+f(x,y_0)-f(x_0,y_0)\]
+in cui si è aggiunta e sottratta la medesima quantità $f(x,y_0)$, in cui nel primo caso si è fissato $x$, nel secondo si è fissato $y$. Pertanto si ottiene che
+\[f(x,y)-f(x_0,y_0)=(f(x,y)-f(x,y_0))+(f(x,y_0)-f(x_0,y_0))=\dfrac{\partial f}{\partial y}(x,y_0) (y-y_0) + o(y-y_0) + \dfrac{\partial f}{\partial x}(x_0,y_0) (x-x_0) + o(x-x_0)\]
+ma siccome $f$ è differenziabile in $(x_0,y_0){^T}$ significa che
+\[\lim_{(x,y){^T} \to (x_0,y_0){^T}} \dfrac{f(x,y) - f(x_0,y_0) - \dfrac{\partial f}{\partial x}(x_x,y_0) (x-x_0) - \dfrac{\partial f}{\partial y}(x_0,y_0)(y-y_0)}{\vert \vert (x-x_0,y-y_0){^T} \vert \vert} = 0 \]
+Ma quindi si ottiene che 
+\[\dfrac{f(x,y) - f(x_0,y_0) - \dfrac{\partial f}{\partial x}(x_x,y_0) (x-x_0) - \dfrac{\partial f}{\partial y}(x_0,y_0)(y-y_0)}{\vert \vert (x-x_0,y-y_0){^T} \vert \vert} = \dfrac{1}{\vert \vert (x-x_0,y-y_0){^T} \vert \vert} \cdot \left(\dfrac{\partial f}{\partial y}(x,y_0)(y-y_0) - \dfrac{\partial f}{\partial y}(x_0,y_0)(y-y_0) \right) + \dfrac{o(y-y_0)}{\vert \vert (x-x_0,y-y_0){^T} \vert \vert} + \dfrac{o(x-x_0)}{\vert \vert (x-x_0,y-y_0){^T} \vert \vert}\]
+ma ovviamente i due rapporti finali, per definizione di o-piccolo, essi tendono a $0$ quando $(x,y){^T} \to (x_0,y_0){^T}$. Pertanto si ottiene che
+\[\cdot \left(\dfrac{\partial f}{\partial y}(x,y_0) - \dfrac{\partial f}{\partial y}(x_0,y_0)\right) \cdot \dfrac{y-y_0}{\vert \vert (x-x_0,y-y_0){^T} \vert \vert}\]
+ma il primo fattore tende naturalmente a $0$ per la continuità della $f$.
+
+\vspace{1em}
+\noindent
+\subsection{Funzioni con derivate nulle}
+Sia $A \subseteq \mathbb{R}^n$ un insieme aperto e connesso (per archi); si data la funzione
+\[f : A \longmapsto \mathbb{R}\]
+tale per cui esistono tutte le derivate parziali e siano esse nulle, ovvero
+\[\exists \dfrac{\partial f}{\partial x_i} \hspace{1em} \forall i=1,\dots,n \hspace{1em} \text{e} \hspace{1em}
+\dfrac{\partial f}{\partial x_i}=0 \hspace{1em} \forall i, \forall x\]
+allora la funzione $f$ è costante.
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Si considerino due punti $x_1,x_2 \in A$. Per definizione di insieme connesso (per archi)
+\[\exists \gamma : [0,1] \longmapsto A\]
+continua tale che $\gamma(0)=x_1$ e $\gamma(1)=x_2$. Si vuole dimostrare che $f(x_1)=f(x_2)$, ossia che la funzione è costante.\\
+Si consideri la funzione composta seguente:
+\[f \circ \gamma : [0,1] \longmapsto \mathbb{R}\]
+allora per definizione
+\[(f \circ \gamma)'(t) = \left<\nabla f(\gamma(t)), \gamma ' (t)\right> = 0, \hspace{1em} \forall t\]
+dal momento che $\nabla f(\gamma(t)) = 0$ per ipotesi. Da notare che $f$ è differenziabile per il teorema della differenziabilità totale, in quanto le derivate parziali esistono e sono costantemente uguali a $0$, per cui sono continue.
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Il problema, in questo caso, però, è che $\gamma$ potrebbe non essere derivabile. La dimostrazione vista vale per un insieme convesso, e non semplicemente connesso.\\
+Per dimostrare che essa è derivabile si potrebbe procedere come segue
+\begin{enumerate}
+    \item Dimostrare che se $A$ è aperto e connesso per archi; allora è connesso anche per archi derivabili;
+    \item Dimostrare che tale teorema vale sulle palle, con $\gamma$ continua.
+\end{enumerate}
+In generale, sfruttando la seconda ipotesi, ciò che si fa è considerare una curva $\gamma$ che congiunge due punti $x_1$ e $x_2$; si suppone che $f(x_1) \neq f(x_2)$, per ipotesi. Si prende il primo punto dove cambia il valore della funzione, in particolare
+\[t_2 = \max \{t \in [0,1] : \gamma(s) = f(x_1), \hspace{1em} \forall s \in [0,t[\}\]
+
+\vspace{2em}
+\noindent
+\textbf{Esercizio 1}: Si consideri la funzione seguente
+\[f : \mathbb{R}^n \longmapsto \mathbb{R}^m\]
+in cui $f(x)=A x$, con $A$ matrice $m \times n$. Allora, preso $x_0 \in A$, appare evidente che
+\[\mathcal{J} f(x_0) = A\]
+per cui, ovviamente, la matrice Jacobiana che rappresenta una funzione lineare è la matrice $A$ stessa.
+
+\vspace{2em}
+\noindent
+\textbf{Esercizio 2}: Si consideri
+\[p : \mathbb{R}^n \times \mathbb{R}^n \longmapsto \mathbb{R}\]
+in cui
+\[p(x,y) = \left<x,y\right>\]
+allora appare evidente che
+\[\nabla p(x_0,y_0) = (y_0,x_0){^T}\]
+
+\vspace{2em}
+\noindent
+\textbf{Esercizio 3}: Si consideri
+\[f : \mathbb{R}^n \longmapsto \mathbb{R}\]
+allora, preso $v \in \mathbb{R}^n$ con $f(x)=\left<x,v\right>$, si ha che
+\[\nabla f(x_0) = v\]
+
+\vspace{2em}
+\noindent
+\textbf{Esercizio 4}: Si consideri
+\[f : \mathbb{R}^n \longmapsto \mathbb{R}\]
+allora, posto $f(x)=\left<x,x\right>$, si ha che
+\[\nabla f(x_0) = 2x\]
+
+\vspace{2em}
+\noindent
+\textbf{Esercizio 5}: Si consideri
+\[f : \mathbb{R}^n \longmapsto \mathbb{R}\]
+allora, posto $f(x)=\left<x,x\right>$, si ha che
+\[\nabla f(x_0) = 2x\]
+
+\vspace{2em}
+\noindent
+\textbf{Esercizio 7}: Per quanto visto in precedenza
+\[\nabla \left(\left<x,x\right>\right) = 2x = \nabla \left(\vert \vert x \vert \vert^2\right)\]
+Allora si ha che
+\[\nabla \left(\vert \vert x \vert \vert\right) = \left(\sqrt{\left<x,x\right>}\right) = \dfrac{1}{2 \sqrt{\left<x,x\right>}} \cdot 2x = \dfrac{x}{\sqrt{\left<x,x\right>}}\]
+
+\vspace{2em}
+\noindent
+\textbf{Esercizio 8}: Sia data la funzione seguente
+\[f : \mathbb{R}^n \times \mathbb{R}^n \longmapsto \mathbb{R}\]
+in cui si sono date
+\begin{align*}
+    &\phi : \mathbb{R}^n \times \mathbb{R}^n \longmapsto \mathbb{R}^m\\
+    &\psi : \mathbb{R}^n \times \mathbb{R}^n \longmapsto \mathbb{R}^m\\
+\end{align*}
+allora se la funzione $f$ è definita come
+\[f(x,y) = \left<\phi(x,y),\psi(x,y)\right>\]
+appare evidente come
+\[\mathcal{J} f = \left(\psi(x_0)\right)\]
+
+\vspace{2em}
+\noindent
+\subsection{Derivate di ordine superiore}
+Sia data $f : A \subseteq \mathbb{R}^n \longmapsto \mathbb{R}^m$ e $\forall x \in A$ esista
+\[\dfrac{\partial f}{\partial v}(x)\]
+con $v \in \mathbb{R}^n$ versore. Allora sia dato il versore $w \in \mathbb{R}^n$ e ci si chiede se
+\[\exists \dfrac{\partial }{\partial w} \left(\frac{\partial f}{\partial v}\right)(x_0) = \dfrac{\partial^2 f}{\partial w \partial v}(x_0)\]
+Allora se esiste si chiamerà derivata direzionale di $f$ nel punto $x_0$ lungo le direzioni $v$ e $w$, in cui è fondamentale rispettare l'ordine.\\
+In particolare, si parlerà di derivate parziali seconde
+\[\dfrac{\partial^2 f}{\partial x_i \partial x_j} \hspace{1em} \text{se} \hspace{1em} i=j \hspace{1em} \dfrac{\partial^2 f}{\partial x_i^2} = \dfrac{\partial^2 f}{\partial x_i \partial x_i}\]
+In particolare, $\forall k \in \mathbb{N}$, con $k \geq 1$ si possono definire le derivate parziali direzionali di ordine $k$
+\[\dfrac{\partial^k f}{\partial x_{i,1}^{k_1} \partial x_{i,2}^{k_2} \dots \partial x_{i,l}^{k_l}}\]
+in cui $i_1,i_2,\dots,i_l \in \{1,2,\dots,n\}$ e $k_1+k_2+\dots+k_l=k$.
+
+\vspace{1em}
+\noindent
+\textbf{Esempio}: Per esempio, se si considera la funzione
+\[f(x,y,z)=x-yz^2+xy^2z\]
+allora si ha che
+\[\dfrac{\partial f}{\partial x} 1+y^2z \hspace{1em} \text{e} \hspace{1em} \dfrac{\partial f}{\partial y} = -z^2+2xyz \hspace{1em} \text{e} \hspace{1em} \dfrac{\partial f}{\partial z} = -2xy + 2xyz\]
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Si osservi che non è vero che le direzioni rispetto alle quali si eseguono derivate multiple siano intercambiabili. Infatti, se si considera la funzione seguente
+\[
+    f(x,y) = \left\{
+        \rowcolors{1}{white}{white}    
+        \begin{array}{lll}
+            \dfrac{xy^3}{x^2+y^2} & \text{se} & (x,y){^T} \neq (0,0){^T}\\
+            0   & \text{se} & (x,y){^T} = (0,0){^T}\\
+        \end{array}
+    \right.
+\]
+Allora si ha che
+\[\dfrac{\partial f}{\partial x} = \dfrac{y^3 \cdot (x^2+y^2) - 2x^2y^3}{(x^2+y^2)^2} \hspace{1em} \text{e} \hspace{1em} \dfrac{\partial f}{\partial y} \dfrac{3xy^2 \cdot (x^2+y^2) - 2x^2y^4}{(x^2+y^2)^2}\]
+È facile capire che tali derivate sono continue, in quanto in $(0,0){^T}$ valgono ambedue $0$. Si proceda al calcolo delle derivate seconde, da cui
+\[\dfrac{\partial^2 f}{\partial y \partial x}(0,0) = \lim_{y \to 0} \dfrac{\dfrac{\partial f}{\partial x}(0,y) - \dfrac{\partial f}{\partial x}(0,0)}{y} = \lim_{y \to 0} \dfrac{\dfrac{y^4}{y^5}}{y} = 1\]
+mentre si ha che
+\[\dfrac{\partial^2 f}{\partial x \partial y}(0,0) = \lim_{x \to 0} \dfrac{\dfrac{\partial f}{\partial y}(x,0) - \dfrac{\partial f}{\partial y}(0,0)}{x} = \lim_{y \to 0} \dfrac{0-0}{x} = 0\]
+
+\vspace{2em}
+\subsection{Teorema di Schwarz sull'ordine di derivazione delle derivate di ordine superiore}
+Sia $f : A \subseteq \mathbb{R}^n \longmapsto \mathbb{R}$ e sia $x_0 \in A$; esistano tutte le derivate parziali di $f$ in $A$ di ordine $j=1,2,\dots,k$ e siano tutte continue in un punto $x_0 \in A$.\\
+Allora tutte le derivate miste (ossia rispetto a variabili differenti) di ordine $\leq k$ nel punto $x_0$, eseguite rispetto alle medesime variabili, con la medesima molteplicità, sono uguali tra di loro. 
+
+\vspace{2em}
+\noindent
+\textbf{Esempio}: È noto che la derivata direzionale di una funzione $f$ rispetto ad un versore $v$ può essere descritta come
+\[\dfrac{\partial f}{\partial v} = \dfrac{\partial f}{\partial x}\dfrac{\partial f}{\partial y} \dots \dfrac{\partial f}{\partial z}\]
+e se $f$ è differenziabile si ha che
+\[\dfrac{\partial f}{\partial v} = \dif f(x_0) \cdot v\]
+in cui $\dif f(x_0)$ è un'applicazione lineare, con
+\[\dif f(x_0) : \mathbb{R}^n \longmapsto \mathbb{R}\]
+Tuttavia, per poter descrivere la derivata seguente
+\[\dfrac{\partial^2 f}{\partial w \partial v}\]
+si necessità di un operatore della forma $\dif^2 f(x_0)$ che permette di calcolare le derivate direzionali seconde. Ovvero si sta cercando
+\[\dif^2 f(x_0) : \mathbb{R}^n \times \mathbb{R}^n \longmapsto \mathbb{R}\]
+che è un'applicazione bilineare. In generale, un'applicazione bilineare
+\[\phi f(x_0) : \mathbb{R}^n \times \mathbb{R}^n \longmapsto \mathbb{R}\]
+è una funzione del tipo
+\[\phi(u,w) = \left<Au,w\right>\]
+in cui $A$ è una matrice $n \times n$, dl tipo
+\[A = \left(\rowcolors{1}{white}{white}    
+\begin{array}{cc}
+    a & b\\
+    c & d
+\end{array}\right)\]
+per cui l'applicazione bilineare considerata è
+\[\left<
+    \left(\rowcolors{1}{white}{white}    
+\begin{array}{cc}
+    a & b\\
+    c & d
+\end{array}\right) \cdot
+\left(\rowcolors{1}{white}{white}    
+\begin{array}{c}
+    u_1\\
+    u_2
+\end{array}\right),
+\left(\rowcolors{1}{white}{white}    
+\begin{array}{c}
+    w_1\\
+    w_2
+\end{array}\right)
+\right> = au_1w_1+bu_2w_1+cu_1w_2\]
+per cui una forma quadratica si può sempre scrivere come
+\[\phi(u,u) = \left<Au,u\right>\]
+dove $A$ è una matrice simmetrica.
+
+\newpage
+\noindent
+\begin{center}
+    2 Novembre 2022
+\end{center}
+È importante conoscere le proprietà delle funzioni con gradiente nullo. Non solo, ma oltre al differenziale primo, esistono anche differenziali di ordini superiori.
+
+\subsection{Differenziale secondo di un campo scalare}
+
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{DIFFERENZIALE SECONDO DI UN CAMPO SCALARE}}\\
+    \parbox{\linewidth}{Sia dato un campo scalare
+    \[f : A \subseteq \mathbb{R}^n \longmapsto \mathbb{R}\]
+    differenziabile in $A$. Essendo differenziabile esiste il suo gradiente
+    \[\nabla f : A \longmapsto \mathbb{R}^n\]
+    Sia $x_0 \in A$, allora si dirà che $f$ è due volte differenziabile in $x_0$ se $\nabla f$ è differenziabile in $x_0$.\\
+    Esiste, allora $\dif (\nabla f) (x_0)$ e la matrice Jacobiana $\mathcal{J}(\nabla f)(x_0)$: si chiamerà matrice hessiana di $f$ in $x_0$ la matrice Jacobiana di $\nabla f$
+    \[\mathcal{H}(f(x_0)) = \mathcal{J}(\nabla f)(x_0)\]
+    in cui $\mathcal{H} (f(x_0))$ è una matrice $n \times n$.\vspace{3mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Si osservi che, per definizione
+\[\mathcal{H} f(x_0) = \mathcal{J}(\nabla f(x_0))\]
+in cui il gradiente è, per definizione
+\[\nabla f(x) = \left(\dfrac{\partial f}{\partial x_1}, \dfrac{\partial f}{\partial x_2}, \dots, \dfrac{\partial f}{\partial x_n}\right){^T}\]
+Da ciò si evince che
+\[\mathcal{J}(\nabla f)(x) = \left(
+    \rowcolors{1}{white}{white}    
+    \begin{array}{cccc}
+
+    \end{array}
+\right)\]
+
+\vspace{2em}
+\noindent
+\textbf{Esempio}: Si consideri la funzione
+\[f(x,y) = 3x^2y + \log(y)\]
+Allora si ha che
+\[\nabla f = \left(6xy,3x^2+\dfrac{1}{y} \right){^T}\]
+Allora è immediato evincere che
+\[\mathcal{H}(f(x,y)) = \left(
+    \rowcolors{1}{white}{white}    
+    \begin{array}{cc}
+        6y & 6x\\
+        6x & -\dfrac{1}{y^2}
+    \end{array}
+\right)\]
+
+\vspace{2em}
+\noindent
+\subsection{Differenziale secondo}
+Si chiama \textbf{differenziale secondo} di $f$ in $x_0$ la forma bilineare o la forma quadratica associata alla matrice $\mathcal{H} f(x_0)$:
+\begin{itemize}
+    \item $\displaystyle{\dif^2 f(x_0) : \mathbb{R}^n \times \mathbb{R}^n \longmapsto \mathbb{B}}$ per cui si ottiene $\displaystyle{\dif^2 f(x_0)(v,w) = \left<\mathcal{H}f(x_0)\right>}$
+\end{itemize}
+
+\vspace{2em}
+\noindent
+Sia $f : A \subseteq \mathbb{R}^n \longmapsto \mathbb{R}$ due volte diferenziabile in $x_0 \in A$; siano $v$ e $w$ due versori di $\mathbb{R}^n$, allora
+\[\dfrac{\partial^2 f}{\partial w \partial v}(x_0) = \dif^2 f(x_0) (v,w)\]
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Si rimandi a memoria che se
+\[h : \mathbb{R}^n \longmapsto \mathbb{R} \hspace{1em} \text{e} \hspace{1em} v \in \mathbb{R}^n\]
+si ottiene che
+\[\nabla \left(\left< h(x), v \right>\right) = \mathcal{J} h(x){^T} \cdot v\]
+Allora ciò permette di ottenere che
+\[\dfrac{\partial}{\partial w} \left(\dfrac{\partial f}{\partial v}\right) (x_0) = \dfrac{\partial}{\partial w} \left(\left<\nabla f(x), v \right>\right) = \left<\nabla \left(\left< \nabla f(x), v \right>\right), w\right>\]
+Ciò può essere riscritto, ponendo $x=x_0$, come segue
+\[\left<\nabla \left(\left< \nabla f(x), v \right>\right), w\right> = \left<\mathcal{J}(\nabla f(x)){^T} \cdot v, w\right> = \left<\mathcal{H} f(x_0){^T}, w \right>\]
+
+\vspace{1em}
+\noindent
+\subsection{Approssimante di ordine $k$}
+Sia
+\[f : A \subseteq \mathbb{R}^n \longmapsto \mathbb{R}\]
+con $x_0 \in A$; Si chiama approssimante di ordine $k$ in $x_0$ una funzione polinomiale di grado $\leq k$, chiamata $P_k$, tale che
+\[\lim_{x \to x_0} \dfrac{f(x) - P_k(x)}{\vert \vert x-x_0 \vert \vert^k} = 0\]
+in cui, ovviamente, se $k=1$ si ritrova la definizione di approssimante lineare. In generale, però, si ha che
+\[P_k(v) = f(x_0) + \dif f(x_0)(v) + \dfrac{1}{2} \dif^2 f(x_0) v^2 + \dfrac{1}{3} \dif^3 f(x_0)v^3 + \dots + \dfrac{1}{k!} \dif^k f(x_0) v^k\]
+in cui $\dif^k f(x_0)$ è un termine di grado $k$, in particolare un polinomio omogeneo di grado $k$.
+
+\vspace{1em}
+\noindent
+\subsection{Teorema di esistenza dell'approssimante del secondo ordine}
+Il teorema di esistenza dell'approssimante del secondo ordine corrisponde al teorema di Taylor di ordine $2$.
+
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{SERIE NUMERICA}}\\
+    \parbox{\linewidth}{Sia
+    \[f : A \subseteq \mathbb{R}^n \longmapsto \mathbb{R}\]
+    due volte differenziabile in $x_0 \in A$. Allora, posto
+    \[P_2 = f(x_0) + \dif f(x_0) \cdot (x-x_0) + \dfrac{1}{2} \dif^2f(x_0) \cdot (x-x_0)^2\]
+    che può essere scritto come
+    \[P_2 = f(x_0) + \left<\nabla f(x_0,x-x_0\right> + \dfrac{1}{2} \left<\mathcal{H} f(x_0) (x-x_0, x-x_0)\right>\]
+    si ha che $P_2(x)$ è approssimante di ordine $2$ di $f$ in $x_0$, cioé
+    \[\lim_{x \to x_0} \dfrac{f(x) - P_2(x)}{\vert \vert x-x_0 \vert \vert^2} = 0\]
+    che, pertanto, si può scrivere la formula di Taylor
+    \[f(x)=P_2 + \epsilon(x) \cdot \vert \vert x-x_0 \vert \vert^2\]
+    dove
+    \[\lim_{x \to x_0} \epsilon(x)=0\]
+    ossia l'errore $f(x)-P_2(x)$ è un infinitesimo di ordine $>2$.
+    \vspace{3mm}}\\
+    \hline
+\end{tabularx}
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Si vuole provare che
+\[\lim_{x \to x_0} \dfrac{f(x) - P_2(x)}{\vert \vert x-x_0 \vert \vert^2} = 0\]
+sapendo che
+\[f(x)-P_2(x) = f(x) - f(x_0) - \left<\nabla f(x_0), (x-x_0)\right> - \dfrac{1}{2} \left<\mathcal{H} f(x_0) (x-x_0), x-x_0\right>\]
+Allora, posta $g(x)=f(x)-P_2(x)$, è immediato evincere che $g(x_0)=0$. Ciò permette di impiegare agevolmente la formula del valor medio, applicata a $g$, con $\xi$ appartenente al segmento che congiunge $x$ con $x_0$, come mostrato di seguito
+\[g(x)=g(x)-g(x_0)=\left<\nabla g(\xi), x-x_0\right>\]
+Dalla definizione di $g$, si può calcolare il suo gradiente
+\[\nabla g(x) = \nabla f(x) - \nabla f(x_0) - \mathcal{H}f(x_0) \cdot (x-x_0)\]
+Ma allora è possibile impiegare la formula del valor medio come segue
+\[g(x)=\left<\nabla f(\xi) - \nabla f(x_0) - \mathcal{H}f(x_0) \cdot (\xi-x_0), x-x_0\right>=\left<\right>\]
+ma è ovvio che, per la differenziabilità di $\nabla f$ in $x_0$, si ha
+\[\nabla f(\xi) - \nabla f(x_0) = \mathcal{J}(\nabla f)(x_0) \cdot (x-x_0) + o(\xi-x_0)\]
+pertanto si ha
+\[g(x)=\left<\nabla f(\xi) - \nabla f(x_0) - \mathcal{H}f(x_0) \cdot (\xi-x_0), x-x_0\right>=\left<\right> = \left<o(\xi-x_0),x-x_0\right>\]
+Allora è possibile calcolare
+\[\lim_{x \to x_0} \dfrac{g(x)}{\vert \vert x - x_0 \vert \vert^2} = \lim_{x \to x_0} \dfrac{\left<o(\xi-x_0),x-x_0\right>}{\vert \vert x-x_0 \vert \vert^2}\]
+In particolare, applicando la disuguaglianza di Cauchy-Schwarz, si ottiene che
+\[\left \vert \dfrac{\left<o(\xi-x_0),x-x_0\right>}{\vert \vert x-x_0 \vert \vert^2} \right \vert \leq \dfrac{\vert \vert o(\xi-x_0) \vert \vert \cdot \vert \vert x-x_0 \vert \vert}{\vert \vert x-x_0 \vert \vert^2} = \left \vert \left \vert \dfrac{o(\xi-x_0)}{\vert \vert \xi-x_0 \vert \vert} \cdot \dfrac{\vert \vert \xi - x_0 \vert \vert}{\vert \vert x-x_0 \vert \vert} \right \vert \right \vert \to 0\]
+Questo in quanto la prima frazione tende a $0$ per definizione di o-piccolo, mentre la seconda frazione è $\leq 1$ per ipotesi stessa della formula del valor medio.
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Si potrebbe dimostrare che l'esistenza dell'approssimante di ordine $2$ è equivalente alla due volte differenziabilità di $f$.
+
+\vspace{1em}
+\noindent
+\subsection{Criterio di due volte differenziabilità di una funzione}
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{CRITERIO DI DUE VOLTE DIFFERENZIABILITÀ}}\\
+    \parbox{\linewidth}{Sia
+    \[f : A \subseteq \mathbb{R}^n \longmapsto \mathbb{R}\]    
+    tale che esistano tutte le derivate parziali secondo in $A$ e queste siano continue in $x_0 \in A$. Allora $f$ è due volte differenziabile in $x_0$.\vspace{3mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Si definisce
+\[C^k(A,\mathbb{R}) = \{f \in A \longmapsto \mathbb{R} : \exists \text{ e sono continue le derivate parziali fino all'ordine } k\}\]
+
+ \vspace{2em}
+ \noindent
+ \textbf{Esempio}: Si consideri la funzione seguente
+ \[f(x,y) = 3xy+x^2-y^2\]
+ Si scriva $P_2(x,y)$ in $(0,0){^T}$ e si calcoli
+ \[\dfrac{\partial^2 f}{\partial v \partial 2}(0,0)\]
+ posti
+ \[v=\dfrac{1}{\sqrt{2}} (1,1){^T} \hspace{1em} \text{e} \hspace{1em} \dfrac{1}{\sqrt{2}} (-1,1){^T}\]
+ Si calcoli il gradiente di $f$
+ \[\nabla f = (3y+2x,3x-2y){^T}\]
+ da cui si evince che la matrice hessiana è
+ \[\mathcal{H} f = \left(
+    \rowcolors{1}{white}{white}    
+    \begin{array}{cc}
+        2 & 3\\
+        3 & -2
+    \end{array}
+ \right)\]
+ Allora il polinomio cercato è
+ \[P_2=f(x_0,y_0)+\left<\nabla f(x_0,y_0), (x-x_0,y-y_0){^T}\right> + \dfrac{1}{2} \left<\mathcal{H}f(x_0,y_0)(x-x_0,y-y_0){^T},(x-x_0,y-y_0){^T}\right>\]
+Inserendo all'interno i valori precedentemente ottenuti si ha
+\[P_2(x,y) = \dfrac{1}{2} \left<
+    \left(
+    \rowcolors{1}{white}{white}    
+    \begin{array}{cc}
+        2 & 3\\
+        3 & -2
+    \end{array}
+ \right) \cdot \left(
+    \rowcolors{1}{white}{white}    
+    \begin{array}{c}
+        x\\
+        y
+    \end{array}
+ \right),
+ \left(
+    \rowcolors{1}{white}{white}    
+    \begin{array}{c}
+        x\\
+        y
+    \end{array}
+ \right)
+\right> = \dfrac{1}{2} \cdot \left(2x^2+6xy-2y^2\right) = x^2+3xy-y^2\]
+che è esattamente la funzione di partenza, essendo essa stessa già un polinomio di ordine $2$.\\
+Proseguendo si ottiene che
+\[\dfrac{\partial^2 f}{\partial v \partial w} (0,0) = \left<
+    \left(
+    \rowcolors{1}{white}{white}    
+    \begin{array}{cc}
+        2 & 3\\
+        3 & -2
+    \end{array}
+ \right) \cdot \dfrac{1}{\sqrt{2}} \cdot \left(
+    \rowcolors{1}{white}{white}    
+    \begin{array}{c}
+        1\\
+        1
+    \end{array}
+ \right), \dfrac{1}{\sqrt{2}} \cdot \left(
+    \rowcolors{1}{white}{white}    
+    \begin{array}{c}
+        -1\\
+        1
+    \end{array}
+ \right)
+\right> = 2\]
+
+\vspace{1em}
+\noindent
+\subsection{Ottimizzazione di campi scalari}
+Si consideri la funzione seguente
+\[f : E \subseteq \mathbb{R}^n \longmapsto \mathbb{R}\]
+allora per definizione si ha che
+\[\max f = \max f(E) \hspace{1em} \text{e} \hspace{1em} \min f = \min f(E)\]
+Per quanto riguarda i punti di estremo assoluto
+\begin{itemize}
+    \item se $x_0 \in E$ è tale che $f(x_0) = \max f$ allora esso si chiama punto di massimo assoluto;
+    \item se $x_0 \in E$ è tale che $f(x_0) = \min f$ allora esso si chiama punto di minimo assoluto;
+\end{itemize}
+Per quanto riguarda i punti di estremo relativo
+\begin{itemize}
+    \item $x_0 \in E$ si dirà punto di massimo relativo per $f$ se esiste un intorno $U$ di $x_0$ tale che
+    \[f(x_0) = \max f|_{A \cap U}\]
+    ossia tali che
+    \[f(x_0) \geq f(x) \hspace{1em} \forall x \in E \cap U\]
+
+    \item $x_0 \in E$ si dirà punto di minimo relativo per $f$ se esiste un intorno $U$ di $x_0$ tale che
+    \[f(x_0) = \min f|_{A \cap U}\]
+    ossia tali che
+    \[f(x_0) \leq f(x) \hspace{1em} \forall x \in E \cap U\]
+\end{itemize}
+Se $n \geq 2$, allora un punto $x_0 \in E$ si dice un \textbf{punto di sella} se esistono due direzioni, ossia due versori, $v$ e $w$ e si ha
+\[f(x_0+tv) : ]-\delta,\delta[ \longmapsto \mathbb{R}\]
+presenta in $t=0$ un punto di minimo mentre la funzione
+\[f(x_0+tw) : ]-\delta,\delta[ \longmapsto \mathbb{R}\]
+presenta in $t=0$ un punto di massimo. Si suppone, ovviamente, che $x_0$ è interno al dominio, in quando si necessita di muoversi di $\delta$ lungo le direzioni specificate.
+
+\vspace{1em}
+\noindent
+\textbf{Esempio}: Se si considera la funzione
+\[f(x,y)=xy\]
+si vede facilmente che $(0,0){^T}$ è un punto di sella. Basta considerare il versore
+\[v=\dfrac{1}{\sqrt{2}}(1,1){^T}\]
+allora
+\[f((0,0){^T} + t \cdot (1,1){^T}) = t^2\]
+e il versore
+\[w=\dfrac{1}{\sqrt{2}}(-1,1){^T}\]
+allora
+\[f((0,0){^T} + t \cdot (-1,1){^T}) = -t^2\]
+per cui nel primo caso $(0,0){^T}$ è punto di minimo, nel secondo caso è punto di massimo.
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Sia
+\[f : E \subseteq \mathbb{R}^n \longmapsto \mathbb{R}\]
+con $x_0 \in E$ con $f$ differenziabile in $x_0$. Si dirà che $x_0$ è un punto critico per $f$ se
+\[\nabla f(x_0) = O_v \in \mathbb{R}^n\]
+
+\vspace{1em}
+\subsection{Teorema di Fermat (test del gradiente)}
+Sia $A \subseteq \mathbb{R}^n$ \textbf{aperto} e sia data
+\[f : A \longmapsto \mathbb{R}\]
+Posto $x_0$ un punto di minimo/massimo relativo per $f$, si supponga che
+\[\exists \dfrac{\partial f}{\partial v}(x_0)\]
+con $v$ versore. Allora 
+\[\dfrac{\partial f}{\partial v}(x_0) = 0\]
+In particolare, se $f$ è differenziabile in $x_0$, si ha che $\nabla f(x_0) = 0$.
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Per definizione stessa di derivata direzionale si ha che
+\[\dfrac{\partial f}{\partial v} (x_0) = \dfrac{\dif}{\dif t} f(x_0+tv) \hspace{1em} \text{con} \hspace{1em} t \in ]-\delta,\delta[\]
+allora $x_0$ è un punto di estremo relativo.
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione 1}: Ovviamente, non vale il viceversa.
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione 2}: Posto $n=2$, con $f$ differenziabile e sia dato $(x_0,y_0){^T}$ un punto di sella, allora $\nabla f(x_0,y_0) = (0,0){^T}$
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Se $(x_0,y_0){^T}$ è un punto di sella, $\exists v, w$ tale per cui
+\begin{itemize}
+    \item $f(x_0+tv)$ ha un minimo in $t=0$
+    \item $f(x_0+tw)$ ha un massimo in $t=0$
+\end{itemize}
+ma naturalmente si ha che
+\[\dfrac{\dif}{\dif t} f(x_0+tv) = \dfrac{\partial f}{\partial v}(x_0) \hspace{1em} \text{e} \hspace{1em} \dfrac{\partial f}{\partial w}(x_0)=0\]
+Ma quindi se si si hanno due derivate direzionali, rispetto a due direzioni linearmente indipendenti, entrambe nulle, ciò implica che il gradiente sia nullo, ossia $\nabla f(x_0,y_0)=(0,0){^T}$.\\
+Se $n \geq 3$, la cosa non funziona, in quanto si necessiterebbe di avere $3$ derivate direzionali nulle, in cui in ciascuna si deve avere o massimo o minimo.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \end{document}
