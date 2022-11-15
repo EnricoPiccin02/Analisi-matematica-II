@@ -2706,57 +2706,78 @@ Per il criterio del rapporto, tale limite deve essere minore di $1$ al fine di a
 \[(x-1)^2 < \dfrac{1}{2} \hspace{1em} \rightarrow \hspace{1em} \vert x-1 \vert < \sqrt{\dfrac{1}{2}}\]
 L'intervallo di convergenza è, dunque
 \[I=\left]1-\dfrac{1}{\sqrt{2}},1+\dfrac{1}{\sqrt{2}}\right[\]
-e bisogna, ovviamente, controllare singolarmente ogni estremo per verificare la convergenza o meno (si vede facilmente che l'insieme di convergenza è l'intervallo chiuso).
+e bisogna, ovviamente, controllare singolarmente ogni estremo per verificare la convergenza o meno (si vede facilmente che l'insieme di convergenza è l'intervallo chiuso, in quanto sostituendo a $x$ il valore degli estremi si ottiene una armonica generalizzata di ragione $3$), per cui
+\[E=\left[1-\dfrac{1}{\sqrt{2}},1+\dfrac{1}{\sqrt{2}}\right]\]
 
 \vspace{1em}
 \noindent
 \textbf{Esempio 4}: Si consideri la serie seguente
-\[\sum_{n=0}^{+\infty} \frac{n}{n-1}\]
-Dal momento che
-\[\frac{1}{1-x} = 1 + \sum_{n=1}^{+\infty} x^n\]
+\[\sum_{n=0}^{+\infty} n x^n\]
+Allora appare evidente che per avere la convergenza si deve imporre $\vert x \vert < 1$, con estremi esclusi. Per determinare la somma è fondamentale ricondursi ad una somma nota, ossia quella della serie geometrica. Infatti
+\[\frac{1}{1-x} = 1 + \sum_{n=1}^{+\infty} x^n \hspace{1em} \text{se} \hspace{1em} \vert x \vert < 1\]
 allora, derivando tale funzione si ottiene
-\[D \left(\frac{1}{1-x}\right) = \frac{1}{(1-x)^2} \sum_{n=1}^{+\infty} n \cdot x^{n-1}\]
-si può moltiplicare per la medesima quantità, ottenendo
+\[D \left(\frac{1}{1-x}\right) = D \left(1 + \sum_{n=1}^{+\infty} x^n\right) \hspace{1em} \rightarrow \hspace{1em} \frac{1}{(1-x)^2}= \sum_{n=1}^{+\infty} n \cdot x^{n-1} \]
+Da notare che è stato necessario estrapolare l'$1$, in quanto derivando esso diviene $0$.\\
+Si può, ora, moltiplicare per la medesima quantità (ovviamente non $n$ che è l'indice di sommatoria, in costante incremento, ma un qualcosa che dipende da $x$), ottenendo
 \[\frac{x}{(1-x)^2} = \sum_{n=1}^{+\infty} n x^n\]
+ed ecco che, quindi, si è ottenuta la somma cercata.
 
-\vspace{1em}
+\vspace{2em}
 \noindent
 \textbf{Esempio 5}: Si calcoli la somma delle seguente serie
 \[\sum_{n=1}^{+\infty} \frac{n^2}{2^n}\]
-allora, sfruttando la teoria della serie di potenze, si può considerare la serie
+Allora, sfruttando la teoria della serie di potenze, si può considerare la serie
 \[\sum_{n=1}^{+\infty} n^2 x^n\]
-in cui basta imporre $x=\frac{1}{2}$ e si calcola la somma. In precedenza si era ottenuto che
+in cui basta imporre $x=\dfrac{1}{2}$. Ora è molto semplice procedere al calcolo della somma della serie. Dall'esercizio precedente, è nota la uguaglianza seguente:
 \[\sum_{n=1}^{+\infty} n x^n = \frac{x}{(1-x)^2}\]
-Per ottenere, però, $n^2$ si ottiene che
-\[D \left(\frac{x}{(1-x)^2}\right) = \sum_{n=1}^{+\infty} n^2 x^{n-1}\]
-per cui, per ottenere $n$ come esponente, si moltiplica per $x$, da cui
-\[x \cdot D \left(\frac{x}{(1-x)^2}\right) = \sum_{n=1}^{+\infty} n^2 x^n\]
-ponendo $x=\frac{1}{2}$ si ottiene come somma $6$.
+Per ottenere, però, $n^2$, si procede a derivare nuovamente ambo i membri:
+\[D \left(\frac{x}{(1-x)^2}\right) = D \left(\sum_{n=1}^{+\infty} n x^n \right) \hspace{1em} \rightarrow \hspace{1em} \dfrac{(1-x) \cdot (1+x)}{(1-x)^4} = \sum_{n=1}^{+\infty} n^2 x^{n-1}\]
+per cui, per ottenere $n$ come esponente del termine generale della serie, si moltiplica per $x$ ambo i membri, da cui
+\[x \cdot \dfrac{(1-x) \cdot (1+x)}{(1-x)^4} = \sum_{n=1}^{+\infty} n^2 x^n\]
+ponendo $x=\dfrac{1}{2}$ si ottiene come somma $6$.
 
-\vspace{1em}
-\subsubsection{Serie binomiale}
+\newpage
+\noindent
+\subsection{Serie binomiale}
 Posto $\alpha \in \mathbb{R}$ si ottiene che
 \[(1+x)^\alpha = \sum_{n=0}^{+\infty} \binom{\alpha}{n} \cdot x^n\]
-in cui
-\[\binom{\alpha}{n} = \frac{\alpha \cdot (\alpha-1) \cdot (\alpha-n+1)}{n!}\]
+in cui il \textbf{coefficiente binomiale generalizzato} si definisce come segue:
+\[\binom{\alpha}{n} = \frac{\alpha \cdot (\alpha-1) \cdot \dots \cdot (\alpha-n+1)}{n!}\]
 Tale risultato è tale, in quanto
-\begin{align}
+\begin{align*}
     & f'(x) = \alpha \cdot (1+x)^{\alpha-1}\\
-    & \dots
-\end{align}
+    & f''(x) = \alpha \cdot (\alpha-1) \cdot (1+x)^{\alpha-2}\\
+    & \dots\\
+    & f^{(k)}(x) = \alpha \cdot (\alpha - 1) \cdot \dots \cdot (\alpha - k + 1) \cdot (1+x)^{\alpha-k}
+\end{align*}
 Tale serie risulta importante in quanto è possibile assegnare ad $\alpha$ un qualsiasi valore reale. Ovviamente, se $\alpha = m \in \mathbb{N}$ si ottiene il binomio di Newton, da cui
-\[\binom{m}{n} = \frac{m \cdot (m-1) \cdot (m-k+1)}{n!}\]
+\[\binom{m}{n} = \frac{m \cdot (m-1) \cdot (m-n+1)}{n!}\]
 in cui se $m=n$ si ottiene come risultato $1$, da cui
-\[(1+x)^m = \sum_{n=0}^m \binom{m}{n} x^n\]
-Se, invece, si pone $\alpha=\frac{1}{2}$ si ottiene lo sviluppo in serie della radice di $1+x$, ovvero
-\[\sqrt{1+x}=\sum_[n=0]^{+\infty} \binom{\dfrac{1}{2}}{n} x^n\]
-e per $\alpha=-\frac{1}{2}$ si ottiene
-\[\frac{1}{\sqrt{1+x}} = \sum_{n=0}^{+\infty} \binom{-\dfrac{1}{2}}{n} x^n\]
-Considerando $x^2$ al posto di $x$ si ottiene la derivata dell'$\arcsin(x)$
-\[\frac{1}{\sqrt{1-x^2}} = \sum_{n=0}^{+\infty} \binom{-\dfrac{1}{2}}{n} (-1)^n x^{2n}\]
-Per ricostruire l'$\arcsin(x)$ è sufficiente calcolare
-\[\arcsin(x)=\int_0^x \frac{1}{\sqrt{1-t^2}} \dif t = \int_0^x \left[ \sum_{n=0}^{+\infty} \binom{-\dfrac{1}{2}}{m} (-1)^n t^{2n}\right] \dif t = \sum_{n=0}^{+\infty} \binom{-\dfrac{1}{2}}{n} (-1)^n \cdot \frac{1}{2n+1}\]
-... continua ...
+\[(1+x)^m = \sum_{n=0}^m \binom{m}{n} \cdot x^n\]
+Se, invece, si pone $\alpha=\dfrac{1}{2}$ si ottiene lo sviluppo in serie della radice quadrata di $1+x$, ovvero
+\[\sqrt{1+x}=\sum_{n=0}^{+\infty} \binom{\dfrac{1}{2}}{n} \cdot x^n\]
+e per $\alpha=-\dfrac{1}{2}$ si ottiene lo sviluppo del reciproco della radice quadrata di $1+x$, ovvero
+\[\frac{1}{\sqrt{1+x}} = \sum_{n=0}^{+\infty} \binom{-\dfrac{1}{2}}{n} \cdot x^n\]
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: L'ultimo risultato è particolarmente importante in quanto permette di ottenere lo sviluppo in serie di potenze dell'$\arcsin(x)$. In particolare, infatti, si ha che
+\[\frac{1}{\sqrt{1+x}} = \sum_{n=0}^{+\infty} \binom{-\dfrac{1}{2}}{n} \cdot x^n\]
+per cui considerando $x^2$ al posto di $x$, si ottiene la derivata dell'$\arcsin(x)$
+\[\dfrac{\dif}{\dif x} \arcsin(x) = \frac{1}{\sqrt{1-x^2}} = \sum_{n=0}^{+\infty} \binom{-\dfrac{1}{2}}{n} (-1)^n x^{2n}\]
+Per ricostruire l'$\arcsin(x)$ è sufficiente calcolare l'integrale seguente
+\[\arcsin(x)=\int_0^x \frac{1}{\sqrt{1-t^2}} \dif t = \int_0^x \left[ \sum_{n=0}^{+\infty} \binom{-\dfrac{1}{2}}{n} (-1)^n t^{2n}\right] \dif t\]
+Per le proprietà delle serie di potenze, è possibile portare l'integrale all'interno del segno di sommatoria, da cui
+\[\int_0^x \left[ \sum_{n=0}^{+\infty} \binom{-\dfrac{1}{2}}{n} (-1)^n t^{2n}\right] \dif t = \sum_{n=0}^{+\infty} \binom{-\dfrac{1}{2}}{n} (-1)^n \int_0^x t^{2n} \dif t\]
+pertanto si ottiene che
+\[\arcsin(x)=\sum_{n=0}^{+\infty} \binom{-\dfrac{1}{2}}{n} (-1)^n \cdot \frac{1}{2n+1} x^{2n+1}\]
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: In modo simile è possibile ottenere anche lo sviluppo in serie dell'$\arccos(x)$, prestando attenzione, però, al fatto che $\arccos(0)=\dfrac{\pi}{2}$, per cui
+\[\int_0^x - \dfrac{1}{\sqrt{1-t^2}} = [\arccos(t)]_0^x = \arccos{x}-\dfrac{\pi}{2}\]
+Per cui, in realtà, si ottiene che
+\[\arccos(x) = \int_0^x - \dfrac{1}{\sqrt{1-t^2}} + \dfrac{\pi}{2} = \dfrac{\pi}{2}-\sum_{n=0}^{+\infty} \binom{-\dfrac{1}{2}}{n} (-1)^n \cdot \frac{1}{2n+1} x^{2n+1}\]
 
 \vspace{1em}
 \noindent
@@ -2764,24 +2785,40 @@ Per ricostruire l'$\arcsin(x)$ è sufficiente calcolare
 Si consideri l'esponenziale sul campo complesso, come mostrato di seguito:
 \[e^z \hspace{1em} \text{con} \hspace{1em} z \in \mathbb{C}\]
 per cui, se $z=x+i \cdot y$, per la \textbf{formula di Eulero} si ottiene
-\[e^{x+\cdot y} = e^x \cdot \left(\cos(x) + i \cdot \sin(y)\right)\]
-Tuttavia, per definire l'esponenziale nel campo complesso, si ha che
+\[e^{x+i\cdot y} = e^x \cdot \left[\cos(y) + i \cdot \sin(y)\right]\]
+Tuttavia tal'una non è la definizione dell'esponenziale di un numero complesso. Per definire l'esponenziale nel campo complesso, in modo naturale, si utilizzano le serie, come mostrato di seguito:
 \[e^z = \sum_{n=0}^{+\infty} \frac{z^n}{n!}\]
-Per il criterio del rapporto si ha che
-\[\left \vert \frac{z^{n+1}}{(n+1)!} \right \vert \cdot \left \vert \frac{n!}{z^n} \right \vert = \vert z \vert \cdot \frac{1}{n+1}\]
-che converge a $0$ per ogni $z$.
+Per il criterio del rapporto si ha che la serie è convergente, in quanto
+\[\lim_{n \to +\infty} \left \vert \frac{z^{n+1}}{(n+1)!} \right \vert \cdot \left \vert \frac{n!}{z^n} \right \vert = \lim_{n \to +\infty} \vert z \vert \cdot \frac{1}{n+1} = 0 < 1\]
+la serie converge per $z$ (essendo $z$ fissato e costante): ciò implica che il raggio di convergenza è infinito, e la convergenza è uniforme su ogni compatto contenuto in $\mathbb{C}$.
 
 \vspace{1em}
 \noindent
-\textbf{Esempio 1}: La definizione del $\sin(z)$ in campo complesso è la seguente
+\textbf{Esempio 1}: La definizione del $\sin(z)$ in campo complesso avviene sempre tramite le serie:
 \[\sin(z) = \sum_{n=0}^{+\infty} (-1)^n \cdot \frac{z^{2n+1}}{(2n+1)!}\]
+ancora una volta la serie converge. Trattandosi di serie di potenze, se essa converge, converge anche assolutamente, per cui è sufficiente osservare che la serie
+\[\sum_{n=0}^{+\infty} \frac{z^{2n+1}}{(2n+1)!}\]
+è convergente per il criterio del rapporto:
+\[\lim_{n \to + \infty} \left \vert \dfrac{z^{2n+3}}{(2n+3)!} \right \vert \cdot \left \vert \dfrac{(2n+1)!}{z^{n+1}} \right \vert = \lim_{n \to + \infty}\frac{z^2}{(2n+3) \cdot (2n+2)} = 0 < 1\]
+In particolare, essa converge per ogni $z$ (essendo $z$ fissato e costante). Il raggio di convergenza è infinito, e la convergenza è uniforme su ogni compatto contenuto in $\mathbb{C}$.
 
 \vspace{1em}
 \noindent
-\textbf{Esempio 2}: Per dimostrare la formula di Eulero, si considera lo sviluppo seguente
+\textbf{Esempio 2}: La definizione del $\cos(z)$ in campo complesso avviene in modo analogo, sempre tramite le serie:
+\[\cos(z) = \sum_{n=0}^{+\infty} (-1)^n \cdot \frac{z^{2n}}{(2n)!}\]
+ancora una volta la serie converge. Trattandosi di serie di potenze, se essa converge, converge anche assolutamente, per cui è sufficiente osservare che la serie
+\[\sum_{n=0}^{+\infty} \frac{z^{2n}}{(2n)!}\]
+è convergente per il criterio del rapporto:
+\[\lim_{n \to + \infty} \left \vert \dfrac{z^{2n+2}}{(2n+2)!} \right \vert \cdot \left \vert \dfrac{(2n)!}{z^{2n}} \right \vert = \lim_{n \to + \infty}\frac{z^2}{(2n+2) \cdot (2n+1)} = 0 < 1\]
+In particolare, essa converge per ogni $z$ (essendo $z$ fissato e costante). Il raggio di convergenza è infinito, e la convergenza è uniforme su ogni compatto contenuto in $\mathbb{C}$.
+
+\vspace{2em}
+\noindent
+\textbf{Esercizio}: Per dimostrare la formula di Eulero, si considera lo sviluppo seguente
 \[e^{i \cdot y} = \sum_{n=0}^{+\infty} \frac{1}{n!} \cdot (i \cdot y)^n\]
 in cui è evidente capire come, dal momento che
 \[i^n = \left\{
+    \rowcolors{1}{white}{white}
     \begin{array}{lll}
         1 & \text{se} & n=4k\\
         i & \text{se} & n=4k+1\\
@@ -2790,26 +2827,23 @@ in cui è evidente capire come, dal momento che
     \end{array}
 \right.\]
 è possibile spezzare la sommatoria di cui sopra in $4$ sommatorie a seconda del valore di $i^n$, ottenendo
-\[\sum_{n=4k}^{+\infty} \frac{1}{(4k)!} \cdot y^{4k} + \sum_{n=4k+1}^{+\infty} \frac{1}{(4k+1)!} \cdot i \cdot y^{4k+1} + \sum_{n=4k+2}^{+\infty} \frac{1}{(4k+2)!} \cdot -y^{4k+2} + \sum_{n=4k+3}^{+\infty} \frac{1}{(4k+3)!} \cdot -i \cdot y^{4k}\]
-Allora posto $n=2m$, per il primo addendo si ottiene
-\[\sum_{m=0}^{+\infty} (-1)^m \frac{1}{(2m)!} \cdot y^{2m}\]
-per il secondo addendo si ottiene
-\[i \cdot \sum_{m=0}^{+\infty} (-1)^m \frac{1}{(2m+1)!} \cdot y^{2m+1}\]
-per il terzo addendo si ottiene
-\[\sum_{m=0}^{+\infty} (-1)^{m+1} \frac{1}{(2m+2)!} \cdot y^{2m+2}\]
-e infine, per il quarto addendo si ottiene
-\[-i \cdot \sum_{m=0}^{+\infty} (-1)^m \frac{1}{(2m+3)!} \cdot y^{2m+3}\]
+\[\sum_{n=0}^{+\infty} \frac{1}{n!} \cdot (i \cdot y)^n = \sum_{n=4k}^{+\infty} \frac{y^{4k}}{(4k)!} + \sum_{n=4k+1}^{+\infty} \frac{i \cdot y^{4k+1}}{(4k+1)!} + \sum_{n=4k+2}^{+\infty} -\frac{y^{4k+2}}{(4k+2)!} + \sum_{n=4k+3}^{+\infty} -\frac{i \cdot y^{4k}}{(4k+3)!}\]
+Allora posto $m=2n$, le sommatorie con $n=4k=2 \cdot (2k)$ e $n=4k+2=2 \cdot (2k+1)$, per cui si studia quando $m$ è pari o dispari, possono essere riscritte nel seguente modo:
+\[\sum_{n=4k}^{+\infty} \frac{y^{4k}}{(4k)!} + \sum_{n=4k+2}^{+\infty} -\frac{y^{4k+2}}{(4k+2)!} = \sum_{m=0}^{+\infty} (-1)^m \frac{1}{(2m)!} \cdot y^{2m} = \cos(y)\]
+similmente, le sommatorie con $n=4k+1=2 \cdot (2k)+1$ e $n=4k+3=2 \cdot (2k+1) + 1$, sempre studiando quando $m$ è pari o dispari, possono essere riscritte nel seguente modo:
+\[\sum_{n=4k+1}^{+\infty} \frac{i \cdot y^{4k+1}}{(4k+1)!} +\sum_{n=4k+3}^{+\infty} -\frac{i \cdot y^{4k}}{(4k+3)!} = i \cdot \sum_{m=0}^{+\infty} (-1)^m \frac{1}{(2m+1)!} \cdot y^{2m+1} = i \cdot \sin(y)\]
 
 \newpage
 \section{Topologia di $\mathbb{R}^n$}
-Il campo $\mathbb{R}^n$, con $n>1$, non eredita la relazione d'ordine del campo $\mathbb{R}$. In particolare, però, $\mathbb{R}^n$ è uno spazio
+Lo spazio $\mathbb{R}^n$, con $n>1$, \textbf{non eredita la relazione d'ordine} del campo $\mathbb{R}$. In particolare, però, $\mathbb{R}^n$ è uno spazio
 \begin{itemize}
-    \item vettoriale
-    \item metrico (ovvero vi si può operare ad una certa distanza)
+    \item vettoriale, dal punto di vista algebrico;
+    \item metrico (ovvero vi si può operare ad una certa distanza).
 \end{itemize}
-Per esempio, un vettore $x \in \mathbb{R}^n$ è sempre un \textbf{vettore colonna} della forma
+Lo spazio $\mathbb{R}^n$ è un insieme di punti, denotati tramite dei vettori. Per esempio, un vettore $x \in \mathbb{R}^n$ è sempre un \textbf{vettore colonna} della forma
 \[
     \left(
+        \rowcolors{1}{white}{white}
         \begin{array}{c}
             x_1\\
             x_2\\
@@ -2817,11 +2851,12 @@ Per esempio, un vettore $x \in \mathbb{R}^n$ è sempre un \textbf{vettore colonn
             x_n
         \end{array}
     \right)
-    \in \mathbb{R}^n
+    \in \mathbb{R}^n \hspace{1em} \text{con} \hspace{1em} x_i \in \mathbb{R}
 \]
-e si considererà una matrice di riga nella forma
+È fondamentale distinguere tra vettore colonna e matrice di riga: infatti la seconda rappresenta una forma lineare definita in $\mathbb{R}^n$ e non punti di $\mathbb{R}^n$. Quando si parla di $\mathbb{R}^n$ come spazio in generale si adotta la notazione di matrice di riga, mentre per $\mathbb{R}^n$ come spazio vettoriale si parla sempre di vettori colonna. Pertanto, per convenzione, si parlerà sempre di spazio vettoriale e non si distinguerà un punto da un vettore; sarà, quindi, sempre verificata l'equivalenza seguente:
 \[
     \left(
+        \rowcolors{1}{white}{white}
         \begin{array}{c}
             x_1\\
             x_2\\
@@ -2831,22 +2866,57 @@ e si considererà una matrice di riga nella forma
     \right)
     = \left(x_1, x_2, \dots, x_n\right){^T}
 \]
-Per le proprietà che lo caratterizzano, $\mathbb{R}^n$ è uno \textbf{spazio di Hilbert}.
+Per le proprietà che lo caratterizzano, specialmente dal punto di vista geometrico, $\mathbb{R}^n$ è uno \textbf{spazio di Hilbert}: uno spazio di Hilbert ${\bf{H}} = (H,\left<\cdot,\cdot\right>)$ è uno spazio vettoriale $H$ reale o complesso sul quale è definito un prodotto scalare interno $\langle \cdot,\cdot \rangle$ tale che, detta $\dif$ la distanza indotta da $\langle \cdot ,\cdot \rangle$ $H$, lo spazio metrico $(H,\dif)$ è completo, ossia uno spazio in cui tutte le successioni di Cauchy sono convergenti ad un elemento dello spazio.
 
-\vspace{1em}
+\newpage
+\noindent
 \subsection{Prodotto scalare}
-Sia $X$ uno spazio vettoriale; allora un prodotto scalare in $X$ è una funzione bilineare
-\[\left< \cdot, \cdot \right> : X \times X \longmapsto \mathbb{R}\]
-che presenta le seguenti proprietà
-\begin{itemize}
-    \item La simmetria: $\left<x,y\right>=\left<y,x\right>$
-    \item La positività e non generalità: $\left<x,x\right>\geq 0, \forall x \in X$ e, in particolare,
-    \[\left<x,x\right>=0 \hspace{1em} \textbf{se e solo se} \hspace{1em} x=0\]
-    \item La bilinearità: $\left<\alpha x, y \right> = \left< x, \alpha y \right>\alpha \cdot \left<x,y\right>, \forall \alpha \in \mathbb{R}$, posto $x, y \in X$
-    \item $\left<x+y,z\right>=\left<x,z\right>+\left<y,z\right>$
-\end{itemize}
-In particolare, in $\mathbb{R}^n$, si definisce il prodotto scalare come un banale prodotto righe per colonne, ovvero
+Di seguito si espone la definizione di \textbf{prodotto scalare}:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{PRODOTTO SCALARE}}\\
+    \parbox{\linewidth}{Sia $X$ uno spazio vettoriale su $\mathbb{R}$; allora un \textbf{prodotto scalare} in $X$ è una \textbf{funzione bilineare}
+    \[\left< \cdot, \cdot \right> : X \times X \longmapsto \mathbb{R}\]
+    che presenta le seguenti proprietà
+    \begin{itemize}
+        \item La \textbf{simmetria}
+        \[\left<x,y\right>=\left<y,x\right> \hspace{1em} \forall x,y \in X\]
+        \item La \textbf{positività} e \textbf{non degeneratezza}
+        \[\left<x,x\right>\geq 0 \hspace{1em} \forall x \in X\]in particolare
+        \[\left<x,x\right>=0 \hspace{1em} \textbf{se e solo se} \hspace{1em} x=0\]
+        \item La \textbf{bilinearità}
+        \[
+            \begin{array}{ll}
+                \left<\alpha \cdot x, y \right> = \alpha \cdot \left<x,y\right>&\\
+                \left< x, \alpha \cdot y \right> = \alpha \cdot \left<x,y\right>&\\
+            \end{array}
+            \forall \alpha \in \mathbb{R} \hspace{1em} \text{e} \hspace{1em} \forall x, y \in X
+        \]
+        \[
+            \hspace{-2em}
+            \begin{array}{ll}
+                \left<x+y,z\right>=\left<x,z\right>+\left<y,z\right>&\\
+                \left<x,y+z\right>=\left<x,y\right>+\left<x,z\right>&\\
+            \end{array}
+            \forall x, y, z \in X
+        \]
+    \end{itemize}
+    \vspace{-1mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione 1}: In particolare, in $\mathbb{R}^n$, si definisce il prodotto scalare come un banale prodotto righe per colonne, ovvero
 \[\left<x,y\right> = x{^T} \cdot y = \left(x_1,x_2,\dots,x_n\right) \cdot \left(
+    \rowcolors{1}{white}{white}
     \begin{array}{c}
         y_1\\
         y_2\\
@@ -2857,21 +2927,39 @@ In particolare, in $\mathbb{R}^n$, si definisce il prodotto scalare come un bana
 
 \vspace{1em}
 \noindent
-\textbf{Osservazione}: Un prodotto scalare non definito su $\mathbb{R}^n$, ma definito sullo spazio vettoriale
+\textbf{Osservazione 2}: Un prodotto scalare non definito su $\mathbb{R}^n$, ma definito sullo spazio vettoriale seguente
 \[C^0 \left(\left[a,b\right]\right) = \{\phi : [a,b] \longmapsto \mathbb{R}, \text{ continua}\}\]
-allora
-\[\int_a^b \phi(x) \cdot \psi(x) \dif x\]
+allora il prodotto interno seguente
+\[\left<\phi,\psi\right> = \int_a^b \phi(x) \cdot \psi(x) \dif x\]
+è a tutti gli effetti un prodotto scalare, in quanto soddisfa tutte le proprietà di cui sopra, che derivano dalla linearità dell'integrale.
 
+\vspace{2em}
+\subsection{Norma di un vettore}
+Si espone di seguito la definizione di \textbf{norma di un vettore}:
+
+% Tabella per le definizione di concetti, etc...
 \vspace{1em}
-\subsubsection{Norma di un vettore}
-Sia $X$ uno spazio vettoriale su cui è definito un prodotto scalare. Allora si definisce norma di un vettore $x \in X$ come
-\[\left \vert \left \vert x \right \vert \right \vert = \sqrt{\left<x,x\right>}\]
-La norma gode delle seguenti proprietà
-\begin{itemize}
-    \item $\left \vert \left \vert x \right \vert \right \vert \geq 0, \hspace{1em} \forall x \in X$ e, in particolare, $\left \vert \left \vert x \right \vert \right \vert = 0$ \textbf{se e solo se} $x=0$
-    \item $\left \vert \left \vert \alpha x \right \vert \right \vert = \left \vert \alpha \right \vert \cdot \left \vert \left \vert x \right \vert \right \vert$ con $\alpha \in \mathbb{R}$ e $x \in X$
-    \item $\left \vert \left \vert x+y \right \vert \right \vert \leq \left \vert \left \vert x \right \vert \right \vert + \left \vert \left \vert y \right \vert \right \vert$ chiamata disuguaglianza triangolare.
-\end{itemize}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{NORMA DI UN VETTORE}}\\
+    \parbox{\linewidth}{Sia $X$ uno spazio vettoriale su cui è definito un prodotto scalare. Allora si definisce norma di un vettore $x \in X$ una funzione
+    \[\vert \vert \cdot \vert \vert : X \longmapsto \mathbb{R}\]
+    definita come segue
+    \[\left \vert \left \vert x \right \vert \right \vert = \sqrt{\left<x,x\right>}\]
+    La norma gode delle seguenti proprietà
+    \begin{itemize}
+        \item $\left \vert \left \vert x \right \vert \right \vert \geq 0, \hspace{1em} \forall x \in X$\\\\
+        In particolare $\left \vert \left \vert x \right \vert \right \vert = 0$ \textbf{se e solo se} $x=0$
+        \item $\left \vert \left \vert \alpha x \right \vert \right \vert = \left \vert \alpha \right \vert \cdot \left \vert \left \vert x \right \vert \right \vert$ con $\alpha \in \mathbb{R}$ e $x \in X$
+        \item $\left \vert \left \vert x+y \right \vert \right \vert \leq \left \vert \left \vert x \right \vert \right \vert + \left \vert \left \vert y \right \vert \right \vert$ chiamata disuguaglianza triangolare.
+    \end{itemize}
+    \vspace{1mm}}\\
+    \hline
+\end{tabularx}
 
 % Formattazione per la dimostrazione, etc.
 \vspace{2em}
@@ -2879,83 +2967,132 @@ La norma gode delle seguenti proprietà
 \normalfont \normalsize
 \textsc{Dimostrazione 1}: Tale dimostrazione è immediata dalla definizione di norma
 \[\left \vert \left \vert x \right \vert \right \vert = \sqrt{\left<x,x\right>}\]
+per cui, essendo il prodotto scalare sempre non negativo, automaticamente lo è anche la sua radice. Non solo, ma siccome il prodotto scalare è non degenere, per cui $\left<x,x\right>=0$ se e solo $x=0$, tale proprietà viene automaticamente riflessa sulla norma.
 
 % Formattazione per la dimostrazione, etc.
 \vspace{2em}
 \noindent
 \normalfont \normalsize
-\textsc{Dimostrazione 2}: Dalla definizione di norma si ha che
-\[\sqrt{\left<\alpha x,\alpha x\right>} = \sqrt{\alpha \left<x,\alpha x\right>} = \sqrt{\alpha^2 \left<x,x\right>} = \left \vert \alpha \right \vert \sqrt{\left<x,x\right>} = \left \vert \alpha \right \vert \cdot \left \vert \left \vert x \right \vert \right \vert\]
+\textsc{Dimostrazione 2}: Per la proprietà di bilinearità del prodotto scalare è immediato evincere che
+\[\vert \vert \alpha \cdot x \vert \vert = \sqrt{\left< \alpha \cdot x, \alpha \cdot x\right>} = \sqrt{ \alpha \cdot \left<x, \alpha \cdot x\right>} = \sqrt{\alpha^2 \cdot \left<x,x\right>} = \left \vert \alpha \right \vert \cdot \sqrt{\left<x,x\right>} = \left \vert \alpha \right \vert \cdot \left \vert \left \vert x \right \vert \right \vert\]
 
 % Formattazione per la dimostrazione, etc.
 \vspace{2em}
 \noindent
 \normalfont \normalsize
-\textsc{Dimostrazione 3}: La disuguaglianza triangolare si può dimostrare dalla definizione di norma, ovvero
-\[\sqrt{\left<x+y,x+y\right>}  =\]
-...continua...
+\textsc{Dimostrazione 3}: La disuguaglianza triangolare si può dimostrare partendo dalla definizione di norma, ovvero
+\[\vert \vert x+y \vert \vert = \sqrt{\left<x+y,x+y\right>}\]
+Per la proprietà di bilinearità e simmetria del prodotto scalare, si ottiene che
+\[\sqrt{\left<x+y,x+y\right>} = \sqrt{\left<x,x\right> + 2 \cdot \left<x,y\right> + \left<y,y\right>} = \sqrt{\vert \vert x \vert \vert^2 + 2 \cdot \left<x,y\right> + \vert \vert y \vert \vert^2}\]
+ma ora è possibile impiegare la disuguaglianza di Bunyakovsky-Cauchy-Schwarz, per cui
+\[2 \cdot \left<x,y\right>  \leq 2 \cdot \vert\left<x,y\right> \vert \leq 2 \cdot \vert \vert x \vert \vert \cdot \vert \vert y \vert \vert\]
+per cui
+\[\sqrt{\vert \vert x \vert \vert^2 + 2 \cdot \left<x,y\right> + \vert \vert y \vert \vert^2} \leq \sqrt{\vert \vert x \vert \vert^2 + 2 \cdot \vert \vert x \vert \vert \cdot \vert \vert y \vert \vert + \vert \vert y \vert \vert^2} = \sqrt{(\vert \vert x \vert \vert + \vert \vert y \vert \vert)^2} = \vert \vert x \vert \vert + \vert \vert y \vert \vert\]
 
 \vspace{1em}
 \noindent
-\textbf{Osservazione}: Si osservi che se $X$ è no spazio vettoriale dotato di una norma $\left \vert \left \vert \cdot \right \vert \right \vert$, si può definire la distanza come
+\textbf{Osservazione}: Si osservi che la norma potrebbe anche essere definita in modo molto più astratto: basterebbe trovare una funzione che soddisfi le proprietà della norma e quella, automaticamente, diventerebbe una norma. Se in uno spazio vettoriale, però, è definito un prodotto scalare, allora si adotta come norma la cosiddetta \quotes{norma canonica}:
+\[\left \vert \left \vert x \right \vert \right \vert = \sqrt{\left<x,x\right>}\]
+In generale, in $\mathbb{R}^n$ la norma che si considera è la cosiddetta \textbf{norma euclidea}:
+\[\vert \vert x \vert \vert = \sqrt{\sum_{k=1}^n x_k^2}\]
+Ci sono, tuttavia, spazi vettoriali in cui non è definito un prodotto scalare, ma presentano comunque una norma. Pertanto, se in uno spazio vettoriale è definito un prodotto scalare, automaticamente vi è una norma indotta, ma non vale il viceversa.\\
+Si osservi che se $X$ è uno spazio vettoriale dotato di una norma $\left \vert \left \vert \cdot \right \vert \right \vert$ (che potrebbe essere anche indotta da un prodotto scalare), si può definire la distanza come la funzione seguente
 \[d(x,y) = \left \vert \left \vert x-y \right \vert \right \vert\]
-che consente di parlare di intorni, intervalli aperti e chiusi e, di conseguenza, anche di limiti.
+che consente di parlare di palle, intorni, intervalli aperti e chiusi e, di conseguenza, anche di limiti.\\
+Ancora una volta, il concetto di distanza potrebbe essere introdotto anche in spazi molto più generali, che non è nemmeno necessario siano spazi vettoriali.
 
 \vspace{1em}
-\subsubsection{Disuguaglianza di Bumcokowski-Cauchy-Schwarz}
-Sia $X$ uno spazio vettoriale con prodotto scalare, allora $\forall x,y \in X$. Allora si ha che
-\[\left \vert \left<x,y\right> \right \vert \leq \left \vert \left \vert x \right \vert \right \vert \cdot \left \vert \left \vert y \right \vert \right \vert\]
-Inoltre, vale l'uguaglianza \textbf{se e solo se} $x$ e $y$ sono \textbf{linearmente dipendenti}.
+\subsection{Disuguaglianza di Bunyakovsky-Cauchy-Schwarz}
+Si espone di seguito la disuguaglianza di Bunyakovsky-Cauchy-Schwarz:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{DISUGUAGLIANZA DI BUNYAKOVSKY-CAUCHY-SCHWARZ}}\\
+    \parbox{\linewidth}{Sia $X$ uno spazio vettoriale con prodotto scalare, allora $\forall x,y \in X$ si ha che
+    \[\left \vert \left<x,y\right> \right \vert \leq \left \vert \left \vert x \right \vert \right \vert \cdot \left \vert \left \vert y \right \vert \right \vert\]
+    Inoltre, vale l'uguaglianza \textbf{se e solo se} $x$ e $y$ sono \textbf{linearmente dipendenti}, ossia esiste una combinazione lineare
+    \[\alpha \cdot x + \beta \cdot y = 0\]
+    in cui gli scalari $\alpha,\beta$ non sono tutti nulli, ossia $\alpha^2+\beta^2\neq 0$.
+    \vspace{3mm}}\\
+    \hline
+\end{tabularx}
 
 % Formattazione per la dimostrazione, etc.
 \vspace{2em}
 \noindent
 \normalfont \normalsize
 \textsc{Dimostrazione}: Si dimostri che $\forall x, y \in X$ si ha che
-\[\left \vert \left<x,y\right> \right \vert \leq \left \vert \left \vert x \right \vert \right \vert^2 \cdot \left \vert \left \vert y \right \vert \right \vert^2\]
-Si distinguono i casi seguenti
+\[\left \vert \left<x,y\right> \right \vert^2 \leq \left \vert \left \vert x \right \vert \right \vert^2 \cdot \left \vert \left \vert y \right \vert \right \vert^2 \hspace{1em} \rightarrow \hspace{1em} \left<x,y\right>^2 - \left<x,x\right> \cdot \left<y,y\right> \leq 0\]
+che equivale a dimostrare l'enunciato della disuguaglianza di Bunyakovsky-Cauchy-Schwarz. Più specificatamente, si distinguono i casi seguenti
 \begin{itemize}
     \item Nel caso in cui $y=0$, si ha che
-    \[\left<x,y\right>=0, \forall x, \left \vert \left \vert y \right \vert \right \vert = 0\]
+    \[\left<x,y\right>=0 \hspace{0.5em} \forall x \hspace{1em} \hspace{1em} \text{e} \hspace{1em} \left \vert \left \vert y \right \vert \right \vert = 0\]
+    per cui la disuguaglianza è immediata.
     \item Nel caso in cui $y \neq 0$ e $x \neq 0$, si introduce, $\forall t \in \mathbb{R}$, il polinomio seguente
     \[0 \leq \left \vert \left \vert x + ty \right \vert \right \vert^2 = \left \vert \left \vert x \right \vert \right \vert^2 + 2t \cdot \left<x,y\right> + t^2 \cdot \left \vert \left \vert y \right \vert \right \vert^2\]
-    Considerando tale polinomio in funzione di $t$, si osserva che $f(t) \geq 0, \forall t$ \textbf{se e solo se} $\Delta \leq 0$.
-    Ma siccome il $\Delta$ del polinomio si ottiene come
-    \[4 \cdot \left(\left<x,y\right>\right)^2 - 4 \cdot \left \vert \left \vert x \right \vert \right \vert^2 \cdot \left \vert \left \vert y \right \vert \right \vert^2\]
-    si deve dimostrare che
+    Tale sviluppo deriva dalla definizione di norma e dall'applicazione delle proprietà di bilinearità del prodotto scalare, infatti:
+    \[\vert \vert x+ty \vert \vert^2 = \left<x+ty,x+ty\right>=\left<x,x+ty\right>+\left<ty,x+ty\right>=\left<x,x\right>+\left<x,ty\right>+\left<ty,x\right>+\left<ty,ty\right>\]
+    ma per la definizione di norma e per la simmetria e linearità del prodotto scalare:
+    \[\left<x,x\right>+2 \cdot \left<x,ty\right>+\left<ty,ty\right> = \vert \vert x \vert \vert^2 + 2t \cdot \left<x,y\right> + t^2 \cdot \vert \vert y \vert \vert^2\]
+    Avendo fissato $x$ e $y$, è possibile ora considerare tale espressione come un polinomio in funzione di $t$, ovvero
+    \[f(t) = \underbrace{\vert \vert x \vert \vert^2}_c + t \cdot \underbrace{2\left<x,y\right>}_b + t^2 \cdot \underbrace{\vert \vert y \vert \vert^2}_a\]
+    È immediato osservare che
+    \[f(t) \geq 0 \hspace{0.5em} \forall t \hspace{1em} \textbf{se e solo se} \hspace{1em} \Delta f(t) \leq 0\]
+    Ma siccome il discriminante $\Delta$ del polinomio si ottiene come segue
+    \[\Delta f(t) = b^2 - 4ac = 4 \cdot \left(\left<x,y\right>\right)^2 - 4 \cdot \left \vert \left \vert x \right \vert \right \vert^2 \cdot \left \vert \left \vert y \right \vert \right \vert^2\]
+    si deve dimostrare che $\Delta f(t) \leq 0$ per veder verificata la disuguaglianza di Bunyakovsky-Cauchy-Schwarz, ossia che
     \[4 \cdot \left(\left<x,y\right>\right)^2 - 4 \cdot \left \vert \left \vert x \right \vert \right \vert^2 \cdot \left \vert \left \vert y \right \vert \right \vert^2 \leq 0\]
     che può essere riscritto come
     \[\left(\left<x,y\right>\right)^2 \leq \left \vert \left \vert x \right \vert \right \vert^2 \cdot \left \vert \left \vert y \right \vert \right \vert^2\]
-    che è una disuguaglianza sempre verificata.
+    che è esattamente la disuguaglianza che si stava cercando.
 \end{itemize}
-Per dimostrare che la disuguaglianza di Bumcokowski-Cauchy-Schwarz vale \textbf{se e solo se} i vettori considerati sono linearmente dipendenti. Dire che sono linearmente dipendenti significa che $\exists \tilde{t} \in \mathbb{R}$ tale che $f(\tilde{t})=0$, ovvero che
+Per dimostrare che la disuguaglianza di Bunyakovsky-Cauchy-Schwarz diviene un'uguaglianza \textbf{se e solo se} i vettori $x$ e $y$ considerati sono linearmente dipendenti, si deve dimostrare che ciò è vero se e solo se $\Delta f(t) = 0$, dal momento che il polinomio, per quanto già dimostrato, è $f(t) \geq 0$, per cui può annullarsi solamente con $\Delta=0$.\\
+Ma chiedere che il discriminante del polinomio sia nullo significa chiedere che esiste uno $0$ del polinomio, ossia $\exists \tilde{t} \in \mathbb{R}$ tale che $f(\tilde{t})=0$, ovvero che
 \[\left \vert \left \vert x+ \tilde{t}y \right \vert \right \vert^2 = 0\]
-Ma ciò è vero solamente quando $x+ \tilde{t}y$ per la definizione di norma, ovvero $x=\tilde{t}y$, che significa che i vettori $x$ e $y$ sono linearmente dipendenti
+Ma ciò è vero se e soltanto se $x+ \tilde{t}y=0$ per la definizione di norma, ovvero $x=-\tilde{t}y$, che significa che i vettori $x$ e $y$ sono linearmente dipendenti. Da notare, infine, che $\tilde{t} \neq 0$, in quanto se fosse nullo, allora $x=0$, ma ciò contrasta con le ipotesi di partenza.
 
 \newpage
 \begin{center}
     18 Ottobre 2022
 \end{center}
-Lo spazio $\mathbb{R}^n$ è uno spazio vettoriale, in cui i suoi elementi sono delle matrici colonna, non proprio dei vettori.\\
-$\mathbb{R}^n$ è uno spazio di Hilbert, in cui è possibile definire un \textbf{prodotto scalare} come segue
+Lo spazio $\mathbb{R}^n$ è uno spazio vettoriale, in cui i suoi elementi sono delle matrici colonna, non proprio dei vettori. Non solo, ma per quanto già esposto, $\mathbb{R}^n$ è uno spazio di Hilbert; per capirne il significato, si consideri uno spazio in cui è è definito un \textbf{prodotto scalare} come segue
 \[X \text{ spazio vettoriale con } \left<\cdot,\cdot\right> : X \times X \longmapsto \mathbb{R}\]
-Se in uno spazio vettoriale viene definito un prodotto scalare, automaticamente viene definita una \textbf{norma indotta}
+Allora, se in uno spazio vettoriale viene definito un prodotto scalare, automaticamente viene definita una \textbf{norma indotta}
 \[\left \vert \left \vert \cdot \right \vert \right \vert : X \longmapsto \mathbb{R}\]
 definita come
 \[\left \vert \left \vert x \right \vert \right \vert = \sqrt{\left<x,x\right>}\]
-Tuttavia, esistono anche spazi vettoriali su cui è definita una norma, senza che vi sia definito uno spazio vettoriale, come quella esposta di seguito, definita come \textbf{norma $\bf{1}$}: 
+Tuttavia, esistono anche spazi vettoriali su cui è definita una norma, senza che vi sia definito uno prodotto scalare, come quella esposta di seguito, definita come \textbf{norma $\bf{1}$}: 
 \begin{itemize}
-    \item $\left \vert \left \vert x \right \vert \right \vert_1 = \vert x_1 \vert + \vert x_2 \vert + \dots + \vert x_n \vert$, posto
+    \item La norma $1$ di un vettore è la somma dei valori assoluti delle sue componenti:
+    \[\left \vert \left \vert x \right \vert \right \vert_1 = \vert x_1 \vert + \vert x_2 \vert + \dots + \vert x_n \vert\]
+    posto
     \[x=(x_1,x_2,\dots,x_n){^T}\]
-    \item Nel caso di una norma indotta si ha che, $\left \vert \left \vert \alpha \cdot x \right \vert \right \vert = \vert \alpha \vert \cdot \left \vert \left \vert x \right \vert \right \vert$.\\
-    Nel caso di un vettore, si ha la corrispondenza
-    \[\left \vert \left \vert \alpha \cdot (x_1,x_2,\dots,x_n){^T} \right \vert \right \vert_1 = \left \vert \left \vert (\alpha \cdot x_1, \alpha \cdot x_2, \dots, \alpha \cdot x_n){^T} \right \vert \right \vert_1 = \vert \alpha \cdot x_1 \vert + \vert \alpha \cdot x_2 \vert + \dots + \vert \alpha \cdot x_n \vert = \vert \alpha \vert \cdot \left \vert \left \vert x \right \vert \right \vert_2\]
-    \item La disuguaglianza triangola...
+    \item Per quanto riguarda l'omogeneità, è noto che, nel caso di una norma indotta si ha che, $\left \vert \left \vert \alpha \cdot x \right \vert \right \vert = \vert \alpha \vert \cdot \left \vert \left \vert x \right \vert \right \vert$. Nel caso di un vettore, si ha la corrispondenza
+    \[\left \vert \left \vert \alpha \cdot (x_1,x_2,\dots,x_n){^T} \right \vert \right \vert_1 = \left \vert \left \vert (\alpha \cdot x_1, \alpha \cdot x_2, \dots, \alpha \cdot x_n){^T} \right \vert \right \vert_1\]
+    per quanto esposto sul significato della norma $1$, tale espressione diviene
+    \[\vert \alpha \cdot x_1 \vert + \vert \alpha \cdot x_2 \vert + \dots + \vert \alpha \cdot x_n \vert = \vert \alpha \vert \cdot \left \vert \left \vert x \right \vert \right \vert_1\]
+    \item La disuguaglianza triangolare è ugualmente verificata.Nel caso di una norma indotta è noto che
+    \[\vert \vert x_1 + x_2 \vert \vert \leq \vert \vert x_1 \vert \vert + \vert \vert x_2 \vert \vert\]
+    mentre nel caso della norma $1$ si ha
+    \[\vert \vert (x_1,x_2,\dots,x_n){^T} + (y_1,y_2,\dots,y_n){^T} \vert \vert = \vert \vert (x_1+y_1,x_2+y_2,\dots,x_n+y_n){^T} \vert \vert\]
+    e per quanto esposto sul significato della norma $1$, tale espressione diviene
+    \[\vert x_1+y_1 \vert + \vert x_2 + y_2 \vert + \dots + \vert x_n + y_n \vert \leq \vert x_1 \vert + \vert y_1 \vert + \vert x_2 \vert + \vert y_2 \vert + \dots + \vert x_n \vert + \vert y_n \vert\]
 \end{itemize}
 
 \vspace{1em}
 \noindent
-\textbf{Osservazione}: L'unica norma che risulta essere indotta da un prodotto scalare è la norma $2$
+\textbf{Osservazione}: L'unica norma che risulta essere indotta da un prodotto scalare è la norma $2$. È possibile, inoltre, andare a definire in generale la norma $p$ di un vettore (avendo definito la norma $1$ come la somma del valore assoluto delle sue componenti). In particolare si ha che
+\[\vert \vert x \vert \vert_p = \left(\sum_{i=1}^n \vert \vert x_i \vert \vert ^p\right)^{\frac{1}{p}}\]
+In questo modo è automaticamente definita la norma $2$, per cui
+\[\vert \vert x \vert \vert_2 = \sqrt{\sum_{i=1}^n x_i^2}\]
+o anche la \textbf{norma infinito}, calcolata come
+\[\vert \vert x \vert \vert_\infty = \max \left\{\vert x_i \vert, \hspace{1em} \text{con} \hspace{1em} i=1,2,\dots,n\right\}\]
 
 \vspace{1em}
 \noindent
@@ -2963,10 +3100,21 @@ Ciò che risulta essere fondamentale è lo spazio di funzioni del tipo
 \[X = C \left([a,b]\right)\]
 in cui viene considerato il prodotto scalare
 \[\left<\phi,\psi\right> = \int_{[a,b]} \phi(t) \cdot \psi(t)\]
+naturalmente, la norma $2$ indotta da tale prodotto scalare viene definita come
+\[\vert \vert \phi \vert \vert_2 = \sqrt{\int_a^b \phi^2(t) \dif t}\]
+e più in generale la norma $p$ (con $p \geq 1$) indotta da tale prodotto scalare verrà definita come
+\[\vert \vert \phi \vert \vert_p = \left(\int_a^b \phi^p(t) \dif t \right)^{\frac{1}{p}}\]
+e quindi la norma infinito è data semplicemente dal massimo della funzione, ossia
+\[\vert \vert \phi \vert \vert_\infty = \max \left\{ \vert \phi(t) \vert, \hspace{1em} \text{con} \hspace{1em} t \in [a,b] \right\}\]
+
+\vspace{1em}
+\noindent
+Le norme finora esposte sono definite \textbf{norme nello spazio $L^p$}, ossia lo spazio delle funzioni a $p$-esima potenza sommabile.
 
 \vspace{1em}
 \noindent
 \subsection{Distanza (metrica)}
+Ogni qualvolta si ha a disposizione una norma, automaticamente è possibile definire una distanza: in particolare si può considerare come distanza tra due punti $x$ e $y$ la norma della differenza, ossia, $\vert \vert x-y \vert \vert$.\\
 Di seguito si espone la definizione di \textbf{distanza (metrica)}:
 
 % Tabella per le definizione di concetti, etc...
@@ -2978,28 +3126,35 @@ Di seguito si espone la definizione di \textbf{distanza (metrica)}:
 \begin{tabularx}{\textwidth}{@{}|P|@{}}
     \hline
     {\textbf{DISTANZA (METRICA)}}\\
-    \parbox{\linewidth}{Dato $X$ un \textbf{insieme vuoto}, si chiama \textbf{distanza (metrica)} su $X$ una funzione $d$ definita come
+    \parbox{\linewidth}{Dato $X$ un \textbf{insieme non vuoto}, si chiama \textbf{distanza (metrica)} su $X$ una funzione $d$ definita come
     \[d : X \times X \longmapsto \mathbb{R}\]
     che soddisfa le proprietà seguenti:
     \begin{itemize}
-        \item $d(x,y) \geq 0, \hspace{0.5em} \forall x, y \in \mathbb{R}$.\\
-        Inoltre si ha che
-        \[d(x,x) = 0 \hspace{0.5em} \textbf{se e solo se} \hspace{0.5em} x=y\]
-        \item la proprietà simmetrica $d(x,y)=d(y,x)$, che non è sempre verificata per distanze semi-metriche
-        \item la disuguaglianza triangolare $d(x,z) \leq d(x,y) + d(y,z)$
+        \item la distanza tra due punti è sempre non negativa, per cui
+        \[d(x,y) \geq 0, \hspace{0.5em} \forall x, y \in \mathbb{R}\]
+        inoltre si ha che
+        \[d(x,y) = 0 \hspace{0.5em} \textbf{se e solo se} \hspace{0.5em} x=y\]
+        tuttavia esistono anche \textbf{semi-metriche} dove tale proprietà non è verificata;
+
+        \item la proprietà simmetrica, ovvero
+        \[d(x,y)=d(y,x)\]
+        che, come in precedenza, non è sempre verificata per distanze semi-metriche;
+
+        \item la disuguaglianza triangolare, che afferma che 
+        \[d(x,z) \leq d(x,y) + d(y,z)\]
     \end{itemize}
-    \vspace{3mm}}\\
+    \vspace{-1mm}}\\
     \hline
 \end{tabularx}
 
 \vspace{2em}
 \noindent
-\textbf{Osservazioni}: Si osservi che un prodotto scalare induce una norma, una norma induce una distanza e una distanza induce una topologia.
+\textbf{Osservazioni}: Si osservi che un prodotto scalare induce una norma, una norma induce una distanza e una distanza induce una topologia. Il concetto più astratto, ovviamente, è quello di spazio topologico che può essere definito in modo molto astratto, senza parlare di distanza.
 
 \vspace{1em}
 \noindent
 \subsection{Spazio metrico}
-Di seguito si espone la definizione di \textbf{spazio metrico}
+Di seguito si espone la definizione di \textbf{spazio metrico}:
 
 % Tabella per le definizione di concetti, etc...
 \vspace{1em}
@@ -3016,54 +3171,95 @@ Di seguito si espone la definizione di \textbf{spazio metrico}
 
 \vspace{2em}
 \noindent
-\textbf{Esempio 1}: Si consideri uno spazio $X$ (non necessariamente uno spazio vettoriale). È sempre possibile definire la \textbf{distanza banale} seguente:
+\textbf{Esempio 1}: Si consideri uno spazio $X \neq \varnothing$ (non necessariamente uno spazio vettoriale). È sempre possibile definire la \textbf{distanza banale} seguente:
 \[
     d(x,y) = \left\{
+        \rowcolors{1}{white}{white}
         \begin{array}{lll}
             0 & \text{se} & x=y\\
             1 & \text{se} & x \neq y\\
         \end{array}
     \right.
 \]
+che è una distanza a tutti gli effetti, in quanto soddisfa tutte le proprietà precedentemente esposte.
 
 \vspace{1em}
 \noindent
-\textbf{Esempio 2}: Si consideri uno spazio $X=\mathbb{R}^n$, allora si definisce distanza euclidea come:
+\textbf{Esempio 2}: Si consideri uno spazio $X=\mathbb{R}^n$, allora si definisce \textbf{distanza euclidea} come
+\[d(x,y) = \vert \vert x-y \vert \vert_2 = \sqrt{\sum_{i=1}^n (x_i-y_i)^2}\]
 
 \vspace{1em}
 \noindent
-\textbf{Esempio 3}: Si consideri uno spazio $X=C([0,2 \pi])$, allora si definisce la distanza come
-\[\d(\phi,\psi) = \vert \vert \phi-\psi \vert \vert_2 = \sqrt{\int_0^{2\pi} (\phi(t) - \psi(t)^2)}\]
+\textbf{Esempio 3}: Si consideri uno spazio $X=C([0,2 \pi])$, ossia lo spazio delle funzioni continue nell'intervallo $[0,2\pi]$. Allora si definisce la distanza come
+\[d(\phi,\psi) = \vert \vert \phi-\psi \vert \vert_2 = \sqrt{\int_0^{2\pi} (\phi(t) - \psi(t))^2}\]
 Allora si ha che
 \[d(\sin(t),\cos(t)) = \sqrt{2\pi}\]
+in quanto
+\[\sqrt{\int_0^{2\pi} (\sin(t) - \cos(t))^2} = \sqrt{\int_0^{2\pi} \sin^2(t) - 2 \sin(t) \cos(t) + \cos^2(t))}\]
+da ciò si evince che 
+\[\sqrt{\int_0^{2\pi} \sin^2(t) - 2 \sin(t) \cos(t) + \cos^2(t))} = \sqrt{\int_0^{2\pi} \dfrac{1-\cos(2t)}{2} - \sin(2t) + \dfrac{1+\cos(2t)}{2}}\]
+da cui
+\[= \sqrt{\left[\dfrac{1}{2}t - \dfrac{\sin(2t)}{4} + \dfrac{\cos(2t)}{2} + \dfrac{1}{2}t + \dfrac{\sin(2t)}{4}\right]_0^{2\pi}} = \sqrt{2\pi}\]
 
 \vspace{1em}
 \subsection{Vettori ortogonali}
-Due vettori $x,y$ si dicono ortogonali se
-\[\left<x,y\right>=0\]
+Di seguito si espone la definizione di \textbf{vettori ortogonali}:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{VETTORI ORTOGONALI}}\\
+    \parbox{\linewidth}{Dato uno spazio metrico $X, \left<\cdot,\cdot\right>$, due vettori $x,y$ si dicono \textbf{ortogonali} se
+    \[\left<x,y\right>=0\]
+    \vspace{-1mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{1em}
+\noindent
 Nello spazio dell'esempio precedente, $\sin(t)$ e $\cos(t)$ sono ortogonali, in quanto
 \[\int_0^{2\pi} \sin(t) \cot(t) = 0\]
 
 \vspace{1em}
-\subsection{Palla-aperta}
-Sia $X,d$ uno spazio metrico. Si chiama palla-aperta di centro $x_0 \in X$ e raggio $r \in \mathbb{R}^+$ l'insieme così definita
-\[\mathcal{B}(x_0,r) = \{x \in X : d(x,x) < r\}\]
-mentre si chiama palla chiusa
-\[\mathcal{B}_\text{chiusa}(x_0,r) = \{x \in X : d(x,x) \leq r\}\]
+\subsection{Palla-aperta e palla-chiusa}
+Si espone di seguito la definizione di \textbf{palla} (sia \textbf{aperta} che \textbf{chiusa}):
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{PALLA-APERTA E PALLA-CHIUSA}}\\
+    \parbox{\linewidth}{Sia $X,d$ uno spazio metrico, con $X \neq \varnothing$ e $d$ la distanza in esso definita.\\
+    Si chiama \textbf{palla-aperta} di centro $x_0 \in X$ e raggio $r \in \mathbb{R}^+$ l'insieme così definito
+    \[\mathcal{B}(x_0,r) = \{x \in X : d(x,x_0) < r\}\]
+    mentre si chiama \textbf{palla-chiusa} di centro $x_0 \in X$ e raggio $r \in \mathbb{R}^+$ l'insieme così definito
+    \[\mathcal{B}_\text{chiusa}(x_0,r) = \overline{\mathcal{B}(x_0,r)} = \{x \in X : d(x,x_0) \leq r\}\]
+    in cui si è indicata la palla-chiusa come $\overline{\mathcal{B}(x_0,r)}$ in quanto in $\mathbb{R}^n$ la palla-chiusa è proprio la chiusura della palla-aperta, ma ciò non è sempre vero.
+    \vspace{3mm}}\\
+    \hline
+\end{tabularx}
 
 \vspace{1em}
 \noindent
-\textbf{Esempio 1}: Si consideri uno spazio vettoriale $\mathbb{R}^2$ con la norma $\vert \vert \cdot \vert \vert_2$ in cui si ha che
-\[d \left((x_1,x_2),(0,0)\right) = \vert x_1 \vert \vert x_2 \vert\]
-Allora la palla $\mathcal{B}(0,1)$ è un quadrato ruotato con i vertici sugli assi.
-
-\vspace{1em}
-\noindent
-\textbf{Esempio 2}: Se si considera, invece, la norma indotta
+\textbf{Esempio 1}: Si consideri lo spazio vettoriale $\mathbb{R}^2$ con la norma $\vert \vert \cdot \vert \vert_2$; allora la $\mathcal{B}(0,1)$ è semplicemente il cerchio di centro $0$ e raggio $1$.\\
+Tuttavia, se al posto di considerare $\vert \vert \cdot \vert \vert_2$ si considera $\vert \vert \cdot \vert \vert_1$, allora si ha che
+\[d((x_1,x_2){^T},(0,0){^T}) = \vert x_1 \vert + \vert x_2 \vert\]
+Allora la palla $\mathcal{B}(0,1)$ è un quadrato ruotato con i vertici sugli assi (in quanto basta considerare la retta $x_1+x_2=1$ e lavorare per simmetria).\\
+Se si considera, invece, la norma indotta
 \[\vert \vert x \vert \vert_\infty = \max\{\vert x_1 \vert, \vert x_2 \vert\}\]
-è esattamente un quadrato di lato $1+1$ 
+è esattamente un quadrato di lato $2$ e centrato nell'origine.\\
+Se si considerano, in generale, delle norme $\vert \vert \cdot \vert \vert_p$ con $p \geq 2$, allora si ottengono delle \quotes{circonferenze} sempre più grandi e schiacciate ai lati, avvicinandosi sempre di più al quadrato ottenibile con $p=\infty$. 
 
-\vspace{1em}
+\newpage
 \subsection{Intorno}
 Di seguito si espone la definizione di \textbf{intorno}:
 
@@ -3078,56 +3274,72 @@ Di seguito si espone la definizione di \textbf{intorno}:
     {\textbf{INTORNO}}\\
     \parbox{\linewidth}{Sia $X,d$ uno spazio metrico, con $x_0 \in X$. Si dice intorno di $x_0$ qualunque insieme $U \subseteq X$ tale che esiste $r>0$ affinché
     \[\mathcal{B}(x_0,r) \subseteq U\]
-    \vspace{3mm}}\\
+    \vspace{-1mm}}\\
     \hline
 \end{tabularx}
 
 \vspace{1em}
-\subsection{Proprietà di un intorno}
-Sia $\mathcal{N}_x$ una famiglia di intorni di $x$, allora
-\begin{enumerate}
-    \item sia $U \in \mathcal{N}_x$, allora $x \in U$
-    \item siano $U,V \in \mathcal{N}_x$, allora $U \cap V \in \mathcal{N}_x$
-    \item Siano $U \in \mathcal{N}_x$ e $V \subseteq X$. Se $U \subset V$, allora $V \in \mathcal{N}_x$
-    \item Proprietà di separazione di Hausdorff: siano $x \neq y$; allora esiste $U \in \mathcal{N}_x$ e $V \in \mathcal{N}_y$ tale che $U \cap V = \varnothing$.
-\end{enumerate}
+\subsubsection{Proprietà di un intorno}
+Si espongono di seguito le \textbf{proprietà degli intorni}:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{PROPRIETÀ DEGLI INTORNI}}\\
+    \parbox{\linewidth}{Sia $\mathcal{N}_x$ (con $\mathcal{N}$ ad indicare \quotes{neighbourhood}) una famiglia di intorni di $x$, allora
+    \begin{enumerate}
+        \item Sia $U \in \mathcal{N}_x$, allora $x \in U$;
+        \item \textbf{Proprietà di filtro}
+        \begin{itemize}
+            \item Siano $U,V \in \mathcal{N}_x$, allora $U \cap V \in \mathcal{N}_x$;
+            \item Siano $U \in \mathcal{N}_x$ e $V \subseteq X$ (con $X$ spazio metrico generale); se $U \subset V$, allora $V \in \mathcal{N}_x$, ossia ogni soprainsieme di un intorno è ancora è un intorno;
+        \end{itemize}
+        \item \textbf{Proprietà di separazione di Hausdorff}: siano $x \neq y$; allora esiste $U \in \mathcal{N}_x$ e $V \in \mathcal{N}_y$ tale che $U \cap V = \varnothing$.
+    \end{enumerate}
+    \vspace{1mm}}\\
+    \hline
+\end{tabularx}
 
 % Formattazione per la dimostrazione, etc.
 \vspace{2em}
 \noindent
 \normalfont \normalsize
-\textsc{Dimostrazione 1}: Dal momento che $U \in \mathcal{N}_x$, allora $\exists \mathcal{B}(x,t) \subset U$, per cui ovviamente $x \in U$
+\textsc{Dimostrazione 1}: Dal momento che $U \in \mathcal{N}_x$, allora per definizione di intorno $\exists \mathcal{B}(x,r) \subset U$; per definizione di palla, allora, deve essere che $x \in U$, in quanto il centro della palla deve appartenere all'insieme.
 
 % Formattazione per la dimostrazione, etc.
 \vspace{2em}
 \noindent
 \normalfont \normalsize
-\textsc{Dimostrazione 2}: Dal momento che $U \in \mathcal{N}_x$, allora $\exists \mathcal{B}(x,r_1) \subset U$.\\
-Dal momento che $V \in \mathcal{N}_x$, allora $\exists \mathcal{B}(x,r_2) \subset V$.\\
+\textsc{Dimostrazione 2}: Dal momento che $U \in \mathcal{N}_x$, allora $\exists \mathcal{B}(x,r_1) \subset U$. Analogamente, dal momento che $V \in \mathcal{N}_x$, allora $\exists \mathcal{B}(x,r_2) \subset V$.\\
 Si considera il minimo raggio tra $r_1$ e $r_2$, ovvero $r=\min\{r_1,r_2\}$. Allora, ovviamente, si ha che
-\[\mathcal{B}(x,r) \subset U \cap V\]
-e, ovviamente, ciò significa che $U \cap V \in \mathcal{N}_x$ per definizione di intorno.
+\[\mathcal{B}(x,r) \subseteq U \cap V\]
+Ciò significa che $U \cap V \in \mathcal{N}_x$ per definizione di intorno.
 
 % Formattazione per la dimostrazione, etc.
 \vspace{2em}
 \noindent
 \normalfont \normalsize
-\textsc{Dimostrazione 3}: Sia $U \in \mathcal{N}_x$, allora $\exists \mathcal{B}(x,r) \subset U$; ma siccome $U \subset V$ quindi $\mathcal{B}(x,r) \subset V$ e ciò significa che $V \in \mathcal{N}_x$.
+\textsc{Dimostrazione 3}: Sia $U \in \mathcal{N}_x$, allora $\exists \mathcal{B}(x,r) \subset U$; ma siccome $U \subset V$ quindi $\mathcal{B}(x,r) \subset V$; per definizione di intorno, ciò significa che $V \in \mathcal{N}_x$.
 
 % Formattazione per la dimostrazione, etc.
 \vspace{2em}
 \noindent
 \normalfont \normalsize
-\textsc{Dimostrazione 4}: Si considerino $x$ e $y$ due numeri reali disgiunti. Allora, per la proprietà della distanza, si ha che la loro distanza è strettamente positiva
+\textsc{Dimostrazione 4}: Si considerino $x$ e $y$ due numeri reali distinti. Allora, per la proprietà della distanza, essendo $x \neq y$, si ha che la loro distanza è strettamente positiva
 \[r = d(x,y) > 0\]
 Al fine di avere due palle disgiunte, si considerano due raggi minori della metà della distanza tra $x$ e $y$; per esempio
 \[r_1=\frac{r}{4} \hspace{1em} \text{e} \hspace{1em} r_2=\frac{r}{4}\]
 Ciò comporta che
 \[\mathcal{B}(x,r_1) \cap \mathcal{B}(y,r_2) = \varnothing\]
-Si proceda per assurdo, considerando $p \in \mathcal{B}(x,r_1) \cap \mathcal{B}(y,r_2)$.\\
-Allora si ha che
-\[r=d(x,y) \leq d(x,p) - d(p,y) < 2 \cdot \frac{r}{4}\]
-che è assurdo.
+Per dimostrare ciò, si proceda per assurdo, assumendo che $\exists p \in \mathcal{B}(x,r_1) \cap \mathcal{B}(y,r_2)$. Per la disuguaglianza triangolare, allora si ha che
+\[r=d(x,y) \leq d(x,p) + d(p,y) < 2 \cdot \frac{r}{4}\]
+che è assurdo.\\
+Tale proprietà è alla base della dimostrazione del teorema di unicità del limite.
 
 \vspace{1em}
 \noindent
@@ -3150,7 +3362,7 @@ Si fornisce di seguito la definizione di \textbf{punto interno ad un insieme}:
 \vspace{1em}
 \noindent
 \textbf{Osservazione}: Si osservi che chiedere che un punto sia interno ad un insieme è più forte che chiedere che il punto appartenga ad un insieme. Infatti, se $U = [a,b]$, allora $a \in U$, ma $a$ non è interno ad $U$.\\
-Un insieme $A \subseteq X$ è \textbf{aperto} se per ogni $x \in A$, $x$ è interno ad $A$
+Un insieme $A \subseteq X$ è \textbf{aperto} se per ogni $x \in A$, $x$ è interno ad $A$, ossia $A$ è un intorno di ogni suo punto.
 
 \vspace{1em}
 \noindent
@@ -4204,7 +4416,7 @@ per cui si evince che tale limite non esiste.
 \vspace{1em}
 \noindent
 \textbf{Osservazione}: Si osservi che negli spazi $X=C([0,1])$ con norma $\vert \vert \cdot \vert \vert_\infty$ si lavora con successioni di funzioni $\phi_n$ che convergono ad una funzione $\phi$ con distanza indotta dalla norma infinito. Allora la convergenza per tali successioni viene definita come
-\[\forall \epsilon > 0, \exists n_\epsilon \in \mathbb{N} \text{ tale che } \forall n \in n_\epsilon, \underset{x \in [0,1]}{\max} \left \vert \phi_n(x) - phi(x) \right \vert < \epsilon\]
+\[\forall \epsilon > 0, \exists n_\epsilon \in \mathbb{N} \text{ tale che } \forall n \in n_\epsilon, \underset{x \in [0,1]}{\max} \left \vert \phi_n(x) - \phi(x) \right \vert < \epsilon\]
 mentre la convergenza uniforme richiede che
 \[\forall \epsilon > 0, \exists n_\epsilon \in \mathbb{N} \text{ tale che } \forall n \geq n_\epsilon, \forall x \in [0,1] \text{ si ha che } \left \vert \phi_n(x) - \phi(x) \right \vert < \epsilon\]
 che sono la stessa cosa, in quanto si sta lavorando con uno spazio topologico $C([0,1])$ di funzioni continue, per cui esiste sempre il massimo.
@@ -5741,20 +5953,1348 @@ ma naturalmente si ha che
 Ma quindi se si si hanno due derivate direzionali, rispetto a due direzioni linearmente indipendenti, entrambe nulle, ciò implica che il gradiente sia nullo, ossia $\nabla f(x_0,y_0)=(0,0){^T}$.\\
 Se $n \geq 3$, la cosa non funziona, in quanto si necessiterebbe di avere $3$ derivate direzionali nulle, in cui in ciascuna si deve avere o massimo o minimo.
 
+\newpage
+\noindent
+\begin{center}
+    7 Novembre 2022
+\end{center}
+È stato studiato l'approssimante del secondo ordine e il modo del suo ottenimento, nonché il criterio di esistenza.\\
+Una particolare applicazione del differenziale secondo è quella di andare ad analizzare i problemi di massimo e minimo, andandone a studiare il segno. Tuttavia, il differenziale secondo è una funzione e bisogna definire che cosa significa \quotes{segno}.
 
+\vspace{1em}
+\subsection{Segno di una forma quadratica}
+Si consideri una forma quadratica $\phi : \mathbb{R}^n \longmapsto \mathbb{R}$, con
+\[\phi(v) = \left<Av,v\right>\]
+in cui $A$ è una matrice quadrata simmetrica.
 
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Si osservi che $\phi$ è una funzione lineare in quanto il prodotto scalare gode delle proprietà di bilinearità, ovvero $\phi(\alpha v) = \alpha^2 \cdot \phi(v)$. Non solo, ma $\phi$ è anche continua.
 
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{SEGNO DI UNA FORMA quadratica}}\\
+    \parbox{\linewidth}{Si dice che $\phi$ è \textbf{definita positiva} se $\forall v \in \mathbb{R}^n$, con $v \neq 0$, allora $\phi(v) > 0$.\\
+    Invece, si dice che $\phi$ è \textbf{definita negativa} se $\forall v \in \mathbb{R}^n$, con $v \neq 0$, allora $\phi(v) < 0$.\\
+    Si dirà, invece, che $\phi$ è \textbf{indefinita} se esistono $v_1,v_2 \in \mathbb{R}^n$ e $\phi(v_1) < 0 < \phi(v_2)$.\vspace{3mm}}\\
+    \hline
+\end{tabularx}
 
+\vspace{1em}
+\noindent
+\textbf{Esempio}: Un esempio di forma quadratica definita positiva è
+\[\phi(x,y) = x^2 + y^2\]
+mentre una funzione definita negativa è
+\[\phi(x,y) = -x^2 - y^2\]
 
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Si osservi che se $A$ è una matrice simmetrica, essa è \textbf{diagonalizzabile}. Pertanto, conoscendo gli \textbf{autovalori} di una matrice $A$, automaticamente è possibile stabilire se la forma quadratica $\phi(v) = \left<Av,v\right>$ è definita positiva o definita negativa. Infatti
+\begin{itemize}
+    \item se tutti gli autovalori sono $\geq 0$, allora è definita positiva;
+    \item se tutti gli autovalori sono $\leq 0$, allora è definita negativa;
+\end{itemize}
 
+\vspace{1em}
+\noindent
+\subsubsection{Metodo di Jacobi-Sylvester}
+Data una matrice $A$, quindi, la forma quadratica associata è definita positiva se $\det A > 0$ e $(A_{1,1}) > 0$, ossia l'elemento in posizione $1,1$ deve essere positivo.\\
+Viceversa, la forma quadratica associata alla matrice $A$ è definita positiva se $\det A > 0$ e $(A_{1,1}) < 0$, ossia l'elemento in posizione $1,1$ deve essere negativo.\\
+Da ultimo la forma quadratica associata è indefinita se $\det A < 0$.
 
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Sia $\phi : \mathbb{R}^n \longmapsto \mathbb{R}$ una forma quadratica definita positiva. Allora esiste una costante $m > 0$ tale che $\phi(x) \geq m \cdot \vert \vert x \vert \vert^2, \hspace{0.25em} \forall x \in \mathbb{R}^n$. Ciò è fondamentale da capire in quanto permette di capire che
+\[\lim_{x \to +\infty} \phi(x) = +\infty\]
+Non solo, ma ammette sempre minimo, pari a $0$.
 
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Si consideri la restrizione della forma quadratica al compatto $\{x \in \mathbb{R}^n : \vert \vert x \vert \vert = 1\}$, ossia
+\[\phi \vert_{x \in \mathbb{R}^n : \vert \vert x \vert \vert = 1}\]
+Si sta considerando una funzione continua definita su un compatto; allora per Weierstrass esiste massimo e minimo, in particolare esiste
+\[\underbrace{\vert \vert x \vert \vert = 1}{\min \phi(x)} = m > 0\]
+che deve essere maggiore di zero in quanto $m = \phi(x_0)$, ma $\vert \vert x_0 \vert \vert = 1$ con $\phi(x_0)>0$ essendo forma quadratica definita positiva.\\
+...continua...
 
+\vspace{1em}
+\noindent
+\subsection{Test del differenziale secondo per lo studio dei punti critici}
+Si espone di seguito l'enunciato del \textbf{test del differenziale secondo per lo studio dei punti critici}:
 
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{...}}\\
+    \parbox{\linewidth}{Sia dato il campo scalare seguente
+    \[f : A \subseteq \mathbb{R}^n \longmapsto \mathbb{R}\]
+    con $A$ aperto e $x_0 \in A$. Sia $f$ due volte differenziabili in $x_0$; si pone
+    \[\phi(v) = \dif^2 f(x_0) \cdot v^2 = \left<H f(x_0) \cdot v, v\right>\]
+    Allora
+    \begin{enumerate}
+        \item se $\phi$ è definita positiva, allora $x_0$ è un punto di minimo relativo stretto per $f$;
+        \item se $\phi$ è definita negativa, allora $x_0$ è un punto di massimo relativo stretto per $f$;
+        \item se $\phi$ è indefinita, allora $x_0$ è un punto di sella per $f$.
+    \end{enumerate}
+    \vspace{1mm}}\\
+    \hline
+\end{tabularx}
 
+\vspace{2em}
+\noindent
+\textbf{Osservazione}: Attenzione che nulla si può dire in generale, se $\det H f(x_0) = 0$.
 
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione 1}: Sia $\phi$ definita positiva. Allora si vuole dimostrare che $x_0$ è punto di minimo relativo stretto per $f$. Allora si scrive
+\[f(x)-f(x_0) = \dif f(x_0) \cdot (x-x_0) + \dfrac{1}{2} \dif^2 f(x_0) \cdot (x-x_0)^2 + \epsilon(x) \cdot \vert \vert x - x_0 \vert \vert^2\]
+tale per cui
+\[\lim_{x \to x_0} \epsilon(x) = 0\]
+L'espressione di cui sopra può essere scritta come
+\[f(x)-f(x_0) = \dif f(x_0) \cdot (x-x_0) + \dfrac{1}{2} \dif^2 f(x_0) \cdot (x-x_0)^2 + \epsilon(x) \cdot \vert \vert x - x_0 \vert \vert^2 = \left< \nabla f(x_0), x-x_0 \right> + \dfrac{1}{2} \phi(x-x_0) + \epsilon(x) \cdot \vert \vert x - x_0 \vert \vert^2\]
+ma $\left< \nabla f(x_0), x-x_0 \right> = 0$, mentre è noto che $\phi$ è definita positiva, per cui esiste $m>0$ tale che $\phi(v) \geq m \cdot \vert \vert v \vert \vert^2, \hspace{0.25em} \forall v \in \mathbb{R}^n$.\\
+Allora si ha che
+\[\left< \nabla f(x_0), x-x_0 \right> + \dfrac{1}{2} \phi(x-x_0) + \epsilon(x) \cdot \vert \vert x - x_0 \vert \vert^2 \geq \dfrac{1}{2} m \cdot \vert \vert x-x_0 \vert \vert^2 + \epsilon(x) \cdot \vert \vert x-x_0 \vert \vert^2 = \left(\dfrac{1}{2}m + \epsilon(x)\right) \cdot \vert \vert x-x_0 \vert \vert^2 > 0 \hspace{1em} \forall x \in U, x \neq x_0\]
+Questo perché
+\[\lim_{x \to x_0} \epsilon(x) = 0\]
+e quindi esiste un intorno $U$ di $x_0$ tale che $\forall x \in U$ si ha che
+\[\left \vert \epsilon(x) \right \vert < \dfrac{1}{2} m\]
 
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione 2}: Nel caso in cui $\phi$ sia definita negativa, allora è possibile stimarla dall'alto. Infatti deve esistere $m > 0$ tale che
+\[\phi(x) \leq -m \cdot \vert \vert x \vert \vert^2 \hspace*{0.25em} \forall x \in \mathbb{R}^n\]
+ovvero la funzione
+\[\phi \vert_{\{x \in \mathbb{R}^n : \vert \vert x \vert \vert = 0\}}\]
+ha un massimo negativo che si denota con $m < 0$. Pertanto si ha che
+\[f(x)-f(x_0) = \dfrac{1}{2} \phi(x-x_0) + \epsilon(x) \cdot \vert \vert x - x_0 \vert \vert^2 \leq \left(-\dfrac{1}{2} + \epsilon(x)\right) \cdot \vert \vert x-x_0 \vert \vert^2 < 0\]
+se $x \in V$, con $V$ intorno di $x_0$, con $x \neq x_0$.
 
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione 3}: Sia $\phi$ indefinita; allora, per definizione, esistono $v_1,v_2$ tali che $\phi(v_1) < 0 < \phi(v_2)$.\\
+Senza perdita di generalità è possibile supporre che $\vert \vert v_1 \vert \vert = \vert \vert v_2 \vert \vert = 1$, in quanto
+\[\phi \left(\dfrac{v_1}{\vert \vert v_1 \vert \vert}\right) = \dfrac{1}{\vert \vert v_1 \vert \vert^2} \cdot \phi(v_1) < 0\]
+Si consideri allora
+\[h(t) = f(x_0 + tv_1) \hspace{1em} \text{con} \hspace{1em} h : \left]-\delta,\delta\right[ \longmapsto \mathbb{R}\]
+allora $h'(0) = 0$, in quanto $h'(0) = \left<\nabla f(x_0),v_1\right> = 0$.\\
+Calcolando la derivata seconda si ottiene che
+\[h''(0) = \dfrac{\partial^2 f}{\partial v^2} (x_0) = \dif^2 f(x_0) \cdot v_1^2 = \phi(v_1) < 0\]
+per cui $0$ è un punto di massimo per $h$, cioè $x_0$ è punto di massimo relativo per la $f$ ristretta alla direzione $v_1$.\\
+Analogamente, si considera $k(t) = f(x_0+tv_2)$. Allora si ha sempre $k'(0)=0$ e $k''(0) = \phi(v_2) > 0$, per cui $x_0$ è un punto di minimo relativo per la funzione $f$ ristretta alla direzione $v_2$.
 
+\vspace{2em}
+\noindent
+\textbf{Esempio}: Si consideri la funzione seguente
+\[f(x,y) = 3x^2+y^2-x^3y\]
+essendo $f$ una funzione $f : \mathbb{R}^2 \longmapsto \mathbb{R}$.\\
+Si individuino i punti critici. Per prima cosa si calcola il gradiente:
+\[\nabla f(x,y) = \left(6x - 3x^2 y, 2y - x^3\right){^T}\]
+Si risolva il sistema seguente
+\[
+    \left\{
+    \begin{array}{l}
+        3x \cdot (2-xy) = 0\\
+        2y = x^3
+    \end{array}
+    \right.
+\]
+ciò permette di ottenere tre punti critici
+\[(0,0){^T} \hspace{1em} \text{e} \hspace{1em} (-\sqrt{2},-\sqrt{2}){^T} \hspace{1em} \text{e} \hspace{1em} (\sqrt{2},\sqrt{2})\]
+per determinarne la natura si calcola la matrice Hessiana:
 
+\[
+    Hf(x,y)
+    \left(
+    \begin{array}{cc}
+        6-6xy & -3x^2\\
+        -3x^2 & 2\\
+    \end{array}
+    \right)
+\]
+Per cui ora si procede come segue
+\[
+    Hf(0,0) = 
+    \left(
+    \begin{array}{cc}
+        6 & 0\\
+        0 & 2\\
+    \end{array}
+    \right) \hspace{1em} \rightarrow \hspace{1em} \det(Hf(0,0)) > 0
+\]
+per cui $(0,0){^T}$ è un punto di minimo per la funzione.\\
+Analogamente
+\[
+    Hf(\pm \sqrt{2},\pm \sqrt{2}) = 
+    \left(
+    \begin{array}{cc}
+        -6 & -6\\
+        -6 & 2\\
+    \end{array}
+    \right) = 2 \cdot \left(
+        \begin{array}{cc}
+            -3 & -3\\
+            -3 & 1\\
+        \end{array}
+        \right)
+        \hspace{1em} \rightarrow \hspace{1em} \det(Hf(\pm \sqrt{2},\pm \sqrt{2})) < 0
+\]
+per cui i punti $(\sqrt{2},\sqrt{2})$ e $-\sqrt{2},- \sqrt{2})$ sono punti di sella.\\
+Per capire se si tratta di punti di estremo assoluto, è sufficiente osservare che
+\begin{align*}
+    f(x,0) = 3x^2\\
+    f(x,1) = 3x^2+1-3x^3
+\end{align*}
+per cui nel primo caso $f(x,0) \to +\infty$ e nel secondo caso $f(x,1) \to -\infty$, per $x \to +\infty$, per cui la funzione è illimitata sia dall'alto che dal basso. Gli estremi individuati sono, quindi, relativi e non assoluti.
+
+\vspace{1em}
+\noindent
+\textbf{Esercizio 1}: Si consideri la funzione seguente
+\[f(x,y) = 3x+x^3-2y^2+y^4\]
+allora il gradiente di tale funzione è
+\[\nabla f = \left(3-3x^2,-4y+4y^3\right){^T}\]
+Dal sistema si ottiene che i punti critici sono i seguenti:
+\[(-1,0){^T} \hspace{1em} \text{e} \hspace{1em} (-1,-1){^T} \hspace{1em} \text{e} \hspace{1em} (-1,1){^T} \hspace{1em} \text{e} \hspace{1em} (1,0){^T} \hspace{1em} \text{e} \hspace{1em} (1,-1){^T} \hspace{1em} \text{e} \hspace{1em} (1,1){^T}\]
+per determinare la natura dei punti critici, si calcola l'Hessiana della $f$, ottenendo
+\[H f(x,y) = \left(
+    \begin{array}{cc}
+        -6x & 0\\
+        0 & -4+12y^2\\
+    \end{array}
+    \right)
+\]
+per cui si ha che
+\begin{enumerate}
+    \item $\displaystyle{
+        H f(1,0) = \left(
+            \begin{array}{cc}
+                -6 & 0\\
+                0 & -4\\
+            \end{array}
+            \right)
+    } \rightarrow \text{masismo}$;
+\end{enumerate}
+
+\vspace{2em}
+\noindent
+\textbf{Esercizio 2}: Si consideri la funzione seguente
+\[f(x,y,z) = x^3 - 3x^2 - y^2 - 3z^2\]
+calcolando il gradiente della della $f$ si ottiene
+\[\nabla f = \left(3x^2 - 6x, -2y, -6z\right){^T}\]
+Tramite l'opportuno sistema, si ottiene che i punti critici sono
+\[(0,0,0){^T} \hspace{1em} \text{e} \hspace{1em} (2,0,0){^T}\]
+per determinarne la natura dei punti critici, si calcola l'Hessiana:
+\[
+    H f(x,y,z) = \left(
+        \begin{array}{cc}
+            -6 & 0\\
+            0 & -4\\
+        \end{array}
+        \right)
+\]
+
+\vspace{1em}
+\noindent
+\subsection{Problemi di estremo vincolato}
+Fino ad ora sono stati analizzati problemi di estremo libero, in cui il punto considerato era interno al dominio. Ora, invece, si considerano punti di estremo vincolato, ossia punti interni ad un compatto dove esistono certamente massimi e minimi.
+
+\vspace{1em}
+\noindent
+\textbf{Esempio}: Si consideri un contenitore cilindrico. A parità di volume, bisogna rendere minimo il volume. Ovviamente, se si potesse procedere con qualsiasi forma, si sceglierebbe naturalmente la sfera.\\
+Detto $r$ il raggio della base del cilindro e $h$ l'altezza dello stesso, si determini il rapporto $\dfrac{r}{h}$ ottimale. Dalla geometria euclidea è noto che
+\[V = \pi r^2 h \hspace{1em} \text{e} \hspace{1em} A = 2\pi r h + 2\pi r^2\]
+che possono essere trasformate in due funzioni distinte
+\[f(x,y) = \pi x^2 y \hspace{1em} \text{e} \hspace{1em} g(x,y) = 2\pi xy + 2pi x^2\]
+in cui $r=x$ e $h=y$. Ovviamente ha senso chiedere che
+\[f,g : ]0,+\infty[ \times ]0,+\infty[ \longmapsto \mathbb{R}\]
+Allora in questo caso bisogna scegliere ciò che si deve massimizzare e ciò che rappresenta un vincolo. Si considera, allora, come vincolo $A=g(x,y)$, e si definisce, per $A \in \mathbb{R}^{+}$ l'\textbf{insieme di livello} seguente:
+\[L_A = \{(x,y){^T} \in \Omega : g(x,y) = A\}\]
+che è una curva.\\
+Allora ha senso cercare il massimo della funzione $f(x,y)$ ristretta alla curva $L_A$; ma essendo
+\[L_A : 2\pi xy + 2pi x^2 = A \hspace{1em} \rightarrow \hspace{1em} y = \dfrac{A - 2\pi x^2}{2 \pi x}\]
+si può considerare la restrizione di $f$ calcolata come segue
+\[f(x,y) = \pi x^2 y \rightarrow f \vert_{L_A} \rightarrow h \left(x,\dfrac{A-2 \pi x^2}{2 \pi x} \right) = \pi x^2 \cdot \dfrac{A - 2\pi x^2}{2\pi x} = \dfrac{1}{2} \cdot \left(A x - 2 \pi x^3\right)\]
+Si è ottenuta, quindi, una funzione $h : \mathbb{R} \longmapsto \mathbb{R}$ di cui si può calcolare la derivata
+\[h'(x) = \dfrac{1}{2} \cdot (A - 6\pi x^2)\]
+da cui si ricava che
+\[x = \sqrt{\dfrac{A}{6 \pi}} \hspace{1em} \rightarrow \hspace{1em} y = \dfrac{A - 2\pi \cdot \dfrac{A}{6 \pi}}{2 \pi \cdot \sqrt{\dfrac{A}{6 \pi}}} = \dfrac{\dfrac{2}{3} \cdot A}{2\pi \cdot \sqrt{\dfrac{A}{6 \pi}}}\]
+Calcolando, ora, il rapporto tra $x$ e $y$ si ottiene $\displaystyle{\dfrac{x}{y} = \dfrac{1}{2}}$.
+
+\vspace{2em}
+\noindent
+\textbf{Esercizio}: Si consideri la funzione
+\[f(x,y) = x+y\]
+sul dominio compatto $\mathcal{B(0,1)}$. Si determinino i massimi e minimi assoluti. Tuttavia, si ha che
+\[\nabla f(x,y) = (1,1){^T}\]
+che non si potrà mai annullare, per cui non ci sono punti critici. Ciò non sorprende in quanto il dominio non è aperto, per cui non si applica il teorema di Fermat. Ciò, quindi, indica che gli estremi stanno agli estremi.\\
+Si deve, quindi, considerare la curva di livello
+\[L_1 : \{(x,y){^T} \in \mathbb{R}^2 : x^2+y^2=1\}\]
+Da notare che tale curva non è una funzione, per cui no si può considerare la composizione come in precedenza. Pertanto si deve procedere tramite parametrizzazione, per cui
+\[L_1 = \{\gamma(t) : t \in [0,2\pi]\}\hspace{1em} \text{con} \hspace{1em} \gamma(t) = (\cos(t),\sin(t)){^T}\]
+Studiare $f$ ristretta a $L_1$ equivale a studiare la funzione composta
+\[f \circ \gamma : [0,2 \pi] \longmapsto \mathbb{R}\]
+con $h(t) = \cos(t) + \sin(t)$. Allora si ha che
+\[h'(t) = - \sin(t) + \cos(t)\]
+ma si ha che $h'(t) = 0$ quando $\sin(t)=\cos(t)$ che si verifica quando
+\[t=\dfrac{\pi}{4} \hspace{1em} \text{e} \hspace{1em} t=\dfrac{5}{4} \pi\]
+Sostituendo si ottiene che
+\[h \left( \dfrac{\pi}{4}\right) = \sqrt{2} \hspace{1em} \text{e} \hspace{1em} h \left(\dfrac{5}{4} \pi\right) = - \sqrt{2}\]
+ma è noto che Fermat può essere applicato solamente sull'aperto, per cui bisogna controllare anche gli estremi $0$ e $2\pi$ che producono come risultato $h(0)=1$ e $h(2\pi)=1$. Si conclude che
+\[\min f = - \sqrt{2} \hspace{1em} \text{e} \hspace{1em} \max f = \sqrt{2}\]
+
+\newpage
+\noindent
+\begin{center}
+    8 Novembre 2022
+\end{center}
+Nel caso in cui vi siano $N=2$, i vincoli possibili. Il dominio singolare a tratti si ottiene che $D \subseteq \mathbb{R}^2$; ciò significa che $D = \overline{A}$, con $A$ aperto e la frontiera di $A$ è una curva regolare a tratti.
+
+\vspace{1em}
+\noindent
+\textbf{Ossservazione}: Nel caso in cui $n=3$, ossia in tre dmensioni, allora si avrà una curva, la quale può essere descritta
+\begin{itemize}
+    \item in forma parametrica
+    \[\gamma : I \longmapsto \mathbb{R}^3\]
+    per cui si andrà a studiare la composta $f \circ \gamma$.
+
+    \item nel caso in cui la curva sia espressa in forma parametrica, con $Z_{g_1} \cap Z_{g_2}$, si andrà a considerare
+    \[\{(x,y,z){^T} \in \mathbb{R}^3 : g_1(x,y,z) = 0\}\]
+\end{itemize}
+si potrebbe trattare anche di una curva
+\begin{itemize}
+    \item nel caso in cui si abbia una curva \[\sigma : \Omega \subset \mathbb{R}^2 \longmapsto \mathbb{R}^3\]
+    allora si andrà a considerare la composizione
+    \[f \circ \sigma : \Omega \longmapsto \mathbb{R}\]
+    per cui ci si riconduce al caso di $\mathbb{R}^2$.
+\end{itemize}
+Nel caso di una superficie implicita come segue
+\[Z_g = \{(x,y,z){^T} \in \mathbb{R}^3 : g(x,y,z) = 0\}\]
+si potrà procedere attraverso una parametrizzazione, per lo meno locale, tramite le coordinate sferiche.
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione}: Si osservi che quando si considera una curva $g(x,y)$ nel piano, poter descrivere la stessa, a tratti, tramite il grafico della funzione $y=f(x)$ in una sola variabile, non è possibile descrivere la curva quando la tangente è verticale; viceversa, se si considera una funzione $x=h(y)$ non potrà descrivere la curva a tratti dove la tangente è orizzontale.\\
+Non sarà mai possibile descrivere il grafico della curva quando essa si interseca con se stessa.
+
+\vspace{1em}
+\subsection{Teorema della funzione implicita (U. Dimi) in dim $n=2$}
+Sia $A \subseteq \mathbb{R}^2$ aperto, con $g : A \longmapsto \mathbb{R}$ continua.\\
+Esista e sia continua in $A$ la funzione
+\[\dfrac{\partial g}{\partial y} (x,y)\]
+Sia ... tale che $g(x_0,y_0) = 0$. Inoltre
+\[\dfrac{\partial g}{\partial y}(x_0,y_0) \neq 0\]
+ovvero significa che la tengente la curva non deve essere verticale.\\
+Inoltre esista un intorno $U$ di $x_0$ e un intorno $V$ di $y_0$ tale che $\forall x \in U$ esiste uno e un solo $y \in V$ tale per cui $g(x,y)=0$, quindi definiamo una nuova funzione
+\[\phi : U \longmapsto V\]
+tale per cui $\phi(x) = y$ \textbf{se e solo se} $g(x,\phi(x)) = 0$ (ovvero $\phi$ è la funzione implicitamente definita dall'equazione $g(x,y) = 0$).\\
+Inoltre si ha che $\phi$ è continua e il grafico della funzione
+\[\{(x,\phi(x)){^T} \in A : x \in U\} = Z_g \cap (U \times V)\]
+ossia 
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione}: È noto che il gradiente è sempre ortogonale alla curva di livello, ma essendo definito
+\[\nabla g(x_0,y_0) = \left(\dfrac{\partial g}{\partial x}(x_0,y_0), \dfrac{\partial g}{\partial y} (x_0,y_0)\right){^T}\]
+per cui se il secondo termine è uguale a $0$, signfica necessariamente che il si ha una tangente orizzontale.
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Alla base della dimostrazione\\
+Si suppone che
+\[\dfrac{\partial g}{\partial y}(x_0,y_0) > 0\]
+È noto per ipotesi che è diverso da zero. Per la continuità della funzione
+\[\dfrac{\partial g}{\partial y}\]
+esiste un intorno $U_0 \times V_0$ di $(x_0,y_0){^T}$ (che si può naturalmente considerare come un rettangolo inscritto in un'opportuna palla) dove
+\[\dfrac{\partial g}{\partial y}(x,y) > 0\]
+per ogni $x \in U_0$ e per ogni $y \in V_0$. Si può considerare come intorno $V_0 = \left]y_0-r,y_0+r\right[$.\\
+Studiando la funzione
+\[h(y) = g(x_0,y) : \left]y_0-r,y_0+r\right[ \longmapsto \mathbb{R}\]
+in cui $x$ è fissato e si muove $y$. Si ha, in particolare, che
+\[h'(y) = \dfrac{\partial g}{\partial y} > 0 \hspace{1em} \forall y \in V_0\]
+quindi $h$ è strettamente crescente. In particolare
+\[g(x_0,y_0-r) < g(x_0,y_0) = 0 < g(x_0,y_0+r)\]
+Si consideri, ora, la funzione
+\[k(x) = g(\cdot,y_0-r) : U_0 \longmapsto \mathbb{R}\]
+in cui è immediato che $k(x_0) < 0$, quindi per la continuità di $k(x)$ e per il teorema della permanenza del segno esiste un intorno $U_1$ di $x_0$ in cui si ha che
+\[g(x,y_{0}-r) < 0 \hspace{1em} \forall x \in U_1\]
+Si considera ora la funzione 
+\[g(\cdot,y_0+r) : U_0 \longmapsto \mathbb{R}\]
+in cui è immediato che $g(x_0,y_0+r) > 0$, quindi per la continuità della funzione e per il teorema della permanenza del segno esiste un intorno $U_2$ di $x_0$ in cui si ha che
+\[g(x,y_{0}+r) > 0 \hspace{1em} \forall x \in U_2\]
+In definitiva, preso $x \in U_0 \cap U_1 \cap U_2$ si ha che
+\[g(x,y_0-r) < 0 < g(x,y_0+r)\]
+Per il teorema di esistenza degli zeri di Bolzano applicato alla funzione $g(x,\cdot)$ in cui è fissata $x$ e si muove $y$, definita come
+\[g(x, \cdot) : ]y_0-r,y_0+r[ \longmapsto \mathbb{R}\]
+esiste uno zero $\phi(x) \in ]y_0-r,y_0+r[$ tale che $g(x,\phi(x)) = 0$.\\
+Si osservi che tale zero è unico in quanto la funzione $g(x,\cdot)$ è strettamente crescente nell'intorno considerato, in quanto
+\[\dfrac{\partial g}{\partial y}(x_0,y_0) > 0\]
+per quanto assunto in principio. Si è, così, definita la funzione implicita
+\[\phi : U = U_0 \cap U_1 \cap U_2 \longmapsto V = V_0\]
+Per dimostrare che $\phi$ è continua, si considera arbitrariamente $x_1 \in U$ e si fissa $\epsilon>0$; si cerchi, allora, un intorno $\Omega$ di $x_1$ tale che
+\[\left \vert \phi(x) - \phi(x_1) \right \vert < \epsilon \hspace{1em} \forall x \in \Omega\]
+Sia $W$ l'intervallo $]\phi(x_1)-\epsilon,\phi(x_1)+\epsilon[$. È possibile supporre $\epsilon$ abbastanza piccolo tale per cui $W \subset V$.\\
+Allora la funzione
+\[g(x,\phi(x))\]
+è strettamente crescente, per cui si ha che
+\[g(x,\phi(x_1) - \epsilon) < g(x,\phi(x_1)) = 0 < g(x,\phi(x_1)+\epsilon)\]
+Esiste, quindi, un intorno $\Omega$ di $x_1$ tale per cui $\forall x \in \Omega$ si ha che
+\[g(x,\phi(x_1)-\epsilon) < 0 < g(x,\phi(x_1)+\epsilon)\]
+Dal momento che che $g(x,\cdot)$ è strettamente crescente, si ha che
+\[\phi(x_1)-\epsilon<\phi(x)\]
+perchè se fosse $\phi(x_1) - \epsilon \geq \phi(x)$ si avrebbe che $g(x,\phi(x)) \leq g(x,\phi(x_1)-\epsilon) < 0$.\\
+Similmente si avrebbe che $\phi(x) < \phi(x_1) + \epsilon$, in quanto se fosse $\phi(x) \geq \phi(x_1) + \epsilon$ si avrebbe che $0=g(x,\phi(x_1)) \geq g(x,\phi(x_1)+\epsilon) > 0$
+quindi...
+
+\vspace{1em}
+\subsubsection{Teorema della funzione implicita (U. Dimi) in dim $n=3$}
+Sia $A \subseteq \mathbb{R}^3$ aperto, con $g : A \longmapsto \mathbb{R}$ continua.\\
+Esista $(x_0,y_0,z_0){^T} \in A$ tale per cui $g(x_0,y_0,z_0) = 0$. Esista e sia continua in $A$ la funzione
+\[\dfrac{\partial g}{\partial z} (x,y,z)\]
+Inoltre deve essere che
+\[\dfrac{\partial g}{\partial z}(x_0,y_0,z_0) \neq 0\]
+ovvero significa che la tangente la curva non deve essere verticale.\\
+Allora esista un intorno $U_0$ di $(x_0,y_0){^T}$ e un intorno $V_0$ di $z_0$ tale che $\forall (x,y){^T} \in U_0$ esiste uno e un solo $z_0 \in V_0$ tale che $g(x,y,z) = 0$. Questo definisce la funzione
+\[\phi : U_0 \longmapsto V_0\]
+con $g(x,y,g(x,y)) = 0$ e $\phi$ continua. Inoltre si ha che
+\[\{(x,y,\phi(x,y)){^T} \in A : (x,y){^T} \in U_0\} = Z_g \cap (U_0 \times V_0)\]
+
+\vspace{1em}
+\subsubsection{Teorema della funzione implicita (U. Dimi) in dim $n$}
+Nel caso generale, si sta considerando la funzione
+\[g : \mathbb{R}^{n+k} \longmapsto \mathbb{R}^k\]
+in cui si va considerando
+\[\{(x,y){^T} \in A : g(x,y) = 0\}\]
+in cui, però, $x \in \mathbb{R}^n$ e $y \in \mathbb{R}^k$ e $0 \in \mathbb{R}^k$.
+
+\vspace{1em}
+\subsection{Teorema di derivabilità della funzione implicita}
+Siano verificate tutte le ipotesi del teorema della funzione implicita e inoltre si supponga che $g \in C^1(A)$, ossia sia derivabile con derivata continua. Allora $\phi$ è derivabile su $U$ e si ha che
+\[\phi'(x) = - \dfrac{\dfrac{\partial g}{\partial x} (x,\phi(x))}{\dfrac{\partial g}{\partial y}(x,\phi(x))}\]
+in cui è possibile dividere per la derivata esseno non nulla per ipotesi.
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Per definizione si ha che
+\[\phi'(x) = \lim_{h \to 0} \dfrac{\phi(x+h) - \phi(x)}{h}\]
+ma si ha che $\forall x \in U$
+\[g(x,\phi(x)) = \]
+... continua ...\\
+Ma ciò signifca che
+\[0 = g(x+h,\phi(x+h)) - g(x,\phi(x)) = \left<\nabla g(\xi,n), \left(h,\phi(x+h)-\phi(x)\right){^T} \right>\]
+con $(\xi,n){^T}$ appartenente al segmento di estremi $(x,\phi(x)){^T}$ e $(x+j,\phi(x+h)){^T}$. Pertanto si ottiene che
+\[\left<\nabla g(\xi,n), \left(h,\phi(x+h)-\phi(x)\right){^T} \right> = \dfrac{\partial g}{\partial x}(\xi,n) \cdot h + \dfrac{\partial g}{\partial y} (\xi,n) \cdot (\phi(x+h) - \phi(x))\]
+dividendo per $h$ si ottiene che
+\[\lim_{h \to 0} \dfrac{\phi(x+h) - \phi(x)}{h} = - \dfrac{\dfrac{\partial g}{\partial x} (\xi,n)}{\dfrac{\partial g}{\partial y}(\xi,n)}\]
+ma siccome $x_0 < \xi < x_0+h$ e $\phi(x+h)$ e continua, quando $h \to 0$, si ha che $\xi = x$, mentre $\phi(x+h)=\phi(x)$
+per cui si ottiene
+\[\phi'(x) = - \dfrac{\dfrac{\partial g}{\partial x} (x,\phi(x))}{\dfrac{\partial g}{\partial y}(x,\phi(x))}\]
+
+\vspace{1em}
+\subsection{Teorema di parametrizzazione locale}
+Sia data la funzione
+\[g : A \subseteq \mathbb{R}^2 \longmapsto \mathbb{R}\]
+tale per cui $g \in C^1(A)$. Sia $(x_0,y_0){^T} \in A$ tale che $\nabla g(x_0,y_0) \neq (0,0){^T}$.\\
+Allora localmente la curva $\mathcal{Z}_g$ è parametrizzabile, ossia esiste un intorno $U$ di $(x_0,y_0){^T}$ ed esista $\gamma \in I \subseteq \mathbb{R} \longmapsto \mathbb{U}$ regolare (quindi $\forall t \in I, \exists \gamma'(t) \neq 0$) tale che $\mathcal{Z}_g \cap U = \{\gamma(t) : t \in I\}$.
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Se si ha che
+\[\dfrac{\partial g}{\partial y} (x_0,y_0) \neq 0\]
+per il teorema della funzione implicita, esistono due intorni $U$ e $I$ con $\phi : U \longmapsto I$ tale che
+\[\{(x,\phi(x)){^T : x \in U}\} = \mathcal{Z}_g \cap U\]
+quindi la funzione è parametrizzabile.
+
+\vspace{1em}
+\noindent
+Se si ha che
+\[\dfrac{\partial g}{\partial y} (x_0,y_0) = 0\]
+allora si può applicare nuovamente il teorema della funzione implicita semplicemente scambiando il ruolo delle variabile e in modo tale da ottenere una funzione implicita $\psi(y)$ tale che
+\[\mathcal{Z}_g \cap U = \{(\phi(y),y){^T} : y \in I\}\]
+
+\vspace{1em}
+\noindent
+Il medesimo ragionamento è applicabile alle superfici. Infatti se
+\[g : A \subseteq \mathbb{R}^3 \longmapsto \mathbb{R}\]
+con $g \in C^1(A)$ tale per cui
+\[\nabla g(x_0,y_0,z_0){^T \neq (0,0,0){^T}}\]
+allora localmente la funzione è parametrizzabile...continua...
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione}: Data la funzione
+\[g : A \subseteq \mathbb{R}^2 \longmapsto \mathbb{R}\]
+supposta $g \in C^1(A)$
+e presa in considerazione la linea di livello
+\[L_\alpha = \mathcal{Z}_{g-\alpha} = \{(x,y){^T} \in A : g(x,y) - \alpha = 0\}\]
+e per dimostrare che $\nabla g$ è ortogonale a $L_\alpha$, se $\gamma$ è parametrizzabile localmente in un intorno. Ciò significa che
+\[g(x,y) = \alpha \hspace{1em} \forall (x,y){^T} \in A\]
+e 
+\[\dfrac{\partial g}{\partial x} = 0 \hspace{1em} \text{e} \hspace{1em}\]
+ma ciò è vero in quanto
+\[\left<\nabla g(x,y), \phi'(x)\right> = 0\]
+questo in quanto dove il gradiente è nullo, allora il prodotto scalare è nullo. Dove, invece, non è nullo è possibile parametrizzare la curva.
+
+\newpage
+\noindent
+\begin{center}
+    9 Novembre 2022
+\end{center}
+È stato introdotto in precedenza il teorema della derivata della funzione implicita. Data, quindi la funzione
+\[\phi : U \longmapsto V\]
+sapendo che $g(x,\phi(x))=0$ per $\forall x \in U$. Per calcolare la derivata della funzione si scrive il limite del rapporto incrementale
+\[\phi'(x) = \lim_{h \to 0} \dfrac{\phi(x+h) - \phi(x)}{h}\]
+ma siccome è noto che $g(x,\phi(x))=0$ per $\forall x \in U$, si ha che
+\[0 = g(x+h,\phi(x+h)) - g(x,\phi(x))\]
+per cui per la formula del valor medio si ha che
+\[g(x+h,\phi(x+h)) - g(x,\phi(x)) = \left<\nabla g(\xi,\eta),(h,\phi(x+h)-\phi(x)){^T} \right>\]
+posto $(\xi,\eta){^T} \in \overline{(x,\phi(x)){^T}-(x+h,\phi(x+h)){^T}}$.
+... continua...
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Ovviamente si possono calcolare anche le derivate di ordine $n$ di $\phi$, nell'ipotesi in cui $g \in C^n(A)$. Nel caso in cui $n=2$ si ha che
+\[\phi''(x) = \dfrac{\dif}{\dif x} \left[- \dfrac{g_x(x,\phi(x))}{g_y(x,\phi(x))}\right] = - \dfrac{1}{g_y(x,\phi(x))^2} \cdot \left[\dots\right]\]
+in quanto
+\[\dfrac{\dif }{\dif x} g_x(x,\phi(x)) = \left<\nabla g_x(x,\phi(x)), (1,\phi'(x)){^t}\right> = g_{xx}(x,\phi(x)) \cdot 1 + g_{xy} (x,\phi(x)) \cdot \phi'(x)\]
+conoscendo $\phi'(x)$ si ottiene
+\[g_{xx}(x,\phi(x)) \cdot 1 + g_{xy} (x,\phi(x)) \cdot \left[- \dfrac{g_x(x,\phi(x))}{g_y(x,\phi(x))}\right]\]
+e, similmente,
+\[\dfrac{\dif }{\dif x} g_y(x,\phi(x)) = \left<\nabla g_y(x,\phi(x)), (1,\phi'(x)){^t}\right> = g_{yx}(x,\phi(x)) \cdot 1 + g_{yy} (x,\phi(x)) \cdot \phi'(x)\]
+conoscendo $\phi'(x)$ si ottiene
+\[g_{yx}(x,\phi(x)) \cdot 1 + g_{yy} (x,\phi(x)) \cdot \left[- \dfrac{g_x(x,\phi(x))}{g_y(x,\phi(x))}\right]\]
+che può essere riscritto come
+\[=-\dfrac{1}{g_y^3} \cdot \left[g_{xx} \cdot g_y^2 - 2 \cdot g_{xy} \cdot g_x \cdot g_y + g_{yy} \cdot g_x^2\right]\]
+
+\vspace{2em}
+\noindent
+\textbf{Esercizio 1}: Si consideri la funzione
+\[g(x,y) = e^{xy}+x^2-y^2-e \cdot (x+1) + 1\]
+\begin{itemize}
+    \item Si trovino eventuali $y \in \mathbb{R}$ tali che $g(0,y)=0$.\\
+    Si consideri, allora, la funzione
+    \[h(y)=g(0,y)=e^{-y}-y^2-e+1\]
+    calcolandone la derivata, si ottiene
+    \[h'(y) = -e^{-y}-2y\]
+    ma studiare il segno di tale funzione non è immediato, per cui si calcola la derivata seconda
+    \[h''(y) = e^{-y}-2\]
+    si osserva che $h''(y)<0, \hspace{0.25em} \forall y$ e $h'(-\log(2))=0$. Pertanto si ottiene che $y=-\log(2)$ è punto di massimo per la funzione e siccome la funzione è sempre decrescente, con $(0,-1){^T} \in \mathcal{Z}_g$.
+
+    \item Pertanto, presa la funzione
+    \[g(x,y) = e^{xy}+x^2-y^2-e \cdot (x+1) + 1\]
+    ci si chiede se sia possibile rappresentare la curva nell'intorno del punto $(0,-1){^T}$. La risposta è sì se valgono le ipotesi del teorema di Dini. Per verificarlo, si ha che
+    \[\nabla g(x,y) = \left(e^{x-y}+2x-e,-e^{x-y}-2y\right){^T}\]
+    e calcolata nel punto di interesse si ottiene
+    \[\nabla g(0,-1) = \left(0,-e+2\right){^T}\]
+    ed essendo
+    \[\dfrac{\partial}{\partial y} g(0,-1) \neq 0\]
+    esiste la funzione implicita.
+    
+    \item È immediato osservare che $\phi'(0)=0$, in quanto
+    \[\phi'(x)=-\dfrac{g_x(0,\phi(x))}{g_y(x,\phi(x))} \hspace{1em} \rightarrow \hspace{1em} \phi'(0) = - \dfrac{g_x(0,-1)}{g(y(0,-1))} = 0\]
+
+    \item Calcolando la derivata seconda della funzione si ottiene che
+    \[\phi''(x) = -\dfrac{1}{g_y^3} \cdot \left[g_{xx} \cdot g_y^2 - 2g_{x,y} g_x g_y + g_yy g_x^2\right]\]
+\end{itemize}
+
+\vspace{2em}
+\noindent
+\textbf{Esercizio 2}: Si consideri la funzione
+\[g(x,y) = (y-1)^2-x^2 \cdot (1-x^2)\]
+Per studiare tale funzione si chiede
+\[(y-1)^2=x^2 \cdot (1-x^2)\]
+ma siccome $(y-1)^2 \geq 0 \hspace{0.25em} \forall y$, ma allora deve essere
+\[x^2 \cdot (1-x^2) \geq 0 \hspace{1em} \rightarrow \hspace{1em} 1-x^2 \geq 0 \hspace{1em} \rightarrow \hspace{1em} \vert x \vert < 1\]
+Studiando la funzione $x^2 \cdot (1-x^2)$ e facendo una sostituzione con $t=x^2$ si ottiene che tale parabola presenta un massimo in $t=\dfrac{1}{2}$, pertanto si ha che il massimo della funzione è
+\[\dfrac{1}{2} \cdot (1-\dfrac{1}{2}) = \dfrac{1}{4}\]
+e quindi cià significa che
+\[(y-1)^2 \leq \dfrac{1}{4} \hspace{1em} \rightarrow \hspace{1em} y \leq \dfrac{1}{2} + 1 = \dfrac{3}{2}\]
+Pertanto si ottiene che la curva è limitata in un compatto. È possibile ora calcolare il gradiente della $g(x,y)$ per cui
+\[\nabla g(x,y) = \left(2x \cdot (2x^2 - 1), 2 \cdot (y-1)\right){^T}\]
+È immediato evincere che
+\[\dfrac{\partial g}{\partial x} (x,y) = 0 \hspace{1em} \text{se} \hspace{1em} x=0 \hspace{1em} \text{oppure} \hspace{1em} x=\pm\dfrac{1}{\sqrt{2}}\]
+da cui è immediato evincere che
+\[\nabla g(0,1) = (0,0){^T}\]
+per cui qui non vi si potrà calcolare la funzione implicita.\\
+Studiando, invece, cosa accade quando $x=\dfrac{1}{\sqrt{2}}$ si ottiene
+\[0 = (y-1)^2 - \dfrac{1}{2} \left(1-\dfrac{1}{2}\right) \hspace{1em} \rightarrow \hspace{1em} \vert y-1 \vert = \dfrac{1}{2}\]
+che permette di ottenere
+\[y=\frac{1}{2} \hspace{1em} \text{oppure} \hspace{1em} y=\frac{3}{2}\]
+
+\vspace{1em}
+\noindent
+\subsection{Teorema del moltiplicatore di Lagrange per la determinazione dei punti di estremo vincolato ad una curva implicita}
+In generale, se esiste un vincolo che si può parametrizzare, è possibile studiare la composizione della funzione rispetto a tale vincolo e ridurre la dimensione del problema.\\
+Tuttavia non è sempre possibile parametrizzare il vincolo, per il teorema di cui sopra consente di individuare punti di estremo vincolato per una curva.\\\\
+
+\vspace{1em}
+\noindent
+Sia $f,g : A \subseteq \mathbb{R}^2 \longmapsto \mathbb{R}$ con $A$ aperto. Siano $f,g \in C^1(A)$ e sia dato l'insieme
+\[\mathcal{Z}_g = \{(x,y){^T} : g(x,y) = 0\}\]
+Sia $(x_0,y_0){^T} \in \mathcal{Z}_g$ un punto di estremo per $f$ vincolato a $\mathcal{Z}_g$ e sia $\nabla g(x_0,y_0) \neq (0,0){^T}$, che assicura la parametrizzazione locale per la funzione.\\
+Allora esiste $\lambda \in \mathbb{R}$ (chiamato \textbf{moltiplicatore di Lagrange}) tale che
+\[\nabla f(x_0,y_0) = \lambda \cdot \nabla g(x_0,y_0)\]
+cioè il punto $(x_0,y_0, \lambda){^T}$ è soluzione del sistema
+\[
+    \rowcolors{1}{white}{white}
+    \left\{
+    \begin{array}{l}
+        \dfrac{\partial f}{\partial x} (x_0,y_0) = \lambda \cdot \dfrac{\partial g}{\partial x}(x_0,y_0)\\
+        \dfrac{\partial f}{\partial y} (x_0,y_0) = \lambda \cdot \dfrac{\partial g}{\partial y}(x_0,y_0)\\
+        g(x_0,y_0) = 0
+    \end{array}
+    \right.
+\]
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Dal momento che $\nabla g(x_0,y_0) \neq (0,0){^T}$ esiste una parametrizzazione locale del vincolo, cioè esiste
+\[\gamma : I \longmapsto A\]
+e un intorno $\Omega$ di $(x_0,y_0){^T}$ tale che
+\[\mathcal{Z}_g \cap \Omega = \{\gamma(t) : t \in I\}\]
+ossia è il sostegno...\\
+Si consideri, allora, la funzione composta
+\[f \circ \gamma : I \longmapsto \mathbb{R}\]
+la quale è derivabile in quanto $f$ è derivabile per ipotesi e $\gamma$ presenta una parametrizzazione regolare grazie al fatto che $f$ è derivabile.\\
+Se, allora, si assume che $\gamma(0)=(x_0,y_0){^T}$ un punto di minimo vincolato per $f$, allora la funzione composta presenta un minimo in $t=0$. Quindi ciò significa che
+\[\dfrac{\dif}{\dif t} (f \circ \gamma) (0) = 0\]
+ma la derivata della funzione composta è
+\[\dfrac{\dif}{\dif t} (f \circ \gamma) (0) = \left<\nabla f(\gamma(0)), \gamma'(0)\right> = 0\]
+per cui il gradiente della composta è ortogonale al vincolo. Non solo, ma anche $\nabla g(x_0,y_0)$ è ortogonale al vincolo, ma ciò accade sempre. Ma siccome $\nabla f(x_0,y_0)$ e $\nabla g(x_0,y_0)$ sono paralleli tra loro, in quanto ortogonali al medesimo vincolo. Essendo paralleli, deve esistere $\alpha, \beta \in \mathbb{R}$ \textbf{non entrambi nulli} tali che
+\[\alpha \cdot \nabla f(x_0,y_0) + \beta \cdot \nabla g(x_0,y_0) = 0\]
+e siccome $\beta$ può essere nullo, $\alpha$ non può essere nullo perché altrimenti $\nabla g(x_0,y_0) =0$, che contrasta con l'ipotesi assunta. Ciò significa che è possibile dividere per $\alpha$, ottenendo
+\[f(x_0,y_0) - \dfrac{\beta}{\alpha} \cdot g(x_0,y_0) = 0\]
+in cui è sufficiente imporre
+\[\lambda = - \dfrac{\beta}{\alpha}\]
+
+\vspace{1em}
+\noindent
+\textbf{Esempio 1}: Siano date le due funzioni seguenti
+\[f(x,y)=2x+y \hspace{1em} \text{e} \hspace{1em} g(x,y)=xy-1\]
+e si cerchino ${\max}/{\min}$ di $f$ vincolata al vincolo $\mathcal{Z}_g=xy-1=0$.\\
+Allora calcolando il gradiente delle due funzioni
+\[\nabla f(x,y) = (2,1){^T} \hspace{1em} \text{e} \hspace{1em} \nabla g(x,y) = (y,x){^T}\]
+Impostando il teorema di Lagrange si ottiene 
+\[
+    \rowcolors{1}{white}{white}
+    \left\{
+    \begin{array}{l}
+        2=\lambda y\\
+        1=\lambda x\\
+        xy-1=0\\
+    \end{array}
+    \right.
+\]
+per cui si ottiene che $x=\pm\dfrac{1}{\sqrt{2}}$ e $y=\pm\sqrt{2}$
+
+\vspace{1em}
+\noindent
+\textbf{Esempio 2}: Si consideri la funzione seguente
+\[g(x,y) x^2-xy+y^2-1 = 0\]
+il quale rappresenta un ellisse ruotato. Allora si consideri la funzione $f(x,y)=xy$. Naturalmente si sta cercando
+\[\underbrace{(x,y){^T} \in E}{\max}/{\min} f(x,y)\]
+in cui $E=\{(x,y){^T} \in \mathbb{R}^2 : x^2-xy+y^2=1\}$. Calcolando i gradienti delle due funzioni
+\[\nabla f = (y,x){^T} \hspace{1em} \text{e} \hspace{1em} \nabla g = (2x-y,2y-x){^T}\]
+allora si ottiene il sistema semplificato seguente
+\[
+    \rowcolors{1}{white}{white}
+    \left\{
+    \begin{array}{l}
+        x+y=2\lambda y - x + 2\lambda x - y\\
+        2 \cdot (x+y) = 2 \lambda \cdot (x+y)
+    \end{array}
+    \right.
+\]
+Dall'equazione seguente $2 \cdot (x+y) = 2 \lambda \cdot (x+y)$ si ha che $(x+y) \cdot (\lambda-1)=0$, per cui
+\begin{itemize}
+    \item se $x+y=0$, ovvero $y=-x$ si ottiene che inserendo tali valori nel vincolo
+    \[g(x,-x) = -x (-x) + (-x)^2=1 \hspace{1em} \rightarrow \hspace{1em} x=\pm \dfrac{1}{\sqrt{3}} \hspace{1em} \text{e} \hspace{1em} y=\mp \dfrac{1}{\sqrt{3}}\]
+    \item se $\lambda=1$ si ha che ... continua ...
+\end{itemize}
+
+\vspace{1em}
+\noindent
+\textbf{Esempio 3}: Si considerino le funzioni seguenti
+\[g(x,y) = (x-1)^3 - y^2 \hspace{1em} \text{e} \hspace{1em} f(x,y) = x^2 + y^2\]
+Studiando quando $g(x,y)=0$ si ottiene
+\[(x-1)^3 = y^2\]
+e siccome $y^2 \geq 0$, deve essere che $x \geq 1$. Studiano ora i gradienti si ottiene che
+\[\nabla f = (2x,2y){^t} \hspace{1em} \text{e} \hspace{1em} \nabla g = (3 \cdot (x-1)^2, -2y){^T}\]
+per cui si ottiene il sistema di Lagrange seguente
+\[
+    \rowcolors{1}{white}{white}
+    \left\{
+    \begin{array}{l}
+        2x=3\lambda \cdot (x-1)^2\\
+        2y = -2 \lambda y\\
+        (x-1)^3 = y^2
+    \end{array}
+    \right.
+\]
+ma tale sistema non è risolvibile, ossia non ha soluzioni. Tuttavia non è vero che il sistema non ha soluzioni; infatti se si calcola
+\[f(1,0)=1=\min f\]
+che è un punto critico non individuato dal teorema di Lagrange in quanto $\nabla g(1,0) = (0,0){^T}$.
+
+\newpage
+11 Novembre 2022
+
+\vspace{1em}
+\noindent
+... continua ...
+
+\vspace{2em}
+\subsection{Teorema dei moltiplicatori di Lagrange (caso in $\mathbb{R}$)}
+Siano date due funzioni
+\[f,g = {g_1, g_2}{^T} : A \longmapsto \mathbb{R}^2\]
+con $f : \Omega \subseteq \mathbb{R}^3 \longmapsto \mathbb{R}$. Allora
+\[\mathcal{Z}_g = \{(x,y,z) \in A : g(x,y,z) = g(x,y,z) = 0\}\]
+con $(x_0,y_0,z_0){^T} \in \mathcal{Z}_g$ punto di estremo vincolato ...continua...\\
+Sia, chiede, in particolare che a $\mathcal{Z}_g$ per $f$. Si deve richiedere che
+
+\[
+    \left(
+        \begin{array}{ccc}
+
+        \end{array}
+    \right)
+\]
+in cui il rango della matrice deve essere massimo, ossia rg$(A)=2$.
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: La dimostrazione è per la lode... Da fareeeeee.
+
+\vspace{2em}
+\noindent
+\textbf{Esempio}: Se si vuole trovare la formula per la distanza tra una retta $y=mx+q$ e l'origine $(0,0){^T}$ basta considerare il
+\[\min \{d((x,y){^T},(0,0){^T}) \hspace{1em} \text{tale che} \hspace{1em} (x,y) \in \text{ retta }\}\]
+Quindi sarà sufficiente considerare la funzione distanza
+\[h(x,y)=\sqrt{x^2+y^2} \hspace{1em} \text{oppure} \hspace{1em} f(x,y) = x^2+y^2\]
+vincolata, però, alla retta di equazione $y=mx+q$. Ovviamente si ha che
+\[\mathcal{Z}_g = \{(x,y){^T} \in \mathbb{R}^2 : y=mx+q\}\]
+per cui si ha che
+\[g(x,y) = mx+q-y\]
+Se ne calcola il gradiente, ottenendo
+\[\nabla f(x,y) = (2x,2y){^T}\]
+e per quanto riguarda la funzione $g$ si ottiene
+\[\nabla g(x,y) = (m,-1){^T}\]
+per cui si ottiene il sistema di Lagrange seguente
+\[
+   \left\{
+        \begin{array}{l}
+            2x = \lambda m\\
+            2y = -\lambda\\
+            mx+q-y=0
+        \end{array}
+   \right.
+\]
+per cui si ottiene che $y=-\dfrac{1}{2}\lambda$, mentre $x=\dfrac{1}{2}\lambda m$ e tramite l'ultima equazione, ossia l'equazione del vincolo, si ottiene che $\lambda=-\dfrac{2q}{m^2+1}$. Da ciò si ottiene che
+\[y^*=\dfrac{q}{m^2+1} \hspace{1em} \text{e} \hspace{1em} x^*=-\dfrac{qm}{m^2+1}\]
+Sono stati trovati, quindi, i punti cercati. Sarà sufficiente, ora calcolare
+\[f(x^*,y^*) = \dfrac{q^2m^2}{(m^2+1)^2} + \dfrac{q^2}{(m^2+1)^2}\]
+Ma ovviamente la funzione di partenza è $h = \sqrt{f}$, per cui si ottiene ...continua...
+
+\vspace{2em}
+\noindent
+\textbf{Esercizio}: Si consideri il seguente insieme
+\[E = \{(x,y,z){^T} \in \mathbb{R}^3 \hspace{1em} \text{tale che} \hspace{1em} z \in [0,1] \hspace{1em} \text{con} \hspace{1em} x^2 + y^2 \leq z\}\]
+Si calcoli, allora, $\underset{E}{{\max}/{\min}} f(x,y,z)$ con $f(x,y,z) = x-z$
+
+\vspace{2em}
+\noindent
+È immediato osservare che l'insieme $E$ è un compatto. Per studiare tale problema, si considera l'aperto
+\[A=\overline{E}\]
+Studiando il gradiente di $f$ si ottiene che
+\[\nabla f(x,y,z) = (1,0,-1){^T} \neq (0,0,0){^T}\]
+\[\{(x,y,z){^T} : z = x^2+y^2 \hspace{1em} \text{con} \hspace{1em} z \in [0,1]\}\]
+Si sta considerando, quindi, il grafico di una funzione, per cui si considera la composta
+\[f(x,y,x^2+y^2) = h(x,y)\]
+in cui $h$, però, è definita solamente sul disco di raggio $1$, ossia
+\[h : \{(x,y){^T} \in \mathbb{R}^2 : x^2+y^2 \leq 1\} \longmapsto \mathbb{R}\]
+Si è ottenuto ancora una volta un compatto. Per cui bisogna studiare $h$ prima sulla parte interna, ossia su $\{(x,y){^T} \in \mathbb{R}^2 : x^2+y^2 < 1\}$, senza la frontiera. Per trovare i punti critici bisogna calcolare il gradiente
+\[\nabla h = (1-2x,-2y){^T}\]
+e si ha che $(1-2x,-2y){^T} = (0,0){^T}$ in $\left(\dfrac{1}{2},0\right){^T}$. Pertanto il punto
+\[\left(\dfrac{1}{2},0,\dfrac{1}{4}\right){^T}\]
+è un punto critico.\\
+Studiando, ora, la frontiera
+\[\{(x,y){^T} \in \mathbb{R}^2 : x^2+y^2 = 1\}\]
+si è ottenuta una circonferenza, la quale può essere parametrizzata come
+\[h(\cos(t),\sin(t)) \hspace{1em} \text{con} \hspace{1em} t \in [0,2\pi]\]
+Ovviamente derivando si ottiene ...continua...
+\[\nabla h = (-\sin(t),\cos(t))\]
+che si annulla per ... continua ...
+
+\vspace{1em}
+\noindent
+Studiando, ora, $f$ su
+\[\{(x,y,z){^T} : x^2 + y^2 \leq 1\}\]
+si impiegano le coordinate polari, ottenendo,
+\[h(\rho,1) = \rho \cos(t) - 1\]
+e calcolando il gradiente si ottiene
+\[\nabla h(\rho,t) = (\cos(t), - \rho \sin(t)){^T}\]
+e si annulla solamente in $(0,\pi,1){^T}$, il quale è un punto critico.
+
+\vspace{1em}
+\noindent
+Si sono, quindi, ottenuti tutti i punti critici. Calcolandone il valore della $f$ si ottiene
+\begin{align*}
+    &\left(\dfrac{1}{3},0,\dfrac{1}{4}\right){^T} & \text{con} & f(\cdot) = \dfrac{1}{4}\\
+    &\left(-1,0,1\right){^T} & \text{con} & f(\cdot) = -2\\
+    &\left(1,0,1\right){^T} & \text{con} & f(\cdot) = 0\\
+    &\left(0,0,1\right){^T} & \text{con} & f(\cdot) = -1\\
+\end{align*}
+in cui è facile capire che il primo è punto di massimo e il secondo di minimo, che esistono in quanto il dominio compatto.
+
+\vspace{2em}
+\noindent
+\textbf{Esercizio 2}: Si consideri la superficie seguente
+\[z^2-xy = 1\]
+e si consideri la distanza $d(t,(0,0,0){^T})$
+Ovviamente la funzione $f$ è la distanza
+\[f(x,y,z) = x^2 + y^2 + z^2\]
+mentre la funzione $g$ è
+\[g = x^2 - xy - 1\]
+e calcolandone i gradienti si ottiene
+\[\nabla f = (2x,2y,2z){^T} \hspace{1em} \text{e} \hspace{1em} \nabla g(-y,-x,2z){^T}\]
+Si può, quindi, impostare il sistema di Lagrange seguente
+\[
+    \begin{array}{l}
+        2x = -\lambda y\\
+        2y = -\lambda x\\
+        2z = \lambda 2z\\
+        x^2 - xy = 1\\
+    \end{array}
+\]
+Si ottiene dalla terza equazione che $z=0$ oppure $\lambda=1$.\\
+Dalle prime due equazioni si ottiene che
+\[\dfrac{2x}{2y} = \dfrac{y}{x}\]
+per cui
+\[x^2-y^2 = 0\]
+solamente quando $x=\pm y$. Pertanto si ha che
+\begin{itemize}
+    \item se $z=0$ ovviamente si ha che $x=\pm 1$, e quindi $y=\mp 1$, da cui si ottengono i punti seguenti
+    \[(-1,1,0){^T} \hspace{1em} \text{e} \hspace{1em} (1,-1,0){^T}\]
+    \item se $z \neq 0$, allora $\lambda=1$, per cui ovviamente si ha che $x=y=0$, da cui si evince che $z=\pm 1$. Si ottengono i punti seguenti
+    \item \[(0,0,1){^T} \hspace{1em} \text{e} \hspace{1em} (0,0,-1){^T}\]
+\end{itemize}
+Calcolando, ora, il valore della funzione, si ottiene che
+\[f()\]
+...continua...
+
+\vspace{1em}
+\noindent
+\textbf{Esercizio 3}: Si considerino le funzioni seguenti
+\[f(x,y,z)=xy-2x \hspace{1em} \text{e} \hspace{1em} g_1(x,y,z)=x+y+z \hspace{1em} \text{e} \hspace{1em} g_2(x,y,z)=x^2+y^2+z^2-24\]
+e si vuole ottenere il massimo e il minimo della $f$ nell'intersezione delle due funzioni.\\
+Si calcola il gradiente di ciascuna funzione
+\[\nabla f = (y,x,2){^T} \hspace{1em} \text{e} \hspace{1em} \nabla g_1=(1,1,1) \hspace{1em} \text{e} \hspace{1em} \nabla g_2 = (2x,2y,2z){^T}\]
+Si imposta, allora, il sistema di Lagrange, ricordando che deve essere $\nabla f = \lambda \nabla g_1 + \mu \nabla g_2$ ottenendo
+\[
+    \left\{
+        \begin{array}{l}
+            y=\lambda + \mu 2x\\
+            x=\lambda +\mu 2y\\
+            2 = \lambda + \mu 2z\\
+            x+y+z=0\\
+            x^2+y^2+z^2=24
+        \end{array}
+    \right.
+\]
+Dalle prime due equazioni appare evidente che $x=y$ oppure $\mu=-\dfrac{1}{2}$. Dividendo le casistiche si ottiene che
+\begin{itemize}
+    \item se $x=y$ si evince che $z=-2x$ ed essendo $x^2=4$ si ottiene che $x=\pm 2$. Per cui si ottengono i punti seguenti
+    \[(-2,-2,4){^T} \hspace{1em} \text{e} \hspace{1em} (2,2,-4){^T}\]
+
+    \item se $\mu=-\dfrac{1}{2}$ si ottiene facilmente che $\lambda=1$; da ciò si desume che $z=-1$, mentre $x=\dfrac{1 - 3 \cdot \sqrt{5}}{2}$ e $y=\dfrac{1+3 \cdot \sqrt{5}}{2}$
+\end{itemize}
+Calcolando il valore della funzione $f=2x+2z$ nei punti precedentemente determinati si ottiene
+\begin{align*}
+    &f(-2,-2.4) = 12\\
+    &f(2,2,-4) = -4\\
+    &f \left(\dfrac{1-3 \cdot \sqrt{5}}{2}, \dfrac{1+3 \cdot \sqrt{5}}{2}, -1\right) = -13
+\end{align*}
+Non è difficile evincere che il primo è un punto di massimo mentre il terzo di minimo, che esistono in quanto l'intersezione delle due superficie è un compatto.
+
+\vspace{1em}
+\subsection{Integrali dipendenti da parametri}
+Si consideri una funzione continua $g(x)$, allora è possibile considerare la funzione
+\[f(x) = \int_{\alpha(x)}^{\beta(x)} g(t) \dif t\]
+allora se $\alpha(x)$ e $\beta(x)$ sono derivabili si ha che
+\[f'(x) = g(\beta(x)) \cdot \beta'(x) - g(\alpha(x)) \cdot \alpha'(x)\]
+Tuttavia, se si considera la funzione
+\[f(y) = \int_a^b g(x,y) \dif x\]
+allora siccome una successione di funzioni $f_n(x)$ si può pensare come una funzione a due variabili della forma $g(x,n)$. È noto che vale la formula seguente
+\[\lim_{n \to +\infty} \int_a^b f_n(x) \dif x = \int_a^b \lim_{n \to +\infty} f_n(x)\]
+solamente quando la successione converge uniformemente. Esiste una cosa simile anche in questo caso
+
+\vspace{1em}
+\subsubsection{Teorema sull'integrale}
+Sia data la funzione $g: [a,b] \times I \longmapsto \mathbb{R}$ una funzione continua. Allora la funzione $f : I \longmapsto \mathbb{R}$ definita come
+\[f(x) = \int_A^b g(x,y) \dif x\]
+è continua su $I$.
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Sia $y_0 \in I$ un punto interno ad $I$ (se $y_0$ fosse un estremo, sarebbe ancora più semplice). Allora si considerano
+\[c < y_0 < d \hspace{1em} \text{tale che} \hspace{1em} [c,d] \subset I\]
+allora, ovviamente $f \vert_{[a,b] \times [c,d]}$ è uniformemente continua, ovvero che
+\[\forall \epsilon > 0, \exists \delta > 0 \hspace{1em} \text{tale che} \hspace{1em} \forall (x_1,y_1){^T}, (x_2,y_2){^T} \in [a,b] \times [c,d] \hspace{1em} \text{con} \hspace{1em} \vert \vert (x_2-x_1,y_2-y_1){^T} \vert \vert < \delta \hspace{1em} \text{si ha che} \hspace{1em} \vert g(x_2,y_2) - g(x_1,y_2) \vert < \epsilon\]
+In particolare si ha che
+\[\vert f(y) - f(y_0) \vert = \vert \int_a^b (g(x,y) - g(x,y_0)) \cdot \dif x \vert \leq \int_a^b \vert g(x,y) - g(x,y_0) \vert \cdot \dif x < \epsilon \cdot (b-a)\]
+che è minore di $\epsilon$ se $\vert \vert (x_2-x_1,y_2-y_1){^T} \vert \vert < \delta$.\\
+...continua...
+
+\vspace{1em}
+\subsubsection{Teorema sulla derivata}
+Sia
+\[g : [a,b] \times I \longmapsto \mathbb{R}\]
+con $g \in C^1$ e sia data
+\[f : I \longmapsto \mathbb{R}\]
+con
+\[f(y) = \int_a^b g(x,y) \cdot \dif x\]
+allora $f$ è derivabile e si ha la formula
+\[f'(y) = \lim_{h \to 0} \dfrac{f(y+h) - f(y)}{h} = \lim_{h \to 0} \dfrac{1}{h} \cdot \left(\int_a^b \left[g(x,y+h) - g(x,y)\right] \cdot \dif x\right)\]
+ma siccome la funzione $g \in C^1$ si ottiene, per Lagrange, che
+\[g(x,y+h) - g(x,y) = \dfrac{\partial g}{\partial y} (x,\eta)\cdot h\]
+con $\eta$ appartenente all'intervallo di estremi $y$ e $y+h$. Si ottiene, quindi
+\[\lim_{h \to 0} \int_a^b \dfrac{\partial g}{\partial y} (x,\eta) \cdot \dif x = \int_a^b \dfrac{\partial g}{\partial y}(x,y) \cdot \dif x\]
+questo per la continuità della derivata $\dfrac{\partial g}{\partial y} g(x,\eta)$
+
+\vspace{2em}
+\noindent
+\textbf{Esempio}: Si consideri la funzione seguente
+\[\dfrac{\dif}{\dif y} \int_0^1 \sin(xy^2) \dif x\]
+che può essere schematizzata come
+\[f(y) = \int_a^y g(x,y) \dif x\]
+per cui se si considera la funzione
+\[h(u,v) = \int_a^u g(x,y) \cdot dif x\]
+si può calcolare l'integrale di partenza come
+\[f(x) - h(x,y)\]
+allora ovviamente si ottiene che
+\[\dfrac{\partial h}{\partial u} (u,v) = g(u,v)\]
+e quindi
+\[\dfrac{\partial h}{\partial v} (x,yv) = \int_a^v \dfrac{\partial g}{\partial y} (x,v) \dif x\]
+in questo modo si ottiene facilmente che
+\[f'(x) = \dfrac{\partial h}{\partial u} (u,y) \cdot 1 + \dfrac{\partial h}{\partial v}(y,v) \cdot 1\]
+ottenendo
+\[g(y,y) = \int_a^y \dfrac{\partial g}{\partial y}(x,y) \cdot \dif x\]
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione}: Se l'integrale di partenza fosse stato
+\[f(y) = \int_{\alpha(y)}^{\beta(y)} g(x,y) \cdot \dif x\]
+si sarebbe ottenuta la formula
+\[f'(y) = g(\beta(y), y) \cdot \beta'(y) - g(\alpha(y),y) \cdot \alpha'(x) + \int_{\alpha(x)}^{\beta(y)} \dfrac{\partial g}{\partial y} (x,y) \cdot \dif x\]
+
+\vspace{2em}
+\noindent
+\textbf{Esempio}: Si consideri l'integrale seguente
+\[f(y) = \int_{-y^2}^{\sin(y)} \log(x^2 + y) \cdot \dif x\]
+allora si ha che
+\[f'(y) = \log(\sin(y))^2 + y) \cdot \cos(y) + \log(y^2 + y) \cdot 2y + \int_{-y^2}^{\sin(y)} \dfrac{1}{x^2+y} \cdot \dif x\]
+
+\newpage
+\noindent
+\begin{center}
+    14 Novembre 2022
+\end{center}
+\textbf{Esercizio 1}: Si consideri l'ellisse $E \subset \mathbb{R}^3$ definito dall'intersezione del cilindro di equazione $x^2+y^2=1$ e del piano di equazione $x+y+z=1$.\\
+Si determini la minima e la massima distanza di $E$ dall'origine.\\
+Naturalmente si ha che
+\begin{itemize}
+    \item Il cilindro è $x^2+y^2-1=g_1(x,y,z)$
+    \item il piano è $x+y+z-1=g_2(x,y,z)$
+    \item Distanza è $x^2+y^2+z^2 = f(x,y,z)$
+\end{itemize}
+In particolare si calcolano i gradienti, da cui
+\[\nabla f = (2x,2y,2z) \hspace{1em} \text{e} \hspace{1em} \nabla g_1 = (2x,2y,0) \hspace{1em} \text{e} \hspace{1em} \nabla g_2 = (1,1,1)\]
+Realizzando il sistema di Lagrange si ottiene
+\[
+    \left\{
+    \rowcolors{1}{white}{white}
+    \begin{array}{l}
+        2x=\lambda 2x + \mu\\
+        2y=\lambda 2y + \mu\\
+        2y = \mu\\
+        x^2+y^2-1=0\\
+        x+y+z-1=0
+    \end{array}
+    \right.
+\]
+Risolvendo il sistema per $x=y$ si ottengono i punti
+\[\left(\dfrac{\sqrt{2}}{2},\dfrac{\sqrt{2}}{2},1-\sqrt{2}\right){^T} \hspace{1em} \text{e} \hspace{1em} \left(-\dfrac{\sqrt{2}}{2},-\dfrac{\sqrt{2}}{2},1+\sqrt{2}\right){^T}\]
+mentre per $x=1-y$ si ottengono i punti seguenti
+\[(1,1,0){^T} \hspace{1em} \text{e} \hspace{1em} (0,1,0){^T}\]
+Sostituendo i punti ottenuti all'interno della funzione si ottiene
+\begin{itemize}
+    \item $f \left(\dfrac{\sqrt{2}}{2},\dfrac{\sqrt{2}}{2},1-\sqrt{2}\right) = 4 - 2 \sqrt{2}$
+    \item $f \left(-\dfrac{\sqrt{2}}{2},-\dfrac{\sqrt{2}}{2},1+\sqrt{2}\right) = 4 + 2 \sqrt{2}$
+    \item $f(1,0,0) = f(0,1,0)=1$
+\end{itemize}
+Pertanto il minimo della funzione è $1$, mentre il suo massimo è $4+2 \sqrt{2}$.
+
+\vspace{1em}
+\noindent
+\textbf{Esercizio 2}: Si consideri la funzione seguente
+\[f(x,y) = x y^2 e^{-x^2 - y^2}\]
+con
+\[f : \mathbb{R}^2 \longmapsto \mathbb{R}\]
+Allora calcolando il gradiente della funzione si ottiene
+\[\nabla f = \left(y^2 e^{-x^2-y^2} \cdot (1-2x), 2xy e^{-x^2-y^2} \cdot (1-2y)\right)\]
+
+\vspace{1em}
+\noindent
+Si dimostri il seguente limite
+\[\lim_{((x,y){^T} \to (+\infty,+\infty){^T})} f(x,y) = 0\]
+Per definizione si deve dimostrare che
+\[\forall \epsilon > 0, \exists \delta > 0 : \vert \vert (x,y){^T} \vert \vert < \delta \hspace{1em} \text{si ha che} \hspace{1em} \vert f(x) \vert < \epsilon\]
+... continua ...
+
+\vspace{1em}
+\noindent
+Si calcoli, allora, l'Hessiana seguente
+\[H f(t,0) = \left(
+    \rowcolors{1}{white}{white}
+    \begin{array}{cc}
+        0 & 0\\
+        0 & 5
+    \end{array}
+\right)\]
+
+\vspace{1em}
+\noindent
+...continua... Dal momento che in precedenza si era dimostrato che
+\[\lim_{((x,y){^T} \to (+\infty,+\infty){^T})} f(x,y) = 0\]
+all'interno di una palla di centro $(0,0){^T}$ esiste massimo e minimo per Weierstrass.
+
+\vspace{1em}
+\noindent
+Studiando il punto $(0,0){^T}$, è facile osservare che essendo $f(x,y)=xy^2 e^{-x^2-y^2}$ per $x>0$ la funzione è positiva, mentre per $x<0$ la funzione è negativa. Ciò suggerisce che l'origine non è un punto né di massimo né di minimo.
+
+\vspace{1em}
+\subsection{Calcolo integrale in $\mathbb{R}^n$}
+Gli integrali che si considerano sono gli integrali di Riemann, in cui si considerano funzioni definite su un intervallo e limitate, della forma $f : [a,b] \longmapsto \mathbb{R}$ limitate.\\
+Ovviamente il concetto di intervallo deve essere esteso alla dimensione $\mathbb{R}^n$, ottenendo
+\[[a_1,b_1] \times [a_2,b_2] \times \dots \times [a_n,b_n]\]
+chiamato $n$-rettangolo. In $\mathbb{R}$ ogni intervallo veniva suddiviso tramite una \textbf{decomposizione} in cui gli estremi di ogni sotto-intervallo prendevano il nome di nodi. In generale, in $\mathbb{R}^2$ una decomposizione di $[a_1,b_1] \times [a_2,b_2]$ è data dal prodotto cartesiano di due decomposizioni $\delta_i$ di $[a_1,b_1]$ della forma $\delta_i = \{I_i \hspace{1em} \text{con} \hspace{1em} i=1,\dots,n\}$ e $\delta_j$ di $[a_2,b_2]$ della forma $\delta_j = \{J_j \hspace{1em} \text{con} \hspace{1em} j=1,\dots,n\}$ 
+
+\vspace{1em}
+\subsubsection{Somma superiore e somma inferiore}
+Per definire il concetto di somma superiore, sia $\delta \in \Delta(R)$ con $R$ un $n$-rettangolo e $\Delta(R)$ l'insieme di tutte le $\delta$ decomposizioni dell'$n$-rettangolo $R$.\\
+Si definisce, quindi
+\[S(f,\delta) = \sum_{i=1,\dots,n} \sum_{j=1,\dots,k} \underset{R_{i,j}}{\sup f(x,y)} \cdot m(R_{i,j})\]
+con $R_{i,j} = I_i \times J_j$ e $m(R_{i,j}) = (x_i - x_{i-1}) \cdot (y_j - y_{j-1})$.\\
+Per definire il concetto si somma inferiore, si considera l'estremo inferiore della $f$ nell'intervallo, ottenendo
+\[s(f,\delta) = \sum_{i=1}^n \sum_{j=1}^j \underset{R_{i,j}}{\inf f(x,y)} \cdot m(R_{i,j})\]
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Ovviamente non tutte le decomposizioni sono confrontabili; tuttavia, si definisce il concetto di \textbf{finezza}: la decomposizione $\delta_1$ è più fine di $\delta_2$ se tutti i nodi di $\delta_2$ sono nodi di $\delta_1$.\\
+Si espongono, quindi, le proprietà seguenti;
+\begin{itemize}
+    \item se $\delta_1$ è più fine di $\delta_2$, allora
+    \begin{itemize}
+        \item $s(f,\delta_1) \geq s(f,\delta_2)$
+        \item $S(f,\delta_1) \leq S(f,\delta_2)$
+    \end{itemize}
+    \item $\forall d$ si ha che $s(f,\delta) \leq S(f,\delta)$
+    \item $\forall \delta_1,\delta_2$ si ha che
+    \[s(f,\delta_1) \leq S)f,\delta_2\]
+\end{itemize}
+Definendo i due insiemi seguenti
+\[\sigma = \{s(f,\delta) : \delta \in \Delta(R)\} \hspace{1em} \text{e} \hspace{1em} \Sigma = \{S(f,\delta) : \delta \in \Delta (R)\}\]
+per cui $\sigma$ e $\Sigma$ sono insiemi separati in $\mathbb{R}$.\\
+Si definisce, allora, l'\textbf{integrale inferiore} di $f$ su $\mathbb{R}$
+\[\int_R^- f \dif m = \text{sup} \sigma\]
+e l'\textbf{integrale superiore} di $f$ su $\mathbb{R}$ come
+\[\int_R^+ f \dif m = \text{inf} \Sigma\]
+Se questi coincidono, allora $f$ è integrabile secondo Riemann su $R$ e si ha che
+\[\int_R f \dif m = \int_R^- f \dif m = \int_R^+ f \dif m\]
+ciò accade quando $\sigma$ e $\Sigma$ sono insiemi contigui.
+
+\vspace{1em}
+\noindent
+\textbf{Esercizio}: Sia $f$ una funzione definita come segue
+\[f : R \subset \mathbb{R}^2 \longmapsto \mathbb{R}\]
+con $f(x,y) \geq 0$, allora si ha che
+\[\int_R f \dif m\]
+rappresenta il volume delle ragioni di piano occupata da $R$ e il grafico di $f$.
+
+\vspace{1em}
+\noindent
+\textbf{Esempio}: Sia data $f(x,y) = 1$, allora
+\[\int_{[a,b] \times [c,d]} f \dif m = (b-a) \cdot (d-c)\]
+ossia l'area di $R$.\\
+Ovviamente la notazione
+\[\int_R f \dif m = \iint_R f(x,y) \dif m\]
+
+\vspace{1em}
+\subsubsection{Proprietà degli integrali}
+Sia dato
+\[\mathcal{R}(R) = \{f : \mathbb{R} \longmapsto \mathbb{R}, \hspace{1em} \text{con} \hspace{0.25em} f \hspace{0.25em} \text{integrabile}\}\]
+ossia l'insieme delle funzioni integrabili secondo Riemann su $R$.\\
+Si hanno le seguenti proprietà
+\begin{itemize}
+    \item Date due funzioni $f,g \in \mathcal{R}(R)$ e $\alpha, \beta \in \mathbb{R}$ e $\alpha f + \beta g \in \mathcal{R}(R)$ vale la linearità, ossia
+    \item \[\int_R (\alpha f + \int_R \beta g) \dif m = \alpha \cdot \int_R f \dif m + \beta \int_R g \dif m\]
+
+    \item Il prodotto di due funzioni integrabili è integrabile, ossia
+    \[f,g \in \mathcal{R}(R) \longmapsto f \cdot g \in \mathbb{R}(R)\]
+
+    \item integrabilità della restrizione: dato $R_1 \subset R$, allora se $f \in \mathcal{R}(R)$, allora $f \vert_{R_1} \in \mathcal{R}(R_1)$
+
+    \item additività dell'integrale: posto $R = R_1 \cup R_2$ e l'insieme $R_1 \cap R_2$ ha \textbf{interno vuoto}, allora
+    \[f \in \mathcal{R}(R) \hspace{1em} \textbf{se e solo se} \hspace{1em} f \vert_{R_1} \in \mathcal{R}(R_1) \hspace{1em} \text{e} \hspace{1em} f \vert_{R_2} \in \mathcal{R}(R_2)\]
+    e inoltre si ha che
+    \[\int_{R} f \dif m = \int_{R_1} f \vert_{R_1} \dif m + \int_{R_2} f \vert_{R_2} \dif m\]
+
+    \item la monotonia, per cui $f,g \in \mathcal{R}(R)$, con $x \in \mathbb{R}^n$, allora se
+    \item \[f(x) \leq g(x), \hspace{1em} \forall x \in R\]
+    allora si ha che
+    \[\int_R f \dif m \leq \int_R g \dif m\]
+    inoltre se si ha che
+    \[f(x) < g(x) \hspace{1em} \text{con} \hspace{1em} x \in R\]
+    e $f,g$ \textbf{continue}, allora
+    \[\int_R f \dif m < \int_R g \dif m\]
+\end{itemize}
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Si ha che $g(x) - f(x) > 0$, perché sono funzioni continue, per cui per il teorema della permanenza del segno esistono $\epsilon > 0$ e un intorno di $R_1$ di $x_0$ tale che $g(x)-f(x) \geq \epsilon$ con $\forall x \in R_1$.\\
+Pertanto si può scrivere
+\[\int_R f \dif m = \int_{R_1} f \dif m + \int_{R-R_1} f \dif m \leq \int_{R_1} (g-\epsilon) \dif m + \int_{R-R_1} (g) \dif m = \epsilon \cdot m(R_1) + \int_R f \dif m\]
+
+\newpage
+\noindent
+\begin{center}
+    15 Novembre 2022
+\end{center}
+\textbf{Esercizio 1}: Si consideri la funzione seguente
+\[f(x,y) = \sqrt{1-x^2-y^2}-x\]
+\begin{itemize}
+    \item si determini il dominio, il gradiente e la matrice hessiana di $f$. Si considerino i punti critici di $f$ e anche la loro natura, ma anche gli estremi assoluti della $f$ su $D$
+    
+    \vspace{1em}
+    \noindent
+    Il dominio della $f$ è dato dalla non negatività dell'argomento della radice, per cui $x^2+y^2 \leq 1$.\\
+    Il gradiente della $f$ è dato da
+    \[\nabla f = \left(\dfrac{x}{\sqrt{1-x^2-y^2}}-1, \dfrac{y}{\sqrt{1-x^2-y^2}}\right){^T}\]
+    La matrice Hessiana è
+    \[\left(
+    \rowcolors{1}{white}{white}    
+    \begin{array}{cc}
+        a & b\\
+        c & d
+    \end{array}
+    \right)\]
+    Per la determinazione dei punti critici si vede quando si annulla il gradiente
+    \[\left\{
+    \rowcolors{1}{white}{white}    
+    \begin{array}{ll}
+        -x=\sqrt{1-x^2-y^2}\\
+        y =0\\
+    \end{array}
+    \right.\]
+    per cui si ottiene $\left(-\dfrac{1}{\sqrt{2}}, 1\right){^T}$. Tuttavia Fermat permette di considerare punti critici solamente sull'aperto ed essendo il dominio compatto bisogna considerare anche il bordo, ossia $x^2+y^2=1$; si tratta di un problema vincolato, per cui si parametrizza il vincolo, ottenendo
+    \[x=\cos(t) \hspace{1em} \text{e} \hspace{1em} y=\sin(t)\]
+    ecco che quindi la funzione diviene
+    \[f(\cos(t),\sin(t))=-\cos(t)\]
+    si ottengono, quindi, i seguenti punti critici: ...continua...\\
+    Si consideri la seguente restrizione
+    \[E = \{(x,y){^T} \in 0 : y \leq x\}\]
+    È immediato osservare che il punto di minimo che si sta cercando è lo stesso della funzione di partenza. Similmente, il punto di massimo può stare solamente sulla bisettrice, in quanto già in precedenza è stato effettuato lo studio su tutto il dominio. Si consideri, allora, la restrizione della funzione $f$ alla retta $y=x$, per cui si ottiene
+    \[f \vert_{x=y} = \sqrt{1-2x^2}-x\]
+    Calcolandone la derivata si ottiene che essa si annulla per $x=\pm \dfrac{\sqrt{6}}{6}$. Tuttavia $x$ deve essere negativo, per cui si può scartare la soluzione positiva. Per vedere se la soluzione negativa è dentro al dominio, si considerano le intersezioni di $y=x$ con la circonferenza $x^2+y^2=1$, ottenendo $x=\pm \dfrac{1}{\sqrt{2}}$: ovviamente si ha che $-\dfrac{1}{\sqrt{2}} \leq \dfrac{1}{\sqrt{6}} \leq \dfrac{1}{\sqrt{2}}$, per cui il punto considerato è valido. Tuttavia, ancora una volta, si è applicato Fermat per individuare il punto $\dfrac{1}{\sqrt{6}}$, per cui bisogna considerare anche gli estremi. Pertanto si ottiene
+    che il punto di massimo è
+    \[\dfrac{1}{\sqrt{6}}\]
+\end{itemize}
+
+\vspace{1em}
+\subsubsection{Integrabilità del valore assoluto}
+Sia $f \in \mathcal{R}(R)$ allora si ha che
+\[\vert f \vert \in \mathcal{R}(R)\]
+Si ha che
+\[\left \vert \int_{R} f \dif m \right \vert \leq \int_R \vert f \vert \dif m\]
+
+\vspace{1em}
+\subsubsection{Teorema della media}
+Sia $f \in \mathcal{R}(R)$, allora si ha che
+\[\underset{R}{\text{inf}} f \leq \dfrac{\displaystyle{\int_R f \dif m}}{m(R)} \leq \underset{R}{\text{sup}} f\]
+Inoltre, se $f$ è continua, esiste un punto $x_0 \in R$ tale che
+\[f(x_0) = \dfrac{\displaystyle{\int_R f \dif m}}{m(R)}\]
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Naturalmente si ha che
+\[\underset{R}{\text{inf}} f \cdot m(R) \leq \int_R f \dif m \leq \underset{R}{\text{sup}} f \cdot m(R)\]
+ma naturalmente si ha che $\underset{R}{\text{inf}} f \cdot m(R) = s(f,\delta)$ e $\underset{R}{\text{sup}} f \cdot m(R) = S(f,\delta)$ con $\delta$ decomposizione banale $\{R\}$.\\
+Naturalmente, poi, essendo $R$ compatto, $\exists$ $\min f$ e $\max f$; non solo, ma essendo $R$ connesso, anche $f(R)$ è un intervallo, per cui
+\[f(R) = [\min f, \max f]\]
+quindi, poiché
+\[\dfrac{\displaystyle{\int_R f \dif m}}{m(R)} \in f(R)\]
+esiste un punto $x_0$ ... continua ...
+
+\vspace{2em}
+\noindent
+\textbf{Esercizio}: Si calcoli l'integrale seguente
+\[\iint_{[0,1] \times [0,1]} x \dif x \dif y = 1\]
+in cui si è usata la geometria per calcolare l'integrale, in quanto l'integrale doppio rappresenta il volume.\\
+Tuttavia, non è sempre possibile impiegare la geometria per il calcolo dell'integrale.
+
+\vspace{2em}
+\noindent
+\subsection{Teorema di riduzione di Fubini per gli integrali doppi sui rettangoli}
+Sia $f : [a_1,b_1] \times [a_2,b_2] \longmapsto \mathbb{R}$ integrabile. Si supponga che $\forall y \in [a_2,b_2]$
+la funzione
+\[f(\cdot,y) : [a_1,b_1] \longmapsto \mathbb{R}\]
+ossia la funzione in cui $x$ si muove e $y$ rimane costante, sia integrabile su $[a_1,b_1]$. È possibile, quindi, definire
+\[g : [a_1,b_1] \longmapsto \mathbb{R}\]
+come
+\[g(y) = \int_{[a_1,b_1]} f(x,y) \dif x\]
+Allora la funzione $g$ è integrabile su $[a_2,b_2]$ e si ha che
+\[\int_{[a_2,b_2]} g(y) \dif y = \iint_R f \dif m\]
+In definitiva, si ha quindi
+\[\int_{[a_2,b_2]} \left(\int_{[a_1,b_1]} f(x,y) \dif x\right) \dif y = \iint_{[a_1,b_1] \times [a_2,b_2]} f(x,y) \dif x \dif y\]
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Si osservi che il teorema risulta essere ugualmente valido cambiando il ruolo di $x$ e $y$. Pertanto sia $f : [a_1,b_1] \times [a_2,b_2] \longmapsto \mathbb{R}$ integrabile. Si supponga che $\forall x \in [a_1,b_1]$
+la funzione
+\[f(x,\cdot) : [a_2,b_2] \longmapsto \mathbb{R}\]
+ossia la funzione in cui $y$ si muove e $x$ rimane costante, sia integrabile su $[a_2,b_2]$. È possibile, quindi, definire
+\[h : [a_2,b_2] \longmapsto \mathbb{R}\]
+come
+\[h(x) = \int_{[a_2,b_2]} f(x,y) \dif y\]
+Allora la funzione $h$ è integrabile su $[a_1,b_1]$ e si ha che
+\[\int_{[a_1,b_1]} h(x) \dif x = \iint_R f \dif m\]
+
+\vspace{2em}
+\noindent
+\textbf{Esempio 1}: Si consideri l'integrale seguente
+\[\iint_{\left[0,\frac{\pi}{2}\right] \times \left[0,\pi\right]} \sin(x+y) \dif x \dif y\]
+Tale integrale può essere ridotto per Fubini, come
+\[\int_{\left[0,\pi\right]} \left(\iint_{\left[0,\frac{\pi}{2}\right]} \sin(x+y) \dif x \right) \dif y\]
+Ovviamente si ha che
+\[\int_{\left[0,\frac{\pi}{2}\right]} \sin(x+y) \dif x = \left[-\cos(x+y)\right]_0^{\frac{\pi}{2}} = - \cos\left(\frac{\pi}{2}+y\right) + \cos(y)\]
+Ora si procede ad integrare per $y$, da cui
+\[\int_{[0,\pi]} \left[- \cos\left(\frac{\pi}{2}+y\right) + \cos(y)\right] \dif y = -\left[\sin\left(\frac{\pi}{2}+y\right)\right]_0^\pi + \left[\sin(y)\right]_0^\pi = 2\]
+Ovviamente si sarebbe potuto anche considerare l'integrazione prima in $y$ e poi in $x$.
+
+\vspace{2em}
+\noindent
+\textbf{Esempio 2}: Si consideri l'integrale seguente
+\[\iint_{\left[0,2\right] \times \left[0,1\right]} xy \dfrac{x^2-y^2}{(x^2+y^2)^3} \dif x \dif y\]
+Naturalmente per Fubini tale integrale può essere ridotto come
+\[\int_0^2 \left(\int_0^1 xy \dfrac{x^2-y^2}{(x^2+y^2)^3} \dif y\right) \dif x\]
+Si risolva, quindi, l'integrale seguente
+\[\int_0^1 xy \dfrac{x^2-y^2}{(x^2+y^2)^3} \dif y\]
+È possibile effettuare un cambio di variabile, ponendo $u=x^2+y^2$ da cui $\dif u = 2y \dif y$ e, ovviamente $x^2-y^2=2x^2-u$; non solo, calcolando gli estremi di integrazione si ottiene
+\begin{itemize}
+    \item se $y=0$, allora, essendo $x^2+y^2=u$, si ottiene $u=x^2$;
+    \item se $y=1$, allora, essendo $x^2+y^2=u$, si ottiene $u=x^2+1$.
+\end{itemize}
+Pertanto si ottiene che
+\[\int_{x^2}^{x^2+1}\]
+ ... continua...
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione}: Come si può osservare, i due integrali risultano differenti; questo perché la funzione non è integrabile sul rettangolo $R=[0,2] \times [0,1]$, in quanto è illimitata in $0,0$.\\
+Per vederlo è sufficiente considerare la restrizione $x=2y$, per cui la funzione si comporta come $\dfrac{1}{y^2}$.
+
+\vspace{2em}
+\noindent
+\textbf{Esercizio}: Si consideri l'integrale seguente
+\[\iint_{[0,1]\times[1,2]} e^{\frac{x}{y}} y^{-3} \dif x \dif y\]
+Se si procedesse ad effettuare il calcolo seguente
+\[\int_0^1 \left(\int_1^2 e^{\frac{x}{y}} y^{-3} \dif y\right) \dif x\]
+non se ne uscirebbe. Tuttavia, è possibile procedere anche ad un integrazione diversa, quale
+\[\int_1^2 \left(\int_0^1 e^{\frac{x}{y}} y^{-3} \dif x\right) \dif y\]
+che è molto più semplice, in quanto
+\[\int_0^1 e^{\frac{x}{y}} y^{-3} \dif x = \left[e^{\frac{x}{y}} y^{-2}\right]_0^1 = e^{\frac{1}{y}} y^{-2} - y^{-2}\]
+per cui ora si esegue
+\[\int_1^2 \left[e^{\frac{1}{y}} y^{-2} - y^{-2}\right] \dif y = \left[-e^{\frac{1}{y}}\right]_1^2 + \left[\dfrac{1}{y}\right]_1^2 = e-\sqrt{e} -\dfrac{1}{2}\]
+
+\vspace{1em}
+\subsection{Teorema di Fubini per gli integrali tripli sui $3$-rettangoli per corde e per sezioni}
+È possibile, ora, estendere il ragionamento precedentemente formulato per gli integrali doppi anche per gli integrali tripli, effettuando un'\textbf{integrazione per corde} o un'\textbf{integrazione per sezioni}
+
+\vspace{1em}
+\noindent
+\textbf{Per corde}: Sia $R = [a_1,b_1] \times [a_2,b_2] \times [a_3,b_3]$ e sia $f : R \longmapsto \mathbb{R}$ integrabile. Per ogni punto
+\[(x,y){T} \in [a_1,b_1] \times [a_2,b_2]\]
+si supponga che la funzione
+\[f(x,y,\cdot) : [a_3,b_3] \longmapsto \mathbb{R}\]
+sia integrabile. Allora la funzione
+\[g : [a_1,b_1] \times [a_2,b_2] \longmapsto \mathbb{R}\]
+definita come
+\[g(x,y) = \int_{[a_3,b_3]} f(x,y,z) \dif z\]
+è integrabile e vale la formula
+\[\iint_{[a_1,b_1] \times [a_2,b_2]} g(x,y) \dif x \dif y = \iint_R f \dif m\]
+per cui in definitiva si ha che
+\[\iiint_R f(x,y,z) \dif x \dif y \dif z = \int_{[a_1,b_1] \times [a_2,b_2]} \left(\int_{a_3,b_3} f(x,y,z) \dif x\right) \dif x \dif y\]
+
+\vspace{1em}
+\noindent
+\textbf{Per sezioni}: Sia $R = [a_1,b_1] \times [a_2,b_2] \times [a_3,b_3]$ e sia $f : R \longmapsto \mathbb{R}$ integrabile. Per ogni punto
+\[z \in [a_3,b_3]\]
+si supponga che la funzione
+\[f(\cdot,\cdot,z) : [a_1,b_1] \times [a_2,b_2] \longmapsto \mathbb{R}\]
+sia integrabile. Allora la funzione
+\[g : [a_3,b_3] \longmapsto \mathbb{R}\]
+definita come
+\[g(z) = \int_{[a_1,b_1]\times[a_2,b_2]} f(x,y,z) \dif x \dif y\]
+è integrabile e vale la formula
+\[\int_{[a_3,b_3]} g(z) \dif z = \iint_R f \dif m\]
+per cui in definitiva si ha che
+\[\iiint_R f(x,y,z) \dif x \dif y \dif z = \int_{[a_3,b_3]} \left(\iint_{[a_1,b_1] \times [a_2,b_2]} f(x,y,z) \dif x \dif y\right) \dif z\]
+
+\vspace{1em}
+\noindent
+\textbf{Esempio}: Si consideri il rettangolo seguente $R=[0,1]\times[0,2]\times[0,3]$ e la funzione
+\[f(x,y,z) = x^3 \cdot (y^2 + z)\]
+Si può effettuare l'integrale per corde, per cui
+\[\iiint_R f \dif m = \int_0^1 \left(\iint_{[0,2] \times [0,3]} f(x,y,z) \dif y \dif z\right) \dif x\]
+naturalmente l'integrale doppio interno può essere ulteriormente ridotto, ottenendo
+\[\int_0^1 \left(\int_0^2 \left( \int_0^3 f(x,y,z) \dif z \right) \dif y\right) \dif x\]
+Ora, quindi, si può scrivere
+\[\int_0^1 x^3 \cdot \left(\int_0^2 \left( \int_0^3 y^2 + z \dif z \right) \dif y\right) \dif x = \int_0^1 x^3 \cdot \left(\int_0^2 \left[y^2z + \dfrac{z^2}{2}\right]_0^3 \dif y\right) \dif x\]
+passando al successivo integrale
+\[\int_0^1 x^3 \cdot \left(\int_0^2 3y^2 + \dfrac{9}{2} \dif y\right) \dif x = \int_0^1 x^3 \cdot \left[y^3 + \dfrac{9}{2}y\right]_0^2 \dif x\]
+passando al successivo integrale
+\[\int_0^1 17x^3 \dif x = \dfrac{17}{4}\]
 \end{document}

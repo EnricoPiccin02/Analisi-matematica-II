@@ -45,79 +45,100 @@
 \contentsline {subsection}{\numberline {3.11}Proprietà delle serie di potenze}{58}{}%
 \contentsline {subsection}{\numberline {3.12}Derivabilità delle serie di potenze}{59}{}%
 \contentsline {subsection}{\numberline {3.13}Primo criterio di sviluppabilità}{63}{}%
-\contentsline {subsubsection}{\numberline {3.13.1}Serie binomiale}{66}{}%
-\contentsline {subsection}{\numberline {3.14}Funzioni in $\mathbb {C}$}{67}{}%
-\contentsline {section}{\numberline {4}Topologia di $\mathbb {R}^n$}{69}{}%
-\contentsline {subsection}{\numberline {4.1}Prodotto scalare}{69}{}%
-\contentsline {subsubsection}{\numberline {4.1.1}Norma di un vettore}{70}{}%
-\contentsline {subsubsection}{\numberline {4.1.2}Disuguaglianza di Bumcokowski-Cauchy-Schwarz}{70}{}%
-\contentsline {subsection}{\numberline {4.2}Distanza (metrica)}{72}{}%
-\contentsline {subsection}{\numberline {4.3}Spazio metrico}{73}{}%
-\contentsline {subsection}{\numberline {4.4}Vettori ortogonali}{73}{}%
-\contentsline {subsection}{\numberline {4.5}Palla-aperta}{73}{}%
-\contentsline {subsection}{\numberline {4.6}Intorno}{74}{}%
-\contentsline {subsection}{\numberline {4.7}Proprietà di un intorno}{74}{}%
-\contentsline {subsection}{\numberline {4.8}Punto interno ad un insieme}{75}{}%
-\contentsline {subsection}{\numberline {4.9}Punto isolato}{75}{}%
-\contentsline {subsection}{\numberline {4.10}Corrispondenza tra palla aperta e insieme aperto}{75}{}%
-\contentsline {subsection}{\numberline {4.11}Caratterizzazione di un insieme chiuso}{76}{}%
-\contentsline {subsection}{\numberline {4.12}Punto di frontiera}{76}{}%
-\contentsline {subsection}{\numberline {4.13}Frontiera di un insieme}{77}{}%
-\contentsline {subsection}{\numberline {4.14}Insieme denso}{77}{}%
-\contentsline {subsection}{\numberline {4.15}Insieme limitato}{77}{}%
-\contentsline {subsection}{\numberline {4.16}Diametro di un insieme}{77}{}%
-\contentsline {subsection}{\numberline {4.17}Proprietà di insiemi aperti e chiusi}{78}{}%
-\contentsline {subsection}{\numberline {4.18}Geometria di $\mathbb {R}^n$}{79}{}%
-\contentsline {subsubsection}{\numberline {4.18.1}Retta nel piano $\mathbb {R}^2$}{79}{}%
-\contentsline {subsection}{\numberline {4.19}Curva piana}{80}{}%
-\contentsline {subsubsection}{\numberline {4.19.1}Sostegno di una curva}{81}{}%
-\contentsline {subsection}{\numberline {4.20}Superficie parametrica in $\mathbb {R}^3$}{81}{}%
-\contentsline {subsubsection}{\numberline {4.20.1}Retta in $\mathbb {R}^2$ in forma parametrica}{82}{}%
-\contentsline {subsubsection}{\numberline {4.20.2}Piano in $\mathbb {R}^3$ in forma parametrica}{83}{}%
-\contentsline {subsubsection}{\numberline {4.20.3}Sfera}{83}{}%
-\contentsline {subsection}{\numberline {4.21}Rappresentazione grafica in $\mathbb {R}^n$}{85}{}%
-\contentsline {subsection}{\numberline {4.22}Insieme di livello}{86}{}%
-\contentsline {section}{\numberline {5}Funzioni tra spazi metrici}{87}{}%
-\contentsline {subsection}{\numberline {5.1}Limite di una funzione}{87}{}%
-\contentsline {subsection}{\numberline {5.2}Continuità della norma}{87}{}%
-\contentsline {subsection}{\numberline {5.3}Limite delle componenti}{88}{}%
-\contentsline {subsection}{\numberline {5.4}Successione in $\mathbb {R}^n$}{88}{}%
-\contentsline {subsection}{\numberline {5.5}Caratterizzazione del limite di una funzione usando le successioni}{89}{}%
-\contentsline {subsection}{\numberline {5.6}Teorema sui limiti e sulle funzioni continue}{92}{}%
-\contentsline {subsubsection}{\numberline {5.6.1}Teorema di unicità del limite}{92}{}%
-\contentsline {subsubsection}{\numberline {5.6.2}Teorema sul limite delle restrizioni}{92}{}%
-\contentsline {subsubsection}{\numberline {5.6.3}Teorema sul limite della funzione composta}{93}{}%
-\contentsline {subsubsection}{\numberline {5.6.4}Teorema sul limite della combinazione lineare di funzioni}{93}{}%
-\contentsline {subsection}{\numberline {5.7}Trasformazioni coordinate}{95}{}%
-\contentsline {subsection}{\numberline {5.8}Intervallo e insieme compatto}{96}{}%
-\contentsline {subsubsection}{\numberline {5.8.1}Insieme compatto}{96}{}%
-\contentsline {subsection}{\numberline {5.9}Teorema di caratterizzazione dei compatti in $\mathbb {R}^n$}{98}{}%
-\contentsline {subsection}{\numberline {5.10}Teorema di compattezza}{99}{}%
-\contentsline {subsubsection}{\numberline {5.10.1}Teorema di Weierstrass}{99}{}%
-\contentsline {subsection}{\numberline {5.11}Teorema di Heine-Cantor sulla continuità uniforme}{99}{}%
-\contentsline {subsection}{\numberline {5.12}Insieme connesso per archi}{100}{}%
-\contentsline {subsubsection}{\numberline {5.12.1}Teorema di connessione}{100}{}%
-\contentsline {subsubsection}{\numberline {5.12.2}Teorema di esistenza degli zeri}{101}{}%
-\contentsline {section}{\numberline {6}Calcolo differenziale}{102}{}%
-\contentsline {subsection}{\numberline {6.1}Derivata direzionale}{102}{}%
-\contentsline {subsection}{\numberline {6.2}Derivata parziale}{103}{}%
-\contentsline {subsection}{\numberline {6.3}Funzione differenziabile}{105}{}%
-\contentsline {subsubsection}{\numberline {6.3.1}Teorema di continuità della funzione differenziabile}{106}{}%
-\contentsline {subsubsection}{\numberline {6.3.2}Teorema di esistenza della derivata direzionale}{106}{}%
-\contentsline {subsubsection}{\numberline {6.3.3}Interpretazione geometrica con $n=2$ e $m=1$}{107}{}%
-\contentsline {subsection}{\numberline {6.4}Teorema sulla differenziabilità della combinazione lineare}{107}{}%
-\contentsline {subsection}{\numberline {6.5}Teorema sulla differenziabilità del prodotto}{108}{}%
-\contentsline {subsection}{\numberline {6.6}Teorema sulla differenziabilità della composta}{108}{}%
-\contentsline {subsection}{\numberline {6.7}Seconda proprietà geometrica del gradiente}{112}{}%
-\contentsline {subsection}{\numberline {6.8}Teorema del valor medio per campi scalari}{114}{}%
-\contentsline {subsection}{\numberline {6.9}Teorema del differenziale totale}{115}{}%
-\contentsline {subsection}{\numberline {6.10}Funzioni con derivate nulle}{116}{}%
-\contentsline {subsection}{\numberline {6.11}Derivate di ordine superiore}{118}{}%
-\contentsline {subsection}{\numberline {6.12}Teorema di Schwarz sull'ordine di derivazione delle derivate di ordine superiore}{119}{}%
-\contentsline {subsection}{\numberline {6.13}Differenziale secondo di un campo scalare}{121}{}%
-\contentsline {subsection}{\numberline {6.14}Differenziale secondo}{121}{}%
-\contentsline {subsection}{\numberline {6.15}Approssimante di ordine $k$}{122}{}%
-\contentsline {subsection}{\numberline {6.16}Teorema di esistenza dell'approssimante del secondo ordine}{122}{}%
-\contentsline {subsection}{\numberline {6.17}Criterio di due volte differenziabilità di una funzione}{124}{}%
-\contentsline {subsection}{\numberline {6.18}Ottimizzazione di campi scalari}{125}{}%
-\contentsline {subsection}{\numberline {6.19}Teorema di Fermat (test del gradiente)}{126}{}%
+\contentsline {subsection}{\numberline {3.14}Serie binomiale}{67}{}%
+\contentsline {subsection}{\numberline {3.15}Funzioni in $\mathbb {C}$}{68}{}%
+\contentsline {section}{\numberline {4}Topologia di $\mathbb {R}^n$}{70}{}%
+\contentsline {subsection}{\numberline {4.1}Prodotto scalare}{71}{}%
+\contentsline {subsection}{\numberline {4.2}Norma di un vettore}{72}{}%
+\contentsline {subsection}{\numberline {4.3}Disuguaglianza di Bunyakovsky-Cauchy-Schwarz}{73}{}%
+\contentsline {subsection}{\numberline {4.4}Distanza (metrica)}{76}{}%
+\contentsline {subsection}{\numberline {4.5}Spazio metrico}{77}{}%
+\contentsline {subsection}{\numberline {4.6}Vettori ortogonali}{78}{}%
+\contentsline {subsection}{\numberline {4.7}Palla-aperta e palla-chiusa}{78}{}%
+\contentsline {subsection}{\numberline {4.8}Intorno}{79}{}%
+\contentsline {subsubsection}{\numberline {4.8.1}Proprietà di un intorno}{79}{}%
+\contentsline {subsection}{\numberline {4.9}Punto interno ad un insieme}{80}{}%
+\contentsline {subsection}{\numberline {4.10}Punto isolato}{80}{}%
+\contentsline {subsection}{\numberline {4.11}Corrispondenza tra palla aperta e insieme aperto}{81}{}%
+\contentsline {subsection}{\numberline {4.12}Caratterizzazione di un insieme chiuso}{81}{}%
+\contentsline {subsection}{\numberline {4.13}Punto di frontiera}{82}{}%
+\contentsline {subsection}{\numberline {4.14}Frontiera di un insieme}{82}{}%
+\contentsline {subsection}{\numberline {4.15}Insieme denso}{82}{}%
+\contentsline {subsection}{\numberline {4.16}Insieme limitato}{82}{}%
+\contentsline {subsection}{\numberline {4.17}Diametro di un insieme}{82}{}%
+\contentsline {subsection}{\numberline {4.18}Proprietà di insiemi aperti e chiusi}{83}{}%
+\contentsline {subsection}{\numberline {4.19}Geometria di $\mathbb {R}^n$}{84}{}%
+\contentsline {subsubsection}{\numberline {4.19.1}Retta nel piano $\mathbb {R}^2$}{84}{}%
+\contentsline {subsection}{\numberline {4.20}Curva piana}{85}{}%
+\contentsline {subsubsection}{\numberline {4.20.1}Sostegno di una curva}{86}{}%
+\contentsline {subsection}{\numberline {4.21}Superficie parametrica in $\mathbb {R}^3$}{86}{}%
+\contentsline {subsubsection}{\numberline {4.21.1}Retta in $\mathbb {R}^2$ in forma parametrica}{87}{}%
+\contentsline {subsubsection}{\numberline {4.21.2}Piano in $\mathbb {R}^3$ in forma parametrica}{88}{}%
+\contentsline {subsubsection}{\numberline {4.21.3}Sfera}{88}{}%
+\contentsline {subsection}{\numberline {4.22}Rappresentazione grafica in $\mathbb {R}^n$}{90}{}%
+\contentsline {subsection}{\numberline {4.23}Insieme di livello}{91}{}%
+\contentsline {section}{\numberline {5}Funzioni tra spazi metrici}{92}{}%
+\contentsline {subsection}{\numberline {5.1}Limite di una funzione}{92}{}%
+\contentsline {subsection}{\numberline {5.2}Continuità della norma}{92}{}%
+\contentsline {subsection}{\numberline {5.3}Limite delle componenti}{93}{}%
+\contentsline {subsection}{\numberline {5.4}Successione in $\mathbb {R}^n$}{93}{}%
+\contentsline {subsection}{\numberline {5.5}Caratterizzazione del limite di una funzione usando le successioni}{94}{}%
+\contentsline {subsection}{\numberline {5.6}Teorema sui limiti e sulle funzioni continue}{97}{}%
+\contentsline {subsubsection}{\numberline {5.6.1}Teorema di unicità del limite}{97}{}%
+\contentsline {subsubsection}{\numberline {5.6.2}Teorema sul limite delle restrizioni}{97}{}%
+\contentsline {subsubsection}{\numberline {5.6.3}Teorema sul limite della funzione composta}{98}{}%
+\contentsline {subsubsection}{\numberline {5.6.4}Teorema sul limite della combinazione lineare di funzioni}{98}{}%
+\contentsline {subsection}{\numberline {5.7}Trasformazioni coordinate}{100}{}%
+\contentsline {subsection}{\numberline {5.8}Intervallo e insieme compatto}{101}{}%
+\contentsline {subsubsection}{\numberline {5.8.1}Insieme compatto}{101}{}%
+\contentsline {subsection}{\numberline {5.9}Teorema di caratterizzazione dei compatti in $\mathbb {R}^n$}{103}{}%
+\contentsline {subsection}{\numberline {5.10}Teorema di compattezza}{104}{}%
+\contentsline {subsubsection}{\numberline {5.10.1}Teorema di Weierstrass}{104}{}%
+\contentsline {subsection}{\numberline {5.11}Teorema di Heine-Cantor sulla continuità uniforme}{104}{}%
+\contentsline {subsection}{\numberline {5.12}Insieme connesso per archi}{105}{}%
+\contentsline {subsubsection}{\numberline {5.12.1}Teorema di connessione}{105}{}%
+\contentsline {subsubsection}{\numberline {5.12.2}Teorema di esistenza degli zeri}{106}{}%
+\contentsline {section}{\numberline {6}Calcolo differenziale}{107}{}%
+\contentsline {subsection}{\numberline {6.1}Derivata direzionale}{107}{}%
+\contentsline {subsection}{\numberline {6.2}Derivata parziale}{108}{}%
+\contentsline {subsection}{\numberline {6.3}Funzione differenziabile}{110}{}%
+\contentsline {subsubsection}{\numberline {6.3.1}Teorema di continuità della funzione differenziabile}{111}{}%
+\contentsline {subsubsection}{\numberline {6.3.2}Teorema di esistenza della derivata direzionale}{111}{}%
+\contentsline {subsubsection}{\numberline {6.3.3}Interpretazione geometrica con $n=2$ e $m=1$}{112}{}%
+\contentsline {subsection}{\numberline {6.4}Teorema sulla differenziabilità della combinazione lineare}{112}{}%
+\contentsline {subsection}{\numberline {6.5}Teorema sulla differenziabilità del prodotto}{113}{}%
+\contentsline {subsection}{\numberline {6.6}Teorema sulla differenziabilità della composta}{113}{}%
+\contentsline {subsection}{\numberline {6.7}Seconda proprietà geometrica del gradiente}{117}{}%
+\contentsline {subsection}{\numberline {6.8}Teorema del valor medio per campi scalari}{119}{}%
+\contentsline {subsection}{\numberline {6.9}Teorema del differenziale totale}{120}{}%
+\contentsline {subsection}{\numberline {6.10}Funzioni con derivate nulle}{121}{}%
+\contentsline {subsection}{\numberline {6.11}Derivate di ordine superiore}{123}{}%
+\contentsline {subsection}{\numberline {6.12}Teorema di Schwarz sull'ordine di derivazione delle derivate di ordine superiore}{124}{}%
+\contentsline {subsection}{\numberline {6.13}Differenziale secondo di un campo scalare}{126}{}%
+\contentsline {subsection}{\numberline {6.14}Differenziale secondo}{126}{}%
+\contentsline {subsection}{\numberline {6.15}Approssimante di ordine $k$}{127}{}%
+\contentsline {subsection}{\numberline {6.16}Teorema di esistenza dell'approssimante del secondo ordine}{127}{}%
+\contentsline {subsection}{\numberline {6.17}Criterio di due volte differenziabilità di una funzione}{129}{}%
+\contentsline {subsection}{\numberline {6.18}Ottimizzazione di campi scalari}{130}{}%
+\contentsline {subsection}{\numberline {6.19}Teorema di Fermat (test del gradiente)}{131}{}%
+\contentsline {subsection}{\numberline {6.20}Segno di una forma quadratica}{132}{}%
+\contentsline {subsubsection}{\numberline {6.20.1}Metodo di Jacobi-Sylvester}{132}{}%
+\contentsline {subsection}{\numberline {6.21}Test del differenziale secondo per lo studio dei punti critici}{133}{}%
+\contentsline {subsection}{\numberline {6.22}Problemi di estremo vincolato}{136}{}%
+\contentsline {subsection}{\numberline {6.23}Teorema della funzione implicita (U. Dimi) in dim $n=2$}{138}{}%
+\contentsline {subsubsection}{\numberline {6.23.1}Teorema della funzione implicita (U. Dimi) in dim $n=3$}{140}{}%
+\contentsline {subsubsection}{\numberline {6.23.2}Teorema della funzione implicita (U. Dimi) in dim $n$}{140}{}%
+\contentsline {subsection}{\numberline {6.24}Teorema di derivabilità della funzione implicita}{141}{}%
+\contentsline {subsection}{\numberline {6.25}Teorema di parametrizzazione locale}{141}{}%
+\contentsline {subsection}{\numberline {6.26}Teorema del moltiplicatore di Lagrange per la determinazione dei punti di estremo vincolato ad una curva implicita}{145}{}%
+\contentsline {subsection}{\numberline {6.27}Teorema dei moltiplicatori di Lagrange (caso in $\mathbb {R}$)}{148}{}%
+\contentsline {subsection}{\numberline {6.28}Integrali dipendenti da parametri}{151}{}%
+\contentsline {subsubsection}{\numberline {6.28.1}Teorema sull'integrale}{152}{}%
+\contentsline {subsubsection}{\numberline {6.28.2}Teorema sulla derivata}{152}{}%
+\contentsline {subsection}{\numberline {6.29}Calcolo integrale in $\mathbb {R}^n$}{155}{}%
+\contentsline {subsubsection}{\numberline {6.29.1}Somma superiore e somma inferiore}{155}{}%
+\contentsline {subsubsection}{\numberline {6.29.2}Proprietà degli integrali}{156}{}%
+\contentsline {subsubsection}{\numberline {6.29.3}Integrabilità del valore assoluto}{159}{}%
+\contentsline {subsubsection}{\numberline {6.29.4}Teorema della media}{159}{}%
+\contentsline {subsection}{\numberline {6.30}Teorema di riduzione di Fubini per gli integrali doppi sui rettangoli}{159}{}%
+\contentsline {subsection}{\numberline {6.31}Teorema di Fubini per gli integrali tripli sui $3$-rettangoli per corde e per sezioni}{161}{}%
