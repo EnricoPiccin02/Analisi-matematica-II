@@ -16,6 +16,7 @@
 \usepackage{tabularx}
 \usepackage{pgf-pie}
 \usepackage{tikz}
+\usepackage{tikz-3dplot}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{color, soul}
@@ -3361,8 +3362,25 @@ Si fornisce di seguito la definizione di \textbf{punto interno ad un insieme}:
 
 \vspace{1em}
 \noindent
-\textbf{Osservazione}: Si osservi che chiedere che un punto sia interno ad un insieme è più forte che chiedere che il punto appartenga ad un insieme. Infatti, se $U = [a,b]$, allora $a \in U$, ma $a$ non è interno ad $U$.\\
-Un insieme $A \subseteq X$ è \textbf{aperto} se per ogni $x \in A$, $x$ è interno ad $A$, ossia $A$ è un intorno di ogni suo punto.
+\textbf{Osservazione}: Si osservi che chiedere che un punto sia interno ad un insieme è più forte che chiedere che il punto appartenga ad un insieme. Infatti, se $U = [a,b]$, allora $a \in U$, ma $a$ non è interno ad $U$.
+
+\vspace{1em}
+\noindent
+\subsection{Insieme aperto}
+Si fornisce di seguito la definizione di \textbf{insieme aperto}:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{INSIEME APERTO}}\\
+    \parbox{\linewidth}{Un insieme $A \subseteq X$ è \textbf{aperto} se per ogni $x \in A$, $x$ è interno ad $A$, ossia $A$ è un intorno di ogni suo punto. \vspace{1mm}}\\
+    \hline
+\end{tabularx}
 
 \vspace{1em}
 \noindent
@@ -3378,10 +3396,14 @@ Si fornisce di seguito la definizione di \textbf{punto isolato}:
 \begin{tabularx}{\textwidth}{@{}|P|@{}}
     \hline
     {\textbf{PUNTO ISOLATO}}\\
-    \parbox{\linewidth}{Un punto $x \in X$ si dice isolato in $E \subseteq X$ se $x \in E$ ed esiste $\mathcal{B}(x,r)$ tale che $\mathcal{B}(x,r) \cap E = \{x\}$. \vspace{3mm}}\\
+    \parbox{\linewidth}{Un punto $x \in X$ si dice isolato in $E \subseteq X$ se $x \in E$ ed esiste $\mathcal{B}(x,r)$ tale che $\mathcal{B}(x,r) \cap E = \{x\}$. \vspace{1mm}}\\
     \hline
 \end{tabularx}
 
+\vspace{1em}
+\noindent
+\subsection{Punto di accumulazione}
+Si fornisce di seguito la definizione di \textbf{punto di accumulazione}:
 
 % Tabella per le definizione di concetti, etc...
 \vspace{1em}
@@ -3392,9 +3414,14 @@ Si fornisce di seguito la definizione di \textbf{punto isolato}:
 \begin{tabularx}{\textwidth}{@{}|P|@{}}
     \hline
     {\textbf{PUNTO DI ACCUMULAZIONE}}\\
-    \parbox{\linewidth}{Sia $E \subseteq X$. Un punto $x \in X$ si dice \textbf{punto di accumulazione} di $E$ se per ogni intorno $U$ di $x$ esiste $y \in U \cap E$, $y \neq x$. \vspace{3mm}}\\
+    \parbox{\linewidth}{Sia $E \subseteq X$. Un punto $x \in X$ si dice \textbf{punto di accumulazione} di $E$ se per ogni intorno $U$ di $x$ esiste $y \in U \cap E$, $y \neq x$ (da notare che non necessariamente $x \in E$). \vspace{3mm}}\\
     \hline
 \end{tabularx}
+
+\newpage
+\noindent
+\subsection{Chiusura di un insieme}
+Si fornisce di seguito la definizione di \textbf{chiusura di un insieme}:
 
 % Tabella per le definizione di concetti, etc...
 \vspace{1em}
@@ -3406,14 +3433,15 @@ Si fornisce di seguito la definizione di \textbf{punto isolato}:
     \hline
     {\textbf{CHIUSURA DI UN INSIEME}}\\
     \parbox{\linewidth}{Sia $E \subseteq X$, si chiama chiusura di $E$ l'insieme
-    \[\overline{E} = E \cup \{\text{punto di accumulazione di } E\}\]
+    \[\overline{E} = E \cup \{\text{punti di accumulazione di } E\}\]
     \vspace{-2mm}}\\
     \hline
 \end{tabularx}
 
 \vspace{2em}
 \noindent
-\textbf{Osservazione}: Sia $X$ un insieme, allora $X$ e $\varnothing$ sono sia aperti che chiusi. Tuttavia, in $\mathbb{R}$, per esempio, esistono insiemi che non sono né aperti né chiusi, come $]a,b]$.
+\textbf{Osservazione}: Sia $X$ un insieme, allora $X$ e $\varnothing$ sono sia aperti che chiusi: in particolare $X$ è aperto in quanto essendo tutto lo spazio, è intorno di ogni suo punto; non solo, ma ovviamente è anche chiuso in quanto ogni punto di accumulazione dello stesso appartiene all'insieme, essendo tutto lo spazio. Analogamente, per $\varnothing$, esso è aperto in quanto intorno di ogni suo punto, ma non essendoci punti, ciò è immediato; inoltre è chiuso in quanto contiene tutti i suoi punti di accumulazione, ma non avendo punti, non vi possono essere punti di accumulazione.\\
+Tuttavia, in $\mathbb{R}$, per esempio, esistono insiemi che non sono né aperti né chiusi, come l'intervallo semi-aperto $]a,b]$.
 
 \vspace{1em}
 \noindent
@@ -3422,35 +3450,79 @@ Si fornisce di seguito la definizione di \textbf{punto isolato}:
 Tale serie può essere studiata andando a calcolare la corrispondente serie dei moduli, ottenendo
 \[\left \vert \frac{2n+i}{3^n-n \cdot i} \right \vert = \frac{\vert 2n+i \vert}{\vert 3^n-n \cdot i \vert} = \frac{\sqrt{4n^2+1}}{\sqrt{9^n+n^2}}\]
 Appare immediatamente evidente che tale termine abbia ordine di infinitesimo soprareale, per cui è necessariamente convergente.\\
-Oppure può essere considerato anche il criterio del rapporto, per cui
-%\[\dfrac{\dfrac{\sqrt{4(n+1)^2+1}}{\sqrt{9^(n+1)+(n+1)^2}}}{}\] 
+Oppure, per dimostrare la convergenza, può essere considerato anche il criterio del rapporto, per cui si osserva che
+\[\lim_{n \to +\infty} \dfrac{a_{n+1}}{a_n} = \lim_{n \to +\infty} \dfrac{\dfrac{\sqrt{4(n+1)^2+1}}{\sqrt{9^{n+1}+(n+1)^2}}}{\dfrac{\sqrt{4n^2+1}}{\sqrt{9^n+n^2}}} = \lim_{n \to +\infty} \sqrt{\dfrac{4(n+1)^2+1}{9^{n+1}+(n+1)^2} \cdot \dfrac{9^n+n^2}{4n^2+1}}\]
+Ovviamente tale espressione può essere semplificata, ottenendo
+\[\lim_{n \to +\infty} \dfrac{4n^2 \cdot \left[\left(1+\dfrac{1}{n}\right)^2 + \dfrac{1}{4n^2} \right]}{4n^2 \cdot \left[1+\dfrac{1}{4n^2}\right]} \cdot \dfrac{9^n \cdot \left[1+\dfrac{n^2}{9^n}\right]}{9^{n+1} \cdot \left[1+\dfrac{(n+1)^2}{9^{n+1}}\right]} = 1 \cdot \dfrac{1}{9} < 1\]
+per cui converge.
 
 \vspace{1em}
 \noindent
-\subsection{Corrispondenza tra palla aperta e insieme aperto}
-Una palla aperta è un insieme aperto.
+Se si volesse studiare la parte reale e la parte immaginaria, si dovrebbe spezzare la frazione, considerando
+\[\frac{2n+i}{3^n-n \cdot i} \cdot \dfrac{3^n+n \cdot i}{3^n + n \cdot i} = \dfrac{3^n \cdot 2n + 2n^2 \cdot i + 3^n \cdot i - n}{9^n + n^2} = \dfrac{3^n \cdot 2n - n}{9^n + n^2} + \dfrac{3^n + 2n^2}{9^n + n^2} \cdot i\]
+Siccome sia parte reale che parte immaginaria convergono a zero come $3^{-n}$, ossia con ordine di infinitesimo soprareale, la serie di partenza converge.
+
+\vspace{1em}
+\noindent
+\subsection{Corrispondenza tra palla-aperta e insieme aperto}
+È stata data la definizione di palla-aperta in uno spazio metrico, ossia l'insieme dei punti che distano da un centro $x_0$ meno di un certo raggio $r$. Si è poi fornita la definizione di insieme aperto, ossia l'insieme che è intorno di ogni suo punto; la corrispondenza è presto dimostrabile:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{CORRISPONDENZA TRA PALLA-APERTA E INSIEME APERTO}}\\
+    \parbox{\linewidth}{Una palla aperta è un insieme aperto.
+    \vspace{3mm}}\\
+    \hline
+\end{tabularx}
 
 % Formattazione per la dimostrazione, etc.
 \vspace{2em}
 \noindent
 \normalfont \normalsize
-\textsc{Dimostrazione}: Si consideri uno spazio metrico generale $X,d$. Sia, allora, una palla aperta $\mathcal{B}(x_0,r)$ di centro $x_0$ e raggio $r \in \mathbb{R}^+$.\\
-Si vuole dimostrare che che $\forall x_1 \in \mathcal{B}(x_0,r) \hspace{1em} \exists \mathcal{B}_1(x_1,\rho) \subseteq \mathcal{B}(x_0,r)$.\\
-Dal momento che $r-d(x_1,x_0) > 0$, si definisce $\rho > 0$ che presenta la seguente proprietà $\rho < r - d(x_1,x_2)$. Si verifichi, ora, che $\mathcal{B}_1 \subseteq \mathcal{B}$, ovvero dato $x \in \mathcal{B}$ deve essere che $x \in \mathcal{B}$.\\
-Per quanto assunto in precedenza, si ha che $d(x,x_1) < \rho < r-d(x_1,x_0)$. Allora si ha che
+\textsc{Dimostrazione}: Si consideri uno spazio metrico generale $X,d$. Sia, allora, una palla-aperta $\mathcal{B}(x_0,r)$ di centro $x_0$ e raggio $r \in \mathbb{R}^+$. Per dimostrare che tale palla-aperta corrisponde ad un insieme aperto, si deve dimostrare che 
+\[\forall x_1 \in \mathcal{B}(x_0,r) \hspace{1em} \exists \mathcal{B}_1(x_1,\rho) \subseteq \mathcal{B}(x_0,r)\]
+ovvero che la palla-aperta di partenza è intorno di ogni $x_1$.\\
+Dal momento che $ x_1 \in \mathcal{B}(x_0,r)$, per definizione stessa di palla-aperta si ha che
+\[d(x_1,x_0) < r \hspace{1em} \rightarrow \hspace{1em} r-d(x_1,x_0) > 0\]
+Si definisce, allora, $\rho > 0$ che presenta la seguente proprietà $\rho < r - d(x_1,x_2)$. Si verifichi, ora, che $\mathcal{B}_1(x_1,\rho) \subseteq \mathcal{B}(x_0,r)$, ovvero dato un qualunque $x \in \mathcal{B}_1$ deve essere che $x \in \mathcal{B}$.\\
+Per quanto assunto in precedenza e per definizione di palla, preso $x \in \mathcal{B}_1(x_1,\rho)$ si ha che,
+\[d(x,x_1) < \rho < r-d(x_1,x_0)\]
+Allora si ha che
 \[d(x,x_0) \leq d(x,x_1) + d(x_1,x_0) < r - d(x_1,x_0)+d(x_1,x_0) = r\]
 
 \vspace{1em}
 \subsection{Caratterizzazione di un insieme chiuso}
-$E \subseteq X$ è un insieme chiuso \textbf{se e solo se}l'insieme complementare $X-E$ è aperto in $X$.
+Si espone di seguito il \textbf{teorema di caratterizzazione di un insieme chiuso}:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{CARATTERIZZAZIONE DI UN INSIEME CHIUSO}}\\
+    \parbox{\linewidth}{$E \subseteq X$ è un insieme chiuso \textbf{se e solo se} l'insieme complementare $X-E$ è aperto in $X$.
+    \vspace{3mm}}\\
+    \hline
+\end{tabularx}
 
 % Formattazione per la dimostrazione, etc.
 \vspace{2em}
 \noindent
 \normalfont \normalsize
-\textsc{Dimostrazione 1}: Sia $E$ un insieme chiuso e si consideri $x_0 \in X-E$. Ovviamente $x_0 \notin E$, per cui non può essere un punto di accumulazione per $E$, in quanto esso è un insieme chiuso e, quindi, contiene tutti i suoi punti di accumulazione.\\
-Se $x_0$ fosse un punto di accumulazione, per definizione, $\forall U$ intorno di $x_0$, dovrebbe $\exists y \neq x_0$ tale che $y \in U \cap E$.\\
-Pertanto, non essendo $x_0$ punto di accumulazione per $E$, significa che $\exists \mathcal{B}(x_0,\epsilon)$, con $\epsilon>0$ tale che $\mathcal{B} \subset X - E$.
+\textsc{Dimostrazione 1}: Sia $E$ un insieme chiuso e si dimostri che $X-E$ è aperto in $X$.\\
+Si consideri, allora, $x_0 \in X-E$. Ovviamente, per definizione di complementare, $x_0 \notin E$, per cui non può essere un punto di accumulazione per $E$, in quanto esso è un insieme chiuso e, quindi, contiene tutti i suoi punti di accumulazione.\\
+Se $x_0$ fosse un punto di accumulazione per $E$, per definizione, $\forall U$ intorno di $x_0$, dovrebbe $\exists y \neq x_0$ tale che $y \in U \cap E$. Essendo ciò falso, ovvero $x_0$ non è punto di accumulazione pe $E$, $\exists U$ intorno di $x_0$ tale per cui $\forall y \neq x_0$ si ha che $y \notin U \cap E$, ossia $U \cap E = \varnothing$.\\
+Ciò significa, quindi, che non essendo $x_0$ punto di accumulazione per $E$, $\exists \mathcal{B}(x_0,\epsilon)$, con $\epsilon>0$ tale che $\mathcal{B} \subset X - E$.\\
+Ciò dimostra, quindi, che $\forall x_0 \in X-E$, l'insieme $X-E$ è intorno di $x_0$, ossia $X-E$ è aperto.
 
 % Formattazione per la dimostrazione, etc.
 \vspace{2em}
@@ -3458,25 +3530,28 @@ Pertanto, non essendo $x_0$ punto di accumulazione per $E$, significa che $\exis
 \normalfont \normalsize
 \textsc{Dimostrazione 2}: Sia $X - E$ un insieme aperto, si dimostri che $E$ è chiuso.\\
 Siccome $X-E$ è aperto, si ha che
-\[\forall x_1 \in X - E, \hspace{0.5em} \exists \mathcal{B}(x,\epsilon) \text{ con } \epsilon>0 \text{ tale che } \mathcal{B} \subset X - E\]
-Siccome $\mathcal{B} \cap E = \varnothing$, $x$ non è punto di accumulazione per $E$ e, siccome ciò significa che $E$ contiene tutti i suoi punti di accumulazione, $E$ è chiuso.
+\[\forall x_1 \in X - E, \hspace{0.5em} \exists \mathcal{B}(x_1,\epsilon) \text{ con } \epsilon>0 \text{ tale che } \mathcal{B}(x_1,\epsilon) \subset X - E\]
+Siccome $\mathcal{B}(x_1,\epsilon) \cap E = \varnothing$, $x_1$ non è punto di accumulazione per $E$; ciò significa che $E$ contiene tutti i suoi punti di accumulazione, per cui $E$ è chiuso.
 
 \vspace{2em}
 \noindent
-\textbf{Esercizio}: Si provi che ogni insieme del tipo $]a,b[ \times ]c,d[$ con $a<b$ è aperto in $\mathbb{R}^n$.\\
+\textbf{Esercizio}: Si provi che ogni insieme del tipo $]a,b[ \times ]c,d[$ con $a<b$ è aperto in $\mathbb{R}^n$.
 
 % Formattazione per la dimostrazione, etc.
 \vspace{2em}
 \noindent
 \normalfont \normalsize
 \textsc{Dimostrazione}: Si consideri $A=]a,b[$ e $B=]c,d[$, per cui
-\[C=A \times B = \{(x,y) \in \mathbb{R}^2 \text{ tale che } x \in A, y \in B\}\]
-Si vuole dimostrare che $\forall (x,y) \in C, \exists r > 0$ tale che
-\[\mathcal{B} \left((x,y), r\right) \subset C\]
-Allora si considera un punto d coordinate $(x,y)$, con $a<x<b$ e $c<y<d$, allora si può prendere $r_1>0$ e $r_2>0$ tale che
+\[C=A \times B = \{(x,y){^T} \in \mathbb{R}^2 \text{ tale che } x \in A, y \in B\}\]
+Si vuole dimostrare che $\forall (x,y){^T} \in C, \exists r > 0$ tale che
+\[\mathcal{B} \left((x,y){^T}, r\right) \subseteq C\]
+Allora si considera un punto d coordinate $(x,y){^T}$, con $a<x<b$ e $c<y<d$, allora si può prendere $r_1>0$ e $r_2>0$ tale che
 \[a < x-r_1 < x < x+r_1 < b \hspace{1em} \text{e} \hspace{1em} c < y-r_2 < y < y+r_2 < d\]
-Si considera, poi $r = \min(r_1,r_2)$, affinché si possa costruire un quadrato di lato $l=2r$.\\
-... continua ...
+Si considera, poi $r = \min(r_1,r_2)$, affinché si possa costruire un quadrato di lato $l=2r$, il quale presenta i vertici collocati nei punti
+\[A=(x-r,y-r) \hspace{1em} B=(x+r,y-r) \hspace{1em} C=(x+r,y+r) \hspace{1em} D=(x-r,y+r)\]
+Pertanto, la palla $\mathcal{B}((x,y){^T},r)$ risulta inscritta nel quadrato appena considerato e, di conseguenza, si ha che
+\[\mathcal{B}((x,y){^T},r) \subseteq C\]
+e ciò vale $\forall (x,y){^T} \in C$.
 
 \vspace{1em}
 \noindent
@@ -3494,7 +3569,8 @@ Si espone di seguito la definizione di \textbf{punto di frontiera}:
     {\textbf{PUNTO DI FRONTIERA}}\\
     \parbox{\linewidth}{Sia $E \subseteq X$; allora, preso $x \in X$, si dice punto di frontiera di $E$ se per ogni intorno $U$ di $x$ esiste
     \[y_1 \in U \cap E \hspace{1em} \text{e} \hspace{1em} y_2 \in U - E\]
-    \vspace{-1mm}}\\
+    cioè in ogni intorno vi è almeno un punto che sta in $E$ e almeno un punto che non sta in $E$; da notare che $x$ stesso può stare in $E$ come no.
+    \vspace{3mm}}\\
     \hline
 \end{tabularx}
 
@@ -3517,8 +3593,7 @@ Si espone di seguito la definizione di \textbf{frontiera di un insieme}:
     \hline
 \end{tabularx}
 
-
-\vspace{1em}
+\newpage
 \noindent
 \subsection{Insieme denso}
 Si espone di seguito la definizione di \textbf{insieme denso}:
@@ -3532,10 +3607,16 @@ Si espone di seguito la definizione di \textbf{insieme denso}:
 \begin{tabularx}{\textwidth}{@{}|P|@{}}
     \hline
     {\textbf{INSIEME DENSO}}\\
-    \parbox{\linewidth}{
-    \vspace{-1mm}}\\
+    \parbox{\linewidth}{Sia $E \subseteq X$; allora $D \subseteq E$ si dice denso in $E$ se $E \subseteq \overline{D}$, ossia $E$ è formato dai punti di accumulazione di $D$.
+    \vspace{3mm}}\\
     \hline
 \end{tabularx}
+
+\vspace{2em}
+\noindent
+\textbf{Esempio}: Per esempio, l'insieme dei numeri razionali è denso nell'insieme dei numeri reali, infatti
+\[\mathbb{R} \subseteq \overline{\mathbb{Q}} \hspace{1em} \text{in quanto} \hspace{1em} \overline{\mathbb{Q}} = \mathbb{R}\]
+Questo perché $\overline{\mathbb{Q}}$ è dato dall'unione di $\mathbb{Q}$ con tutti i suoi punti di accumulazione che, evidentemente, sono tutti i numeri reali.
 
 \vspace{1em}
 \noindent
@@ -3551,7 +3632,7 @@ Si espone di seguito la definizione di \textbf{insieme limitato}:
 \begin{tabularx}{\textwidth}{@{}|P|@{}}
     \hline
     {\textbf{INSIEME LIMITATO}}\\
-    \parbox{\linewidth}{Sia $E \subseteq X$. Allora $E$ si dice \textbf{limitato} se esiste $\mathcal{B}(x_0,r) \subseteq X$ tale che $E \subseteq \mathcal{B}(x_0,r)$.
+    \parbox{\linewidth}{Sia $E \subseteq X$. Allora $E$ si dice \textbf{limitato} se esiste $\mathcal{B}(x_0,r) \subseteq X$ tale che $E \subseteq \mathcal{B}(x_0,r)$, per qualunque $x_0 \in X$ e $r>0$.
     \vspace{3mm}}\\
     \hline
 \end{tabularx}
@@ -3571,14 +3652,14 @@ Si espone di seguito la definizione di \textbf{diametro di un insieme}:
     \hline
     {\textbf{DIAMETRO DI UN INSIEME}}\\
     \parbox{\linewidth}{Sia $E \subseteq X$. Allora si chiama diametro di $E$
-    \[\text{dim } E = \sup \{d(x,y), x,y \in E\}\]
-    \vspace{-1mm}}\\
+    \[\text{diam } E = \sup \{d(x,y), x,y \in E\}\]
+    \vspace{-3mm}}\\
     \hline
 \end{tabularx}
 
 \vspace{2em}
 \noindent
-\textbf{Osservazione}: Un insieme $E$ è limitato \textbf{se e solo se} dim $E$ è finito.
+\textbf{Osservazione}: Un insieme $E$ è limitato \textbf{se e solo se} diam $E$ è finito.
 
 \newpage
 \begin{center}
@@ -3602,10 +3683,10 @@ Si espongono di seguito le proprietà di insiemi aperti e chiusi:
     {\textbf{PROPRIETÀ DI INSIEMI APERTI E CHIUSI}}\\
     \parbox{\linewidth}{Gli insiemi aperti e chiusi soddisfano le proprietà seguenti:
     \begin{enumerate}
-        \item L'unione di insiemi aperti è aperta
-        \item L'intersezione di insiemi aperti è aperta
-        \item L'unione di insiemi chiusi è chiusa
-        \item L'intersezione di insiemi chiusi è chiusa
+        \item l'unione arbitraria di insiemi aperti è un insieme aperto;
+        \item l'intersezione \textbf{finita} di insiemi aperti è un insieme aperto;
+        \item l'unione arbitraria di insiemi chiusi è un insieme chiuso;
+        \item l'intersezione \textbf{finita} di insiemi chiusi è un insieme chiuso.
     \end{enumerate}
     \vspace{1mm}}\\
     \hline
@@ -3617,29 +3698,29 @@ Si espongono di seguito le proprietà di insiemi aperti e chiusi:
 \normalfont \normalsize
 \textsc{Dimostrazione 1}: Sia
 \[A=\bigcup_{i \in I} A_i\]
-con $I$ insiemi di indici arbitrari tale che $A$ è aperto. Allora si osserva che
-\[\forall x \in A, \exists i \in I \text{ tale che } x \in A_i\]
-quindi
-\[\exists r > 0 \text{ tale che } \mathcal{B}(x,r) \subset A_i \subset A\]
+con $I$ insieme di indici arbitrari tale che $A_i$ è aperto, $\forall i \in I$. Allora si osserva che
+\[\forall x \in A, \hspace{1em} \exists i \in I \hspace{1em} \text{ tale che } \hspace{1em} x \in A_i\]
+ma essendo $A_i$ aperto per ipotesi, esiste una palla di centro $x$ e raggio opportuno contenuta in $A_i$, ossia
+\[\exists r > 0  \hspace{1em} \text{ tale che } \hspace{1em} \mathcal{B}(x,r) \subseteq A_i \subseteq A\]
+in quanto per ipotesi $A$ è l'unione di tutti gli $A_i$.
 
 % Formattazione per la dimostrazione, etc.
 \vspace{2em}
 \noindent
 \normalfont \normalsize
-\textsc{Dimostrazione 2}: Sia
+\textsc{Dimostrazione 2}: Per dimostrare che l'intersezione finita di insiemi aperti è un insieme aperto, è sufficiente considerare l'intersezione di due soli insiemi in quanto, poi, per un numero maggiore di insiemi, sarà sufficiente prenderli a due a due per dimostrare la tesi (per $3$ insiemi, per esempio, si considera l'intersezione dei primi due e poi l'intersezione tra la prima intersezione e il terzo insieme). Sia, allora
 \[A=A_1 \cap A_2\]
-con $A_1$ e $A_2$ aperti. Allora $\forall x \in A$ si ha che $x \in A_1$ e $x \in A_2$.\\
-Visto che $x \in A_1$
-\[\exists r_1 > 0 \text{ tale che } \mathcal{B}(x,r_1) \subset A_1\]
-Similmente, visto che $x \in A_2$
-\[\exists r_2 > 0 \text{ tale che } \mathcal{B}(x,r_2) \subset A_2\]
-Sarà ora sufficiente considerare $r=\min\{r_1,r_2\}$ per evincere che
-\[\mathcal{B}(x,r) \subset A\]
+con $A_1$ e $A_2$ aperti. Allora $\forall x \in A$ si ha che $x \in A_1$ e $x \in A_2$, per definizione di intersezione. Pertanto, visto che $x \in A_1$, con $A_1$ insieme aperto, si ha che
+\[\exists r_1 > 0 \hspace{1em} \text{ tale che } \hspace{1em} \mathcal{B}(x,r_1) \subseteq A_1\]
+Similmente, visto che $x \in A_2$, con $A_2$ insieme aperto, si ha che
+\[\exists r_2 > 0 \hspace{1em} \text{ tale che } \hspace{1em} \mathcal{B}(x,r_2) \subseteq A_2\]
+Sarà ora sufficiente considerare $r=\min\{r_1,r_2\}$ (che esiste necessariamente in quanto si ha una un'\textbf{intersezione finita} di elementi) per evincere che
+\[\mathcal{B}(x,r) \subseteq A\]
 per cui $A$ è aperto.
 
 \vspace{1em}
 \noindent
-\textbf{Osservazione}: Nel caso di un numero infinito di insiemi, non può essere utilizzata tale dimostrazione, in quanto non è detto che esista il minimo dei raggi.
+\textbf{Osservazione}: Nel caso di un'intersezione di un numero infinito di insiemi, non può essere utilizzata tale dimostrazione, in quanto non è detto che esista il minimo dei raggi.
 
 % Formattazione per la dimostrazione, etc.
 \vspace{2em}
@@ -3647,92 +3728,127 @@ per cui $A$ è aperto.
 \normalfont \normalsize
 \textsc{Dimostrazione 3}: Sia
 \[C = \bigcap_{i \in I} C_i\]
-con $C_i$ aperto. Allora è ovvio che
+con $C_i$ chiuso. Allora è ovvio che
 \[X-C=\bigcup_{i \in I} X - C_i\]
-che è ovviamente chiuso.
-... continua ...
-
-\vspace{2em}
-\noindent
-\textbf{Esercizio 1}: Si dimostri che esiste l'intersezione di aperti che non è aperto. È infatti possibile considerare
-\[\left(\mathcal{B} \left(x,\frac{1}{n}\right)\right)_n\]
-che corrisponde a
-\[\bigcap_{n \in \mathcal{N}} \mathcal{B} \left(x,\frac{1}{n}\right) = \{x\}\]
-
-\vspace{2em}
-\noindent
-\textbf{Esercizio 2}: È noto che $\mathbb{Q}$ è denso in $\mathbb{R}$, in quanto $\overline{\mathbb{Q}}$. Si deve provare che
-\[\overline{\mathbb{Q} \times \mathbb{Q}} = \mathbb{R} \times \mathbb{R}\]
-ovvero che ogni insieme aperto di $\mathbb{R}^2$ contiene un punto $\left(p,q\right){^T}$ con $p,q \in \mathbb{Q}$
+è aperto, in quanto unione di $X-C_i$ aperti e per quanto già visto nel primo punto dimostrato, l'unione di aperti è aperta. Ma se $X-C$ è aperto, allora il suo complementare è chiuso, da cui $C$ di partenza è chiuso, come volevasi dimostrare.
 
 % Formattazione per la dimostrazione, etc.
 \vspace{2em}
 \noindent
 \normalfont \normalsize
-\textsc{Dimostrazione}: Sia dato un insieme $A$ è aperto. Allora si ha che
-\[\forall (x,y){^T} \in A, \exists r > 0 \text{ tale che } \mathcal{B}((x,y){^T}, r) \subset A\]
-per definizione stessa di aperto. Si consideri allora il quadrato inscritto nella palla presa in considerazione, i cui vertici sono $a$ e $b$, con $a < b$ e $c$ e $d$, con $c < d$. Ma per il teorema di densità di $\mathbb{Q}$ in $\mathbb{R}$ è noto che $\exists q \in ]a,b[ \cap \mathbb{Q}$ e, similmente, $\exists p \in ]c,d[ \cap \mathbb{Q}$.\\
-Ciò dimostra che se un insieme $D$ è denso in $\mathbb{R}$, ovvero $\overline{D} = \mathbb{R}$, allora anche il prodotto cartesiano $D \times D$ è denso in $\mathbb{R} \times \mathbb{R}$, ovvero $\overline{D} \times \overline{D} = \mathbb{R} \times \mathbb{R}$.
+\textsc{Dimostrazione 4}: Sia
+\[C = \bigcup_{i \in I} C_i\]
+con $C_i$ chiuso. Allora è ovvio che
+\[X-C=\bigcap_{i \in I} X - C_i\]
+è aperto, in quanto intersezione di $X-C_i$ aperti e per quanto già visto nel secondo punto dimostrato, l'intersezione di aperti è aperta. Ma se $X-C$ è aperto, allora il suo complementare è chiuso, da cui $C$ di partenza è chiuso, come volevasi dimostrare.
+
+\vspace{2em}
+\noindent
+\textbf{Esercizio 1}: Si dimostri che esiste l'intersezione di aperti che non è un insieme aperto. Ovviamente, siccome si è appena dimostrato che l'intersezione finita di aperti è aperta, l'unica possibilità è quella di considerare un'intersezione infinita. È infatti possibile definire la successione seguente
+\[\left(\mathcal{B} \left(x,\frac{1}{n}\right)\right)_n\]
+allora se si considera l'intersezione infinita
+\[\bigcap_{n \in \mathbb{N}} \mathcal{B} \left(x,\frac{1}{n}\right) = \{x\}\]
+ma ovviamente $\{x\}$ è un insieme chiuso.
+
+\vspace{2em}
+\noindent
+\textbf{Esercizio 2}: È noto che $\mathbb{Q}$ è denso in $\mathbb{R}$, in quanto $\overline{\mathbb{Q}}=\mathbb{R}$. Si deve provare che
+\[\overline{\mathbb{Q} \times \mathbb{Q}} = \mathbb{R} \times \mathbb{R}\]
+Affermare ciò significa che ogni insieme aperto di $\mathbb{R}^2$ contiene un punto $\left(p,q\right){^T}$ con $p,q \in \mathbb{Q}$.
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Sia dato un insieme $A$ aperto. Allora si ha che, per definizione di insieme aperto
+\[\forall (x,y){^T} \in A \hspace{1em} \exists r > 0 \hspace{1em} \text{ tale che } \hspace{1em} \mathcal{B}((x,y){^T}, r) \subseteq A\]
+Si consideri, allora, il quadrato inscritto nella palla presa in considerazione, i cui vertici sono $a$ e $b$ (con $a < b$) e $c$ e $d$ (con $c < d$). Per il teorema di densità di $\mathbb{Q}$ in $\mathbb{R}$ è noto che $\exists p \in ]a,b[ \cap \mathbb{Q}$ e, similmente, $\exists q \in ]c,d[ \cap \mathbb{Q}$; pertanto, il punto di coordinate $(p,q){^T}$, ossia coordinate razionali, e appartiene alla palla contenuta nell'aperto $A$ considerato all'inizio.
 
 \vspace{1em}
+\noindent
+\textbf{Osservazione}: Ciò dimostra che se un insieme $D$ è denso in $\mathbb{R}$, ovvero $\overline{D} = \mathbb{R}$, allora anche il prodotto cartesiano $D \times D$ è denso in $\mathbb{R} \times \mathbb{R}$, ovvero $\overline{D} \times \overline{D} = \mathbb{R} \times \mathbb{R}$. Questo perché il ragionamento di cui sopra funziona per qualsiasi insieme $D$, anche non razionale, in quanto si può sempre dire che $\exists p \in ]a,b[ \cap D$ e, similmente, $\exists q \in ]c,d[ \cap D$, con $D$ insieme qualsiasi.
+
+\newpage
 \subsection{Geometria di $\mathbb{R}^n$}
 Si considerino di seguito alcune osservazioni in merito alla geometria in $\mathbb{R}^n$.
 
 \vspace{1em}
 \subsubsection{Retta nel piano $\mathbb{R}^2$}
-È noto che una forma per rappresentare una retta in $\mathbb{R}^2$ è la seguente
+È noto che una modalità di rappresentazione di una retta in $\mathbb{R}^2$ è tramite l'\textbf{equazione cartesiana} seguente
 \[ax+by+c=0\]
-Tuttavia, in forma generale si ottiene che
-\[a \cdot (x-x_0) + b \cdot (y-y_0) = 0\]
-che può essere interpretata come
+Tuttavia, in forma generale si ha l'equazione seguente
+\[a \cdot (x-x_0) + b \cdot (y-y_0) = 0 \hspace{1em} \text{con} \hspace{1em} c=-ax_0-by_0\]
+È facile capire che tale espressione può anche essere interpretata tramite il \textbf{prodotto scalare}, come mostrato di seguito
 \[\left<\left(a,b\right){^T},\left(x-x_0,y-y_0\right){^T}\right> = 0\]
 che equivale ad affermare che
 \[\left(a,b\right){^T} \perp \left(x-x_0,y-y_0\right){^T}\]
+ossia, dato il vettore $\left(a,b\right){^T}$, si cercano tutti i vettori ad esso ortogonali.
 
-\vspace{1em}
+\vspace{2em}
 \noindent
-\textbf{Esempio}: Si consideri un campo scalare del tipo
-\[F(x,y) \leq a \cdot (x-x_0) + b \cdot (y-y_0)\]
-allora una retta è l'insieme degli zeri di tali campo scalare, ovvero
-\[Z_r = \{(x,y){^T} \in \mathbb{R}^2 \text{ tale che } F(x,y) = 0\}\]
-In generale, tuttavia, l'insieme degli zeri di un campo scalare è una curva. Infatti, dato un campo scalare
+\textbf{Osservazione 1}: Si consideri l'equazione seguente
+\[-3x+2y-4=0\]
+allora la direzione ortogonale a tale retta è semplicemente data dal vettore $(-3,2){^T}$. Similmente, nello spazio, si può considerare l'equazione cartesiana del piano seguente
+\[ax+by+cz+d=0\]
+allora una direzione ortogonale a tale piano è ovviamente $(a,b,c){^T}$, in quanto tale equazione cartesiana può essere scritta come
+\[a \cdot (x-x_0) + b \cdot (y-y_0) + c \cdot (z-z_0) = 0 \hspace{1em} \text{con} \hspace{1em} d=-ax_0-by_0-cz_0\]
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione 2}: Si consideri un campo scalare su $\mathbb{R}^2$ del tipo
+\[F(x,y) = a \cdot (x-x_0) + b \cdot (y-y_0)\]
+che è un campo scalare su $\mathbb{R}^2$ in quanto è una funzione definita in $\mathbb{R}^2$ a valori in $\mathbb{R}$. Allora una retta di equazione cartesiana $ax+by+c=0$ è l'insieme degli zeri di tali campo scalare, ovvero
+\[\mathcal{Z}_F = \{(x,y){^T} \in \mathbb{R}^2 \hspace{1em} \text{ tale che } \hspace{1em} F(x,y) = 0\}\]
+per cui una retta è da interpretarsi come luogo degli zeri di un campo scalare in $\mathbb{R}^2$. Similmente per lo spazio, dato un campo scalare su $\mathbb{R}^3$ come il seguente
+\[F(x,y) = a \cdot (x-x_0) + b \cdot (y-y_0) + c \cdot (z-z_0)\]
+allora un piano è il luogo degli zeri di tale funzione
+\[\mathcal{Z}_F = \{(x,y,z){^T} \in \mathbb{R}^3 \hspace{1em} \text{ tale che } \hspace{1em} F(x,y,z) = 0\}\]
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione 3}: In generale, tuttavia, l'insieme degli zeri di un campo scalare è una curva, rappresentata \textbf{in modo implicito} dalla funzione $F$. Infatti, dato un campo scalare
 \[F : A \subseteq \mathbb{R}^2 \longmapsto \mathbb{R}\]
-in cui l'insieme degli zeri sono 
-\[Z_r = \{(x,y){^T} \in \mathbb{R}^2 \text{ tale che } F(x,y) = 0\}\]
-e se
+in cui l'insieme degli zeri è dato da 
+\[\mathcal{Z}_F = \{(x,y){^T} \in \mathbb{R}^2 \hspace{1em} \text{ tale che } \hspace{1em} F(x,y) = 0\}\]
+Allora, se la funzione $F$ è come quella esposta in precedenza, il luogo degli zeri è proprio una retta. Ma se la funzione $F$ è definita come segue
 \[F(x,y) = x^2+y^2-1\]
-allora l'insieme degli $0$ è una circonferenza. Se il campo scalare è da $\mathbb{R}^3$ in $\mathbb{R}$ e si considera
+allora l'insieme degli $0$ $\mathcal{Z}_F$ è una circonferenza di raggio unitario. Se il campo scalare è da $\mathbb{R}^3$ in $\mathbb{R}$, ossia 
+\[F : A \subseteq \mathbb{R}^3 \longmapsto \mathbb{R}\]
+allora il luogo degli zeri è una superficie, sempre rappresentata \textbf{in forma implicita} dalla funzione $F$. Dato, per esempio, il campo scalare seguente
 \[F(x,y,z) = x^2+y^2+z^2+1\]
-allora questo è l'insieme vuoto $\varnothing$.
+allora l'insieme degli zeri di tale funzione è l'insieme vuoto $\varnothing$.
 
-\vspace{1em}
+\vspace{2em}
 \noindent
-Data una retta in forma esplicita:
+\textbf{Osservazione 4}: Data l'equazione cartesiana di una retta, come quella mostrata nel seguito:
 \[ax + by + c = 0\]
-se si chiede $b \neq 0$ si può ottenere
+allora per quanto si è visto, essa può essere rappresentata come luogo degli zeri di un campo scalare da $\mathbb{R}^2$ in $\mathbb{R}$. Tuttavia, anche se non sempre, essa può essere rappresentata come il grafico di una funzione da $\mathbb{R}$ in $\mathbb{R}$: infatti, se si chiede $b \neq 0$ si può ottenere
 \[y=-\frac{a}{b} x - \frac{c}{b}\]
 che rappresenta una funzione
 \[f : \mathbb{R} \longmapsto \mathbb{R}\]
-in cui l'insieme delle soluzioni è il grafico della funzione $f$:
+in cui l'insieme delle soluzioni è il grafico della funzione $f$, esposto di seguito
 \[\mathcal{G}_f = \{(x,f(x)){^T} : x \in \mathbb{R}\}\]
 
-\vspace{1em}
+\vspace{2em}
 \noindent
-Se si considera, ora, un campo scalare su $\mathbb{R}^3$, quale è il seguente
+\textbf{Osservazione 5}: Lo stesso discorso appena formulato vale per le superfici. Infatti, dato un campo scalare su $\mathbb{R}^3$, quale è il seguente
 \[F(x,y,z) = ax+by+cz+d\]
 in cui l'insieme delle soluzioni è
-\[Z_F = \{(x,y,z){^T} \in \mathbb{R}^3 : F(x,y,z) = 0\}\]
-per cui se $c \neq 0$ si può considerare
+\[\mathcal{Z}_F = \{(x,y,z){^T} \in \mathbb{R}^3 : F(x,y,z) = 0\}\]
+allora, per quanto già visto, il luogo degli zeri della funzione $F$ rappresenta il piano di equazione $ax+by+cz+d$.\\
+Adesso, se si suppone $c \neq 0$ si può considerare la funzione (che è un campo scalare su $\mathbb{R}^2$, per cui si abbassa la dimensione)
 \[f : \mathbb{R}^2 \longmapsto \mathbb{R}\]
 definita come
 \[f(x,y)=-\frac{a}{c} x - \frac{b}{c} y - \frac{d}{c}\]
-che, ovviamente, è un piano 
-... continua ...
+il cui grafico, ovviamente, è un piano, definito come 
+\[\mathcal{G}_f = \{(x,y,f(x,y)){^T} : (x,y){^T} \in \mathbb{R}^2\}\]
+Se $c=0$, allora si potrebbe comunque definire una funzione, ma nelle variabili $x,z$ o $y,z$, per esempio.
 
 \vspace{1em}
 \noindent
 \subsection{Curva piana}
-Per quanto esposto in precedenza, è possibile considerare una curva piana
+Quanto esposto in precedenza, naturalmente, vale per rette e piani, ma anche per curve e superfici molto più generali. È immediato capire che il grafico di una funzione in una variabile può essere pensato come una curva nel piano; meno ovvio, invece, è capire che il grafico di una funzione in due variabili può essere interpretato come una superficie nello spazio.\\
+Pertanto, è possibile considerare una curva piana
 \begin{itemize}
     \item come insieme degli zeri di un campo scalare da $\mathbb{R}^2$ in $\mathbb{R}$, della forma
     \[F : A \subseteq \mathbb{R}^2 \longmapsto \mathbb{R}\]
@@ -3740,8 +3856,9 @@ Per quanto esposto in precedenza, è possibile considerare una curva piana
     \[f : E \subseteq \mathbb{R} \longmapsto \mathbb{R}\]
     \item in forma parametrica, della forma
     \[\gamma : I \subseteq \mathbb{R} \longmapsto \mathbb{R}^2\]
+    con $I$ un intervallo.
 \end{itemize}
-L'ultima modalità permette di fornire la definizione di \textbf{curva}:
+L'ultima modalità di rappresentazione permette di fornire la definizione di \textbf{curva}:
 
 % Tabella per le definizione di concetti, etc...
 \vspace{1em}
@@ -3769,14 +3886,27 @@ con
 \vspace{1em}
 \noindent
 \subsubsection{Sostegno di una curva}
-L'insieme $\gamma(I) \subset \mathbb{R}^n$ si dice sostegno della curva, ovvero l'insieme immagine.
+Si presti attenzione che per curva, nella definizione precedente, è da intendersi la funzione $\gamma$ e non il suo grafico. Per distinguere le due cose si fornisce la definizione di \textbf{sostegno di una curva}:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{SOSTEGNO DI UNA CURVA}}\\
+    \parbox{\linewidth}{L'insieme $\gamma(I) \subset \mathbb{R}^n$ si dice \textbf{sostegno della curva}, ovvero l'insieme immagine. \vspace{3mm}}\\
+    \hline
+\end{tabularx}
 
 \vspace{1em}
 \noindent
-\textbf{Esempio}: La curva seguente
+\textbf{Esempio}: La curva in $\mathbb{R}^3$ seguente
 \[\gamma : [0,4\pi] \longmapsto \mathbb{R}^3\]
 definita come
-\[\gamma(t) = \left(\cos(t),\sin(t),t\right){^T}\]
+\[\gamma(t) = \left(t \cdot \cos(t),t \cdot \sin(t),t\right){^T}\]
 è un'elica.
 
 \vspace{1em}
@@ -3785,7 +3915,7 @@ definita come
 \[f : \mathbb{R} - \{0\} \longmapsto \mathbb{R}^3 \hspace{1em} \text{ con } \hspace{1em} f(t)=\left(\frac{1}{t^2},1\right){^T}\]
 e
 \[g : \mathbb{R} \longmapsto \mathbb{R}^3 \hspace{1em} \text{ con } \hspace{1em} g(t)=\left(e^t,1\right){^T}\]
-presentano il medesimo sostegno.
+presentano il medesimo sostegno, ossia la semiretta positiva $y=1$ che non è definita in $x=0$.
 
 \vspace{1em}
 \noindent
@@ -3797,7 +3927,7 @@ Per quanto esposto in precedenza, è possibile considerare una superficie piana
     \item come grafico di una funzione
     \[f : E \subseteq \mathbb{R}^2 \longmapsto \mathbb{R}\]
     \item in forma parametrica, della forma
-    \[\gamma : I \subseteq \mathbb{R} \longmapsto \mathbb{R}^3\]
+    \[\gamma : \Omega \subseteq \mathbb{R}^2 \longmapsto \mathbb{R}^3\]
 \end{itemize}
 L'ultima modalità permette di fornire la definizione di \textbf{superficie parametrica}:
 
@@ -3809,82 +3939,127 @@ L'ultima modalità permette di fornire la definizione di \textbf{superficie para
 \noindent
 \begin{tabularx}{\textwidth}{@{}|P|@{}}
     \hline
-    {\textbf{CURVA}}\\
+    {\textbf{SUPERFICIE PARAMETRICA}}\\
     \parbox{\linewidth}{Si chiama \textbf{superficie parametrica in $\bf{\mathbb{R}^3}$} una \textbf{funzione}
     \[\gamma : \Omega \subseteq \mathbb{R}^2 \longmapsto \mathbb{R}^3\]
-    con
+    con $\Omega$ intervallo regolare (come un aperto) e con
     \[\gamma(s,t) = \left(x(s,t),y(s,t),z(s,t)\right){^T}\]
-    in cui il sostegno della superficie è l'insieme immagine $\gamma(\Omega) \subset \mathbb{R}^3$ \vspace{3mm}}\\
+    in cui il \textbf{sostegno della superficie} è l'insieme immagine $\gamma(\Omega) \subset \mathbb{R}^3$. \vspace{3mm}}\\
     \hline
 \end{tabularx}
 
 \vspace{2em}
 \noindent
-\subsubsection{Retta in $\mathbb{R}^2$ in forma parametrica}
+\subsection{Retta in $\mathbb{R}^2$ in forma parametrica}
 Una retta in $\mathbb{R}^2$ viene parametrizzata tramite la seguente funzione $\gamma$:
-\[\gamma : I \subseteq \mathbb{R} \longmapsto \mathbb{R}^2 \hspace{1em} \text{con} \hspace{1em} y(t) (x_0,y_0){^T} + t \cdot (a,b){^T}\]
+\[\gamma : I \subseteq \mathbb{R} \longmapsto \mathbb{R}^2 \hspace{1em} \text{con} \hspace{1em} y(t) = (x_0,y_0){^T} + t \cdot (a,b){^T}\]
 
 \vspace{1em}
 \noindent
-\textbf{Esempio}: Si determini la retta passante per i punti $(0,2){^T}$ e $(1,0){^T}$. Un modo per determinarne l'equazione è quello di considerare il sistema di equazioni:
-\[\left\{
-    \rowcolors{1}{white}{white}
-    \begin{array}{l}
-        a \cdot (x-0) + b \cdot (y-2) = 0 \rightarrow ax + by = 2b\\
-        a \cdot (x-1) + b \cdot (y-0) = 0 \rightarrow ax + by = a\\
-    \end{array}
-\right.\]
-per cui è immediato capire che $a=2b$, per cui l'equazione cercata è
-\[2bx + by = 2b \rightarrow 2x + y = 2\]
-Un altro metodo prevederebbe di considerare la funzione
-\[y=f(x)=mx+q\]
-ottenendo le due equazioni seguenti:
-\[\left\{
-    \rowcolors{1}{white}{white}
-    \begin{array}{l}
-        0=m \cdot 1 + q\\
-        2=m \cdot 0 + q
-    \end{array}
-\right.\]
-per cui è immediato evincere che $q=2$ e $m=-2$. Pertanto si ottiene ancora l'equazione
-\[y=-2x+2\]
-Se, invece, si volesse impiegare la forma parametrica, si potrebbe considerare il coefficiente angolare
-\[\vec v = P_2-P_1=(1,-2){^T}\]
-per cui si ottiene 
-\[\gamma(t) = (0,2){^T} + t \cdot (1,-2){^T} = (t,2-2t)^{T}\]
-considerando il primo punto. Altrimenti si sarebbe potuto considerare il secondo punto, ottenendo:
-\[\gamma(t) = (1,0){^T} + t \cdot (1,-2){^T} = (t+1,-2t)^{T}\]
+\textbf{Esempio}: Si determini la retta passante per i punti $(0,2){^T}$ e $(1,0){^T}$.
+\begin{enumerate}
+    \item Un modo per determinarne l'equazione è quello di considerare il luogo degli zeri del campo scalare $F$ da $\mathbb{R}^2$ in $\mathbb{R}$ definito come $F=ax+by+c=0$. Il sistema di equazioni che si ottiene è il seguente:
+    \[\left\{
+        \rowcolors{1}{white}{white}
+        \begin{array}{l}
+            a \cdot (x-0) + b \cdot (y-2) = 0 \rightarrow ax + by = 2b\\
+            a \cdot (x-1) + b \cdot (y-0) = 0 \rightarrow ax + by = a\\
+        \end{array}
+    \right.\]
+    per cui è immediato capire che $a=2b$. Sostituendo tale soluzione all'interno della prima equazione, per esempio, si ottiene
+    \[2bx + by = 2b \rightarrow 2x + y = 2\]
+    in quanto la scelta di $b \neq 0$ è ininfluente, in quanto si ottengono equazioni linearmente dipendenti, per cui si pone $b=1$.
 
-\vspace{2em}
+    \item Un altro metodo prevederebbe di considerare la funzione
+    \[y=f(x)=mx+q\]
+    ottenendo le due equazioni seguenti:
+    \[\left\{
+        \rowcolors{1}{white}{white}
+        \begin{array}{l}
+            0=m \cdot 1 + q\\
+            2=m \cdot 0 + q
+        \end{array}
+    \right.\]
+    per cui è immediato evincere che $q=2$ e $m=-2$. Pertanto si ottiene ancora l'equazione
+    \[y=-2x+2\]
+
+    \item Se, invece, si volesse impiegare la forma parametrica, si potrebbe considerare il coefficiente angolare
+    \[\vec v = P_2-P_1=(1,-2){^T}\]
+    dato dalla differenza dei due punti per cui passa la retta. Scegliendo il termine noto come uno dei due punti $P_1$ o $P_2$ per cui sicuramente passa la retta, si ottiene
+    per cui si ottiene 
+    \[\gamma(t) = (0,2){^T} + t \cdot (1,-2){^T} = (t,2-2t)^{T}\]
+    in cui, per come si è detto, la presenza dell'addendo $(0,2){^T}$ è giustificata dal fatto che si è considerato il primo punto $P_1=(0,2){^T}$. Altrimenti si sarebbe potuto considerare il secondo punto $P_2=(1,0){^T}$, ottenendo:
+    \[\gamma(t) = (1,0){^T} + t \cdot (1,-2){^T} = (t+1,-2t)^{T}\]
+    ma le due equazioni sono equivalenti.
+\end{enumerate}
+
+\vspace{1em}
 \noindent
-\subsubsection{Piano in $\mathbb{R}^3$ in forma parametrica}
+\subsection{Piano in $\mathbb{R}^3$ in forma parametrica}
 Un piano in $\mathbb{R}^3$ può essere descritto come
-\[\gamma(s,t) = (x_0,y_0,z_0){^T} + s \cdot (a_1,a_2,a_3){^T} + t \cdot (b_1,b_2,b_3){^t}\]
+\[\gamma(s,t) = (x_0,y_0,z_0){^T} + s \cdot (a_1,a_2,a_3){^T} + t \cdot (b_1,b_2,b_3){^T} = (x_0+a_1s+b_1t,y_0+a_2s+b_2t,z_0+a_3s+b_3t){^T}\]
+ossia la combinazione lineare dei vettori $(a_1,a_2,a_3){^T}$ e $(b_1,b_2,b_3){^T}$ linearmente indipendenti che, quindi, individuano un piano.
 
 \vspace{1em}
 \noindent
 \textbf{Esempio}: Dati i seguenti punti
-\[(1,0,0){^T} \hspace{1em} (0,2,0){^T} \hspace{1em} (0,0,3){^T}\]
-Al fine di scrivere la giacitura del piano, si considerano due coppie di vettori linearmente indipendenti e si ottiene
+\[P_1=(1,0,0){^T} \hspace{1em} P_2=(0,2,0){^T} \hspace{1em} P_3=(0,0,3){^T}\]
+Al fine di scrivere la giacitura del piano, si considerano due coppie di punti che non devono essere a due a due allineati e si ottiene
 \[a=P_2-P_1=(-1,2,0){^T} \hspace{1em} \text{e} \hspace{1em} b=P_3-P_1=(-1,0,3){^T}\]
-per cui l'equazione parametric del piano cercata è
-\[\gamma(s,t)=(1,0,0){^T} + s \cdot (-1,2,0){^T} + t \cdot (-1,0,3){^T}\]
+ossia due vettori, che sono linearmente indipendenti e quindi individuano un piano. Per cui l'equazione parametrica del piano cercata è
+\[\gamma(s,t)=(1,0,0){^T} + s \cdot (-1,2,0){^T} + t \cdot (-1,0,3){^T}=(1-s-t,2s,3t){^T}\]
 
 \vspace{1em}
 \noindent
-\subsubsection{Sfera}
-Si consideri una sfera in $\mathbb{R}^3$, come quella considerata:
+\subsection{Sfera}
+Si consideri una sfera in $\mathbb{R}^3$, ossia un esempio classico di superficie in $\mathbb{R}^3$ non lineare, come quella proposta nel seguito:
 \[x^2+y^2+z^2=1\]
-allora tale sfera non può essere rappresentata come grafico da $\mathbb{R}^2$ in $\mathbb{R}$, in quanto non è un grafico. Al limite si può considerare come l'unione di due grafici, quali
+Allora, per rappresentare tale sfera, si può considerare il campo scalare $F$ da $\mathbb{R}^3$ in $\mathbb{R}$ seguente
+\[F(x,y,z)=x^2+y^2+z^2-1\]
+e rappresentare, quindi, la sfera, come luogo degli zeri di tale campo, ossia
+\[\mathcal{Z}_F=\{(x,y,z){^T} \in \mathbb{R}^3 : x^2+y^2+z^2-1=0\}\]
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Si osservi che una sfera non può essere rappresentata come grafico di una funzione da $\mathbb{R}^2$ in $\mathbb{R}$, in quanto non è un grafico. Al limite si può considerare come l'unione di due grafici, quali
 \[f_1=-\sqrt{1-x^2-y^2} \hspace{1em} \text{e} \hspace{1em} f_2=\sqrt{1-x^2-y^2}\]
-per descrivere, invece, la sfera tramite equazioni parametriche, ossia con una funzione
-\[\gamma : A \subseteq \mathbb{R}^2 \longmapsto \mathbb{R}^3 \hspace{1em} \text{con} \hspace{1em} \gamma=\gamma(\phi,\theta)\]
-ottenendo
+
+\vspace{1em}
+\noindent
+Per descrivere, invece, la sfera tramite equazioni parametriche, ossia con una superficie parametrica della forma seguente
+\[\gamma : A \subseteq \mathbb{R}^2 \longmapsto \mathbb{R}^3 \hspace{1em} \text{con} \hspace{1em} \gamma=\gamma(\phi,\theta)=(x(\phi,\theta),y(\phi,\theta),z(\phi,\theta)){^T}\]
+in cui le coordinate impiegate sono le \textbf{coordinate sferiche}:
 \begin{itemize}
     \item $x(\phi,\theta)=\sin(\phi) \cdot \cos(\theta)$
     \item $y(\phi,\theta)=\sin(\phi) \cdot \sin(\theta)$
-    \item $z(\phi,\theta)=\cos(\theta)$
+    \item $z(\phi,\theta)=\cos(\phi)$
 \end{itemize}
+in cui ogni coordinata sarebbe moltiplicata per $r$, se il raggio fosse noto. Naturalmente si ha che
+\[\phi \in [0,\pi] \hspace{1em} \text{e} \hspace{1em} \theta \in [0,2\pi]\]
+questo dimezzamento è dovuto al fatto che i punti negativi possono essere ottenuti tanto aumentando $\phi$ quanto aumentando $\theta$: per questa ragione una delle due coordinate viene limitata, perché sennò uno stesso punto verrebbe considerato più volte.
+
+\begin{figure}[H]
+    \centering
+    \tdplotsetmaincoords{60}{110}
+    \pgfmathsetmacro{\rvec}{.8}
+    \pgfmathsetmacro{\thetavec}{30}
+    \pgfmathsetmacro{\phivec}{60}
+
+    \begin{tikzpicture}[scale=5,tdplot_main_coords]
+        \coordinate (O) at (0,0,0);
+        \draw[thick,->] (0,0,0) -- (1,0,0) node[anchor=north east]{$x$};
+        \draw[thick,->] (0,0,0) -- (0,1,0) node[anchor=north west]{$y$};
+        \draw[thick,->] (0,0,0) -- (0,0,1) node[anchor=south]{$z$};
+        \tdplotsetcoord{P}{\rvec}{\thetavec}{\phivec}
+        \draw[-stealth,color=red] (O) -- (P) node[above right] {$P$};
+        \draw[dashed, color=red] (O) -- (Pxy);
+        \draw[dashed, color=red] (P) -- (Pxy);
+        \tdplotdrawarc{(O)}{0.2}{0}{\phivec}{anchor=north}{$\theta$}
+        \tdplotsetthetaplanecoords{\phivec}
+        \tdplotdrawarc[tdplot_rotated_coords]{(0,0,0)}{0.5}{0}%
+            {\thetavec}{anchor=south west}{$\phi$}
+    \end{tikzpicture}
+\end{figure}
 
 \newpage
 \noindent
@@ -3902,6 +4077,7 @@ Allora per il criterio di Leibniz si ha che
     \item il termine $a_n$ è infinitesimo
     \item il termine $a_n$ è anche decrescente, in quanto composta di una funzione crescente con una decrescente.
 \end{itemize}
+Pertanto tale serie converge semplicemente per il criterio di Leibniz (ma non assolutamente, in quanto il suo ordine di infinitesimo e sotto-reale).
 
 \vspace{1em}
 \noindent
@@ -3911,43 +4087,49 @@ Allora è possibile spezzare la serie, ottenendo
 \[\sum_{n=0}^{+\infty} \frac{i^n \cdot \left(\sqrt{n} - \sqrt{n-1}\right)}{n} + (-1)^n \cdot \frac{\sqrt{n+1}}{n}\]
 in cui è immediato evincere che
 \[\sum_{n=1}^{+\infty} (-1)^n \cdot \frac{\sqrt{n+1}}{n}\]
-è ovviamente convergente per Leibniz (ma non è assolutamente convergente).\\
-Il primo termine, invece, può essere scomposto come segue:
+è ovviamente convergente semplicemente per il criterio di Leibniz (ma non è assolutamente convergente, in quanto infinitesimo di ord $\leq 1$).\\
+Il primo termine, invece, può essere considerato dapprima senza il fattore $i^n$, semplificando come segue 
 \[\frac{\left(\sqrt{n} - \sqrt{n-1}\right)}{n} \cdot \frac{\sqrt{n} + \sqrt{n-1}}{\sqrt{n} + \sqrt{n-1}}\]
 pertanto si ottiene che
 \[\dfrac{1}{n \cdot \sqrt{n} \cdot \left(1+\sqrt{1-\dfrac{1}{n}} \right)}\]
 che è un infinitesimo di ord $\dfrac{3}{2}>1$. Ciò implica il fatto che
 \[\left \vert \frac{i^n \cdot \left(\sqrt{n} - \sqrt{n-1}\right)}{n} \right \vert =  \frac{\left(\sqrt{n} - \sqrt{n-1}\right)}{n}\]
-che è assolutamente convergente, quindi è convergente. Se ne conclude che la funzione di partenza è convergente semplicemente, ma non assolutamente.
+in quanto $\vert i \vert = 1$; ciò dimostra che il primo addendo è assolutamente convergente, quindi è convergente. Se ne conclude che la successione di partenza è convergente semplicemente, ma non assolutamente (in quanto un termine converge assolutamente e uno semplicemente).
 
-\vspace{1em}
+\vspace{2em}
 \noindent
-\textbf{Osservazione}: Si osservi che una retta può essere interpretata come
+\textbf{Osservazione}: È stato osservato in precedenza che una retta può essere interpretata come
 \begin{itemize}
-    \item insieme degli zeri di un campo scalare da $\\mathbb{R}^2$ a $\mathbb{R}$
-    \item grafico di una funzione
-    \item curva parametrica
+    \item insieme degli zeri di un campo scalare da $\mathbb{R}^2$ a $\mathbb{R}$;
+    \item grafico di una funzione;
+    \item curva parametrica.
 \end{itemize}
 In generale, se si considera una funzione
 \[f : \mathbb{R}^n \longmapsto \mathbb{R}^m\]
 si possono distinguere due casistiche
 \begin{itemize}
-    \item se $m=1$ allora $f$ è un campo scalare della forma
+    \item se $m=1$ allora $f$ è un campo scalare a valori in $\mathbb{R}$ della forma
     \[f \left((x_1,\dots,x_n){^T}\right) = f(x_1,\dots,x_n)\]
-    
-    \item se $n=1$ e $m\geq 2$, allora $f$ è una curva
-    \item se $n\geq 21$ e $m\geq 2$, allora $f$ viene definita \textbf{campo vettoriale}. In particolare, se $n=2$ e $m=3$, $f$ è una superficie. Se si considera
+    \item se $n=1$ e $m\geq 2$, allora $f$ è una curva;
+    \item se $n\geq 2$ e $m\geq 2$, allora $f$ definita come
+    \[f : \mathbb{R}^n \longmapsto \mathbb{R}^m\]
+    in cui $f$ prende il nome di \textbf{campo vettoriale}. In particolare, se $n=2$ e $m=3$, $f$ è una superficie.\\
+    Si scriverà, allora
     \[f(x_1,\dots,x_n) = \left(f_1(x_1,\dots,x_n),\dots,f_m(x_1,\dots,x_n) \right){^T}\]
-    che sono proprio le componenti del campo vettoriale.
+    in cui $f_k(x_1,\dots,x_n)$ sono proprio le componenti del campo vettoriale. Ciascuna componente è definita come
+    \[f_k : \mathbb{R}^n \longmapsto \mathbb{R}\]
+    ossia è un campo scalare.
 \end{itemize}
 
 \vspace{1em}
 \noindent
-\textbf{Esempio}: Si consideri la funzione
+\textbf{Esempio}: Sia dato un campo vettoriale
+\[f : D \subseteq \mathbb{R}^3 \longmapsto \mathbb{R}^2\]
+definito come
 \[f(x,y,z) = \left(\frac{\sin(x,z)}{x-y}, \log(x+z)\right){^T}\]
-Allora il dominio di tale funzione deve essere l'intersezione del dominio di tutte e due le funzioni, ovvero
+Allora il dominio di tale campo vettoriale deve essere l'intersezione del dominio di tutte e due le funzioni componenti, ovvero
 \[
-    \left\{
+    D=\left\{
     \rowcolors{1}{white}{white}
     \begin{array}{l}
         x-y \neq 0\\
@@ -3955,34 +4137,41 @@ Allora il dominio di tale funzione deve essere l'intersezione del dominio di tut
     \end{array}
     \right.
 \]
+Dal punto di vista grafico, nel primo caso si considera solamente il piano passante per la bisettrice del piano $xy$ e ortogonale a tale piano. Analogamente, nel secondo caso, si andrà a considerare sempre la retta $z=-x$ nel piano $xz$ e si considererà tutto lo spazio maggiore di tale piano.
 
 \vspace{1em}
 \noindent
 \subsection{Rappresentazione grafica in $\mathbb{R}^n$}
 Si considerino i seguenti esempi di rappresentazione grafica di alcune curve nello spazio:
 \begin{itemize}
-    \item sia data la funzione $f=2x^2+y^2$, allora il suo grafico viene definito come
-    \[\mathcal{G}_f = \{(x,y,f(x,y)){^T} : (x,y) \in \mathbb{R}^2\}\]
-    che, per essere rappresentato può essere scomposto nelle sue proiezioni $xy$, $yz$ e $xy$.
+    \item sia dato il campo scalare seguente
+    \[f=2x^2+y^2\]
+    allora il suo grafico viene definito come
+    \[\mathcal{G}_f = \{(x,y,f(x,y)){^T} : (x,y){^T} \in \mathbb{R}^2\}\]
+    ovviamente nell'origine il valore della $f$ è $0$. Per studiarne la rappresentazione, però, il grafico della $f$ può essere scomposto nelle sue proiezioni sui \textbf{piani coordinati} $xy$, $yz$ e $xy$.
     \begin{itemize}
-        \item Sul piano $xz$ la funzione da considerare è $z=2x^2$, che è una parabola più ripida del normale;
-        \item Sul piano $yz$ la funzione da considerare è $z=y^2$, che è una parabola normale;
-        \item Sul piano $xy$ la funzione da considerare è $0=2x^2+y^2$, che è solamente il punto $(0,0){^T}$.
+        \item Sul piano $xz$ (ovvero $y=0$) la funzione da considerare è $z=2x^2$, che è una parabola più ripida del normale;
+        \item Sul piano $yz$ (ovvero $x=0$) la funzione da considerare è $z=y^2$, che è una parabola normale;
+        \item Sul piano $xy$ (ovvero $z=0$) la funzione da considerare è $0=2x^2+y^2$, che è solamente il punto $(0,0){^T}$.
     \end{itemize}
 
-    \item sia data la funzione $f=\dfrac{1}{x+y}$, allora il suo dominio non è più tutto $\mathbb{R}^2$, ma è l'insieme dei punti per cui $x \neq y$. Il grafico della funzione è
-    \[\mathcal{G}_f = \{(x,y,f(x,y)){^T} : x \neq y\}\]
+    \item sia dato il campo scalare seguente
+    \[f=\dfrac{1}{x+y}\]
+    allora il suo dominio non è più tutto $\mathbb{R}^2$, ma è l'insieme dei punti per cui $x \neq -y$. Il grafico della funzione è
+    \[\mathcal{G}_f = \{(x,y,f(x,y)){^T} : x \neq -y\}\]
     Esso, per essere rappresentato può essere scomposto nelle sue proiezioni $xy$, $yz$ e $xy$.
     \begin{itemize}
-        \item Sul piano $xz$ la funzione da considerare è $z=\dfrac{1}{x}$, che è un'iperbole;
-        \item Sul piano $yz$ la funzione da considerare è $z=\dfrac{1}{y}$, che è un'iperbole.
-        \item Sul piano $xy$ la funzione da considerare è $0=\dfrac{1}{x+y}$, che si ha solamente quando $x$ o $y$ sono infiniti.
+        \item Sul piano $xz$ (ovvero $y=0$) la funzione da considerare è $z=\dfrac{1}{x}$, che è un'iperbole;
+        \item Sul piano $yz$ (ovvero $x=0$) la funzione da considerare è $z=\dfrac{1}{y}$, che è un'altra iperbole;
+        \item Sul piano $xy$ (ovvero $z=0$) la funzione da considerare è $0=\dfrac{1}{x+y}$, che si ha solamente quando $x$ o $y$ sono infiniti.
     \end{itemize}
 \end{itemize}
 
 \vspace{1em}
 \noindent
-\textbf{Osservazione}: Si osservi che in tutti i casi precedenti, risulta molto difficile capire la rappresentazione grafica delle funzioni. Se, però, si considerasse come funzione $h(x,y)$ la quota sul livello del mare di un monte, si possono impiegare le \textbf{curve di livello}, chiamate anche \textbf{isoipse}.
+\textbf{Osservazione}: Si osservi che in tutti i casi precedenti, risulta molto difficile capire la rappresentazione grafica delle funzioni. Si immagini, però, di considerare come funzione
+\[h(x,y) : \mathbb{R}^2 \longmapsto \mathbb{R}\]
+come la quota sul livello del mare del terreno di coordinate $(x,y){^T}$; allora per la rappresentazione diviene molto più semplice ricorrere alle \textbf{curve di livello}, chiamate anche \textbf{isoipse}.
 
 \vspace{1em}
 \noindent
@@ -3998,12 +4187,14 @@ Di seguito si fornisce la definizione di \textbf{insieme di livello}:
 \begin{tabularx}{\textwidth}{@{}|P|@{}}
     \hline
     {\textbf{INSIEME DI LIVELLO}}\\
-    \parbox{\linewidth}{Sia $f : E \subseteq \mathbb{R}^n \longmapsto \mathbb{R}$ e sia $\alpha \in \mathbb{R}$. Si chiama, allora, \textbf{insieme di livello} $\alpha$ di $f$ l'insieme
-    \[\boxed{L_\alpha = \{x \in E : f(x)=\alpha\}}\]
-    ovvero l'insieme degli zeri del campo scalare $Z_{f-\alpha}$.
+    \parbox{\linewidth}{Sia dato il campo scalare seguente
+    \[f : E \subseteq \mathbb{R}^n \longmapsto \mathbb{R}\]
+    e sia $\alpha \in \mathbb{R}$; si chiama, allora, \textbf{insieme di livello} $\alpha$ del campo $f$ l'insieme
+    \[L_\alpha = \{x \in E : f(x)=\alpha\}\]
+    ovvero l'insieme degli zeri $Z_{f-\alpha}$ del campo scalare $F=f-\alpha$. Si osservi che
     \begin{itemize}
-        \item Con $n=2$, l'insieme $L_\alpha$ è una curva (appunto, la curva di livello)
-        \item Con $n=3$, l'insieme $L_\alpha$ è una superficie.
+        \item con $n=2$, l'insieme $L_\alpha$ è una curva (appunto, la curva di livello o isoipsa);
+        \item con $n=3$, l'insieme $L_\alpha$ è una superficie (appunto, la superficie di livello).
     \end{itemize}
     \vspace{1mm}}\\
     \hline
@@ -4014,31 +4205,38 @@ Di seguito si fornisce la definizione di \textbf{insieme di livello}:
 \textbf{Esempio 1}: Nel primo esempio, posto
 \[f(x,y)=2x^2+y^2\]
 allora l'insieme di livello è
-\[L_\alpha = \{(x,y) \in \mathbb{R}^2 : 2x^2+y^2=\alpha\}\]
+\[L_\alpha = \{(x,y){^T} \in \mathbb{R}^2 : 2x^2+y^2=\alpha\}\]
 che può essere riscritto come
-\[\frac{x^2}{\left(\sqrt{\frac{\alpha}{2}} \right)^2} + \frac{y^2}{(\sqrt{\alpha})^2}=1\]
-che permette di capire come
+\[\frac{x^2}{\left(\sqrt{\dfrac{\alpha}{2}} \right)^2} + \frac{y^2}{(\sqrt{\alpha})^2}=1\]
+che è l'equazione di un ellisse, nella forma
+\[\dfrac{x^2}{a^2}+\dfrac{y^2}{b^2}=1\]
+Da tale espressione è facile osservare che
 \[a=\sqrt{\frac{\alpha}{2}} \hspace{1em} \text{e} \hspace{1em} b=\sqrt{\alpha}\]
-che permette di capire come il semiasse orizzontale è minore di quello verticale.
+che permette di capire come il semiasse orizzontale $a$ è minore di quello verticale $b$.
 
 \vspace{2em}
 \noindent
 \textbf{Esempio 2}: Nel secondo esempio, posto
 \[f(x,y)=\frac{1}{x+y}\]
-naturalmente si ha sempre $x \neq y$ come campo di esistenza. L'insieme di livello, invece, è
-\[L_\alpha = \{(x,y) \in \mathbb{R}^2 : \frac{1}{x+y}=\alpha\}\]
+naturalmente si ha sempre $x \neq -y$ come campo di esistenza. L'insieme di livello, invece, è
+\[L_\alpha = \left\{(x,y) \in \mathbb{R}^2 : \frac{1}{x+y}=\alpha\right\}\]
 In cui è immediato evincere che
 \begin{itemize}
-    \item se $\alpha$ diviene $>>1$, allora la retta sul piano $xy$ che si ottiene è sempre più distante dall'origine.
-    \item se $\alpha$ diviene $<<1$, allora la retta sul piano $xy$ che si ottiene è sempre più vicina all'origine.
-    \item se $\alpha<0$, allora si ottiene la medesima rappresentazione dei primi due punti, ma simmetrica rispetto all'asse $y=-x$ 
+    \item se $\alpha=0$ allora la linea di livello corrispondente è $\varnothing$;
+    \item se $\alpha>>1$, allora la linea di livello corrispondente (che è sempre una retta) è della forma
+    \[y=\dfrac{1}{\alpha} - x\]
+    quindi la retta sul piano $xy$ che si ottiene è sempre più vicina all'origine del piano;
+    \item se $\alpha<<1$, allora la linea di livello corrispondente (che è sempre una retta) è della forma
+    \[y=\dfrac{1}{\alpha} - x\]
+    quindi la retta sul piano $xy$ che si ottiene è sempre più distante dall'origine;
+    \item se $\alpha<0$, allora si ottiene la medesima rappresentazione dei due punti precedenti, ma simmetrica rispetto all'asse $y=-x$.
 \end{itemize}
 
 \newpage
 \section{Funzioni tra spazi metrici}
-Si consideri una funzione
+All'interno di questa dissertazione, si andranno considerando funzioni definite come segue
 \[f : E \subseteq X_1 \longmapsto X_2\]
-avente delle metriche $(X_1,d_1)$ e $(X_2,d_2)$.
+in cui $X_1$ è uno spazio metrico con (distanza) metrica $d_1$ e $X_2$ è uno spazio metrico con una (distanza) metrica $d_2$.
 
 \vspace{1em}
 \noindent
@@ -4059,32 +4257,35 @@ Di seguito si espone la definizione di \textbf{limite di una funzione}:
     Sia $x_1 \in X_1$ un punto di accumulazione per $E$, con $l \in X_2$. Allora si dira che
     \[\lim_{x \to x_1} f(x) = l\]
     se
-    \[\forall \epsilon>0, \exists \delta>0 \text{ tale che } \forall x \in E, x \neq x_1, d_1(x,x_1) < \delta \text{ si ha che } d_2(f(x),l) < \epsilon\]
+    \[\forall \epsilon>0, \exists \delta>0 \hspace{1em} \text{ tale che } \hspace{1em} \forall x \in E, x \neq x_1, d_1(x,x_1) < \delta \hspace{1em} \text{ si ha che } \hspace{1em} d_2(f(x),l) < \epsilon\]
     \vspace{-1mm}}\\
     \hline
 \end{tabularx}
 
 \vspace{1em}
 \noindent
-\textbf{Osservazione 1}: In particolare, sulla base della definizione di limite di cui sopra, $f$ è \textbf{continua} in $X_1$ se
+\subsubsection{Funzione continua}
+In particolare, sulla base della definizione di limite di cui sopra, $f$ è \textbf{continua} in $X_1$ se
 \[\lim_{x \to x_1} f(x) = f(x_1)\]
-ma solamente se $x_1 \in E$ e $x_1$ è punto di accumulazione. In generale, infatti, $x_1$ può anche essere un punto isolato, per cui la definizione generale richiederebbe che
-\[\forall \epsilon>0, \exists \delta>0 \text{ tale che } \forall x \in E, d_1(x,x_1) < \delta \text{ si ha che } d_2(f(x),l) < \epsilon\]
+ma solamente se $x_1 \in E$ e $x_1$ è punto di accumulazione. In generale, infatti, $x_1$ può anche essere un punto isolato (per cui non ha senso parlare di limite), per cui la definizione generale richiederebbe che
+\[\forall \epsilon>0, \exists \delta>0 \hspace{1em} \text{ tale che } \hspace{1em} \forall x \in E, d_1(x,x_1) < \delta \hspace{1em} \text{ si ha che } \hspace{1em} d_2(f(x),f(x_1)) < \epsilon\]
 
 \vspace{1em}
 \noindent
-\textbf{Osservazione 2}: In particolare, sulla base della definizione di limite di cui sopra, $f$ è \textbf{uniformemente continua} in $X_1$ se
-\[\forall \epsilon>0, \exists \delta>0 \text{ tale che } \forall x_1,y_1 \in X_1, d_1(x_1,y_1) < \delta \text{ si ha che } d_2(f(x_1),f(x_2)) < \epsilon\]
+\subsubsection{Funzione uniformememnte continua}
+In particolare, sulla base della definizione di limite di cui sopra, $f$ è \textbf{uniformemente continua} in $X_1$ se
+\[\forall \epsilon>0, \exists \delta>0 \hspace{1em} \text{ tale che } \hspace{1em} \forall x_1,y_1 \in X_1, d_1(x_1,y_1) < \delta \hspace{1em} \text{ si ha che } \hspace{1em} d_2(f(x_1),f(y_1)) < \epsilon\]
 
 \vspace{1em}
 \noindent
 \subsection{Continuità della norma}
-Di seguito si espone il teorema sulla \textbf{contonuità della norma}:
+Di seguito si espone il teorema sulla \textbf{continuità della norma}:
 
 \begin{theorem}
-    Sia $(X,d)$ uno spazio metrico con $d$ indotta da una norma $\left \vert \left \vert \cdot \right \vert \right \vert$. Allora la funzione
+    Sia $(X,d)$ uno spazio metrico con $d$ indotta da una norma $\left \vert \left \vert \cdot \right \vert \right \vert$, ovvero
+    \[d(x,y)=\left \vert \left \vert x-y \right \vert \right \vert\] Allora la funzione
     \[f : X \longmapsto \mathbb{R}\]
-    definita da $f(x) = \left \vert \left \vert x \right \vert \right \vert$ è continua.
+    definita come $f(x) = \left \vert \left \vert x \right \vert \right \vert$ è continua. Cioè la norma è sempre una funzione continua nello spazio metrico indotto da essa stessa.
 \end{theorem}
 
 % Formattazione per la dimostrazione, etc.
@@ -4092,15 +4293,29 @@ Di seguito si espone il teorema sulla \textbf{contonuità della norma}:
 \noindent
 \normalfont \normalsize
 \textsc{Dimostrazione}: Si provi che
-\[\forall \epsilon > 0, \exists \delta > 0 \text{ tale che } \left \vert \left \vert x-x_0 \right \vert \right \vert < \delta \text{ allora } \left \vert f(x)-f(x_0)\right \vert < \epsilon\]
-ovvero che
-\[\left \vert \left \vert \left \vert x \right \vert \right \vert - \left \vert \left \vert x_0 \right \vert \right \vert \right \vert\]
+\[\forall \epsilon > 0, \exists \delta > 0 \hspace{1em} \text{ tale che } \hspace{1em} \left \vert \left \vert x-x_0 \right \vert \right \vert < \delta \hspace{1em} \text{ allora } \hspace{1em} \left \vert f(x)-f(x_0)\right \vert < \epsilon\]
+Si vuole, quindi, dimostrare, sotto opportune condizioni, che
+\[\left \vert f(x)-f(x_0)\right \vert < \epsilon\]
+ma essendo la funzione $f$ definita come $f(x) = \left \vert \left \vert x \right \vert \right \vert$, si vuole, in realtà, dimostrare che
+\[\left \vert \left \vert \left \vert x \right \vert \right \vert - \left \vert \left \vert x_0 \right \vert \right \vert \right \vert < \epsilon\]
 Ciò è evidente in quanto
 \begin{itemize}
-    \item $\left \vert \left \vert x \right \vert \right \vert = \left \vert \left \vert x-x_0+x_0 \right \vert \right \vert \leq \left \vert \left \vert x-x_0 \right \vert \right \vert + \left \vert \left \vert x_0 \right \vert \right \vert$
-    \item $\left \vert \left \vert x_0 \right \vert \right \vert = \left \vert \left \vert x_0-x+x \right \vert \right \vert \leq \left \vert \left \vert x_0-x \right \vert \right \vert + \left \vert \left \vert x \right \vert \right \vert$
+    \item per la disuguaglianza triangolare si ha che
+    \[\left \vert \left \vert x \right \vert \right \vert = \left \vert \left \vert x-x_0+x_0 \right \vert \right \vert \leq \left \vert \left \vert x-x_0 \right \vert \right \vert + \left \vert \left \vert x_0 \right \vert \right \vert\]
+    pertanto si è ottenuto che
+    \[\left \vert \left \vert x \right \vert \right \vert \leq \left \vert \left \vert x-x_0 \right \vert \right \vert + \left \vert \left \vert x_0 \right \vert \right \vert \hspace{1em} \rightarrow \hspace{1em} \left \vert \left \vert x \right \vert \right \vert - \left \vert \left \vert x_0 \right \vert \right \vert \leq \left \vert \left \vert x-x_0 \right \vert \right \vert\]
+
+    \item similmente, per la disuguaglianza triangolare si ha che
+    \[\left \vert \left \vert x_0 \right \vert \right \vert = \left \vert \left \vert x_0-x+x \right \vert \right \vert \leq \left \vert \left \vert x_0-x \right \vert \right \vert + \left \vert \left \vert x \right \vert \right \vert\]
+    pertanto si è ottenuto che
+    \[\left \vert \left \vert x_0 \right \vert \right \vert \leq \left \vert \left \vert x_0-x \right \vert \right \vert + \left \vert \left \vert x \right \vert \right \vert \hspace{1em} \rightarrow \hspace{1em} \left \vert \left \vert x_0 \right \vert \right \vert - \left \vert \left \vert x \right \vert \right \vert \leq \left \vert \left \vert x_0-x \right \vert \right \vert\]
+    moltiplicando per $-1$ ambo le parti si ottiene che
+    \[- \left \vert \left \vert x_0-x \right \vert \right \vert \leq \left \vert \left \vert x \right \vert \right \vert - \left \vert \left \vert x_0 \right \vert \right \vert\]
 \end{itemize}
-Ma ciò implica quanto si voleva dimostrare.
+Ma ciò implica quanto si voleva dimostrare, ossia che
+\[- \left \vert \left \vert x_0-x \right \vert \right \vert \leq \left \vert \left \vert x \right \vert \right \vert - \left \vert \left \vert x_0 \right \vert \right \vert \leq \left \vert \left \vert x-x_0 \right \vert \right \vert \hspace{1em} \rightarrow \hspace{1em} \left \vert \left \vert \left \vert x \right \vert \right \vert - \left \vert \left \vert x_0 \right \vert \right \vert \right \vert \leq \left \vert \left \vert x-x_0 \right \vert \right \vert\]
+ma essendo $\left \vert \left \vert x-x_0 \right \vert \right \vert < \delta$ per ipotesi, basterà scegliere $\delta=\epsilon$ per vedere verificata la tesi.
+
 
 \vspace{1em}
 \noindent
@@ -4118,12 +4333,12 @@ Di seguito si espone il teorema sul \textbf{limite delle componenti}:
     {\textbf{LIMITE DELLE COMPONENTI}}\\
     \parbox{\linewidth}{Sia $(X_1,d_1)$ uno spazio metrico, con
     \[f=(f_1,\dots,f_m){^T} : E \subseteq X_1 \longmapsto \mathbb{R}^m\]
-    con $x_1 \in X_1$ punto di accumulazione per $E$ e
+    con $x_0 \in X_1$ punto di accumulazione per $E$ e
     \[l = (l_1,\dots,l_m){^T} \in \mathbb{R}^m\]
     Si ha, allora, che
     \[\lim_{x \to x_0} f(x) = l\]
     \textbf{se e solo se}
-    \[\lim_{x \to x_k} f_k(x) = l_k \hspace{1em} \text{per ogni } k =1,2,\dots,m\]
+    \[\lim_{x \to x_0} f_k(x) = l_k \hspace{1em} \text{per ogni } k =1,2,\dots,m\]
      \vspace{-1mm}}\\
     \hline
 \end{tabularx}
@@ -4133,19 +4348,24 @@ Di seguito si espone il teorema sul \textbf{limite delle componenti}:
 \noindent
 \normalfont \normalsize
 \textsc{Dimostrazione 1}: Si operi con $m=2$. Si supponga, per ipotesi che
-\[\lim_{x \to x_k} f_k(x) = l_k \hspace{1em} \text{per ogni } k =1,2,\dots,m\]
+\[\lim_{x \to x_0} f_k(x) = l_k \hspace{1em} \text{per ogni } k =1,2,\dots,m\]
 e si dimostri che
 \[\lim_{x \to x_0} f(x) = l\]
 Allora, per definizione dei due limiti seguenti
 \[\lim_{x \to x_0} f_1(x) = l_1 \hspace{1em} \text{e} \hspace{1em} \lim_{x \to x_0} f_2(x) = l_2\]
 è noto che
 \begin{align*}
-    &\forall \epsilon>0, \exists \delta_1 > 0, x \neq x_0, d_1(x,x_0) < \delta_1 \text{ si ha che } \left \vert f(x) - l_1 \right \vert < \epsilon
-    &\forall \epsilon>0, \exists \delta_2 > 0, x \neq x_0, d_2(x,x_0) < \delta_2 \text{ si ha che } \left \vert f(x) - l_2 \right \vert < \epsilon
+    &\forall \epsilon>0, \exists \delta_1 > 0, \hspace{1em} \text{tale che} \hspace{1em} \forall x \in E, x \neq x_0, d_1(x,x_0) < \delta_1 \hspace{1em} \text{ si ha che } \hspace{1em} \left \vert f(x) - l_1 \right \vert < \epsilon\\
+    &\forall \epsilon>0, \exists \delta_2 > 0, \hspace{1em} \text{tale che} \hspace{1em} \forall x \in E, x \neq x_0, d_1(x,x_0) < \delta_2 \hspace{1em} \text{ si ha che } \hspace{1em} \left \vert f(x) - l_2 \right \vert < \epsilon
 \end{align*}
-Allora si ha che, preso $\delta = \min\{\delta_1,\delta_2\}$ (che è un passo fondamentale, in quanto non sarebbe vera per $m$ infinito), si ha che
-\[\left \vert \left \vert \cdot \right \vert \right \vert\]
-... continua ...
+Ciò che si vuole dimostrare è che
+\[\left \vert \left \vert (f_1,f_2){^T}(x) - (l_1,l_2){^T} \right \vert \right \vert < \epsilon\]
+Lavorando in $\mathbb{R}^2$ è noto che la norma è quella Euclidea, per cui
+\[\left \vert \left \vert (f_1,f_2){^T}(x) - (l_1,l_2){^T} \right \vert \right \vert = \sqrt{(f_1(x)-l_1)^2+(f_2(x)-l_2)^2}\]
+Sapendo, però che, presi opportuni $\delta_1$ e $\delta_2$ si ha che
+\[(f_1(x)-l_1)^2 < \epsilon^2 \hspace{1em} \text{e} \hspace{1em} (f_2(x)-l_2)^2 < \epsilon^2\]
+allora, considerato $\delta = \min\{\delta_1,\delta_2\}$ (che è un passo fondamentale, in quanto tale dimostrazione non sarebbe vera per $m$ infinito), si ha che
+\[\left \vert \left \vert (f_1,f_2){^T}(x) - (l_1,l_2){^T} \right \vert \right \vert = \sqrt{(f_1(x)-l_1)^2+(f_2(x)-l_2)^2} < \sqrt{\epsilon^2+\epsilon^2} = \sqrt{2} \epsilon\]
 
 % Formattazione per la dimostrazione, etc.
 \vspace{2em}
@@ -4153,8 +4373,14 @@ Allora si ha che, preso $\delta = \min\{\delta_1,\delta_2\}$ (che è un passo fo
 \normalfont \normalsize
 \textsc{Dimostrazione 2}: Si operi con $m=2$. Si supponga, per ipotesi che
 \[\lim_{x \to x_0} f(x) = l \hspace{1em} \text{ovvero} \hspace{1em} \left \vert \left \vert (f_1,f_2){^T}(x) - (l_1,l_2){^T} \right \vert \right \vert < \epsilon\]
-allora si ha che
-... continua ...
+preso un opportuno $\delta$. Si deve dimostrare, allora, che
+\begin{align*}
+    &\forall \epsilon>0, \exists \delta_1 > 0, \hspace{1em} \text{tale che} \hspace{1em} \forall x \in E, x \neq x_0, d_1(x,x_0) < \delta_1 \hspace{1em} \text{ si ha che } \hspace{1em} \left \vert f(x) - l_1 \right \vert < \epsilon\\
+    &\forall \epsilon>0, \exists \delta_2 > 0, \hspace{1em} \text{tale che} \hspace{1em} \forall x \in E, x \neq x_0, d_1(x,x_0) < \delta_2 \hspace{1em} \text{ si ha che } \hspace{1em} \left \vert f(x) - l_2 \right \vert < \epsilon
+\end{align*}
+Ma ovviamente è noto che
+\[\left \vert f_1(x) - l_1 \right \vert = \sqrt{(f_1(x)-l_1)^2} \leq \sqrt{(f_1(x)-l_1)^2+(f_2(x)-l_2)^2} = \left \vert \left \vert (f_1,f_2){^T}(x) - (l_1,l_2){^T} \right \vert \right \vert < \epsilon\]
+\[\left \vert f_2(x) - l_2 \right \vert = \sqrt{(f_2(x)-l_2)^2} \leq \sqrt{(f_1(x)-l_1)^2+(f_2(x)-l_2)^2} = \left \vert \left \vert (f_1,f_2){^T}(x) - (l_1,l_2){^T} \right \vert \right \vert < \epsilon\]
 
 \vspace{1em}
 \noindent
@@ -4172,18 +4398,24 @@ Di seguito si espone la definizione di \textbf{successione in $\mathbb{R}^n$}:
     {\textbf{SUCCESSIONE}}\\
     \parbox{\linewidth}{Una successione $(x_n)_n$ in uno spazio metrico $(X,d)$ è una funzione
     \[f : E \subseteq \mathbb{N} \longmapsto X\]
-    con $E$ infinito.
+    con $E$ infinito (ossia una funzione definita su sottoinsiemi infiniti di $\mathbb{N}$).
     \vspace{3mm}}\\
     \hline
 \end{tabularx}
 
 \vspace{2em}
 \noindent
-\textbf{Osservazione}: Il limite di una successione
-\[\lim_{n \to +\infty} x_n = l\]
-con 
+\textbf{Osservazione 1}: Si osservi che così come $X$ nella definizione è uno spazio metrico con distanza $d$, anche $\mathbb{N}$ è uno spazio metrico, in quanto è sufficiente considerare su di esso la distanza banale: qualunque insieme non vuoto è uno spazio metrico con distanza banale. Pertanto una successione è un particolare caso di funzioni tra spazi metrici.\\
+Parando di limite di una successione, si dirà che
+\[\lim_{n \to +\infty} x_n = l \hspace{1em} \text{con} \hspace{1em} l \in X\]
+se si ha che
+\[\forall \epsilon > 0, \exists n_\epsilon \in \mathbb{N} \hspace{1em} \text{tale che} \hspace{1em} \forall n \geq n_\epsilon \hspace{1em} \text{si ha che} \hspace{1em} d(x_n,\epsilon) < \epsilon\]
 
 \vspace{2em}
+\noindent
+\textbf{Osservazione 2}: Da notare che è stata data solamente la definizione di successione convergente; infatti, adesso che il codominio della successione è uno spazio metrico $X$ generico, non si può più parlare di successioni divergenti in modo arbitrario, in quanto non è detto che in $X$ vi sia un ordine.
+
+\vspace{1em}
 \noindent
 \subsection{Caratterizzazione del limite di una funzione usando le successioni}
 Si espone di seguito il \textbf{teorema di caratterizzazione del limite di una funzione usando le successioni}:
@@ -4213,20 +4445,23 @@ Si espone di seguito il \textbf{teorema di caratterizzazione del limite di una f
 \vspace{2em}
 \noindent
 \normalfont \normalsize
-\textsc{Dimostrazione 1}: Si supponga che
+\textsc{Dimostrazione 1}: Si supponga, per ipotesi, che
 \[\lim_{x \to \alpha} f(x) = l\]
-Si consideri, allora, una successione $(x_n)_n$ una successione tale per cui
+si consideri, allora, una successione $(x_n)_n$ tale per cui
 \[\lim_{n \to +\infty} x_n = \alpha\]
 e si dimostri che 
 \[\lim_{n \to +\infty} f(x_n) = l\]
-Fissato $\epsilon>0$, allora per la definizione di limite di cui sopra, si ha che
-\[\exists \delta > 0 \text{ tale che } \forall x \in E, x \neq \alpha, d_1(x,x_0) < \delta \text{ tale che } d_2(f(x),l) < \epsilon\]
+Fissato $\epsilon>0$, allora per la definizione di limite seguente
+\[\lim_{x \to \alpha} f(x) = l\]
+si ha che
+\[\exists \delta > 0 \hspace{1em} \text{ tale che } \hspace{1em} \forall x \in E, x \neq \alpha, d_1(x,\alpha) < \delta \hspace{1em} \text{ si ha che } \hspace{1em} d_2(f(x),l) < \epsilon\]
 Dal momento che, per ipotesi, si ha che
 \[\lim_{n \to +\infty} x_n = \alpha\]
-per definizione di limite
-\[\exists n_\epsilon \in \mathbb{N} \text{ tale che } \forall n \geq n_\epsilon \text{ si ha che } d_1(x_n,\alpha) < \delta\]
-e, di conseguenza,
-\[d_2(f(x),l) < \epsilon\]
+per definizione di tale limite della successione $(x_n)_n$
+\[\exists n_\delta \in \mathbb{N} \hspace{1em} \text{ tale che } \hspace{1em} \forall n \geq n_\delta \hspace{1em} \text{ si ha che } \hspace{1em} d_1(x_n,\alpha) < \delta\]
+e, di conseguenza, $\forall n \geq n_{\delta}$ si ha che
+\[d_2(f(x_n),l) < \epsilon\]
+ovviamente in questo caso $n_\epsilon = n_\delta$.
 
 % Formattazione per la dimostrazione, etc.
 \vspace{2em}
@@ -4238,38 +4473,46 @@ si ha che
 \[\lim_{n \to +\infty} f(x_n) = l\]
 e si dimostri che
 \[\lim_{x \to \alpha} f(x) = l\]
-Dalla definizione dell'ultimo limite si ha che
-\[\forall \epsilon > 0, \exists \delta > 0 \text{ tale che } \forall x \in E, x \neq \alpha, d_1(x,\alpha)<\delta, d_2(f(x),l) < \epsilon\]
-Si proceda per assurdo, e si neghi tale affermazione
-\[\exists \epsilon > 0, \forall \delta = \frac{1}{n} > 0, \exists x_n \in E, x_n \neq \alpha, \text{ tale che } d_1(x,\alpha)<\delta=\frac{1}{n} \text{ ma } d_2(f(x),l) \geq \epsilon\]
-in cui si è assunto che $\delta=\frac{1}{n}$, per comodità. Ciò consente di generare, implicitamente, una successione che permetterà di ottenere l'assurdo. Infatti, avendo ottenuto che
-\[d_1(x,\alpha)<\delta=\frac{1}{n} \hspace{1em} \text{ è immediato evincere che } \hspace{1em} \lim_{n \to +\infty} x_n = \alpha\]
+ossia, per definizione di limite
+\[\forall \epsilon > 0, \exists \delta > 0 \hspace{1em} \text{ tale che } \hspace{1em} \forall x \in E, x \neq \alpha, d_1(x,\alpha)<\delta \hspace{1em} \text{ si ha che } \hspace{1em} d_2(f(x),l) < \epsilon\]
+Per la dimostrazione, si proceda per assurdo e si neghi tale affermazione, per cui si afferma che, invece
+\[\exists \epsilon > 0, \forall \delta = \frac{1}{n} > 0, \exists x_n \in E, x_n \neq \alpha \hspace{1em} \text{ tale che } \hspace{1em} d_1(x_n,\alpha)<\delta=\frac{1}{n} \hspace{1em} \text{ ma } \hspace{1em} d_2(f(x_n),l) \geq \epsilon\]
+in cui si è assunto che $\delta=\dfrac{1}{n}$, per comodità. Ciò consente di generare, implicitamente, una successione che permetterà di ottenere l'assurdo. Infatti, avendo affermato che
+\[\forall \delta = \dfrac{1}{n} \hspace{1em} \text{si ha che} \hspace{1em} d_1(x_n,\alpha)<\delta=\frac{1}{n} \hspace{1em} \text{ è immediato evincere che } \hspace{1em} \lim_{n \to +\infty} x_n = \alpha\]
 Ma siccome per ipotesi è noto che ogni successione $(x_n)_n$ in $X_1$ tale che
 \[\lim_{n \to +\infty} x_n = \alpha\]
 si ha che
-\[\lim_{n \to +\infty} f(x_n) = l\]
+\[\lim_{n \to +\infty} f(x_n) = l \hspace{1em} \text{ovvero} \hspace{1em} d_2(f(x_n),l) < \epsilon \hspace{1em} \text{definitivamente}\]
 Pertanto si conclude l'assurdo, perché si era assunto che 
 \[d_2(f(x),l) \geq \epsilon\]
 
-\vspace{1em}
+\vspace{2em}
 \noindent
-\textbf{Esercizio}: Si consideri lo spazio delle funzioni continue su $[0,1]$ a valori reali: $X=C^0([0,1])$.\\
+\textbf{Esercizio}: Si consideri lo spazio delle funzioni continue su $[0,1]$ a valori reali, ossia lo spazio $X=C^0([0,1])$.\\
 Per ogni $n \in \mathbb{N}^+$ si consideri la funzione $\phi_n \in X$ definita da
 \[
-    \phi_n(t) = \rowcolors{1}{white}{white}    
+    \phi_n(t) = \left\{\rowcolors{1}{white}{white}    
     \begin{array}{lll}
         1-nt & \text{se} & t \in \left[0,\dfrac{1}{n}\right] \geq 0\\
         0   & \text{se} & t \in \left[\dfrac{1}{n},1\right] \geq 0\\
     \end{array}
+    \right.
 \]
 Si discuta l'eventuale convergenza della successione $(\phi_n)_n$ nello spazio metrico $(X,d_1)$ e nello spazio metrico $(X,d_\infty)$, dove $d_1$ è la metrica indotta dalla norma $\left \vert \left \vert \cdot \right \vert \right \vert_1$ e $d_\infty$ è la metrica indotta dalla norma $\left \vert \left \vert \cdot \right \vert \right \vert_\infty$.\\
 Essendo la norma $1$ seguente $\left \vert \left \vert \cdot \right \vert \right \vert_1$ denotata con
 \[\left \vert \left \vert \phi \right \vert \right \vert_1 = \int_0^1 \left \vert \phi(t) \right \vert \dif t\]
 Dalla rappresentazione grafica è facile intuire che il limite di tale successione sia $0$, ovvero
-\[\forall \epsilon > 0, \exists n_\epsilon, \forall n \geq n_\epsilon, \int_0^1 \left \vert \phi(t) \right \vert \dif t < \epsilon\]
+\[\forall \epsilon > 0, \exists n_\epsilon, \hspace{1em} \text{tale che} \hspace{1em} \forall n \geq n_\epsilon \hspace{1em} \text{si ha che} \hspace{1em} \int_0^1 \left \vert \phi_n(t) - 0\right \vert \dif t < \epsilon\]
 ma siccome la funzione $\phi(t)$ è nulla da $\dfrac{1}{n}$ a $1$, basta considerare
-\[\int_0^1 \left \vert \phi(t) \right \vert \dif t = \int_0^\frac{1}{n} \left \vert \phi(t) \right \vert \dif t + 0 = \left[t-\frac{1}{2}nt^2\right]_0^\frac{1}{n} = \frac{1}{n} - \frac{1}{2n} = \frac{1}{2n} < \epsilon\]
-... continua ...
+\[\int_0^1 \left \vert \phi_n(t) \right \vert \dif t = \int_0^\frac{1}{n} \left \vert \phi_n(t) \right \vert \dif t + 0 = \left[t-\frac{1}{2}nt^2\right]_0^\frac{1}{n} = \frac{1}{n} - \frac{1}{2n} = \frac{1}{2n} < \epsilon\]
+che è minore di $\epsilon$ per $n > \dfrac{1}{2 \epsilon}$.\\
+Nel caso della norma infinito, essa è definita come
+\[\vert \vert \phi \vert \vert_\infty = \underset{t \in [0,1]}{\max} \vert \phi(t) \vert\]
+ma è ovvio che il massimo di tali funzioni $\phi_n$ è $1$, ottenibile con $t=0$. Ma siccome la norma è una funzione continua nella metrica indotta dalla norma stessa, se esiste il limite
+\[\lim_{n \to +\infty} \phi_n(x) = \phi\]
+allora deve essere
+\[\vert \vert \phi \vert \vert_\infty = 1\]
+ma una funzione di questo tipo è una funzione che vale $1$ in $0$ e $0$ dappertutto. Ma non essendo tale funzione continua, non appartiene allo spazio considerato e quindi non esiste il limite.
 
 \vspace{2em}
 \noindent
@@ -4283,14 +4526,19 @@ definita da
 \vspace{1em}
 \noindent
 Si dimostri la continuità in $\phi_0$, ovvero
-\[\forall \epsilon > 0, \exists \delta > 0 \text{ tale che } \forall \phi \text{ con } \left \vert \left \vert \phi-\phi_0 \right \vert \right \vert_\infty < \delta, \left \vert f(\phi) - f(\phi_0) \right \vert < \epsilon\]
-Ma in particolare, per la definizione stessa della $f$ si ha che
+\[\forall \epsilon > 0, \exists \delta > 0 \hspace{1em} \text{ tale che } \hspace{1em} \forall \phi \text{ con } \left \vert \left \vert \phi-\phi_0 \right \vert \right \vert_\infty < \delta \hspace{1em} \text{si ha che} \hspace{1em} \left \vert f(\phi) - f(\phi_0) \right \vert < \epsilon\]
+Ma in particolare, per la definizione stessa della $f$ (e per la linearità dell'integrale) si ottiene che
 \[\left \vert \int_0^1 \phi(t) \dif t - \int_0^1 \phi_0(t) \dif t\right \vert = \left \vert \int_0^1 (\phi(t) - \phi_0(t)) \dif t \right \vert\]
-ma siccome
+ma siccome per definizione stessa di norma infinito, si ha che $\left \vert \left \vert \phi(t) - \phi_0(t) \right \vert \right \vert_{\infty}$ è la massima distanza tra $\phi(x)$ e $\phi_0(x)$ ovvero $\sup\{\left \vert \phi-\phi_0 \right \vert\}$, è ovvio che
 \[\left \vert \phi(t) - \phi_0(t) \right \vert \leq \left \vert \left \vert \phi(t) - \phi_0(t) \right \vert \right \vert_{\infty}\]
-in quanto, per definizione $\left \vert \left \vert \phi(t) - \phi_0(t) \right \vert \right \vert_{\infty} = \sup\{\left \vert \phi-\phi_0 \right \vert\}$
-si conclude che 
-\[\left \vert \int_0^1 \phi(t) \dif t - \int_0^1 \phi_0(t) \dif t\right \vert \leq \left \vert \left \vert \phi(t) - \phi_0(t) \right \vert \right \vert_{\infty} \cdot \int_0^1 \dif t = \delta < \epsilon\]
+Si conclude, quindi che
+\[\left \vert \int_0^1 (\phi(t) - \phi_0(t)) \dif t \right \vert \leq \int_0^1 \left \vert\phi(t) - \phi_0(t) \right \vert \dif t \leq \left \vert \left \vert \phi(t) - \phi_0(t) \right \vert \right \vert_{\infty} \cdot \int_0^1 \dif t = \delta < \epsilon\]
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione}: Si osservi data una norma $\vert \vert \cdot \vert \vert_p$, allora la distanza indotta da tale norma è semplicemente la norma della differenza
+\[d(x_1,x_2) = \vert \vert x_1-x_2 \vert \vert_p\]
+Inoltre, nella definizione di limite, quando si imposta la distanza per $x$ e per $f$, bisogna stare attenti a dove è definita la funzione, in quanto per il dominio si ha una distanza, per il codominio un'altra (per esempio in $\mathbb{R}$ la distanza è il valore assoluto).
 
 \newpage
 \noindent
@@ -7297,4 +7545,1138 @@ passando al successivo integrale
 \[\int_0^1 x^3 \cdot \left(\int_0^2 3y^2 + \dfrac{9}{2} \dif y\right) \dif x = \int_0^1 x^3 \cdot \left[y^3 + \dfrac{9}{2}y\right]_0^2 \dif x\]
 passando al successivo integrale
 \[\int_0^1 17x^3 \dif x = \dfrac{17}{4}\]
+
+\newpage
+\noindent
+\begin{center}
+    16 Novembre 2022
+\end{center}
+\subsection{Integrabilità delle funzioni continue}
+Si espone di seguito il \textbf{teorema di integrabilità delle funzioni continue}:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{INTEGRABILITÀ DELLE FUNZIONI CONTINUE}}\\
+    \parbox{\linewidth}{Sia $R \subset \mathbb{R}^n$ un $n$-rettangolo, con
+    \[f : R \longmapsto \mathbb{R}\]
+    continua; allora $f$ è integrabile su $R$.\vspace{3mm}}\\
+    \hline
+\end{tabularx}
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Si provi che $\forall \epsilon >0$ $\exists \delta \in \Delta(R)$ tale che $S(f,\delta)-s(f,\delta) < \epsilon$, ossia si vuole dimostrare che l'insieme delle somme superiori e inferiori sono contigui.\\
+Si osservi dapprincipio che essendo $R$ un compatto, ammette sicuramente massimo e minimo, per cui
+\[\sum_{i,j} \left(\underset{R_{i,j}}{\text{sup } f} - \underset{R_{i,j}}{\text{inf } f}\right) \cdot m(R_i,j) = \sum_{i,j} (f(x_{i,j}) - f(y_{i,j})) \cdot m(R_{i,j})\]
+con $f(x_{i,j}) = \underset{R_{i,j}}{\max f}$ e $f(y_{i,j}) = \underset{R_{i,j}}{\min f}$. Ma siccome $f$ è continua su un compatto, oltre ad essere limitata, è anche \textbf{uniformemente continua}: pertanto $f(x_{i,j}) - f(y_{i,j}) < \epsilon$ se $\vert \vert x_{i,j} - y_{i,j} \vert \vert < \sigma$, per cui basterà allora considerare una decomposizione $\delta$ con $\textbf{mesh} < \sigma$, dove per \textbf{mesh} si intente la massima distanza tra due punti in ogni $R_{i,j}$. Allora è immediato affermare che 
+\[\sum_{i,j} (f(x_{i,j}) - f(y_{i,j})) \cdot m(R_{i,j}) < \epsilon \cdot m(R)\]
+che può essere resa piccola quanto si vuole.
+
+\vspace{1em}
+\noindent
+\subsection{Integrazione su un insieme limitato generale}
+Si consideri un sottoinsieme $E \subseteq \mathbb{R}^n$ limitato e sia
+\[f : E \longmapsto \mathbb{R}\]
+limitato. Allora, per definire $\displaystyle{\int_E f \dif m}$ si può sfruttare il fatto che $E$ è limitato, per cui esiste sicuramente un rettangolo $R$ tale che $E \subseteq \mathbb{R}$. Si definisce, allora, la funzione
+\[f^*_R : R \longmapsto \mathbb{R}\]
+definita come segue
+\[f^*_R = \left\{\rowcolors{1}{white}{white}    
+\begin{array}{lll}
+    f(x) & \text{se} & x \in E\\
+    0   & \text{se}  & x \in R - E\\
+\end{array}
+\right.\]
+allora se $f^*_R$ è integrabile su $R$ si dirà ce $f$ è integrabile su $E$ e si scriverà
+\[\int_E f \dif m = \int_R f^*_R \dif m\]
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione}: Si dimostra facilmente, inoltre, che se $E \subseteq R_1$ e $E \subseteq R_2$, con $R_1$ e $R_2$ due rettangoli arbitrariamente differenti, allora $f^*_{R_1}$ è integrabile su $R_1$ \textbf{se e solo se} $f^*_{R_2}$ e si ha che
+\[\int_{R_1} f^*_{R_1} \dif m = \int_{R_2} f^*_{R_2} \dif m\]
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Si consideri $R = R_1 \cap R_2$, allora ovviamente per la proprietà dell'integrabilità della restrizione si ha che se $f^*_{R_1}$ è integrabile su $R_1$ allora è integrabile su $R$; infatti si ha che
+\[\int_{R_1} f^*_{R_1} \dif m = \int_{T_1} \cdot + \int_{T_2} \cdot + \int_{T_3} \cdot + \int_{R} \cdot = \int_R f^*_{R_1} \vert_R \dif m\]
+
+\vspace{2em}
+\noindent
+\textbf{Esempio}: Tuttavia, le cose funzionano bene se tanto la funzione $f$ quanto l'insieme $E$ scelto sono regolari. Infatti, se si considera la funzione banale $f(x)=1$ con $E=[0,1] \cap \mathbb{Q} \subset \mathbb{R}$, allora $f$ non è integrabile su $E$. Infatti, se si considerasse $R=[0,1]$ e la funzione
+\[f^*_R = \left\{\rowcolors{1}{white}{white}    
+\begin{array}{lll}
+    f(x)=1 & \text{se} & x \in E\\
+    0   & \text{se}  & x \in R - E\\
+\end{array}
+\right.\]
+che è la funzione di Dirichlet, la quale non è integrabile su $R$ in quanto integrale inferiore (pari a $0$) e integrabile superiore (pari a $1$) non coincidono.
+
+\vspace{1em}
+\subsection{Insieme misurabile (secondo Peano-Jordan)}
+Sia $E \subset \mathbb{R}^n$ limitato. Si dirà che $E$ è misurabile secondo Peano-Jordan se la funzione $f(x)=1$ è integrabile su $E$. In questo caso definiamo \textbf{misura di $E$} il numero $\displaystyle{\int_E f \dif m}$
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Si osservi che la misura di Peano-Jordan non è una misura, in quanto non soddisfa le proprietà di una misura.
+
+\vspace{1em}
+\subsubsection{Insieme di misura nulla}
+Si dirà insieme di misura nulla (trascurabile) un insieme misurabile $E$ tale che $m(E)=0$.
+
+\vspace{1em}
+\subsubsection{Caratterizzazione degli insiemi di misura nulla}
+Un insieme limitato $E \subset \mathbb{R}^n$ è di misura nulla \textbf{se e solo se} $\forall \epsilon > 0$ $\exists$ un insieme (chiamato \textbf{plurirettangolo}) definito come l'unione finita di rettangoli
+\[P=\bigcup_{i=1}^k R_i\]
+con $R_i$ rettangoli tale che
+\[E \subseteq P \hspace{1em} \text{e} \hspace{1em} \sum_{i=1}^k m(R_i) < \epsilon\]
+in cui $m(R_i)$ è la misura \quotes{geomtrica} del rettangolo (cioè il normale calcolo dell'area).\\
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione 1}: Si consideri il rettangolo
+\[R = [a_1,b_1] \times \dots \times [a_n,b_n]\]
+allora la misura geometrica del rettangolo è data da
+\[m(R) = (b_1-a_1) \cdot (b_2 - a_2) \cdot \dots \cdot (b_n-a_n)\]
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione 2}: Si osservi che
+\[m(P) = \sum_{i=1}^k m(R_i)\]
+è vero se 
+\[\overset{\circ}{R_i} \cap \overset{\circ}{ R_j} = \varnothing \hspace{1em} \forall i \neq j\]
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione 1}: Si supponga che $E$ sia di misura nulla. Sia $R$ un rettangolo, con $E \subset R$ e tale che la funzione
+\[1^*_R(x) = \left\{\rowcolors{1}{white}{white}    
+\begin{array}{lll}
+    1 & \text{se} & x \in E\\
+    0   & \text{se}  & x \in R - E\\
+\end{array}
+\right.\]
+è integrabile su $R$ e $\displaystyle{\int_R 1^*_R \dif m = 0}$.\\
+Ciò significa, in particolare, che $\forall \epsilon > 0$ esiste una decomposizione $\delta \in \Delta(R)$ tale per cui
+\[S(1^* \vert_R, \delta) - \int_R 1^* \vert_R \dif m < \epsilon\]
+in quanto la somma superiore è l'estremo inferiore delle somme superiori (proprietà caratteristica dell'estremo inferiore). Essendo l'integrale nullo per ipotesi, si ha che 
+\[S(1^* \vert_R, \delta) - \int_R 1^* \vert_R \dif m < \epsilon \hspace{1em} \rightarrow \hspace{1em} S(1^* \vert_R, \delta) < \epsilon\]
+Scrivendo esplicitamente tale disuguaglianza si ottiene
+\[\sum_{i,j} \underset{R_{i,j}}{\sup 1^* \vert_R (x)} \cdot m(R_{i,j})\]
+ma ovviamente si ha che
+\begin{itemize}
+    \item $\underset{R_{i,j}}{\sup 1^* \vert_R (x)} = 0$ se $R_{i,j} \cap E = \varnothing$
+    \item $\underset{R_{i,j}}{\sup 1^* \vert_R (x)} = 1$ se $R_{i,j} \cap E \neq \varnothing$
+\end{itemize}
+Pertanto la disuguaglianza diviene
+\[\sum_{R_{i,j} \cap E \neq \varnothing} m(R_{i,j}) < \epsilon\]
+ma allora la dimostrazione è conclusa, in quanto è stato individuato il plurirettangolo cercato, ossia
+\[P=\bigcup_{R_{i,j} \cap E \neq \varnothing} R_{i,j}\]
+in cui è ovvio che $E \subseteq P$, così come
+\[m(P) = \sum_{i,j \vert R_{i,j} \cap E \neq \varnothing} 1 \cdot m(R_{i,j}) = m(P)\]
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione 2}: Sia, ora, $E$ tale che
+\[\forall \epsilon > 0 \hspace{1em} \exists P = \bigcup_{k=1}^K R_k\]
+con $E \subset P$ e tale per cui $\displaystyle{m(p) = \sum m(R_k) < \epsilon}$.\\
+Si procede, ora, completando una decomposizione $\delta$ di $R$ a partire da $P$, andando a prolungare i lati dei rettangoli che compongono $P$. In questo modo si ha che
+\[S(1^*_R,\delta) = \sum_{i,j} \underset{R_{i,j}}{\sup 1^*_R} \cdot m(R_{i,j}) = m(P) < \epsilon\]
+Pertanto $\forall \epsilon>0$ $\exists \delta \in \Delta(R)$ tale che $S(1^*_R, \delta) < \epsilon$. Poiché $0 \leq S(1^*_R,\delta)$ si conclude che
+\[\int_R^+ 1^*_R \dif m = 0\]
+Si osservi, poi, che non può esistere un rettangolo $R_1 \subseteq E$; infatti, preso $0 < \epsilon < m(R_1)$ si dovrebbe avere un plurirettangolo
+\[P=\bigcup_{k=1}^K R_k\]
+tale che $R_1 \subseteq E \subseteq P$ e $m(P) < \epsilon$, in quanto
+\[m(R_1) \leq m(P) < \epsilon\]
+e ciò è assurdo. Quindi per ogni $\delta$ deve essere necessariamente $s(1^*_R,\delta)=0$, ossia
+\[s(1^*_r,\delta) = \sum_{i,j} \underset{x \in R_{i,j}}{\int 1^*_R} \cdot m(R_{i,j}) = 0\]
+in quanto $\underset{x \in R_{i,j}}{\int 1^*_R}$ deve essere sempre $0$, ovviamente. Da ciò segue che
+\[\int_R^- 1^*_R \dif m = 0\]
+Essendo integrale inferiore e integrale superiore entrambi nulli, ne segue che $1^*_R$ è integrabile e $\displaystyle{\int_R 1^*_R \dif m = 0}$, per cui $E$ è di misura nulla.
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Gli insiemi di misura nulla presentano la proprietà di cui sopra, ciò possono essere sempre contenuti all'interno di rettangolini di misura minore di $\epsilon > 0$.
+
+\vspace{1em}
+\noindent
+\textbf{Esempio}: In $\mathbb{R}$ un punto è sempre un insieme di misura nulla; questo perché un punto può essere inserito all'interno di un quadratino di area che tende a $0$.\\
+Si capisce facilmente che anche un insieme finito di punti è un insieme di misura nulla.\\
+In $\mathbb{R}^2$ i punti e i segmenti possono essere sempre racchiusi in rettangoli di area pressoché nulla: si presti attenzione che i rettangolini in cui contenere il segmento devono essere sempre con lati paralleli agli assi.\\
+In $\mathbb{R}^3$, le regioni piane limitate sono insiemi di misura nulla.\\
+In generale, oggetti di dimensione inferiore allo spazio considerato sono sempre di misura nulla.
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione}: Si osservi che se
+\[f : R \subset \mathbb{R}^2 \longmapsto \mathbb{R}\]
+con $R$ rettangolo e $f$ integrabile, allora il grafico $\mathcal{G}_f$ è un insieme di misura nulla in $\mathbb{R}^3$.\\
+Per esempio, in $R$, presa una funzione integrabile $f$ si ha che
+\[S(f,\delta) - s(f,\delta) = \sum \left(\underset{R_i}{\sup f} - \underset{R_i}{\inf f}\right) \cdot m(R_i)\]
+ma se si pone $\vert f \vert \leq M$, in quanto $f$ è limitata, allora è ovvio che
+\[\left(\underset{R_i}{\sup f} - \underset{R_i}{\inf f}\right) \leq 2M\]
+
+\vspace{1em}
+\noindent
+Se $f$ è integrabile, allora fissato $\epsilon > 0$ $\exists \delta = \{R_i\}$ decomposizione tale che
+\[S(f,\delta)-s(f,\delta) < \epsilon\]
+allora si considera il plurirettangolo
+\[P=\bigcup R_i \times \left[\underset{R_i}{\inf f}, \underset{R_i}{\sup f}\right]\]
+per cui
+\[m(p) = \sum \left(\underset{R_i}{\sup f} - \underset{R_i}{\inf f}\right) \cdot m(R_i) < \epsilon\]
+in cui $\mathcal{G}_f \subseteq P$.
+
+\vspace{1em}
+\noindent
+\subsubsection{}
+Sia $E \subseteq \mathbb{R}^n$ un insieme limitato. Allora $E$ è misurabile se e solo se la sua frontiera $f_r(E)$ è un insieme di misura nulla.
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Sia $E$ misurabile, ossia, per definizione, preso $R$ tale che $E \subseteq R$ si ha che la funzione $1^*_R$ è integrabile su $R$. Allora per definizione di integrabilità
+\[\forall \epsilon > 0 \hspace{1em} \exists \delta \in \Delta(R) \hspace{1em} \text{tale che} \hspace{1em} S(1^*_R,\delta) - s(1^*_R,\delta) < \epsilon\]
+ma tale disuguaglianza può essere riscritta come
+\[\sum_i \sum_j \left(\underset{R_{i,j}}{\max 1^*_R} - \underset{R_{i,j}}{\min 1^*_R}\right) \cdot m(R_{i,j}) < \epsilon\]
+Si osservi, ora che
+\begin{itemize}
+    \item se $R_{i,j} \cap E = \varnothing$ la funzione $1^*_R$ vale sempre $0$, per cui
+    \[\underset{R_{i,j}}{\max 1^*_R} - \underset{R_{i,j}}{\min 1^*_R} = 0\]
+
+    \item se $R_{i,j} \subseteq E$ la funzione $1^*_R$ vale sempre $1$, per cui
+    \[\underset{R_{i,j}}{\max 1^*_R} - \underset{R_{i,j}}{\min 1^*_R} = 0\]
+
+    \item se $R_{i,j} \cap f_r E \neq \varnothing$ la funzione $1^*_R$ presenta come massimo $1$ e come minimo $1$, per cui
+    \[\underset{R_{i,j}}{\max 1^*_R} - \underset{R_{i,j}}{\min 1^*_R} = 1\]
+\end{itemize}
+Pertanto si ha, semplicemente che 
+\[\sum_i \sum_j \left(\underset{R_{i,j}}{\max 1^*_R} - \underset{R_{i,j}}{\min 1^*_R}\right) \cdot m(R_{i,j}) = \sum_{R_{i,j} \cap f_r(E) \neq \varnothing} m(R_{i,j})\]
+da ciò segue che
+\[\bigcup{R_{i,j} \cap f_r(E) \neq \varnothing} R_{i,j}\]
+in cui $f_r(E) \subset P$ e $m(P) < \epsilon$
+
+\vspace{1em}
+\noindent
+\subsection{Proprietà dell'integrale sugli insiemi limitati}
+È noto che per gli integrali definiti su rettangoli vale la proprietà di linearità, il prodotto, la monotonia, il valore assoluto, che sono tutte proprietà che si estendono agli insiemi limitati.\\
+Tuttavia non tutte le proprietà si estendono: l'integrabilità della restrizione non è sempre valida, in quanto preso $E=[0,1]$ e $f(x)=1$, allora $f$ è integrabile su $E$; tuttavia se $F = \mathbb{Q} \cap [0,1]$ con $F \subset E$, ma $f \vert_F$ non è integrabile.
+
+\vspace{1em}
+\subsubsection{Integrabilità della restrizione sugli insiemi limitati}
+Sia $E$ e 
+\[f : E \longmapsto \mathbb{R}\]
+con $f$ integrabile su $E$. Sia $F \subset E$ con $F$ \textbf{misurabile}. Allora $f \vert_F$ è integrabile su $F$.
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Sia $E \subset R$, con $f^*_R$ integrabile su $R$. Allora la funzione $\left(1 \vert_F\right)^*_R$ è integrabile su $R$. Ma allora $f^*_R \cdot \left(1 \vert_F\right)^*_R$ è integrabile su $R$, in quanto
+\[
+    f^*_R \cdot \left(1 \vert_F\right)^*_R = \left\{\rowcolors{1}{white}{white}    
+    \begin{array}{lll}
+        f(x) & \text{se} & x \in F\\
+        0   & \text{se}  & x \in R - F\\
+    \end{array}
+    \right.
+\]
+per cui essa coincide esattamente con la funzione $\left(f \vert _F\right)^*_R$.
+
+\newpage
+\noindent
+\begin{center}
+    18 Novembre 2022
+\end{center}
+Si è visto come si può definire l'integrale di una funzione su un insieme generale: in particolare l'insieme deve essere misurabile, ossia la funzione $1$ deve essere integrabile.\\
+Sono di particolare interesse gli insiemi di misura nulla, ossia insiemi che possono essere contenuti in plurirettangoli di dimensione arbitrariamente piccola.\\
+Le proprietà degli integrali sui rettangoli si estendono in modo omogeneo agli integrali definiti su insiemi misurabili, ma non tutte, come per l'integrabilità della restrizione.
+
+\vspace{1em}
+\subsubsection{Additività}
+Sia $f$ integrabile su $E_1$ e su $E_2$, allora $f$ è integrabili su $E_1 \cup E_2$ e si ha che
+\[\int_{E_1 \cup E_2} = \int_{E_1} f \dif m + \int_{R_2} f \dif m - \int_{E_1 \cap E_2} f \dif m\]
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Per la dimostrazione si consideri
+\[
+    f^*_{E_1} (x) = \left\{\rowcolors{1}{white}{white}    
+    \begin{array}{lll}
+        f(x) & \text{se} & x \in E_1\\
+        0   & \text{se}  & x \in R - E_1\\
+    \end{array}
+    \right. \hspace{1em} \text{e} \hspace{1em}
+    f^*_{E_2} (x) = \left\{\rowcolors{1}{white}{white}    
+    \begin{array}{lll}
+        f(x) & \text{se} & x \in E_2\\
+        0   & \text{se}  & x \in E - E_2\\
+    \end{array}
+    \right. \hspace{1em} \text{e} \hspace{1em}
+    f^*_{E_1 \cup E_2} (x) = \left\{\rowcolors{1}{white}{white}    
+    \begin{array}{lll}
+        f(x) & \text{se} & x \in E_1 \cup E_2\\
+        0   & \text{se}  & x \in E - E_1 \cup E_2\\
+    \end{array}
+    \right.
+\]
+Allora si ha che
+\[\int_R f^*_{E_1 \cup E_2} (x) = \int_R f^*(x)_{E_1} + \int_{R} f^*_{E_2} - \int_{R} f^*_{E_1 \cap E_2}(x)\]
+
+\vspace{1em}
+\subsubsection{Teorema della media}
+Sia $E$ misurabile e
+\[f : E \longmapsto \mathbb{R}\]
+integrabile, allora
+\[\underset{E}{\inf} f \cdot m(E) \leq \int_E f \dif m \leq \underset{E}{\sup f} \cdot m(E)\]
+Inoltre se $f$ è continua ed $E$ è \textbf{compatto} (cosa che era ovvia per i rettangoli) e \textbf{connesso}, allora esiste $x^* \in E$ tale che
+\[f(x^*) \cdot m(E) = \int_E f \dif m\]
+
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Non potendo considerare la decomposizione banale, si osserva che
+\[\underset{E}{\inf f} \leq f(x) \leq \underset{E}{\sup f}\]
+per cui per il confronto degli integrali si ha che
+\[\int_E \underset{E}{\inf f} \dif m \leq \int_E f(x) \dif m \leq \int_E \underset{E}{\sup f} \dif m\]
+da cui segue la tesi.\\
+Sia, allora $m(E) \neq 0$, per la compattezza di $E$ e per la continuità della $f$ esistono
+\[\underset{E}{\min f} \hspace{1em} \text{e} \hspace{1em} \underset{E}{\max f}\]
+per la connessione si ha che
+\[f(E) = \left[\underset{E}{\min f}, \underset{E}{\max f}\right]\]
+Per cui, poiché
+\[\dfrac{\displaystyle{\int_E f \dif m}}{m(E)} \in \left[\underset{E}{\min f}, \underset{E}{\max f}\right]\]
+per cui si conclude.
+
+\vspace{1em}
+\subsection{Proprietà della misura}
+Di seguito si espongono le proprietà della misura:
+\begin{enumerate}
+    \item $m(E) \geq 0$, in quanto $m(E) = \int_E 1 \dif m$, per cui si ottiene dal confronto degli integrali.
+    
+    \item $\displaystyle{m([a_1,b_1] \times \dots \times [a_n,b_n]) = \prod_{k=1}^n (b_k-a_k)}$
+    
+    \item la misura è monotona, in quanto $E_1 \subseteq E_2$ allora si ottiene che $m(E_1) \leq m(E_2)$
+    
+    % Formattazione per la dimostrazione, etc.
+    \vspace{2em}
+    \noindent
+    \normalfont \normalsize
+    \textsc{Dimostrazione}: Si consideri $E_1 \subset R$, allora si ha che
+    \[(1 \vert_{E_1})_R^*(x) \leq (1 \vert_{E_2})_R^*(x)\]
+    per cui ora, si ha che
+    \[\int_R (1 \vert_{E_1})_R^*(x) \leq \int_R (1 \vert_{E_2})_R^*(x) \hspace{1em} \rightarrow \hspace{1em} m(E_1) \leq m(E_2)\]
+
+    \item $m(E_1 \cup E_2) = m(E_1) + m(E_2) - m(E_1 \cap E_2)$
+    
+    \item l'invarianza per traslazioni: se $E$ è misurabile con $E \subseteq \mathbb{R}^n$, con $\alpha \in \mathbb{R}^n$, allora si ha che
+    \[E + \alpha = \{x+\alpha : x \in E\}\]
+    è misurabile e si ha che
+    \[m(E+\alpha) = m(E)\]
+\end{enumerate}
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione 1}: In generale si dovrebbe richiedere, per avere una misura, che
+\[m \left(\bigcup_{k=1}^\infty E_k\right) = \sum_{k=1}^\infty m(E_k)\]
+Questo, però, non vale per la misura di Peano-Jordan, in quanto preso l'insieme seguente
+\[E = [0,1] \cap \mathbb{Q} = \{q_k : k \in \mathbb{N}\}\]
+allora si ha che
+\[E = \bigcup_{k=1}^\infty \{q_k\}\]
+ma se si ha che $m(\{q_k\}) = 0, \hspace{1em} \forall k$, si ottiene che
+\[\bigcup_{k=1}^\infty \{q_k\}\]
+non è misurabile.
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione 2}: Il paradosso di Banach-Tarski, afferma che è possibile tagliare una palla solida in $5$ parti e ricomporre (tramite rotazioni e traslazioni) tali parti per formare due palle della stessa misura della palla di partenza. Ciò è possibile in quanto si ottengono delle frazioni della palla di partenza che non sono misurabili e, quindi, tramite le traslazioni, si perde la misura e l'ultima proprietà (dell'invarianza per traslazioni) non vale più.
+
+\vspace{1em}
+\noindent
+\subsection{Integrabilità degli insiemi di misura nulla}
+Di seguito si espone il \textbf{teorema di integrabilità degli insiemi di misura nulla}:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{INTEGRABILITÀ SUGLI INSIEMI DI MISURA NULLA}}\\
+    \parbox{\linewidth}{Sia $E$ di misura nulla e sia
+    \[f : E \longmapsto \mathbb{R}\]
+    limitata. Allora $f$ è integrabile e si ha che
+    \[\int_E f \dif m = 0\]
+    \vspace{-3mm}}\\
+    \hline
+\end{tabularx}
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Dal momento che $f$ è limitata, è ovvio che $\vert f(x) \vert \leq M$. Posto $E \subset \mathbb{R}$, essendo esso di misura nulla, esiste un $P$ plurirettangolo tale per cui $E \subset P$, con $m(P) < \epsilon$. Si procede, ora, completando la decomposizione $\delta$ a partire da $P$, per cui si ottiene
+\[S(f^* \vert_r, \delta) - s(f^*\vert_R,\delta) = \sum_{i,j} \left(\underset{R_{i,j}}{\sup f} - \underset{R_{i,j}}{\inf f}\right) \cdot m(R_{i,j})\]
+ma siccome si ha che
+\[\left(\underset{R_{i,j}}{\sup f} - \underset{R_{i,j}}{\inf f}\right) \leq 2M\]
+si ottiene
+\[\sum_{i,j} \left(\underset{R_{i,j}}{\sup f} - \underset{R_{i,j}}{\inf f}\right) \cdot m(R_{i,j}) \leq 2M \cdot \sum_{R_{i,j} \in P} R_{i,j} < 2M \epsilon\]
+
+\vspace{2em}
+\noindent
+\subsubsection{Corollario integrabilità su insiemi di misura nulla}
+Sia data la funzione
+\[f : E \cup N \longmapsto \mathbb{R}\]
+con $E$ misurabile con $N$ di misura nulla e $f$ è limitata; allora $f$ è integrabile su $E \cup N$ se e solo se $f$ è integrabile su $E$ e si ha che
+\[\int_{E \cup N} f \dif m = \int_E f \dif m\]
+
+
+\noindent
+\textbf{Osservazione}: Si dimostri assolutamente per la lode.
+
+\vspace{2em}
+\noindent
+\subsection{Proprietà verificate quasi ovunque (q.o.)}
+Sia $\mathcal{P}$ una proprietà; si dice che un insieme $E$ verifica $\mathcal{P}$ q.o. (quasi ovunque), se esiste un insieme di misura nulla $N \subset E$ tale che $E-N$ verifica $\mathcal{P}$.
+
+\vspace{1em}
+\noindent
+\textbf{Esempio}: Sia $f$ quasi ovunque continua su $E$, allora $f$ è integrabili
+
+\vspace{2em}
+\noindent
+\subsection{Integrabilità su un insieme misurabile di una funzione quasi ovunque continua}
+Sia $E \subset \mathbb{R}^n$ misurabile, con
+\[f : E \longmapsto \mathbb{R}\]
+con $f$ \textbf{limitata} (che è fondamentale per l'integrabilità) e sia $N \subset E$ un insieme di misura nulla. Sia $f$ continua su $E-N$. Allora $f$ è integrabile su $E$.
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Tale proprietà è molto potente, in quanto permette di trascurare insiemi di misura nulla nel calcolo degli integrali.
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Si supponga, dapprincipio, che $E = R$ con $R$ rettangolo. Per dimostrare che $f$ è integrabile bisogna trovare una decomposizione $\delta$ che renda somma superiore e somma inferiore contigui.\\
+Fissato $\epsilon > 0$, essendo $N$ di misura nulla per ipotesi, deve esistere $P$ plurirettangolo con $N \subset P$ e $m(P) < \epsilon$.\\
+Sia, allora, $K=R-\text{int }P$ dove int $P$ è la l'insieme dei punti interni di $P$. Allora $K$ è compatto, per cui $f$ è uniformemente continua su $K$; si completa $P$, allora, in una decomposizione $\delta$ e si ottiene
+\[S(f,\delta)-s(f,\delta) = \sum_{i,j} \left(\underset{R_{i,j}}{\sup f} - \underset{R_{i,j}}{\inf f}\right) \cdot m(R_{i,j})\]
+allora si decompone tale sommatoria come segue
+\[\sum_{R_{i,j} \subset P} \left(\underset{R_{i,j}}{\sup f} - \underset{R_{i,j}}{\inf f}\right) \cdot m(R_{i,j}) + \sum_{R_{i,j} \in K} \left(\underset{R_{i,j}}{\max f} - \underset{R_{i,j}}{\min f}\right) \cdot m(R_{i,j})\]
+ma presa una mesh di $\delta$ sufficientemente piccola si ha che 
+\[\sum_{R_{i,j} \in K} \left(\underset{R_{i,j}}{\max f} - \underset{R_{i,j}}{\min f}\right) \cdot m(R_{i,j}) < \epsilon \cdot m(R)\]
+Per quanto riguarda, invece, la prima sommatoria si ha che
+\[\sum_{R_{i,j} \subset P} \left(\underset{R_{i,j}}{\sup f} - \underset{R_{i,j}}{\inf f}\right) \cdot m(R_{i,j}) \leq 2 M \cdot m(P) < 2M\epsilon\]
+Pertanto si ottiene che
+\[S(f,\delta)-s(f,\delta) < \epsilon \cdot (2M + m(R))\]
+
+\vspace{1em}
+\noindent
+Sia, ora, $E$ un insieme misurabile qualsiasi. Allora si ha che $E \subset R$, con $m(f(E)) = 0$. Pertanto la funzione $f^*_R$ è quindi continua quasi ovunque su $R$ (poiché può non essere continua su $N$ oppure su $fr E$, ossia su $N \cup fr(E)$); ma siccome $N$ è di misura nulla e $fr(E)$, ossia la frontiera di un insieme misurabile, è anch'essa di misura nulla, per cui non dà problemi.
+
+\vspace{1em}
+\noindent
+\subsection{Integrali su sottoinsiemi di $\mathbb{R}^2$ misurabili}
+Sia dato $D \subset \mathbb{R}^2$; allora $D$ si dice \textbf{dominio normale} rispetto all'asse $x$ se esistono
+\[[a,b] \subset \mathbb{R} \hspace{1em} \text{e} \hspace{1em} \phi,\psi : [a,b] \longmapsto \mathbb{R}\]
+entrambe continue e tali che $\phi(x) \leq \psi(x)$ $\forall x \in [a,b]$, e si ha che
+\[E = \{(x,y){^T} \in \mathbb{R}^" : x \in [a,b], \hspace{1em} \phi(x) \leq y \leq \phi(x)\}\]
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: È immediato osservare che un dominio normale è misurabile, in quanto
+\[fr(E) = \mathcal{G}_\phi \cup \mathcal{G}_\psi \cup \text{ segmenti}\]
+che è una frontiera di misura nulla e per le proprietà di caratterizzazione di un insieme misurabile, $E$ è misurabile.
+
+\vspace{1em}
+\noindent
+\subsubsection{Integrali su dominio normale}
+Sia $E$ un dominio normale rispetto all'asse $x$, definito come
+\[E = \{(x,y){^T} \in \mathbb{R}^" : x \in [a,b], \hspace{1em} \phi(x) \leq y \leq \phi(x)\}\]
+con
+\[f : E \longmapsto \mathbb{R}\]
+limitata e quasi ovunque continua su $E$. Allora si ha che
+\[\iint_E f \dif m = \int_a^b \left(\int_{\phi(x)}^{\psi(x)} f(x,y) \dif y\right) \dif x\]
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Sia
+\[R = [a,b] = \left[\min(\phi(x)),\max(\psi(x)) \right]\]
+Naturalmente $f$ è integrabile su $E$ perché quasi ovunque continua su $E$ misurabile. Pertanto si ha che 
+\[\iint_E f \dif m = \iint_R f^*_R (x,y) \dif x \dif y\]
+e per Fubini si ha che tale integrale può essere ridotto come
+\[\int_a^b \left(\int_{\min(\phi(x))}^{\max(\phi(x))} f^*_R (x,y) \dif y\right) \dif x\]
+Tuttavia, usando il teorema di additività rispetto all'intervallo di integrazione di Charves, ottenendo
+\[\int_{\underset{[a,b]}{\inf f}}^{\phi(x)} f^*_R(x,y) \dif y + \int_{\phi(x)}^{\psi(x)} f^*_R (x,y) \dif y + \int_{\psi(x)}^{\underset{[a,b]}{\sup f}} f^*_R(x,y) \dif y\]
+ma i primi due integrali sono nulli in quanto la funzione nell'intervallo di integrazione considerato è sempre nulla. Pertanto si ha che 
+\[\iint_E f \dif m = \int_a^b \left(\int_{\phi(x)}^{\psi(x)} f(x,y) \dif y\right) \dif x\]
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: 
+
+\vspace{2em}
+\noindent
+\textbf{Esempio}: Si consideri il seguente dominio normale
+\[E=\{(x,y) \in \mathbb{R}^2 \hspace{1em} \text{tale che} \hspace{1em} 0 \leq x \leq 2, \hspace{1em} \min\{x,x^2\} \leq y \leq \max\{x,x^2\}\]
+e si calcoli l'integrale seguente
+\[\iint_E (x+2y) \dif x \dif y = \int_0^1 \left(\int_{\min\{x,x^2\}}^{\max\{x,x^2\}} (x+2y) \dif y\right) \dif x\]
+ovviamente è possibile spezzare l'integrale come segue
+\[\int_0^1 \left(\int_{x^2}^x (x+2y) \dif y\right) \dif x + \int_1^2 \left(\int_x^{x^2}(x+2y) \dif y\right)\dif x\]
+che permette di ottenere
+\[\int_0^1 \left[xy + y^2\right]_{x^2}^x + \int_1^2 \left[xy+y^2\right]_x^{x^2} \dif x = \int_0^1 (2x^2 - x^3 - x^4) \dif x + \int_1^2 (x^4+x^3-2x^2) \dif x\]
+Alla fine si ottiene semplicemente
+\[\left[\dfrac{2}{3} x^3 - \dfrac{x^4}{4} - \dfrac{x^5}{5}\right]_0^1 + \left[\dfrac{x^5}{5}+\dfrac{x^4}{4}-\dfrac{2}{3}x^3\right]_1^2 = \dfrac{11}{2}\]
+
+\vspace{2em}
+\noindent
+\textbf{Esercizio 1}: Al variare del parametro $a \in \mathbb{R}$, si consideri la funzione
+\[f_a(x,y) = \log(xy)+ax+y\]
+Allora si ha che
+\begin{itemize}
+    \item il dominio è dato $xy > 0$, per cui deve essere che $x<0$ e $y<0$, oppure $x>0$ e $y>0$;
+    \item il gradiente della $f_a$ è dato da
+    \[\nabla f_a(x,y) = \left(\dfrac{1}{x} + a, \dfrac{1}{y} + 1\right){^T}\]
+    \item mentra la matrice Hessiana della $f_a$ è data da
+    \[H f_a(x,y) = \left(
+        \rowcolors{1}{white}{white}
+        \begin{array}{cc}
+            -\dfrac{1}{x^2} & 0\\
+            0 & -\dfrac{1}{y^2}\\
+        \end{array}
+    \right)\]
+    \item I punti critici si ottengono valutando quando il gradiente si annulla, da cui
+    \[\left\{
+        \rowcolors{1}{white}{white}
+        \begin{array}{cc}
+            \dfrac{1}{x}+a=0\\
+            \dfrac{1}{y}+1=0\\
+        \end{array}
+    \right.\]
+    per cui si ottengono i punti
+    \[x=-\dfrac{1}{a} \hspace{1em} \text{e} \hspace{1em} y=-1\]
+    per cui si evince che deve essere $a>0$, in quanto $x$ e $y$ devono essere concordi.
+    \item Per determinare la natura di tali punti critici si calcola si calcola la matrice Hessiana, da cui si ha che il punto
+    \[\left(-\dfrac{1}{a},-1\right){^T}\]
+    che è punto di massimo.
+\end{itemize}
+Si consideri allora la linea di livello $a+1$ della funzione $f_a$
+\[L_{a+1} : \{(x,y){^T} \in \mathbb{R}^2 : f_a(x,y) = a+1\}\]
+e si provi che in un intorno del punto $(1,1){^T}$ la linea di livello $L_{a+1}$ è il grafico di una funzione
+\[\phi_a : ]1-\delta,1+\delta[ \hspace{0.5em} \longmapsto \mathbb{R}\]
+\begin{itemize}
+    \item per verificare ciò si impiega il teorema di Dini, per cui si definisce la funzione
+    \[g(x,y) = f(x,y)-a-1\]
+    Si ha che, ovviamente, la funzione $g(1,1)=0$, posto
+    \[g_y(x,y)=\dfrac{1}{y}+1\]
+    in cui si è verificato che $g_y(1,1) \neq 0$, pertanto sono soddisfatte alle ipotesi del teorema di Dini.
+    \item per calcolare il polinomio di Taylor di ordine $2$ della funzione, centrato in $x_0=1$, si ha che
+    \[\phi(x) = \phi(1) + \phi'(1) \cdot (x-1) + \dfrac{1}{2} \phi''(1) \cdot (x-1)^2\]
+    \item È noto che
+    \[\phi'(x) = \dfrac{f_x(x,\phi(x))}{f_y(x,\phi(x))} = - \dfrac{\dfrac{1}{x}+a}{\dfrac{1}{\phi(x)}+1}\]
+    per cui
+    \[\phi'(1) = -\dfrac{1+a}{2}\]
+    in quanto è noto che $\phi(1)=1$, dal momento che in un intorno del punto $(1,1){^T}$ la curva di livello $L_{a+1}$ è il grafico della funzione $\phi$.
+
+    \item Se si cercano i punti critici della $\phi$ nel punto $x_0=1$, si impone
+    \[\phi'(1)=0 \hspace{1em} \text{da cui} \hspace{1em} a=-1\]
+    però si è visto che $a>0$ affinché $f$ abbia punti critici.
+\end{itemize}
+
+\vspace{2em}
+\noindent
+\textbf{Esercizio 2}: Si consideri la funzione seguente
+\[f(x,y) = \dfrac{1}{1+y^2} - \dfrac{1}{5-x^2}\]
+in cui si impone come dominio
+\[E = \{(x,y){^T} \in \mathbb{R}^2 \hspace{1em} \text{tale che} \hspace{1em} \vert x \vert \leq 2\}\]
+allora il gradiente della funzione è
+\[\nabla f(x,y) = \left(- \dfrac{2x}{(5-x)^2}, - \dfrac{2y}{(1+y^2)^2}\right){^T}\]
+mentre la matrice Hessiana è la seguente
+\[H f(x,y) = \left(
+    \rowcolors{1}{white}{white}
+    \begin{array}{cc}
+        -\dfrac{10+6x^2}{(5-x^2)^3} & 0\\
+        0 & \dfrac{6y^2 - 2}{(1+y^2)^3}\\
+    \end{array}
+\right)\]
+Ovviamente l'unico punto critico interno al dominio è l'origine $(0,0){^T}$ il quale è un punto di massimo essendo gli autovalori entrambi negativi.\\
+Per quanto riguarda la frontiera, si studia
+\[f \vert_{x=2} = \dfrac{1}{1+y^2} - 1\]
+e calcolandone la derivata si ottiene facilmente che essa si annulla in $y=0$, con $y=0$ punto di massimo, per cui un ulteriore punto critico per la funzione $f$ di partenza è $(2,0){^T}$. Similmente si può fare per la restrizione $f \vert_{x=-2}$, per cui $(-2,0){^T}$ è un ulteriore punto critico per la $f$ di partenza. L'estremo inferiore della funzione $f\vert_{x=\pm 2} = -1$. Ma osservando che
+\[-1 \leq \dfrac{1}{5-x^2} \leq -\dfrac{1}{5} \hspace{1em} \text{e} \hspace{1em} 0 \leq \dfrac{1}{y^2+1} \leq 1\]
+per cui
+\[-1 \leq f(x,y) \leq \dfrac{4}{5}\]
+per cui $-1$ è estremo inferiore della $f$, mentre $\dfrac{4}{5}$ è massimo assoluto per la $f$.\\
+Per calcolare l'equazione del piano tangente alla funzione $f$ nel punto $\left(1,1,\dfrac{1}{4}\right){^T} \in \mathcal{G}_f$, allora ovviamente si ha che
+\[Z = f(x,y) = f(x_0,y_0) + \left<\nabla f(x_0,y_0), (x-x_0,y-y_0){^T}\right>\]
+
+\vspace{1em}
+\noindent
+Si verifichi se l'insieme
+\[\{(x,0){^T} \in E : f(x,y) < 0\}\]
+è connesso per archi. Allora 
+
+\newpage
+\noindent
+\begin{center}
+    21 Novembre 2022
+\end{center}
+Dato un \textbf{dominio normale} nel piano, è possibile integrare tramite Fubini. Tuttavia, non è stato preso in considerazione il caso in $\mathbb{R}^3$, ossia nello spazio.
+
+\vspace{1em}
+\noindent
+\subsection{Dominio normale rispetto ad un piano in $\mathbb{R}^3$}
+Di seguito si espone la definizione di dominio normale rispetto ad un piano in $\mathbb{R}^3$:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{SERIE NUMERICA}}\\
+    \parbox{\linewidth}{Sia $K \subseteq \mathbb{R}^2$ misurabile e compatto (o aperto con chiusura compatta); siano date due funzioni
+    \[\phi,\psi : K \longmapsto \mathbb{R}\]
+    continue, con
+    \[\phi(x,y) \leq \psi(x,y) \hspace{1em} \forall (x,y){^T} \in K\]
+    Allora l'insieme
+    \[E = \{(x,y,z){^T} : (x,y){^T} \in K, \phi(x,y) \leq z \leq \psi(x,y)\}\]
+    si chiama dominio normale rispetto al piano $xy$ in $\mathbb{R}^3$.
+    \vspace{3mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione}: Si osservi che $E$ è misurabile (ossia la sua frontiera è di misura nulla), in quanto la superficie cilindrica che viene considerata è di \textbf{misura nulla}, mentre il grafico delle due funzioni $\phi$ e $\psi$, essendo continue, è di misura nulla.
+
+\vspace{1em}
+\noindent
+\subsection{Superficie cilindrica}
+Sia data la curva
+\[\gamma : I \longmapsto \mathbb{R}^2\]
+definita come
+\[\gamma(t) = (x(t),y(t)){^T}\]
+ossia una curva \textbf{regolare a tratti}; siano dati due campi scalari
+\[\phi,\psi : \mathbb{R}^2 \longmapsto \mathbb{R}\]
+e sia dato il campo vettoriale
+\[\sigma : \Omega \subseteq \mathbb{R}^2 \longmapsto \mathbb{R}^3\]
+con
+\[\sigma(t,z) = (x(t),y(t),z){^T}\]
+e $\Omega$ definito come
+\[\Omega = \{(t,z){^T} : t \in I, \phi(\gamma(t)) \leq z \leq \psi(\gamma(t))\}\]
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Si dimostri, allora, che se $K$ è compatto e misurabile, con $\phi$ e $\psi$ campi scalari continui, posta $\gamma$ la curva che parametrizza $fr K$ (supposta esistente), allora la superficie cilindrica generata da $\gamma$ con $\phi$ e $\psi$ è di misura nulla.\\
+Dapprincipio si osservi che $fr K$ è un insieme di misura nulla, in quanto $K$ è misurabile per ipotesi. Allora $\forall \epsilon > 0$ esiste un plurirettangolo
+\[P = \bigcup_i R_i\]
+tale che $fr K \subset = P$ e $m(P) < \epsilon$. Siccome i rettangoli $R_i$ che costituiscono il plurirettangolo si trovano sul piano, si considera il parallelepipedo con base $R_i$ e come altezza data dal $\min \psi(x)$ e dal $\max \psi(x)$, ossia
+\[R_i \times [\min \phi(x), \max \psi(x)]\]
+È facile osservare che
+\[\widetilde{P} = \bigcup_i R_i \times [\min \phi(x), \max \psi(x)]\]
+contiene la superficie cilindrica. Si ha che $\widetilde{P}$ è un plurirettangolo in $\mathbb{R}^3$, la cui misura, per l'additività della misura, è data da
+\[m(\widetilde{P}) \leq \sum_i m(R_i) \cdot (\max \psi(x) - \min \phi(x)) < \epsilon \cdot (\max \psi(x) - \min \phi(x))\]
+che si può rendere piccolo quanto si vuole. Ciò dimostra che un dominio normale in $\mathbb{R}^3$ è un insieme misurabile perché ha come frontiera due grafici di funzioni continue (per cui grafici di misura nulla) e una superficie cilindrica e quindi ha frontiera di misura nulla.
+
+\vspace{1em}
+\subsection{Integrazione per corde rispetto ad un dominio normale in $\mathbb{R}^3$}
+Sia
+\[E=\{(x,y,z){^T} \in \mathbb{R}^3 : (x,y){^T} \in K \hspace{1em} \text{con} \hspace{1em} \phi(x,y) \leq < \leq \psi(x,y)\}\]
+dominio normale e sia
+\[f : E \longmapsto \mathbb{R}\]
+limitata e quasi ovunque continua. Allora $f$ è integrabile su $E$ e si ha che
+\[\iiint_E f \dif m = \iint_K \left(\int_{\phi(x,y)}^{\psi(x,y)} f(x,y,z) \dif z\right) \dif x \dif y\]
+Naturalmente valgono i due teoremi analoghi rispetto al piano $xz$ e $yz$.
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Sia dato
+\[K \subset [a_1,b_1] \times [a_2,b_2]\]
+e sia
+\[[a_3,b_3] = [\min \phi, \max \psi]\]
+allora si ha che
+\[\iiint_E f \dif m = \iint_{[a_1,b_1]\times[a_2,b_2]\times[a_3,b_3]} f^*_R (x,y,z) \dif x \dif y \dif z\]
+essendo $R=[a_1,b_1]\times[a_2,b_2]\times[a_3,b_3]$. Allora utilizzando Fubini si ha che
+\[\iint_{[a_1,b_1]\times[a_2,b_2]\times[a_3,b_3]} f^*_R (x,y,z) \dif x \dif y \dif z = \iint_{[a_1,b_1]\times[a_2,b_2]} \left(\int_{a_3}^{b_3} f^*_R \dif z\right) \dif x \dif y\]
+Ciò si traduce in
+\[\iint_{[a_1,b_1]\times[a_2,b_2]} \left(\int_{\phi^*_{[a_1,b_2]\times[a_2,b_2]}}^{\psi^*_{[a_1,b_1]\times[a_2,b_2]}} f^*_R (x,y,z) \dif z\right) \dif x \dif y\]
+
+\vspace{1em}
+\noindent
+\subsection{Insieme sezionabile}
+Sia $E \subseteq \mathbb{R}^3$ misurabile; allora esso si dice \textbf{sezionabile} rispetto all'asse $z$ se ogni sezione, definita come
+\[\mathcal{S}_Z = \{(x,y){^T} \in \mathbb{R}^2 : (x,z,y){^T} \in E\}\]
+ossia la proiezione della sezione sul piano $xy$, è misurabile in $\mathbb{R}^2$.
+
+\vspace{1em}
+\noindent
+\subsection{Integrazione per sezioni}
+Si espone di seguito il \textbf{teorema di integrazione per sezioni}:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{INTEGRAZIONE PER SEZIONI}}\\
+    \parbox{\linewidth}{Sia $E$ sezionabile e sia data
+    \[f : E \longmapsto \mathbb{R}\]
+    limitata e quasi ovunque continua; allora $f$ è integrabile su $E$; posti
+    \begin{itemize}
+        \item $a_3 = \min \{z : \mathcal{S}_z \neq \varnothing\}$;
+        \item $b_3 = \max \{z : \mathcal{S}_z \neq \varnothing\}$;
+    \end{itemize}
+    allora si ha che
+    \[\iiint_E f \dif m = \int_{a_3}^{b_3} \left(\iint_{\mathcal{S}_z} f(x,y,z) \dif x \dif y\right) \dif z\]
+    \vspace{-1mm}}\\
+    \hline
+\end{tabularx}
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Sia definito
+\[E \subseteq R = [a_1,b_1] \times [a_2,b_2] \times [a_3,b_3]\]
+si integra con Fubini per sezioni, da cui
+\[\iiint_E f \dif m = \iiint_R f^*_R \dif m = \int_{a_3}^{b_3} \left(\iint_{[a_1,b_1] \times [a_2,b_2]} f^*(x,y,z) \dif x \dif y\right) \dif z\]
+
+\vspace{2em}
+\noindent
+\textbf{Esempio 1}: Sia calcoli il volume di un cono di altezza $h$ e raggio di base $r$; allora, per definizione di misura di un insieme (ossia il cono $C$) si ha che
+\[\text{Volume}=\iiint_C 1 \dif x \dif y \dif z\]
+Integrando per sezioni si ha che $a_3=0$ e $b_3=h$, mentre per la sezione si ha che
+\[\mathcal{S}_z = \{(x,y){^T} \in \mathbb{R}^2 : x^2+y^2 \leq r(z)^2\}\]
+in cui è facile capire che
+\[r(z)=\left(1-\dfrac{z}{h}\right) \cdot r\]
+da cui
+\[\iint_{\mathcal{S}_z} 1 \dif x \dif y = \text{ area del cerchio di raggio } r(z) = \pi \cdot \left(1-\dfrac{z}{h}\right)^2 r^2\]
+Ecco che quindi si ha che
+\[\int_0^h \left(\iint_{\mathcal{S}_z} 1 \dif x \dif y\right) \dif z = \int_0^h \pi \left(1-\dfrac{z}{h}\right)^2 r^2 \dif z\ = \pi r^2 \cdot \int_0^h \left(1-2\dfrac{z}{h} +\dfrac{z^2}{h^2}\right) \dif z\]
+Si ottiene, quindi
+\[\pi r^2 \cdot \left(h-h+\dfrac{h}{3} \right) = \dfrac{1}{3} \pi r^2 h\]
+
+\vspace{2em}
+\noindent
+\textbf{Esempio 2}: Se al posto di integrare per sezioni si fosse integrato per corde, sarebbero state definite le funzioni
+\[\phi,\psi : K \longmapsto \mathbb{R}\]
+con
+\[K=\mathcal{B}(0,r)\]
+in cui
+\[\phi(x)=0 \hspace{1em} \text{e} \hspace{1em} \psi(x,y) = h - \dfrac{h}{r} \sqrt{x^2+y^2}\]
+in cui il volume si calcola come
+\[\text{Volume}=\iint_K \left(\int_0^{h-\frac{h}{r} \sqrt{x^2+y^2}} \dif z\right) \dif x \dif y = \iint_K \left(h-\dfrac{h}{r} \sqrt{x^2+y^2}\right)) \dif x \dif y\]
+
+\vspace{1em}
+\subsection{Cambio di variabili nel calcolo degli integrali in $\mathbb{R}^n$}
+Sia dato l'integrale
+\[\int_a^b f(h(t)) \cdot h'(t) \dif t\]
+allora se si pone $x=h(t)$, per cui $\dif x = h'(t) \dif t$; inoltre, quando $t=a$ si ha che $x=h(a)$ e quando $t=b$ si ha che $x=h(b)$; pertanto si ottiene
+\[\int_a^b f(h(t)) \cdot h'(t) \dif t = \int_{h(a)}^{h(b)} f(x) \dif x\]
+Avendo considerato un integrale orientato, si distinguono due casi
+\begin{itemize}
+    \item se $a < b$ e si definisce
+    \[h : [a,b] \longmapsto \mathbb{R}\]
+    con $h$ diffeomorfismo $C^1$, ossia $h$ è invertibile, $C^1$ con inversa $C^1$. Siccome $h$ è invertibile e definita su un intervallo, allora è necessariamente monotona
+    \begin{itemize}
+        \item se $h$ è crescente allora
+        \[h([a,b]) = [h(a),h(b)]\]
+        per cui
+        \[\int_{[a,b]} f(h(t)) \cdot h'(t) \dif t = \int_{h([a,b])} f(x) \dif x\]
+        \item se $h$ è decrescente allora
+        \[h([a,b]) = [h(b),h(a)]\]
+        per cui
+        \[\int_{[a,b]} f(h(t)) \cdot h'(t) \dif t = -\int_{h([a,b])} f(x) \dif x\]
+        Tuttavia, siccome $h$ è strettamente decrescente (essendo un diffeomorfismo), si ha che $h'(t) < 0, \forall t$, si può scrivere
+        \[\int_{[a,b]} f(h(t)) \cdot \vert h'(t) \vert \dif t = \int_{h([a,b])} f(x) \dif x\]
+        che è la formula generale
+    \end{itemize} 
+\end{itemize}
+
+\vspace{2em}
+\noindent
+\textbf{Esempio}: Si consideri l'applicazione lineare
+\[h : \mathbb{R}^2 \longmapsto \mathbb{R}^2\]
+definita come
+\[h(x,y) = \left(\rowcolors{1}{white}{white}
+    \begin{array}{cc}
+       a & b\\
+       c & d\\ 
+    \end{array}
+\right) \cdot \left(\rowcolors{1}{white}{white}
+\begin{array}{cc}
+   x\\
+   y\\ 
+\end{array}
+\right) = A \cdot (x,y){^T}\]
+Affinché tale applicazione lineare sia invertibile, deve essere $A$ matrice quadrata con $\det A \neq 0$. Studiando tale applicazione lineare, si osserva che
+\[h(1,0)=(a,c){^T} \hspace{1em} \text{e} \hspace{1em} h(0,1)=(b,d){^T}\]
+per cui se si definisce $Q$ il quadrato appena definito, la sua area è definita come
+\[\iint_Q 1 \dif x \dif y = (a,c){^T} \times (b,d){^T}\]
+ossia il prodotto vettoriale dei due vettori che generano il parallelogramma. In generale si ottiene che
+\[\iint_Q \left \vert \det A \right \vert \dif m = \iint_{h(Q)} 1 \dif m\]
+in cui, però, se $h$ è lineare, della forma
+\[h(x,y) = A \cdot (x,y){^T}\]
+in cui $A=\mathcal{J}(h)$
+
+\vspace{2em}
+\noindent
+Sia $A,B$ aperti misurabili di $\mathbb{R}^n$, con
+\[h : B \longmapsto A \hspace{1em} C^1 \hspace{1em} \text{e} \hspace{1em} \text{diffeomorfismo}\]
+e sia definita
+\[f : A \longmapsto \mathbb{R}\]
+continua e limitata; allora
+\[\int_A f(x) \dif x = \int_B f(h(u)) \cdot \left \vert \det \mathcal{J} h(u) \right \vert \dif u\]
+
+\vspace{2em}
+\noindent
+\textbf{Esempio}: Si consideri in $\mathbb{R}^2$ la funzione
+\[h : ]0,+\infty[ \times ]0,2\pi[ \hspace{0.5em} \longmapsto \mathbb{R}^2 - \{(x,0){^T} : x \geq 0\} \hspace{1em} \text{con} \hspace{1em} h(\rho,\theta) = \left(\rho \cos(\theta), \rho \sin(\theta)\right){^T}\]
+in cui sono stati presi intervalli aperti in quanto necessario per le coordinate polari.\\
+Si calcoli, allora, la matrice Jacobiana della $h$, da cui 
+\[
+    \mathcal{J} h(\rho,\theta) = \left(\rowcolors{1}{white}{white}
+    \begin{array}{cc}
+       \cos(\theta) & - \rho \sin(\theta)\\
+       \sin(\theta) & \rho \cos(\theta)
+    \end{array}
+    \right)
+\]
+Allora il determinante di tale matrice è
+\[\det \mathcal{J} h(\rho,\theta) = \rho \cos^2(\theta) + \rho \sin^2(\theta) = \rho\]
+...continua...
+
+\vspace{1em}
+\noindent
+Per cui, se ora si considera l'integrale
+\[\iint_{\mathcal{B}(0,r)} h \cdot \left(1-\dfrac{1}{r} \sqrt{x^2+y^2}\right)\]
+posto
+\[\mathcal{B}(0,r) = \{(x,y){^T} : x^2+y^2 \leq r^2\}\]
+ma se si esegue il cambio di variabile
+\[x=\rho \cos(\theta) \hspace{1em} \text{e} \hspace{1em} y =\rho \sin(\theta)\]
+si ottiene
+\[A = \{(\rho,\theta){^T} : \rho \leq r \hspace{1em} \text{e} \hspace{1em} \theta \in [0,2\pi]\}\]
+per cui il nuovo integrale è
+\[\iint_A h \cdot \left(1-\frac{1}{r} \cdot \rho\right) \rho \dif \rho \dif \theta\]
+...continua...
+
+\vspace{1em}
+\subsubsection{Coordinate sferiche in $\mathbb{R}^3$}
+Si consideri la funzione seguente
+\[h(\rho,\phi,\theta) = (\rho \sin(\phi) \cos (\theta), \rho \sin(\phi) \sin(\theta), \rho \cos(\phi))\]
+con
+\[h : ]0,+\infty[ \times ]0,\pi[ \times ]0,2\pi[\]
+in cui, calcolando la matrice Jacobiana, si ottiene
+\[
+    \mathcal{J} h = \left(\rowcolors{1}{white}{white}
+    \begin{array}{ccc}
+       \sin(\phi)\cos(\theta) & \rho \cos(\phi) \cos(\theta) & - \rho \sin(\phi) \sin(\theta)\\
+       \sin(\phi)\sin(\theta) & \rho\cos(\phi)\sin(\theta) & \rho \sin(\phi) \cos(\theta)\\
+       \cos(\theta) & -\rho\sin(\phi) & 0
+    \end{array}
+    \right)
+\]
+allora il determinante di tale matrice è
+\[\det \mathcal{J} h = \rho^2 \sin(\phi)\]
+
+\vspace{2em}
+\noindent
+\textbf{Esempio 1}: Si calcoli il volume della sfera, ossia
+\[\iiint_{\text{Sfera}} 1 \dif m\]
+È particolarmente utile impiegare le coordinate sferiche, per cui
+\[\iiint_{\text{Sfera}} 1 \dif m = \int_0^R \left( \int_0^\pi \left( \int_0^{2\pi} \rho^2 \sin(\phi) \dif \theta \right) \dif \phi \right) \dif \rho = 2\pi \cdot [-\cos(\theta)]_0^\pi \cdot \left[\dfrac{1}{3} \rho^3\right]_0^R = 4 \pi \dfrac{1}{3} R^3\]
+
+\vspace{2em}
+\noindent
+\textbf{Esempio 2}: Per quanto riguarda le coordinate ellissoidali, la funzione da considerare è
+\[h(\rho,\phi,\theta) = (a \rho \sin(\phi) \cos(\theta), b \rho \sin(\phi) \sin(\theta), c \rho \cos(\theta)){^T}\]
+in cui il determinante della Jacobiana è ovviamente
+\[\det \mathcal{J} h = abc \rho^2 \sin(\phi)\]
+
+\vspace{2em}
+\noindent
+\textbf{Esempio 3}: Data la densità di massa $\delta(x,y,z)$, allora la massa si calcola come
+\[\iiint_E \delta(x,y,z) \dif x \dif y \dif z\]
+mentre il centro di massa di coordinate $(\hat x,\hat y,\hat z){^T}$ si calcola come
+\[\hat x = \dfrac{1}{M} \iiint_E x \delta(x,y,z) \dif x \dif y \dif z \hspace{1em} \text{e} \hspace{1em} \hat y = \dfrac{1}{M} \iiint_E y \delta(x,y,z) \dif x \dif y \dif z \hspace{1em} \text{e} \hspace{1em} \hat z = \dfrac{1}{M} \iiint_E z \delta(x,y,z) \dif x \dif y \dif z\]
+
+\vspace{2em}
+\noindent
+\textbf{Esempio 4}: Se si volesse calcolare il momento di inerzia rispetto all'insieme $K$, si calcolerebbe
+\[I_k = \iiint_E d((x,y,z){^T},K)^2 \cdot \delta(x,y,z) \dif x \dif y \dif z\]
+Più specificatamente, si potrebbe calcolare anche il momento di inerzia
+\begin{itemize}
+    \item rispetto all'asse $z$
+    \[I_z=\iiint (x^2+y^2) \cdot \delta(x,y,z) \dif x \dif y \dif z\]
+    \item rispetto all'origine
+    \[I_0=\iiint (x^2+y^2+z^2) \cdot \delta(x,y,z) \dif x \dif y \dif z\]
+    \item rispetto al piano $xy$
+    \[I_{xy}=\iiint (z^2) \cdot \delta(x,y,z) \dif x \dif y \dif z\]
+\end{itemize}
+
+\newpage
+\noindent
+\begin{center}
+    22 Novembre 2022
+\end{center}
+\vspace{1em}
+\noindent
+\textbf{Esercizio}: Si considerino le due funzioni seguenti
+\begin{align*}
+    &f(x,y)=4x^2+y^3+3y\\
+    &g(x,y)=4x^2+2y^2\\
+\end{align*}
+\begin{itemize}
+    \item allora si ha che
+    \[\nabla f(x,y) = (8x,-3y^2+3){^T} \hspace{1em} \text{e} \hspace{1em} \nabla g(x,y) = (8x,4y){^T}\]
+    \item così come
+    \[
+        H f(x,y) = \left(
+        \rowcolors{1}{white}{white}
+        \begin{array}{cc}
+            8 & 0\\
+            0 & -6y\\
+        \end{array}
+        \right) \hspace{1em} \text{e} \hspace{1em}
+        H g(x,y) = \left(
+        \rowcolors{1}{white}{white}
+        \begin{array}{cc}
+            8 & 0\\
+            0 & 4\\
+        \end{array}
+        \right)
+    \]
+    \item per la determinazione dei punti critici per la $f$ si impone la condizione di annullamento del gradiente, ottenendo
+    \[A=(0,1){^T} \hspace{1em} \text{e} \hspace{1em} B=(0,-1){^T}\]
+    e per determinarne la natura si calcola
+    \[
+        H f(0,1) = \left(
+        \rowcolors{1}{white}{white}
+        \begin{array}{cc}
+            8 & 0\\
+            0 & -6\\
+        \end{array}
+        \right) \hspace{1em} \rightarrow \hspace{1em} A \text{ punto di sella}\\\\
+        H f(0,-1) = \left(
+        \rowcolors{1}{white}{white}
+        \begin{array}{cc}
+            8 & 0\\
+            0 & 6\\
+        \end{array}
+        \right) \hspace{1em} \rightarrow \hspace{1em} B \text{ punto di minimo}
+    \]
+    \item Si determini, allora, l'intersezione tra i due grafici delle funzioni $f$ e $g$, da cui
+    \[f(x,y) = g(x,y) \hspace{1em} \rightarrow \hspace{1em} 4x^2-y^3+3y = 4x^2 + 2y^2\]
+    che permette di ottenere
+    \[y^3+2y^2-3y = 0 \hspace{1em} \rightarrow \hspace{1em} y \in \{0,-3,1\}\]
+    allora si ha che
+    \[H = \{(x,y,z){^T} \in \mathbb{R}^3 : y=0 \wedge z = 4x\} \cup \{(x,y,z){^T} \in \mathbb{R}^3 : y=1 \wedge z = 4x^2+2\} \cup \{(x,y,z){^T} \in \mathbb{R}^3 : y=-3 \wedge z = 4x^2+18\}\]
+
+    \item Per dimostrare che tale insieme non è connesso, si trovino due punti che appartengono all'insieme e che non possono essere congiunti da una curva. Si considerino, allora, due punti specifici come quelli seguenti
+    \[(0,0,0){^T} \hspace{1em} \text{e} \hspace{1em} (0,1,2){^T}\]
+    e si supponga che esista
+    \[\gamma : [0,1] \longmapsto H\]
+    tale che congiunga i due punti, in cui
+    \[\gamma(0) = (0,0,0){^T} \hspace{1em} \text{e} \hspace{1em} \gamma(1)=(0,1,2){^T}\]
+    ma implicitamente tale curva definisce tre funzioni
+    \[\gamma(t) = \left(
+        \rowcolors{1}{white}{white}
+        \begin{array}{c}
+            x(t)\\
+            y(t)\\
+            z(t)\\
+        \end{array}
+        \right)
+    \]
+    ma siccome tutte e tre le funzioni sono funzioni continue definite su un compatto, per il teorema di connessione anche l'insieme immagine è un intervallo; pertanto, presa
+    \[y : [0,1] \longmapsto \mathbb{R}\]
+    è continua in cui
+    \[y(0)=0 \hspace{1em} \text{e} \hspace{1em} y(1)=1\]
+    allora deve esistere $t \in ]0,1[$ tale che $\gamma(t) = \dfrac{1}{2}$, che non è possibile.
+
+    \item si cerchino dei punti di $H$ che presentano piani tangenti paralleli. Allora i piani tangenti possono essere interpretati come l'insieme degli zeri di due funzioni
+    \[F(x,y,z)=f(x,y)-z \hspace{1em} \text{e} \hspace{1em} G(x,y,z)=g(x,y)-z\]
+    allora si ha che
+    \[\nabla F(x,y,z) = (8x-3y^2+3,-1){^T} \hspace{1em} \text{e} \hspace{1em} \nabla G(x,y,z) = (4x,4y-1){^T}\]
+    per verificare se esistono punti in cui i due piani tangenti sono paralleli bisogna chiedere che i gradienti siano linearmente dipendenti; ma questo non è possibile.
+
+    \item Sia data la retta seguente
+    \[\gamma(t)=(1+8t,2+3t,3-t){^T}\]
+    la cui direzione è ovviamente la derivata data da $\vec v = (8,3,-1){^T}$.\\
+    Si consideri, allora, la funzione
+    \[F(x,y,z)=f(x,y)-z\]
+    e calcolandone il gradiente si ottiene la sua direzione. Per vedere se esistono punti di $f$ in cui la retta tangente è parallela alla retta $\gamma(t)$, si impone che i due gradienti siano linearmente dipendenti e si ottiene il punto...continua...
+\end{itemize}
+
+\vspace{2em}
+\noindent
+\textbf{Esempio}: Si calcoli il volume del toro, ossia una ciambella, con raggio della sezione $r$ e il raggio di rotazione $R$; si deve calcolare, quindi
+\[\iiint_T 1 \dif m\]
+allora è possibile procedere al calcolo di tale integrale in tutti e $3$ i modi studiati: per corde, per sezioni, per cambio di variabile. Conviene, in questo caso, sezionare rispetto all'asse $z$ in modo tale da ottenere due circonferenze, ma è possibile sezionare anche rispetto all'asse $x$ (o all'asse $y$, visto che sono equivalenti). Scegliendo quest'ultima opzione si ottengono delle corone circolari concentriche, la cui area compresa si ottiene come
+\[\text{Area } \mathcal{S}_z = \pi \left( (R+\sqrt{r^2-z^2})^2 - (R-\sqrt{r^2-z^2})^2\right) = 4 \pi R \sqrt{r^2 - z^2}\]
+si procede, ora, al calcolo dell'integrale per ottenere il volume
+\[V_\text{toro} = 2 \int_0^\pi 4 \pi R \cdot \sqrt{r^2-z^2} \dif z = 8 \pi R \int_0^\pi \sqrt{r^2-z^2} \dif z = 2 \pi R r^2\]
+
+\vspace{1em}
+\noindent
+\subsection{Solidi di rotazione}
+Sia $K$ un insieme misurabile contenuto nel semipiano di coordinate $\rho,z$ (ossia il piano $x,z$, chiamando $x$ come $\rho$) in $\mathbb{R}^2$ con $\rho \geq 0$.\\
+Si considerino, allora, le coordinate cilindriche nello spazio
+\[
+    \left\{
+    \rowcolors{1}{white}{white}
+    \begin{array}{l}
+        x=\rho \cos(\theta)\\
+        y=\rho \sin(\theta)\\
+        z=z
+    \end{array}
+    \right.
+\]
+allora chiamando $\mathcal{S}$ il solido di rotazione attorno ruotando $K$ intorno all'asse $z$ definito come
+\[\mathcal{S} = \{\left(\rho \cos(\theta), \rho \sin(\theta), z\right){^T} : \theta \in [0,2\pi], (\rho,z){^T} \in K\}\]
+Per calcolare il volume di $\mathcal{S}$ si procede al calcolo seguente
+\[V=\iiint_\mathcal{S} 1 \dif m\]
+allora si considera la funzione cambio di variabili $h$ definita come $h(\rho,\theta,z)$ la cui Jacobiana associata è
+\[
+    \mathcal{J} h(\rho,\theta,z) = \left(
+    \rowcolors{1}{white}{white}
+    \begin{array}{ccc}
+        \cos(\theta) & -\rho \sin(\theta) & 0\\
+        \sin(\theta) & \rho \cos(\theta) & 0\\
+        0 & 0 & 1\\
+    \end{array}
+    \right)
+\]
+Allora è immediato evincere che $\vert \det \mathcal{J} h \vert = \rho$; pertanto si ha che
+\[V=\iiint_\mathcal{S} 1 \dif m=\iint \rho \dif \rho \dif z \dif \theta\]
+in cui bisogna prestare attenzione che si sta lavorando sull'insieme
+\[\{(\rho,z,\theta) \hspace{1em} \theta \in [0,2\pi] \hspace{1em} (\rho,z) \in K\}\]
+Si può quindi lavorare per sezioni in quanto $\theta \in [0,2\pi]$ mentre la sezione è costante per ogni $\rho,z$ ed è pari a $K$. Si ottiene, quindi, l'integrale seguente
+\[\int_0^{2\pi} \left(\iint_{\mathcal{S}_\theta} \rho \dif \rho \dif z\right) \dif \theta\]
+ma $\mathcal{S}_\theta$ è costante e pari a $K$ per ogni $\theta$, quindi si ottiene
+\[\int_0^{2\pi} \left(\iint_{K} \rho \dif \rho \dif z\right) \dif \theta = 2 \pi \iint_K \rho \dif \rho \dif z\]
+ma se al posto di $\rho$ si pone $x$ è facile capire che
+\[\iint_K x \dif x \dif z = \text{Area} (K) \cdot \hat x\]
+in cui $\hat x$ è l'ascissa del centro di massa di $K$, ovvero
+\[\hat x = \dfrac{1}{M} \iint x \dif m\]
+Pertanto, nel caso precedente, per il calcolo del volume del toro precedente, si poteva semplicemente utilizzare la formula seguente
+\[\boxed{2 \pi \iint_K \hat x \dif x \dif z = 2 \pi \text{Area}(K) \cdot \hat x}\]
+in cui, ovviamente Area$(K)=\pi r^2$, mentre $\hat x = R$, da cui la formula
+\[V_{\text{toro}} = 2 \pi \cdot (\pi r^2) \cdot R\]
+
+\vspace{1em}
+\noindent
+\subsection{Teorema di Pappo-Guldino}
+Si espone di seguito il \textbf{teorema di Pappo-Guldino per il volume di un solido di rotazione}:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{TEOREMA DI PAPPO-GULDINO}}\\
+    \parbox{\linewidth}{Sia $K \subset \mathbb{R}^2$ misurabile, con
+    \[\mathbb{R}^2 = \{(x,z){^T} : x \in \mathbb{R}, z \in \mathbb{R}\}\]
+    Sia $x \geq 0$ $\forall (x,z){^T} \in K$. Sia $\mathcal{S}$ il solido di rotazione ottenuto ruotando l'insieme $K$ intorno all'asse $z$, di un angolo $\alpha \in ]0,2\pi]$. Sia $A$ l'area di $K$, mentre $\hat x$ è l'ascissa del baricentro di $K$. Allora il volume di $S$ è
+    \[\boxed{V_\mathcal{S} = \alpha A \hat x}\]
+    \vspace{-3mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{2em}
+\noindent
+\textbf{Esempio 1}: Si consideri un triangolo. Allora si ha che
+\[\alpha=2 \pi \hspace{1em} A= \dfrac{1}{2} r h \hspace{1em} \hat x = \dfrac{1}{3} r\]
+è facile capire che
+\[V_\text{cono}=\dfrac{1}{3} \pi^2 r^2 h\]
+
+\vspace{2em}
+\noindent
+\textbf{Esempio 2}: Si consideri una lamina a forma di sezione di corona circolare, con $r$ raggio interno e $R$ raggio esterno. Allora è facile capire che, per la formula di Pappo-Guldino si ottiene che
+\[V_\mathcal{S} = 2 \pi \hat x\]
+per cui per determinare l'ascissa del baricentro $\hat x$ si ottiene
+\[\hat x = \dfrac{V_\mathcal{S}}{2 \pi A(K)} = \dfrac{\dfrac{1}{2} \cdot \dfrac{4}{3}\pi (R^3 - r^3)}{2 \pi \cdot \dfrac{1}{4} \pi (R^2-4^2)} = \dfrac{4}{3 \pi} \dfrac{R^2 - rR + r^2}{R+r}\]
+
+\vspace{2em}
+\noindent
+\textbf{Esempio 3}: Si calcoli il volume del solido dato dall'intersezione delle sfere di equazione
+\[x^2+y^2+z^2 - 2az = 0 \hspace{1em} (a \in \mathbb{R}^2)\]
+e del cono di equazione
+\[x^2+y^2 \leq z^2\]
+Ovviamente l'equazione della sfera si può completare con il completamento del quadrato
+\[x^2+y^2+z^2 - 2az = 0 \hspace{1em} \rightarrow \hspace{1em} x^2+y^2+(z-a)^2=a^2\]
+Per calcolare tale volume sarebbe molto conveniente utilizzare Pappo-Guldino. Tuttavia, si può anche impiegare l'integrazione per sezioni, suddividendo l'integrazione in due parti
+\[z \in [0,a] \hspace{1em} \rightarrow \hspace{1em} r(z)=\sqrt{x^2+y^2}=z \hspace{1em} \text{ e } \hspace{1em} z \in [a,2a] \hspace{1em} \rightarrow \hspace{1em} r(z)=\sqrt{x^2+y^2} = \sqrt{2az-z^2}\]
+pertanto ora si ottiene che
+\[V=\int_0^a \pi z^2 \dif z + \int_a^{2a} \pi (2az - z^2) \dif z = \pi a^3\]
+
+\vspace{2em}
+\noindent
+Integrando per corde, si deve impostare l'integrale seguente
+\[\iiint_\mathcal{S} = \iint \left(\int_{\phi(x,y)}^{\psi(x,y)} 1 \dif z\right) \dif x \dif y\]
+Per determinare le funzioni $\phi$ e $\psi$, si deve semplicemente esprimere $z$ in funzione delle equazioni date. Pertanto,
+\begin{itemize}
+    \item per il cono (che sta sotto) si ha
+    \[x^2+y^2 \leq z^2 \hspace{1em} \rightarrow \hspace{1em} z = \psi(x,y) = \sqrt{x^2+y^2}\]
+    \item per la sfera (che sta sopra) si ha
+    \[x^2+y^2+(z-a)^2=a^2 \hspace{1em} \rightarrow \hspace{1em} z=\psi(x,y) = a+\sqrt{a^2-x^2-y^2}\]
+\end{itemize}
+Considerando la proiezione del solido sul piano $xy$ è facile capire che le funzioni $\phi$ e $\psi$ vivono nella palla di centro $(0,0){^T}$ e raggio $a$, per cui l'integrale per corde da calcolare è
+\[\iint_{\mathcal{B}((0,0){^T},a)} \left(a+\sqrt{a^2-x^2-y^2} - \sqrt{x^2+y^2} \right) \dif x \dif y\]
+Ovviamente in questo caso si deve procedere con coordinate polari, per cui...continua...\\
+Si potevano anche considerare le coordinate sferiche, per cui
+\begin{itemize}
+    \item per il cono si avrebbe che
+    \[x^2+y^2 \leq z^2 \hspace{1em} \rightarrow \hspace{1em} \rho^2 \sin^2(\phi) \leq \rho^2 \cos^2(\phi) \hspace{1em} \rightarrow \hspace{1em} \sin^2(\phi) \leq \cos^2(\theta)\]
+    \item per la sfera si avrebbe che
+    \[x^2+y^2+z^2 \leq 2 az \hspace{1em} \rightarrow \hspace{1em} \phi^2 \leq 2a \rho \cos(\theta) \hspace{1em} \rightarrow \hspace{1em} \rho \leq 2 a \cos(\theta)\]
+\end{itemize}
+Pertanto si ottiene 
+\[\int_0^{2\pi} \left(\int_0^{\frac{\pi}{4}} \left(\int_0^{2 a \cos(\phi)} \rho^2 \sin(\phi) \dif \rho\right) \dif \phi \right) \dif z\]
+
+
+
+
+
+
+
+
+
+
+
+
+
 \end{document}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.9.27)  15 NOV 2022 11:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.9.27)  23 NOV 2022 09:11
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -404,6 +404,10 @@ Package: pgf-pie 2022/06/14 v0.7 Some LaTeX macros for pie chart by using PGF/Ti
 \pgfpie@explodeLength=\count299
 \pgfpie@colorLength=\count300
 \pgfpie@sliceLength=\count301
+)) (/usr/local/texlive/2022basic/texmf-dist/tex/latex/tikz-3dplot/tikz-3dplot.sty (/usr/local/texlive/2022basic/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2020/11/24 v1.1c Standard LaTeX ifthen package (DPC)
+) (/usr/local/texlive/2022basic/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary3d.code.tex
+File: tikzlibrary3d.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 )) (/usr/local/texlive/2022basic/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2021/10/15 v2.17l AMS math features
 \@mathmargin=\skip54
@@ -527,7 +531,7 @@ Package caption Info: float package is loaded.
 \c@corollary=\count324
 
 
-Package fancyhdr Warning: \fancyfoot's `E' option without twoside option is useless on input line 44.
+Package fancyhdr Warning: \fancyfoot's `E' option without twoside option is useless on input line 45.
 
 (/usr/local/texlive/2022basic/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2022-02-07 L3 backend support: PDF output (pdfTeX)
@@ -536,22 +540,22 @@ File: l3backend-pdftex.def 2022-02-07 L3 backend support: PDF output (pdfTeX)
 ) (/Users/enricopiccin/Documents/Analisi matematica II/Teoria - Analisi matematica II/build/Teoria - Analisi matematica II.aux)
 \openout1 = `"Teoria - Analisi matematica II.aux"'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 59.
-LaTeX Font Info:    ... okay on input line 59.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 59.
-LaTeX Font Info:    ... okay on input line 59.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 59.
-LaTeX Font Info:    ... okay on input line 59.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 59.
-LaTeX Font Info:    ... okay on input line 59.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 59.
-LaTeX Font Info:    ... okay on input line 59.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 59.
-LaTeX Font Info:    ... okay on input line 59.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 59.
-LaTeX Font Info:    ... okay on input line 59.
-LaTeX Info: Redefining \it@ocap on input line 59.
-LaTeX Info: Redefining \it@ccap on input line 59.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Info: Redefining \it@ocap on input line 60.
+LaTeX Info: Redefining \it@ccap on input line 60.
 
 
 File italian.ldf warning: 
@@ -559,7 +563,7 @@ italian.ldf    With OT1 encoding guillemets are poorly faked
 italian.ldf    Use T1 encoding
 italian.ldf    or specify a font with command \CaporaliFrom
 italian.ldf    See the documentation concerning the babel-italian typesetting 
-italian.ldf    on input line 59.
+italian.ldf    on input line 60.
 
 (/usr/local/texlive/2022basic/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -617,108 +621,123 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: subfig package v1.3 is loaded.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 62.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 63.
 (/usr/local/texlive/2022basic/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 62.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 63.
  (/usr/local/texlive/2022basic/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (/Users/enricopiccin/Documents/Analisi matematica II/Teoria - Analisi matematica II/build/Teoria - Analisi matematica II.toc [1
 
-{/usr/local/texlive/2022basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2])
+{/usr/local/texlive/2022basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3])
 \tf@toc=\write4
 \openout4 = `"Teoria - Analisi matematica II.toc"'.
 
- [3] [4] [5] [6] [7] [8] [9] [10] [11] [12] [13] [14] [15]
-Overfull \hbox (6.3761pt too wide) in paragraph at lines 600--603
+ [4] [5] [6] [7] [8] [9] [10] [11] [12] [13] [14] [15] [16]
+Overfull \hbox (6.3761pt too wide) in paragraph at lines 601--604
 \OT1/cmr/m/n/10 Di se-gui-to, inol-tre, si espon-go-no al-cu-ni teo-re-mi fon-da-men-ta-li per de-cre-ta-re la con-ver-gen-za/divergenza
  []
 
-[16] [17] [18] [19] [20] [21] [22] [23] [24] [25] [26] [27] [28] [29] [30] [31]
-Overfull \hbox (24.861pt too wide) detected at line 1313
+[17] [18] [19] [20] [21] [22] [23] [24] [25] [26] [27] [28] [29] [30] [31] [32]
+Overfull \hbox (24.861pt too wide) detected at line 1314
 [] \OMS/cmsy/m/n/10 ^^T [][]  []  [] \OML/cmm/m/it/10 < \OT1/cmr/m/n/10 1 []
  []
 
-[32] [33] [34] [35] [36] [37] [38] [39] [40]
-Overfull \hbox (10.36162pt too wide) detected at line 1690
+[33] [34] [35] [36] [37] [38] [39] [40] [41]
+Overfull \hbox (10.36162pt too wide) detected at line 1691
 []
  []
 
-[41] [42] [43] [44] [45] [46] [47] [48] [49] [50] [51] [52] [53] [54] [55] [56] [57] [58] [59] [60] [61] [62] [63] [64] [65] [66] [67] [68] [69] [70] [71]
-Underfull \hbox (badness 10000) in paragraph at lines 2962--2962
+[42] [43] [44] [45] [46] [47] [48] [49] [50] [51] [52] [53] [54] [55] [56] [57] [58] [59] [60] [61] [62] [63] [64] [65] [66] [67] [68] [69] [70] [71] [72]
+Underfull \hbox (badness 10000) in paragraph at lines 2963--2963
 
  []
 
-[72] [73] [74] [75] [76] [77] [78] [79] [80]
-Underfull \hbox (badness 10000) in paragraph at lines 3465--3467
-
- []
-
-[81] [82] [83] [84] [85] [86] [87] [88] [89] [90] [91] [92]
-Overfull \hbox (127.19601pt too wide) detected at line 4145
-[]
- []
-
-[93] [94] [95] [96]
-Overfull \hbox (0.3297pt too wide) detected at line 4305
+[73] [74] [75] [76] [77] [78] [79] [80] [81] [82] [83] [84] [85] [86] [87] [88] [89] [90] [91] [92] [93] [94] [95] [96] [97] [98] [99] [100] [101] [102] [103]
+Overfull \hbox (0.3297pt too wide) detected at line 4553
 \OML/cmm/m/it/10 f[][]\OMS/cmsy/m/n/10 8\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 f[]\OT1/cmr/m/n/10 )[] \OMS/cmsy/m/n/10 2 \OML/cmm/m/it/10 X[]; [] [] [] \OT1/cmr/m/n/10 = \OML/cmm/m/it/10 [] [] f\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 []\OT1/cmr/m/n/10 ) = \OML/cmm/m/it/10 f\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 \OT1/cmr/m/n/10 )
  []
 
-[97] [98] [99] [100] [101] [102] [103] [104] [105] [106] [107] [108] [109] [110] [111] [112] [113] [114] [115] [116] [117] [118] [119] [120]
-Overfull \hbox (91.04897pt too wide) detected at line 5427
+[104] [105] [106] [107] [108] [109] [110] [111] [112] [113] [114] [115] [116] [117] [118] [119] [120] [121] [122] [123] [124] [125] [126] [127]
+Overfull \hbox (91.04897pt too wide) detected at line 5675
 \OML/cmm/m/it/10 f\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x; y\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 f\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x[]; y[]\OT1/cmr/m/n/10 ) = (\OML/cmm/m/it/10 f\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x; y\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 f\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x; y[]\OT1/cmr/m/n/10 )) + (\OML/cmm/m/it/10 f\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x; y[]\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 f\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x[]; y[]\OT1/cmr/m/n/10 )) = [](\OML/cmm/m/it/10 x; y[]\OT1/cmr/m/n/10 )(\OML/cmm/m/it/10 y \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 y[]\OT1/cmr/m/n/10 ) + \OML/cmm/m/it/10 o\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 y \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 y[]\OT1/cmr/m/n/10 ) + [](\OML/cmm/m/it/10 x[]; y[]\OT1/cmr/m/n/10 )(\OML/cmm/m/it/10 x \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 x[]\OT1/cmr/m/n/10 ) + \OML/cmm/m/it/10 o\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 x[]\OT1/cmr/m/n/10 )
  []
 
 
-Overfull \hbox (319.10384pt too wide) detected at line 5431
+Overfull \hbox (319.10384pt too wide) detected at line 5679
 [] \OT1/cmr/m/n/10 = [] \OMS/cmsy/m/n/10 ^^A [] \OT1/cmr/m/n/10 + [] + []
  []
 
-[121] [122] [123] [124] [125] [126] [127] [128]
-Overfull \hbox (0.6777pt too wide) detected at line 5817
+[128] [129] [130] [131] [132] [133] [134] [135]
+Overfull \hbox (0.6777pt too wide) detected at line 6065
 \OML/cmm/m/it/10 P[] \OT1/cmr/m/n/10 = \OML/cmm/m/it/10 f\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x[]; y[]\OT1/cmr/m/n/10 ) + [] + [] []
  []
 
-[129] [130] [131] [132]
-Overfull \hbox (64.45374pt too wide) detected at line 6069
+[136] [137] [138] [139]
+Overfull \hbox (64.45374pt too wide) detected at line 6317
 \OML/cmm/m/it/10 f\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 f\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x[]\OT1/cmr/m/n/10 ) = []  d\OML/cmm/m/it/10 f\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x[]\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 ^^A \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 x[]\OT1/cmr/m/n/10 ) + [] []  d[]\OML/cmm/m/it/10 f\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x[]\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 ^^A \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 x[]\OT1/cmr/m/n/10 )[] + \OML/cmm/m/it/10 ^^O\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 ^^A jj\OML/cmm/m/it/10 x \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 x[]\OMS/cmsy/m/n/10 jj[] \OT1/cmr/m/n/10 = [] + []\OML/cmm/m/it/10 ^^^\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 x[]\OT1/cmr/m/n/10 ) + \OML/cmm/m/it/10 ^^O\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 ^^A jj\OML/cmm/m/it/10 x \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 x[]\OMS/cmsy/m/n/10 jj[]
  []
 
 
-Overfull \hbox (113.25156pt too wide) detected at line 6072
+Overfull \hbox (113.25156pt too wide) detected at line 6320
 [] \OT1/cmr/m/n/10 + []\OML/cmm/m/it/10 ^^^\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 x[]\OT1/cmr/m/n/10 ) + \OML/cmm/m/it/10 ^^O\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 ^^A jj\OML/cmm/m/it/10 x \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 x[]\OMS/cmsy/m/n/10 jj[] ^^U []\OML/cmm/m/it/10 m \OMS/cmsy/m/n/10 ^^A jj\OML/cmm/m/it/10 x \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 x[]\OMS/cmsy/m/n/10 jj[] \OT1/cmr/m/n/10 + \OML/cmm/m/it/10 ^^O\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 ^^A jj\OML/cmm/m/it/10 x \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 x[]\OMS/cmsy/m/n/10 jj[] \OT1/cmr/m/n/10 = [] \OMS/cmsy/m/n/10 ^^A jj\OML/cmm/m/it/10 x \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 x[]\OMS/cmsy/m/n/10 jj[] \OML/cmm/m/it/10 > \OT1/cmr/m/n/10 0 \OMS/cmsy/m/n/10 8\OML/cmm/m/it/10 x \OMS/cmsy/m/n/10 2 \OML/cmm/m/it/10 U; x \OMS/cmsy/m/n/10 6\OT1/cmr/m/n/10 = \OML/cmm/m/it/10 x[]
  []
 
-[133] [134] [135] [136] [137] [138] [139] [140] [141] [142] [143] [144]
-Underfull \hbox (badness 10000) in paragraph at lines 6551--6553
+[140] [141] [142] [143] [144] [145] [146] [147] [148] [149] [150] [151]
+Underfull \hbox (badness 10000) in paragraph at lines 6799--6801
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 6551--6553
+Underfull \hbox (badness 10000) in paragraph at lines 6799--6801
 
  []
 
-[145] [146] [147] [148] [149] [150] [151]
-Overfull \hbox (133.50241pt too wide) detected at line 6871
+[152] [153] [154] [155] [156] [157] [158]
+Overfull \hbox (133.50241pt too wide) detected at line 7119
 \OMS/cmsy/m/n/10 8\OML/cmm/m/it/10 ^^O > \OT1/cmr/m/n/10 0\OML/cmm/m/it/10 ; \OMS/cmsy/m/n/10 9\OML/cmm/m/it/10 ^^N > \OT1/cmr/m/n/10 0 [] \OMS/cmsy/m/n/10 8\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x[]; y[]\OT1/cmr/m/n/10 )[]\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x[]; y[]\OT1/cmr/m/n/10 )[] \OMS/cmsy/m/n/10 2 \OT1/cmr/m/n/10 [\OML/cmm/m/it/10 a; b\OT1/cmr/m/n/10 ] \OMS/cmsy/m/n/10 ^^B \OT1/cmr/m/n/10 [\OML/cmm/m/it/10 c; d\OT1/cmr/m/n/10 ] [] \OMS/cmsy/m/n/10 jj\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x[] \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 x[]; y[] \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 y[]\OT1/cmr/m/n/10 )[]\OMS/cmsy/m/n/10 jj \OML/cmm/m/it/10 < ^^N [] \OMS/cmsy/m/n/10 j\OML/cmm/m/it/10 g\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x[]; y[]\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 g\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x[]; y[]\OT1/cmr/m/n/10 )\OMS/cmsy/m/n/10 j \OML/cmm/m/it/10 < ^^O
  []
 
-[152] [153] [154] [155] [156] [157] [158] [159] [160] [161] [162] (/Users/enricopiccin/Documents/Analisi matematica II/Teoria - Analisi matematica II/build/Teoria - Analisi matematica II.aux) ) 
+[159] [160] [161] [162] [163] [164] [165] [166] [167] [168] [169] [170]
+Underfull \hbox (badness 10000) in paragraph at lines 7640--7642
+
+ []
+
+[171] [172] [173] [174] [175]
+Overfull \hbox (143.05891pt too wide) detected at line 7835
+\OML/cmm/m/it/10 f[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x\OT1/cmr/m/n/10 ) = []  [] \OML/cmm/m/it/10 f[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x\OT1/cmr/m/n/10 ) = []  [] \OML/cmm/m/it/10 f[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x\OT1/cmr/m/n/10 ) = []
+ []
+
+[176] [177] [178] [179] [180] [181] [182] [183] [184] [185] [186] [187] [188]
+Overfull \hbox (46.61171pt too wide) detected at line 8431
+[] \OT1/cmr/m/n/10 = [] [] [] [][] \OML/cmm/m/it/10 x^^N\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x; y; z\OT1/cmr/m/n/10 ) []  d\OML/cmm/m/it/10 x []  \OT1/cmr/m/n/10 d\OML/cmm/m/it/10 y []  \OT1/cmr/m/n/10 d\OML/cmm/m/it/10 z [] [] \OT1/cmr/m/n/10 = [] [] [] [][] \OML/cmm/m/it/10 y^^N\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x; y; z\OT1/cmr/m/n/10 ) []  d\OML/cmm/m/it/10 x []  \OT1/cmr/m/n/10 d\OML/cmm/m/it/10 y []  \OT1/cmr/m/n/10 d\OML/cmm/m/it/10 z [] [] \OT1/cmr/m/n/10 = [] [] [] [][] \OML/cmm/m/it/10 z^^N\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x; y; z\OT1/cmr/m/n/10 ) []  d\OML/cmm/m/it/10 x []  \OT1/cmr/m/n/10 d\OML/cmm/m/it/10 y []  \OT1/cmr/m/n/10 d\OML/cmm/m/it/10 z
+ []
+
+[189] [190]
+Overfull \hbox (35.71228pt too wide) detected at line 8497
+\OML/cmm/m/it/10 Hf\OT1/cmr/m/n/10 (0\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 1) = []  \OMS/cmsy/m/n/10 !  \OML/cmm/m/it/10 A[][] [] Hf\OT1/cmr/m/n/10 (0\OML/cmm/m/it/10 ; \OMS/cmsy/m/n/10 ^^@\OT1/cmr/m/n/10 1) = []  \OMS/cmsy/m/n/10 !  \OML/cmm/m/it/10 B[]
+ []
+
+
+Overfull \hbox (103.39839pt too wide) detected at line 8503
+\OML/cmm/m/it/10 H \OT1/cmr/m/n/10 = \OMS/cmsy/m/n/10 f\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x; y; z\OT1/cmr/m/n/10 )[] \OMS/cmsy/m/n/10 2 \U/msb/m/n/10 R[] \OT1/cmr/m/n/10 : \OML/cmm/m/it/10 y \OT1/cmr/m/n/10 = 0 \OMS/cmsy/m/n/10 ^ \OML/cmm/m/it/10 z \OT1/cmr/m/n/10 = 4\OML/cmm/m/it/10 x\OMS/cmsy/m/n/10 g [ f\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x; y; z\OT1/cmr/m/n/10 )[] \OMS/cmsy/m/n/10 2 \U/msb/m/n/10 R[] \OT1/cmr/m/n/10 : \OML/cmm/m/it/10 y \OT1/cmr/m/n/10 = 1 \OMS/cmsy/m/n/10 ^ \OML/cmm/m/it/10 z \OT1/cmr/m/n/10 = 4\OML/cmm/m/it/10 x[] \OT1/cmr/m/n/10 + 2\OMS/cmsy/m/n/10 g [ f\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x; y; z\OT1/cmr/m/n/10 )[] \OMS/cmsy/m/n/10 2 \U/msb/m/n/10 R[] \OT1/cmr/m/n/10 : \OML/cmm/m/it/10 y \OT1/cmr/m/n/10 = \OMS/cmsy/m/n/10 ^^@\OT1/cmr/m/n/10 3 \OMS/cmsy/m/n/10 ^ \OML/cmm/m/it/10 z \OT1/cmr/m/n/10 = 4\OML/cmm/m/it/10 x[] \OT1/cmr/m/n/10 + 18\OMS/cmsy/m/n/10 g
+ []
+
+[191] [192] [193] [194] [195] (/Users/enricopiccin/Documents/Analisi matematica II/Teoria - Analisi matematica II/build/Teoria - Analisi matematica II.aux) ) 
 Here is how much of TeX's memory you used:
- 35127 strings out of 479719
- 880776 string characters out of 5880574
- 1414989 words of memory out of 5000000
- 52687 multiletter control sequences out of 15000+600000
+ 35667 strings out of 479719
+ 890637 string characters out of 5880574
+ 1423375 words of memory out of 5000000
+ 53217 multiletter control sequences out of 15000+600000
  482645 words of font info for 77 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
- 115i,20n,118p,774b,741s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 115i,20n,118p,774b,886s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </Users/enricopiccin/Library/texlive/2022basic/texmf-var/fonts/pk/ljfour/jknappen/ec/tcti1000.600pk> </Users/enricopiccin/Library/texlive/2022basic/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk></usr/local/texlive/2022basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2022basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2022basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/local/texlive/2022basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/local/texlive/2022basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2022basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2022basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2022basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2022basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2022basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2022basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2022basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2022basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2022basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2022basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2022basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2022basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2022basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2022basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2022basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2022basic/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2022basic/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on "/Users/enricopiccin/Documents/Analisi matematica II/Teoria - Analisi matematica II/build/Teoria - Analisi matematica II.pdf" (162 pages, 754920 bytes).
+Output written on "/Users/enricopiccin/Documents/Analisi matematica II/Teoria - Analisi matematica II/build/Teoria - Analisi matematica II.pdf" (195 pages, 861285 bytes).
 PDF statistics:
- 650 PDF objects out of 1000 (max. 8388607)
- 435 compressed objects within 5 object streams
+ 757 PDF objects out of 1000 (max. 8388607)
+ 508 compressed objects within 6 object streams
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
