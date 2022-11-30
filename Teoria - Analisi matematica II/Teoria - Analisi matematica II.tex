@@ -51,6 +51,12 @@
 \renewcommand\arraystretch{}
 \newcolumntype{P}{>{\centering\arraybackslash}X}
 \newcommand*\dif{\mathop{}\!\mathrm{d}}
+\newcommand\restr[2]{{% we make the whole thing an ordinary symbol
+  \left.\kern-\nulldelimiterspace % automatically resize the bar with \right
+  #1 % the function
+  \vphantom{\big|} % pretend it's a little taller at normal size
+  \right|_{#2} % this is the delimiter
+  }}
 
 \title{\textbf{Università di Trieste\\ \vspace{1em}
 Laurea in ingegneria elettronica e informatica}}
@@ -4543,31 +4549,40 @@ Inoltre, nella definizione di limite, quando si imposta la distanza per $x$ e pe
 \newpage
 \noindent
 \begin{center}
-    21 Ottobre 2022
+    24 Ottobre 2022
 \end{center}
-\textbf{Esercizio}: Si considerino i due spazi metrici $X_1 = C^{-1}([0,1])$ e $X_2 = C^0([0,1])$ in cui si definisce in ambo i spazi la norma $\vert \vert \cdot \vert \vert_{\infty}$. Si considera, allora, la funzione
+\textbf{Esercizio}: Si considerino i due spazi metrici $X_1 = C^{1}([0,1])$ e $X_2 = C^0([0,1])$ in cui si definisce in ambo i spazi la norma $\vert \vert \cdot \vert \vert_{\infty}$. Si considera, allora, la funzione
 \[f : X_1 \longmapsto X_2 \hspace{1em} \text{e} \hspace{1em} f(\phi) = \phi'\]
-Si vuole dimostrare che la funzione $f$ considerata non è continua. È noto che una funzione continua se
+Si vuole dimostrare che la funzione $f$ considerata non è continua. È noto che una funzione è continua se
 \[\lim_{\phi \to \phi_0} f(\phi) = f(\phi_0)\]
-Per il teorema di caratterizzazione del limite di una funzione tramite le successioni, si ha che
-\[f \text{ è in continua in } \alpha \textbf{ se e solo se } \forall (f_n)_n \in X_1, \text{ con } \lim_{n \to +\infty} \alpha_n = \alpha \text{ si ha che } \lim_{n \to +\infty} f(\alpha_n) = f(\alpha)\]
-Se si considera la funzione
-\[\phi_n=\frac{1}{n} \cdot \sin(n x) \text{ tale che } \lim_{n \to + \infty} \phi_n = 0\]
-e, ovviamente, si ha che
+Per il teorema di caratterizzazione del limite di una funzione tramite le successioni, si ha che $f$ è in continua in $\alpha$ \textbf{se e solo se}
+\[\forall (x_n)_n \in X_1 \hspace{1em} \text{ con } \hspace{1em} \lim_{n \to +\infty} x_n = \alpha \hspace{1em} \text{ si ha che } \hspace{1em} \lim_{n \to +\infty} f(x_n) = f(\alpha)\]
+Si cerca, quindi, una successione che tende ad $\alpha$, ma in cui la funzione non tende a $f(\alpha)$. Si consideri, a tal proposito, la successione
+\[\phi_n=\frac{1}{n} \cdot \sin(n x) \hspace{1em} \text{ tale che } \hspace{1em} \left \vert \left \vert \dfrac{1}{n} \cdot \sin(nx) \right \vert \right \vert_\infty \leq \dfrac{1}{n} \to 0 = \alpha\]
+in cui è stato necessario considerare la norma infinito nel calcolo del limite, in quanto essa è la norma tanto di $X_1$ quanto di $X_2$. Ovviamente, si ha che
 \[f(\phi_n)=\cos(n x)\]
+Se la funzione $f$ fosse continua dovrebbe verificarsi che
+\[\lim_{n \to +\infty} f \left( \frac{1}{n} \cdot \sin(nx) \right) = f(\alpha) \hspace{1em} \text{ovvero} \hspace{1em} \lim_{n \to +\infty} \cos(nx) = 0\]
 Tuttavia è ovvio che
-\[\lim_{n \to +\infty} f(\phi_n) = \lim_{n \to +\infty} \cos(nx) = \nexists\]
-che permette di concludere che tale funzione, con tale norma, non è continua.
+\[\lim_{n \to +\infty} \cos(nx) = \nexists\]
+che permette di concludere che tale funzione, con tale norma, fra i due spazi $X_1$ e $X_2$, non è continua.
 
 \vspace{1em}
 \noindent
-\textbf{Osservazione}: L'ultima considerazione è evidente, in quanto la norma non è concorde con la tipologia di funzione e con gli spazi metrici analizzati. La norma ...
+\textbf{Osservazione}: L'ultima considerazione è evidente, in quanto la norma non è concorde con la tipologia di funzione e con gli spazi metrici analizzati. La norma del massimo più sensata da definire nello spazio delle funzioni derivabili con derivata continua non è il massimo delle funzioni, ma il massimo delle derivate, per cui
+\[\vert \vert \phi \vert \vert_{C^1_\infty} = \underset{x \in [0,1]}{\max} \vert \phi'(x) \vert = \vert \vert \phi' \vert \vert_\infty\]
+Attenzione che, però, tale norma crea dei problemi quando una funzione ha derivata nulla, ma la funzione non è nulla (proprietà fondamentale della norma, ossia una funzione ha norma nulla se e solo se la funzione è nulla); allora la norma cercata è
+\[\vert \vert \phi \vert \vert_{C^1_\infty} = \vert \vert \phi' \vert \vert_\infty + \vert \vert \phi \vert \vert_\infty\]
+che è la norma naturale delle funzioni $C^1$ per cui la $f$ presa in considerazione nell'esempio è continua.
 
 \vspace{1em}
 \noindent
 \textbf{Esempio}: Si considerino gli spazi metrici $X=C([0,1])$ con $\vert \vert \cdot \vert \vert_1$ e $Y=C([0,1])$ con $\vert \vert \cdot \vert \vert_{\infty}$.\\
-Per verificare se la funzione $f : X \longmapsto Y$, con $f(\phi)=\phi$ è continua, è facile capire se si considera una successione che vale praticamente sempre $0$ e vale $1$ in un solo punto, allora per la norma infinito il valore è $1$, mentre per la norma $1$ il valore dell'integrale è $0$, per cui non può essere continua.\\
-Nel caso, invece, della funzione inversa $f^{-1} : Y \longmapsto x$, con $f(\phi)=\phi$ è continua, in quanto data ...continua..
+Per verificare se la funzione $f : X \longmapsto Y$, con $f(\phi)=\phi$ è continua, bisogna cercare una successione $\phi_n$ che tenda a $\phi$ tanto con la $\vert \vert \cdot \vert \vert_1$ quanto con la $\vert \vert \cdot \vert \vert_\infty$.\\
+È facile capire che se si considera una successione che vale praticamente sempre $0$ e vale $1$ in un solo punto, allora per la norma infinito il valore è $1$, mentre per la norma $1$ il valore dell'integrale è $0$, per cui non può essere continua.\\
+Nel caso, invece, della funzione inversa $f^{-1} : Y \longmapsto x$, con $f^{-1}(\phi)=\phi$, allora essa è continua, in quanto si può sempre supporre che la successione $\phi_n \to 0$ nella norma $\infty$, in quanto se $\phi_n \to \phi$, allora $\phi_n-\phi \to 0$ con norma infinito; allora, supposto $\phi_n \to 0$ si ha che
+\[\int_0^1 \vert \phi_n(x) \vert \dif x \leq \int_0^1 \underset{[0,1]}{\max} \vert \phi_n(x) \vert \dif x = \vert \vert \phi_n(x) \vert \vert \to 0\]
+
 
 \vspace{1em}
 \noindent
@@ -4577,17 +4592,53 @@ Di seguito si espongono alcuni fondamentali teoremi sui limiti e sulle funzioni 
 \vspace{1em}
 \noindent
 \subsubsection{Teorema di unicità del limite}
-Per la dimostrazione si impiega il principio di separazione di Hausdorff.
+Si espone di seguito il \textbf{teorema di unicità del limite}:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{TEOREMA DI UNICITÀ DEL LIMITE}}\\
+    \parbox{\linewidth}{Il limite se esiste è unico. \vspace{3mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{2em}
+\noindent
+Ciò può essere dimostrato tanto per le successioni quanto per le funzioni, per il teorema di caratterizzazione delle funzioni tramite le successioni.\\
+Com'è noto, per la dimostrazione si impiega la \textbf{proprietà di separazione di Hausdorff}.
 
 \vspace{1em}
 \noindent
-\subsubsection{Teorema sul limite delle restrizioni}
-È noto che data una funzione
-\[f : E \subseteq X \longmapsto X\]
-in cui
-\[\lim_{x \to x_0} f(x) = l\]
-allora, posto $F \subseteq E$ una restrizione di $E$, con $x_0$ punto di accumulazione per $F$. Allora anche
-\[\lim_{x \to x_0} f\vert_F(x)=l\]
+\subsubsection{Teorema sul limite della restrizione}
+Si espone di seguito il \textbf{teorema sul limite della restrizione}:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{TEOREMA SUL LIMITE DELLA RESTRIZIONE}}\\
+    \parbox{\linewidth}{Data una funzione
+    \[f : E \subseteq X \longmapsto Y\]
+    in cui
+    \[\lim_{x \to x_0} f(x) = l\]
+    allora, posto $F \subseteq E$ una restrizione di $E$, con $x_0$ punto di accumulazione per $F$. Allora anche
+    \[\lim_{x \to x_0} \restr{f}{F}(x)=l\]
+    \vspace{-1mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione}: Si osservi che il teorema sul limite della restrizione è fondamentale per dimostrare la non esistenza del limite. Se si considerano restrizioni diverse con limiti diversi, si può concludere che il limite di partenza non esiste.
 
 \vspace{2em}
 \noindent
@@ -4604,79 +4655,135 @@ per cui si sono trovate due restrizioni in cui il limite non coincide: il limite
 \vspace{1em}
 \noindent
 \subsubsection{Teorema sul limite della funzione composta}
-Si considerino due funzioni
-\[f : E \subseteq X_1 \longmapsto X_2 \hspace{1em} \text{e} \hspace{1em} g : F \subseteq X_2 \longmapsto X_3\]
-Posto $\alpha$ punto di accumulazione per $E$, tale per cui
-\[\lim_{x \to \alpha} f(x) = \beta\]
-e sia $\beta$ punto di accumulazione per $F$. Allora se
-\[\lim_{y \to \beta} g(y) = \beta\]
-si evince che
-\[\lim_{x \to \alpha} g(f(x)) = \gamma\]
-ammesso che \textbf{esista un intorno } $U$ \textbf{ di } $\alpha$ \textbf{ tale che } $\forall x \in U, x \neq \alpha, f(x) \neq \beta$
+Si espone di seguito il teorema sul limite della funzione composta:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{TEOREMA SUL LIMITE DELLA FUNZIONE COMPOSTA}}\\
+    \parbox{\linewidth}{Si considerino due funzioni
+    \[f : E \subseteq X_1 \longmapsto X_2 \hspace{1em} \text{e} \hspace{1em} g : F \subseteq X_2 \longmapsto X_3\]
+    Posto $\alpha$ punto di accumulazione per $E$, tale per cui
+    \[\lim_{x \to \alpha} f(x) = \beta\]
+    e sia $\beta$ punto di accumulazione per $F$. Allora se
+    \[\lim_{y \to \beta} g(y) = \gamma\]
+    si evince che
+    \[\lim_{x \to \alpha} g(f(x)) = \gamma\]
+    ammesso che \textbf{esista un intorno} $U$ \textbf{di} $\alpha$ \textbf{tale che} $\forall x \in U, x \neq \alpha, f(x) \neq \beta$.
+    \vspace{3mm}}\\
+    \hline
+\end{tabularx}
 
 \vspace{1em}
 \noindent
 \subsubsection{Teorema sul limite della combinazione lineare di funzioni}
-Se $X$ è uno spazio metrico, con $Y$ \textbf{spazio vettoriale} con una norma $\vert \vert \cdot \vert \vert$ e la distanza indotta
-\[d(y_1,y_2) = \left \vert \left \vert y_1-y_2 \right \vert \right \vert\]
-si ha che
-\[\lim_{x \to x_0} f(x) = l_1 \hspace{1em} \text{e} \hspace{1em} \lim_{x \to x_0} g(x) = l_1\]
-posto $\alpha, \beta \in \mathbb{R}$ si ha che
-\[\lim_{x \to x_0} \left(\alpha \cdot f + \beta \cdot g\right)(x) = \alpha \cdot l_1 + \beta \cdot l_2\]
-Inoltre, se $Y=\mathbb{R}$, o uno spazio metrico su cui è definito un prodotto, si può anche affermare che
+Si espone di seguito il \textbf{teorema sul limite della combinazione lineare di funzioni}:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{TEOREMA SUL LIMITE DELLA COMBINAZIONE LINEARE}}\\
+    \parbox{\linewidth}{Sia $X$ è uno spazio metrico, con $Y$ \textbf{spazio vettoriale} con una norma $\vert \vert \cdot \vert \vert$ e la distanza indotta
+    \[d(y_1,y_2) = \left \vert \left \vert y_1-y_2 \right \vert \right \vert\]
+    Allora, se $Y$ è uno spazio vettoriale, è possibile considerare una combinazione lineare di funzioni; pertanto, se si ha che
+    \[\lim_{x \to x_0} f(x) = l_1 \hspace{1em} \text{e} \hspace{1em} \lim_{x \to x_0} g(x) = l_2\]
+    con $x_0$ punto di accumulazione per il dominio di definizione di entrambe $f$ e $g$. Allora, posto $\alpha, \beta \in \mathbb{R}$ si ha che
+    \[\lim_{x \to x_0} \left(\alpha \cdot f + \beta \cdot g\right)(x) = \alpha \cdot l_1 + \beta \cdot l_2\]
+    ossia il limite della combinazione lineare è uguale alla combinazione lineare dei limiti. Da ciò deriva il fatto che la combinazione lineare di funzioni continue è una funzione continua.\vspace{3mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione}: Si osservi, inoltre, che se $Y=\mathbb{R}$, o in generale uno spazio metrico su cui è definito un prodotto, si può anche affermare che
 \[\lim_{x \to x_0} (f \cdot g)(x) = l_1 \cdot l_2\]
-Ha anche significato affermare, in $\mathbb{R}$, che
+e similmente, se $l_2 \neq 0$, si ha anche il quoziente. Ha anche significato parlare, in $\mathbb{R}$, del teorema di confronto dei limiti:
+\begin{itemize}
+    \item se $f \leq g, \forall x$, allora $l_1 \leq l_2$;
+    \item se $f \geq g, \forall x$, allora $l_1 \geq l_2$;
+\end{itemize}
+Da questo segue anche il teorema della limitatezza locale, così come il teorema della permanenza del segno, che sono sempre validi per funzioni definite da $X$, spazio metrico generale, a valori in $\mathbb{R}$.\\
+Inoltre, se la funzione $f$ considerata ha valori reali, ha senso considerare il limite seguente
 \[\lim_{x \to x_0} f(x) = \pm \infty\]
-che significa ...continua...
+per cui si ha che
+\[\forall M \in \mathbb{R}, \exists \delta > 0 \hspace{1em} \text{tale che} \hspace{1em} \forall x \in X, x \neq x_0, d(x,x_0)<\delta \hspace{1em} \text{allora} \hspace{1em} f(x) > M \hspace{1em} \left[f(x) < M\right]\]
+Nel caso di una curva, ossia una funzione definita da $\mathbb{R}$ a valori in $X$, allora si può anche considerare il limite
+\[\lim_{x \to \pm \infty} f(x) = l \in X\]
 
 \vspace{1em}
 \noindent
 \textbf{Esercizio 1}: Si calcoli il seguente limite:
 \[\lim_{(x,y){^T} \to (0,0){^T}} \left(\frac{\sin(xy)}{y}, \frac{3x^3y-xy^2+1}{xy+2x-y-2}\right){^T}\]
-Siccome si tratta di un campo vettoriale, bisogna suddividere lo stesso nelle sue due componenti, andando a studiare separatamente i due limite. Se ciascuno esiste, il limite del campo vettoriale sarà il vettore con componenti il limite delle componenti.\\
-Pertanto si andranno a studiare
+Siccome si tratta di un campo vettoriale, bisogna suddividere lo stesso nelle sue due componenti, andando a studiare separatamente i due limiti: se il limite di ciascuna componente esiste, allora il limite del campo vettoriale sarà il vettore con componenti il limite delle componenti.\\
+Pertanto si andranno a studiare separatamente i due limiti
 \[\lim_{(x,y){^T} \to (0,0){^T}} \frac{\sin(xy)}{y} \hspace{1em} \text{e} \hspace{1em} \lim_{(x,y){^T} \to (0,0){^T}} \frac{3x^3y-xy^2+1}{xy+2x-y-2}\]
 È immediato evincere che il secondo limite sia, ovviamente
 \[\lim_{(x,y){^T} \to (0,0){^T}} \frac{3x^3y-xy^2+1}{xy+2x-y-2}=-\frac{1}{2}\]
-Per quanto riguarda il primo limite, si devono considerare delle restrizioni opportune, per esempio
+Per quanto riguarda il primo limite, si devono considerare delle restrizioni opportune: per restrizioni opportune si intendono dei sottoinsiemi del dominio per i quali il punto cui converge $(x,y){^T}$, in questo caso $(0,0){^T}$, \textbf{è un punto di accumulazione per tale restrizione}. Pertanto, essendo $(0,0){^T}$ il punto preso in esame, delle possibili restrizioni sono $x=0$, oppure $x=y$, che sono tutte \quotes{rette} passanti per l'origine; una restrizione del tipo $x=1$ non avrebbe senso in questo caso.\\
+Alla luce di ciò, si ha che
 \begin{itemize}
-    \item Considerando la restrizione all'asse $x$ si ottiene
+    \item considerando la restrizione all'asse $x$ si ottiene
     \[\lim_{(x,y){^T} \to (0,0){^T}, x=0} \frac{\sin(xy)}{y} = 0\]
-    \item Considerando la restrizione sulla bisettrice si ottiene
+    \item considerando la restrizione sulla bisettrice si ottiene
     \[\lim_{(x,y){^T} \to (0,0){^T}, x=y} \frac{\sin(xy)}{y} = 0\]
 \end{itemize}
-Ciò suggerisce che il limite possa esistere; basterà andare a stimare che
-\[\left \vert \frac{\sin(xy)}{y} \right \vert < \epsilon\]
+Ciò suggerisce che il limite possa esistere, ma se esiste esso deve essere uguale al limite delle restrizioni, ossia $0$. Per dimostrarne l'esistenza, allora, si usa la definizione di limite e si dimostra che $\forall \epsilon > 0, \exists \delta > 0$ tale che $\forall (x,y){^T} \in \mathbb{R}^2, (x,y){^T} \neq (0,0){^T}, \vert \vert (x,y){^T} - (0,0){^T} \vert \vert < \delta$ si ha che
+\[\left \vert \frac{\sin(xy)}{y}  - 0 \right \vert < \epsilon\]
 ma è immediato osservare che 
 \[\left \vert \frac{\sin(xy)}{y} \right \vert = \left \vert \frac{\sin(xy)}{xy} \right \vert \cdot \vert x \vert \leq \vert x \vert\]
-e siccome $\vert x \vert \to 0$, si evince che tale funzione è proprio nullo. Pertanto il limite del campo è il campo con componenti il limite del componenti:
+in quanto è noto che il primo fattore ha limite notevole $1$ e quindi è limitato; inoltre, siccome $\vert x \vert \to 0$, si evince che il limite di tale funzione è proprio nullo. Pertanto il limite del campo vettoriale è il campo vettoriale con componenti il limite del componenti:
 \[\lim_{(x,y){^T} \to (0,0){^T}} \left(\frac{\sin(xy)}{y}, \frac{3x^3y-xy^2+1}{xy+2x-y-2}\right){^T} = \left(0,-\frac{1}{2}\right){^T}\]
 
 \vspace{1em}
 \noindent
 \textbf{Esercizio 2}: Si consideri il seguente limite:
 \[\lim_{(x,y){^T} \to (0,0){^T}} \frac{x^2y}{x^4+y^2}\]
-Se esiste il limite, esso deve essere $0$, in quanto basta lavorare sugli assi e si ottiene $0$. Anche se si lavora sulla bisettrice si ottiene $0$.\\
-Tuttavia, se si considera la parabola $y=x^2$, è facile capire che
+Se esiste il limite, esso deve essere $0$, in quanto basta lavorare sugli assi (con restrizione $x=0$ e $y=0$ per cui $(0,0){^T}$ è punto di accumulazione) e si ottiene $0$. Anche se si lavora sulla bisettrice si ottiene $0$, in quanto
+\[\lim_{(x,y){^T} \to (0,0){^T},x=y} \frac{x^3}{x^2 \cdot (x^2+1)} = \lim_{(x,y){^T} \to (0,0){^T},x=y} \dfrac{x}{x^2+1}=0\]
+Tuttavia, se si considera la parabola $y=x^2$ (che è un insieme legittimo, in quanto $(0,0){^T}$ è punto di accumulazione per tale insieme), è facile capire che
 \[\lim_{(x,y){^T} \to (0,0){^T},y=x^2} \frac{x^4}{2x^4}=\frac{1}{2}\]
 per cui si evince che tale limite non esiste.
 
 \vspace{1em}
 \noindent
-\textbf{Osservazione}: Si osservi che negli spazi $X=C([0,1])$ con norma $\vert \vert \cdot \vert \vert_\infty$ si lavora con successioni di funzioni $\phi_n$ che convergono ad una funzione $\phi$ con distanza indotta dalla norma infinito. Allora la convergenza per tali successioni viene definita come
-\[\forall \epsilon > 0, \exists n_\epsilon \in \mathbb{N} \text{ tale che } \forall n \in n_\epsilon, \underset{x \in [0,1]}{\max} \left \vert \phi_n(x) - \phi(x) \right \vert < \epsilon\]
-mentre la convergenza uniforme richiede che
-\[\forall \epsilon > 0, \exists n_\epsilon \in \mathbb{N} \text{ tale che } \forall n \geq n_\epsilon, \forall x \in [0,1] \text{ si ha che } \left \vert \phi_n(x) - \phi(x) \right \vert < \epsilon\]
-che sono la stessa cosa, in quanto si sta lavorando con uno spazio topologico $C([0,1])$ di funzioni continue, per cui esiste sempre il massimo.
+\textbf{Osservazione}: Si osservi che negli spazi $X=C([0,1])$, ossia delle funzioni continue definite sull'intervallo $[0,1]$ con norma $\vert \vert \cdot \vert \vert_\infty$, si lavora con successioni di funzioni $\phi_n$ che convergono ad una funzione $\phi$ con distanza indotta dalla norma infinito.\\
+Allora la convergenza per tali successioni, con la norma $\vert \vert \cdot \vert \vert_\infty$, viene definita come
+\[\forall \epsilon > 0, \exists n_\epsilon \in \mathbb{N} \hspace{1em} \text{ tale che } \hspace{1em} \forall n \geq n_\epsilon \hspace{1em} \text{ si ha che } \hspace{1em} \underset{x \in [0,1]}{\max} \left \vert \phi_n(x) - \phi(x) \right \vert < \epsilon\]
+mentre la convergenza uniforme, in generale, per successioni di funzioni $\phi_n$, richiede che
+\[\forall \epsilon > 0, \exists n_\epsilon \in \mathbb{N} \hspace{1em} \text{ tale che } \hspace{1em} \forall n \geq n_\epsilon, \forall x \in [0,1] \hspace{1em} \text{ si ha che } \hspace{1em} \left \vert \phi_n(x) - \phi(x) \right \vert < \epsilon\]
+Ma osservando le due scritture si evince che
+\begin{itemize}
+    \item la prima implica la seconda in quanto
+    \[\left \vert \phi_n(x) - \phi(x) \right \vert \leq \underset{x \in [0,1]}{\max} \left \vert \phi_n(x) - \phi(x) \right \vert < \epsilon\]
+    per cui anche la seconda è soddisfatta;
+    \item ma anche la seconda implica la prima, in quanto si richiede che
+    \[\forall x \in [0,1] \hspace{1em} \text{ sia verificato che } \hspace{1em} \left \vert \phi_n(x) - \phi(x) \right \vert < \epsilon\]
+    per cui deve essere anche che
+    \[\underset{x \in [0,1]}{\max} \left \vert \phi_n(x) - \phi(x) \right \vert < \epsilon\]
+    in cui il ${\max}$ esiste in quanto $\phi_n$ e $\phi$ sono funzioni continue.
+\end{itemize}
+Pertanto la convergenza di una successione di funzioni in uno spazio di funzioni continue con distanza indotta dalla norma del massimo è sempre una convergenza uniforme, in quanto si sta lavorando con uno spazio topologico $C([0,1])$ di funzioni continue definite su un compatto, per cui esiste sempre il massimo.\\
+Per quanto riguarda la convergenza puntuale, non esiste una norma (e quindi un'eventuale distanza indotta) che renda la convergenza di successioni di funzioni con tale norma eguale alla convergenza puntuale.
 
 \vspace{1em}
 \noindent
-\subsection{Trasformazioni coordinate}
-Si consideri la funzione
+\subsection{Trasformazioni di coordinate}
+Si considerino le funzioni seguenti
 \[f : \mathbb{R}^2 \longmapsto \mathbb{R}^2 \hspace{1em} \text{e} \hspace{1em} f^{-1} : \mathbb{R}^2 \longmapsto \mathbb{R}^2\]
-in cui se si considerano $x$ e $y$ coordinate nel dominio di $f$ e $u$ e $v$ coordinate nel codominio di $f$. Allora se la mappatura è la seguente:
+in cui si considerano $x$ e $y$ coordinate nel dominio di $f$ e $u$ e $v$ coordinate nel codominio di $f$. Allora la mappatura è la seguente, denominata \textbf{trasformazione lineare di coordinate}:
 \[
     \left\{
+    \rowcolors{1}{white}{white}
     \begin{array}{l}
         u=x-y\\
         v=x+y
@@ -4684,80 +4791,106 @@ in cui se si considerano $x$ e $y$ coordinate nel dominio di $f$ e $u$ e $v$ coo
     \right.
     \rightarrow
     \left\{
+    \rowcolors{1}{white}{white}
     \begin{array}{l}
-        x=\dfrac{1}{2} (u-v)\\
-        y=\dfrac{1}{2} (u+v)\\
+        x=\dfrac{1}{2} (u+v)\\
+        y=\dfrac{1}{2} (v-u)\\
     \end{array}  
     \right.
 \]
 
 \vspace{1em}
 \noindent
-\textbf{Osservazione}: Nel caso di coordinate polari del tipo ...continua...
+\subsection{Coordinate polari}
+Nel caso di coordinate polari, si ha la seguente trasformazione:
 \[
     \left\{
+    \rowcolors{1}{white}{white}
     \begin{array}{l}
-        u=x-y\\
-        v=x+y
+        x = \rho \cos(\theta)\\
+        y = \rho \sin(\theta)
     \end{array}  
     \right.
 \]
-... continua ...\\
-Allora si può considerare
+In generale, si vorrebbe che $(x,y){^T} \in \mathbb{R}^2$, ma ciò non è possibile con le condizioni imposte per $\rho$ e $\theta$. Infatti si ha che $\rho \geq 0$ e $\theta \in [0,2\pi[$ (in cui si considera l'intervallo chiuso solo da un lato, in quanto altrimenti uno stesso punto verrebbe considerato due volte, perdendo l'iniettività della funzione di trasformazione, e quindi l'invertibilità).\\
+Non solo, ma per mappare l'origine $(0,0){^T}$ è sufficiente porre $\rho = 0$, ma in questo modo $\theta$ può assumere qualunque valore, perdendo nuovamente la biettività.\\
+Pertanto la trasformazione che si eseguirà per le coordinate polari non sarà completa come quella lineare vista in precedenza, ma si dovrà inevitabilmente escludere l'origine e rispettare le condizioni esposte per $\rho$ e $\theta$; si considereranno, quindi, le funzioni seguenti:
 \[f : ]0,+\infty[ \times [0,2\pi[ \longmapsto \mathbb{R}^2 - \{(0,0){^T}\}\]
 in cui si pone
 \[(\rho,\theta){^T} \longmapsto (x,y){^T}\]
 con la mappatura 
 \[
     \left\{
+    \rowcolors{1}{white}{white}
     \begin{array}{l}
-        x=\rho \cdot \cos(\theta)\\
-        y=\rho \cdot \sin(\theta)\\
+        x = \rho \cos(\theta)\\
+        y = \rho \sin(\theta)
     \end{array}  
     \right.
 \]
-Essendo un campo vettoriale, si considerano le componenti una ad una. Per verificare se $f$ è continua si studiano le componenti, che ovviamente sono il prodotto di due funzioni continue che, quindi, è continua.\\
+La funzione $f$ è biettiva e quindi invertibile. Per verificare se $f$ è anche continua, essendo un campo vettoriale
+\[f(\rho,\theta) = \left(\rho \cos(\theta), \rho \sin(\theta)\right){^T}\]
+si considerano le componenti una ad una: tali componenti sono il prodotto di due funzioni continue (una costante e una funzione trigonometrica elementare) che, quindi, è continua.\\
 Studiando la funzione inversa $f^{-1}$ definita come
 \[f^{-1}(x,y) = (\rho,\theta){^T}\]
-allora si ha che
+si evince che $\rho$ e $\theta$ sono definibili come segue
 \begin{itemize}
     \item $\rho=\sqrt{x^2+y^2}$
     \item $\theta$ è l'angolo tale che
     \[x=\rho \cos(\theta) \hspace{1em} \text{e} \hspace{1em} y=\rho \sin(\theta)\]
 \end{itemize}
-Pertanto non esiste una formula generale per esprimere l'angolo $\theta$. La funzione inversa non è continua, in quanto considerando il punto sulla circonferenza goniometrica, continua...
+Pertanto non esiste una formula generale per esprimere l'angolo $\theta$ (se $x>0,y>0$, allora $\theta=\arctan \left.\left(\dfrac{y}{x}\right)\right)$. Ciò, di fatto, permette di affermare che la funzione inversa $f^{-1}$ non è continua, in quanto considerando i punti sulla circonferenza goniometrica che tendono progressivamente a $(1,0){^T}$, ossia la successione dei punti
+\[(x_n,y_n) \to (1,0){^T}\]
+con $\sqrt{x_n^2+y_n^2}=1$, tale per cui
+\begin{itemize}
+    \item $x_n=\rho \cos(\theta)$
+    \item $y_n=\rho \sin(\theta)$
+    \item $\theta=2\pi-\dfrac{1}{n}$
+\end{itemize}
+allora si ha che
+\[f^{-1}(x_n,y_n)=\left(1,2\pi-\dfrac{1}{n}\right)\]
+pertanto quando $n \to +\infty$ si osserva che
+\[\lim_{n \to +\infty} f^{-1}(x_n,y_n)=\lim_{n \to+\infty}\left(1,2\pi-\dfrac{1}{n}\right)=(1,2\pi){^T}\]
+mentre è ovvio che $f(1,0)=(1,0){^T}$, in quanto con $\rho=1$ e $\theta=0$, si ha che $x=\rho \cos(\theta)=1$ e $y=\rho \sin(\theta)=0$.
 
 \vspace{1em}
 \noindent
-\textbf{Osservazione 1}: Lavorare con le coordinate polari non è semplice, in quanto non si ha un omeomorfismo per la descrizione delle coordinate nei due sistemi. L'omeomorfismo si ha quando si esclude la semiretta dei reali positivi e, quindi, si considera la funzione
+\textbf{Osservazione 1}: Lavorare con le coordinate polari non è semplice, in quanto non si ha un omeomorfismo per la descrizione delle coordinate nei due sistemi. Si ricordi che un omeomorfismo è una funzione biettiva continua, quindi invertibile, con inversa anch'essa continua.\\
+Tuttavia, l'omeomorfismo si ha quando si esclude la semiretta dei reali positivi e, quindi, si considera la funzione
 \[f : \mathbb{R}^2 - \{(x,y){^T} \in \mathbb{R}^2 : x \geq 0\} \longmapsto ]0,+\infty[ \times ]0,2\pi[\]
+che è una funzione continua, invertibile e con inversa continua, quindi un omeomorfismo.
 
 \vspace{1em}
 \noindent
-\textbf{Osservazione 2}: È possibile anche considerare delle coordinate ellittiche centrate in $(x_0,y_0){^T}$, ovvero un sistema come quello seguente
+\textbf{Osservazione 2}: Le coordinate polari appena viste erano centrate in $(0,0){^T}$. Tuttavia, è possibile anche considerare delle \textbf{coordinate ellittiche} centrate in $(x_0,y_0){^T}$, ovvero un sistema come quello seguente
 \[
 \left\{
+    \rowcolors{1}{white}{white}
     \begin{array}{l}
-        x=x_0 + a \cdot \rho \cdot \cos(\theta)\\
-        y=y_0 + b \cdot \rho \cdot \sin(\theta)\\
+        x=x_0 + a \rho \cdot \cos(\theta)\\
+        y=y_0 + b \rho \cdot \sin(\theta)\\
     \end{array}  
     \right.
 \]
+in cui $a$ e $b$ sono i semiassi dell'ellisse. In generale si chiede che $\rho \geq 0$ e $\theta \in [0,2\pi[$; se si pone $\rho \leq 1$ si ottengono tutti i punti interni all'ellisse con la sua frontiera.
 
 \vspace{1em}
 \noindent
-\textbf{Osservazione 3}: È possibile anche considerare delle coordinate ellissoidali, andando a considerare un sistema seguente
+\textbf{Osservazione 3}: È possibile anche considerare delle \textbf{coordinate ellissoidali}, andando a considerare un sistema seguente
 \[
 \left\{
+    \rowcolors{1}{white}{white}
     \begin{array}{l}
-        x=x_0 + a \cdot \rho \cdot \cos(\theta) \cdot \cos(\phi)\\
-        y=y_0 + b \cdot \rho \cdot \sin(\theta) \cdot \sin(\phi)\\
-        z=z_0 + c \cdot \rho \cdot \cos(\theta)
+        
+        x=x_0 + a \rho \cdot \sin(\phi) \cdot \cos(\theta)\\
+        y=y_0 + b \rho \cdot \sin(\phi) \cdot \sin(\theta)\\
+        z=z_0 + c \rho \cdot \cos(\phi)
     \end{array}  
     \right.
 \]
+con $\rho \geq 0$, $\phi \in [0,\pi[$ e $\theta \in [0,2\pi[$. Ovviamente, posti i semiassi uguali, ossia $a=b=c$, si ottengono le coordinate sferiche usuali, che prevedono $a=b=c=1$.
 
-\vspace{1em}
+\newpage
 \noindent
 \subsection{Intervallo e insieme compatto}
 Di seguito si espongono le definizioni generalizzate agli spazi metrici di intervallo e di insieme compatto.
@@ -4765,7 +4898,7 @@ Di seguito si espongono le definizioni generalizzate agli spazi metrici di inter
 \vspace{1em}
 \noindent
 \subsubsection{Insieme compatto}
-Di seguito si espone la definizione di \textbf{insieme compatto} in uno spazio metrico:
+Non è possibile definire un insieme compatto, in uno spazio metrico, come chiuso e limitato, in quanto non sufficientemente regolare per far valere i teoremi di Weierstrass e di Heine-Cantor. Di seguito, quindi, si espone la definizione di \textbf{insieme compatto} in uno spazio metrico, la quale fa uso del risultato del teorema di Bolzano-Weierstrass, il quale affermava che ogni successione in un insieme compatto ammette una sottosuccessione convergente, andando così a definire il concetto di \textbf{insieme compatto per successioni}:
 
 % Tabella per le definizione di concetti, etc...
 \vspace{1em}
@@ -4776,8 +4909,8 @@ Di seguito si espone la definizione di \textbf{insieme compatto} in uno spazio m
 \begin{tabularx}{\textwidth}{@{}|P|@{}}
     \hline
     {\textbf{INSIEME COMPATTO}}\\
-    \parbox{\linewidth}{Sia $X$ uno spazio metrico. Allora un insieme $K \subseteq X$ si dice compatto (per successioni) se per ogni successioni $(x_n)_n$ con $x_n \in K, \forall n$, esiste una sottosuccessione $(x_{n_k})_k$ convergente, ossia
-    \[\lim_{k \to +\infty} x_{n_k} = l \in K\] \vspace{3mm}}\\
+    \parbox{\linewidth}{Sia $X$ uno spazio metrico. Allora un insieme $K \subseteq X$ si dice \textbf{compatto} (per \textbf{successioni}) se \textbf{per ogni} successione $(x_n)_n$ con $x_n \in K, \forall n$, esiste una sottosuccessione $(x_{n_k})_k$ convergente ad un punto di $K$, ossia
+    \[\lim_{k \to +\infty} x_{n_k} = l \in K\] \vspace{-1mm}}\\
     \hline
 \end{tabularx}
 
@@ -4792,23 +4925,23 @@ Di seguito si espone la definizione di \textbf{insieme compatto} in uno spazio m
 \noindent
 \normalfont \normalsize
 \textsc{Dimostrazione 1}: Si dimostri che se $K$ è compatto, allora è chiuso, ovvero contiene tutti i suoi punti di accumulazione. Sia, allora, $\alpha$ un punto di accumulazione per $K$, allora si considera, $\forall n$, la palla
-\[B \left(\alpha, \frac{1}{n}\right)\]
-Si supponga esista $x_n \neq \alpha$, con $x_n \in K \cap B \left(\alpha, \dfrac{1}{n}\right)$. Ovviamente, per costruzione si ha che
+\[\mathcal{B} \left(\alpha, \frac{1}{n}\right)\]
+Tale palla è un intorno di $\alpha$, ma essendo $\alpha$ punto di accumulazione per $K$ deve esistere un elemento $x_n \neq \alpha$, con $x_n \in K \cap \mathcal{B} \left(\alpha, \dfrac{1}{n}\right)$. Ovviamente, per costruzione si ha che
 \[\lim_{n \to +\infty} x_n = \alpha\]
-Poiché $K$ è compatto, esiste una sottosuccessione $(x_{n_k})_k$ tale che
+Poiché $K$ è compatto, esiste una sottosuccessione di $(x_n)_n$, denominata $(x_{n_k})_k$, tale che
 \[\lim_{k \to +\infty} x_{n_k} = l \in K\]
-ma $l=\alpha$ e, quindi, $\alpha \in K$, per cui $K$ è chiuso.
+ma siccome $(x_{n_k})_n$ è una sottosuccessione di una successione convergente, i due limiti devono coincidere, per cui $l=\alpha$ e, quindi, $\alpha \in K$; ma essendo $\alpha$ punto di accumulazione appartenente a $K$, deve essere che $K$ è chiuso.
 
 % Formattazione per la dimostrazione, etc.
 \vspace{2em}
 \noindent
 \normalfont \normalsize
-\textsc{Dimostrazione 2}: Si dimostri che se $K$ è compatto, allora è limitato. Sia, allora, per assurdo $K$ non limitato. Si fissi $x_0 \in X$ tale per cui $\forall n$ esiste $x_n \in K$ con $x_n \notin B \left(x_0,n\right)$.\\
-Ma siccome $K$ è compatto per ipotesi, esiste una sottosuccessione $(x_{n_k})_k$ tale per cui
+\textsc{Dimostrazione 2}: Si dimostri che se $K$ è compatto, allora è limitato. Sia, allora, per assurdo $K$ non limitato. Si fissi $x_0 \in X$, allora se $K$ è non limitato, si ha che $\forall n$ esiste $x_n \in K$ con $x_n \notin B \left(x_0,n\right)$: se, infatti, ciò non fosse vero, allora $K$ sarebbe tutto contenuto in una palla, per cui $K$ sarebbe l'imitato, contraddicendo l'ipotesi assurda assunta in principio.\\
+Poiché $K$ è compatto, esiste una sottosuccessione di $(x_n)_n$, denominata $(x_{n_k})_k$, tale che
 \[\lim_{k \to +\infty} x_{n_k} = l \in K\]
-ma tale successione non può convergere (ovvero non può essere che $d(x_{n_k},l)<\epsilon$), in quanto
+ma tale successione non può convergere, (ovvero non può essere che, definitivamente, per $k$ sufficientemente grande, $d(x_{n_k},l)<\epsilon$), in quanto, per la disuguaglianza triangolare (al contrario), si ha che 
 \[d(x_{n_k},l) \geq d(x_{n_k},x_0) - d(x_0,l) \geq n_k - M\]
-essendo $d(x_0,l)=M$ costante. Ma siccome $n_k \to +\infty$ per cui non si può avere convergenza.
+essendo $d(x_{n_k},x_0)=n_k-0=n_k$ e $d(x_0,l)=M$ costante. Ma siccome $n_k \to +\infty$ non si può avere convergenza.
 
 \newpage
 \noindent
@@ -4821,103 +4954,175 @@ Le coordinate sferiche esposte in precedenza sono
     &y=\rho \sin(\phi) \cdot \sin(\theta)\\
     &z=\rho \cos(\phi)
 \end{align*}
-Negli spazi metrici viene privilegiata la definizione per gli insiemi compatti del teorema di Bolzano-Weierstrass, andando a considerare un insieme compatto per successioni, tale per cui un insieme è compatto se ogni successione in esso definita presenta una sottosuccessione convergente in tale insieme.\\
+Negli spazi metrici viene privilegiata la definizione per gli insiemi compatti del teorema di Bolzano-Weierstrass, il quale affermava che ogni successione a valori in uno insieme compatto ammette una sottosuccessione convergente; pertanto, per gli spazi metrici generali si considera la definizione di \textbf{insieme compatto per successioni}, tale per cui un insieme è compatto se ogni successione in esso definita presenta una sottosuccessione convergente in tale insieme.\\
 Ogni insieme compatto è chiuso e limitato. Tuttavia, non è vero il contrario. 
 
 \vspace{1em}
 \noindent
-\textbf{Esempio 1}: Se, infatti, si considera lo spazio metrico $\mathbb{Q}$ e vi si considera l'insieme
-\[[0,\pi[ \cap \mathbb{Q} = C\]
-in cui $C$ è chiuso e limitato in $\mathbb{Q}$ non è compatto.
+\textbf{Esempio 1}: Se, infatti, si considera lo spazio metrico $\mathbb{Q}$ e in esso si considera l'insieme
+\[[0,\pi[ \hspace{0.5em} \cap \hspace{0.5em} \mathbb{Q} = C\]
+allora l'insieme $C$ non è chiuso in $\mathbb{R}$, in quanto $\pi$ è punto di accumulazione, ma non appartiene a $C$; tuttavia, in $\mathbb{Q}$ tale insieme è chiuso ed è limitato, tuttavia $C$ non è compatto in $\mathbb{Q}$, in quanto presa una qualsiasi successione di razionali che converge a $\pi$, non possono esistere sottosuccessioni convergenti, per cui $C$ in $\mathbb{Q}$ non è compatto.
 
 \vspace{1em}
 \noindent
-\textbf{Esempio 2}: Ancora, se si considera lo spazio metrico
+\textbf{Esempio 2}: Tuttavia $\mathbb{Q}$ non è uno spazio completo, in quanto non vale l'assioma di Dedekind e, per giunta, non vale la proprietà di completezza: cioè, data una successione di Cauchy, essa non sempre converge in $\mathbb{Q}$.\\
+Allora, se si considera lo spazio delle funzioni continue definite sull'intervallo $[0,1]$ con la norma $\vert \vert \cdot \vert \vert_{\infty}$, ossia lo spazio metrico
 \[C([0,1]), \vert \vert \cdot \vert \vert_{\infty}\]
-allora data la palla chiusa
-\[\overline{B(0,1)} = \{\phi \in [0,1] \longmapsto \mathbb{R} \hspace{1em} \text{tale che} \hspace{1em} \phi \text{ è continua e } \max \left \vert \phi(x) \right \vert \leq 1\}\]
-allora tale insieme è chiuso e limitato. Tuttavia, non è compatto. Per dimostrarlo, è sufficiente considerare una successione che non ha sottosuccessioni convergenti.\\
-Pertanto, se si considerano per $n \neq m$ le due successioni
+allora data la palla chiusa (indicata come chiusura di una palla aperta, in quanto in ogni spazio normato la chiusura di una palla aperta coincide con la palla chiusa, ma non è vero in generale) seguente
+\[\overline{\mathcal{B}(0,1)} = \{\phi \in [0,1] \longmapsto \mathbb{R} \hspace{1em} \text{tale che} \hspace{1em} \phi \text{ è continua e } \max \left \vert \phi(x) \right \vert \leq 1\}\]
+allora tale insieme è chiuso e limitato, per definizione, in quanto contenuto in una palla banalmente di raggio maggiore. Tuttavia, tale insieme non è compatto e per dimostrarlo, è sufficiente considerare una successione che non ha sottosuccessioni convergenti.\\
+Allora si divida l'intervallo $[0,1]$ tramite due decomposizioni $\dfrac{1}{2n+1}$ e $\dfrac{1}{2n}$; si considerano, dunque, due successioni $\phi_n$ e $\phi_m$ tale che per $n \neq m$ si ha
 \[\forall x, \hspace{1em} \phi_n(x) \neq 0 \hspace{1em} \text{si ha che} \hspace{1em} \phi_m(x) = 0\]
-per cui è evidente che, $\forall x \in [0,1]$ si ha
-\[\max \left \vert \phi_n(x) - \phi_m(x)\right \vert = 1, \hspace{1em} \forall n \neq m\]
-che non è altro che
-\[\left \vert \left \vert \phi_n - \phi_m \right \vert \right \vert_\infty\]
-per cui non esistono sotto-successioni convergenti. Infatti, si supponga esista una sottosuccessione $\phi_{n_k}$ convergente; allora, fissato $\epsilon$ piccolo con $\epsilon=\dfrac{1}{100}$ deve esistere $n_\epsilon \in \mathbb{N}$ tale che
+si dice, in questo caso, che le due successioni hanno \textbf{supporto disgiunto}, in cui il supporto per una funzione viene definito, in generale, come la chiusura dei punti in cui la funzione è diversa da $0$.
+Se, allora, si ha che il massimo di ciascuna di tali funzioni $\phi_n$ e $\phi_m$ è $1$ nell'intervallo $[0,1]$, è evidente che, per il fatto che hanno supporto disgiunto
+\[\underset{x \in [0,1]}{\max} \left \vert \phi_n(x) - \phi_m(x)\right \vert = 1, \hspace{1em} \forall n \neq m\]
+per definizione di norma infinito si ha che
+\[\left \vert \left \vert \phi_n - \phi_m \right \vert \right \vert_\infty = \underset{x \in [0,1]}{\max} \left \vert \phi_n(x) - \phi_m(x)\right \vert = 1, \hspace{1em} \forall n \neq m\]
+pertanto tutte le funzioni di questo tipo, pensate come elementi dello spazio metrico $C([0,1]), \vert \vert \cdot \vert \vert_{\infty}$ hanno distanza $1$ l'una dall'altra, per cui è evidente che non esistono sotto-successioni convergenti. Infatti, si supponga esista una sottosuccessione $\phi_{n_k}$ convergente; allora deve essere verificato il criterio di convergenza di Cauchy, per cui fissato $\epsilon$ piccolo con $\epsilon=\dfrac{1}{100}$ deve esistere $n_\epsilon \in \mathbb{N}$ tale che
 \[\forall n \geq n_\epsilon \hspace{1em} \text{e} \hspace{1em} \forall p \in \mathbb{N} \hspace{1em} \text{si ha che} \hspace{1em} \left \vert \left \vert \phi_{n+p} - \phi_n \right \vert \right \vert < \frac{1}{100}\]
-ma ciò è impossibile, in quanto $\left \vert \left \vert \phi_{n+p} - \phi_n \right \vert \right \vert=1$ se $p \neq 0$.
+ma ciò è impossibile, in quanto la distanza tra $\phi_n$ e $\phi_m$, con $n \neq m$ è sempre pari a $1$, per cui anche in questo caso si ha che
+\[\left \vert \left \vert \phi_{n+p} - \phi_n \right \vert \right \vert=1 \hspace{1em} \text{con} \hspace{1em} p \neq 0\]
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Si osservi che il teorema di Banach-Alaoglu, o teorema di Banach-Alaoglu-Bourbaki, afferma che dato uno spazio di Banach separabile, ossia uno spazio normato completo rispetto alla metrica indotta dalla norma stessa, una palla chiusa è compatta se e solo se lo spazio è di dimensione finita.\\
+Ciò dimostra, infatti, che la palla chiusa presa in considerazione nell'esempio precedente non è compatta proprio perché lo spazio ha dimensione infinita.
 
 \vspace{1em}
 \noindent
 \subsection{Teorema di caratterizzazione dei compatti in $\mathbb{R}^n$}
-Se $K \subseteq \mathbb{R}^n$ è chiuso e limitato, allora $K$ è compatto (ma ciò vale solamente in $\mathbb{R}^n$).
+Di seguito si espone il \textbf{teorema di caratterizzazione dei compatti in $\mathbb{R}^n$} che permette di affermare che in $\mathbb{R}^n$ un insieme è compatto \textbf{se e solo se} è chiuso e limitato:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{CARATTERIZZAZIONE DEI COMPATTI IN $\mathbb{R}^n$}}\\
+    \parbox{\linewidth}{Se $K \subseteq \mathbb{R}^n$ è chiuso e limitato, allora $K$ è compatto (ma ciò vale solamente in $\mathbb{R}^n$). Ovviamente, per uno spazio metrico qualsiasi vale l'implicazione inversa, già dimostrata, per cui vale anche per $\mathbb{R}^n$.\vspace{3mm}}\\
+    \hline
+\end{tabularx}
 
 % Formattazione per la dimostrazione, etc.
 \vspace{2em}
 \noindent
 \normalfont \normalsize
-\textsc{Dimostrazione}: Sia $K \subset \mathbb{R}^2$ chiuso e limitato. Sia $\left((x_n,y_n){^T}\right)_n$ una successione in K. Si considera, in $\mathbb{R}$ la successione $(x_n)_n$, ossia la proiezione sull'asse $x$ della successione di partenza. Si osservi che tale successione è limitata in $\mathbb{R}$, in quanto
-\[\left \vert x \right \vert \leq \left \vert \left \vert (x_0,y_0){^T} \right \vert \right \vert < M\]
+\textsc{Dimostrazione}: Sia $K \subset \mathbb{R}^2$ chiuso e limitato. Sia $\left((x_n,y_n){^T}\right)_n$ una successione in $K$. Per dimostrare che $K$ è compatto, bisogna dimostrare che tale successione ammette una sottosuccessione convergente.\\
+Si considera, allora, in $\mathbb{R}$ la successione $(x_n)_n$, ossia la proiezione sull'asse $x$ della successione di partenza. Si osservi che tale successione è limitata in $\mathbb{R}$, in quanto
+\[\left \vert x_n \right \vert \leq \left \vert \left \vert (x_n,y_n){^T} \right \vert \right \vert = \sqrt{x_n^2+y_n^2} < M\]
 essendo $K$ limitato. Per il Teorema di Bolzano-Weierstrass, esiste una sottosuccessione $(x_{n_k})_k$ convergente ad $\alpha \in \mathbb{R}$.\\
-Ora è fondamentale considerare la sottosuccessione $(y_{n_k})_k$ che è ovviamente una sottosuccessione limitata, quindi esiste una sotto-sottosuccessione $(y_{n_{k_j}})_j$ convergente a $\beta \in \mathbb{R}$. Se, ora, si considera la sotto-sottosuccessione $(x_{n_{k_j}})_j$, è anch'essa convergente a $\alpha \in \mathbb{R}$, in quanto sottosuccessione di una successione convergente. Allora la sottosuccessione della successione di partenza
-\[\left((x_{n_{k_k}}, y_{n_{k_j}}){^T}\right)_j\]
-converge a $(\alpha,\beta){^T}$. Si noti, ovviamente, che $(\alpha,\beta){^T} \in K$ perché $K$ è chiuso e i limiti delle successioni sono punti di accumulazione per l'insieme $K$.
+Per costruire la sottosuccessione convergente necessaria per dimostrare la compattezza di $K$, non è possibile procedere come appena fatto anche per $(y_n)_n$ in quanto non è detto che la sottosuccessione convergente di $(y_n)_n$ sia confrontabile, in termini di indici, con quella già ottenuta per le $x$. Pertanto, ora, si considera la sottosuccessione di $(y_n)_n$ che presenta gli stessi indici della sottosuccessione di $(x_n)_n$, ovvero la sottosuccessione $(y_{n_k})_k$: ora, però, non è possibile affermare che $(y_{n_k})_k$ sia convergente, ma è ovviamente una sottosuccessione limitata, in quanto $(y_n)_n$ lo è; quindi, per il Teorema di Bolzano-Weierstrass esiste una sotto-sottosuccessione $(y_{n_{k_j}})_j$ convergente a $\beta \in \mathbb{R}$. Se, ora, si considera la sotto-sottosuccessione $(x_{n_{k_j}})_j$, in quanto sottosuccessione di una sottosuccessioni convergente, è anch'essa convergente a $\alpha \in \mathbb{R}$.\\
+Allora la sottosuccessione della successione di partenza
+\[\left((x_{n_{k_j}}, y_{n_{k_j}}){^T}\right)_j\]
+converge a $(\alpha,\beta){^T}$ per il teorema sul limite delle componenti. Si noti, ovviamente, che $(\alpha,\beta){^T} \in K$ perché $K$ è chiuso e i limiti delle successioni sono punti di accumulazione per l'insieme $K$.
 
-\vspace{1em}
+\newpage
 \noindent
 \subsection{Teorema di compattezza}
-Sia $f : X \longmapsto Y$, con $X$ e $Y$ due spazi metrici e $f$ \textbf{continua}. Sia $K \subseteq X$ \textbf{compatto}, allora $f(K)$ è compatto.
+Si espone di seguito il \textbf{teorema di compattezza}, alla base della dimostrazione del teorema di Weierstrass:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{TEOREMA DI COMPATTEZZA}}\\
+    \parbox{\linewidth}{Sia data la funzione seguente
+    \[f : X \longmapsto Y\]
+    con $X$ e $Y$ due spazi metrici e $f$ \textbf{continua}. Sia $K \subseteq X$ \textbf{compatto}, allora $f(K)$ è \textbf{compatto}.\vspace{3mm}}\\
+    \hline
+\end{tabularx}
 
 % Formattazione per la dimostrazione, etc.
 \vspace{2em}
 \noindent
 \normalfont \normalsize
-\textsc{Dimostrazione}: Sia $(y_n)_n$ una successione, con $y_n \subset f(K)$. Allora, per definizione di insieme immagine, si ha che
-\[\forall n, \exists x_n \in K \hspace{1em} \text{tale che} \hspace{1em} y_n=f(x_n)\]
-La successione $(x_n)_n$ ha una sottosuccessione convergente $(x_{n_k})_k$ per il teorema di Bolzano-Weierstrass, ovvero
+\textsc{Dimostrazione}: Per dimostrare che $f(K)$ è compatto, secondo la definizione, bisogna dimostrare che ogni successione definita in $f(K)$ presenta una sottosuccessione convergente in un valore dell'insieme.\\
+Sia, allora, $(y_n)_n$ una successione, con $y_n \in f(K)$. Allora, per definizione di insieme immagine, si ha che
+\[\forall n \hspace{1em} \exists x_n \in K \hspace{1em} \text{tale che} \hspace{1em} y_n=f(x_n)\]
+Siccome $x_n \in K$ e $K$ è compatto per ipotesi, è immediato evincere che la successione $(x_n)_n$ ha una sottosuccessione convergente $(x_{n_k})_k$ per il teorema di Bolzano-Weierstrass, ovvero
 \[\lim_{k \to +\infty} x_{n_k} = \alpha \in K\]
-Per la continuità di $f$ si ha che
-\[\lim_{k \to +\infty} f(x_{n_k}) = f(\alpha)\]
+Da notare che $\alpha \in K$ in quanto $K$ è chiuso; allora, per la continuità di $f$ si ha che
+\[\lim_{k \to +\infty} f(x_{n_k}) = f(\alpha) \in f(K)\]
+in cui $\left(f(x_{n_k})\right)_k$ è la sottosuccessione della successione $(y_n)_n$ presa in considerazione in principio e converge ad un punto di $f(K)$.
 
 \vspace{1em}
 \noindent
-\subsubsection{Teorema di Weierstrass}
-Sia $f : X \longmapsto \mathbb{R}$ con $K \subseteq X$ compatto, e $f$ continua. Allora esistono
-\[\underset{k}{\min} f \hspace{1em} \text{e} \hspace{1em} \underset{k}{\max} f\]
+\subsection{Teorema di Weierstrass}
+Si espone di seguito il \textbf{teorema di Weierstrass}, come corollario del teorema di compattezza:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{TEOREMA DI WEIERSTRASS}}\\
+    \parbox{\linewidth}{Sia data la funzione seguente
+    \[f : X \longmapsto \mathbb{R}\]
+    con $K \subseteq X$ compatto e $f$ continua. Allora esistono
+    \[\underset{K}{\min} f \hspace{1em} \text{e} \hspace{1em} \underset{K}{\max} f\]\vspace{-3mm}}\\
+    \hline
+\end{tabularx}
 
 % Formattazione per la dimostrazione, etc.
 \vspace{2em}
 \noindent
 \normalfont \normalsize
-\textsc{Dimostrazione}: Per il teorema di compattezza $f(K) \subset \mathbb{R}$ è compatto. Quindi esiste il massimo e il minimo.
+\textsc{Dimostrazione}: Per il teorema di compattezza $f(K) \subset \mathbb{R}$ è compatto, ma ogni insieme compatto in $\mathbb{R}$ ammette massimo e minimo, quindi esiste il massimo e il minimo anche di $f(K)$.
 
 \vspace{1em}
 \noindent
 \subsection{Teorema di Heine-Cantor sulla continuità uniforme}
-Sia $f : K \subseteq X \longmapsto Y$ con $f$ continua e $K$ compatto. Allora $f$ è uniformemente continua.
+Si espone di seguito il \textbf{teorema di Heine-Cantor sulla continuità uniforme}:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{CONTINUITÀ UNIFORME}}\\
+    \parbox{\linewidth}{Sia data la funzione seguente
+    \[f : K \subseteq X \longmapsto Y\]
+    con $f$ continua e $K$ compatto. Allora $f$ è \textbf{uniformemente continua}.\vspace{3mm}}\\
+    \hline
+\end{tabularx}
 
 % Formattazione per la dimostrazione, etc.
 \vspace{2em}
 \noindent
 \normalfont \normalsize
 \textsc{Dimostrazione}: Affermare che $f$ è uniformemente continua significa che
-\[\forall \epsilon > 0, \exists \delta > 0 \hspace{1em} \text{tale che} \hspace{1em} \forall x_1,x_2 \in K \hspace{1em} \text{con} \hspace{1em} d_x(x_1,x_2) < \delta \hspace{1em} \text{allora} \hspace{1em} d_y(f(x_1),f(x_2)) < \epsilon\]
-Per assurdo, si supponga che la funzione $f$ non sia uniformemente continua, ovvero
-\[\exists \epsilon > 0 \hspace{1em} \text{tale che} \hspace{1em} \forall \delta = \frac{1}{n} \hspace{1em} \exists x^1_n,x^2_n \in K \hspace{1em} \text{con} \hspace{1em} d(x^1_n,x^2_n) < \frac{1}{n} \hspace{1em} \text{e} \hspace{1em} d_y(f(x^1_n),f(x^2_n)) \geq \epsilon\]
-Avendo, ora, a disposizione due successioni $x^1_n$ e $x^2_n$ si può affermare, essendo $K$ compatto, che $(x^1_n)_n$ ha una sottosuccessione $(x^1_{n_k})_{k}$ convergente, ovvero
-\[\lim_{k \to +\infty} x_{n_{k}} = \alpha \in K\]
-Si considera, ora, la sottosuccessione $(x^2_{n_k})_k$, allora essa ha una sottosuccessione $(x^2_{n_{k_j}})_j$ convergente a $\beta$. Si noti che, ovviamente $\alpha = \beta$ poiché
-\[d_x(x^1_{n_{k_k}},x^2_{n_{k_j}}) < \frac{1}{n_{k_j}} \to 0\]
-Non solo, ma essendo $f$ continua, lo è in particolare in $\alpha$, quindi
-\[\exists \delta > 0 \hspace{1em} \text{tale che} \hspace{1em} \forall x \in K, x \neq \alpha, d_x(x,\alpha) < \delta \hspace{1em} \text{allora} \hspace{1em} d_y(f(x_1),f(x_2)) < \frac{\epsilon}{100}\]
-si ha allora che
-\[\epsilon \leq d_y(f(x^1_{n_{k_j}})) + d_y\]
-... continua ...
+\[\forall \epsilon > 0, \exists \delta > 0 \hspace{1em} \text{tale che} \hspace{1em} \forall x_1,x_2 \in K \hspace{1em} \text{con} \hspace{1em} d_X(x_1,x_2) < \delta \hspace{1em} \text{allora} \hspace{1em} d_Y(f(x_1),f(x_2)) < \epsilon\]
+Per assurdo, si supponga che la funzione $f$ non sia uniformemente continua, ovvero si neghi l'affermazione precedente; allora si ha che
+\[\exists \epsilon > 0 \hspace{1em} \text{tale che} \hspace{1em} \forall \delta = \frac{1}{n} > 0 \hspace{1em} \exists x^1_n,x^2_n \in K \hspace{1em} \text{con} \hspace{1em} d_X(x^1_n,x^2_n) < \frac{1}{n} \hspace{1em} \text{e} \hspace{1em} d_Y(f(x^1_n),f(x^2_n)) \geq \epsilon\]
+Sono state, quindi, implicitamente definite due successioni $x^1_n$ e $x^2_n$ a valori in $K$, insieme compatto per successioni per ipotesi; allora, per il teorema di Bolzano-Weierstrass, $(x^1_n)_n$ ha una sottosuccessione $(x^1_{n_k})_{k}$ convergente ad un valore di $K$, ovvero
+\[\lim_{k \to +\infty} x^1_{n_{k}} = \alpha \in K\]
+Al fine di avere sottosuccessioni con indici confrontabili, si considera la sottosuccessione $(x^2_{n_k})_k$; allora, per la compattezza di $K$ e il teorema di Bolzano-Weierstrass, essa ha una sottosuccessione $(x^2_{n_{k_j}})_j$ convergente a $\beta \in K$. Si noti che, ovviamente $\alpha = \beta$ poiché
+\[d_X(x^1_{n_{k_j}},x^2_{n_{k_j}}) < \frac{1}{n_{k_j}} \to 0\]
+Non solo, ma essendo $f$ continua, lo è in particolare in $\alpha$, quindi per definizione di continuità di $f$ in $\alpha$ si ha che
+\[\exists \delta > 0 \hspace{1em} \text{tale che} \hspace{1em} \forall x \in K, d_X(x,\alpha) < \delta \hspace{1em} \text{allora} \hspace{1em} d_Y(f(x),f(\alpha)) < \frac{\epsilon}{100}\]
+Si ricordi che, per ipotesi, si era assunto che
+\[\epsilon \leq d_Y(f(x^1_{n_{k_j}}),f(x^2_{n_{k_j}}))\]
+ma per la disuguaglianza triangolare si ha che
+\[\epsilon \leq d_Y(f(x^1_{n_{k_j}}),f(x^2_{n_{k_j}})) \leq d_Y(f(x^1_{n_{k_j}}),f(\alpha)) + d_Y(f(\alpha),f(x^2_{n_{k_j}})) < \dfrac{\epsilon}{100} + \dfrac{\epsilon}{100}\]
+per $j$ sufficientemente grande. Ma quindi si è ottenuto l'assurdo cercato.
 
 \vspace{1em}
 \noindent
 \subsection{Insieme connesso per archi}
-Si fornisce di seguito la definizione di insieme connesso per archi:
+Si fornisce di seguito la definizione di \textbf{insieme connesso per archi}:
 
 % Tabella per le definizione di concetti, etc...
 \vspace{1em}
@@ -4928,18 +5133,38 @@ Si fornisce di seguito la definizione di insieme connesso per archi:
 \begin{tabularx}{\textwidth}{@{}|P|@{}}
     \hline
     {\textbf{INSIEME CONNESSO PER ARCHI}}\\
-    \parbox{\linewidth}{Sia $X$ uno spazio metrico. Allora $E \subset X$ si dice connesso per archi se per ogni $x_0,x_1 \in E$ esiste una curva continua
+    \parbox{\linewidth}{Sia $X$ uno spazio metrico. Allora $E \subset X$ si dice \textbf{connesso per archi} se per ogni $x_0,x_1 \in E$ esiste una \textbf{curva continua}
     \[\boxed{\gamma : [0,1] \longmapsto E}\]
     in cui è fondamentale che abbia valori in $E$, tale che
     \[\gamma(0)=x_0 \hspace{1em} \text{e} \hspace{1em} \gamma(1)=x_1\]
-    \vspace{3mm}}\\
+    \vspace{-3mm}}\\
     \hline
 \end{tabularx}
 
-\vspace{1em}
+\vspace{2em}
 \noindent
-\subsubsection{Teorema di connessione}
-Sia una funzione $f : X \longmapsto Y$ una funzione definita tra $X$ e $Y$ due spazi metrici. Sia $E \subseteq X$ un insieme connesso (per archi), con $f$ continua. Allora $f(E)$ è connesso (per archi)
+\textbf{Osservazione}: Dato un insieme aperto, dire che esso è connesso oppure che è connesso per archi è la stessa cosa.
+
+\newpage
+\noindent
+\subsection{Teorema di connessione}
+Si fornisce di seguito l'enunciato del \textbf{teorema di connessione}:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{TEOREMA DI CONNESSIONE}}\\
+    \parbox{\linewidth}{Sia data la funzione seguente
+    \[f : X \longmapsto Y\]
+    ossia una funzione definita tra $X$ e $Y$ due spazi metrici. Sia $E \subseteq X$ un insieme connesso (per archi), con $f$ continua. Allora $f(E)$ è connesso (per archi).
+    \vspace{3mm}}\\
+    \hline
+\end{tabularx}
 
 % Formattazione per la dimostrazione, etc.
 \vspace{2em}
@@ -4951,29 +5176,48 @@ Ma siccome $E$ è connesso per ipotesi, si può affermare che
 \[\exists \gamma : [0,1] \longmapsto E \hspace{1em} \text{continua con} \hspace{1em} \gamma(0)=x_0 \hspace{1em} \text{e} \hspace{1em} \gamma(1) =x_1\]
 Allora la funzione composta
 \[f \circ \gamma : [0,1] \longmapsto f(E)\]
-è una curva continua con
+è una curva continua (per la continuità di $f$) con
 \[f(\gamma(0)) = y_0 \hspace{1em} \text{e} \hspace{1em} f(\gamma(1)) = y_1\]
+pertanto si è dimostrato che presi due punti $y_0$ e $y_1$ di $f(E)$ esiste sempre una curva continua che li connette, per cui $f(E)$ è connesso (per archi).
 
 \vspace{1em}
 \noindent
-\textbf{Osservazione 1}: Un insieme connesso che non è connesso per archi (ma non può essere il viceversa) è il cosiddetto tendine, in cui si considera la successione $\dfrac{1}{n}$ e degli intervalli di ampiezza unitaria, in cui, in $0$ si considera solamente un punto.\\ Allora tale insieme non è connesso per archi, ma è connesso, in quanto la seconda è una definizione più debole della prima.
+\textbf{Osservazione 1}: Un insieme connesso che non è connesso per archi (ma non può essere il viceversa) è il cosiddetto tendine, in cui si considera in $\mathbb{R}^2$ la successione $\dfrac{1}{n}$ e per ogni valore di tale successione si considerano dei segmenti verticali di ampiezza unitaria, tranne che in $0$, dove si considera solamente il punto $(0,1){^T}$.\\
+Allora tale insieme non è connesso per archi, ma è connesso, in quanto la seconda è una definizione più debole della prima.
 
 \vspace{1em}
 \noindent
-\textbf{Osservazione 2}: Si osservi che $E \subseteq \mathbb{R}$ è connesso \textbf{se e solo se} $E$ è un intervallo (o un intervallo degenere, approssimabile ad un punto, del tipo $[a,a]$).
+\textbf{Osservazione 2}: Si osservi che $E \subseteq \mathbb{R}$ è connesso \textbf{se e solo se} $E$ è un intervallo (o un intervallo degenere, approssimabile ad un punto, del tipo $[a,a]$).\\
+Questo è ovvio in quanto il sostegno di una curva continua in $\mathbb{R}$ non può che essere un intervallo.
 
 \vspace{1em}
 \noindent
-\subsubsection{Teorema di esistenza degli zeri}
-Sia $f : E \subseteq X \longmapsto \mathbb{R}$ con $f$ continua ed $E$ connesso. Allora, se esistono $x_1,x_2 \in E$ tali che
-\[f(x_1) < 0 < f(x_1)\]
-esiste $x_0 \in E$ tale che $f(x_0)=0$.
+\subsection{Teorema di esistenza degli zeri}
+Si espone di seguito il \textbf{teorema di esistenza degli zeri}:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{TEOREMA DI ESISTENZA DEGLI ZERI}}\\
+    \parbox{\linewidth}{Sia data la funzione seguente
+    \[f : E \subseteq X \longmapsto \mathbb{R}\]
+    con $f$ continua ed $E$ connesso. Allora, se esistono $x_1,x_2 \in E$ tali che
+    \[f(x_1) < 0 < f(x_1)\]
+    allora esiste $x_0 \in E$ tale che $f(x_0)=0$.
+    \vspace{3mm}}\\
+    \hline
+\end{tabularx}
 
 % Formattazione per la dimostrazione, etc.
 \vspace{2em}
 \noindent
 \normalfont \normalsize
-\textsc{Dimostrazione}: Siccome $f(E)$ è un intervallo che contiene punti negativi e positivi.
+\textsc{Dimostrazione}: Siccome $f(E)$ è un intervallo che contiene punti negativi e positivi, allora deve contenere necessariamente anche lo $0$.
 
 \newpage
 \noindent
@@ -4996,13 +5240,17 @@ Di seguito si espone la definizione di \textbf{derivata direzionale}:
     {\textbf{DERIVATA DIREZIONALE}}\\
     \parbox{\linewidth}{Sia data la funzione
     \[f : A \subseteq \mathbb{R}^n \longmapsto \mathbb{R}^m\]
-    Sia $x_0 \in A$ e sia $v \in \mathbb{R}^n$ un versore (ossia un vettore di $\vert \vert v \vert \vert = 1$).\\
+    con $A$ insieme aperto di $\mathbb{R}^n$. Sia $x_0 \in A$ e sia $v \in \mathbb{R}^n$ un versore (ossia un vettore di $\vert \vert v \vert \vert = 1$).\\
     Si consideri la \textbf{funzione composta}
     \[f \circ \gamma : I \subseteq \mathbb{R} \longmapsto \mathbb{R}\]
-    con $I$ un intervallo del tipo $]-\delta,+\delta[$ tale che $\forall t \in I, \gamma(t) \in A$.\\
-    Allora si chiama \textbf{derivata direzionale} di $f$ in $x_0$ relativa alla direzione $v$, se esiste, la derivata in $t=0$ della funzione composta $f \circ g$, e si scriverà
-    \[\frac{\partial f}{\partial v} (x_0) = \frac{d}{dt} (f \circ \gamma)(t) \vert_{t=0} = \lim_{t \to 0} \frac{f(\gamma(t)) - f(\gamma(t))}{t} = \lim_{t \to 0} \frac{f(x_0+tv) - f(x_0)}{t}\]
-    \vspace{3mm}}\\
+    con $I$ un intervallo del tipo $]-\delta,+\delta[$ tale che $\forall t \in I, \gamma(t) \in A$, in cui
+    \[\gamma(0)=x_0\]
+    questo perché si deve lavorare in un intono di $x_0$ dove la composta ha significato.\\
+    Allora si chiama \textbf{derivata direzionale} di $f$ in $x_0$ relativa alla direzione $v$, se esiste, la derivata in $t=0$ della funzione composta $f \circ \gamma$, e si scriverà
+    \[\frac{\partial f}{\partial v} (x_0) = \restr{\frac{d}{dt} (f \circ \gamma)(t)}{t=0} = \lim_{t \to 0} \frac{f(\gamma(t)) - f(\gamma(0))}{t} = \lim_{t \to 0} \frac{f(x_0+tv) - f(x_0)}{t}\]
+    ovviamente i due limiti si equivalgono in quanto $\gamma(t)$ è la retta passante per il punto $x_0$ e avente direzione $v$, parametrizzata come
+    \[\gamma(t)=x_0+tv\]
+    \vspace{-3mm}}\\
     \hline
 \end{tabularx}
 
@@ -5010,21 +5258,28 @@ Di seguito si espone la definizione di \textbf{derivata direzionale}:
 \noindent
 \textbf{Esempio}: Si consideri la funzione
 \[f(x,y)=xy+2x\]
-e sia dato il punto $x_0=(1,0){^T}$ e la direzione $\displaystyle{v=\frac{1}{\sqrt{2}} \cdot (1,1){^T}}$. Allora la derivata in direzione $v$ di $f$ diviene
-\[\frac{\partial f}{\partial v}(1,0) = \lim_{t \to 0} \frac{f\left(1+t \frac{1}{\sqrt[]{2}},t\frac{1}{\sqrt{2}}\right) - f(1,0)}{t}\]
-che può essere scritto come
-\[\lim_{t \to 0} \dfrac{(1+\frac{t}{\sqrt{2}}) \cdot \frac{t}{\sqrt{2}} + 2 \cdot \left(1+\frac{t}{\sqrt{2}} - 2\right)}{t} = \lim_{t \to 0} \dfrac{\frac{t}{\sqrt{2}} + \frac{t^2}{2} + 2 + 2 \frac{t}{\sqrt{2} - 2}}{t} = \frac{3}{\sqrt{2}}\]
+e sia dato il punto $x_0=(1,0){^T}$ e la direzione $\displaystyle{v=\frac{1}{\sqrt{2}} \cdot (1,1){^T}}$ (da notare che la direzione deve essere un versore). Allora la derivata in direzione $v$ di $f$ diviene
+\[\frac{\partial f}{\partial v}(1,0) = \lim_{t \to 0} \frac{f\left(1+t \dfrac{1}{\sqrt{2}},t\dfrac{1}{\sqrt{2}}\right) - f(1,0)}{t}\]
+Calcolando il valore di $f$, tale limite può essere scritto come
+\[\lim_{t \to 0} \dfrac{\left(1+\dfrac{t}{\sqrt{2}}\right) \cdot \dfrac{t}{\sqrt{2}} + 2 \cdot \left(1+\dfrac{t}{\sqrt{2}}\right)-2}{t} = \lim_{t \to 0} \dfrac{\dfrac{t}{\sqrt{2}} + \dfrac{t^2}{2} + 2 + 2 \dfrac{t}{\sqrt{2}}-2}{t} = \dfrac{3}{\sqrt{2}}\]
 
 \vspace{1em}
 \noindent
 \textbf{Osservazione}: È chiaro che è possibile prendere in considerazione $v=e_k$ con $e_k$ versore di base della forma
 \[e_k=(0,\dots,0,1,0,\dots,0){^T}\]
 con $1$ solo nella posizione $k$-esima. Allora la parametrizzazione in funzione di $t$ rispetto a tale direzione è
-\[\gamma(t)=(x_1^0,x_2^0,\dots,x_k^0,\dots,x_n^0){^T} + t \cdot (0,0,\dots,1,\dots,0){^T} = (x_1^0,\dots,x_{k-1}^0,t,x_{k+1}^0,dots,x_n^0){^T}\]
+\[\gamma(t)=(x_1^0,x_2^0,\dots,x_k^0,\dots,x_n^0){^T} + t \cdot (0,0,\dots,1,\dots,0){^T} = (x_1^0,\dots,x_{k-1}^0,x_k^0+t,x_{k+1}^0,\dots,x_n^0){^T}\]
 ciò permette, quindi, di definire la derivata direzionale come
-\[\frac{\partial f}{\partial e_k}(x_0) = \lim_{t \to 0} \frac{f(x_0^0,\dots,x_k^0+t,)}{t}\]
-... continua ...\\
-Quindi, per calcolare le derivate di $f$ nella direzione $e_k$ si procede a \quotes{congelare} tutte le variabili diverse da $x_k$ e si considera la funzione nella sola variabile $x_k$.
+\[\frac{\partial f}{\partial e_k}(x_0) = \lim_{t \to 0} \frac{f(x_1^0,\dots,x_k^0+t,\dots,x_n^0) - f(x_1^0,\dots,x_n^0)}{t}\]
+Quindi, per calcolare le derivate di $f$ nella direzione $e_k$ si procede a \quotes{congelare} tutte le variabili diverse da $x_k$ (approssimabili a delle costanti) e si considera la funzione nella sola variabile $x_k$; in altre parole si ottiene il limite
+\[\lim_{x_k \to x_k^0} \frac{f(x_1^0,\dots,x_k,\dots,x_n^0) - f(x_1^0,\dots,x_k^0,\dots,x_n^0)}{x_k-x_k^0}\]
+in cui $x_k=x_0+t$. Questa scrittura permette facilmente di visualizzare la derivata usuale, in quanto
+\[\lim_{x_k \to x_k^0} \frac{f(x_1^0,\dots,x_k,\dots,x_n^0) - f(x_1^0,\dots,x_k^0,\dots,x_n^0)}{x_k-x_k^0} = \restr{\frac{\dif}{\dif x_k} f(x_1^0,\dots,x_k,\dots,x_n^0)}{x_k=x_k^0}\]
+
+\vspace{2em}
+\noindent
+\textbf{Esempio}: In questo modo il calcolo della derivata precedentemente esposto tramite la definizione può avvenire in modo immediato con le regole di derivazione note; infatti
+\[\frac{\partial f}{\partial (1,0){^T}} (1,0){^T} = \lim_{x \to 1} \frac{f(x,0)-f(1,0)}{x-1} = \restr{\frac{\dif}{\dif x} f(x,0)}{x=1} = 2\]
 
 \vspace{1em}
 \noindent
@@ -5046,7 +5301,7 @@ Di seguito si espone la definizione di \textbf{derivata parziale}:
     \[\frac{\partial f}{\partial x_k}(x_0)\]
     e si dice \textbf{derivata parziale} $k$-esima di $f$. Talvolta si indicano come
     \[\frac{\partial f}{\partial e_k} (x_0) = \frac{\partial f}{\partial x_k} (x_0) = D_{x_k} f(x_0) = f_{x_k}(x_0)\]
-    \vspace{3mm}}\\
+    \vspace{-3mm}}\\
     \hline
 \end{tabularx}
 
@@ -5054,20 +5309,20 @@ Di seguito si espone la definizione di \textbf{derivata parziale}:
 \noindent
 \textbf{Esempio}: Si consideri la funzione $f:E \subseteq \mathbb{R}^3\longmapsto \mathbb{R}$ definita come
 \[f(x,y,z) = \frac{\log(x+3z)}{y}\]
-allora si ha che
+allora si ha che le derivate parziali, in totale, sono tante quant'è la dimensione di definizione della $f$, ossia $3$, per cui:
 \begin{align*}
-    &\frac{\partial f}{\partial x} = \frac{1}{y} \cdot \frac{1}{x+3z}\\
-    &\frac{\partial f}{\partial y} = -\frac{1}{y^2} \cdot \log(x+3z)\\
-    &\frac{\partial f}{\partial z} = \frac{1}{y} \cdot \frac{3}{x+3z}\\
+    &\frac{\partial f}{\partial x}(x,y,z) = \frac{1}{y} \cdot \frac{1}{x+3z}\\
+    &\frac{\partial f}{\partial y}(x,y,z) = -\frac{1}{y^2} \cdot \log(x+3z)\\
+    &\frac{\partial f}{\partial z}(x,y,z) = \frac{1}{y} \cdot \frac{3}{x+3z}\\
 \end{align*}
 
 \vspace{1em}
 \noindent
-\textbf{Osservazione}: Se si considera una funzione generale
+\textbf{Osservazione}: Se si considera una funzione a valori vettoriali, come la seguente
 \[f : \mathbb{R}^n \longmapsto \mathbb{R}^m\]
 con
 \[f=(f_1,\dots,f_m){^T}\]
-allora si ha che
+allora si ha che la derivata direzionale del campo vettoriale è il vettore che presenta come componenti le derivate direzionali dei campi scalari corrispondenti:
 \[\frac{\partial f}{\partial v} = \left(\frac{\partial f_1}{\partial v}, \dots, \frac{\partial f_m}{\partial v}\right){^T}\]
 
 \vspace{1em}
@@ -5076,17 +5331,18 @@ allora si ha che
 \[f:\mathbb{R}^2 \longmapsto \mathbb{R}\]
 definita come segue
 \[f(x,y) = \left\{
+    \rowcolors{1}{white}{white}
     \begin{array}{lll}
         1 & \text{se} & xy=0\\
         0 & \text{se} & xy \neq 0\\
     \end{array}
     \right.    
 \]
-È facile capire che
+È facile capire che tale funzione vale $1$ sugli assi e $0$ al di fuori degli assi. Allora le derivate parziali nell'origine di tale funzioni sono ambedue nulle, ovvero:
 \[\frac{\partial f}{\partial x}(0,0)=0 \hspace{1em} \text{e} \hspace{1em} \frac{\partial f}{\partial y}(0,0)=0\]
 Tuttavia si ha che, posto $v=\dfrac{1}{\sqrt{2}} (1,1){^T}$
-\[\frac{\partial f}{\partial v} = \nexists\]
-per cui il fatto che esistano le derivate parziali non implica che esistano le derivate direzionali.
+\[\frac{\partial f}{\partial v} (0,0)=\lim_{t \to 0} \dfrac{f \left(\dfrac{t}{\sqrt{2}},\dfrac{t}{\sqrt{2}}\right)-f(0,0)}{t}=\frac{-1+0}{t}= \nexists\]
+in quanto in $(0,0){^T}$ la funzione vale $1$, mentre sulla bisettrice vale $0$. Ciò dimostra come il fatto che esistano le derivate parziali non implica che esistano le derivate direzionali.
 
 \vspace{1em}
 \noindent
@@ -5102,19 +5358,21 @@ definita come segue
     \right.    
 \]
 Allora appare evidente come
-\[\frac{\partial f}{\partial x}(0,0) = 0 \hspace{1em} \text{e} \hspace{1em} \frac{\partial f}{\partial y}(0,0) = 0\]
-così come se si considera la direzione $v=\frac{1}{\sqrt{2}}(1,1){^T}$ si ha che
+\[\frac{\partial f}{\partial x}(0,0) = \lim_{t \to 0} \frac{f(x,0)-f(0,0)}{t} = 0 \hspace{1em} \text{e} \hspace{1em} \frac{\partial f}{\partial y}(0,0) = \lim_{t \to 0} \frac{f(0,y)-f(0,0)}{t} = 0\]
+così come se si considera la direzione $v=\dfrac{1}{\sqrt{2}}(1,1){^T}$ si ha che
 \[\frac{\partial f}{\partial v}(0,0) = \lim_{t \to 0} \frac{f\left(\dfrac{t}{\sqrt{2}},\dfrac{t}{\sqrt{2}}\right) - f(0,0)}{t} = \dfrac{\dfrac{t^3}{2\cdot\sqrt{2}} \cdot \dfrac{4}{t^4+2t^2}}{t} = \lim_{t \to 0} \frac{2}{\sqrt{2}} \cdot \frac{1}{t^2 + 2} = \frac{1}{\sqrt{2}}\]
-per cui esistono le derivate parziale ed esiste la derivata direzionale lungo la bisettrice. Considerazione una qualunque altra direzione della forma $y=mx$, con $v=(a,b){^T}$, si ottiene
+per cui esistono le derivate parziali ed esiste la derivata direzionale lungo la bisettrice. Si prende, allora, in considerazione una qualunque altra direzione della forma $y=mx$, con $v=(a,b){^T}$, si ottiene
 \[\frac{\partial f}{\partial v}(0,0) = \lim_{t \to 0} \frac{f(at,bt)-f(0,0)}{t} = \lim_{t \to 0} \dfrac{\dfrac{a^2bt^3}{a^4t^4+b^2t^2}-0}{t}=\lim_{t \to 0} \frac{a^2bt^2}{a^4t^4+b^2t^2} = \lim_{t \to 0} \frac{a^2b}{a^4t^2+b^2} = \frac{a^2}{b}\]
-che, implica che la derivata direzionale in $(0,0){^T}$ esiste in qualunque direzione, ma la funzione non è continua in $0$, in quanto basta considerare la sua restrizione in $y=x^2$, per cui si ottiene 
-\[f=\frac{x^2 \cdot x^2}{x^4 + x^4} = \frac{1}{2}\]
+posto $b \neq 0$; ma ovviamente $b=0$ implica $(a,0){^T}$ che è una condizione già presa in esame in quanto derivata parziale rispetto a $x$.\\
+Pertanto tale esempio indica che la derivata direzionale in $(0,0){^T}$ esiste in qualunque direzione, ma la funzione non è continua in $(0,0){^T}$, in quanto basta considerare la sua restrizione in $y=x^2$, per cui si ottiene 
+\[\restr{f}{y=x^2}=\frac{x^2 \cdot x^2}{x^4 + x^4} = \frac{1}{2}\]
 
 \newpage
 \noindent
 \begin{center}
     26 Ottobre 2022
 \end{center}
+Per definizione di derivata direzionale, si fissa una direzione e si studia la restrizione della funzione rispetto a tale direzione e si calcola la derivata della funzione così ristretta. Le derivate parziali sono semplicemente casi particolari di derivate direzionali, in quanto si considerano come direzioni gli assi e ve ne sono tante quante sono le dimensione dello spazio in cui si opera.\\
 Si riprenda in considerazione la funzione
 \[f:\mathbb{R}^2 \longmapsto \mathbb{R}\]
 definita come segue
@@ -5126,7 +5384,7 @@ definita come segue
     \end{array}
     \right.    
 \]
-Per quanto già visto in precedenza, tale funzione presenta derivate parziali e derivate direzionali in ogni direzione, ma tale funzione non è continua.\\
+Per quanto già visto in precedenza, tale funzione presenta derivate parziali e derivate direzionali in $(0,0){^T}$ rispetto ad ogni direzione, ma tale funzione non è continua in $(0,0){^T}$.\\
 Con derivata direzionale si intende il calcolo della derivata della restrizione di una funzione in una specifica direzione descritta da un versore. Le derivate parziali sono delle particolari derivate direzionali, in cui la funzione viene ristretta su ogni specifico asse.\\
 Se si vuole estendere il concetto di derivabilità allo spazio $\mathbb{R}^n$, non è sufficiente richiedere che esista la derivata in ogni direzione. È necessario richiedere che la funzione sia \textbf{differenziabile}.
 
@@ -5148,54 +5406,104 @@ Si espone di seguito la definizione di \textbf{funzione differenziabile}:
     \[f : A \subseteq \mathbb{R}^n \longmapsto \mathbb{R}^m\]
     con $x_0 \in A$. Allora $f$ si dice \textbf{differenziabile} in $x_0$ se esiste un'\textbf{applicazione lineare} (ovvero un approssimante lineare)
     \[L \in \mathcal{L}(\mathbb{R}^n, \mathbb{R}^m)\]
-    appartenente all'insieme delle applicazioni lineare da $\mathbb{R}^n$ in $\mathbb{R}^m$ tale che
-    \[\lim_{x \to x_0} \dfrac{f(x) - f(x) - L(x-x_0)}{x-x_0}=O_v\]
-    e, in particolare, si ha
-    \[\widetilde{f}(x) : f(x-x_0)\]
-    si dice approssimante lineare di $f$ in $x_0$.
+    appartenente all'insieme delle applicazioni lineari da $\mathbb{R}^n$ in $\mathbb{R}^m$ (denotato con $\mathcal{L}(\mathbb{R}^n, \mathbb{R}^m)$) tale che
+    \[\boxed{\lim_{x \to x_0} \dfrac{f(x) - f(x_0) - L(x-x_0)}{\left\vert\left\vert x-x_0\right\vert\right\vert}=O_v}\]
+    in cui $O_v$ denota il vettore nullo di $\mathbb{R}^m$. In particolare, si ha
+    \[\widetilde{f}(x) := f(x_0) + L(x-x_0)\]
+    si dice \textbf{approssimante lineare} di $f$ in $x_0$.
     \vspace{3mm}}\\
     \hline
 \end{tabularx}
 
-
 \vspace{2em}
 \noindent
-\textbf{Osservazione}: Si osservi che $L$ se esiste è unica, per cui si indica con $\dif f(x)$ e si dice il differenziale di $f$ in $x_0$, con
+\textbf{Osservazione}: Si osservi che $L$ se esiste è unica, per cui si indica con $\dif f(x_0)$ e si dice il differenziale di $f$ in $x_0$. Pertanto il differenziale $L$ di una funzione in un punto è un'applicazione lineare, definita come segue
 \[\boxed{\dif f(x) : \mathbb{R}^n \longmapsto \mathbb{R}^m}\]
+in cui $f$ viene definita in un sottoinsieme proprio di $\mathbb{R}^n$, tipicamente un aperto denotato con $A$, mentre il differenziale, ossia l'applicazione lineare, è definita su tutto $\mathbb{R}^n$.\\
 Si applica, quindi, la \textbf{formula di Taylor} del primo ordine: se $f$ è differenziabile in $x_0$ può essere scritta come
-\[f(x) = f(x_0) + \dif f(x) \cdot (x-x_0) + o(x-x_0)\]
+\[f(x) = f(x_0) + \dif f(x_0)(x-x_0) + o(x-x_0)\]
 con
-\[\lim_{x \to +\infty} \frac{o(x-x_0)}{x-x_0}=0\]
+\[\lim_{x \to x_0} \frac{o(x-x_0)}{\left\vert\left\vert x-x_0 \right\vert\right\vert}=0\]
 ovvero è un infinitesimo di ordine maggiore di $1$.\\
-Non solo, data $\dif f(x)$ un'applicazione lineare, è possibile associarvi una matrice che rappresenta $\dif f(x)$ chiamata matrice Jacobiana che rappresenta $\dif f(x)$ in funzione della base canonica, ovvero
-\[J f(x) = \left(df(x)(x-e_1),\dif f(x) (x-e_2), ..., \dif f(x) (x-e_n)\right) \in N \times N\]
+Non solo, data $\dif f(x)$ un'applicazione lineare, è possibile associarvi una matrice che rappresenta $\dif f(x_0)$ chiamata \textbf{matrice Jacobiana} che rappresenta $\dif f(x_0)$ in funzione della base canonica, ovvero
+\[\mathcal{J} f(x_0) =
+    \left(
+        \rowcolors{1}{white}{white}
+        \begin{array}{cccc}
+            \vdots & \vdots & \ddots & \vdots\\
+            \dots  & \dots  & \dots  & \dots\\
+            \vdots & \vdots & \ddots & \vdots\\
+        \end{array}
+    \right) \in M \times N
+\]
+ossia una matrice che presenta come colonne il valore dell'applicazione lineare calcolata nel corrispondente vettore della base canonica, ossia
+\[\mathcal{J} f(x_0) =\left(\dif(x)(e_1),\dif f(x) (e_2), ..., \dif f(x) (e_n)\right) \in M \times N\]
 
-\vspace{2em}
+\vspace{1em}
 \noindent
-\subsubsection{Teorema di continuità della funzione differenziabile}
-Sia $f$ differenziabile in $x_0$, allora $f$ è continua in $x_0$.
+\subsection{Teorema di continuità delle funzioni differenziabili}
+Si espone di seguito il \textbf{teorema di continuità delle funzioni differenziabili}:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{CONTINUITÀ DI FUNZIONI DIFFERENZIABILI}}\\
+    \parbox{\linewidth}{Sia $f$ differenziabile in $x_0$, allora $f$ è continua in $x_0$.\vspace{3mm}}\\
+    \hline
+\end{tabularx}
 
 % Formattazione per la dimostrazione, etc.
 \vspace{2em}
 \noindent
 \normalfont \normalsize
-\textsc{Dimostrazione}: Sia dato il differenziale di $f(x)$, ovvero
-\[f(x)-f(x_0) = \dif f(x)(x-x_0)+o(x-x_0)\]
+\textsc{Dimostrazione}: Sia dato il differenziale di $f(x)$ in $x_0$, allora
+\[f(x)-f(x_0) = \dif f(x_0)(x-x_0)+o(x-x_0)\]
+pertanto si ha che 
+\[\lim_{x \to x_0} \left(f(x)-f(x_0)\right) = \lim_{x \to x_0} \dif f(x_0)(x-x_0) + \lim_{x \to x_0} \frac{o(x-x_0)}{\left\vert\left\vert x-x_0 \right\vert\right\vert} \cdot {\left\vert\left\vert x-x_0 \right\vert\right\vert}\]
+Ovviamente l'ultimo addendo tende a $0$ per definizione di o-piccolo; essendo l'applicazione lineare un polinomio, essa è continua e quindi il limite non è altro che il valore dell'applicazione lineare calcolata in $x_0$, per cui anche il penultimo limite è nullo. Pertanto si ottiene che
+\[\lim_{x \to x_0} \left(f(x)-f(x_0)\right) = 0 \hspace{1em} \rightarrow \hspace{1em} \lim_{x \to x_0} f(x) = f(x_0)\]
 
-\vspace{2em}
+\vspace{1em}
 \noindent
-\subsubsection{Teorema di esistenza della derivata direzionale}
-Sia $f$ differenziabile in $x_0$, allora $\forall v$ versore
-\[\exists \frac{\partial f}{\partial v}(x)\]
+\subsection{Teorema di esistenza delle derivate direzionali}
+Si espone di seguito il \textbf{teorema di esistenza delle derivate direzionali}:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{ESISTENZA DELLE DERIVATE DIREZIONALI}}\\
+    \parbox{\linewidth}{Sia $f$ differenziabile in $x_0$, allora $\forall v$ versore $\exists \dfrac{\partial f}{\partial v}(x_0)$.
+    \vspace{1mm}}\\
+    \hline
+\end{tabularx}
 
 % Formattazione per la dimostrazione, etc.
 \vspace{2em}
 \noindent
 \normalfont \normalsize
-\textsc{Dimostrazione}: Secondo la definizione di derivata direzionale, si ha che
-\[\lim_{t \to 0} \frac{f(x_0+tv) - f(x_0)}{t} = \lim_{t \to 0} \left[ \frac{\dif f(x) \cdot (x-x_0)}{t} - \frac{o(t v)}{tv} - \frac{tv}{t}\right]\]
-ma essendo $\dif f(x)$ un'applicazione lineare, si può chiaramente osservare che
-\[\lim_{t \to 0} t \cdot \frac{\dif f(x)(v)}{t} = \dif f(x)\]
+\textsc{Dimostrazione}: Secondo la definizione di derivata direzionale della funzione $f$ in $x_0$ rispetto alla direzione $v$, si ha che
+\[\frac{\partial f}{\partial v}(x_0)= \lim_{t \to 0} \frac{f(x_0+tv) - f(x_0)}{t}\]
+ma sapendo che $f$ è differenziabile in $x_0$ è nota la formula seguente
+\[f(x)-f(x_0) = \dif f(x_0)(x-x_0)+o(x-x_0)\]
+che applicata al caso in $x=x_0+tv$, ossia $x-x_0=tv$, permette di ottenere
+\[\lim_{t \to 0} \frac{f(x_0+tv) - f(x_0)}{t} = \lim_{t \to 0} \left[ \frac{\dif f(x_0) (tv)}{t} + \frac{o(t v)}{\vert \vert tv \vert \vert} \cdot \frac{\vert \vert tv \vert \vert}{t}\right]\]
+ma per definizione di o-piccolo ovviamente si ha che
+\[\lim_{t \to 0} \frac{o(t v)}{\vert \vert tv \vert \vert} = 0\]
+mentre si ha che
+\[\lim_{t \to 0} \frac{\vert \vert tv \vert \vert}{t} = \lim_{t \to 0} \frac{\vert t \vert \cdot \vert \vert v \vert \vert}{t} = \pm 1\]
+in quanto $v$ è versore e ha norma unitaria (in ogni caso è limitato), per cui il prodotto di una funzione infinitesima con una funzione limitata è nullo.\\
+Infine, essendo $\dif f(x_0)$ un'applicazione lineare, si può chiaramente osservare che, per la linearità
+\[\lim_{t \to 0} \frac{\dif f(x_0) (tv)}{t} = t \cdot \frac{\dif f(x_0)(v)}{t} = \dif f(x_0) (v)\]
 
 \vspace{1em}
 \noindent
@@ -8667,16 +8975,1066 @@ Si potevano anche considerare le coordinate sferiche, per cui
 Pertanto si ottiene 
 \[\int_0^{2\pi} \left(\int_0^{\frac{\pi}{4}} \left(\int_0^{2 a \cos(\phi)} \rho^2 \sin(\phi) \dif \rho\right) \dif \phi \right) \dif z\]
 
+\newpage
+\noindent
+\begin{center}
+    23 Novembre 2022
+\end{center}
+Fino a questo momento sono stati introdotti integrali di Riemann di funzioni limitate su intervalli limitati. È bene, ora, procedere a parlare di integrali generalizzati in $\mathbb{R}^n$.
 
+\vspace{1em}
+\subsection{Integrali generalizzati (o impropri) in $\mathbb{R}^n$}
+Com'è noto, gli integrali generalizzati si distinguono in due categorie
+\begin{itemize}
+    \item integrali di funzioni limitate su insiemi non limitati;
+    \item integrali di funzioni non limitati su insiemi limitati.
+\end{itemize}
+Ciò era particolarmente evidente in $\mathbb{R}$, ma parlando di spazi di dimensione superiore si hanno delle difficoltà oggettive nella definizione dell'integrale.
 
+\vspace{1em}
+\subsubsection{Successioni invadenti}
+Sia $E \subseteq \mathbb{R}^n$ con
+\[f : E \longmapsto \mathbb{R}\]
+Allora sia definita una successione di insiemi misurabili $(A_n)_n$ si dice \textbf{successione invadente} dii $E$ \textbf{adatta} a $f$ se
+\begin{enumerate}
+    \item $\forall n$ si ha che $A_n \subseteq A_{n+1} \subseteq E$;
+    \item La restrizione $f \vert_{A_n}$ sia integrabile su $A_n$;
+    \item Si vorrebbe che l'unione degli $A_n$ dia $E$, ma ciò non è sempre vero per insiemi di misura nulla; quindi si potrebbe chiedere che la misura di $E$ meno l'unione degli $A_n$ sia nulla, ma $E$ non ha una misura definita, essendo illimitato. Allora si chiede che
+    \[\forall M \subseteq E \text{ misurabile} \hspace{1em} \text{si ha che} \hspace{1em} \lim_{n \to +\infty} m \left(M-A_n\right)=0\]
+    per cui per l'arbitrarietà di $M$ si ha la misura nulla di $E$ (anche se non implicitamente dichiarato).
+\end{enumerate}
 
+\vspace{2em}
+\noindent
+\textbf{Osservazione}: Si potrebbe ora considerare
+\[\int_E f \dif m := \lim_{n \to +\infty} \int_{A_n} f \dif m\]
+Tuttavia, nessuno garantisce che il limite dato non dipenda dalla particolare successione invadente scelta. Si consideri, per esempio
+\[E : [0,+\infty] \hspace{1em} f : E \longmapsto \mathbb{R} \hspace{1em} \text{con} \hspace{1em} f(x)=\sin(x)\]
+allora se si pone la successione invadente
+\[A_n = [0,2n\pi]\]
+è facile capire che
+\[\int_{A_n} f(x) \dif x = \int_0^{2n\pi} f(x) \dif x = 0 \hspace{1em} \forall n\]
+mentre se la successione invadente
+\[B_n = [0,2n\pi + \pi]\]
+si ottiene invece,
+\[\int_{B_n} f(x) \dif x = \int_0^{2n\pi + \pi} f(x) \dif x = 2 \hspace{1em} \forall n\]
 
+\vspace{1em}
+\begin{theorem}
+    Sia $E \subseteq \mathbb{R}^n$, con
+    \[f : E \longmapsto \mathbb{R}\]
+    e $f(x) \geq 0$ $\forall x$ (ossia funzione positiva). Siano $(A_n)_n$ e $(B_n)_n$ successioni invadenti di $E$ adatte a $f$. Allora
+    \[\lim_{n \to +\infty} \int_{A_n} f \dif m = \lim_{n \to +\infty} \int_B f \dif m\]
+\end{theorem}
 
+\vspace{2em}
+\noindent
+\textbf{Osservazione}: Si osservi che i limiti considerati esistono sempre, in quanto
+\[\left(\int_{A_n} f \dif m\right)_{n}\]
+è una successione crescente, in quanto $A_n \subseteq A_{n+1}$ e $f(x) \geq 0,$ $\forall x$
 
+\vspace{2em}
+\noindent
+Si dirà, allora, integrabile in senso generalizzato su $E$ se  $f \geq 0$ e si ha che
+\[\lim_{n \to +\infty} \int_{A_n} f \dif m < + \infty\]
+Allora se ciò è verificato, si ha che
+\[\int_E f \dif m = \lim_{n \to +\infty} \int_{A_n} f \dif m\]
 
+\vspace{2em}
+\noindent
+\textbf{Osservazione}: Si osservi che
+\begin{itemize}
+    \item se $f(x) \leq 0$ $\forall x$ alloora si considererà $-f(x) \geq 0$, per cui
+    \[\int_E f \dif m = - \int_E (-f) \dif m\]
+    \item se $f(x)$ cambia segno, si considererà $f^*(x)$ e $f^-(x)$; si dirà che $f$ è integrabile in senso generalizzato $f^+$ e $f^-$ lo sono, e si scriverà
+    \[\int_E f \dif m = \int_E f^+ \dif m - \int_E f^- \dif m\]
+\end{itemize}
 
+\vspace{2em}
+\noindent
+\textbf{Esempio}: Si consideri la funzione
+\[f : \mathcal{B}((0,0){^T}, 1) - \{(0,0){^T}\} \longmapsto \mathbb{R}\]
+con
+\[f(x,y) = \log(x^2+y^2)\]
+Si capisce facilmente che il dominio è limitato, mentre la funzione non lo è, in quanto la restrizione $y=0$ produce la funzione $f\vert_{y=0} = \log(x^2)$. Si consideri come famiglia invadente
+\[A_n = \mathcal{B}((0,0){^T},1) - \mathcal{B} \left((0,0){^T},\dfrac{1}{n}\right)\]
+Allora si avrà che
+\[\iint_{A_n} \log(x^2+y^2) \dif x \dif y = \iint_E \rho \log(\rho^2) \dif \rho \dif \theta\]
+con $E = \{(\rho,\theta){^T} : \theta \in [0,2\pi], \hspace{1em} \dfrac{1}{n} \leq \rho \leq 1\}$. In questo modo si ottiene 
+\[\int_0{^2\pi} \int_{\frac{1}{n}}^{1} 2 \rho \log(\rho) \dif \rho \dif \theta = 2 \pi \int_{\frac{1}{n}}^1 2 \rho \log(\rho) \dif \rho = 4 \pi \left[\frac{1}{2} \rho^2 \log(\rho) - \frac{1}{4} \rho^2\right]_{\frac{1}{n}}^1\]
+Svolgendo i calcoli si ottiene
+\[\pi \left(- 1 + \dfrac{1}{n^2} \cdot \left(1-\log \left(\dfrac{1}{n}\right)\right)\right)\]
+Pertanto si ha che
+\[\int_{\mathcal{B}((0,0){^T}, 1) - \{(0,0){^T}\}} f(x) \dif x= \lim_{n \to +\infty} \pi \left(- 1 + \dfrac{1}{n^2} \cdot \left(1-\log \left(\dfrac{1}{n}\right)\right)\right) = -\pi\]
 
+\vspace{2em}
+\noindent
+\textbf{Esempio}: Si calcoli l'\textbf{integrale di Gauss} seguente
+\[\int_{-\infty}^{+\infty} e^{-x^2} \dif x\]
+allora è possibile calcolare l'integrale seguente, apparentemente più complesso
+\[\iint_{R^2} e^{-x^2-xy^2} \dif x \dif y\]
+allora è possibile considerare una famiglia la famiglia invadente seguente
+\[B_n = \mathcal{B}((0,0){^T},n)\]
+Pertanto si ottiene
+\[\iint_{R^2} e^{-x^2-xy^2} \dif x \dif y = \lim_{n \to +\infty} \iint_{B_n} e^{-x^2-y^2} \dif x \dif y\]
+ovvero
+\[\lim_{n \to +\infty} \int_0^{2 \pi} \left(\int_0^n e^{-\rho^2} \rho \dif \rho\right) \dif \theta = \lim_{n \to +\infty} 2\pi \int_0^n \]
+... continua ...
 
+\vspace{1em}
+\noindent
+Tuttavia si sarebbe potuto considerare anche un'altra famiglia invadente, ossia
+\[Q_n = [-n, n] \times [-n, n]\]
+pertanto si ottiene che
+\[\iint_{Q_n} e^{-x^2-y^2} \dif x \dif y = \int_{-n}^n \left(\int_{-n}^n e^{-x^2} \cdot e^{-y^2} \dif y\right) \dif x = \int_{-n}^n e^{-x^2} \cdot \left(\int_{-n}^n e^{-y^2} \dif y\right) \dif x\]
+Pertanto si ottiene
+\[\int_{-n}^n e^{-x^2} \dif x\cdot \int_{-n}^n e^{-x^2} \dif x = \left[\int_{-n}^n e^{-x^2}\dif \right]^2\]
+Ma per quanto visto prima si ha che
+\[\left(\lim_{n \to +\infty} \left[\int_{-n}^n e^{-x^2}\dif \right]\right)^2 = \pi\]
+pertanto si ottiene che
+\[\int_{-\infty}^{+\infty} e^{-x^2} \dif x = \sqrt{x}\]
 
+\vspace{2em}
+\noindent
+\textbf{Osservazione}: Ricapitolando quanto esposto, nel calcolo dell'integrale seguente
+\[\iint_{R^2} e^{-x^2-y^2}\]
+è stato considerato un insieme illimitato $\mathbb{R}^2$; per poter integrare su tale intervallo illimitato, è stato necessario considerare delle famiglie di insiemi invadenti, per cui si possa calcolare il limite
+\[\iint_{R^2} e^{-x^2-y^2} = \lim_{n \to +\infty} \iint_{B_n} e^{-x^2-y^2} \dif x \dif y\]
+
+\vspace{1em}
+\subsection{Criteri di integrabilità}
+Si consideri la funzione test seguente
+\[f(x)=\dfrac{1}{\vert \vert x \vert \vert^\alpha}\]
+in cui si rammenta che
+\[\vert \vert x \vert \vert = \sqrt{x_1^2+x_2^2+\dots+x_n^2}\]
+Si consideri il piano $\mathbb{R}^2$, per cui
+\[f(x,y) = \dfrac{1}{\left(\sqrt{x^2+y^2}\right)^{\alpha}}\]
+con $f$ definita come
+\[f : \mathbb{R}^2 - \mathcal{B}((0,0){^T},1)\]
+allora si definisce la successione invadente
+\[B_n=\mathcal{B}((0,0){^T}, n) - \mathcal{B}((0,0){T},1)\]
+allora si ha che
+\[\iint_{B_n} (x^2+y^2){-\frac{1}{2} \alpha} \dif x \dif y = \int_0^{2\pi} \left(\int_1^{n}\rho^{-\alpha} \cdot \rho \dif \rho\right) \dif \theta = 2\pi \cdot \left(\dfrac{1}{2-\alpha} n^{2-\alpha} - \dfrac{1}{2-\alpha}\right)\]
+in cui è facile evincere che
+\begin{itemize}
+    \item se $\alpha > 2$, allora si ha che
+    \[\lim_{n \to +\infty} \iint_{B_n} (x^2+y^2)^{-\frac{1}{2} \alpha} \dif x \dif y = 2\pi \cdot \dfrac{1}{\alpha - 2}\]
+    \item se $\alpha < 2$, allora si ha che
+    \[\lim_{n \to +\infty} \iint_{B_n} (x^2+y^2)^{-\frac{1}{2} \alpha} \dif x \dif y = +\infty\]
+    \item se $\alpha = 2$, allora si ha che
+    \[\lim_{n \to +\infty} \iint_{B_n} (x^2+y^2)^{-\frac{1}{2} \alpha} \dif x \dif y = +\infty\]
+\end{itemize}
+pertanto si ottiene la regola seguente: se $\alpha > 2$ la funzione
+\[f(x,y) = \left(\sqrt{x^2+y^2})^{-\alpha}\right)\]
+è integrabile in senso generalizzato su $\mathbb{R}^2 - \mathcal{B}((0,0){^T},1)$.
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione}: Nel caso in cui ci si trovi sullo spazio $\mathbb{R}^3$, si dovrà considerare come successione invadente
+\[B_n = \mathcal{B}((0,0,0){^T}, n) - \mathcal{B}((0,0,0){^T},1)\]
+per cui si calcola l'integrale triplo
+\[\iiint_{B_n} \left(\sqrt{x^2+y^2+z^2}{-\alpha}\right) \dif x \dif y \dif z\]
+passando a coordinate sferiche si ottiene
+\[\iiint_{B_n} \left(\sqrt{x^2+y^2+z^2}{-\alpha}\right) \dif x \dif y \dif z = \int_0^{2\pi} \left(\int_0^\pi \left(\int_0^n \left(\sqrt{\rho}\right)^{-\alpha} \cdot \rho^2 \dif \rho \right) \dif \theta \right) \dif \phi\]
+
+\vspace{1em}
+\noindent
+È così in generale, in $\mathbb{R}^n - \mathcal{B}(0,1)$ la funzione
+\[\dfrac{1}{\vert \vert x \vert \vert^\alpha}\]
+è integrabile in senso generalizzato se $\alpha > n$, e non lo è se $\alpha \leq n$.
+
+\vspace{2em}
+\begin{theorem}\textbf{Criterio dell'ordine di infinitesimo}\\
+    Sia $f : \mathbb{R}^n \longmapsto \mathbb{R}$, con $f(x) \geq 0$ $\forall x$; sia
+    \[\lim_{\vert \vert x \vert \vert \to +\infty} f(x) = o\]
+    e sia $\text{ord}_{+\infty} f(x) = N+\epsilon$\\
+    ...continua...\\
+    Allora si ha che ...continua...\\
+
+\end{theorem}
+
+\vspace{1em}
+\subsubsection{Criterio di integrabilità su insiemi illimitati}
+Sia data la funzione
+\[f(x) = \dfrac{1}{\vert \vert x \vert \vert^\alpha}\]
+con
+\[f : \mathcal{B}(0,1) \longmapsto \mathbb{R}\]
+Si consideri allora la successione invadente
+\[A_n = \mathcal{B}(0,1) - \mathcal{B} \left(0,\dfrac{1}{n}\right)\]
+allora in $\mathbb{R}^2$ si ha che
+\[\iint_{A_n} \left(\sqrt{x^2+y^2}\right)^{-\alpha} \dif x \dif y = 2\pi \int_{\frac{1}{n}}^1 \rho^{1-\alpha} \dif \rho\]
+...continua...
+
+\vspace{1em}
+\noindent
+È così in generale, in $\mathbb{R}^n - \mathcal{B}(0,1)$ la funzione
+\[\dfrac{1}{\vert \vert x \vert \vert^\alpha}\]
+è integrabile in senso generalizzato se $\alpha < n$, e non lo è se $\alpha \geq n$.
+
+\vspace{2em}
+\begin{theorem}\textbf{Criterio dell'ordine di infinito}\\
+    Sia $f \geq 0$ con
+    \[\lim_{x \to x_0} f(x) = +\infty\]
+    tale per cui $\text{Ord}_{x_0} f < N-\epsilon$, con $\epsilon \in \mathbb{R}^+$, allora $f$ è integrabile, se $\text{Ord}_{x_0} f \geq N$ non lo è.
+\end{theorem}
+
+\vspace{2em}
+\noindent
+\textbf{Esempio}: Si osservi che
+\[\int_1^{+\infty} \dfrac{1}{x} \dif x = +\infty\]
+Allora ruotando tale grafico attorno all'asse $x$ si ottiene un solido di rotazione, il cui volume è
+\[\text{Volume}(\mathcal{S}) = \iiint_\mathcal{S} 1 \dif m\]
+Ovviamente si tratta di un integrale generalizzato, per cui bisogna costruire la famiglia invadente
+\[\mathcal{S}_n = \left\{(x,y,z){^T} : x \in [1,n], \sqrt{y^2+z^2} \leq \dfrac{1}{x} \right\}\]
+Allora si ottiene che
+\[\text{Volume}(\mathcal{S}) = \iiint_\mathcal{S} 1 \dif m = \lim_{n \to +\infty} \iiint_{S_n} 1 \dif m = \lim_{n \to +\infty} \int_1^n \left(\int_{\text{Sez}(x)} \dif y \dif z\right) \dif x\]
+ma ovviamente 
+\[\int_{\text{Sez}(x)} \dif y \dif z\]
+è l'area del cerchio di raggio $\dfrac{1}{x}$, per cui
+\[\int_{\text{Sez}(x)} \dif y \dif z = \pi \dfrac{1}{x^2}\]
+pertanto si ottiene
+\[\lim_{n \to +\infty} \pi \int_1^n \dfrac{1}{x^2} \dif x = \pi \lim_{n \to +\infty} \left[-\dfrac{1}{x^2}\right]_1^n = \pi\]
+ma questo non deve sorprendere, in quanto la prima era una misura di area, mentre la seconda di volume: un'area infinita ha sempre volume nullo e nella realtà pratica, non è possibile applicare vernice con su una superficie con volume nullo.
+
+\newpage
+\section{Curve in $\mathbb{R}^n$}
+Si consideri $I \subseteq \mathbb{R}$ con
+\[\gamma : I \longmapsto \mathbb{R}^n\]
+continua, il cui sostegno è il suo grafico, per cui
+\[\mathcal{G}_\gamma = \gamma(I) \subset \mathbb{R}^n\]
+la quale è definita come
+\[\gamma(t) = (x(t),y(t),z(t)){^T}\]
+Allora si ha che
+\begin{itemize}
+    \item una curva $\gamma$ si dice chiusa se $I=[a,b]$ e si ha che $\gamma(a) = \gamma(b)$;
+    \item una curva $\gamma$ non chiusa si dice semplice se $\gamma$ è iniettiva;
+    \item una curva $\gamma$ chiusa
+    \[\gamma : [a,b] \longmapsto \mathbb{R}^n\]
+    si dice semplice se
+    \[\gamma \vert_{[a,b[} \hspace{1em} \text{e} \hspace{1em} \gamma \vert_{]a,b]}\]
+    sono iniettive;
+    \item una curva $\gamma$ si dice regolare se $\gamma$ è derivabile e
+    \[\gamma'(t) \neq 0 \hspace{1em} \forall t \in I\]
+    In questo caso
+    \[\gamma' : I \longmapsto \mathbb{R}^n\]
+    è il vettore tangente la curva $\gamma$.
+\end{itemize}
+
+\vspace{2em}
+\noindent
+\textbf{Esempio}: Si consideri la curva
+\[\gamma : [0,2\pi] \longmapsto \mathbb{R}^2\]
+ed espressa come
+\[\gamma_1(t) = (\cos(t),\sin(t)){^T} \hspace{1em} \text{e} \hspace{1em} \gamma_2(t) = (\cos(2t), \sin(2t)){^T}\]
+allora entrambe le curve rappresentano una circonferenza, ma la $\gamma_2$ l'ha percorsa due volte, pe cui non è una curva semplice.
+
+\newpage
+\noindent
+\begin{center}
+    25 Novembre 2022
+\end{center}
+\vspace{1em}
+\textbf{Esempio 1}: Si calcoli il volume del solido ottenuto dall'intersezione di due cilindri a base circolare di raggio $r$ perpendicolari tra di loro:
+\[E=\{(x,y,z){^T} \in \mathbb{R}^2 : x^2+y^2 \leq r^2 ;x^2+z^2 \leq r^2\}\]
+
+\vspace{2em}
+\noindent
+In questo caso risulta fondamentale procedere integrando per sezioni, rispetto all'asse $x$ che è la variabile che compare nelle due equazioni. Guardando le sezioni rispetto all'asse $yz$ si ottiene sempre un quadrato, di lato 
+\[\left[-\sqrt{r^2-x^2},\sqrt{r^2-x^2}\right]^2 \hspace{1em} \rightarrow \hspace{1em} 4 (r^2-x^2)\]
+Allora l'integrale che si ottiene è
+\[\int_{-r}^{r} \left(\int_{\mathcal{S}_x} \dif y \dif z\right) \dif x\]
+in cui $\mathcal{S}_x$ è il quadrato descritto in precedenza. Per cui si ottiene
+\[\int_{-r}^r 4 (r^2-x^2) \dif x = 8 \cdot \int_0^r r^2-x^2 = \dfrac{16}{3}r^2 \]
+
+\vspace{2em}
+\noindent
+\textbf{Esempio 2}: Si consideri la figura $T$ seguente
+\[T = \{(x,z){^T} : 0 \leq x \leq \min(z,z-2), \hspace{1em} 0 \leq z \leq 2\}\]
+ruotata attorno all'asse $z$. Allora l'integrale di volume che si sta cercando è
+\[\iint_S \left(x^2+y^2\right) \dif x \dif y \dif z = 2 \int_0^1 \left(\iint_\mathcal{S} (x^2+y^2) \dif x \dif y\right) \dif z\]
+facendo un semplice cambio di variabili con $\rho$ e $\theta$ si ottiene
+
+\vspace{2em}
+\noindent
+\textbf{Esempio 3}: Si consideri l'insieme seguente
+\[E = \{(x,y){^T} \in \mathbb{R}^2 : x^2+y^2 \leq \sqrt{x^2+y^2} + x, \hspace{1em} 0 \leq y \leq z\}\]
+Si procede tramite un passaggio alle coordinate polari, per cui l'insieme $E$ diviene
+\[E = \{(x,y){^T} \in \mathbb{R}^2 : \rho^2 \leq \rho + \rho \cos(\theta), 0 \leq \sin(\theta) \leq \cos(\theta)\} \hspace{1em} \rightarrow \hspace{1em} E\]
+ovvero
+\[\left\{(x,y){^T} \in \mathbb{R}^2 : \rho \leq 1+\cos(\theta), 0 \leq \theta \leq \dfrac{\pi}{4} \right\} \]
+Risulta semplice, ora, calcolare l'integrale di superficie seguente
+\[\iint_E \dif x \dif y = \int_0^{\frac{\pi}{4}} \left(\int_0^{1+\cos(\theta)} \rho \dif \rho\right) \dif \theta = \int_0^{\frac{\pi}{4}} \dfrac{(1+\cos(\theta)^2}{2} \dif \theta = \left[\dfrac{3}{2}\theta + \dfrac{\sin(2\theta)}{4}\right]_0^{\frac{\pi}{4}} = \dfrac{3}{8}\pi + \dfrac{1}{4}\]
+
+\vspace{2em}
+\noindent
+\textbf{Esempio 4}: Si consideri l'insieme seguente
+\[E = \{(x,y,z){^T} \in \mathbb{R}^3 : z \in \mathbb{R}, \sqrt{x^2+y^2} \leq e^{-z^2}\}\]
+se ne calcoli il volume generalizzato e la massa con densità di massa $\delta(x,y,z)=\vert z \vert$.
+
+\begin{itemize}
+    \item Nel primo caso si integra per sezioni, rispetto all'asse $z$, per cui si calcola
+    \[\int_{-\infty}^{+\infty} \left(\iint_{\mathcal{S}_z} \dif x \dif y\right) \dif z\]
+    Ovviamente questo è un integrale generalizzato, per cui bisogna considerare una famiglia di successioni invadenti opportuna, ossia $A_n = ((0,0){^T}, n)$, pertanto si ottiene
+    \[\iiint_{A_n} 1 \dif n = 2 \int_0^n \left(\iint_{\mathcal{S}_z} 1 \dif x \dif y\right) = 2 \cdot \int_0^n \pi \left(e^{-z^2}\right)^2 \dif z\]
+    facendo una sostituzione $t=2\sqrt{z}$, per cui $\dif t = \dfrac{1}{\sqrt{z}} \dif t$ si ottiene
+    \[\lim_{n \to +\infty} \iiint_{A_n} = 2 \cdot \int_0^n \pi \left(e^{-z^2}\right)^2 \dif z = 2\pi \cdot \int_0^n e^{-t^2} \dif t = \dfrac{2\pi}{\sqrt{2}} \cdot \dfrac{\sqrt{\pi}}{2} = \dfrac{\pi^{\frac{3}{2}}}{\sqrt{2}}\]
+
+    \item Nel secondo caso, per calcolare la massa, si ottiene
+    \[M = \iiint_{A_n} \vert z \vert \dif m = 2 \int_0^n z \cdot \left(\iint_{\mathcal{S}_z} \dif x \dif y\right) \dif z = 2\pi \int_0^n z e^{-2z^2} \dif z\]
+    posto $2z^2 = t$, per cui $\dif t = 4z^2$ per cui si ottiene
+    \[\frac{\pi}{2} \int_0^n e^{-t} \dif t \dif t \hspace{1em} \rightarrow \hspace{1em} \lim_{n \to +\infty} \dfrac{\pi}{2} \cdot \int_0^{+\infty} e^{-t} \dif t = \dfrac{\pi}{2}\]
+\end{itemize}
+
+\vspace{2em}
+\noindent
+\textbf{Esempio 5}: Si consideri l'integrale seguente
+\[\iint_D \sqrt{x^2+y^2} \dif x \dif z\]
+in cui l'insieme $D$ viene definito come
+\[D = \{(x,y){^T} \in \mathbb{R}^2 : (x-1)^2+y^2 \leq 1, \hspace{1em} y \geq x\}\]
+Siccome l'equazione $(x-1)^2+y^2 \leq 1$ rappresenta un cerchio di raggio $1$ e centrato in $(1,0)$, si potrebbero considerare le coordinate polari traslate
+\[
+    \left\{
+        \rowcolors{1}{white}{white}
+        \begin{array}{l}
+            x = 1 + \rho \cos(\theta)\\
+            y = \rho \sin(\theta)
+        \end{array}
+    \right.
+\]
+Tuttavia, in questo modo si semplificano le equazioni del dominio, ma la funzione integranda. Pertanto è meglio optare per le coordinate polari standard. In questo modo dal dominio si ottiene che
+\[
+    \left\{
+        \rowcolors{1}{white}{white}
+        \begin{array}{l}
+            \rho \cdot (\rho - 2 \cos(\theta)) \leq 0\\
+            \sin(\theta) \geq \cos(\theta)
+        \end{array}
+    \right. \hspace{1em} \rightarrow \hspace{1em}
+    \left\{
+        \rowcolors{1}{white}{white}
+        \begin{array}{l}
+            0 \leq \rho \leq 2 \cos(\theta)\\
+            \dfrac{\pi}{4} \leq \theta \leq \dfrac{\pi}{2}
+        \end{array}
+    \right.
+\]
+Ora, quindi, è possibile impostare l'integrale come segue
+\[\int_{\frac{\pi}{4}}^{\frac{\pi}{2}} \left(\int_0^{2 \cos(\theta)} \rho \dif \rho\right) \dif \theta\]
+
+\vspace{2em}
+\noindent
+\textbf{Esercizio}: Si consideri la curva di equazione seguente
+\[\gamma (t) = \left(\cos(t) \sin(t), t\right)\]
+si scriva l'equazione della retta tangente la curva nel punto $\left(0,\dfrac{\pi}{2}\right)$. Ovviamente si calcola il vettore tangente
+\[\gamma'(t) = (\cos(2t),1){^T}\]
+Per determinare il valore di $t$ nel punto, si impone la condizione
+\[\left(0,\frac{\pi}{2}\right) = \gamma(t) \hspace{1em} \rightarrow \hspace{1em} t = \dfrac{\pi}{2}\]
+Ovviamente, quindi, l'equazione della retta è
+\[r(t) = \left(0,\dfrac{\pi}{2}\right){^T} + \gamma' \left(\dfrac{\pi}{2}\right)) \cdot t = \left(0,\dfrac{\pi}{2}\right){^T} + (-1,1){^T} \cdot t\]
+
+\vspace{2em}
+\noindent
+\textbf{Esercizio}: Si consideri la curva seguente
+\[\gamma(t) = \left(\cos^3(t),\sin^2(t)\right){^T} \hspace{1em} \text{con} \hspace{1em} t \in [0,2\pi]\]
+allora tale curva è chiusa, in quanto $\gamma(0)=\gamma(2\pi)$; tuttavia essa non è regolare, in quanto
+\[\gamma'(t) = (- 3 \cos^2(t) \sin(t), 3 \sin^2(t) \cos(t)){^T}\]
+e tale vettore tangente non è liscio, ma regolare a tratti.
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione}: Si osservi che le curve seguenti
+\begin{align*}
+    &\gamma_1(t) = (cos(t),\sin(t)){^T} & t \in [0,2\pi]\\
+    &\gamma_2(t) = (cos(2t),\sin(2t)){^T} & t \in [0,2\pi]\\
+    &\gamma_3(t) = (cos(2 \pi t),\sin(2 \pi t)){^T} & t \in [0,1]\\
+\end{align*}
+sono tutte curve che presentano il medesimo sostegno, ma la prima e la terza sono equivalenti, la seconda, invece, non è nemmeno una curva semplice.
+
+\vspace{1em}
+\subsection{Curve equivalenti}
+Siano date due curve
+\[\gamma_1 : I_1 \longmapsto \mathbb{R}^n \hspace{1em} \text{e} \hspace{1em} \gamma_2 : I_2 \longmapsto \mathbb{R}^n\]
+allora le due curve si dicono \textbf{equivalenti} se esiste un \textbf{diffeomorfismo} $C^1$
+\[h : I_1 \longmapsto I_2 \hspace{1em} \text{con} \hspace{1em} h \in C^1(I_1,I_2)\]
+ossia $h$ invertibile con inversa $h^{-1} \in C^{1}(I_1,I_2)
+$ tale che
+\[\gamma_2 \circ h = \gamma_1\]
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione}: Si osservi che $h$ è un diffeomorfismo definito su un intervallo, per cui $h$ è sempre strettamente monotona. In particolare
+\begin{itemize}
+    \item nel caso in cui $h'(t) > 0$ $\forall t$ le curve $\gamma_1$ e $\gamma_2$ si dicono \textbf{equinverse} (ossia hanno lo stesso segno);
+    \item nel caso in cui $h'(t) < 0$ $\forall t$ allora $\gamma_1$ e $\gamma_2$ hanno verso opposto
+\end{itemize}
+
+\vspace{2em}
+\noindent
+\textbf{Esempio}: Siano date le curve seguenti
+\[\gamma : [0,1] \longmapsto \mathbb{R}^2 \hspace{1em} \text{e} \hspace{1em} \phi : [0,1] \longmapsto \mathbb{R}^2\]
+definite come
+\[\gamma(t) = \left(\cos(t), \sin(t)\right){^T} \hspace{1em}\]
+... continua ...
+
+\begin{theorem}
+    Due curve regolari semplici NON chiuse (perché non è valido se le curve sono chiuse) che presentano lo stesso sostegno sono equivalenti.\\
+    Il viceversa è immediato, ossia due curve equivalenti hanno sempre lo stesso segno.
+\end{theorem}
+
+\vspace{1em}
+\subsection{Lunghezza di una poligonale}
+Si espone di seguito la definizione di \textbf{lunghezza di una poligonale}:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{LUNGHEZZA DI UNA POLIGONALE}}\\
+    \parbox{\linewidth}{Sia $\gamma$ una poligonale con nodi
+    \[P_1,P_2,\dots,P_n\]
+    allora si ha che la lunghezza della curva $\gamma$ si ottiene come
+    \[l(\gamma) = \sum_{h=1}^{n} \left \vert \left \vert P_k - P_{k-1} \right \vert \right \vert\]
+    Ma siccome la derivata del segmento $PQ$ è $P-Q$, è facile capire che esiste un altro modo per definire la lunghezza di una cruva, ossia
+    \[l(\gamma) = \sum_{k=1}^{n} \left \vert \left \vert \gamma'(t) \right \vert \right \vert\]
+    \vspace{-1mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{2em}
+\noindent
+\textbf{Esempio}: Si consideri la curva parametrizzata come segue, posti $P,Q \in \mathbb{R}^n$
+\[\gamma(t) = P + t \cdot (Q-P){^T} \hspace{1em} \text{con} \hspace{1em} t \in [0,1]\]
+tale curva, ovviamente, è il segmento di retta che congiunge i punti $P$ e $Q$. La lunghezza di tale curva, ovviamente, è la distanza tra $P$ e $Q$ per cui
+\[l(\gamma) = \vert \vert Q-P \vert \vert\]
+
+\vspace{1em}
+\subsection{Lunghezza di una curva}
+Si espone di seguito la definizione di \textbf{lunghezza di una curva}:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{LUNGHEZZA DI UNA CURVA}}\\
+    \parbox{\linewidth}{Si chiama lunghezza della curva
+    \[\gamma : [a,b] \longmapsto \mathbb{R}^n\]
+    se esiste il
+    \[\sup \{l(\pi(\delta)) : \delta \in \Delta \left([a,b]\right)\}\]
+    in cui $\pi(\delta)$ è la poligonale di nodi
+    \[\gamma(t_1),\gamma(t_2),\dots,\gamma(t_n)\]
+    È evidente che date due decomposizioni $\delta_1,\delta_2 \in \Delta([a,b])$, allora se $\delta_1$ è più fine di $\delta_2$ (ossia ha più nodi), si ha che
+    \[l(\pi(\delta_1)) \geq l(\pi(\delta_2))\]
+    che si desume da considerazioni di geometria euclidea: per congiungere due punti il modo migliore è il segmento e non una spezzata.
+    \vspace{3mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{1em}
+\subsection{Curva rettificabile}
+Si espone di seguito la definizione di \textbf{curva rettificabile}:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{CURVA RETTIFICABILE}}\\
+    \parbox{\linewidth}{Se la lunghezza $l(\gamma) < +\infty$ si dice che la curva $\gamma$ è \textbf{rettificabile}.\vspace{3mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{2em}
+\noindent
+\textbf{Esempio}: Banalmente una retta non è rettificabile, in quanto ha lunghezza infinita.\\
+Se si considera, invece, una curva costruita come una poligonale seghettata limitata da $x=0$ e $x=y$ e con nodi $\dfrac{1}{n}$. Chiaramente la somma di tutti i segmenti verticali produce la serie armonica, che non è convergente, per cui tale curva ha lunghezza infinita.
+
+\vspace{1em}
+\subsection{Disuguaglianza sulla norma dell'integrale vettoriale}
+\begin{lemma}\textbf{Disuguaglianza sulla norma dell'integrale vettoriale}\\
+    Data una curva
+    \[\gamma : I \longmapsto \mathbb{R}^n\]
+    le cui componenti sono dei vettori, ossia
+    \[\gamma(t) = \left(\gamma_1(t),\dots,\gamma_n(t)\right){^T}\]
+    allora si può definire l'integrale vettoriale seguente
+    \[\int_I \gamma(t) \dif t = \left(\int_I \gamma_1(t), \dots, \int_I \gamma_n(t)\right){^T}\]
+    In particolare si osserva che
+    \[\left\vert\left\vert\int_I \gamma(t)\dif t\right\vert\right\vert\leq\int_1\left\vert\left\vert\gamma(t)\right\vert\right\vert\dif t\]
+\end{lemma}
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Si dimostri che $\forall v \in \mathbb{R}^n$ si ha che
+\[\left<\int_I \gamma(t) \dif t, v\right> \leq \left \vert \left \vert v \right \vert \right \vert \cdot \int_I \left \vert \left \vert \gamma(t) \right \vert \right \vert \dif t\]
+
+\vspace{1em}
+\noindent
+Ragionando con $n=2$, per cui
+\[\gamma(t)=(\gamma_1(t),\gamma_2(t)){^T}\]
+allora si ha che
+\[\left<\left(\int_I \gamma_1(t) \dif t, \int_I \gamma_2(t) \gamma_2(t) \dif t\right), (v_1,v_2){^T}\right>\]
+Ma per definizione di prodotto scalare si ottiene
+\[\left<\left(\int_I \gamma_1(t) \dif t, \int_I \gamma_2(t) \gamma_2(t) \dif t\right), (v_1,v_2){^T}\right> = \int_I v_1 \cdot \gamma_1(t) \dif t + \int_I v_2 \gamma_2(t) \dif t\]
+che può essere riscritto come
+\[\int_I \left<(\gamma_1(t), \gamma_2(t)){^T},(v_1,v_2){^T}\right> \leq \int_I \vert \vert \gamma(t) \vert \vert \cdot \vert \vert v \vert \vert \dif t = \vert \vert v \vert \vert \cdot \int_I \vert \vert \gamma(t) \vert \vert \dif t\]
+Applicando la formula al vettore
+\[v = \int_I \gamma(t) \dif t\]
+si ottiene che
+\[\left \vert \left \vert \int_i \gamma(t) \dif t \right \vert \right \vert^2 \leq \left \vert \left \vert \int_I \gamma(t) \dif t \right \vert \right \vert \cdot \int_I \left \vert \left \vert \gamma(t) \right \vert \right \vert \dif t \hspace{1em} \rightarrow \hspace{1em} \left \vert \left \vert \int_I \gamma(t) \dif t \right \vert \right \vert \leq \int_I \left \vert \left \vert \gamma(t) \right \vert \right \vert \dif t\]
+
+\begin{lemma}\textbf{Formula di Torricelli-Barrow}\\
+    Data una curva
+    \[\gamma \in C^(I,\mathbb{R}^n)\]
+    allora
+    \[\gamma(b) - \gamma(a) = \int_a^b \gamma(t) \dif t\]
+    per cui se $n=2$ si ha che
+    \[(x(b)-x(a),y(b)-y(a)){^T} = \left(\int_a^b x \dif x, \int_a^b y \dif y \right)\]
+\end{lemma}
+
+\vspace{1em}
+\subsection{Teorema di rettificabilità}
+Sia data la curva
+\[\gamma \in C^1 \left([a,b], \mathbb{R}^n\right)\]
+allora $\gamma$ è rettificabile se
+\[l(\gamma) \leq \int_a^b \vert \vert \gamma'(t) \vert \vert \dif t\]
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Per definizione si ha che
+\[l(\gamma) = \sum \left\{l(\pi(\delta)) : \delta \in \Delta([a,b])\right\}\]
+Allora presa $\delta \in \Delta([a,b])$, si ponga che
+\[l(\pi(\delta)) \leq \int_a^b \vert \vert \gamma'(t) \vert \vert \dif t\]
+ma naturalmente, per definizione di lunghezza di una poligonale si ha che
+\[l(\pi(\delta)) = \sum_{k=1}^n \left \vert \left \vert \gamma(t_k) - \gamma(t_{k-1}) \right \vert \right \vert\]
+Ma allora utilizzando Torricelli-Barrow si ha che
+\[\sum_{k=1}^n \left \vert \left \vert \gamma(t_k) - \gamma(t_{k-1}) \right \vert \right \vert = \sum_{k=1}^n \left \vert \left \vert \int_{t_{k-1}}^{t_k} \gamma'(s) \dif s \right \vert \right \vert\]
+ma per il primo lemma si ha che
+\[\sum_{k=1}^n \left \vert \left \vert \int_{t_{k-1}}^{t_k} \gamma'(s) \dif s \right \vert \right \vert \leq \sum_{k=1}^n \int_{t_{k-1}}^{t_k} \left \vert \left \vert \gamma'(s) \right \vert \right \vert \dif s\]
+per cui si è ottenuto che ...continua ...
+
+\vspace{1em}
+\noindent
+\subsection{Formula per la lunghezza}
+Sia $\gamma \in C^1([a,b],\mathbb{R}^n)$, allora
+\[l(\gamma) = \int_a^b \vert \vert \gamma'(t) \vert \vert \dif t\]
+
+\vspace{2em}
+\noindent
+\textbf{Esempio}: Per calcolare la lunghezza della circonferenza, che è ben noto essere $2\pi r$, si considera la curva
+\[\gamma(t) = \left(R \cos(t), R \sin(t)\right) \hspace{1em} \text{con} \hspace{1em} t \in [0,2\pi]\]
+allora il vettore tangente è
+\[\gamma'(t) = (-R \sin(t), R \cos(t)){^T}\]
+allora si ha che
+\[l(\gamma) = \int_0^{2\pi} \sqrt{R^2 \sin^2(t) + R^2 \cos^2(t)} \dif t\]
+
+\newpage
+\noindent
+\begin{center}
+    28 Novembre 2022
+\end{center}
+\vspace{1em}
+\noindent
+\textbf{Esercizio}: Si calcoli la lunghezza della cicloide, definita come
+\[\gamma : [0,2\pi] \longmapsto \mathbb{R}^2 \hspace{1em} \text{e} \hspace{1em} \gamma(T) = \left(R \cdot (t-\sin(T)), R \cdot (1-\cos(t))\right){^T}\]
+calcolandone il vettore tangente si ottiene
+\[\gamma'(t) = (R \cdot (1-\cos(t)), R \cdot \sin(t)){^T}\]
+allora la lunghezza della curva è
+\[l(\gamma) = \int_0^{2\pi} \sqrt{R^2 \cdot (1-\cos(t))^2 + R^2 \cdot \sin^2(t)} = R \cdot \sqrt{2} \cdot \int_0^{2\pi} \sqrt{1-\cos(t)}\]
+ma riconoscendo che
+\[\sqrt{1-\cos(t)} = \sqrt{2 \cdot \sin \left(\dfrac{t}{2}\right)}\]
+per cui l'integrale da risolvere è
+\[2R \cdot \int_0^{2\pi} \sin \left(\dfrac{t}{2}\right) = 2R \cdot \left[- 2 \cos\left(\dfrac{t}{2}\right)\right]_0^{2\pi} = 4R+4R=8R\]
+
+\vspace{1em}
+\noindent
+\subsection{Teorema della curva chiusa di Jordàn}
+Si espone di seguito il \textbf{teorema della curva chiusa di Jordàn}:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{TEOREMA DELLA CURVA CHIUSA DI JORDAN}}\\
+    \parbox{\linewidth}{Sia
+    \[\gamma : [a,b] \longmapsto \mathbb{R}^2\]
+    una curva (continua) semplice chiusa. Allora il sostegno di $\gamma$ divide il piano in ude regioni
+    \begin{itemize}
+        \item una limitata, ossia l'\textbf{interno della curva};
+        \item una illimitata, ossia l'\textbf{esterno della curva}.
+    \end{itemize}
+    \vspace{1mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{2em}
+\noindent
+\textbf{Esempio}: La curva di Peano è una curva chiusa, non semplice, che non divide il piano in due parti; la curva di Hilbert, invece, è semplice, ma non chiusa, e anch'essa non divide il piano in due parti. Per quello è fondamntale chiedere nel teorema una curva (continua) semplice e chiusa.
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione}: La lunghezza di una curva non dipende dalla parametrizzazione: infatti la lunghezza di due curve equivalenti è la stessa.\\
+Siano, allora, $\gamma_1,\gamma_2$ due curve $C^1$ equivalenti, allora
+\[l(\gamma_1)=l(\gamma_2)\]
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Sia
+\[\gamma_2(t) = \gamma_1(h(t))\]
+con $h$ diffeomorfismo definito
+\[h : [a_2,b_2] \longmapsto [a_1,b_1]\]
+e
+\[\gamma_2 : [a_2,b_2] \longmapsto \mathbb{R}^2 \hspace{1em} \text{e} \hspace{1em} \gamma_1 : [a_1,b_1] \longmapsto \mathbb{R}^2\]
+allora si ha che
+\[l(\gamma_2) = \int_{a_2}^{b_2} \left \vert \left \vert \gamma'_2(t) \right \vert \right \vert \dif t = \int_{a_2}^{b_2} \left \vert \left \vert \gamma'_1(h(t)) \cdot h'(t) \right \vert \right \vert \dif t = \int_{a_2}^{b_2} \left \vert \left \vert \gamma'_1(h(t)) \right \vert \right \vert \cdot \vert h'(t)\vert \dif t\]
+...continua...
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione}: Sia data una curva continua e regolare
+\[\gamma : [a,b] \longmapsto \mathbb{R}^n\] 
+e sia $L=l(\gamma)$ la lunghezza della curva $\gamma$. Si definisce, allora
+\[s(t) = \text{lunghezza dell'arco di una curva tra } \gamma(a) \text{ e } \gamma(t)\]
+in questo modo, pertanto, si ha che
+\[a : [a,b] \longmapsto [0,L]\]
+e per la formula della lunghezza si ha che
+\[s(t) = \int_a^t \left\vert\left\vert\gamma'(\tau)\right\vert\right\vert\dif\tau\]
+allora, per il teorema fondamentale del calcolo si ha che
+\[s'(t) = \left\vert\left\vert\gamma'(t)\right\vert\right\vert>0\]
+che è quindi sempre strettamente positiva essendo $\gamma$ regolare. Non solo, ma per come è stata definita è anche strettamente crescente, definita in $C^1$ con verso $C^1$. Pertanto è un diffeomorfismo in $C^1$. Sia, allora, $h(s)$ la funzione inversa, per cui si può considerare la \textbf{parametrizzazione secondo la lunghezza d'arco}
+\[\gamma_2(s)=\gamma(h(s))\]
+
+\vspace{2em}
+\noindent
+\textbf{Esempio}: Si consideri la curva seguente
+\[\gamma : [0,2\pi] \longmapsto \mathbb{R}^2 \hspace{1em} \text{con} \hspace{1em} \gamma(t)=\left(R\cos(t),R\sin(t)\right){^T}\]
+allora tale curva sarebbe parametrizzata secondo la lunghezza d'arco solo se $R=1$. Si consideri, allora, la funzione
+\[s(t)=\int_0^t \left\vert\left\vert\gamma'(\tau)\right\vert\right\vert\dif\tau=Rt\]
+in quanto $\gamma'(t)=(-R\sin(t),R\cos(t))$ in cui $\vert\vert\gamma'(t)\vert\vert=R$. Allora si ha che
+\[s:[0,2\pi] \longmapsto [0,2\pi R]\]
+per cui ponendo $h(s)=\dfrac{s}{R}$ si ottiene la nuova curva
+\[\gamma_2 : [0,2\pi R] \longmapsto \mathbb{R}^2 \hspace{1em} \text{con} \hspace{1em} \gamma_2(s) = \left(R \cos \left(\dfrac{s}{R}\right), R \sin\left(\dfrac{s}{R}\right)\right){^T}\]
+Si osservi che
+\[\left\vert\left\vert\gamma'_2(s)\right\vert\right\vert=\sqrt{\left(R \cdot (-\sin \left(\dfrac{s}{R}\right) \cdot \dfrac{1}{R}\right)^2 + \left(R \cdot (\cos \left(\dfrac{s}{R}\right) \cdot \dfrac{1}{R}\right)^2} = 1\]
+e questo non è un caso, in quanto
+\[\left\vert\left\vert\gamma_2'(s)\right\vert\right\vert = \left\vert\left\vert \dfrac{\dif}{\dif s} \left(\gamma(h(s))\right) \right\vert\right\vert= \left\vert\left\vert \dfrac{\dif \gamma}{\dif t} (h(s)) \cdot \dfrac{\dif h}{\dif s}(s) \right\vert\right\vert = \left\vert\left\vert \gamma'(t)\right\vert\right\vert \cdot \dfrac{1}{\vert\vert\gamma'(t)\vert\vert}=1\]
+
+\vspace{1em}
+\subsection{Intgerle di linea di un campo scalare}
+Si deve pensare, in questo caso, ad una \quotes{massa lineare} descritta da una funzione densistà di massa lineare, ossia una funzione
+\[f : \mathbb{R}^3 \longmapsto \mathbb{R}\]
+ossia una funzione $f(x,y,z) \in \mathbb{R}$. Per calcolare la lunghezza dell'arco di curva non si può calcolare l'integrale di Riemann in quanto una curva è in insieme di misura nulla, e quindi si otterrebbe sempre $0$. Si deve, quindi, calcolare l'integrale seguente
+\[\int_\gamma f \dif s\]
+in cui $\dif s$ ricorda la parametrizzazione secondo la lunghezza d'arco.\\
+Sia, allora
+\[\gamma : I \longmapsto \mathbb{R}^n\]
+una curva regolare $C^1$, con
+\[f : E \subseteq \mathbb{R}^n \longmapsto \mathbb{R} \hspace{1em} \text{e} \hspace{1em} \mathcal{G} = \gamma(I) \subset E\]
+Si chiama, allora, integrale di linea di $f$ su $\gamma$ il numero
+\[\int_\gamma f \dif s := \int_I f(\gamma(t)) \cdot \left\vert\left\vert\gamma'(t)\right\vert\right\vert\dif t\]
+
+\vspace{1em}
+\noindent
+\subsection{Estensione per additività della definizione a curve regolari a tratti}
+Naturalmente, se le curve $\gamma_1$ e $\gamma_2$ sono due curve equivqalenti, allora
+\[\int_{\gamma_1} f \dif s = \int_{\gamma_2} f \dif s\]
+Questo, ovviamente, perchè per definizione
+\[\int_{\gamma_1} f \dif s = \int_{a_1}^{b_1} f(\gamma_1(t)) \cdot \vert\vert\gamma'_1(t)\vert\vert \dif t \hspace{1em} \text{e} \hspace{1em} \int_{\gamma_2} f \dif s = \int_{a_2}^{b_2} f(\gamma_2(\tau)) \cdot \vert\vert\gamma'_2(\tau)\vert\vert \dif \tau \]
+Ma ovviamente si ha che
+\[\gamma_2(\tau)=\gamma_1(h(\tau))\]
+con
+\[h : [a_2,b_2] \longmapsto [a_1,b_1]\]
+pertanto si ha che
+\[\vert\vert \gamma'_2(\tau) \vert\vert=\vert\vert\gamma'_1(t)\vert\vert \cdot \vert h'(\tau) \vert\]
+Pertanto si ha che
+\[\int_{\gamma_2} f \dif s = \int_{a_2}^{b_2} f(\gamma_2(\tau)) \cdot \vert\vert\gamma'_1(t)\vert\vert \cdot \vert h'(\tau) \vert \dif \tau = \int_{a_1}^{b_1} f(\gamma_1(t)) \cdot \vert\vert\gamma'_1(t)\vert\vert \dif t = \int_{\gamma_1} f \dif s\]
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione}: Si osservi che anche la lunghezza è un integrale di linea, in quanto
+\[l(\gamma) = \int_\gamma 1 \dif s\]
+Non solo, ma se $\gamma_2(s)$ è la parametrizzazione di lunghezza d'arco, allora
+\[\int_\gamma f \dif s = \int_0^{l=l(\gamma_2)} f(\gamma_2(s)) \cdot \vert\vert\gamma'_2(s)\vert\vert\dif s = \int_0^L f(\gamma_2(s)) \dif s\]
+
+\vspace{2em}
+\noindent
+\textbf{Esempio}: Applicazioni dell'integrale di linea sono la massa lineare, il baricentro, il momento di inerzia etc.\\
+Per esempio, si calcoli L'ordinata $\hat y$
+del baricentro di un anello a forma di semicirconferenza chiusa di raggio $R$, ossia
+\[\hat s = \dfrac{1}{M} \cdot \int_\gamma y \dif s\]
+Allora per quanto riguarda l'integrale di linea, bisogna parametrizzare la curva data da un segmento e da una semicirconferenza; essendo tale curva regolare a tratti si individuano
+\begin{align*}
+    &\gamma_1(t)=(t,0){^T} \hspace{1em} \text{con} \hspace{1em} t \in [-R,R]\\
+    &\gamma_2(t) = \left(R \cos(t), R\sin(t)\right){^T} \hspace{1em} \text{con} \hspace{1em} t \in [0,\pi]
+\end{align*}
+Ovviamente si hanno due integrali di linea
+\[\int_{\gamma_1} y \dif s = \int_{-R}^{R} 0 \dif s = 0 \hspace{1em} \text{e} \hspace{1em} \int_{\gamma_2} y \dif s = \int_{0}^{\pi} R \sin(t) \cdot \sqrt{R^2 \cos^2(t) + R^2 \sin^2(t)} \dif t =R^2 \cdot 2\]
+Ovviamente essendo la densità lineare, la massa è uguale alla lunghezza, da cui $M=\pi R+2R$, pertanto
+\[\hat y = \frac{1}{\pi R + 2R} \cdot 2R^2 = \frac{2R}{\pi+2}\]
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione}: Ovviamente il baricentro è dato da
+\[\hat x = \frac{1}{M} \int_\gamma x \delta \dif s\]
+e similmente per $\hat y$ e $\hat z$. Il momento di inerzia, invece è
+\[I_K = \int_\gamma d^2(s,k) \cdot \delta \dif s\]
+
+\vspace{1em}
+\noindent
+\textbf{Esempio}: Si calcoli il momento di inerzia rispetto all'asse $z$ dell'elica circolare omogenea di passo $\alpha$, raggio costante $r$, altezza $h$.\\
+Allora la curva si parametrizza come
+\[\gamma(t)=\left(R \cos(2\pi t), R \sin(2 \pi t), \alpha t\right){^T} \hspace{1em} t \in \left[0, \frac{h}{\alpha}\right]\]
+in cui il vettore tangente è
+\[\gamma'(t) = (- 2\pi R \sin(2\pi t), 2\pi R \cos(2\pi t), \alpha){^T}\]
+Pertanto il momento di inerzia è dato da
+\[I_z = \int_\gamma (x^2+y^2) \dif s = \int_0^{\frac{h}{\alpha}} R^2 \cdot \vert\vert \gamma'(t) \vert\vert \dif t = \int_{0}^{\frac{h}{\alpha}} R^2 \cdot \sqrt{4\pi^2 R^2 + \alpha^2} \dif t = \frac{h}{\alpha} \cdot R^2 \sqrt{4\pi^2 R^2 + \alpha^2}\]
+
+\vspace{1em}
+\subsection{Rappresentazioni particolari di curve}
+Una classe di funzioni che presentano una rappresentazione particolare sono
+i grafici di funzioni della forma
+\[g : I \longmapsto \mathbb{R}\]
+il cui grafico è parametrizzabile tramite una curva
+\[\gamma(t) = (t,g(t)){^T} \hspace{1em} t \in I\]
+in cui il vettore tangente è
+\[\gamma'(t) = (1,g'(t)){^T} \hspace{1em} \text{con} \hspace{1em} \vert\vert \gamma'(t) \vert\vert=\sqrt{1+g'(t)^2}\]
+per cui la lunghezza del grafico è
+\[l(\gamma) = \int_I \sqrt{1+g'(t){^2}} \dif t\]
+e se
+\[f \subseteq \mathbb{R}^2 \longmapsto \mathbb{R}\]
+si ha
+\[\int_\gamma f \dif s = \int_I f(t,g(t) \cdot \sqrt{1+g'(t)^2}) \dif t\]
+
+\vspace{1em}
+\noindent
+\textbf{Esempio}: Si calcoli la lunghezza del grafico di $g(x)=e^x$ su $[0,1]$. Ovviamente si ha che
+\[g'(x)=e^x \hspace{1em} \rightarrow \hspace{1em} \vert\vert \gamma'(t) \vert\vert = \sqrt{1+e^{2x}}\]
+pertanto si deve calcolare l'integrale seguente
+\[\int_0^1 \sqrt{1+e^{2t}} \dif t\]
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione}: Le curve in forma polare sono definite nel modo seguente
+\[
+    \left\{
+        \rowcolors{1}{white}{white}
+        \begin{array}{l}
+            x=\rho(t) \cos(\theta(t))\\
+            y=\rho(t) \sin(\theta(t))
+        \end{array}
+    \right.
+\]
+Ciò, naturalmente, si può sempre fare, ma la rappresentazione polare diviene conveniente quando $\theta(t)=t$. in questo modo si ottiene
+\[
+    \left\{
+        \rowcolors{1}{white}{white}
+        \begin{array}{l}
+            x=\rho(t) \cos(t)\\
+            y=\rho(t) \sin(t)
+        \end{array}
+    \right.
+\]
+Per esempio se si considerarea la spirale, parametrizzata come
+\[\rho(t)=at\]
+allora si ottiene
+\[
+    \left\{
+        \rowcolors{1}{white}{white}
+        \begin{array}{l}
+            x=at \cos(t)\\
+            y=at \sin(t)
+        \end{array}
+    \right. \hspace{1em} t \in [0,4\pi]
+\]
+Per calcolare la lunghezza, si necessita della norma del vettore tangente
+\[\gamma(t) = \left(\rho(t) \cos(t), \rho(t) \sin(t)\right)\]
+per cui
+\[\gamma'(t) = \left(\rho'(t) \cos(t) - \rho(t) \sin(t), \rho'(t) \sin(t) + \rho(t) \cos(t) \right){^T}\]
+allora la sua norma è
+\[\vert\vert \gamma'(t) \vert\vert = \sqrt{\rho'(t)^2 \cos(t) - 2 \rho'(t) \rho(t) \cos(t) \sin(t) + \rho^2(t) \sin^2(t) + \rho'(t)^2 \sin^2(t) + 2 \rho'(t) \rho(t) \sin(t) \cos(t) + \rho^2(t) \cos^2(t)} = \sqrt{\rho'(t)^2 + \rho^2(t)}\]
+Per quanto riguarda a spirare di archimete, quindi, in cui
+\[\rho(t)=at \hspace{1em} \rho'(t)=a \hspace{1em} t \in [0,b]\]
+si ottiene che
+\[l(\gamma)=\int_0^b \sqrt{\rho'(t)^2 + \rho^2(t)} \dif t = \int_0^b \sqrt{a^2+a^2t^2} = a \int_0^b \sqrt{1+t^2} \dif t\]
+
+\vspace{2em}
+\noindent
+\textbf{Esercizio}: Si calcoli la lunghezza della cardioide, parametrizzata come
+\[\rho(\theta) = 1 + \cos(\theta) \hspace{1em} \theta \in [0,2\pi]\]
+allora si ha che
+\[l(\gamma) = \int_0^{2\pi} \sqrt{\rho'(\theta)^2 + \rho^2(\theta)} \dif \theta = \int_0^{2\pi} \sqrt{2} \cdot \sqrt{1+\cos(\theta)} \dif \theta = 2 \int_0^{2\pi} \left\vert\cos \left(\frac{t}{2}\right)\right\vert\]
+Spezzando il valore assoluto si ottiene
+\[2 \int_0^{\pi} \cos\left(\frac{t}{2}\right) \dif t - 2 \int_\pi^{2\pi} \cos\left(\frac{t}{2}\right) \dif t = 4 \left[\sin \left(\frac{t}{2}\right)\right]_0^\pi - 4 \left[\sin \left(\frac{t}{2}\right)\right]_\pi^{2\pi} =4+4=8\]
+
+\vspace{2em}
+\noindent
+\textbf{Esempio}: Si consideri l'astroide parametrizzato come seuge
+\[\gamma(t)=(\cos^3(t),\sin^3(t)) \hspace{1em} t \in [0,2\pi]\]
+Ovviamente si ha che
+\[\gamma'(t) =(-3 \cos^2(t) \sin(t), 3 \sin^2(t) \cos(t)){^T}\]
+allora si ha che
+
+\newpage
+\noindent
+\begin{center}
+    29 Novembre 2022
+\end{center}
+\vspace{1em}
+\noindent
+\textbf{Esercizio}: Si calcoli il volume di un paraboloide limitato da un piano inclinato, per cui si hanno le due equazioni seguenti
+\[x_1=x^2+y^2 \hspace{1em} \text{e} \hspace{1em} z=3-2y\]
+Pertanto l'insieme che si sta considerando è dato da
+\[x^2+y^2 \leq 3-2y \hspace{1em} \rightarrow \hspace{1em} x^2+(y+1)^2 \leq 2^2\]
+che è facile ricondurre all'equazione di un cerchio centrato in $(0,-1){^T}$ e raggio $2$.\\
+È immediato capire che il miglior modo per integrare è per corde, per cui
+\[\iint_{\mathcal{B}((0,-1){^T},2)} \left(\int_{x^2+y^2}^{3-2y} 1 \dif z\right)\dif x \dif y = \iint_{\mathcal{B}((0,-1){^T},2)} (3-2y-x^2+y^2) \dif x \dif y\]
+Ora è possibile procedere ad eseguire un cambio di variabili, passando alle coordinate polari ma centrate in $(0,-1){^T}$, da cui
+\[
+    \left\{
+        \rowcolors{1}{white}{white}
+        \begin{array}{l}
+            x=\rho \cos(\theta)\\
+            y=-1 + \rho \sin(\theta)
+        \end{array}
+    \right.
+\]
+sapendo che il raggio è $\rho=2$ si ottiene
+\[\int_0^{2\pi} \left(\int_0^2 (3-2(-1-\rho \sin(\theta)) - \rho^2 \cos^2(\theta)+(-1+\rho \sin(\theta))^2)\cdot \rho \dif \rho\right) \dif \theta = \int_0^{2\pi} \left(\int_0^2 \left(4-\rho^2\right) \cdot \rho \dif \rho\right) \dif \theta\]
+Pertanto alla fine si ottiene
+\[\int_0^{2\pi} \left[2\rho^2 - \frac{\rho^4}{4}\right]_0^2 \dif \theta = \int_0^{2\pi} 4 \dif \theta = 8\pi\]
+
+\vspace{1em}
+\subsection{Integrale di superficie}
+Com'è noto, una superficie è una funzione definita su un opportuno dominio di $\mathbb{R}^2$ a valori in $\mathbb{R}^2$.\\
+Si consideri, allora, $K \subset \mathbb{R}^2$ un dominio regolare a tratti (ossia $K=\overline{A}$, con $A$ aperto e $fr A$ è il sostegno di una curva regolare a tratti). Allora, presa
+\[\sigma : K \longmapsto \mathbb{R}^3\]
+continua, si ha che $\sigma$ è una superficie con sostegno $\sigma(K) \subset \mathbb{R}^3$. In particolare, si chiede che
+\[\sigma \in C^1(K,\mathbb{R}^3) \hspace{1em} \text{con} \hspace{1em} \sigma=\sigma(s,t)\]
+allora $\sigma$ si dice regolare se il rango di $\mathcal{J} \phi = 2$, cioè il vettore normale
+\[v = \frac{\partial \sigma}{\partial s} \times \frac{\partial \sigma}{\partial t} \neq (0,0,0){^T}\]
+con $\times$ prodotto vettoriale, per cui il vettore $v$ è ortogonale al piano tangente. In particolare, il piano tangente la superficie $\sigma$ nel punto $\sigma(s_0,t_0) = (x_0,_0,z_0){^T}$ ha equazione parametrica
+\[\pi : \mathbb{R}^2 \longmapsto \mathbb{R}^3\]
+definita come
+\[\pi(u,v) = \sigma(s_0,t_0) + u \cdot \frac{\partial \sigma}{\partial s} (s_0,y_0) + v \cdot \frac{\partial \sigma}{\partial t}(s_0,t_0)\]
+oppure, dato il vettore tangente $v(s_0,t_0)=(a,b,c){^T}$ si ottiene
+\[a(xx-x_0)+b(y-y_0)+c(z-z_0)=0\]
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Si osservi che una curva regolare è una funzione derivabile con derivata diversa da zero, ossia è definito in ogni punto il vettore tangente.
+
+\vspace{1em}
+\noindent
+\subsection{Area di una superficie regolare}
+Sia data una superficie
+\[\sigma : K \longmapsto \mathbb{R}^3\]
+con $\sigma \in C^1$ e regolare; allora si chiama area della superficie $\sigma$ il numero
+\[A(\pi) = \iint_K \left\vert\left\vert v(s,t) \right\vert\right\vert \dif s \dif t\]
+ove $v(s,t)$ è il vettore normale, dato da
+\[v=\frac{\partial \sigma}{\partial s} \times \frac{\partial \sigma}{\partial t}\]
+
+\vspace{1em}
+\noindent
+Si chiama integrale di superficie di un campo
+\[f : E \subseteq \mathbb{R}^3 \longmapsto \mathbb{R}\]
+il numero
+\[\iint_\sigma f \dif \sigma = \iint_K f(\sigma(s,t)) \cdot \left\vert\left\vert v(s,t) \right\vert\right\vert \dif s \dif t\]
+dove $v(s,t)$ è il vettore normale la superficie $\sigma$.
+
+\vspace{2em}
+\noindent
+\textbf{Esempio 1}: Si calcoli l'area della sfera. Naturalmente la superficie della sfera è
+\[\sigma : [0,\pi] \times [0,2\pi] \longmapsto \mathbb{R}^3\]
+in cui
+\[\sigma(\phi,\theta)=(R \sin(\phi)\cos(\theta), R \sin(\phi) \sin(\theta), R\cos(\phi)){^T}\]
+Si calcoli la matrice Jacobiana corrispondente
+\[
+    \left(
+        \rowcolors{1}{white}{white}
+        \begin{array}{cc}
+            R \cos(\phi) \cos(\theta) & - R \sin(\phi) \sin(\theta)\\
+            R \cos(\phi) \sin(\theta) & R \sin(\phi) \cos(\theta)\\
+            -R \sin(\phi) & 0
+        \end{array}
+    \right)
+\]
+Allora per calcolare il vettore tangente si deve eseguire il proddotto vettoriale tra le due colonne della matrice, ottenendo
+\[v(s,t)=\left(R^2 \sin^2(\phi) \cos(\theta), R^2 \sin^2(\phi) \sin(\theta), R^2 \sin(\phi) \cos(\theta) + R^2 \cos(\phi) \sin(\theta)\right) = R \sin(\phi) \cdot \left(R \sin(\phi) \cos(\theta), R \sin(\phi) \sin(\theta), R \cos(\phi)\right){^T}\]
+ossia il vettore normale è un multiplo della superficie della sfera. Allora per calcolare l'area della sfera bisogna calcolare la norma del vettore normale, per cui
+\[\vert\vert v\vert\vert = \sqrt{R^2 \sin^2(\phi) \cdot \left(R^2 \sin^2(\phi) \cos^2(\theta) + R^2 \sin^2(\phi) \sin^2(\theta) + R^2 \cos^2(\phi)\right)} = R^2 \sin(\phi)\]
+Allora l'area che si ottiene è
+\[A = \int_0^\pi \left(\int_0^{2\pi} \vert \vert v(\phi,\theta) \vert \vert \dif \theta \right) \dif \phi = \int_0^\pi \left(\int_0^{2\pi} R^2 \sin(\phi) \dif \theta \right) \dif \phi = 2 \pi R^2 \cdot 2 = 4 \pi R^2\]
+
+\vspace{2em}
+\noindent
+\textbf{Esempio 2}: Si calcoli il baricentro di una semisfera centrata nello spazio; ovviamente si ha che $\hat x = 0$ e $\hat y = 0$, mentre
+\[\hat z = \frac{1}{S} \iint_\sigma z \dif \sigma = \frac{1}{2\pi R^2} \int_0^{\frac{\pi}{2}} \left(\int_0^{2\pi} R-\cos(\phi) \cdot R^2 \sin(\phi) \dif \theta\right) \dif \phi = \frac{1}{2 \pi R} \cdot R^3 \cdot 2\pi \int_0^{\frac{\pi}{2}} \cos(\phi) \cdot \sin(\theta)) \dif \phi = \frac{R}{2}\]
+
+\vspace{1em}
+\subsection{Superfici particolari: grafici}
+Si consideri una funzione
+\[g : K \subseteq \mathbb{R}^2 \longmapsto \mathbb{R}\]
+in cui la superficie considerata è
+\[\sigma(s,t)=\left(s,t,g(s,t)\right){^T}\]
+in cui, ovviamente, si ha come Jacobiana
+\[
+    \mathcal{J}(\sigma)
+    \left(
+        \rowcolors{1}{white}{white}
+        \begin{array}{cc}
+            1 & 0\\
+            0 & 1\\
+            \dfrac{\partial g}{\partial s} & \dfrac{\partial g}{\partial t}\\
+        \end{array}
+    \right)
+\]
+Pertanto il vettore normale è
+\[v(s,t)=\left(-\frac{\partial g}{\partial s},-\frac{\partial g}{\partial t}, 1\right){^T}\]
+...continua...\\
+Allora ovviamente si ha che
+\[\vert\vert v(s,t) \vert \vert = \sqrt{1+\vert\vert \nabla g \vert\vert^2}\]
+Pertanto l'area di un gafico non è altro che
+\[A = \iint_K \sqrt{1+\vert\vert\nabla g\vert\vert^2} \dif x \dif y\]
+
+\vspace{2em}
+\noindent
+\textbf{Esempio 3}: Si calcoli l'area di un paraboloide del tipo
+\[z=x^2+y^2\]
+il cui dominio di definizione è $(x,y){^T} \in \mathcal{B}((0,0){^T},R)$. Allora il gradiente della funzione è
+\[\nabla g = (2x,2y)\]
+per cui l'area cercata è
+\[A=\iint_{\mathcal{B}((0,0){^T},R)} \sqrt{1+4x^2+4y^2} \dif x \dif y\]
+in questo caso conviene passare alle coordinate polari, si ottiene
+\[\int_0^{2\pi} \left(\int_0^R \sqrt{1+4 \rho^2} \rho \dif \rho \right) \dif \theta = 2\pi \cdot \]
+
+\vspace{2em}
+\noindent
+\textbf{Esempio 4}: Il baricentro di un parabolide prevede $\hat x = \hat y = 0$, mentre
+\[\hat z = \frac{1}{\text{Area}} \iint_\sigma z \dif \sigma = \frac{1}{\text{Area}} \int_K (x^2+y^2) \cdot \sqrt{1+4(x^2+y^2)} \dif x \dif y\]
+Passando alle coordinate polari si ottiene
+\[\frac{1}{\text{Area}}\int_0^{2\pi} \left(\int_0^R \rho^3 \cdot \sqrt{1+4 \rho^2} \dif \rho \right) \dif \theta = \frac{\pi}{8\text{Area}} \cdot \left[\right]\]
+
+\vspace{1em}
+\subsection{Superfici particolari: superficie cilindrica}
+È già stato introdotto il concetto di superficie cilindrica parlando di integrali di volume: data una curva sul piano del tipo $\gamma(t)=(x(t),y(t)){^T}$, si considera l'insieme dei punti
+\[\left\{(x,y,z){^T} \in \mathbb{R}^3 : (x,y){^T} \in \gamma(t) \hspace{1em} \text{con} \hspace{1em} g(x(t),y(t)) \leq z \leq f(x(t),y(t))\right\}\]
+Allora la superficie $\sigma : [a,b] \longmapsto \mathbb{R}^2$ si parametrizza come
+\[\sigma(s,t) = (x(t),y(t),s){^T}\]
+in quanto la terza coordinata è libera. Ovviamente si impongono le condizioni per cui $t \in [a,b]$, mentre $s$, che è la terza coordinata è limitata come segue
+\[g(x(t),y(t)) \leq s \leq f(x(t),y(t))\]
+Per calcolare l'area di una superficie cilindrica, si considera la Jacobiana
+\[
+    \left(
+        \rowcolors{1}{white}{white}
+        \begin{array}{cc}
+            0 & x'(t)\\
+            0 & y'(t)\\
+            1 & 0\\
+        \end{array}
+    \right)
+\]
+Allora per determinare il rango di tale matrice si deve considerare il determinante di tutte le sottomatrici quadrate: è certo che almeno uno di essi è non nullo in quanto $\sigma$ è regolare.\\
+Allora il vettore tangente è dato dal prodotto vettoriale delle due colonne della matrice
+\[v(s,t)=(-y'(t),-x'(t),0){^T}\]
+non sorprende che la terza componente sia nulla: infatti, il vettore normale alla superficie è proprio il vettore normale della curva (a meno della terza componente). Infatti
+\[\left<(-y'(t),-x'(t)){^T},(x'(t),y'(t)){^T}\right>=0\]
+Allora la norma del vettore normale è
+\[\vert \vert v(s,t) \vert \vert = \sqrt{(y'(t))^2 + (x'(t))^2}\]
+che è esattamente la norma del vettore tangente la curva. Pertanto l'area della superficie cilindirica è
+\[\text{Area}=\iint_K \vert\vert v(s,t) \vert \vert \dif s \dif t\]
+in cui $K$ è il dominio normale esposto in precedenza. Pertanto si ottiene
+\[\int_a^b \left(\int_{g(x(t),y(t))}^{f(x(t),y(t))} \vert \vert \gamma'(s,t) \vert \vert\dif s\right)\dif t\]
+ma tale integrale si può scrivere come
+\[\int_a^b \left[f(\gamma(t)) - g(\gamma(t))\right] \cdot \vert \vert \gamma'(t) \vert \vert \dif t\]
+ma questo è esattamente l'integrale di linea della funzione $f-g$ sulla curva $\gamma$, ovvero
+\[\int_\gamma (f-g) \dif s\]
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Si supponga che $g=0$ e $f \geq 0$, allora
+\[\int_a^b f(\gamma(t)) \cdot \vert\vert \gamma'(t) \vert \vert \dif t = \int_\gamma f \dif s\]
+allora non è difficile capire che l'integrale appena scritto non è altro che l'area del sottografico della funzione $f$ ma limitata dal basso dalla curva $\gamma$.
+
+\vspace{2em}
+\noindent
+\textbf{Esempio}: Si consideri un cilindro usuale che viene tagliato da due piani fra di loro non paralleli. Allora si ha
+\begin{itemize}
+    \item Cilindo: $x^2+y^2=1$
+    \item Piano $1$: $z=2+x+y$
+    \item Piano $2$: $z=2-x-y$
+\end{itemize}
+Per calcolare l'area laterale di tale cilindro si usa la formula nota
+\[\int_\gamma [2+x+y] - [2-x-y] \dif s\]
+in cui la curva $\gamma$ è un cerchio parametrizzato come
+\[\gamma(t)=(\cos(t),\sin(t)){^T} \hspace{1em} t \in [0,2\pi]\]
+allora si ha che
+\[\int_0^{2\pi} 2 \cdot (\cos(t) + \sin(t)) \cdot 1 \dif t=8\pi\]
+in quanto
+\[\gamma'(t)=(-\sin(t),\cos(T)){^T} \hspace{1em} \rightarrow \hspace{1em} \vert \vert \gamma'(t) \vert \vert = 1\]
+
+\vspace{1em}
+\subsection{Superfici di rotazione}
+Si consideri un solido di rotazione ottenuto come rotazione di una curva
+\[\gamma(t)=(\rho(t),z(t)){^T} \hspace{1em} t \in [a,b]\]
+allora se tale curva viene fatta ruotare attorno all'asse $z$ si ottiene la parametrizzazione seguente
+\begin{align*}
+    &x(t,\theta)=\rho(t)\cos(\theta)\\
+    &y(t,\theta)=\rho(t)\sin(\theta)\\
+    &z(t,\theta)=z(t)
+\end{align*}
+Allora per calcolare il vettore normale si scrive prima la Jacobiana, ottenenedo
+\[
+    \left(
+        \rowcolors{1}{white}{white}
+        \begin{array}{cc}
+            \rho'(t)\cos(\theta) & -\rho(t)\sin(\theta)\\
+            \rho'(t)\sin(\theta) & \rho\cos(\theta)\\
+            z'(t) & 0\\
+        \end{array}
+    \right)
+\]
+mentre il vettore normale è
+\[v(t,\theta)=(-\rho(t) z'(t) \cos(\theta), \rho(t) z'(t) \sin(\theta), \rho'(t) \rho(t)){^t}\]
+Allora la norma del vettore normale è
+\[\vert \vert v(s,t) \vert \vert = \rho(t) \sqrt{z^2(t) + \rho'(t)^2} = \rho(t) \cdot \vert \vert \gamma'(t) \vert \vert\]
+Allora l'area si calcola come
+\[\text{Area} = \int_a^b \left(\int_0^\pi \rho(t) \cdot \vert \vert \gamma'(t) \vert \vert \dif \theta\right) \dif t = 2\pi \int_a^b \rho(t) \cdot \vert \vert \gamma'(t) \vert \vert \dif t = 2 \pi \int_\gamma x \dif s = 2\pi \cdot l(\gamma) \cdot \hat x\]
+in cui $\hat x$ è l'ascissa del baricentro.
+
+\vspace{1em}
+\noindent
+\subsection{Teorema di Pappo-Guldino per le aree}
+Sia $\sigma$ una superficie di rotazione ottenuta ruotando intorno all'asse $z$ di un angolo $\alpha \in ]0,2\pi]$ una curva regolare a tratti
+\[\gamma : I \longmapsto \mathbb{R}^2\]
+con
+\[\gamma(t)=(x(t),z(t)){^T}\]
+con $x(t) \geq 0$ $\forall t$. Allora l'area di $\sigma$ è
+\[A = \alpha \cdot l(\gamma) \cdot \hat x\]
+dove $\hat x$  è l'ascissa del baricentro della curva $\gamma$ e $l(\gamma)$ è la lunghezza di tale curva.
+
+\newpage
+\noindent
+\begin{center}
+    30 Novembre 2022
+\end{center}
 
 \end{document}
