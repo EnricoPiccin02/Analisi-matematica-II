@@ -5507,81 +5507,139 @@ Infine, essendo $\dif f(x_0)$ un'applicazione lineare, si può chiaramente osser
 
 \vspace{1em}
 \noindent
-In particolare
-\[\frac{\partial f}{\partial x}(x_0) = \dif f(x) (x_0)\]
-e, quindi, la matrice Jacobiana raccoglie tutte le derivate della funzione.
+\textbf{Osservazione}: Tale risultato è fondamentale, in quanto permette di capire come calcolare le derivate direzionali. Il differenziale, quindi, è quell'oggetto matematico che permette di capire come calcolare le derivate direzionali, ossia il corrispondente $n$-dimensionale della derivata.\\
+In particolare, applicando il differenziale ad una direzione $v$, si ottiene la derivata direzionale in quella specifica direzione.\\
+In particolare, è possibile calcolare le derivate parziali
+\[\frac{\partial f}{\partial x_i}(x_0) = \dif f(x_0) (e_i)\]
+e, quindi, la matrice Jacobiana presenta come colonne le derivate parziali, ovvero:
+\[\mathcal{J} f(x_0) =
+    \left(
+        \rowcolors{1}{white}{white}
+        \begin{array}{cccc}
+            \vdots & \vdots & \ddots & \vdots\\
+            \dfrac{\partial f}{\partial x_1}(x_0) & \dots  & \dfrac{\partial f}{\partial x_2}(x_0) & \dfrac{\partial f}{\partial x_n}(x_0)\\
+            \vdots & \vdots & \ddots & \vdots\\
+        \end{array}
+    \right) \in M \times N
+\]
 
 \vspace{1em}
 \noindent
 \textbf{Esempio}: Si consideri la funzione
-\[f : A \subseteq \mathbb{R^2} \longmapsto \mathbb{R}^3\]
+\[f : A \subseteq \mathbb{R}^2 \longmapsto \mathbb{R}^3\]
 data come segue
-\[f(x,y,z)=\left[\sin(xy),x \log(y),\frac{x}{y}\right]{^T}\]
+\[f(x,y)=\left(\sin(xy),y \log(x),\frac{x}{y}\right){^T}\]
 si ottengono le derivate parziali seguenti
 \begin{align*}
-    &\frac{\partial f}{\partial x} = \left(y\cos(xy),\log(y),\frac{1}{y}\right){^T}\\
-    &\frac{\partial f}{\partial y} = \left(x\cos(xy),\frac{x}{y},-\frac{x}{y^2}\right){^T}\\
+    &\frac{\partial f}{\partial x} = \left(y\cos(xy),\frac{y}{x},\frac{1}{y}\right){^T}\\
+    &\frac{\partial f}{\partial y} = \left(x\cos(xy),\log(x),-\frac{x}{y^2}\right){^T}\\
 \end{align*}
-È possibile, quindi, costruire anche la matrice di Jacobi corrispondente:
-\[J(f(x,y)) = \left(
+È possibile, quindi, costruire anche la matrice Jacobiana corrispondente, ricordando che essa presenta come colonne le derivate parziali rispetto alla variabile $x_i$:
+\[\mathcal{J} f(x,y) = \left(
     \rowcolors{1}{white}{white}
     \begin{array}{cc}
-        y \sin(xy) & x \cos(xy)\\
+        y \cos(xy)   & x \cos(xy)\\
+        \dfrac{y}{x} & \log(x)\\
+        \dfrac{1}{y} & -\dfrac{x}{y^2}\\
     \end{array}
 \right)\]
-
+Si consideri, allora, un versore $(a,b){^T}$ qualsiasi, con $\vert\vert v \vert\vert=1$. Allora la derivata direzionale
+\[\dfrac{\partial f}{\partial v}(1,2)\]
+si può calcolare tramite la Jacobiana. Infatti, calcolando la Jacobiana nel punto $(1,2){^T}$ si ottiene
+\[\mathcal{J} f(1,2) = \left(
+    \rowcolors{1}{white}{white}
+    \begin{array}{cc}
+        2 \cos(2)    & \cos(2)\\
+        1            & 0\\
+        \dfrac{1}{2} & -\dfrac{1}{4}\\
+    \end{array}
+\right)\]
+e per calcolare la derivata direzionale, si applica tale matrice al punto $(a,b){^T}$, da cui
+\[
+    \dif f(x,y)(a,b) = \left(
+        \rowcolors{1}{white}{white}
+        \begin{array}{cc}
+            2 \cos(2)    & \cos(2)\\
+            1            & 0\\
+            \dfrac{1}{2} & -\dfrac{1}{4}\\
+        \end{array}
+    \right) \left(
+        \rowcolors{1}{white}{white}
+        \begin{array}{cc}
+            a\\
+            b
+        \end{array}
+    \right) = \left(2a \cos(2) + b \cos(2), a, \dfrac{a}{2} - \dfrac{b}{4}\right){^T}
+\]
+che è proprio la derivata direzionale della funzione $f$ nel punto $(1,2){^T}$ rispetto alla direzione $(a,b){^T}$.
 
 \vspace{2em}
 \noindent
-\textbf{Osservazione 1}: Si osservi il caso particolare in $n=1$ e $m>1$, data una curva $\gamma(t)$ si ha che
+\textbf{Osservazione 1}: Si osservi il caso particolare in $n=1$ e $m>1$, data una curva $\gamma(t)$ nella forma
+\[\gamma(t) = (x(t),y(t)){^T}\]
+si ha che
 \[\dif \gamma(t) : \mathbb{R} \longmapsto \mathbb{R}^2\]
-allora si ha che il differenziale è proprio la derivata
+allora si ha che il differenziale è proprio il vettore tangente la curva $\gamma$ nel punto $\gamma(t)$, ossia 
 \[\gamma'(t) = \left(x'(t),y'(t)\right){^T}\]
 Per esempio, se si considera
 \[\gamma(t)=(\cos(t),\sin(t)){^T} \hspace{1em} \text{con} \hspace{1em} t \in [0,2\pi]\]
 allora il vettore tangente è
 \[\gamma'(t)=\left(-\sin(t),\cos(t)\right){^T}\]
+Quando si parla di vettore ortogonale ad una curva in un punto, si intende un vettore che è ortogonale al suo vettore tangente nel punto stesso.
 
 \vspace{2em}
 \noindent
-\textbf{Osservazione 2}: Si osservi il caso particolare in cui $n>1$ e $m=1$, con una funzione
-\[f : A \subseteq \mathbb{R}^n \rightarrow \mathbb{R}^m\]
-in cui l'applicazione lineare si ha
+\textbf{Osservazione 2}: Si osservi il caso particolare in cui $n>1$ e $m=1$, allora si ha a che fare con un campo scalare; sia, allora, un campo scalare $f$ definito come
+\[f : A \subseteq \mathbb{R}^n \rightarrow \mathbb{R}\]
+ovviamente anche il differenziale sarà definito allo stesso modo, ovvero
 \[\dif f(x) : \mathbb{R}^n \longmapsto \mathbb{R}\]
-per cui si ottiene
-\[\dif f(x) = \left(\frac{\partial f}{\partial x_1}(x), \frac{\partial f}{\partial x_2}(x), \dots, \frac{\partial f}{x_n}(x) \right)\]
-ovverosia è una matrice di riga con il valore della derivata parziale della $f$ come elementi di colonna.\\
-Allora il prodotto scalare seguente
+allora la matrice Jacobiana corrispondente sarà un vettore riga con $n$ colonne, ossia le derivate parziali rispetto a tutte le variabili $x_i$, con $i=1,\dots,n$, ovvero
+\[\mathcal{J} f(x_0) = \left(\frac{\partial f}{\partial x_1}(x_0), \frac{\partial f}{\partial x_2}(x_0), \dots, \frac{\partial f}{x_n}(x_0) \right)\]
+ovverosia è una matrice di riga con il valore della derivata parziale della $f$ come elementi di colonna (da notare che è proprio un vettore di riga, per quello non vi è il segno di trasposta).\\
+Come si è detto, applicando la matrice Jacobiana ad un versore, si ottiene la derivata direzionale della $f$ rispetto alla direzione specificata dal versore, ossia
+\[\left(\frac{\partial f}{\partial x_1}(x_0), \frac{\partial f}{\partial x_2}(x_0), \dots, \frac{\partial f}{x_n}(x_0) \right) \cdot \left(
+    \rowcolors{1}{white}{white}
+    \begin{array}{c}
+        y_1\\
+        \vdots\\
+        y_n
+    \end{array}
+\right)\]
+ma tale scrittura, che è un prodotto righe per colonne, è perfettamente equivalente al prodotto scalare seguente
 \[\left<
     \left(
         \rowcolors{1}{white}{white}
         \begin{array}{c}
-            \frac{\partial f}{\partial x_0}(x)\\
+            \dfrac{\partial f}{\partial x_1}(x_0)\\
             \vdots\\
-            \frac{\partial f}{\partial x_n}(x)
+            \dfrac{\partial f}{\partial x_n}(x_0)
         \end{array}
     \right), v
 \right>\]
-si dice \textbf{gradiente} di $f$ in $x_0$ il vettore
+in cui si dice \textbf{gradiente} di $f$ in $x_0$ il vettore
 \[\nabla f(x_0) = \mathcal{J}f(x_0){^T}\]
-
-\vspace{2em}
-\noindent
-\subsubsection{Interpretazione geometrica con $n=2$ e $m=1$}
-Il grafico dell'approssimante lineare, in una dimensione, era, ovviamente la retta tangente. Nel caso in cui $n=2$ e $m=1$, si ottiene che l'approssimante lineare
-\[z=f(x_0,y_0) + \dif \widetilde{f}_{[x_0,y_0]}(x-x_0,y-y_0)\]
-rappresenta il piano tangente al grafico della funzione $f$ nel punto $\left(x_0,y_0,f(x_0,y_0)\right){^T}$.\\
-Altrimenti si sarebbe potuto anche scrivere
-\[f(x,y) = \left<\nabla f(x,y), (x-x_0,y-y_0)\right>\]
+ossia il vettore riga precedentemente esposto, che ha componenti le derivate parziali della funzione, diviene un vettore colonna.\\
+Ovviamente, \textbf{condizione necessaria} affinché possa essere definito il gradiente è che la funzione sia differenziabile, altrimenti non ha significato. Si può parlare di vettore delle derivate parziali, ma non di gradiente, se la funzione non è differenziabile, in quanto alla base del gradiente vi è il \textbf{teorema di rappresentazione di Riesz}.
 
 \vspace{1em}
+\noindent
+\subsection{Interpretazione geometrica con $n=2$ e $m=1$}
+Il grafico dell'approssimante lineare, in una dimensione, era, ovviamente, la retta tangente in un punto. Nel caso in cui $n=2$ e $m=1$, si ottiene che l'approssimante lineare
+\[z=f(x_0,y_0) + \dif f(x_0,y_0)(x-x_0,y-y_0)\]
+rappresenta il piano tangente al grafico della funzione $f$ nel punto $\left(x_0,y_0,f(x_0,y_0)\right){^T}$.\\
+Altrimenti si sarebbe potuto anche scrivere
+\[\dif f(x_0,y_0)(x-x_0,y-y_0) = \left<\nabla f(x_0,y_0), (x-x_0,y-y_0)\right>\]
+per cui
+\[z=f(x_0,y_0)+\left<\nabla f(x_0,y_0), (x-x_0,y-y_0)\right>\]
+
+\vspace{2em}
 \noindent
 \textbf{Esempio}: Si consideri la funzione
 \[f(x,y)=x \log(y)\]
 e si calcoli l'equazione del piano tangente al punto $(2,e){^T}$. Ovviamente si ha che
-\[\nabla f(x,y) = \left(\log(y),\frac{x}{y}\right) \hspace{1em} \rightarrow \hspace{1em} \nabla f(2,1) = \left(1,\frac{2}{e}\right)\]
-Allora si ha che l'equazione è
-... continua ...
+\[\nabla f(x,y) = \left(\log(y),\frac{x}{y}\right) \hspace{1em} \rightarrow \hspace{1em} \nabla f(2,e) = \left(1,\frac{2}{e}\right)\]
+Allora si ha che l'equazione del piano tangente la funzione $f$ nel punto $(2,e){^T}$ è
+\[z=f(2,e) + \left<\nabla f(2,e), (x-2,y-e)\right> = 2+(x-2)+\dfrac{2}{e} \cdot (y-e)\]
 
 \vspace{1em}
 \noindent
@@ -10036,5 +10094,2541 @@ dove $\hat x$  è l'ascissa del baricentro della curva $\gamma$ e $l(\gamma)$ è
 \begin{center}
     30 Novembre 2022
 \end{center}
+\vspace{1em}
+\noindent
+Sono stati analizzati integrali di linea e di superficie. Ora si epsongono alcuni esempi.
+
+\vspace{2em}
+\noindent
+\textbf{Esempio 1}: Si calcoli l'area della superficie torica; applicando il teorema di Pappo-Guldino per le aree si ha che
+\[A= 2\pi \cdot 2\pi r \cdot R = 4 \pi^2 r R\]
+dove $r$ è il raggio interno della cironferenza, mentre $R$ è l'ascissa del baricentro.
+
+\vspace{2em}
+\noindent
+\textbf{Esempio 2}: Si calcoli l'area laterale di un cono di raggio di base $r$ e altezza $h$.\\
+Sempre applicando Pappo-Guldino, si ha che
+\[A=2\pi \cdot \sqrt{h^2+r^2} \cdot \dfrac{r}{2}\]
+Si può anche pensare di considerare l'ipotenusa del triangolo come il grafico di una funzione
+\[f(x,y)=h-\dfrac{h}{r} \cdot \sqrt{x^2+y^2} \hspace{1em} \text{con} \hspace{1em} f : \mathcal{B}((0,0){^T},r) \longmapsto \mathbb{R}\]
+per cui si ha che
+\[A=\iint_\mathcal{B} \sqrt{1+\vert\vert\nabla f\vert\vert^2} \dif x \dif y\]
+ma il gradiente è
+\[\nabla f = \left(-\dfrac{h}{r} \dfrac{x}{\sqrt{x^2+y^2}}, - \dfrac{h}{r} \dfrac{y}{\sqrt{x^2+y^2}}\right){^T} \hspace{1em} \text{e} \hspace{1em} \vert\vert \nabla f \vert \vert^2 \dfrac{h^2}{r^2}\]
+per cui si ottiene
+\[\iint_\mathcal{B} \sqrt{1+\dfrac{h^2}{r^2}} \dif x \dif y = \pi r^2 \cdot \sqrt{1+\dfrac{h^2}{r^2}}\]
+
+\vspace{2em}
+\noindent
+\textbf{Esempio 3}: Si ricordi che il lavoro, in fisica, è il prodotto scalare della forza per lo spostamento. In generale, la forza $\vec F$ è un campo vettoriale
+\[\vec F : \mathbb{R}^n \longmapsto \mathbb{R}^n\]
+per cui il lavoro è
+\[\left<\vec F, \Delta s\right> = \vert\vert F \vert\vert \cdot \Delta s \cdot \cos(\theta)\]
+in cui $\theta$ è l'angolo compreso. Se, però, lo spostamento non è rettilineo, si dovrà calcolare
+\[W = \int_\gamma \left<\vec F, \tau\dif s\right> \dif s\]
+in cui $\tau$ è il \textbf{versore tangente} la curva nel punto, ossia
+\[\tau=\frac{\gamma'(t)}{\vert\vert \gamma'(t) \vert\vert}\]
+
+\vspace{1em}
+\subsection{Integrale di linea della componente tangenziale di un campo vettoriale $g$ lungo una curva $\gamma$ di $\mathbb{R}^n$}
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{INTEGRALE DI LINEA}}\\
+    \parbox{\linewidth}{Sia data
+    \[g : A \subseteq \mathbb{R}^n \longmapsto \mathbb{R}^n\]
+    con $A$ aperto e una curva
+    \[\gamma : I \longmapsto \mathbb{R}^n\]
+    tale per cui $\mathcal{G}(\gamma) \subset A$. Allora si chiama integrale di linea della componente tangenziale di un campo vettoriale $g$ lungo una curva $\gamma$ di $\mathbb{R}^n$
+    \[\int_\gamma \left<g,\tau\right> \dif s := \int_I \left<g(\gamma(t)), \dfrac{\gamma'(t)}{\vert\vert\gamma'(t)\vert\vert}\right> \cdot \vert \vert \gamma'(t) \vert \vert \dif t = \int_I \left<g(\gamma(t)),\gamma'(t)\right> \dif t\]
+    Pertanto, se $g$ è un campo di forze, il numero
+    \[L=\int_\gamma \left<g,\tau\right> \dif s\]
+    rappresenta il lavoro compiuto da $g$ su una particella che si muove lungo $\gamma$. In particolare
+    \[\tau(t) = \dfrac{\gamma'(t)}{\vert \vert \gamma'(t) \vert \vert}\]
+    è il versore tangente la curva nel punto $\gamma(t)$.
+    \vspace{3mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione}: Siano $\gamma_1$ e $\gamma_2$ due curve equivaenti; esiste, allora, un diffeomorsimo
+\[h : I_2 \longmapsto I_1\]
+tale che
+\[\gamma_2(t) = \gamma_1(h(t))\]
+allora si ha che
+\[\int_{\gamma_2} \left<g,\tau_2\right> \dif s = \int_{I_2} \left<g(\gamma_2(t)), \gamma_2'(t)\right> \dif t = \int_{I_2} \left<g(\gamma_1(h(t))), \gamma_1'(h(t)) \cdot h'(t)\right> \dif t\]
+Facendo un cambio di variabile si impone $s=h(t)$, per cui
+\[\dif s = \vert h'(t)\vert \dif t\]
+in quanto la formula per il cambio di variabile richiede di imporre il $\vert \det(\mathcal{J})\vert$. Lavorando con il valore assoluto, quindi, si distinguono due casi
+\[\int_{h(a_1)}^{h(b_2)} \left<g(\gamma_1(s)), \gamma_1'(s)\right> \dif s = \int_{a_1}^{b_1} \left<g(\gamma_1(s)),\gamma_1'(s)\right>\dif s \hspace{1em} \text{se} \hspace{1em} h'(t) > 0\]
+se, invece, $h'(t) < 0$, invece, ...continua...\\\\
+Pertanto, ciò significa che se $\gamma_1$ e $\gamma_2$ sono equivalenti e equiverse si ha che
+\[\int_{\gamma_1} \left<f,\tau\right> \dif s = \int_{\gamma_2} \left<g,\tau\right> \dif s\]
+invece, se $\gamma_1$ e $\gamma_2$ sono equivalenti ma di verso opposto, si ha che
+\[\int_{\gamma_1} \left<f,\tau\right> \dif s = -\int_{\gamma_2} \left<g,\tau\right> \dif s\]
+
+\vspace{2em}
+\noindent
+\textbf{Esempio}: Si calcoli il lavoro compiuto dal campo vettoriale
+\[g(x,y) = (x^2,-xy){^T}\]
+su una particella che si muove lungo l'arco di cerchio
+\[\gamma(t)=(\cos(t),\sin(t)){^T} \hspace{1em} t \in \left[0,\frac{\pi}{2}\right]\]
+Calcolando il vettore tangente si ottiene
+\[\gamma'(t)=(-\sin(t),\cos(t)){^T}\]
+per cui si ottiene
+\[\int_\gamma \left<g,\tau\right>\dif s = \int_0^{\frac{\pi}{2}} \left<g(\cos(t),\sin(t)),(-\sin(t),\cos(t))\right> \dif t\]
+overosia
+\[\int_0^{\frac{\pi}{2}} \left<(\cos^2(t),-\cos(t)\sin(t)){^T},(-\sin(t),\cos(t)){^T}\right>\dif t = \int_0^{\frac{\pi}{2}}-2\sin(t)\cos^(t) \dif t = \left[\dfrac{2}{3} \cos^3(t)\right]_0^{\frac{\pi}{2}}=-\frac{2}{3}\]
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione}: Si osservi la notazione come forma differenziale in dimensione $n=2$: sia tato il campo vettoriale
+\[g(x,y)=\left(X(x,y),Y(x,y)\right) = X(x,y) \cdot \hat i + Y(x,y) \cdot \hat j\]
+con $\hat i = (1,0){^T}$ e $\hat j = (0,1){^T}$ versori, rispettivamente, dell'ascissa e dell'ordinata. Allora si ha che
+\[\int_\gamma \left<g,\tau\right> \dif s = \int_I \left<g(\gamma(t)),\gamma'(t)\right> \dif t = \int_I \left[X(x(t),y(t)) \cdot x'(t) + Y(x(t),y(t)) \cdot y'(t)\right] \dif t\]
+allora l'integrale diviene
+\[\int_\gamma \left<g,\tau\right> \dif s = \int_\gamma X \dif x + Y \dif y\]
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione}: Si osservi che se $\gamma$ è una curva chiusa si scrive
+\[\int_\gamma \left<g,\tau\right> \dif s = \oint_\gamma \left<g,\tau\right> \dif s\]
+che prende il nome di circuitazione.
+
+\newpage
+\section{Studio di campi vettoriali}
+
+
+\vspace{2em}
+\noindent
+Si considerino i campi vettoriali seguenti
+\[g(x,y) = (y^2,2xy){^T} \hspace{1em} h(x,y)=\left(x^2,2xy\right){^T}\]
+Sia dato l'intervallo $I=[0,1]$ e la generica curva $\gamma_k$ definita come
+\[\gamma_k : I \longmapsto \mathbb{R}^2\]
+per cui si distinguono $3$ curve
+\begin{itemize}
+    \item $\gamma_1 (t) = (t,t){^T}$
+    \item $\gamma_2 (t) = (t,t^2){^T}$
+    \item $\displaystyle{\gamma_3=\left\{
+        \rowcolors{1}{white}{white}
+        \begin{array}{ll}
+            (0,2t){^T} & t \in \left[0,\frac{1}{2}\right]\\
+            (2t-1,1){^T} & t \in \left[\frac{1}{2},1\right]\\
+        \end{array}    
+    \right\}
+    }$
+\end{itemize}
+
+\vspace{1em}
+\noindent
+\[\int_{\gamma_3} \left<h,\tau\right> = \int_0^{\frac{1}{2}} \left<h(0,2t),(0,2){^T}\right> \dif t + \int_{\frac{1}{2}}^1 \left<h(2t-1,1),(2,0){^T}\right> \dif t\]
+e sostituendo si ottiene
+\[\int_0^{\frac{1}{2}} \left<(0,0){^T},(0,2){^T}\right> \dif t + \int_{\frac{1}{2}}^1 \left<(4t^2-4t+1,4t - 2){^T},(2,0){^T}\right> \dif t \]
+
+
+\[\int_I \left<g,\tau\right> = \int_0^1 \left<(t^2,2t^2){^T},(1,1)\right>\dif t = \int_0^1 3t^2 \dif t = \left[t^3\right]_0^1 = 1\]
+
+\vspace{1em}
+\subsection{Campi conservativi}
+Sia dato il campo vettoriale
+\[g : A \subseteq \mathbb{R}^n \longmapsto \mathbb{R}^n\]
+con $A$ aperto; allora $g$ si dice conservativo se esiste un campo scalare
+\[U : A \longmapsto \mathbb{R}\]
+differenziabile tale che
+\[\nabla U = g\]
+in cui $U$ si dice potenziale i $g$.
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione 1}: Si osservi che se $A$ è connesso, $U_1$ e $U_2$ sono potenziali di $g$ se e solo se
+\[U_2-U_1=\text{costante}\]
+in quanto
+\[\nabla (U_2-U_1) = g-g=0\]
+per cui $U_1$ e $U_2$ differiscono per una costante.
+
+\vspace{1em}
+\noindent
+\subsubsection{Lavoro di un campo conservativo}
+Sia dato un campo vettoriale conservativo
+\[g : A \subseteq \mathbb{R}^n \longmapsto \mathbb{R}^n\]
+e sia $U$ un suo potenziale. Sia, allora
+\[\gamma : [a,b] \longmapsto A\]
+una curva regolare; allora
+\[\int_\gamma \left<g,\tau\right> \dif s = \int_a^b \left<g(\gamma(t),\gamma'(t))\right> \dif t = \int_a^b \left<\nabla U(\gamma(t)), \gamma'(t)\right> \dif t\]
+essendo $U$ un potenziale di $g$, per cui $g=\nabla U$. Riconoscendo la derivata della fuznione composta si ottiene
+\[\int_a^b \dfrac{\dif}{\dif t} \left(U \circ \gamma\right)(t) \dif t = U(\gamma(b)) - U(\gamma(a))\]
+Quindi, se $\gamma_1 : [a_1,b_1] \longmapsto A$ e $\gamma_2 : [a_2,b_2] \longmapsto A$ sono due curve che collegano gli stessi punti, cioè $\gamma_1(a_1)=\gamma_2(a_2)$ e $\gamma_1(b_1)=\gamma_2(b_2)$, allora
+\[\int_{\gamma_1} \left<g,\tau\right> \dif s = \int_{\gamma_2} \left<g,\tau\right> \dif s\]
+In particolare, se $\gamma$ è una curva chiusa, allora si ha
+\[\oint_\gamma \left<g,\tau\right> \dif s = 0\]
+
+\vspace{1em}
+\subsection{Teorema}
+Sia $A \subseteq \mathbb{R}^n$ un aperto connesso e sia
+\[g : A \longmapsto \mathbb{R}^n\]
+continua. Sono, allora, equivalenti
+\begin{enumerate}
+    \item $g$ è conservativo (cioè esiste un potenziale);
+    \item $g$ è a cirucitazione nulla, ossia
+    \[\oint_\gamma \left<g,\tau\right> \dif s = 0\]
+    $\forall \gamma$ chiusa regolare a tratti;
+    \item Per ogni $P,Q \in A$, per ogni $\gamma_1,\gamma_2$ curve regolari a tratti che collegano $P$ a $Q$ si ha
+    \[\int_{\gamma_2} \left<g,\tau\right> \dif s\]
+\end{enumerate}
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Tutte le dimostrazioni sono abbastanza immediate; si propone, quindi, la dimostrazione che la $3$ implica la $1$.\\
+Si fissi, allora, $x_0 \in A$. Si deve definire opportunamente il potenziale
+\[U : A \longmapsto \mathbb{R}^n\]
+Sia, quindi, $x \in A$, per cui si considera una curva regolare a tratti $\gamma$ che congiunge $x_0$ a $x$. Si pone, allora
+\[U(x)=\int_\gamma \left<g,\tau\right> \dif s\]
+che è una definizione pen posta, per l'ipotesi $3$ assunta. Si verifichi, allora, che $\nabla U = g$. Posta $g$ la funzione definita come
+\[g(x,y) = \left(X(x,y), Y(x,y)\right){^T}\]
+si calcola
+\begin{itemize}
+    \item \[\frac{\partial U}{\partial x}(x,y) = \lim_{h \to 0} \frac{1}{h} \cdot \left(U(x+h,y) - U(x,y)\right)\]
+    Nel calcolo, allora, una volta fissata la curva $\gamma$ che collega $(x_0,y_0){^T}$ a $(x,y){^T}$ è legittimo prendere la curva $\gamma_1$ che collega $(x_0,y_0){^T}$ a $(x+h),y$ come somma della curva $\gamma$ e del segmento che collega $(x,y){^T}$ a $(x+h,y){^T}$; bisogna fare attenzione a stare nel dominio, ma siccome $A$ è aperto e $h$ è piccolo, esiste sempre una palla che contiene i punti su cui si sta lavorando. In questo modo, allora
+    \[\lim_{h \to '} \dfrac{1}{h} \left(\int_{\gamma_1} \left<g,\tau\right> \dif s - \int_{\gamma} \left<g,\tau\right> \dif s\right) = \lim_{h \to 0} \frac{1}{h} \int_0^1 (X(x+th,y) \cdot h + Y (x+th,y) \cdot 0) \dif t = \lim_{h \to 0}\]
+    ... continua...\\
+    Si è, quindi, provate che
+    \[\dfrac{\partial U}{\partial x} = X\]
+    \item In modo del tutto analogo si può provare che
+    \[\frac{\partial U}{\partial y} = Y\]
+\end{itemize}
+Pertanto si è dimostrato che
+\[\nabla U = g\]
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione}: Sia $g$ un campo conservativo differenziabile, in cui $g=\nabla U$. Allora $U$ è due volte differenziabile, quindi vale il teorema di Schwarz-Young sulle derivate miste, per cui
+\[\dfrac{\partial^2 U}{\partial x_i \partial x_j} = \dfrac{\partial^2 U}{\partial x_j \partial x_i}\]
+Ma ovviamente la derivata parziale di $U$ rispetto a $x_i$ è la componente $i$-esima del campo $g$ e viceversa, per cui
+\[\frac{\partial^2 U}{\partial x_i \partial x_j} = \frac{\partial}{\partial x_j} g_i \hspace{1em} \text{e} \hspace{1em} \frac{\partial^2 U}{\partial x_i \partial x_j} = \frac{\partial}{\partial x_i} g_j\]
+In $n=2$, pertanto, dato $U(x,y)$ deve essere
+\[\nabla U(x,y) = \left(X(x,y), Y(x,y)\right){^T} = \left(\dfrac{\partial U}{\partial x}(x,y), \frac{\partial U}{\partial y} (x,y)\right)\]
+in cui deve essere
+\[\dfrac{\partial Y}{\partial x}(x,y) = \dfrac{\partial X}{\partial y}(x,y)\]
+In generale, quindi, si può considerare il vettore
+\[\text{rot }g = \left(\dfrac{\partial Z}{\partial y} - \frac{\partial Y}{\partial z}, \frac{\partial X}{\partial z} - \frac{\partial Z}{\partial x}, \frac{\partial Y}{\partial x}-\frac{\partial X}{\partial y}\right) = (0,0,0){^T}\]
+
+Sia
+\[g : A \subseteq \mathbb{R}^3 \longmapsto \mathbb{R}^3\]
+un campo differenziabile; allora si chiama rotore di $g$ il campo vettoriale
+\[\text{rot } g : A \longmapsto \mathbb{R}^3\]
+definito come
+\[\text{rot }g = \left(\dfrac{\partial Z}{\partial y} - \frac{\partial Y}{\partial z}, \frac{\partial X}{\partial z} - \frac{\partial Z}{\partial x}, \frac{\partial Y}{\partial x}-\frac{\partial X}{\partial y}\right)\]
+Se $n=2$, allora
+\[g : A \subseteq \mathbb{R}^2 \longmapsto \mathbb{R}^2\]
+si definisce
+\[\widetilde{g} : A \times \mathbb{R} \longmapsto \mathbb{R}^3\]
+come
+\[\widetilde{g}(x,y,z) = \left(X(x,y),Y(x,y),0\right)\]
+Allora si chiama rotore di $g$ il rotore di $\widetilde{g}$ per cui
+\[\text{rot }g = \left(0,0,\dfrac{\partial Y}{\partial x} - \frac{\partial X}{\partial y}\right){^T}\]
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione}: Se
+\[g : A \subseteq \mathbb{R}^n \longmapsto \mathbb{R}^n\]
+con $n=2$ o $n=3$ è un campo differenziabile e conservativo, allora
+\[\text{rot } g = 0\]
+cioè $g$ è \textbf{irrotazionale}.
+
+\newpage
+\noindent
+\begin{center}
+    2 Dicembre 2022
+\end{center}
+La curva di Hilbert è una curva continua che viene costruita per iterazioni successive e presenta come sostegno tutto $R^2$; tuttavia, pur essendo tale curva semplice, non è chiusa e quindi non soddisfa il teorema di Jordan e quindi non divide il piano in due regioni.\\
+Si è visto che un campo vettoriale è conservativo se è il gradiente di un campo scalare. Non solo, esiste un teorema di caratterizzazione di un campo conservativo che afferma che un campo è conservativo se e solo se ha circuitazione nulla. Non solo, ma dato un campo vettoriale
+\[g : A \subseteq \mathbb{R}^ \longmapsto \mathbb{R}^n\]
+con $g$ differenziabile e $g$ conservativo; allora $g$ è irrotazionale, ossia rot $g = 0$;
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione}: Si osservi che non è vero il vicerversa, cioè non è vero che un campo irrotazionale è conservativo; sia dato, infatti, il campo vettoriale
+\[g(x,y) = = \left(X,Y\right){^T} = \left(-\frac{y}{x^2+y^2}, \frac{x}{x^2+y^2}\right)\]
+allora tale campo è irrotazionale, in quanto
+\[\text{rot } g = \dfrac{\partial Y}{\partial x} - \dfrac{\partial X}{\partial y} = \dfrac{y^2-x^2}{(x^2+y^2)^2} - \frac{x^2+y^2}{(x^2+y^2)^2}=(0,0,0){^T}\]
+Se ora, invece, si considera l'integrale di linea su un percorso chiuso come una circonferenza, ossia
+\[\oint_\gamma \left<g,\tau\right> \dif s \hspace{1em} \text{con} \hspace{1em} \gamma(t)=\left(\cos(t),\sin(t)\right){^T} \hspace{1em} t \in [0,2\pi]\]
+allora
+\[\int_0^{\frac{\pi}{2}} \left<\left(-\dfrac{\sin(t)}{t}, \dfrac{\cos(t)}{t}\right){^T}, \left(-\sin(t),\cos(t)\right){^T}\right>\dif t = 2\pi\]
+pertanto la circuitazione non è nulla, quindi $g$ non è conservativo. Tuttavia un potenziale di $g$ è
+\[U(x,y) = - \arctan \left(\dfrac{x}{y}\right)\]
+che è un potenziale, in quanto
+\begin{align*}
+    &\dfrac{\partial U}{\partial x} = - \dfrac{y}{x^2+y^2}\\
+    &\dfrac{\partial U}{\partial y} = \dfrac{x}{x^2+y^2}
+\end{align*}
+Per cui $g$ sembrerebbe conservativo; tuttavia l'inghippo sta nel fatto che il dominio di definizione del potenziale $U$ non è lo stesso della $g$: nel primo caso si chiede che $y \neq 0$, mentre nel secondo caso si chiede che $(x,y){^T} \neq (0,0){^T}$, per cui si è definito il potenziale in un insieme più ristretto, e non su tutto il dominio di $g$; tuttavia, è possibile definire il potenziale
+\[U(x,y) = \left\{
+    \rowcolors{1}{white}{white}
+    \begin{array}{lll}
+        \arctan \left(\dfrac{x}{y}\right) & \text{se} & y \neq 0\\
+        \arctan \left(\dfrac{y}{x}\right) & \text{se} & x \neq 0\\
+    \end{array}
+\right\}\]
+ma tale potenziale non è continuo e, di conseguenza, non è differenziabile. Pertanto il potenziale $U(x,y)$ è localmente un potenziale di $g$, ma non in un intorno di $(0,0){^T}$ dove il campo $g$ non è definito: il problema è che il dominio ha un buco in $(0,0){^T}$ e se la curva su cui si calcola la circuitazione su una curva che contiene il buco si ottiene un \quotes{errore}.
+
+\vspace{1em}
+\noindent
+\subsection{Insieme stellato}
+Un insieme $E \subseteq \mathbb{R}^n$ si dice \textbf{stellato} se esiste un punto $x_0 \in E$ tale che $\forall x \in E$, il segmento che congiunnge $x_0$ e $x$ è tutto contenuto in $E$, cioè si chiede che dato un punto $x_0$ si vede tutto l'insieme: se, infatti, si considera una stella, il suo centro è un punto da cui si vede tutto l'insieme, ma in nessun altro punto. Un insieme convesso, invece, richiede che da qualsiasi punto si riesca a vedere tutto l'insieme.
+
+\vspace{1em}
+\noindent
+\subsection{Lemma di Poincaré (caratterizzazione dei campi conservativi su insiemi stallati)}
+Sia $A \subseteq \mathbb{R}^n$ un \textbf{insieme stellato}; sia
+\[g : A \longmapsto \mathbb{R}^n\]
+differenziabile; allora $g$ è conservativo \textbf{se e solo se} è irrotazionale, ossia rot $g=0$.
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione 1}: Se $g$ è conservativo, allora si è già dimostrato che è irrotazionale.
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Sia, allora, $g$ irrotazionale, si dimostri che $g$ è conservativo.\\
+Si definisce, quindi, opportunamente il potenziale $U$, ponendo $(x_0,y_0){^T}$ centro della stella, come mostrato di seguito
+\[U(x,y) = \int_\gamma \left<g,\tau\right> \dif s\]
+con $\gamma$ il segmento che congiunge $(x_0,y_0){^T}$ a $(x,y){^T}$, parametrizzato come segue
+\[\gamma(t) = (x_0,y_0){^T} + t \cdot (x-x_0,y-y_0){^T} \hspace{1em} t \in [0,1]\]
+Si calcoli, allora
+\[\dfrac{\partial U}{\partial x} (x,y) = \dfrac{\partial}{\partial x} \int_0^1 \left<\left(X(x_0 + t (x-x_0),y_0+t(y-y_0)),Y(x_0 + t (x-x_0),y_0+t(y-y_0))\right){^T}, (x-x_0,y-y_0){^T}\right> \dif t\]
+Supposta per ipotesi $g \in C^1$, per cui le derivate sono continue; allora eseguendo il prodotto scalare si ottiene
+\[\dfrac{\partial U}{\partial x} (x,y) = \dfrac{\partial}{\partial x} \int_0^1 \left<\left(X(x_0 + t (x-x_0),y_0+t(y-y_0)),Y(x_0 + t (x-x_0),y_0+t(y-y_0))\right){^T}, (x-x_0,y-y_0){^T}\right> \dif t = \frac{\partial}{\partial x} \int_0^1 \left[X(x_0+t(x-x_0),y_0+t(y-y_0)) \cdot (x-x_0) + Y(x_0+t(x-x_0), y_0+t(y-y_0))\right]\]
+Portando dentro la derivata parziale si ottiene
+\[\frac{\partial}{\partial x} \int_0^1 \left[X(x_0+t(x-x_0),y_0+t(y-y_0)) \cdot (x-x_0) + Y(x_0+t(x-x_0), y_0+t(y-y_0))\right] = \int_0^1 \left[\frac{\partial}{\partial x} X(x_0+t(x-x_0),y_0+t(y-y_0)) \cdot (x-x_0) \cdot t + X(\dots) \cdot 1 + \frac{\partial}{\partial x} Y(x_0+t(x-x_0), y_0+t(y-y_0))\right]\]
+ma sfruttando l'ipotesi di irrotazionalità di $g$ è noto che
+\[\dfrac{\partial Y}{\partial x} = \dfrac{\partial X}{\partial y}\]
+per cui si ottiene che 
+\[\int_0^1 \left[\frac{\partial}{\partial x} X(x_0+t(x-x_0),y_0+t(y-y_0)) \cdot (x-x_0) \cdot t + X(\dots) \cdot 1 + \frac{\partial}{\partial x} Y(x_0+t(x-x_0), y_0+t(y-y_0))\right] = \int_0^1 \left[\frac{\partial}{\partial x} X(x_0+t(x-x_0),y_0+t(y-y_0)) \cdot (x-x_0) \cdot t + X(\dots) \cdot 1 + \frac{\partial}{\partial y} X(x_0+t(x-x_0), y_0+t(y-y_0))\right]\]
+ma riconoscendo la derivata del prodotto, si ottiene facilmente che
+\[\int_0^1 \left[t \cdot \left(\dfrac{\dif}{\dif t} X(x_0+t(x-x_0),y_0+t(y-y_0))\right) + X(x_0+t(x-x_0),y_0+y(y-y_0))\right] \dif t = \int_0^1 \frac{\dif}{\dif t} \left(t X(x_0+t(x-x_0),y_0+t(y-y_0))\right) = \left[t \cdot X(x_0+t(x-x_0),y_0+t(y-y_0))\right]_0^1 = X(x,y)\]
+
+\vspace{2em}
+\noindent
+\textbf{Esercizio}: Sia dato il campo vettoriale seguente
+\[g(x,y) = \left(y e^x, e^x-\cos(y)\right)\]
+e si consideri la curva
+\[\gamma : [0,2\pi] \longmapsto \mathbb{R}^2 \hspace{1em} \text{con} \hspace{1em} \gamma(t)=\left(t \cos(t), t \sin(t)\right){^T}\]
+allora, secondo la formula, si dovrebbe calcolare il seguente integrale
+\[\int_\gamma \left<g,\tau\right> \dif s = \int_0^{2\pi} \left<\left(t \sin(t) \cdot e^{t \cos(t)}, e^{t \cos(t)} - \cos(t \sin(t))\right){^T}, \left(\cos(t)-t\sin(t),\sin(t)+t \cos(t)\right){^T}\right>\]
+che è ovviamente una cosa assurda. Tuttavia, è noto anche che in un campo conservativo
+\[\int_\gamma \left<g,\tau\right> \dif s = U(\gamma(b)) - U(\gamma(a))\]
+Ma il potenziale $U$ deve essere
+\[U : \mathbb{R}^2 \longmapsto \mathbb{R}\] 
+tale che
+\begin{align*}
+    &\dfrac{\partial U}{\partial x} = y e^x\\
+    &\dfrac{\partial U}{\partial y} = e^x - \cos(y)
+\end{align*}
+Integrando le derivate parziali rispetto alle variabili opportune si ottiene che
+\[\int y e^x \dif x = ye^x + h(y) \hspace{1em} \text{e} \hspace{1em} \int e^x - \cos(y) \dif y = y e^x - \sin(y)\]
+per cui si ottiene
+\[\dfrac{\partial U}{\partial y} = e^x + h'(y) = e^x - \cos(y) \hspace{1em} \rightarrow h(y) = - \sin(y)\]
+da ciò si evince che
+\[U(x,y)=e^x-\sin(y)\]
+Alternativamente, si sarebbe potuto cambiare il percorso. Per verificare se $g$ è conservativo si osserva che
+\[\dfrac{\partial Y}{\partial x} = e^x \hspace{1em} \text{e} \hspace{1em} \dfrac{\partial X}{\partial y} = e^x\]
+per cui il rotore è nullo e per Pancarrè $g$ è conservativo. Allora l'integrale di linea non è altro che ...continua... \textbf{molto importante}.
+
+\vspace{1em}
+\noindent
+\subsection{Integrale di superficie di un campo vettoriale}
+Si chiama integrale di superifice della componente normale di un campo $g$ definito coem
+\[g : \mathbb{R}^3 \longmapsto \mathbb{R}^3\]
+attraverso una superficie regolare a tratti $\sigma$ definita come
+\[\sigma : K \subseteq \mathbb{R}^3 \longmapsto \mathbb{R}^3\]
+il numero
+\[\iint_\sigma \left<g,n\right> \dif \sigma = \iint_K \left<g(\sigma(s,t)),v(s,t)\right> \dif s \dif t\]
+in cui $v$ è il vettore normale la superficie, ossia
+\[v(s,t) = \frac{\partial \sigma}{\partial s}(s,t) \times \frac{\partial \sigma}{\dif t}(s,t)\]
+con $\times$ prodotto vettoriale, in cui
+\[n=\frac{\nu(s,t)}{\vert \vert \nu(s,t) \vert \vert}\]
+ossia il versore normale la superficie. Dal punto di vista visico
+\[\iint_\sigma \left<g,n\right> \dif \sigma\]
+rappresenta il flusso del campo $g$ attraverso la superficie $\sigma$.
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione}: Si osservi che l'integrale di superficie è strettamente legato all'orientabilità della superficie stessa: il nastro di Möbius è un esempio di superficie non orientabile, attraverso la quale non è possibile calcolare il flusso: si osservi che un nastro di Möbius presenta una sola faccia, e non due.\\
+Per avere l'orientabilità di una superficie, deve esistere il vettore normale alla superficie in ogni punto e taluna deve essere una funzione continua.
+
+\vspace{2em}
+\textbf{Esempio}: Si calcoli il flusso del campo
+\[g(x,y,z) = (x,y,z){^T}\]
+attraerso il paraboloide $x=x^2+y^2$ con $0 \leq z \leq 3$.\\
+Si deve calcolare, quindi
+\[\iint_\sigma \left<g,n\right> \dif \sigma\]
+per parametrizzare il parabolode, essendo il grafico di una funzione si ha che
+\[\sigma(s,t) = (s,t,s^2+t^2){^T} \hspace{1em} \text{con} \hspace{1em} (s,t){^T} \in \mathcal{B} \left((0,0){^T}, \sqrt{3}\right)\]
+allora per calcolare il vettore normale si calcola la Jacobiana della $\sigma$
+\[
+    \mathcal{J} \sigma = \left(
+        \rowcolors{1}{white}{white}
+        \begin{array}{cc}
+            1 & 0\\
+            0 & 1\\
+            2s & 2t
+        \end{array}
+    \right)
+\]
+per cui il vettore normale è
+\[\nu(s,t) = (-2s,-2t,1){^T} \hspace{1em} \nu(0,0)=(0,0,1){^T}\]
+Allora il flusso che si deve calcolare è
+\[\iint_\sigma \left<g,n\right> \dif \sigma = \iint_\mathcal{B} \left<(s,t,x^2+y^2){^T},\nu(s,t)\right>=\iint_\mathcal{B} (-2s^2-2t^2+s^2+t^2) \dif s \dif t\]
+...continua...
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione}: Per un campo in $\mathbb{R}^2$ è possibile considerare il flusso attraverso una curva, per cui
+\[\int_\gamma \left<g,\nu\right> \dif s = \int_a^b \left<g(\gamma(t)), \nu(t)\right> \dif t\]
+in cui $\nu(t)$ è il vettore ortogonale alla curva, ossia ortogonale al vettore tangente. Data, allora, la curva
+\[\gamma : [a,b] \longmapsto \mathbb{R}^2 \hspace{1em} \text{con} \hspace{1em} \gamma(t)=\left(x(t),y(t)\right){^T}\]
+allora definendo il vettore tangente
+\[\gamma'(t)=\left(x'(t),y'(t)\right){^T}\]
+deve essere che
+\[\left<\nu(t),\gamma'(t)\right>=0\]
+ma ciò è verificato per ambedue le possibilità seguenti
+\[\nu(t) = \left(y'(t),-x'(t)\right){^T} \hspace{1em} \text{e} \hspace{1em} \nu(t)=\left(-y'(t),x'(t)\right){^T}\]
+Allora, per convenzione, si impone il vettore normale di una curva come segue
+\[\boxed{\nu(t)=\left(y'(t),-x'(t)\right){^T}}\]
+questa scelta fa sì che il sistema di coordinate locale (cioè centrato nel punto di interesse) $n(t),\tau(t)$ sia congruente al sistema di coordinate $x,y$
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione}: Sia dato il campo vettoriale
+\[g(x,y) = \left(X(x,y),Y(x,y)\right){^T}\]
+e la curva
+\[\gamma(t) = \left(x(t),y(t)\right){^T}\]
+si definiscono il vettore tangente e normale rispettivamente come
+\[\gamma'(t)=\left(x'(t),y'(t)\right) \hspace{1em} \text{e} \hspace{1em} \nu(t)\left(y'(t),-x'(t)\right)\]
+allora il flusso è
+\[\int_\gamma \left<g\nu\right> \dif s = \int_a^b \left<\left(X(\gamma(t)), Y(\gamma(t))\right){^T}, \left(y'(t),-x'(t)\right){^T}\right>\]
+per cui si ottiene
+\[\int_a^b \left(X y' - Y x'\right) \dif t\]
+ma è interessante osservare che tale flusso non è altro che il lavoro di un altro campo, ovvero
+\[\int_a^b \left(X y' - Y x'\right) \dif t = \int_\gamma \left<h,\tau\right> \dif s\]
+in cui
+\[h(x,y) = \left(\Phi(x,y),\Psi(x,y)\right){^T}\]
+allora si ottiene
+\[\int_\gamma \left<h,\tau\right> \dif s = \int_a^b \left(\Phi x' + \Psi y'\right) \dif t = \int_a^b \left(-Y x' + X y'\right) \dif t\]
+in cui vale la corrispondenza
+\[\Phi=-Y \hspace{1em} \text{e} \hspace{1em} \Psi=X\]
+
+\vspace{2em}
+\noindent
+\textbf{Esempio}: La legge di Biot Savart afferma che
+\[B(r) = \int_\gamma \dfrac{\mu_0}{4 \pi} \cdot \dfrac{I \dif l \times (r-r')}{(r-r')^3}\]
+per cui l'integrale che si deve calcolare prevede il prodotto vettoriale invece che quello scalare.
+
+\vspace{1em}
+\subsection{Operatori differenziali}
+Sia data una funzione
+\[f : A \subseteq \mathbb{R}^n \longmapsto \mathbb{R} \hspace{1em} \text{con} \hspace{1em} f \in C^1(A,\mathbb{R})\]
+allora il gradiente di $f$ è
+\[\nabla f : A \longmapsto \mathbb{R}^n \hspace{1em} \text{con} \hspace{1em} \nabla f \in C(a,\mathbb{R}^n)\]
+pertanto $\nabla$ è un operatore differenziale
+\[\nabla : C^1(A,\mathbb{R}) \longmapsto C^1(A,\mathbb{R}^n)\]
+
+\vspace{1em}
+\noindent
+Similmente, se si considera
+\[f : A \subseteq \mathbb{R}^3 \longmapsto \mathbb{R}^3 \hspace{1em} \text{con} \hspace{1em} f \in C^1\]
+allora il rotore definito come
+\[\text{rot } f : A \longmapsto \mathbb{R}^3\]
+è operatore differenziale, definito come
+\[\text{rot } : C^1(A,\mathbb{R}^3) \longmapsto C^0(A,\mathbb{R}^3)\]
+in cui, talvolta, il rotore si indica come
+\[\text{rot } f = \nabla \times f\]
+
+\vspace{1em}
+\noindent
+La divergenza di un campo vettoriale
+\[f : A \subseteq \mathbb{R}^ \longmapsto \mathbb{R}^n\]
+si calcola come
+\[\text{div } f = \sum_{k=1}^n \dfrac{\partial f_k}{\partial x_k}\]
+ossia la traccia della Jacobiana, ovvero la somma degli elementi della diagonale. In particolare, la divergenza viene definita
+\[\text{div } : C^1(A,\mathbb{R}^n) \longmapsto C^0(A,\mathbb{R})\]
+molto spesso denotato come
+\[\div f = \nabla \cdot f\]
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione}: Si osservi che tali operatori differenziali possono essere combinati fra loro, ma non in tutti i modi. In particolare si definisce \textbf{laplcaciano}
+\[f : A \subseteq \mathbb{R}^n \longmapsto \mathbb{R}\]
+e si denota con
+\[\Delta f = \text{div } \left(\nabla f\right)\]
+ed è un operatore definito come
+\[\Delta : C^2(A,\mathbb{R}) \longmapsto C^0(A,\mathbb{R})\]
+Scrivendo esplicitamente il laplaciano, si ottiene
+\[\Delta f = \text{div } \left(\nabla f\right) = \dfrac{\partial^2 f}{\partial x_1^2} + \dfrac{\partial^2 f}{\partial x_2^2} + \dots + \dfrac{\partial^2 f}{\partial x_n^2} = \sum_{k=1}^n \dfrac{\partial^2 f_k}{\partial x_k^2}\]
+
+
+\vspace{1em}
+\noindent
+Il teorema fondamentale del calcolo afferma che
+\[\int_a^b f'(x) \dif x = f(b) - f(a)\]
+Estendendo tale concetto a dimensioni superiori, si ottiene
+\[\int_{[a,b]} f'(x) \dif x = \left[f(x)\right]_{x \in \partial^+[a,b]}\]
+con $\partial^+[a,b]$ bordo orientato.\\
+Scrivendo esplicitamente tale formula si ottiene
+\[\iiint_{\Omega} \text{D } f \dif m = \int_{\partial^+ \Omega} f \dif s\]
+in cui D è un operatore differenziale; la dicitura $\dif m$ deriva dal fatto che si tratta di un integrale di Riemann. Partendo da $\Omega$ insieme di una certa dimensione, si abbassa la sua dimensione riducendosi al bordo $\partial^+ \Omega$: il bordo sarà una superficie nel caso di un solido, mentre sarà una curva nel caso di una superficie.
+
+\vspace{1em}
+\noindent
+\subsection{Teorema della divergenza di Gauss}
+Sia $\Omega \in \mathbb{R}^n$ un insieme \quotes{ragionevole} con bordo regolare a tratti orientato positivamente, denotato con $\partial^+ \Omega$ (dove $+$ indica l'orientazione positiva).\\
+Sia $\overline{\Omega} \subseteq A$ con $A$ aperto di $\mathbb{R}^n$ e sia
+\[\gamma : A \longmapsto \mathbb{R}^n \hspace{1em} \text{con} \hspace{1em} g \in C^1\]
+allora
+\[\iint_{\partial^* \Omega} \left<g,n\right> \dif \sigma = \iiint_\Omega \text{div } g \dif m\]
+Per $n=2$, ovviamente, si ha
+\[\iint_{\partial^+ \Omega} \left<g,n\right> \dif s = \iint_{\Omega} \text{div } g \dif x \dif y\]
+mentre per $n=3$ si ha che
+\[\iint_{\partial^+ \Omega} \left<g,n\right> = \iiint_{\Omega} \text{div } g \dif x \dif y \dif z\]
+
+\newpage
+\noindent
+\begin{center}
+    5 Dicembre 2022
+\end{center}
+\vspace{1em}
+\noindent
+\textbf{Esercizio}: Si consideri il clindro di equazione
+\[x^2+y^2-y=0\]
+e la semisfera
+\[0 \leq < \leq \sqrt{1-x^2-y^2}\]
+Completando il quadrato nell'equazione del cilindro, si perviene all'equazione seguente
+\[x^2+y^2-y=0 \hspace{1em} \rightarrow \hspace{1em} x^2+\left(y-\dfrac{1}{2}\right)^2=\dfrac{1}{4}\]
+Allora l'area da calcolare è
+\[\text{Area} = \int_\gamma \sqrt{1-x^2-y^2} \dif s\]
+posto
+\[\gamma(t) = \left(\dfrac{1}{2} \cos(t), \dfrac{1}{2} + \dfrac{1}{2} \sin(t)\right){^T} \hspace{1em} \rightarrow \hspace{1em} \gamma'(t) = \left(-\dfrac{1}{2} \sin(t), \dfrac{1}{2} \cos(t)\right){^T} \hspace{1em} \rightarrow \hspace{1em} \vert\vert \gamma'(t) \vert\vert=\dfrac{1}{4}\]
+pertanto si ottine
+\[\text{Area} = \int_\gamma \sqrt{1-x^2-y^2} \dif s = \int_0^{2\pi} \sqrt{1-\dfrac{1}{4} \cos^2(t) - \left(\dfrac{1}{2}+\dfrac{1}{2} \sin(t)\right)^2} \cdot \dfrac{1}{4} \dif t\]
+Risolvendo i calcoli si ottiene la semplificazione seguente
+\[\text{Area}=\dfrac{1}{4} \int_0^{2\pi} \dfrac{1}{\sqrt{2}} \sqrt{1-\sin(t)} \dif t\]
+
+\vspace{2em}
+\noindent
+\text{Osservazione}: Il \textbf{teorema della divergenza} di Gauss afferma, per $n=2$, che
+\[\iint_\Omega \text{div } g \dif x \dif y = \int_{\partial^+ \Omega} \left<g,n\right> \dif s\]
+posto $\Omega$ \quotes{\textbf{insieme ragionevole}} e $\partial^+ \Omega$ bordo regolare a tratti orientato positivamente.\\
+In particolare, sia $\Omega$ un aperto limitato e connesso, con frontiera $\partial \Omega$ una curva regolare a tratti
+\[\gamma = \gamma_1 + \gamma_2 + \dots + \gamma_n\]
+con \quotes{$+$} si intende concatenazione di curve del tipo
+\[\gamma_k : [a_k,b_k] \longmapsto \mathbb{R}^2\]
+e tale per cui $\mathcal{G}_1 \cup \mathcal{G}_2 \cup \dots \cup \mathcal{G}_n = \partial \Omega$, ossia $\partial \Omega$ è dato dall'unione delle frontiere delle curve $\gamma_k$.\\
+Presa la curva
+\[\gamma_1 : [a_1,b_1] \longmapsto \mathbb{R}^2\]
+la quale presenta una parametrizzazione del tipo
+\[\gamma_1=\left(x(t),y(t)\right){^T}\]
+per cui il vettore normale sarà, convenzionalmente
+\[\nu_1 (t) = \left(y'(t),-x'(t)\right){^T}\]
+Allora, si dirà che $\gamma$ parametrizza positivamnte $\partial \Omega$ se la normale $n$ \quotes{punta verso l'esterno}.
+
+\vspace{1em}
+\noindent
+\textbf{Esempio}: Dato un cerchio, per esempio
+\[\gamma(t) = \left(\sin(t),\cos(t)\right){^T} \hspace{1em} \rightarrow \hspace{1em} \gamma'(t) = (\cos(t),-\sin(t)){^T}\]
+allora il vettore normale è $\nu(t)=\left(-\sin(t),-\cos(t)\right){^T}$, per cui punta dentro la circonferenza: allora $\gamma$ non parametrizza positivamente.\\
+Invece, con $\phi=(\cos(t),\sin(t)){^T}$ allora $\phi'(t)=(-\sin(t),\cos(t)){^T}$ e $\nu(t)=(\cos(t),\sin(t)){^T}$ per cui punta fuori dalla circonferenza e quindi è una parametrizzazione positiva.
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione}: Nel caso $n=3$ allora
+\[\iiint_{\Omega} \text{div } g \dif x \dif y \dif z = \iint_{\partial \Omega^+} \left<g,n\right> \dif \sigma\]
+con $\Omega$ aperto limitato connesso, con frontiera regolare a tratti del tipo
+\[\sigma = \sigma_1 + \sigma_2 + \dots + \sigma_n\]
+tale per cui
+\[\sigma_k : K_k \subseteq \mathbb{R}^2 \longmapsto \mathbb{R}^3\]
+e quindi
+\[\bigcup_{k=1}^n \sigma_k(K_k) = \partial \Omega\]
+Allora si chiede che $\partial \Omega$ sia parametrizzato in modo tale che la normale \quotes{punti verso l'esterno}
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Ci si ponga nel caso $n=2$ e si supponga che $\Omega$ sia un insieme normale rispetto ad entrambi gli assi. Sia data
+\[g=\left(X(x,y),Y(x,y)\right){^T} \hspace{1em} \text{e} \hspace{1em} \gamma(t)=(x(t),y(t)){^T}\]
+Si vuole dimostrare, quindi, che
+\[\iint_\Omega \text{div } g \dif x \dif y = \iint_{\Omega} \left(\dfrac{\partial X}{\partial x} + \dfrac{\partial Y}{\partial y}\right) \dif x \dif y = \oint_{\partial \Omega^+} \left<g,n\right> \dif s = \int_I \left(X y' - Y x'\right) \dif t\]
+Si può, quindi, spezzare l'integrale come segue
+\[\iint_{\Omega} \dfrac{\partial X}{\partial x} \dif x \dif y + \iint_\Omega \dfrac{\partial Y}{\partial y} \dif x \dif y = \int_I X y' \dif t - \int_I Y x' \dif t\]
+e si provi, in particolare, che
+\[\iint_{\Omega} \dfrac{\partial Y}{\partial y} \dif x \dif y = - \int_I Y(x(t),y(t)) \cdot x'(t)\]
+Supponendo che $\Omega$ sia un insieme che presenta come bordo la concatenazione di due curve $\gamma_1$ e $\gamma_2$ definite come segue
+\begin{align*}
+    &\gamma_1(t) = (t,\phi(t)){^T}\hspace{1em} t \in [a,b]\\
+    &\gamma_2(t) = (b,t)^{^T} \hspace{1em} t \in [\phi(b),\psi(b)]\\
+    &\gamma_3(t) = (t,\psi(t)) \hspace{1em} t \in [a,b]\\
+    &\gamma_4(t) = (a,t){^T} \hspace{1em} t \in [\phi(a), \psi(a)]
+\end{align*}
+in cui le funzioni $\phi$ e $\psi$ derivano dal fatto che $\Omega$ è un dominio normale. In questo modo si ottiene che
+\[\iint_\Omega \dfrac{\partial Y}{\partial y} \dif x \dif y = - \int_I Y(x(t),y(t)) \cdot x'(t) = - \left[\int_{\gamma_1} + \int_{\gamma_2} + \int_{\gamma_3} + \int_{\gamma_4}\right]\]
+Allora si ottiene
+\[- \left[\int_a^b Y(t,\phi(t)) \cdot 1 \dif t + \int_{\phi(b)}^{\psi(b)} Y(b,y) \cdot 0 - \int_a^b Y(t,\psi(t)) \cdot 1 \dif t - \int_{\phi(b)}^{\psi(a)} Y(a,t) \cdot 0 \right] = \int_a^b \left[Y(t,\psi(t)) - Y(t,\phi(t))\right] \dif t\]
+Si calcola, allora
+\[\iint_\Omega \dfrac{\partial Y}{\partial y} \dif x \dif y = \int_a^b \left( \int_{\phi(x)}^{\psi(x)} \dfrac{\partial Y}{\partial y}(x,y) \dif y\right) \dif x = \int_a^b Y(x,\psi(x)) - Y(x,\phi(x)) \dif x\]
+che è esattamente quanto si era ottenuto.\\
+Similmente si può dimostrare che
+\[\iint_{\Omega} \dfrac{\partial X}{\partial x} \dif x \dif y = \int_I X y' \dif t\]
+Infatti, si ottiene
+\[\int_c^d \left(\int_{\alpha(y)}^{\beta(y)} \dfrac{\partial X}{\partial x} \dif x\right) \dif y = \int_c^d \left[X(\beta(y),y) - X(\alpha(y),y)\right] \dif t\]
+mentre
+\[\int_I X y' \dif t = \int_c^d X(\alpha(t),t) \cdot 1 \dif t + \int_c^d X(\beta(t),t) \cdot 1 \dif t = \int_c^d \left[X(\beta(t),t) - X(\alpha(t),t)\right]\]
+
+\vspace{2em}
+\noindent
+\textbf{Esempio}: Si calcoli il flusso attraverso un paraboloide di equazione
+\[z=x^2+y^2 \hspace{1em} \text{con} \hspace{1em} z \in [0,3]\]
+del campo
+\[g(x,y,z)=(x,y,z){^T}\]
+Si consideri, allora, il solido
+\[\Omega = \{(x,y,z){^T} \in \mathbb{R}^3 : (x,y){^T} \in \mathcal{B}\left((0,0){^T},\sqrt{3} \right), \hspace{0.5em} x^2+y^2 \leq z \leq 3\}\]
+Si usi, allora, il teorema della divergenza
+\[\iint_{\partial \Omega^+} \left<g,n\right> \dif \sigma = \int_{\Omega} \text{div } g \dif x \dif y \dif z\]
+ma ovviamente
+\[\text{div g} = 1+1+1=3\]
+essendo $g$ l'identità. Si ottiene quindi
+\[\int_{\Omega} \text{div } g \dif x \dif y \dif z = 3 \cdot \iint_\mathcal{B} \left(\int_{x^2+y^2}^3 \dif z\right) \dif x \dif y\]
+Integrando con coordinate polari si ottiene
+\[3 \cdot \int_0^{2\pi} \left(\int_0^{\sqrt{3}} \left(2-\rho^2\right) \cdot \rho \dif \rho\right) \dif \theta = 6\pi \cdot \left[\dfrac{3}{2} \rho^2 - \dfrac{1}{4} \rho^4\right]_0^{\sqrt{3}} = \dfrac{27}{2} \pi\]
+che non è il risultato ottenuto in precedenza, in quanto il teorema della divergenza considera tutto il solido, per cui anche il tappo, ovvero
+\[\iint_{\text{paraboloide}} \left<g,n\right> \dif \sigma + \iint_\text{tappo} \left<g,n\right> \dif \sigma = \iiint \text{div } g \dif m\]
+Basterà, ora, calcolare il flusso del tappo; si consideri, allora, la parametrizzazione in $\mathbb{R}^3$ del cerchio
+\[\sigma(s,t) = \left(s \cos(t), s \sin(t), 3\right){^T} \hspace{1em} \text{con} \hspace{1em} s \in [0,\sqrt{3}] \hspace{1em} \text{e} \hspace{1em} t \in [0,2\pi]\]
+Calcolando la Jacobiana della $\sigma$ si ottiene
+\[\mathcal{J} \sigma = \left(
+    \rowcolors{1}{white}{white}
+    \begin{array}{cc}
+        \cos(t) & - s \sin(t)\\
+        \sin(t) & s \cos(t)\\
+        0 & 0\\
+    \end{array}
+\right)\]
+per cui il vettore normale è
+\[\nu = \left(0,0,s\right){^T} \hspace{1em} \rightarrow \hspace{1em} n=\dfrac{\nu}{\vert\vert\nu\vert\vert}=(0,0,1){^T}\]
+Pertanto si ottiene che
+\[\iint_{\text{tappo}} \left<g,n\right> \dif \sigma = \int_0^{\sqrt{3}} \left(\int_0^{2\pi} \left<(s \cos(t),s \sin(t), 3){^T},(0,0,1){^T}\right>\dif t\right) \dif s = 6 \sqrt{3} \pi\]
+
+\vspace{2em}
+\noindent
+\textbf{Esempio}: Sia dato il campo elettrico generato dalla carica $q$, esposto dall'equazione seguente
+\[E_q=\dfrac{q}{4 \pi \epsilon_0} \cdot \dfrac{(x,y,z){^T}}{\vert\vert(x,y,z){^T}\vert\vert^3}\]
+e si calcoli il flusso di tale campo elettrico attraverso una sfera, parametrizzata come
+\[\sigma(\phi,\theta)=\left(R \sin(\phi) \cos(\theta), R \sin(\phi) \sin(\theta), R \cos(\theta)\right){^T}\]
+con $\phi \in [0,\pi]$ e $\theta \in [0,2\pi]$; allora il vettore normale è
+\[\nu(\phi,\theta)=R \sin(\phi) \sigma(\phi,\theta)\]
+pertanto il flusso è
+\[\iint_{\text{Sfera}} \left<Eq,n\right> \dif \sigma = \int_0^{2\pi} \left(\int_0^\pi \dfrac{q}{4 \pi \epsilon_0} \cdot \dfrac{1}{R^3} \cdot \left<\sigma(\phi,\theta), R \sin(\phi) \sigma(\phi,\theta) \dif \phi\right> \right) \dif \theta = \dfrac{q}{\epsilon_0}\]
+...continua...\\\\
+Si noti in particolare che
+\[\text{div } E_q = \dfrac{q}{4 \pi \epsilon} \cdot \left[\dfrac{\partial}{\partial x} \dfrac{x}{(x^2+y^2+z^2)^{\frac{3}{2}}} + \dfrac{\partial }{\partial y} \dfrac{y}{(x^2+y^2+z^2)^{\frac{3}{2}}} + \dfrac{\partial}{\partial z} \dfrac{z}{(x^2+y^2+z^2)^{\frac{3}{2}}}\right]\]
+La somma delle derivate è
+\[\sqrt{x^2+y^2+z^2} \cdot \left[ \dfrac{\left(y^2+z^-2x^2\right) + \left(x^2+z^2-2y^2\right) + \left(x^2+y^2-2z^2\right)}{(x^2+y^2+z^2)^3}\right] = 0\]
+Pertanto si è ottenuto che
+\[\text{Flusso }=\dfrac{q}{\epsilon_0} \hspace{1em} \text{e} \hspace{1em} \text{div } E_q=0\]
+ma ciò contrasta con il teorema della divergenza che
+\[\iint_{\partial \mathcal{B}^+} \left<E_q,n\right> \dif \sigma = \iiint_\mathcal{B} \text{div } E_q \dif x \dif y \dif z \hspace{1em} \rightarrow \hspace{1em} \dfrac{q}{\epsilon_0}=0\]
+ma in realtà ciò non è una contraddizione, in quanto il campo $E_q$ non è definito sulla palla di centro $(0,0){^T}$, per cui l'integrale della divergenza non è proprio definito.
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione}: Si consideri, allora, una qualsiasi superficie $\sigma$ che contiene la carica $q$ al suo interno. Si descriva una sfera $\mathcal{B}$ con la carica $q$ al centro e contenuta all'interno della superficie $\sigma$.\\
+Il campo $E_q$ è definito in $\mathbb{R}^3 - \mathcal{B}$ (in quanto si esclude la sferetta centrata nella carica); è possibile, allora, usare il teorema della divergenza sul solido bucato, ossia la parte di $\sigma$ esterna alla palla $\mathcal{B}$. Allora si calcola
+\[\iint \left<E_q,n\right> \dif \sigma = \iint_{\sigma} \left<E_q,n\right> \dif \sigma - \iint_{\partial \mathcal{B}} \left<E_q,n\right> \dif \sigma = \iiint_\text{Solido} \text{div } \dif x \dif y \dif z = 0\]
+che è nullo per quanto precedente calcolato. Ciò, quindi, permette di affermare che
+\[\iint_{\sigma} \left<E_q,n\right> \dif \sigma = \iint_{\partial \mathcal{B}} \left<E_q,n\right> \dif \sigma \hspace{1em} \rightarrow \hspace{1em} \iint_\sigma \left<E_q,n\right> \dif \sigma = \dfrac{q}{\epsilon_0}\]
+per cui il teorema di Gauss afferma che il flusso non dipende dalla superficie che contiene la carica.
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione}: Com'è noto, i campo conservativi presentano un potenziale e sono irrotazionali, per cui la circuitazione è nulla.\\
+Per quanto riguarda, invece, i \textbf{campi solenoidali}, deve esistere un potenziale vettore; non solo, ma la divergenza del campo solenoidale è nulla e il flusso attraverso una superficie chiusa è nullo.
+
+\vspace{1em}
+\noindent
+\subsection{Campo solenoidale}
+Un campo
+\[g : A \subseteq \mathbb{R}^3 \longmapsto \mathbb{R}^3\] 
+si dice solenoidale se esiste un campo
+\[h : A \longmapsto \mathbb{R}^3\]
+chiamato \textbf{potenziale vettore} tale per cui
+\[\text{rot } h = g\]
+Si può dimostrare che $g$ è solenoidale \textbf{se e solo se} il flusso di $g$ attraverso uan superficie chiusa è nulla. Non solo, ma se $g$ è solenoidale allora div $g=0$, in quanto
+\[\text{div } \left(\text{rot } h\right) = 0\]
+Il viceversa, invece, vale slo se il dominio è stellato.
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione}: Si espone di seguito il significato fisico della divergenza. Com'è noto, dato un campo vettoriale
+\[g=(x,y,z){^T}\]
+la divergenza del campo è
+\[\text{div } g = \dfrac{\partial X}{\partial x} + \dfrac{\partial Y}{\partial y} + \dfrac{\partial Z}{\partial z}\]
+Sia dato, allora, il punto $(x_0,y_0,z_0){^T} \in \mathbb{R}^3$ e la palla
+\[\mathcal{B}_R = \mathcal{B}\left((x_0,y_0,z_0){^T},R\right)\]
+in cui la sfera $\mathcal{S}_R$ è il boldo di tale palla, ossia $\mathcal{S}_R = \partial \mathcal{B}_R$.\\
+Per il teorema della divergenza si ha che
+\[\iint_{\mathcal{B}_R} \text{div } g \dif x \dif y \dif z = \iint_{\mathcal{S}_R} \left<g,n\right> \dif \sigma\]
+Applicando il teorema della media si ottiene che
+\[\dfrac{1}{\text{Volume}_{\mathcal{B}R}} \iiint_{\mathcal{B}_R} \text{div } g \dif x \dif y \dif z = \dfrac{1}{\text{Volume}_{\mathcal{B}_R}} \iint_{\mathcal{S}_R} \left<g,n\right> \dif \sigma\]
+Preso il limite si ottiene
+\[\lim_{R \to 0^+} \dfrac{1}{\text{Volume}_{\mathcal{B}_R}} \iiint_{\mathcal{B}_R} \text{div } g \dif x \dif y \dif z = \lim_{R \to 0^+} \dfrac{\displaystyle{\iint_{\mathcal{S}_R}} \left<g,n\right> \dif \sigma}{\text{Volume}(\mathcal{B}_R)}\]
+
+\vspace{2em}
+\noindent
+\textbf{Esercizio}: Si calcoli il flusso del campo
+\[g(x,y)=\left(y^2 \sin(y), x^2y\right){^T}\]
+uscente dalla figura
+\[\Omega = \{(x,y){^T} \in \mathbb{R}^2 : \vert x \vert 1, 2 \vert x \vert < y < 1+x^2\}\]
+Allora il flusso si calcola come
+\[\oint_{\partial \Omega^+} \left<g,n\right> \dif s = \iint_{\Omega} \text{div }g \dif x \dif y = \iint_\Omega \left(0+x^2\right) \dif x \dif y = \int_{-1}^{1} \left(\int_{2\vert x\vert}^{1+x^2} x^2 \dif y\right) \dif x\]
+Siccome la funzione è pari si ottiene
+\[2 \cdot \int_0^1 x^2 \cdot (1+x^2-2x) \dif x = 2 \cdot \int_0^1 (x^2+x^3-2x^3) \dif x = 2 \cdot \left(\dfrac{1}{3}+\dfrac{1}{4}-\dfrac{2}{3}\right)\]
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione}: Si osservi che, con $n=2$, dato il campo
+\[g(x,y)=\left(X(x,y),Y(x,y)\right){^T}\]
+e la curva
+\[\gamma(t)=\left(x(t),y(t)\right) \hspace{1em} t \in [a,b]\]
+allora il teorema della divergenza diviene
+\[\int_{\gamma=\partial \Omega^+} \left<g,n\right> \dif s = \iint_\Omega \left(\dfrac{\partial X}{\partial x} + \dfrac{\partial Y}{\partial y}\right) \dif x \dif y\]
+Si ottiene, quindi
+\[\int_a^b = \left(Xy'-Yx'\right) \dif t = \int_A^b \left<(-Y,X){^T},(x',y')\right> \dif t\]
+che è esattamente l'integrale di linea del campo
+\[h(x,y)=\left(-Y(x,y),X(x,y)\right){^T}\]
+Considerando, infatti, tale campo si ha che
+\[\iint_\Omega \left(\dfrac{\partial X}{\partial x} + \dfrac{\partial Y}{\partial y} \right) \dif x \dif y = \int_\gamma \left<h,\tau\right> \dif s\]
+Per cui si ottiene che il lavoro del campo $h$ lungo la curva $\gamma$ è uguale all'integrale su $\Omega$ del rotore di $h$.
+
+\newpage
+\noindent
+\begin{center}
+    6 Dicembre 2022
+\end{center}
+È stato analizzato il teorema della divergenza di Gauss, il quale permette di calcolare il flusso attraverso una superficie chiusa, considerando un solido chiuso.
+
+\vspace{2em}
+\noindent
+\subsection{Teorema del rotore nel piano - Formula di Gauss-Green}
+Sia $\Omega \subseteq \mathbb{R}^2$ un insieme \quotes{ragionevole}, ossia un aperto limitato e connesso, con frontiera regolare a tratti $\partial \Omega^+$ parametrizzata positivamente (secondo la \textbf{normale esterna}).\\
+Sia $A \subseteq \mathbb{R}^2$ un insieme aperto, tale per cui $\overline{\Omega} \subseteq A$ e sia
+\[g : A \longmapsto \mathbb{R}^2 \hspace{1em} \text{un campo} \hspace{1em} C^1\]
+definita come
+\[g(x,y) = \left(X(x,y),Y(x,y)\right){^T}\]
+allora
+\[\oint_{\partial \Omega^+} \left<g,\sigma\right> \dif s = \iint_{\Omega} \left(\dfrac{\partial Y}{\partial x} - \dfrac{\partial X}{\partial y}\right) \dif x \dif y\]
+in cui il secondo elemento è il rotore del campo $g$, ossia
+\[\iint_{\Omega} \left<\text{rot } g, (0,0,1){^T}\right> \dif x \dif y\]
+ove
+\[\text{rot } g = \left(0,0,\dfrac{\partial Y}{\partial x} - \dfrac{\partial X}{\partial y}\right)\]
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Si definisca un nuovo campo
+\[h(x,y) = \left(Y(x,y),-X(x,y)\right)\]
+che ricorda una sorta di vettore ortogonale. Allora il flusso del campo $h$ sul bordo di omega
+\[\int_{\partial \Omega^+} \left<h,n\right> \dif s = \iint_{\Omega} \text{div } h \dif x \dif y = \iint_{\Omega} \left(\dfrac{\partial Y}{\partial x} - \dfrac{\partial X}{\partial y}\right) \dif x \dif y\]
+ma essendo
+\[n=\left(y'(t),-x'(t)\right)\]
+si ottiene che
+\[\int_{\partial \Omega^+} \left<h,n\right> \dif s = \int_I \left(Y y' - X \cdot (- x')\right) \dif t = \int_I \left(Yy' + Xx'\right) \dif t\]
+
+\vspace{1em}
+\subsection{Bordo orientato di una superficie di $\mathbb{R}^3$}
+Sia $\Omega \subseteq \mathbb{R}^2$ dominio aperto connesso con frontiera regolare a tratti parametrizzata positivamente da una curva
+\[\partial \Omega^+ : I \longmapsto \mathbb{R}^2\]
+Sia
+\[\sigma : \overline{\Omega} \longmapsto \mathbb{R}^3\]
+regolare a tratti. Si dirà bordo orientato della superficie $\sigma$ la curva composta
+\[\partial \sigma^+ : I \longmapsto \mathbb{R}^3\]
+definita come la composta seguente
+\[\partial \sigma^+ (t) = \left(\sigma \circ \partial \Omega^+\right)(t)\]
+in cui si ha una sostanziale differenza tra bordo e frontiera
+
+\vspace{1em}
+\subsection{Teorema di Kelvin-Stokes in $\mathbb{R}^3$}
+L'idea principale è quella di pensare di scrivere il flusso del campo attraverso una superficie come il flusso del rotore attraverso il bordo della superficie stessa
+\[\iint_{\Omega} \left<\text{rot } g, (0,0,1){^T}\right> \dif x \dif y = \iint_{\textbf{Superficie } \Omega} \left<\text{rot } g, n\right> \dif \sigma\]
+Ovviamente, però, è fondamentale chiare il concetto di \textbf{bordo di una superficie di $\mathbb{R}^3$}, precedentemente esposto. Allora si ha che:\\\\\\
+
+Sia $\Omega \subseteq \mathbb{R}^2$ dominio aperto connesso con frontiera regolare a tratti parametrizzata positivamente da una curva
+\[\partial \Omega^+ : I \longmapsto \mathbb{R}^2\]
+e sia definita
+\[\sigma : \overline{\Omega} : \mathbb{R}\]
+una superficie regolare a tratti con bordo $\partial \sigma^+$ parametrizzata positivamente.\\
+Sia $A \subseteq R^3$ aperto e $\sigma (\overline{\Omega}) \subset A$ con
+\[g : A \longmapsto \mathbb{R}^3 \hspace{1em} \text{con} \hspace{1em} g \in C^1\]
+allora
+\[\oint_{\partial \Omega^+} \left<g,\tau\right> \dif s = \iint_\sigma \left<\text{rot } g, n\right> \dif \sigma\]
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione}: Tale teorema permette di spiegare il significato fisico del rotore: sia $(x_0,y_0,z_0){^T} \in \mathbb{R}^3$; essendo il rotore un campo, si fissa un versore $n \in \mathbb{R}^3$, ossia il versore normale di una superficie che si pensa come un dischetto $D$ con centro $(x_0,y_0,z_0){^T}$, raggio $r$ e normale a $n$.\\
+Chiamati
+\begin{align*}
+    &x_{n,m} = \partial D = \text{ bordo della circonferenza } D
+\end{align*}
+Applicando il teorema di Stokes si ha che
+\[\oint_{S_{n,m}} \left<g,\tau\right> \dif s = \iint_{D} \left<\text{rot } g(x_0,y_0,z_0), n\right> \dif \sigma\]
+Dividendo ambedue i termini per Area$(D)=\pi r^2$ si ottiene che
+\[\dfrac{\displaystyle{\iint_{D} \left<\text{rot } g(x,y,z), n\right> \dif \sigma}}{\text{Area}(D)} = \left<\text{rot }g(x_0,y_0,z_0),n\right>\]
+per il teorema della media intehrale. Prendendo il limite per $r \to 0^+$ si ha che
+\[\lim_{r \to 0^+} \left<\text{rot }g(x_0,y_0,z_0),n\right> = \lim_{r \to 0^+} \dfrac{\displaystyle{\iint_{D} \left<\text{rot } g(x,y,z), n\right> \dif \sigma}}{\text{Area}(D)}\]
+che è da interpretarsi come la vorticosità del campo $g$.
+
+\vspace{2em}
+\noindent
+\textbf{Esempio}: Si consideri
+\[\gamma : [0,2\pi] \longmapsto \mathbb{R}^2 \hspace{1em} \text{con} \hspace{1em} \gamma(t) : \left(\cos^3(t),\sin^3(t)\right)\]
+Si calcoli, allora, l'area della regione interna alla curva. Tale curva è l'astroide, per cui è sufficiene calcolare l'area del primo quadrante e moltiplicare per $4$; in particolare l'astroide viene parametrizzata come segue
+\[\left\{
+    \rowcolors{1}{white}{white}
+    \begin{array}{ll}
+        &x=\cos^3(t)\\
+        &y=\sin^3(t)
+    \end{array}
+\right.\]
+ma ricavare la funzione associata non è sempre immediato e l'integrale associato non è facile. Tuttavia, è possibile impiegare Gauss-Green, in quanto posto $\Omega$ l'insieme che ha come bordo $\gamma$, l'area cercata è
+\[\text{Area} = \iint_\Omega 1 \dif x \dif y\]
+e per Gauss-Green si ha che
+\[\iint_\Omega \left(\dfrac{\partial Y}{\partial x} - \dfrac{\partial X}{\partial y}\right) \dif x \dif y = \oint_{\partial \Omega^+} \left<g,\tau\right> \dif s\]
+Allora, per avere la corrispondenza, si può considerare $g(x,y)$ tale che il ruo rotore è proprio $1$, tale che, quindi
+\[\dfrac{\partial Y}{\partial x} - \dfrac{\partial X}{\partial y}=1 \hspace{1em} \forall (x,y){^T}\]
+una possibile scelta è
+\[g(x,y)=\dfrac{1}{2}\left(-y,x\right){^T}\]
+ma vanno bene anche
+\[g(x,y)=(0,x){^T} \hspace{1em} \text{oppure} \hspace{1em} g(x,y)=(-y,0){^T}\]
+Si ricava, allora, il vettore tangente
+\[\gamma'(t) = (x'(t),y'(t)){^T} = \left(-3\cos^2(t)\sin(t),3\sin^2(t)\cos(t)\right){^T}\]
+per cui
+\[\text{Area }=\oint_\gamma \left<g,\tau\right> \dif s = \int_0^{2\pi} \left<\dfrac{1}{2} \left(-\sin^3(t),\cos(t)\right){^T},\left(-3\cos^2(t)\sin(t),3\sin^2(t)\cos(2)\right){^T}\right> = \dfrac{3}{2} \int_0^{2\pi} \left(\cos^2\right)\]
+
+\vspace{2em}
+\noindent
+\textbf{Esempio 2}: Sia dato il campo
+\[g : A \subseteq \mathbb{R}^2 \longmapsto \mathbb{R}^3\]
+con $g$ irrotazionale, tale per cui rot $g=0$; allora, per ogni curva chiusa $\gamma$ tale che \textbf{la parte interna di $\gamma$ è contenuta in $A$}, si ha che
+\[\oint_\gamma \left<g,\tau\right> \dif s = \oint_{\partial \Omega^+} \left<g,\tau\right> \dif s\]
+posto $\gamma=\partial \Omega^+$. Ma è noto che
+\[\oint_{\partial \Omega^+} \left<g,\tau\right> \dif s = \iint_\partial \left<\text{rot }g,n\right> \dif x \dif y = 0\]
+che quindi lascia supporre che ogni campo irrotazionale è conservativo, ma è ben noto che ciò non è vero. Infatti in questo caso non si sono prese in considerazione tutte le circuitazioni, ma solamente 
+quando la parte interna di $\gamma$ è contenuta in $A$, come nel caso del teorema di Gauss visto in precedenza: se si considera una superficie con un buco, le cose non funzionano.
+
+\vspace{1em}
+\noindent
+\subsection{Semplice connessione}
+Un insieme $E \subseteq \mathbb{R}^2$ si dice \textbf{semplicemente connesso} se per ogni curva di Lagrange, ossia per ogni curva semplice chiusa $\gamma$ con sostegno in $E$, anche la regione interna alla curva è contenuta in $E$, ossia non ha buchi.\\
+Si osservi che un insieme connesso allora è semplicemente connesso, in quanto se ci sono dei buchi non è più vero che ogni segmento è contenuto nell'insieme.\\
+Non solo, ma insieme convesso implica stellato; insieme stellato implica semplicemente connesso e semplicemente connesso implica connesso.\\
+Pertanto un insieme connesso e non semplicemente connesso è una ciambella.
+
+\vspace{1em}
+\subsection{Lemma di Point-Carrè rivisitato}
+Sia $A \subseteq \mathbb{R}^2$ semplicemente connesso e sia dato il campo
+\[g : A \longmapsto \mathbb{R}^2\]
+irrotazionale; allora $g$ è conservativo.
+
+\vspace{1em}
+\subsection{Generalizzazione dell'integrazione per parti in dimensioni superiori}
+Com'è noto, l'integrazione per parti prevede di
+\[\int_[a,b] f'(x) g(x) \cdot \dif x = \left[f(x) \cdot g(x)\right]_{\partial [a,b]^+} - \int_{[a,b]} g(x) \cdot g'(x) \dif x\]
+Allora si avrà
+\[\iint_{\Omega} Df \cdot g \dif m = \iint_{\partial  \Omega^+} f \cdot g \dif s - \iiint_\Omega f \cdot \dif g \dif m\]
+
+\vspace{2em}
+\noindent
+Siano, allora
+\[f : A \subseteq \mathbb{R}^3 \longmapsto \mathbb{R} \hspace{1em} \text{e} \hspace{1em} g : A \subseteq \mathbb{R}^3 \longmapsto \mathbb{R}^3\]
+con
+\[f \cdot g : A \longmapsto \mathbb{R}\]
+allora
+\[\text{div }(f \cdot g) = \dfrac{\partial (f \cdot g)}{\partial x} + \dfrac{\partial (f \cdot g)}{\partial y} + \dfrac{\partial (f \cdot g)}{\partial z}\]
+in questo modo, posta
+\[g(x,y,z)=\left(X,Y,Z\right){^T}\]
+allora si ha che
+\[f \cdot g = \left(f X, f Y, f Z\right){^T}\]
+per cui
+\[\dfrac{\partial f X}{\partial x} = \dfrac{\partial f}{\partial x} X + f \frac{\partial X}{\partial x}\]
+allora si ha che
+\[\text{div } f \cdot g = \dfrac{\partial f}{\partial x} X + f \frac{\partial X}{\partial x} + \dfrac{\partial f}{\partial y} Y + f \frac{\partial Y}{\partial y} + \dfrac{\partial f}{\partial z} Z + f \frac{\partial Z}{\partial z} = \left<\nabla f,g\right> + f \cdot \text{ div } g\]
+Allora si ha che
+\[\iint_\Omega \text{div } (f \cdot g) \dif x \dif y \dif z = \iiint_\Omega \left<\nabla f,g\right> \dif x \dif y \dif z + \iiint_\Omega f \cdot \text{ div } g \dif x \dif y \dif z\]
+Ma applicando il teorema della divergenza si ottiene che
+\[\iint_\Omega \text{div } (f \cdot g) \dif x \dif y \dif z = \iint_{\partial \Omega^+} \left<f \cdot g, n\right> \dif \sigma\]
+Si ottiene, quindi, che
+\[\iiint_\Omega \left<\nabla f, g\right> \dif x \dif y \dif z = \iint_{\partial \Omega^+} \left<f \cdot g, n\right> \dif \sigma - \iiint_\Omega f \cdot \text{ div } g \dif x \dif y \dif z\]
+
+\vspace{2em}
+\noindent
+\textbf{Esempio}: Siano
+\[f, h \in C^2\left([a,b]\right) \hspace{1em} \text{con} \hspace{1em} I=[a,b]\]
+allora si ha che 
+\[\int_I f'' h \dif x = \left[f' h\right]_I - \int_I f' h' \dif x\]
+ma ovviamente
+\[\int_I f h' \dif x = \left[f h'\right]_I - \int_I f' h' \dif x\]
+pertanto
+\[\int_I f' h \dif x = \int_I f h' \dif x + \left[f' h - f h'\right]_I\]
+Siano, allora
+\[f,h : A \subseteq \mathbb{R}^3 \longmapsto \mathbb{R} \hspace{1em} f,g \in C^2\]
+e siano
+\[\restr{f}{\partial \Omega^+} = \restr{h}{\partial \Omega} = 0\]
+Allora
+\[\iiint_\Omega f \Delta h \dif x \dif y \dif z\]
+con $\Delta h$ il laplaciano di $h$, è uguale a
+\[\iiint_\Omega f \Delta h \dif x \dif y \dif z = \iiint_\Omega \Delta f h \dif x \dif y \dif z\]
+Per dimostrare tale uguaglianza si osserva che 
+\[\Delta f = \text{div } (\nabla f) \hspace{1em} \text{e} \hspace{1em} \Delta h = \text{div } (\nabla h)\]
+ma $\nabla h = g$ per cui, per la formula precedentemente dimostrata
+\[\iint_\Omega f \cdot \text{div}(\nabla h) \dif x \dif y \dif z = \iint_{\partial \Omega^+} \left<f\cdot \nabla h, n\right> \dif \sigma - \iiint_\Omega \left<\nabla f, \nabla h\right>\]
+
+\vspace{2em}
+\noindent
+\textbf{Esempio}: Sia data l'equazione di Laplace seguente
+\[\Delta f = 0\]
+Taluna è un esempio di equazione differenziale alle derivate parziali; allora, posta
+\[f : A \subseteq \mathbb{R}^3 \longmapsto \mathbb{R} \hspace{1em} f \in C^2\]
+allora ci si chiede quante sono le funzioni di questo tipo che verificano
+\[\Delta f (x,y,z) = 0\hspace{1em} \forall (x,y,z){^T} \in A\]
+Ovviamente, ogni funzione soddisfa la relazione; tra tutte queste soluzioni si considerano quelle che verificano le cosiddette \textbf{condizioni \quotes{al bordo}} del tipo
+\[\restr{f}{\partial A} = 0\]
+Naturalmente la fuznione $f=0$ è soluzione, ma più in generale si chiede che
+\[
+    \left\{
+        \rowcolors{1}{white}{white}
+        \begin{array}{l}
+            \Delta f =0\\
+            \restr{f}{\partial \Omega}=0\\
+        \end{array}
+    \right.
+\]
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Si può dimostrare che $f=0$ è l'unica soluzione del problema sopra esposto. Infatti, data $f$ una soluzione, è noto che
+\[\iiint_A \left<\nabla f,\nabla f\right> \dif m = \iint \Delta f \cdot f \dif m\]
+ma ovviamente il secondo termine è nulla per ipotesi, in quanto $\Delta f =0$. Quindi si ha che
+\[\iint_A \left<\nabla f, \nabla f\right> \dif m = \iint_A \vert\vert \nabla f \vert\vert^2 \dif m = 0\]
+Ma siccome la funzione $\vert\vert \nabla f \vert\vert^2$ è continua e positiva, allora
+\[\iiint \vert\vert \nabla f \vert\vert^2 = 0\]
+ma ciò implica che
+\[\vert\vert \nabla f \vert\vert^2=0\]
+ma la norma è nulla solo se $\nabla f =0$; ma $\nabla f = 0$ su un insieme connesso implica che la funzione è costante. Ma dovendo essere $\restr{f}{\partial \Omega}=0$, ossia $f$ è nulla sul bordo, deve essere $f=0$ dappertutto.
+
+\newpage
+\noindent
+\begin{center}
+    7 Dicembre 2022
+\end{center}
+\vspace{1em}
+\noindent
+\textbf{Esercizio}: Si consideri il seguente campo vettoriale
+\[g(x,y,z)=\dfrac{(x,y,z){^T}}{\left(x^2+y^2+z^2\right)^{\frac{3}{2}}}\]
+e si consideri il disco $D$ di equazione $x^2+y^2 \leq 1$ con $z=2$. Allora
+\begin{enumerate}
+    \item Si calcoli il flusso del campo $g$ attraverso il disco $D$ nel verso $\hat k$;
+    \item Si calcoli div $g$;
+    \item Si calcoli il flusso di $g$ attraverso la superficie $z=1+x^2+y^2$, con $x^2+y^2 \leq 1$ nel verso $- \hat k$.
+\end{enumerate}
+Per risolvere il primo punto, bisogna parametizzare il disco come segue
+\[\sigma : \{(s,t){^T} : s^2+t^2 \leq 1\} \longmapsto \mathbb{R}^3 \hspace{1em} \text{con} \hspace{1em} \sigma(s,t)=(s,t,2){^T}\]
+Il vettore normale è banalmente
+\[\nu=n=(0,0,1){^T}\]
+Allora il flusso è
+\[\iint_\sigma \left<g,n\right> \dif \sigma = \iint_\mathcal{B} \dfrac{2}{(x^2+y^2+4)^{\frac{3}{2}}} \cdot 1 \dif x \dif y = \int_0^{2\pi} \left(\int_0^1 \dfrac{1}{\left(\rho^2+4\right){^\frac{3}{2}}} \cdot 2\rho \dif \rho\right) \dif \theta = 2\pi \left[-2 \cdot \left(rho^2+r\right)^{-\dfrac{1}{2}}\right]_0^1\]
+La divergenza del campo è nulla e per il teorema della divergenza si ha che
+\[0 = \int_\text{paraboloide} + \int_\text{tappo}\]
+ma allora si ha che
+\[-\int_\text{paraboloide} = \int_\text{tappo}\]
+per cui si è risolto.
+
+\newpage
+\section{Equazioni differenziali}
+Si consideri il modello SIR che, in una popolazione di $N$ individui considera $3$ classificazioni: suscettibili $S$, infetti $I$ e rimossi $R$; allora
+\[N=S(t)+I(t)+R(t)\]
+in cui la dipendenza da $t$ indica che si ha una variazioni della numerosità di ciascun gruppo in funzione del tempo. Siano dati due indici
+\[\beta=\text{ tasso di infezione} \hspace{1em} \text{e} \hspace{1em} \gamma=\text{ tasso di rimozione}\]
+Allora la variazione nel tempo di ciascun sottogruppo può essere espressa in funzione di tali indici
+\begin{align*}
+    & \dfrac{\dif}{\dif t} S = - \beta \dfrac{IS}{N}\\
+    & \dfrac{\dif}{\dif t} I = \beta \dfrac{IS}{N} - \gamma I\\
+    & \dfrac{\dif}{\dif t} R = \gamma I
+\end{align*}
+Posto $R_0=\dfrac{\beta}{\gamma}$ si ah che
+\[\dfrac{\dif}{\dif t} I = \left(R_0 \dfrac{S}{N} - 1\right) \gamma I\]
+per cui posto
+\[R_t=R_0 \dfrac{S}{N}\]
+se $R_t > 1$ l'infezione aumenta, mentre $R_t < 1$ l'infezione diminuisce.
+
+\vspace{1em}
+\subsection{Modello di Maltus}
+Robert Maltus è stato il primo a studiare l'evoluzione di una specie, la cui numerosità è $N=N(t)$; posti $\nu$ l'indice di natalità e $\mu$ l'indice di mortalità, per la preservazione della specie dovrebbe essere $\nu > \mu$; allora il modello dice che
+\[N(t+\Delta t) = N(t) + \nu \Delta t N (t) - \mu \Delta t N(t)\]
+in cui è facile ricavare il rapporto incrementale seguente
+\[\dfrac{N(t+\Delta t) - N(t)}{\Delta t} = (\nu-\mu) N(t)\]
+allora considerando il limite per $\Delta t \to 0$ si ottiene
+\[N'(t) = (\nu-\mu) N(t)\]
+che è un esempio di \textbf{equazione differenzaile nella variabile funzione $N$}. Possibili soluzioni di tale equazione differenziale sono $N(t)=0$, ma anche
+\[N(t)=c \cdot e^{(\nu-\mu) \cdot t} \hspace{1em} \forall c \in \mathbb{R}\]
+Ovviamente il valore di $c$ rappresenta la popolazione all'istante $t=0$, in quanto
+\[c=N(t=0)\]
+La condizione $c=N(0)$ è la cosiddetta \quotes{\textbf{condizione iniziale}}; ovviamente, se $\nu>\mu$ si ha una crescita esponenziale, mentre se $\nu<\mu$ si una decrescita esponenziale; ovviamente, posto $\nu=\mu$, la popolazione si mantiene costantemente uguale a $x=N(0)$.
+
+\vspace{1em}
+\subsection{Modello di Gompertz}
+Il modello di Maltus non aveva una reale corrispondenza nella realtà pratica; pertanto Gompertz definì un nuovo modello, che prevedeva di considerare
+\[N' = -r N \log \left(\frac{N}{K}\right) \hspace{1em} \text{con } K \text{ costante }>0\]
+Posta la condizione iniziale $N(0)=N_0$, si considera il sistema
+\[
+    \left\{
+    \rowcolors{1}{white}{white}
+    \begin{array}{l}
+        N' = -r N \log \left(\frac{N}{K}\right)\\
+        N(0)=N_0
+    \end{array}
+    \right.
+\]
+Posto $N=K$, la popolazione si mantiene costante, ovvero una l'\textbf{soluzione costante}. Se $N>K$, invece, la derivata $N'$ è negativa per cui si ha una decrescita. Se $N<K$, la derivata $N'$ è positiva per cui si ha una crescita: in ogni caso la popolazione tenderà sempre al valore $K$, la quale rappresenta \textbf{il numero di individui all'equilibrio}, ossia $K$ è un \textbf{equilibrio stabile}. $0$, invece, è un \textbf{equilibrio instabile}.
+
+\vspace{1em}
+\subsection{Modello logistico di Verhulst}
+Nel 1938 Verhulst introdusse il \textbf{modello logistico}, non dissimile da quello di Verhulst
+\[N'=(\nu-\mu) N(t) - \epsilon N^2(t)\]
+in cui $\epsilon N^2(t)$ è il coefficiente di attrito sociale.\\
+Riscrivendo l'espressione precedente come
+\[N'=(\nu-\mu) N(t) \cdot \left[1-\dfrac{1}{K} N(t)\right]\]
+in cui $K=\dfrac{\nu-\mu}{\epsilon}$ che prende il nome di capacità dell'ambiente. L'andamento di tale quazione è riconducibile a
+\[x'=ax \cdot (b-x)\]
+ossia una parabola che si annulla in $0$ e in $b$  e ha valore massimo in corrispondenza di $\dfrac{b}{2}$ con valore $a\dfrac{b^2}{4}$.\\
+È facile capire che anche nel modello logistico ci sono due equilibri: uno stabile con $N=K$ e uno instabile per $N=0$. Anche in questo caso, inoltre, se $N>K$ si uha una decrescita, mentre con $N<K$ si ha una crescita, per cui ancora $K$ rappresenta il limite della popolazione. Questo nell'ipotesi $\nu>\mu$; se $\nu=\mu$ si ha sempre una decrescita.
+
+\vspace{1em}
+\subsection{Modello degli orsi}
+Gli etologi hanno condotto uno studio sulla popolazione degli orsi, che è di per sé molto esigua; allora tale modello descrive la popolazione come segue
+\[N'=(\nu-\mu) N \left(1-\dfrac{N}{K}\right) \cdot \left(1-\dfrac{m}{N}\right)\]
+con $m>0$ e $\nu-\mu>0$. Allora si ha che
+\begin{itemize}
+    \item se $\mu<N$ e $N<K$ si ha che la derivata è positiva e quindi si ha una crescita;
+    \item se $\mu>N$ e $N<K$ si ha che la derivata è negativa e quindi si ha una decrescita;
+\end{itemize}
+Si capisce, allora, che $m$ rappresenta la difficoltà di accoppiamento.
+
+\vspace{1em}
+\subsection{Equazione differenziale}
+Di seguito si fornisce la definizioen di \textbf{equazione differenziale}:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{EQUAZIONE DIFFERENZIALE}}\\
+    \parbox{\linewidth}{Un'equazione differenziale è un'equazione in cui l'incognita è una funzione e questa appare con almeno una derivata.\\
+    Risolvere l'equazione significa trovare tutte le funzioni che soddisfano la relazione.\vspace{3mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione}: Bisogna prestare molta attenzione quando si considera un'equazione differenziale, in modo tale da riconoscere la funzione uncognita.
+
+\vspace{2em}
+\noindent
+\textbf{Esempio}: Si consideri l'equazione del calore seguente
+\[\dfrac{\partial u}{\partial t} = K \dfrac{\partial^2 u}{\partial x^2}\]
+in cui $u=u(t,x)$, ossia la funzione incoginita è una funzione a due variabili.\\
+L'equazione della curvatura è un'equazione del tipo
+\[-\text{div } \left(\dfrac{\nabla u}{\sqrt{1+\vert\vert \nabla u \vert\vert^2}}\right) = f(x,y,\nabla u)\]
+in cui $u$ è una funzione di $\mathbb{R}^n$, con $x=(x_1,x_2,\dots,x_n){^T}$. La funzione $f$, invece, è
+\[f : \mathbb{R}^n \times \mathbb{R} \times \mathbb{R}^n \longmapsto \mathbb{R}\]
+Tale equazione differenziale prende il nome di equazione alle derivate parziali.
+
+\vspace{1em}
+\subsection{Ordine di un'equazione differenziale}
+L'ordine di un'equazione differenziale è l'ordine massimo di derivazione in cui compare la variabile funzionale.
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione}: Un'equazione in cui l'incognita è una funzione in una variabile si dice \textbf{equazione differenziale ordinaria} (ODE = ordinari differential equation).\\
+Un'equazione differenziale in cui l'incognita è una funzione in pià variabili si dice equazione alle derivate parziali (PDE = partial differential equation).
+
+\vspace{1em}
+\subsection{Equazioni lineari}
+In generale, un'euqazione si può rappresentare nella forma
+\[F\left(u^{(n)}, u^{(n-1)}, \dots, u', u, x\right)=0\]
+dove $x \in \mathbb{R}$ e $u=u(x)$. Allora la funzione $F$ è definita come
+\[F : A \subseteq \mathbb{R}^{n+2} \longmapsto \mathbb{R}\]
+In generale, però, un'equazione differenziale alle derivate parziali si descrive come
+\[F \left(\dfrac{\partial^k u}{\partial x_i},\dots,u,x\right) = 0 \hspace{1em} \text{con} \hspace{1em} f : \mathbb{R}^{b^k+n+1} \longmapsto \mathbb{R}\]
+Allora si ha che\\
+Un'equazione differenziale si dice lineare se $F$ è una funzione lineare rispetto alle variabili funzionali che vi compaiono (non chiedendo nulla in merito alla $x$).
+
+\vspace{2em}
+\noindent
+\textbf{Esempio 1}: Si consideri l'equazione differenziale seguente
+\[\sin(x) u'' + 2x^3 u' - 4u = e^x\]
+allora tale equazione è lineare rispetto alle variabili funzionali $u$ e $u'$.
+
+\vspace{2em}
+\noindent
+\textbf{Esempio 2}: Si consideri l'equazione di Laplace
+\[\Delta u = 0\]
+o anche la caduta di un grave in cui, posto $y=y(t)$ si ha che
+\[y''=g \hspace{1em} y'=gt+v_0 \hspace{1em} y = \dfrac{1}{2} g t^2 + v_0 t + y_0\]
+con $v_0,y_0 \in \mathbb{R}$.\\
+In presenza di attrito si ottiene
+\[y''=g-\dfrac{K}{m} y' \hspace{1em} y'' = -Ky - \gamma y' + f(t)\]
+allora tutti questi sono esempi di equazioni lineari rispetto alle variabili fuznionali.
+
+\vspace{1em}
+\subsection{Equazioni differenziali ordinarie del primo ordine}
+La funzione $F$ che si andrà considerando è
+\[F : A \subseteq \mathbb{R}^3 \longmapsto \mathbb{R} \hspace{1em} \text{con} \hspace{1em} F(x,u,u')=0\]
+con $F$ una funzione in $3$ variabili. Allora l'equazione $F$ si dice in \textbf{forma normale} se esiste una funzione
+\[f : B \subseteq \mathbb{R}^2 \longmapsto \mathbb{R}\]
+tale che
+\[u'=f(x,u) \hspace{1em} \text{e quindi} \hspace{1em} F(x,u,u') = f(x,u)-u'\]
+
+\vspace{2em}
+\noindent
+\textbf{Esempio}: Sia data la seguente equazione differenziale
+\[xuu' - \log \left(\dfrac{x}{n}\right) = 0\]
+allora è possibile scrivere
+\[u' = \dfrac{1}{xu} \log\left(\frac{x}{u}\right)\]
+in cui bisogna prestare attenzione che $x\neq 0$ e $u \neq 0$.\\
+Si consideri, invece, la sequente funzione
+\[f(x,y)=2xy \hspace{1em} u'=2xu\]
+allora le soluzioni sono $u(x)=c e^{xu}$.
+
+\vspace{1em}
+\subsection{Soluzione di un'equazione differenziale}
+Sia data una equazione differenziale
+\[F(x,u,u')=0\]
+riducibile in forma normale come $u'=f(x,u)$. Si dirà, allora, soluzione dell'equazione differenziale ogni funzione
+\[\phi : I \subseteq \mathbb{R} \longmapsto \mathbb{R}\]
+con $I$ un intervallo e $\phi$ derivabile su $I$ e tale che $\forall x \in I$ sia
+\[F(x,\phi(x),\phi'(x)) = 0 \hspace{1em} \text{ovvero} \hspace{1em} \phi'(x)=f(x,\phi(x))\]
+
+\vspace{2em}
+\noindent
+\textbf{Esempio}: Sia data l'equazione differenziale seguente
+\[F(x,u,u')=xu' + u \hspace{1em} \text{ovvero} \hspace{1em}xu'+u=0\]
+allora la funzione
+\[\phi : \mathbb{R} - \{0\} \longmapsto \mathbb{R}\]
+con $\phi(x)=\dfrac{1}{x}$ è tale che
+\[x \cdot \phi'(x) + \phi(x) = 0 \hspace{1em} \forall x\]
+allora $\phi$ non è una soluzione, in quanto non è definita su un intervallo. Invece, la funzione
+\[\phi_1 : \hspace{0.25em} ]-\infty,0[\hspace{0.25em} \longmapsto \mathbb{R}\]
+con $\phi_1(x)=\dfrac{1}{x}$ è soluzione.
+
+\vspace{1em}
+\subsection{Problema di Cauchy (ai dati iniziali) del primo ordine}
+Sia dato il sistema seguente
+\[
+    \left\{
+        \rowcolors{1}{white}{white}
+        \begin{array}{l}
+            u'=f(x,u)\\
+            u(x_0)=u_0
+        \end{array}
+    \right.
+\]
+con $f : A \subseteq \mathbb{R}^2 \longmapsto \mathbb{R}$ e $(x_0,y_0){^T} \in A$. Allora una funzione
+\[\phi : I \longmapsto \mathbb{R}\]
+con $I$ un intervallo tale che $x_0 \in I$, si dice soluzione del problema di Cauchy se $\phi$ è soluzione dell'equazione differenziale $u'=f(x,u)$ e inoltre $\phi(x_0)=u_0$.
+
+\vspace{2em}
+\noindent
+\textbf{Esempio 1}: Sia dato il problema seguente
+\[
+    \left\{
+        \rowcolors{1}{white}{white}
+        \begin{array}{l}
+            u'=u\\
+            u(0)=2
+        \end{array}
+    \right.
+\]
+Allora la funzione soluzione è
+\[u(x)=ce^x\]
+ma essendo $c=u(0)$ si ha che la soluzione unica è
+\[u(x) : \mathbb{R} \longmapsto \mathbb{R} \hspace{1em} \text{con} \hspace{1em} u(x)=2e^x\]
+che è un esempio di equazione autonoma, cioé non appare esplicitamente la variabile numerica.
+
+\vspace{2em}
+\noindent
+\textbf{Esempio 2}: Sia data la funzione seguente
+\[f : \mathbb{R} \longmapsto \mathbb{R}\]
+allora
+\[
+    f(x) =
+    \left\{
+        \rowcolors{1}{white}{white}
+        \begin{array}{lll}
+            -1 & \text{se} & x<0\\
+            0  & \text{se} & x=0\\
+            1  & \text{se} & x>0 
+        \end{array}
+    \right.
+\]
+Allora
+\[
+    \left\{
+        \rowcolors{1}{white}{white}
+        \begin{array}{lll}
+            u'=f(x)\\
+            u(0)=2
+        \end{array}
+    \right.
+\]
+non può esistere soluzione perché una derivata non può saltare, per il teorema sul limite della derivata.
+
+\vspace{2em}
+\noindent
+\textbf{Esempio 3}: Sia dato il problema seguente
+\[
+    \left\{
+        \rowcolors{1}{white}{white}
+        \begin{array}{lll}
+            u'=2\sqrt{\vert u \vert}\\
+            u(0)=0
+        \end{array}
+    \right.
+\]
+allora, ovviamente, $u=0$ è soluzione. Però, data la funzione
+\[\phi : \mathbb{R} \longmapsto \mathbb{R} \hspace{1em} \text{con} \hspace{1em} \phi(x)=\left\{
+    \rowcolors{1}{white}{white}
+    \begin{array}{lll}
+        x^2  & \text{se} & x \geq 0\\
+        -x^2 & \text{se} & x < 0\\
+    \end{array}
+\right.\]
+anche $\phi$ è una soluzione. Infatti si ha che 
+\[\phi'(x)=\left\{
+    \rowcolors{1}{white}{white}
+    \begin{array}{lll}
+        2x  & \text{se} & x > 0\\
+        0   & \text{se} & x = 0\\
+        -2x & \text{se} & x < 0\\
+    \end{array}
+\right.\]
+Ma in generale anche una funzione definita come
+\[\phi : \mathbb{R} \longmapsto \mathbb{R} \hspace{1em} \text{con} \hspace{1em} \phi(x)=\left\{
+    \rowcolors{1}{white}{white}
+    \begin{array}{lll}
+        -(x-\alpha)^2  & \text{se} & x \leq \alpha\\
+        0              & \text{se} & \alpha < x < \beta\\
+        (x-\beta)^2    & \text{se} & x \geq \beta\\
+    \end{array}
+\right.\]
+è soluzione. Pertanto tale equazione differenziale ha infinite soluzioni.
+
+\newpage
+\noindent
+\begin{center}
+    12 Dicembre 2022
+\end{center}
+Sono state introdotte in maniera basilare le equazioni differenziali; in particolare, come soluzione di un'equazione differenziale è da intendersi una \textbf{funzione definita su un intervallo} che soddisfa la relazione espressa dalla equazione differenziale stessa.\\
+Inoltre sono stati considerati diversi problemi di Cauchy, tra cui
+\begin{enumerate}
+    \item \[\left\{
+        \rowcolors{1}{white}{white}
+        \begin{array}{lll}
+            u'=u\\
+            u(0)=2
+        \end{array}
+    \right. \hspace{1em} \rightarrow \hspace{1em} \text{sol: } 2e^x \hspace{1em} \text{con} \hspace{1em} u : \mathbb{R} \longmapsto \mathbb{R}\]
+
+    \item \[\left\{
+        \rowcolors{1}{white}{white}
+        \begin{array}{lll}
+            u'=f(x)\\
+            u(0)=0
+        \end{array}
+    \right. \hspace{1em} \rightarrow \hspace{1em} \text{sol: } f(x)=\left\{
+        \rowcolors{1}{white}{white}
+        \begin{array}{lll}
+            -1 & \text{se} & x < 0\\
+            0 & \text{se} & x = 0\\
+            1 & \text{se} & x \geq 0\\
+        \end{array}
+    \right. \hspace{1em} \text{non definita su un intervallo}\]
+
+    \item \[\left\{
+        \rowcolors{1}{white}{white}
+        \begin{array}{lll}
+            u'=2 \sqrt{\vert x \vert}\\
+            u(0)=0
+        \end{array}
+    \right. \hspace{1em} \text{esistono infinite soluzioni del tipo } u : \mathbb{R} \longmapsto \mathbb{R} \hspace{1em} u(x)=\left\{
+        \rowcolors{1}{white}{white}
+        \begin{array}{lll}
+            -(x-\alpha)^2 & \text{se} & x \leq \alpha\\
+            0 & \text{se} & \alpha < x < \beta\\
+            (x-\beta)^2 & \text{se} & x > 0\\
+        \end{array}
+    \right. \hspace{1em} \text{e} \hspace{1em} u=0\]
+    Sono infinite soluzioni per il fenomeno del \textbf{pennello di Peano}.
+\end{enumerate}
+
+\vspace{2em}
+\noindent
+\textbf{Esempio}: Si consideri il problem di Cauchy seguente:
+\[\left\{
+    \rowcolors{1}{white}{white}
+    \begin{array}{lll}
+        u'=u^2\\
+        u(0)=1\\
+    \end{array}
+\right.\]
+per cui $f(x,u)=u^2$ con $f : \mathbb{R}^2 \longmapsto \mathbb{R}$. Siccome è noto che $u(0) \neq 0$, $u$ dovrà essere continua, per cui almeno in un intorno di $x=0$ sarà $u(x) \neq 0$; è possibile, quindi, dividere per $u(x)$, ottenendo
+\[\dfrac{u'(t)}{u^2(t)} = 1\]
+Si può quindi, integrare, da cui
+\[\int_0^x \dfrac{u'(t)}{u^2(t)} \dif t = x\]
+Tramite sostituzione $z=u(t)$, ovvero $\dif z = u'(t) \dif t$, ottenendo l'integrale
+\[\int_1^{u(x)} \dfrac{1}{z^2} \dif z = \left[-\dfrac{1}{z}\right]_1^{u(x)} = 1 - \dfrac{1}{u(x)}\]
+Per cui si è ottenuto che 
+\[1 - \dfrac{1}{u(x)} = x\]
+Tale soluzione esiste ed è unica, ma non è \textbf{globale}, cioè non è definita su $\mathbb{R}$ anche se $f$ è definita su $\mathbb{R} \times \mathbb{R}$
+
+\vspace{1em}
+\noindent
+\subsection{Soluzione globale}
+Sia data
+\[f : I \times J \longmapsto \mathbb{R}\]
+con $I,J$ intervalli e siano $x_0 \in I$ e $u_0 \in J$; allora, dato il problema di Cauchy seguente
+\[\left\{
+    \rowcolors{1}{white}{white}
+    \begin{array}{lll}
+        u'=f(x,u)\\
+        u(x_0)=u_0\\
+    \end{array}
+\right.\]
+allora $u$ è una soluzione globale ...continua...
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione}: Dato un problema di Cauchy generico come il seguente
+\[\left\{
+    \rowcolors{1}{white}{white}
+    \begin{array}{lll}
+        u'=f(x,u)\\
+        u(x_0)=u_0\\
+    \end{array}
+\right.\]
+allora si richiede sempre che
+\begin{itemize}
+    \item esista una soluzione;
+    \item la soluzione, se esiste, è unica, ovviamente considerando il dominio massimo possibile (infatti si potrebbe pensare di definire infinite soluzioni come restrizioni della funzione di partenza);
+    \item il dominio della soluzione sia ragionevole e ci si deve chiedere se la soluzione è globale;
+    \item la dipendenza dai parametri sia continua, così come la dipendenza dai dati iniziali;
+    \item la stabilità, associata anche al concetto di caos;
+    \item sia possibile cercare approssimazioni della soluzione; 
+\end{itemize}
+Si osservi che in tali punti non compare mai il calcolo esplicito della soluzione, in quanto questo avviene solamente in pochissimi casi.
+
+\vspace{1em}
+\subsection{Equazioni differenziali ordinarie lineari del primo ordine}
+Com'è noto, un'equazione differenziale si dice lineare se la funzione $f$ è lineare rispetto alle variabili funzionali; infatti, data l'equazione $u'=f(x,u)$, se $f$ è lineare rispetto alla variabile funzionale $u$ se si può scrivere come
+\[f(u,x)=a(x) \cdot u + b(x)\]
+con $a,b$ funzioni continue definite come
+\[a,b : I \subseteq \mathbb{R} \longmapsto \mathbb{R}\]
+con $I$ intervallo di definizione anche della $f$
+\[f : I \times \mathbb{R} \longmapsto \mathbb{R}\]
+Si considera, allora, il problema di Cauchy seguente
+\[\left\{
+    \rowcolors{1}{white}{white}
+    \begin{array}{lll}
+        u'=a(x) \cdot u + b(x)\\
+        u(x_0)=u_0\\
+    \end{array}
+\right.\]
+con $x_0 \in I$ e $u_-0 \in \mathbb{R}$; se $b(x)=0$ allora l'equazione si dice omogenea, per cui si ottiene
+\[\left\{
+    \rowcolors{1}{white}{white}
+    \begin{array}{lll}
+        u'=a(x) \cdot u\\
+        u(x_0)=u_0\\
+    \end{array}
+\right.\]
+in cui, ovviamente, si ha chese $u_0=0$, allora la funzione $u(x)=0$ è soluzione, in quanto anche la sua derivata è nulla; si consideri, ora la primitiva
+\[A(x) = \int_{x_0}^x a(t) \dif t \hspace{1em} \text{con} \hspace{1em} A'(x)=a(x)\]
+Posto
+\[u(x)=e^{A(x)} \cdot c\]
+è ovvio che
+\[u'(x) = e^{A(x)} \cdot a(x) \cdot c = a(x) \cdot u(x)\]
+ma calcolando $u$ in $x_0$ si ottiene che
+\[u(x_0) = e^{A(x_0)} \cdot x\]
+e richiedendo che $u_0=u(x_0)$ è facile concludere che
+\[c = u_0 \cdot e^{-A(x_0)}\]
+per cui la soluzione è
+\[\boxed{u(x)=u_0 \cdot e^{A(x)-A(x_0)}}\]
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Si provvi che
+\[u(x)=u_0 \cdot e^{A(x)-A(x_0)}\]
+è l'unica soluzione del problema di Cauchy considerato. Sia, allora, $\phi(x)$ una seconda soluzione e sia data la funzione
+\[z(x)=u(x)-\phi(x)\]
+allora, calcolandone la derivata si ottiene
+\[z'(x)=u'(x)-\phi'(x)\]
+ma siccome $u(x)$ e $\phi(x)$ sono soluzione del medesimo problema di Cauchy si ha che
+\[z'(x)=u'(x)-\phi'(x)=a(x) \cdot u(x) - a(x) \cdot \phi(x) = a(x) \cdot z(x)\]
+Non solo, ma siccome $u(x_0)=\phi(x_0)=u_0$ è ovvio che
+\[z(x_0) = u(x_0) - \phi(x_0) = 0\]
+quindi $z(x)$ è soluzione del problema
+\[\left\{
+    \rowcolors{1}{white}{white}
+    \begin{array}{lll}
+        z'=a(x) \cdot z\\
+        z(x_0)=0\\
+    \end{array}
+\right.\]
+Per l'espressione della soluzione di un'equazione differenziale ordinaria lineare del primo ordine si ha che
+\[e^{-A(x)} \cdot z'(x) = e^{-A(x)} a(x) \cdot z(x) \hspace{1em} \forall x\]
+ma quindi
+\[e^{-A(x)} \cdot z'(x) - e^{-A(x)} a(x) \cdot z(x) = 0\hspace{1em} \forall x\]
+che è la derivata del prodotto seguente
+\[\dfrac{\dif }{\dif x} \left[e^{-A(x)} \cdot z(x)\right] = 0\]
+Ma siccome tale derivata è nulla, la funzione $e^{-A(x)} \cdot z(x)$ è costante su un intervallo intorno a $x_0$. Non solo, ma siccome $z(x_0)=0$ si ha che $e^{-A(x)} \cdot z(x)=0$ in un intorno di $x_0$ ed essendo costante, quindi deve essere $z(x)=0 $.\\
+Quindi per il problema omogeneo
+\[\left\{
+    \rowcolors{1}{white}{white}
+    \begin{array}{lll}
+        u'=a(x) \cdot u\\
+        u(x_0)=u_0\\
+    \end{array}
+\right.\]
+esiste una e una sola soluzione e questa è globale, con
+\[u(x)=u_0 \cdot e^{A(x)-A(x_0)} \hspace{1em} \text{con} \hspace{1em} u : I \longmapsto \mathbb{R}\]
+
+\vspace{2em}
+\noindent
+\textbf{Oservazione}: Si consideri, ora, il problema non omogeneo seguente
+\[\left\{
+    \rowcolors{1}{white}{white}
+    \begin{array}{lll}
+        u'=a(x) \cdot u + b(x)\\
+        u(x_0)=u_0\\
+    \end{array}
+\right.\]
+allora il problema ha una ed una sola soluzione e questa è globale. Per dimostrarlo si considera
+\[A(x)=\int_{x_0}^x a(t) \dif t\]
+per cui si ottiene che
+\[u' e^{-A(x)} = e^{-A(x)} \cdot a(x) \cdot u + e^{-A(x)} \cdot b(x)\]
+da cui
+\[u' e^{-A(x)} - e^{-A(x)} \cdot a(x) \cdot u = e^{-A(x)} \cdot b(x)\]
+Allora si ottiene che
+\[\dfrac{\dif}{\dif x} \left[u e^{-A(x)}\right]\]
+da cui
+\[\int_{x_0}^x \dfrac{\dif}{\dif t} \left[u e^{-A(t)}\right] \dif t = \int_{x_0}^x e^{-A(t)} \cdot b(t) \dif t \]
+ottenendo
+\[u(x) e^{-A(x)} - u(x_0) e^{-A(x_0)} = \int_{x_0}^x e^{-A(t)} \cdot b(t) \dif t\]
+da cui
+\[\boxed{u(x)=u(x_0) \cdot e^{A(x)-A(x_0)} + \int_{x_0}^x e^{A(x) - A(t)} \cdot b(t) \dif t}\]
+in cui
+\[e^{A(x) - A(t)}\]
+prende il nome di \textbf{nucleo risolvente dell'equazione lineare}.
+
+\vspace{1em}
+\subsection{Teorema di esistenza locale di Peano}
+Chiamata $y$ la variabile funzionale, sia data l'equazione differenziale seguente
+\[y'=f(x,y)\]
+con $f$ continua; in particolare, $f$ sarà limitata se $(x,y){^T} \in K$ con $K$ compatto.\\
+Sia, allora $\left\vert f(x,y)\right\vert \leq M$ con $M$ costante; si considera, allora, la soluzione
+\[\phi : \left[-\delta,\delta\right] \rightarrow \mathbb{R}\]
+del problema di Cauchy seguente
+\[\left\{
+    \rowcolors{1}{white}{white}
+    \begin{array}{lll}
+        y'=f(x,y)\\
+        y(0)=0
+    \end{array}
+\right.\]
+Ciò significa, in particolare, che
+\[\left\vert \phi'(x) \right\vert = \left\vert f(x,\phi(x)) \right\vert \leq M \hspace{1em} \text{con} \hspace{1em} \phi(0)=0\]
+Tale disuguaglianza permette di capire che il grafico di $\phi$ non può uscire dalla regionale angolare delimitata dalle rette $y=Mx$ e $y=-Mx$ perché nel \quotes{puntod i uscita} la derivata dovrebbe essere $>M$ o $<-M$.\\
+Da questo segue l'enunciato del \textbf{teorema di Peano}:
+
+\vspace{2em}
+\noindent
+Sia
+\[R = \left[x_0,x_0+a\right] \times \left[y_0-b,y_0+b\right]\]
+con $a>0$ e $b>0$; sia data la funzione
+\[f : R \longmapsto \mathbb{R}\] 
+continua. Allora, essendo $f$ definita sul compatt $R$, è limitata, per cui $\left\vert f(x,y) < M \right\vert$ $\forall (x,y){^T} \in R$. Sia, allora,
+\[\alpha = \min \left\{a,\dfrac{b}{M}\right\}\]
+in cui $x_0+\alpha$ rappresenta il punto dove la regione angolare esce dal rettangolo.\\
+Allora, il problema di Cauchy
+\[\left\{
+    \rowcolors{1}{white}{white}
+    \begin{array}{lll}
+        y'=f(x,y)\\
+        y(0)=y_0
+    \end{array}
+\right.\]
+ha almeno una soluzione definita sull'intervallo $\left[x_0,x_0+\alpha\right]$.
+
+\vspace{2em}
+\noindent
+\textbf{Esempio}: Nel caso dell'equazione differenziale $f(x,y) = 2 \sqrt{\vert y\vert}$, essendo la funzione continua, ammette soluzione, ma taluna non è unica.
+
+\vspace{1em}
+\subsection{Teorema di esistenza e unicità locale di Cauchy-Lipschitz / Picard-Lindelöf}
+Alla base di tale teorema sta la richiesta che la funzione $f$ si Lipschitziana; se è noto che $f$ è Lipschitz, allora è vero che
+\[\left\vert f(x_1) - f(x_2) \right\vert \leq L \cdot \left\vert x_1 - x_2 \right\vert\]
+Più in generale, infatti, se è data una funzione
+\[f : I \subseteq \mathbb{R} \longmapsto \mathbb{R}\]
+si dice che verifica la proprietà di Lipschitz se esiste $L \in \mathbb{R}$, con $L>0$ tale che
+\[\forall x_1,x_2 \in I \hspace{1em} \text{si ha che} \hspace{1em} \dfrac{\left\vert f(x_2)-f(x_1)\right\vert}{\left\vert x_2-x_1 \right\vert} \leq L\]
+che si configura pienamente come una condizione di limitatezza del rapporto incrementale.
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione 1}: Si osservi che, ovviamente, se $f$ è Lipschitziana, allora $f$ è continua.\\
+Non solo, ma se $f$ è derivabile con derivata $f'$ limitata, allora $f$ è Lipschitziana; è molto importante che la derivata sia limitata: infatti, la funzione $f(x)=x^2$ non è Lipschitziana su $\mathbb{R}$, in quanto non è mai vero che
+\[x_2^2 - x_1^2 \leq L \cdot \left \vert x_2 - x_1 \right \vert\]
+Tuttavia, se la funzione $f$ è ristretta ad un compatto, diviene Lipschitziana.
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione 2}: Lavorando con funzioni di due variabili, della forma
+\[f : I \times J \longmapsto \mathbb{R}\]
+Allora $f$ si dice Lipschitziana rispetto alla variabile $y \in J$ uniformemente rispetto alla variabile $x \in I$ se esiste $L>0$ tale che
+\[\left\vert f(x,y_2) - f(x,y_1) \right\vert \leq L \cdot \left\vert y_2 - y_1 \right\vert \hspace{1em} \forall x \in I, y_1,y_2 \in J\]
+
+
+Sia dato il rettangolo
+\[R=\left[x_0,x_+a\right] \times \left[y_0-b,y_0+b\right]\]
+con $a>0$ e $b>0$. Sia data, inoltre, la seguente funzione
+\[f : \mathbb{R} \longmapsto \mathbb{R}\]
+continua e Lipschitziana in $y$ uniformemente rispetto a $x$, con costante $L$, tale per cui
+\[\left\vert f(x,y_2) - f(x,y_1)\right\vert \leq L \cdot \vert y_2-y_1 \vert \hspace{1em} \forall x \in \left[x_0,x_0+a\right] \hspace{1em} \text{e} \hspace{1em} y_1,y_2 \in \left[y_0-b,y_0+b\right]\]
+Sia definito $\alpha$ come
+\[\alpha = \min \left\{a,\dfrac{b}{M}\right\}\]
+dove
+\[\left\vert f(x,y) \right \vert \leq M\]
+su $R$. Allora il problema di Cauchy
+\[\left\{
+    \rowcolors{1}{white}{white}
+    \begin{array}{lll}
+        y'=f(x,y)\\
+        y(0)=y_0
+    \end{array}
+\right.\]
+ha una ed una sola soluzione $\phi$ definita su $\left[x_0,x_0+\alpha\right]$.
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Si proceda alla dimostrazione del succitato teorema tramite le serie.\\
+Prima di tutto, si riformuli il problema in forma integrale: allora, una funzione $u$ è soluzione del problema di Cauchy 
+\[\left\{
+    \rowcolors{1}{white}{white}
+    \begin{array}{lll}
+        y'=f(x,y)\\
+        y(0)=y_0
+    \end{array}
+\right.\]
+\textbf{se e solo se} $U$ è soluzione dell'equazione integrale
+\[y=y_0+\int_{x_0}^x f(t,y(y)) \dif t\]
+per cui, in particolare
+\[u(x) = y_0 + \int_{x_0}^x f(t,u(t)) \hspace{1em} \forall x\]
+Infatti, posto $u(x)$ che verifica l'equazione integrale di cui sopra, derivando si ottiene
+\[u'(x)=f(x,u(x))\]
+e, ovviamente $u(x_0)=y_0$ e quindi soddisfa il problema di Cauchy.\\
+Viceversa, sia $u$ soluzione del problema di Cauchy, tale che
+\[u'(t) = f(t,(t)) \hspace{1em} \forall t\]
+allora integrando si ottiene
+\[\int_{x_0}^x u'(t) \dif t = \int_{x_0}^x f(t,u(t)) \dif t \hspace{1em} \rightarrow \hspace{1em} u(x)-u(x_0) = \int_{x_0}^x f(t,u(t)) \dif t \hspace{1em} \rightarrow \hspace{1em} u(x)= y_0 + \int_{x_0}^x f(t,u(t)) \dif t\]
+
+\vspace{1em}
+\noindent
+Si definisce, allora, per ricorrenza una successioni di funzioni della forma
+\[\phi_n : [x_0,x_0+\alpha] \rightarrow \mathbb{R}\]
+con le seguenti proprietà
+\begin{itemize}
+    \item $\phi_0(x)=y_0$ con $y_0$ costante;
+    \item $\displaystyle{\phi_{n+1}(x) = y_0 + \int_{x_0}^x f(t,\phi_n(t)) \dif t}$;
+    \item Ovviamente la funzione $\phi_n$ deve essere definita nel dominio della $f$, ossia
+    \[f : \left[x_0,x_+a\right] \times \left[y_0-b,y_0+b\right] \longmapsto \mathbb{R}\]
+    per cui deve essere
+    \[\vert \phi_n(x) - y_0 \vert \leq b \hspace{1em} \forall x \in \left[x_0,x_0+\alpha\right]\]
+    \item $\displaystyle{\left\vert \phi_{n+1}(x) - \phi_n(x)\right\vert \leq M \cdot \dfrac{L^n}{(n+1)!} (x-x_0)^{n+1} \hspace{1em} \forall x \in [x_0,x_0+\alpha]}$
+\end{itemize}
+
+\vspace{1em}
+Si verifichino, ora, tali proprietà per induzione; posto, allora $\phi_0(x)=y_0$ si ha che
+\[\phi_1 = y_0 + \int_{x_0}^x f(t,y_0) \dif t\]
+allora si ha che
+\[\left\vert\phi_1(x) - y_0\right\vert = \left\vert \int_{x_0}^x f(y,y_0) \dif t \right\vert \leq \int_{x_0}^x \left\vert f(t,y_0) \right \vert \dif t \leq M \cdot (x-x_0) \leq M \alpha \leq b\]
+che verifica la terza proprietà. Per quanto riguarda la quarta proprietà si ha che
+\[\left\vert \phi_1(x) - y_0 \right\vert \leq \int_{x_0}^x \left\vert f(t,y_0) \right\vert \dif t \leq M \cdot \dfrac{L^0}{1!} (x-x_0)^1\]
+che è vero per quanto osservato in precedenza.Compiendo, ora, il passo induttivo, supponendo vere le disuguaglianze per $n$, bisogna verificare che sia verificata per $n+1$. In particolare, si ha che
+\[\left\vert \phi_{n+1}(x) - y_0 \right\vert = \left\vert \int_{x_0}^x f(t,\phi_n(t)) \dif t \right\vert \leq M \cdot (x-x_0) \leq b\]
+che verifica la terza proprietà. Per quanto riguarda la quarta e ultima proprietà, si ha che
+\[\left\vert \phi_{n+2}(x) - \phi_{n+1}(x)\right\vert \leq \int_{x_0}^x \left\vert f(t,\phi_{n+1}(t)) - f(t,\phi_n(t))\right\vert \dif t\]
+ma per Lipschitz si ha che
+\[\left\vert f(t,\phi_{n+1}(t)) - f(t,\phi_n(t))\right\vert \leq L \cdot \left\vert \phi_{n+1}(t) - \phi_n(t) \right \vert\]
+da cui
+\[\int_{x_0}^x \left\vert f(t,\phi_{n+1}(t)) - f(t,\phi_n(t))\right\vert \dif t \leq L \int_{x_0}^x \left\vert \phi_{n+1}(t) - \phi_n(t) \right\vert \dif t\]
+ma usando l'ipotesi induttiva si ha che
+\[L \int_{x_0}^x \left\vert \phi_{n+1}(t) - \phi_n(t) \right\vert \dif t \leq \dfrac{M L^{n+1}}{(n+1)!} \cdot \int_{x_0}^x (t-x_0)^{n+1} \dif t = M \cdot \dfrac{L^{n+1}}{(n+2)!} (x-x_0)^{n+2}\]
+in cui l'ultimo passaggio deriva dalla risoluzione dell'integrale.\\
+Avendo, ora, definito la successione $(\phi_n)_n$ è nota anche la disuguaglianza seguente
+\[\left\vert\phi_{n+1}(x)-\phi_n(x)\right\vert\leq M \cdot \frac{L^{n}}{(n+1)!} (x-x_0)^n\]
+ed essendo $\vert x-x_0 \vert \leq \alpha$ si ha che
+\[M \cdot \frac{L^{n}}{(n+1)!} (x-x_0)^n \leq M \cdot \dfrac{(L\alpha)^n}{(n+1)!}\]
+Si osserva, quindi, che la serie di funzioni
+\[\sum_{n=0}^{+\infty} \left(\phi_{n+1}(x) - \phi_n(x)\right)\]
+è convergente assolutemente e uniformememnte per l'M-test di Weierstrass in quanto maggiorata uniformemente dalla serie numerica
+\[\sum M \cdot \dfrac{(L\alpha)^n}{(n+1)}!\]
+Ma siccome la serie è uniformemente convergente, allora il termine generale è uniformememnte inifnitesimo, ossia
+\[\phi_{n+1}(x) - \phi_n(x)\]
+tende a $0$ uniformemente, ossia
+\[\lim_{n \to +\infty} \left(\phi_{n+1}(x) - \phi_n(x)\right) =0\]
+uniforme. Si osservi, infatti, che
+\[\sum_{n=0}^{+\infty} \left(\phi_{n+1}(x) - \phi_n(x)\right) = \left(\phi_{1}(x) - \phi_0(x)\right) + \left(\phi_{2}(x) - \phi_1(x)\right) + \dots + \left(\phi_{n+1}(x) - \phi_n(x)\right)\]
+che è una serie telescopica in cui tutti i termini si semplificano tranne quello iniziale e finale, quindi tende a
+\[\lim_{n \to +\infty} \left(\phi_{n}(x) - \phi_0(x)\right)\]
+per cui esiste
+\[\lim_{n \to +\infty} \phi_n(x) = \phi(x)\]
+uniforme, per cui $\phi(x)$ è la soluzione cercata.
+
+\newpage
+\noindent
+\begin{center}
+    13 Dicembre 2022
+\end{center}
+È stata introdotta, in precedenza, nella dimostrazione, la funzione
+\[y(x)=y_0+\int_{x_0}^x f(t,y(t)) \dif t\]
+ed è stata anche definita la successione per ricorrenza
+\[\phi_{n+1}(x) = y_0 + \int_{x_0}^x f(t,\phi_n(t)) \dif t\]
+e si ha che è verificata la disuguaglianza
+\[\left\vert \phi_{n+1}(x) - \phi_n(x)\right\vert \leq M \cdot L^n \dfrac{(x-x_0)^{n+1}}{(n+1)!}\]
+Grazie a tali osservazioni, si è dimostrato che la successione $\phi_n(x)$ converge uniformemente ad una funzione $\phi(x)$, ovvero
+\[\lim_{n \to +\infty} \phi_n(x) = \phi(x)\]
+uniforme. Essendo la funzione $f$ continua e Lipschitziana, si ha che
+\[\left\vert f(t,\phi_n(t)) - f(t,\phi) \right\vert \leq L \cdot \vert \phi_n - \phi \vert \hspace{1em} \forall t\]
+allora bisogna verificare che
+\[\lim_{n \to +\infty} \left(\int_{x_0}^x f(t,\phi_n(t)) \dif t \dif t - \int_{x_0}^x f(t,\phi(t)) \dif t\right) = 0\]
+Ma si ha che
+\[\left \vert \int_{x_0}^x \left(f(t,\phi_n(t)) \dif t - f(t,\phi(t))\right) \dif t \right \vert \leq \int_{x_0}^x \left\vert f(t,\phi_n(t)) - f(t,\phi(t))\right\vert \dif t\]
+ma essendo $f$ Lipschitziana si ha che
+\[\int_{x_0}^x \left\vert f(t,\phi_n(t)) - f(t,\phi(t))\right\vert \dif t \leq L \cdot \int_{x_0}^x \left(\phi_n(t) - \phi(t)\right) \dif t\]
+Passando, quindi, al limite per $x \to + \infty$ si ha che $\phi$ soddisfa l'equazione intergrale e quindi è la soluzione cercata.\\
+Tuttavia, bisogna dimostrare l'unicità; allora, se $z(x)$ è un'altra soluzione definita come
+\[z(x) = y_0 - \int_{x_0}^x f(t,z(t)) \dif t\]
+si dimostra per induzione che
+\[\left\vert \phi_n(x) - z(x) \right\vert \leq M L^n \dfrac{(x-x_0)^{n+1}}{(n+1)!}\]
+Infatti, compiendo il passo base, ponendo $n=0$, si ottiene che
+\[\left\vert \phi_0(x) - z(x) \right\vert = \left\vert y_0 - \left(y_0 + \int_{x_0}^x f(t,z(t)) \dif t\right) \right\vert \leq \int_{x_0}^x \left\vert f(t,z(t)) \right\vert \dif t \leq M \cdot (x-x_0)\]
+Compiendo, ora, il passo induttivo, si suppone che l'uguaglianza è verificata per $n$ e si deve dimostrare sia valida per $n+1$, ottenendo
+\[\left\vert \phi_{n+1}(x) - z(x) \right\vert = \left\vert y_0 + \int_{x_0}^x f(t,\phi_n(t)) \dif t - y_0 - \int_{x_0}^x f(t,z(t)) \dif t \right\vert \leq \int_{x_0}^x \left\vert f(t,\phi_n(t)) - f(t,z(t)) \right\vert \dif t\]
+Usando la proprietà di Lipschitz si ottiene
+\[\leq L \cdot \int_{x_0}^x \left\vert \phi_n(t) - z(t) \right\vert \dif t \leq L \cdot \int_{x_0}^x M L^n \dfrac{(x-x_0)^{n+1}}{(n+1)!}= \dfrac{ML^{n+1}}{(n+1)!} \cdot \dfrac{1}{(n+2)} \cdot (x-x_0)^{n+2}\]
+Ciò significa che la serie
+\[\sum \left(\phi_n(x)-z(x)\right)\]
+è uniformemente convergente e quindi
+\[\lim_{n \to +\infty} \phi_n = z\]
+ma questo limite è unico, per cui $\phi=z$.
+
+\vspace{1em}
+\subsection{Teorema del confronto per le soluzioni di problemi di Cauchy}
+Siano $f,g$ funzioni definite sul rettangolo $R$, da cui
+\[f, g : R = I \times J \longmapsto \mathbb{R}\]
+e sia verificato che
+\[f(x,y) < g(x,y) \hspace{1em} \forall (x,y){^T} \in R\]
+\textbf{strettamente}. Siano $u_0,\phi_0 \in J$ con $u_0 \leq \phi_0$ e sia $x_0 \in I$. Si supponga che siano soddisfatte alle ipotesi del teorem di esistenza e unicità per $f$ e $g$. Si hanno, di conseguenza, definiti due problemi di Cauchy
+\[\left\{
+    \rowcolors{1}{white}{white}
+    \begin{array}{lll}
+        u'=f(x,y)\\
+        u(x_0)=u_0
+    \end{array}
+\right. \hspace{2em} \text{e} \hspace{2em} \left\{
+    \rowcolors{1}{white}{white}
+    \begin{array}{lll}
+        \phi'=g(x,y)\\
+        \phi(0)=\phi_0
+    \end{array}
+\right.\]
+Siano, allora $u$ e $\phi$ soluzioni rispettivamente del primo e del secondo problma di Cauchy definite su $[x_0,x_0+\alpha]$. Allora è verificata che
+\[u(x) < \phi(x) \hspace{1em} \forall x \in ]x_0,x_0+\alpha]\]
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Sia $u_0=\phi_0$, allora si ha che 
+\[u'(x_0) = f(x_0,u_0) < g(x_0,u_0) = g(x_0,\phi_0) = \phi'(x_0)\]
+Si supponga, allora, per assurdo che esista $x_1$ tale che
+\[u(x_1) = \phi(x_1)\]
+ma allora
+\[u'(x_1) = f(x_0,u(x_1)) < g(x_1,\phi(x_1)) = \phi'(x_1)\]
+che è assurdo.
+
+\vspace{1em}
+\noindent
+\subsection{Teorema di esistenza globale}
+Sia data la funzione
+\[f : I \subseteq \mathbb{R} \longmapsto \mathbb{R}\]
+tale che soddisfi alle ipotesi del teorema di esistenza e unicità. Si supponga, inoltre, che $f$ sia \textbf{sottolineare}, ossia ha un comportamento al più lineare; in altre parole, esistono delle funzioni continue relativamente alla $y$
+\[a,b \in C^0(I)\]
+tali che
+\[\left\vert f(x,y) \right\vert \leq a(x)y + b(x)\]
+allora la soluzione del problema di Cauchy
+\[\left\{
+    \rowcolors{1}{white}{white}
+    \begin{array}{lll}
+        u'=f(x,y)\\
+        u(x_0)=u_0
+    \end{array}
+\right.\]
+è definita su tutto $I$, per cui è globale.
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Per la sottolinearità della $f$, si ha che
+\[\left\vert f(x,y) \right\vert \leq a(x)y + b(x) \hspace{1em} \rightarrow \hspace{1em} -a(x) y - b(x) \leq f(x,y) \leq a(x) y + b(x)\]
+Si considerano, allora, i problemi lineari
+\[\left\{
+    \rowcolors{1}{white}{white}
+    \begin{array}{lll}
+        y'=-a(x) y - b(x)\\
+        y(x_0)=u_0
+    \end{array}
+\right. \hspace{2em} \text{e} \hspace{2em} \left\{
+    \rowcolors{1}{white}{white}
+    \begin{array}{lll}
+        y'=a(x) y + b(x)\\
+        y(x_0)=u_0
+    \end{array}
+\right.\]
+Siano, allora, $y_1$ e $y_2$ le soluzioni (globali) di tali problemi lineari (si ricordi che le soluzioni di un problema di Cauchy lineare sono sempre globali).\\
+Inoltre, posta $u(x)$ la soluzione del problema di Cauchy di partenza
+\[\left\{
+    \rowcolors{1}{white}{white}
+    \begin{array}{lll}
+        u'=f(x,y)\\
+        u(x_0)=u_0
+    \end{array}
+\right.\]
+allora, fintantoché esiste, ossia è definita in $[x_0,x_0+\alpha]$, si ha che
+\[y_1(x) < u(x) < y_2(x) \hspace{1em} \forall x \in ]x_0,x_0+\alpha]\]
+Si osservi, quindi, che $u(x)$ è limitata, ma in realtà anche $u'(x) = f(x,u)$ è limitata in quanto $f$ è limitata da punti $(x,u(x))$. Ciò significa che la funzione $u$ è limitata e \quotes{non muore}, ed esiste su tutto $I$.
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione}: Pertanto, dato il problema di Cauchy
+\[\left\{
+    \rowcolors{1}{white}{white}
+    \begin{array}{lll}
+        u'=f(x,y)\\
+        u(x_0)=u_0
+    \end{array}
+\right.\]
+si ha che
+\begin{itemize}
+    \item se $f$ è continua, allora la soluzione \textbf{esiste};
+    \item se $f$ è continua e Lipschitziana, allora la soluzione \textbf{esiste} ed è \textbf{unica};
+    \item se $f$ è continua, Lipschitziana e sottolineare, allora la soluzione \textbf{esiste}, è \textbf{unica} ed è anche \textbf{globale}.
+\end{itemize}
+
+\vspace{1em}
+\subsection{Equazioni del primo ordine a variabili separate}
+Com'è noto, un'equazione del primo ordine si scrive come
+\[y'=f(x,y)\]
+allora tale equazione si dice a variabili separate (o separabili) se
+\[f(x,y)=a(x) \cdot b(y)\]
+ossia può essere scritta come prodotto tra una funzione in $x$ e una in $y$, ossia
+\[a : I \longmapsto \mathbb{R} \hspace{1em} \text{e} \hspace{1em} b : J \longmapsto \mathbb{R}\]
+funzioni continue. Pertanto il problema di Cauchy si scrive come
+\[\left\{
+    \rowcolors{1}{white}{white}
+    \begin{array}{lll}
+        y'=a(x) \cdot b(y)\\
+        y(x_0)=y_0
+    \end{array}
+\right.\]
+con $x_0 \in I$ e $y_0 \in J$. La soluzione esiste sicuramente in quanto si stanno considerando funzioni continue. Si distinguono, allora, due casi
+\begin{itemize}
+    \item posta $u(x)$ una soluzione e $b(y_0)=0$ allora la funzione $u(x) = y_0$ costante è soluzione, ossia
+    \[0 = u'(x) = a(x) \cdot b(u(x))\]
+
+    \item posta $u(x)$ una soluzione e $b(y_0) > 0$ allora si considera la funzione $b \circ u$ tale che $b(u(x)) > 0$, quindi un intorno $K$ di $\alpha$ dove $b(u(x)) > 0, \forall x \in K$. Allora si considera l'integrale
+    \[\int_{x_0}^x \dfrac{u'(t)}{b(u(t))} \dif t = \int_{x_0}^x a(t) \dif t \hspace{1em} \forall t \in K, x \in K\]
+    Si ottiene, allora, l'integrale
+    \[\int_{y_0}^{u(x)} \dfrac{1}{b(z)} \dif z = A(x) \hspace{1em} \text{con} \hspace{1em} A(x) = \int_{x_0}^x a(x) b x\]
+    Allora posta $P(z)$ tale che $P'(z) = \dfrac{1}{b(z)}$ l'integrale di cui sopra si può scrivere come
+    \[P(u(x)) - P(y_0) = A(x) \hspace{1em} \rightarrow \hspace{1em} P(u(x)) = P(y_0) + A(x)\]
+    volendo ottenere una epressione per $u(x)$ ci si chiede se $P(z)$ sia invertibile. Ma $P(z)$ è una funzione definita su un intervallo e monotona, in quanto
+    \[P'(z) = \dfrac{1}{b(z)} > 0\]
+    in quanto $b(z)$ è invertibile per ipotesi. Allra la soluzione cercata è proprio
+    \[u(x) = P^{-1} \left(P(y_0) + A(x)\right)\]
+\end{itemize}
+
+\vspace{2em}
+\noindent
+\textbf{Esercizio 1}: Si consideri il problema di Cauchy seguente
+\[\left\{
+    \rowcolors{1}{white}{white}
+    \begin{array}{lll}
+        y'= x y^2\\
+        y(0)=1
+    \end{array}
+\right.\]
+che è un esempio di equazione differenziali a variabili separate, con $a(x)=x$ e $b(y)=y^2$. Allora si verifica innanzitutto che
+\[b(y(0))=b(1)=1^2=1 \neq 0\]
+per cui si può scrivere
+\[\int_0^y \dfrac{y'}{y^2} \dif t = \int_0^x t \dif t = \dfrac{1}{2}x^2\]
+Si ottiene quindi che
+\[\int_1^{y(x)} \dfrac{1}{y^2} \dif y = \left[-\dfrac{1}{y}\right]_1^{y(x)} = -\dfrac{1}{y(x)} + 1\]
+ma vale l'uguaglianza seguente
+\[-\dfrac{1}{y(x)} + 1 = \dfrac{1}{2}x^2\]
+per cui si deduce che
+\[y(x)=\dfrac{1}{1-\dfrac{1}{2}x^2}\]
+la quale deve essere definita su un intervallo, in particolare su $\left]-\sqrt{2},\sqrt{2}\right[$.
+
+\vspace{2em}
+\noindent
+\textbf{Esercizio 2}: Si consideri il problema di Cauchy seguente
+\[\left\{
+    \rowcolors{1}{white}{white}
+    \begin{array}{lll}
+        y'= \dfrac{2}{x} y + x^2\\
+        y(1)=2
+    \end{array}
+\right.\]
+che non è un'equazione a variabili separate, ma è un'equazione lineare. La soluzione, di conseguenza, è data da
+\[y=e^{A(x)-A(x_0)} + \int_{x_0}^x e^{A(x)-A(t)} \cdot b(t) \dif t\]
+ove
+\[A(x)=\int_{x_0}^x a(t) \dif t = \int_{1}^x \dfrac{2}{t} \dif t = 2 \log(x)\]
+mentre si ha che 
+\[\int_{x_0}^x e^{A(x)-A(t)} \cdot b(t) \dif t = \int_{1}^x e^{2 \log(x)-2\log(2)} \cdot t^3 = \int_{1}^x e^{2 \log(x)} \cdot e^{-2\log(t)} \cdot t^3 \dif t\]
+...continua...
+
+\vspace{2em}
+\noindent
+\textbf{Esercizio 3}: Si consideri il problema di Cauchy seguente
+\[\left\{
+    \rowcolors{1}{white}{white}
+    \begin{array}{lll}
+        y'= \dfrac{2x}{y}e^{-y}\\
+        y(0)=1
+    \end{array}
+\right.\]
+Allora tale problema riguarda un'equazione differenziale a variabili separabili, con
+\[a(x)=2x \hspace{1em} \text{e} \hspace{1em} b(y)=\dfrac{e^{-y}}{y}\]
+da ciò segue che
+\[\int_{x_0}^x ye^y y' \dif t = \int_{x_0}^x 2t \dif t \hspace{1em} \rightarrow \hspace{1em} \int_1^{y(x)} ye^y \dif y = \left[ye^y - e^y\right]_1^{y(x)} = y(x) e^{y(x)} - e^{y(x)} - e + e = e^{y(x)} \cdot (y(x)-1)\]
+Pertanto si ottiene che
+\[e^{y(x)} \cdot (y(x)-1)=x^2\]
+ma non è possibile calcolarne l'inversa.
+
+\vspace{2em}
+\noindent
+\textbf{Esercizio 3}: Si consideri il problema di Cauchy seguente
+\[\left\{
+    \rowcolors{1}{white}{white}
+    \begin{array}{lll}
+        y'= \dfrac{4x^2 + 3y^2}{2xy}\\
+        y(2)=1
+    \end{array}
+\right.\]
+È possibile spezzare la frazione ottenendo
+\[y'= \dfrac{4x^2 + 3y^2}{2xy} \hspace{1em} \rightarrow \hspace{1em} y'=2 \dfrac{x}{y} + \dfrac{3}{2} \dfrac{y}{x}\]
+Allora si può fare un cambio di variabile, ponendo
+\[u=\dfrac{y}{x} \hspace{1em} \rightarrow \hspace{1em} u(x)=\dfrac{y(x)}{x}\]
+da ciò si evince che $y(x)=u(x) \dif x$, per cui
+\[y'(x)=u'(x)x+u(x)\]
+pertanto si perviene al risultato seguente
+\[y'=2 \dfrac{x}{y} + \dfrac{3}{2} \dfrac{y}{x} \hspace{1em} \rightarrow \hspace{1em} u'(x)x+u(x) = \dfrac{2}{u(x)} + \dfrac{}{2}u(x)\]
+che può essere riscritta come
+\[u' = \dfrac{1}{x} \cdot \left(\dfrac{2}{u}+\dfrac{3}{2} u\right)\]
+che è un'equazione a variabili separate. È ora possibile riscrivere il problema di Cauchy come
+\[\left\{
+    \rowcolors{1}{white}{white}
+    \begin{array}{lll}
+        u'=\dfrac{1}{x} \cdot \left(\dfrac{4+u^2}{2u}\right)\\
+        u(2)=\dfrac{y_0}{x_0}=\dfrac{1}{2}
+    \end{array}
+\right.\]
+Si ottiene, allora
+\[\int_2^x \dfrac{2u}{4+u^2} u' \dif t = \int_1^x \dfrac{1}{t} = \log \left(\dfrac{x}{2}\right)\]
+e integrando il primo membro si ottiene
+\[\int_\frac{1}{2}^{u(x)} \dfrac{2u}{4+u^2} \dif u = \left[\log(4+u^2)\right]_2^{u(x)}\]
+Si perviene, quindi, all'uguaglianza seguente
+\[(4+u^2) = \dfrac{17}{8}x \hspace{1em} \rightarrow \hspace{1em} u^2=\dfrac{17}{8}x-4 \hspace{1em} \rightarrow \hspace{1em} u=\pm \sqrt{\dfrac{17}{8}x-4}\]
+Si sceglie la radice positiva in quanto si chiede che
+\[u=\dfrac{y(x)}{x} \hspace{1em} \rightarrow \hspace{1em} \dfrac{1}{2}=\sqrt{\dfrac{17}{8} \cdot 2 - 4}\]
+per cui si ha che
+\[u=\sqrt{\dfrac{17}{8}x-4}\]
+da ciò è possibile estrarre la $y(x)$, data la sostituzione $u=\dfrac{y(x)}{x}$, per cui
+\[y(x)=x \sqrt{\dfrac{17}{8}x-4}\]
+
+\newpage
+\noindent
+\begin{center}
+    14 Dicembre 2022
+\end{center}
+\vspace{1em}
+\noindent
+È stato dimostrato il teorema di esistenza e unicità di un problema di Cauchy sotto l'ipotesi di Lipschitz. Non solo, è stato anche introdotto il teorema di confronto delle soluzioni delle equazioni differenziali che ha come conseguenza il teorema di esistenza globale con l'ipotesi di sottolinearità della $f$.
+
+\vspace{1em}
+\subsection{Equazioni differenziali di Bernoulli}
+Le equazioni differenziali di Bernoulli sono nella forma
+\[y'=a(x) y + b(x) y^\alpha\]
+con $\alpha \in \mathbb{R}$ e
+\[a,b : I \longmapsto \mathbb{R}\]
+funzioni continue. In particolare si ha che
+\begin{itemize}
+    \item se $\alpha = 1$ allora
+    \[y' = \left(a(x) + b(x)\right)) \cdot y\]
+    che è un'equazione lineare omogenea.
+
+    \item se $\alpha = 0$ allora
+    \[y' = a(x) \cdot y + b(x)\]
+    che è un'equazione lineare.
+\end{itemize}
+Pertanto, si suppone $\alpha \neq 0$ e $\alpha \neq 1$, per cui si può dividere per $y^\alpha$, ottenendo
+\[y' \cdot y^{-\alpha} = a(x) \cdot y(1-\alpha) + b(x)\]
+che con la seguente sostituzione diviene
+\[u(x)=y(x)^{1-\alpha} \hspace{1em} \rightarrow \hspace*{1em} u'(x)=(1-\alpha) \cdot y(x)^{-\alpha} \cdot y'(x)\]
+allora moltiplicando per $1-\alpha$ ambo i membri si ottiene 
+\[(1-\alpha) \cdot (y' \cdot y^{-\alpha}) = (a(x) \cdot y(1-\alpha) + b(x)) \cdot (1-\alpha)\]
+ottenendo
+\[u'(x) = (1-\alpha) a(x) u(x) + (1-\alpha) b(x)\]
+
+\vspace{2em}
+\noindent
+\textbf{Esempio 1}: Sia dato il problema di Cauchy seguente
+\[\left\{
+    \rowcolors{1}{white}{white}
+    \begin{array}{lll}
+        y'=-\dfrac{y}{x}+\dfrac{1}{x^2y^2}\\
+        y(1)=2
+    \end{array}
+\right.\]
+allora l'equazione differenziale diviene
+\[y'=-\dfrac{1}{x} \cdot y + \dfrac{1}{x^2} \cdot y^{-2}\]
+con $\alpha=-2$. Si divide per $y^{-2}$ ottenendo
+\[y^2 y' = -\dfrac{1}{x} y^3 + \dfrac{1}{x^2}\]
+e usando come sostituzione
+\[u(x)=y^3 \hspace{1em} \rightarrow \hspace{1em} u'=3y^2 y'\]
+si ottiene, moltiplicando per 3
+\[3y^2 y' = - \dfrac{3}{x} y^3 + \dfrac{3}{x^2} \hspace{1em} \rightarrow \hspace{1em} u'=-\dfrac{3}{x} u + \dfrac{3}{x^2}\]
+Per cui il problema di Cauchy equivalente è
+\[\left\{
+    \rowcolors{1}{white}{white}
+    \begin{array}{lll}
+        u'=-\dfrac{3}{x} u + \dfrac{3}{x^2}\\
+        u(1)=8
+    \end{array}
+\right.\]
+Si deve, allora, risolvere l'equazione differenziale lineare associata, per cui
+\[u(x)=e^{A(x) - A(x_0)} + \int_{x_0}^x e^{A(x) - A(t)} \cdot b(t) \dif t\]
+La primitiva $A(x)$ si calcola come
+\[A(x) = \int_{x_0}^x -\dfrac{3}{t} \dif t = \int_{1}^x -\dfrac{3}{t} \dif t = -3 \log(x)\]
+Pertanto si ottiene che la soluzione è
+\[u(x) = ...continua...\]
+ma essendo $u=y^3$, ovvero $y=\sqrt[3]{x}$ si ha che
+\[y=\sqrt[3]{...continua...}\]
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione}: Nel modello S.I.R. introdotto in precedenza, si aveva l'equazione differenziale seguente
+\[I'=k \cdot I \cdot (1-I)\]
+che scritta in forma di equazione di Bernoulli diviene
+\[y'=ky - ky^2\]
+Allora dividendo per $y^2$ si ottiene
+\[\dfrac{y'}{y^2} = k \dfrac{1}{y} - k\]
+e ponendo come sostituzione
+\[u=\dfrac{1}{y} \hspace{1em} \rightarrow \hspace{1em} u' = - \dfrac{1}{y^2}\]
+per cui
+\[-u'=ku-k \hspace{1em} \rightarrow \hspace{1em} u'=-ku+k\]
+Se tale equazione si associa al problema di Cauchy seguente:
+\[\left\{
+    \rowcolors{1}{white}{white}
+    \begin{array}{lll}
+        u'=-ku+k\\
+        u(0)=\dfrac{1}{I_0}
+    \end{array}
+\right.\]
+immediatamente si osserva che è un'equazione differenziale del primo ordine lineare, da cui si ha che la soluzione
+\[u(x)=e^{A(x)-A(x_0)} + \int_{x_0}^x e^{A(x) - A(t)} \cdot b(t) \dif t\]
+ma siccome
+\[A(x)=\int_{x_0}^x a(t) \dif t = \int_{0}^x -k \dif t = -kx\]
+per cui
+\[u(x)=\dfrac{1}{I_0} e^{-lx} + e^{-kx} \cdot \int_0^x e^{kt} \cdot k \dif t = \left(\dfrac{1}{I_0} -1\right) e^{-kx} + 1\]
+
+\vspace{1em}
+\subsection{Equazioni differenziali ordinarie lineari del primo ordine in modo estratto}
+Sia data l'equazione differenziale seguente
+\[y'=a(x) y + b(x)\]
+con $a,b \in C(I)$ funzioni continue nell'intervallo $I$. Si consideri, allora, l'operatore differenziale
+\[L : C^1(I) \longmapsto C^0(I)\]
+il quale svolge l'operazione seguente
+\[\boxed{L(y)(x) = y'(x) - a(x) y(x)}\]
+È abbastanza evidente che $L$ è un'applicazione lineare, in quanto
+\[L(\alpha y_1 + \beta y_2) (x) = \left[(\alpha y_1 + \beta y_1)' - a(x) \cdot (\alpha y_1(x) + \beta y_2(x))\right]\]
+e sfruttando la linearità e la proprietà distributiva si ottiene 
+\[= \alpha y_1'(x) + \beta y_2'(x) - a(x) \alpha y_1(x) - a(x) \beta y_2(x) = \alpha \cdot \left[y_1'(x) - a(x) \cdot y_1(x)\right] + \beta \cdot \left[y_2'(x) - a(x) y_2(x)\right] = \left[\alpha L(y_1) + \beta L(y_2)\right](x)\]
+per cui $L$ calcolata su una combinazione lineare è la combinazione lineare di $L$ calcolata sugli elementi della combinazione lineare.\\
+Data l'applicazione lineare $L$, è possibile definirne il \textbf{nucleo} come
+\[\text{Ker } L = \left\{x \in \mathbb{R}^n :  L(y)(x) = y' - a(x) y= 0\right\}\]
+per cui Ker $L$ è lo spazio delle soluzioni dell'equazione lineare omogenea
+\[y'=a(x) y\]
+ma ovviamente nel caso fin d'ora considerato si ha che
+\[y(x)=\lambda e^{A(x)}\]
+sono le soluzioni con $\lambda \in \mathbb{R}$, per cui Ker $L$ è uno spazio vettoriale di dimensione $1$.\\
+
+\vspace{1em}
+\noindent
+Considerando, invece, l'equazione differenziale completa
+\[y'=a(x) y + b(x)\]
+l'insieme $\mathcal{S}_c$ delle soluzioni di tale equazione lineare completa si può scrivere nel modo seguente: fissando una soluzione particolar $y_P$ di $E$, allora
+\[\mathcal{S}_c = \{y_p + u : u \in \text{ Ker } L\}\]
+per cui $\mathcal{S}_c$ è uno spazio affine, ed è il traslato di Ker $L$ relativamente alla soluzione particolare $y_p$.
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione 1}: Sia
+\[\mathcal{S}_c = \{\text{ soluzioni di } y'=a(x) y + b(x)\}\]
+in cui
+\[\text{Ker} L = \{\text{ soluzioni di } y' = a(x) \cdot y\}\]
+con $y_p$ soluzione di $y'=a(x) y + b(x)$. Allora si vuole provare che
+\[\mathcal{S}_c = \{y_p+u : u \in \text{ Ker } L\}\]
+Per farlo, si pone $y \in \mathcal{S}_c$, allora
+\[L(y) = y' - a(x) \cdot y = b(x)\]
+ma naturalmente si ha che anche $L(y_p)=b(x)$, per cui ponendo $u=y-y_p$, è evidente che
+\[L(u)=L(y)-L(y_p)=b(x)-b(x)=0\]
+per cui $u \in \text{ Ker } L$, quindi $y=u+y_p$.\\
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione 1}: Viceversa, sia ora $y=u+y_0$, con $u \in \text{ Ker } L$. Allora
+\[L(y) = L(u) + L(y_p) = 0 + b(x)\]
+...continua...
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione}: Considerando, quindi, l'equazione differenziale ordinaria lineare del primo ordine
+\[L y = b(x) \hspace{1em} \text{con} \hspace{1em} L(y) = y' - a(x) y\]
+allora si ha che
+\begin{itemize}
+    \item le soluzioni dell'equaiozne lineare omogenea
+    \[L y = 0\]
+    sono uno spazio vettoriale di dimensione $1$, ossia il Ker $L$;
+    \item Le soluzioni delle'equazione differenziale completa
+    \[L y = b(x)\]
+    sono esprimibili come somma di una soluzione particolare $y_p$ dell'equazione completa e di una generica soluzione $u$ dell'equazione omogenea.
+\end{itemize}
+Pertanto, la strategia per risolvere l'equazione completa
+\[L y = b(x)\]
+è quella di trovare il Ker $L$, per cui bisonga risolvere l'equazione omogenea, e trovare una soluzione particolare $y_p$ dell'equazione completa.
+
+\vspace{1em}
+\noindent
+\subsection{Metodo della variazione della costante per la determinazione di una soluzione particolare dell'equazione differenziale completa}
+Siano date l'equazione differenziale completa e l'equazione omogenea assocaita, rispettivamente
+\[y'=a y + b \hspace{1em} \text{e} \hspace{1em} y'=ay\]
+Allora si ha che
+\[\text{Ker } L : \{\lambda u_1 : \lambda \in \mathbb{R}\} \hspace{1em} \text{per cui } \{u_1\} \text{ è una base del Ker } L\]
+in quanto le soluzioni dell'equazione omogenea costituiscono uno spazio vettoriale di dimensione unitaria, ossia Ker $L$. Sa $\{u_1\}$ è base del kernel, si può considerare una funzione del tipo
+\[\lambda(x) \cdot u_1(x) = y_p(x)\]
+in cui $\lambda(x)$, ora, non è più uno scalare, ma è una funzione. Se $y_p$ è soluzione dell'equazione completa, deve essere verificato che
+\[\left(\lambda(x) \cdot u_1(x)\right)' = a \cdot (\lambda(x) \cdot u_1(x)) + b \hspace{1em} \rightarrow \hspace{1em} \lambda' u_1 + \lambda u_1' - (a \lambda u_1 + b) = 0\]
+ma ovviamente si ha che $u_1'=a u_1$ in quanto $u_1$ è soluzione dell'equazione differenziale omogenea, per cui si ha che
+\[\lambda u_1' - a \lambda u_1 = 0\]
+in quanto $\lambda' u_1 = b$; pertanto si ottiene che
+\[\lambda'(x) = \dfrac{1}{u_1(x)} \cdot b(x)\]
+in cui si deve verificare che $u_1(x) \neq 0$ per ogni $x$; per farlo si suppone che $u_1(x_0) = 0$ per qualche $x_0 \in I$, allora il problema di Cauchy seguente
+\[\left\{
+    \rowcolors{1}{white}{white}
+    \begin{array}{lll}
+        u_1'=-a(x) u_1(x) = 0\\
+        u_1(x_0)=0
+    \end{array}
+\right.\]
+si ha che tale problema di Cauchy ha una ed una soluzione; ma la funzione $u(x)=0$ $\forall x$ è anche soluzione, quindi per l'unicità si ha che $u_1(x) = 0$ $\forall x$; ma ciò è assurdo perché $\{u_1\}$ + una base del Ker $L$.\\
+Ciò permette di legittimare la scrittura seguente
+\[\lambda'(x)=\dfrac{1}{u_1(x)} \cdot b(x) \hspace{1em} \rightarrow \hspace{1em} \lambda(x) = \int_{x_0}^x \dfrac{1}{u_1(t)} b(t) \dif t\]
+Pertanto la funzione $y_p(x)$ si può scrivere come
+\[y_p(x) = u_1(x) \cdot \int_{x_0}^x \dfrac{1}{u_1(t)} b(t) \dif t = \int_{x_0}^x K(x,t) \cdot b(t) \dif t\]
+in cui
+\[K(x,t)=\dfrac{u_1(x)}{u_1(t)}\]
+è il \textbf{nucleo risolvente dell'equazione differenziale}.\\
+Tale risultato non sorprende in quanto è riconducibile alla formula nota per le equazioni omogenee ordinarie lineri
+\[y(x)=y_0 e^{A(x) - A(x_0)} + e^{A(x)} \cdot \int_{x_0}^x e^{-A(t)} b(t) \dif t\]
+che è soluzione del problema di Cauchy in cui $y_0=0$; ovviamente si ha che
+\[K(x,t)=\dfrac{u_1(x)}{u_1(t)}=\dfrac{e^{A(x)}}{e^{A(t)}}\]
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione}: Le equazioni differenziali ordinarie lineari sono importanti perché permettono di linearizzare i problemi. Dato il problema di Cauchy seguente
+\[\left\{
+    \rowcolors{1}{white}{white}
+    \begin{array}{lll}
+        y'=f(x,y)\\
+        y(x_0)=y_0\\
+    \end{array}
+\right.\]
+si può linearizzare il problema sostituendo a $f$ il suo approssimante lineare $\widetilde{f}$
+\[\widetilde{f}(x,y)=f(x_0,y_0) + \dfrac{\partial f}{\partial x}(x_0,y_0) \cdot (x-x_0) + \dfrac{\partial f}{\partial y}(x_0,y_0) \cdot (y-y_0)\]
+Sia, allora, il problema di Cauchy lineare seguente
+\[\left\{
+    \rowcolors{1}{white}{white}
+    \begin{array}{lll}
+        u'=\widetilde{f}(x,y)\\
+        u(x_0)=y_0\\
+    \end{array}
+\right.\]
+Detta $u$ la soluzione del problema di Cauchy linearizzato e $y$ la soluzione del problema di Cauchy di partenza. Per capire il legame tra $u$ e $y$ si ha che
+\begin{itemize}
+    \item $u(x_0) = y_0 = y(x_0)$
+    \item $u'(x_0) = \widetilde{f}(x_0,y_0) = f(x_0,y_0)$, per cui $u'(x_0)=f(x_0,y_0)=y'(x_0)$
+\end{itemize}
+Calcolando, invece, la derivata seconda si ottiene
+\[u''(x)=\dfrac{\dif}{\dif x} u'(x) = \dfrac{\dif}{\dif x} \left(\widetilde{f}(x,u(x))\right)\]
+ma si ha naturalmente che
+\[\nabla \widetilde{f}(x,y) = \left(\dfrac{\partial f}{\partial x}(x_0,y_0), \dfrac{\partial f}{\partial y}(x_0,y_0)\right){^T}\]
+per cui si ha che
+\[\dfrac{\dif}{\dif x} \left(\widetilde{f}(x,u(x))\right) = \left<\nabla \widetilde{f}(x_0,u(x_0)), \widetilde{f}(x,u(x))\right> = \dfrac{\partial f}{\partial x} (x_0,y_0) \cdot 1 + \dfrac{\partial f}{\partial y} (x_0,y_0) \cdot u'(x)\]
+mentre
+\[y''(x) = \dfrac{\dif}{\dif x} y'(x) = \dfrac{\dif}{\dif x} \left(f(x,y(x))\right) = \dfrac{\partial f}{\partial x} (x,y(x)) \cdot 1 + \dfrac{\partial f}{\partial y} (x,y(x)) \cdot y'(x)\]
+ma allora si ha che
+\[u''(x_0)=\dfrac{\partial f}{\partial x}(x_0,y_0) + \dfrac{\partial f}{\partial y}(x_0,y_0) \cdot u'(x_0) \hspace{1em} \text{e} \hspace{1em} y''(x_0)=\dfrac{\partial f}{\partial x}(x_0,y_0) + \dfrac{\partial f}{\partial y}(x_0,y_0) \cdot y'(x_0)\]
+ma siccome $u'(x_0) = y'(x_0)$ le derivate secondi sono uguali; quindi $u-y=o(\left\vert x-x_0\right\vert^2)$
+
+\vspace{2em}
+\noindent
+\textbf{Esempio}: Sia dato il problema di Cauchy originale
+\[\left\{
+    \rowcolors{1}{white}{white}
+    \begin{array}{lll}
+        y'=e^y\\
+        y(0)=0
+    \end{array}
+\right.\]
+allora si ha che
+\[f(x,y)=e^y \hspace{1em} \rightarrow \hspace{1em} \nabla f(0,0) = (0,1) \hspace{1em} \text{e} \hspace{1em} \widetilde{f}(x,y) = 1+ y\]
+allora il problema linearizzato sarà
+\[\left\{
+    \rowcolors{1}{white}{white}
+    \begin{array}{lll}
+        u'=1+u\\
+        u'(0)=0
+    \end{array}
+\right.\]
+ma siccome si ha che
+\[u(x)=e^x \hspace{1em} \rightarrow \hspace{1em} \text{Ker } L = \{\lambda e^x\}\]
+per cui $u_p(x)=-1$ tale che $u'_p(x) = 0 = 1+(-1)$. Pertanto soluzione è
+\[u(x)=e^x-1\]
+Ritornando al problema originario 
+\[\left\{
+    \rowcolors{1}{white}{white}
+    \begin{array}{lll}
+        y'=e^y\\
+        y(0)=0
+    \end{array}
+\right.\]
+si risolve con
+\[\int_0^x e^{-y} y' \dif t = \int_0^x 1 \dif t \hspace{1em} \rightarrow \hspace{1em} \int_0^{y(x) e^{-y}} = x\]
+ma ciò significa che
+\[-e^{-y(x)} + 1 = x \hspace{1em} \rightarrow \hspace{1em} y(x)=-\log(1-x)\]
+tra la soluzione $u(x)$ e $y(x)$ c'è un legame, in quanto calcolando le derivate di $u(x)$ ...continua...
+
+\vspace{1em}
+\subsection{Equazioni differenziali di ordine $n$ (in forma normale)}
+Un'equazione differenziale di ordine $n$ in forma normale si presenta nella forma
+\[u^{(n)}(x) = f \left(x,y,u',\dots,u^{(n-1)}\right)\]
+con
+\[f : A \subseteq \mathbb{R}^{n+1} \longmapsto \mathbb{R}\]
+allora il problema di Cauchy associato dovrà presentare $n$ condizioni iniziali, ossia deve essere dato il vettore
+\[(x_0,w_1^0,w_2^0,\dots,w_{n-1}^0){^T} \in A\]
+ossia
+\[\left\{
+    \rowcolors{1}{white}{white}
+    \begin{array}{lll}
+        u^{(n)}(x) = f \left(x,y,u',\dots,u^{(n-1)}\right)\\
+        u(x_0)=w_1^0\\
+        u'(x_0)=w_2^0\\
+        \vdots\\
+        u^{(n-1)}(x_0)=w_{n-1}^0
+    \end{array}
+\right.\]
+Allora $u$ sarà soluzione se
+\[u : I \longmapsto \mathbb{R}\]
+con $I$ intervallo e $u$ $n$ volte derivabile; non solo, deve essere che
+\[\forall x \in I \hspace{1em} (x,u(x),u'(x),\dots,u^{(n-1)}(x)){^T} \in A \hspace{1em} \text{e} \hspace{1em} u^{(n)}(x)=f(x,u(x),u'(x),\dots,u^{(n-1)}(x))\]
+inoltre deve essere che
+\[u(x_0)=w_1^0, \hspace{1em} u'(x_0)=w_1^0, \hspace{1em} \dots, \hspace{1em} u^{(n-1)}(x_0) = w^0_n\]
+
+\vspace{1em}
+\subsection{Teorema di esistenza e unicità di dimensione $n$}
+Sia dato un rettangolo di dimensione $n+1$
+\[R = [x_0,x_0+a] \times \left(\left[w_1^0-b_1,w_1^0+b_1\right] \times \left[w_2^0-b_2,w_2^0+b_2\right]\times \dots \times \left[w_n^0-b_n,w_n^0+b_n\right]\right) \subseteq \mathbb{R}^{n+1}\]
+e sia data
+\[f : R \longmapsto \mathbb{R}\]
+continua, allora esiste almeno una soluzione del problema di Cauchy associato. Se $f$, inoltre, è Lipschitziana in $y=(y_1,y_2,\dots,y_n){^T}$ uniformemente rispetto a $x$, ossia esiste $L \in \mathbb{R}$ tale che $\forall x \in [x_0,x_0+a]$ e $\forall y,z \in \left[w_1^0-b_1,w_1^0+b_1\right] \times \left[w_2^0-b_2,w_2^0+b_2\right]\times \dots \times \left[w_n^0-b_n,w_n^0+b_n\right]$ si ha che
+\[\vert f(x,y) - f(x,z) \vert \leq L \cdot \vert\vert y-z \vert\vert\]
+allora la soluzione è anche unica.
+
+\newpage
+\noindent
+\begin{center}
+    14 Dicembre 2022
+\end{center}
+Le equazioni lineari di ordine $1$ presentano un'applicazione lineare associata
+\[L : C^1(I) \longmapsto C^1(I)\]
+in cui
+\[L(y) = y'-ay\]
+mentre per le euqazioni di ordine $n \geq 1$ si ha che
+\[L : C^n(I) \longmapsto C^0(I)\]
+in cui
+\[L(y) = y^{(n)} - \left[a_{n-1} y^{(n-1)} + a_{n-2} y^{(n-2)} + \dots + a_1 y' + a_0 y\right]\]
+in cui
+\[y^{(n)} = a_0 y + a_1 y' + \dots + a_{n-1} y^{(n-1)} + b(x)\]
+con $a_0,a_1,\dots,a_{n-1}, b \in C(I)$; inoltre, si ha che l'equazione completa e omogenea sono
+\[L(y) = b \hspace{1em} \text{e} \hspace{1em} L(y)=0\]
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione 1}: Si osservi che $L$ è lineare, in quanto
+\[L(\alpha_1 y_1 + \alpha_2 y_2) = (\alpha_1 y_1 + \alpha_2 y_2)^{(n)} - \left[a_{n-1} \right]\]
+...continua...
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione 2}: Si osservi che il Ker $L$ è l'insieme delle soluzioni dell'euazione omogenea ed è uno spazio vettoriale.\\
+Se, allora, $y_p$ è una qualsiasi soluzione dell'equazione completa, ossia $L(y_p)=b$; allora, l'insieme delle soluzioni dell'equazione completa è lo spazio affine
+\[\mathcal{S}_c = \text{ Ker } L + \{y_p\} = \{u + y_p : u \in \text{ Ker } L\}\]
+Infatti, sia $y \in \mathcal{S}_c$, cioé $L(y)=b$; allora ponendo $u=y-y_p$ si ha che
+\[L(u) = L(y) - L(y_p) = b-b = 0\]
+quindi $u \in \text{ Ker } L$ e $y=y_p+u$.\\
+Viceversa, sia $y=y_p+u$ con $u \in \text{ Ker } L$, allora
+\[L(y) = L(y_p) + L(u) = b + 0 = b\]
+cioè $y \in \mathcal{S}_c$.
+
+\vspace{1em}
+\subsection{Dimensione del Kernel}
+Il Ker $L$ è uno spazio vettoriale di dimensione $n$.
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Per la dimostrazione, si considerino i seguenti $N$ problemi di Cauchy:\\
+...continua...\\
+Siano, allora, $u_1,u_2,\dots,u_n$ le soluzioni di questi problemi, tali per cui $u_1,u_2,\dots,u_n \in \text{ Ker } L$.\\
+Si deve verificare che
+\begin{enumerate}
+    \item $u_1,u_2,\dots,u_n$ sono linearmente indipendenti;
+    \item $u_1,u_2,\dots,u_n$ generano lo spazio;
+\end{enumerate}
+Sia, allora
+\[\alpha_1 u_1 + \alpha_2 u_2 + \dots + \alpha_n u_n = 0\]
+cioè, $\forall x \in I$ deve e essere vero che
+\[\alpha_1 u_1(x) + \alpha_2 u_2(x) + \dots + \alpha_n u_n(x) = 0\]
+ma se ciò è vero per tutti gli $x \in I$, deve essere vero anche per $x=x_0$, da cui
+\[\alpha_1 u_1(x_0) + \alpha_2 u_2(x_0) + \dots + \alpha_n u_n(x_0) = 0\]
+ma dal problema di Cauchy considerato si ha che $u_1(x_0) = 1$, per cui $\alpha_1$.\\
+Considerando, ora, la derivata prima, deve essere che
+\[\alpha_1 u_1'(x_0) + \alpha_2 u_2'(x_0) + \dots + \alpha_n u_n'(x_0) = 0\]
+ma dal secondo problema di Cauchy si ha che $u'_2(x_0)=1$, per cui $\alpha_2=0$. Ragionando così per tutte le derivate si deduce che $\alpha_1,\alpha_2,\dots,\alpha_n$ sono tutti nulli.\\
+Si provi, ora, che $\alpha_1,\alpha_2,\dots,\alpha_n$ generano Ker $L$. Sia, allora, $u \in \text{ Ker } L$, e si cerchino $\alpha_1,\alpha_2,\dots,\alpha_n \in \mathbb{R}$ tali che
+\[u=\alpha_! u_1 + \alpha_2 u_2 + \dots + \alpha_n u_n\]
+Si consideri, allora $u(x_0),u'(x_0),\dots,u^{(n-1)}(x_0)$ e il problema di Cauchy seguente
+...continua...\\
+Tale problema, ovviamente, presenta come soluzione la funzione $u$, ma anche la funzione
+\[v(x)=u(x_0)u_1(x) + u'(x_0)u_2(x) + \dots + u^{(n-1)}(x_0) u_{n}(x)\]
+con $u(x_0),u'(x_0),\dots,u^{(n-1)}(x_0)$ sono gli scalari della combinazioone lineare dei vettori della base. È facile dimostrare che anche $v$ è soluzione del problema di Cauchy, ...continua...\\
+Per l'unicitò della soluzione, si ha che $u=v$ e, in particolare
+\[u=\alpha_1 u_1 + \alpha_2 u_2 + \dots + \alpha_n u_n\]
+dove $\alpha_1=u(x_0), \alpha_2=u'(x_0), \dots, \alpha_n=u^{(n-1)}(x_0)$
+
+\vspace{1em}
+\noindent
+\subsection{Metodo della variazione delle costanti per la determinazione di una soluzione particolare dell'equazione completa}
+Siano l'equazione completa e omogenea rispettivamente
+\[L y = b \hspace{1em} \text{e} \hspace{1em} L y =0\]
+e si supponga sia nota una base
+\[\{u_1,u_2,\dots,u_n\}\]
+del Ker $L$, tale per cui $\forall v \in \text{ Ker } L$ si ha che
+\[v = \lambda_1 u_1 + \lambda_2 u_2 + \dots + \lambda_n u_n \hspace{1em} \text{con} \hspace{1em} \lambda_1,\lambda_2,\dots,\lambda_n \in \mathbb{R}\]
+...continua...
+
+\vspace{2em}
+\noindent
+Sia $x_0 \in I$, allora si definisce
+\[K(x,s) \hspace{1em} \text{con} K : I \times I \longmapsto \mathbb{R}\]
+come segue
+\[K(x,s) = \dfrac{1}{W(s)} \det \left(
+    \rowcolors{1}{white}{white}
+    \begin{array}{cccc}
+        u_1(s) & u_2(s) & \dots & u_n(s)\\
+        u_1'(s) & u_2'(s) & \dots & u_n'(s)\\
+        \vdots & \vdots & \vdots & \vdots\\
+        u_1^{(n-2)}(s) & u_2^{(n-2)}(s) & \dots & u_n^{(n-2)}(s)\\
+        u_1(x) & u_2(x) & \dots & u_n(x)\\
+    \end{array}
+\right)\]
+Dove si ha che
+\[{W(s)} = \det \left(
+    \rowcolors{1}{white}{white}
+    \begin{array}{cccc}
+        u_1(s) & u_2(s) & \dots & u_n(s)\\
+        u_1'(s) & u_2'(s) & \dots & u_n'(s)\\
+        \vdots & \vdots & \vdots & \vdots\\
+        u_1^{(n-2)}(s) & u_2^{(n-2)}(s) & \dots & u_n^{(n-2)}(s)\\
+        u_1^{(n-1)}(s) & u_2^{(n-1)}(s) & \dots & u_n^{(n-1)}(s)\\
+    \end{array}
+\right)\]
+che ha un nome particolare, ossia \textbf{Wronskiano}, o determinante di Wronski.\\
+Per il lemma successivamente esposto, si ha che $W(s) \neq 0$, perchè $u_1,u_2,\dots,u_n$ sono linearmente dipendenti in quanto base. Allora la funzione
+\[y_p(x) = \int_{x_0}^x K(x,s) b(s) \dif s\]
+è soluzione dell'equazione completa $Ly = b$. Allora $K(x,s)$ è il nucleo risolvente dell'equazione differenziale.
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Nel caso in cui $n=1$, ovviamente $W(x)=u_1(x)$, per cui
+\[K(x,s) = \dfrac{1}{W(s)} \det(u_1(x)) = \dfrac{u_1(x)}{u_1(s)}=e^{A(x)-A(x_0)}\]
+Nel caso di $n=2$, si ha che
+\[{W(x)} = \det \left(
+    \rowcolors{1}{white}{white}
+    \begin{array}{cccc}
+        u_1(x) & u_2(x)\\
+        u_1'(x) & u_2'(x)\\
+    \end{array}
+\right)\]
+allora si ha che
+\[K(x,s) = \dfrac{1}{u_1(s)u_2'(s) - u_2(s)u_1'(s)} \cdot \det \left(
+    \rowcolors{1}{white}{white}
+    \begin{array}{cccc}
+        u_1(x) & u_2(x)\\
+        u_1'(x) & u_2'(x)\\
+    \end{array}
+\right) = \dfrac{u_1(x)u_2'(x) - u_2(x)u_1'(x)}{u_1(s)u_2'(s) - u_2(s)u_1'(s)} \]
+
+\vspace{2em}
+\noindent
+\textbf{Esempio}: Si consideri il problema di Cauchy seguente
+\[\left\{
+    \rowcolors{1}{white}{white}
+    \begin{array}{cccc}
+        y'' + y' = \dfrac{1}{\sin(x)}\\
+        y\left(\frac{\pi}{2}\right) = 1\\
+        y'\left(\frac{\pi}{2}\right)=0
+    \end{array}
+\right.\]
+Ovviamente si considera prima l'equazione omogenea
+\[y'' + y' = 0\]
+per cui $u_1(x)=\sin(x)$ e $u_1(x)=\cos(x)$, da cui
+\[L y = y'' + y \hspace{1em} \rightarrow \hspace{1em} \text{ Ker }f = \{\lambda_1 \sin(x) + \lambda_2 \cos(x), \lambda_1, \lambda_2 \in \mathbb{R}\}\]
+Per quanto concerne la soluzione particolare
+\[y_p = \int_{\frac{\pi}{2}}^x K(x,s) \dfrac{1}{\sin(x)} \dif s = \int_{\frac{\pi}{2}}^x \dfrac{\cos(s)\sin(x - \sin(s) \cos(x))}{\sin(s)} \dif s = \int_{\frac{\pi}{2}} \left(\dfrac{\cos(s)}{\sin(s)} \sin(x) - \cos(x)\right) \dif s = \sin(x) \cdot \left[\log(\sin(s))\right]_{\frac{\pi}{2}}^x - \cos(x) \cdot \left(x - \frac{\pi}{2}\right)\]
+Alla fine si è ottenuto
+\[\sin(x) \log(\sin(x)) + \cos(x) \cdot \left(\frac{\pi}{2} - x\right)\]
+Pertanto la generica soluzione dell'equazione completa è
+\[\lambda_1 \sin(x) + \lambda_2 \cos(x) + \sin(x) \log(\sin(x)) - x \cos(x) \hspace{1em} \text{con} \hspace{1em} \lambda_1, \lambda_2 \in \mathbb{R}\]
+Per determinare il valore esatto di $\lambda_1$ e $\lambda_2$ si considerano le due condizioni del problema di Cauchy; per la prima condizione si ha che
+\[1=y \left(\frac{\pi}{2}\right) = \lambda_1 \sin \left(\frac{\pi}{2}\right) + \lambda_2 \cos \left(\frac{\pi}{2}\right) + \sin \left(\frac{\pi}{2}\right) \cdot \log\left(\sin \left(\frac{\pi}{2}\right)\right) - \frac{\pi}{2} \cos \left(\frac{\pi}{2}\right)\]
+da cui $\lambda_1=1$. Per applicare la $2$ condizione, è necessario derivare la soluzione generica, ottenendo
+\[y'(x) = \lambda_1 \cos(x) - \lambda_2 \sin(x) ... continua...\]
+
+% Formattazione per la dimostrazione, etc.
+\vspace{2em}
+\noindent
+\normalfont \normalsize
+\textsc{Dimostrazione}: Si dimostri il metodo della variazione delle costanti per $n=2$; in particolare si ha che
+\[y'' - a_1(x) y'(x) - a_0(x) y(x) = b(x)\]
+in cui
+\[L y = y'' - a_1 y' - a_0 y\]
+Siano, allora $u_1(x)$ e $u_2(x)$ soluzioni lienarmente indipendenti di $Ly = 0$. Posto, allora
+\[y_p(x) = \lambda_1(x) u_1(x) + \lambda_2(x) u_2(x) \hspace{1em} \rightarrow \hspace{1em} y_p'(x)=\lambda_1' u_1 + \lambda_1 u_1' + \lambda_2' u_2 + \lambda_2 u_2'\]
+e si cercano $\lambda_1, \lambda_2$ che soddisfano la condizione
+\[\lambda_1'(x) u_1(x) + \lambda_2'(x) u_2(x) = 0 \hspace{1em} \forall x\]
+Sfruttando tale condizione, $y'_p$ diviene
+\[y_p'(x) = \lambda_1 u_1' + \lambda_2 u_2'\]
+e derivando ulteriormente si ottiene
+\[y''_p(x) = \lambda_1 u_1' + \lambda_1 u_1'' + \lambda_2' u_2' + \lambda_2 u_2''\]
+e si chiede che
+\[y'' - a_1(x) y'(x) - a_0(x) y(x) = b(x)\]
+ovvero
+\[\lambda_1'u_1'+\lambda_1 u_1'' + \lambda_2' u_2' + \lambda_2 u_2'' - a_1 \lambda_1 u_1' - a_1 \lambda_2 u_2' - a_0 \lambda_1 u_1 - a_0 \lambda_2 u_2 = b\]
+ma ci si deve ricordare che $u_1$ e $u_2$ sono soluzioni dell'equazione omogenea
+\[y'' - a_1(x) y'(x) - a_0(x) y(x) = 0\]
+per cui si ha che, raccogliendo $\lambda_1$ e $\lambda_2$ in questa equazione 
+\[\lambda_1'u_1'+\lambda_1 u_1'' + \lambda_2' u_2' + \lambda_2 u_2'' - a_1 \lambda_1 u_1' - a_1 \lambda_2 u_2' - a_0 \lambda_1 u_1 - a_0 \lambda_2 u_2 = b\]
+si ottiene che
+\begin{align*}
+    \lambda_1 \cdot (u_1'' - a_1u_1'-a_0u_1) =0\\
+    \lambda_2 \cdot (u_2'' - a_1u_2'-a_0u_2) =0\\
+\end{align*}
+ciò, quindi, permette di concludere che la seconda condizione richiesta è
+\[\lambda_1'(x) u_1'(x) + \lambda_2'(x)u_2'(x)=b(x)\]
+che, aggiunta alla condizione di partenza, permette di ottenere il sistema seguente
+
+\vspace{2em}
+\noindent
+Si ha il seguente Lemma
+\begin{lemma}
+    Esista $x_0 \in I$ tale
+    \[W(x_0) = 0\]
+    Allora $w(x)=0$ $\forall x \in I$.
+\end{lemma}
+che è una proprietà importante in quanto permette di evincere che se $W$ è nullo in un punto, allora è nullo dappertutto. Si ricordi che $W$ è definito come segue:
+\[{W(s)} = \det \left(
+    \rowcolors{1}{white}{white}
+    \begin{array}{cccc}
+        u_1(s) & u_2(s) & \dots & u_n(s)\\
+        u_1'(s) & u_2'(s) & \dots & u_n'(s)\\
+        \vdots & \vdots & \vdots & \vdots\\
+        u_1^{(n-2)}(s) & u_2^{(n-2)}(s) & \dots & u_n^{(n-2)}(s)\\
+        u_1^{(n-1)}(s) & u_2^{(n-1)}(s) & \dots & u_n^{(n-1)}(s)\\
+    \end{array}
+\right)\]
+Ovviamente, la matrice di cui calcolare il determinante può essere scomposta nei suoi $n$ vettori colonna
+\[\left(
+    \rowcolors{1}{white}{white}
+    \begin{array}{cccc}
+        u_1(s)\\
+        u_1'(s)\\
+        \vdots\\
+        u_1^{(n-2)}(s)\\
+        u_1^{(n-1)}(s)\\
+    \end{array}
+\right) \left(
+    \rowcolors{1}{white}{white}
+    \begin{array}{cccc}
+        u_2(s)\\
+        u_2'(s)\\
+        \vdots\\
+        u_2^{(n-2)}(s)\\
+        u_2^{(n-1)}(s)\\
+    \end{array}
+\right) \dots \left(
+    \rowcolors{1}{white}{white}
+    \begin{array}{cccc}
+        u_n(s)\\
+        u_n'(s)\\
+        \vdots\\
+        u_n^{(n-2)}(s)\\
+        u_n^{(n-1)}(s)\\
+    \end{array}
+\right)\]
+ma allora se il Wronskiano è nullo, ciò significa che $\exists \lambda_1,\lambda_2,\dots,\lambda_n$ non tutti nulli che
+\[\lambda_1 \cdot \left(
+    \rowcolors{1}{white}{white}
+    \begin{array}{cccc}
+        u_1(s)\\
+        u_1'(s)\\
+        \vdots\\
+        u_1^{(n-2)}(s)\\
+        u_1^{(n-1)}(s)\\
+    \end{array}
+\right) + \lambda_2 \cdot \left(
+    \rowcolors{1}{white}{white}
+    \begin{array}{cccc}
+        u_2(s)\\
+        u_2'(s)\\
+        \vdots\\
+        u_2^{(n-2)}(s)\\
+        u_2^{(n-1)}(s)\\
+    \end{array}
+\right) + \dots + \lambda_n \cdot \left(
+    \rowcolors{1}{white}{white}
+    \begin{array}{cccc}
+        u_n(s)\\
+        u_n'(s)\\
+        \vdots\\
+        u_n^{(n-2)}(s)\\
+        u_n^{(n-1)}(s)\\
+    \end{array}
+\right) = \left(
+    \rowcolors{1}{white}{white}
+    \begin{array}{cccc}
+        0\\
+        0\\
+        \vdots\\
+        0\\
+        0\\
+    \end{array}
+\right)\]
+Allora, considerando la funzione
+\[v(x) = \lambda_1 u_1(x) + \lambda_2 u_2(x) + \dots + \lambda_n u_n(x)\]
+con $v \in \text{ Ker } L$, per cui $L(v)=0$. Allora, dato il problmea di Cauchy\\
+...continua...\\
+è chiaro che $y=0$ è l'unica soluzione del problmea di Cauchy; tuttavia, anche $v$ è soluzione; infatti $Lv=0$ e
+\[v(x_0) = \lambda_1 u_1(x_0) + \lambda_2 u_2(x_0) + \dots + \lambda_n u_n(x_0) = 0\]
+ma anche 
+\[v'(x_0) = \lambda_1 u_1'(x_0) + \lambda_2 u_2'(x_0) + \dots + \lambda_n u_n'(x_0) = 0\]
+e così fino alla derivata $n-1$ esima; quindi $v(x)=0$ $\forall x$, così come $v'(x)=v''(x)=\dots=v^{(n-1)}(x)=0$.\\
+Ciò signfica che $\forall x$ gli $n$ vettori colonna sono linearmente dipendenti e quindi il determinante della matrice associata che ha come colonne i vettori considerati è uguale a $0$, ovvero
+\[{W(x)} = \det \left(
+    \rowcolors{1}{white}{white}
+    \begin{array}{cccc}
+        u_1(x) & u_2(x) & \dots & u_n(x)\\
+        u_1'(x) & u_2'(x) & \dots & u_n'(x)\\
+        \vdots & \vdots & \vdots & \vdots\\
+        u_1^{(n-2)}(x) & u_2^{(n-2)}(x) & \dots & u_n^{(n-2)}(x)\\
+        u_1^{(n-1)}(x) & u_2^{(n-1)}(x) & \dots & u_n^{(n-1)}(x)\\
+    \end{array}
+\right) = 0 \hspace{1em} \forall x\]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \end{document}
